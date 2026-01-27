@@ -374,9 +374,9 @@ export default function DatalakePage() {
                   {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">,</span> <span className="text-[var(--picsellia-green)]">&quot;batch-42&quot;</span><span className="text-[var(--label)]">],</span>{'\n'}
                   {'  '}<span className="text-[var(--label)]">metadata</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">{'{'}</span><span className="text-[var(--picsellia-green)]">&quot;source&quot;</span><span className="text-[var(--label)]">:</span> <span className="text-[var(--picsellia-green)]">&quot;factory-A&quot;</span><span className="text-[var(--label)]">{'}'}</span>{'\n'}
                   <span className="text-[var(--label)]">)</span>{'\n\n'}
-                  <span className="text-[var(--tertiary-label)]"># Query with SQL-like syntax</span>{'\n'}
-                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.query(</span>{'\n'}
-                  {'  '}<span className="text-[var(--picsellia-green)]">&quot;tags.name = &#39;production&#39; AND width &gt; 1920&quot;</span>{'\n'}
+                  <span className="text-[var(--tertiary-label)]"># Query with filters</span>{'\n'}
+                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.list_data(</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">]</span>{'\n'}
                   <span className="text-[var(--label)]">)</span>
                 </code>
               </pre>
@@ -399,48 +399,34 @@ export default function DatalakePage() {
                   <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
                   <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
                 </div>
-                <span className="text-xs text-[var(--tertiary-label)]">query console</span>
+                <span className="text-xs text-[var(--tertiary-label)]">query.py</span>
               </div>
-              <div className="p-5 bg-[var(--black)] font-mono text-xs space-y-4">
-                <div>
-                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
-                    <span className="text-[var(--system-blue)]">pql&gt;</span>
-                    <span className="text-[var(--label)]">SELECT * WHERE tags.name = &quot;defects&quot;</span>
-                  </div>
-                  <div className="pl-6 text-[var(--picsellia-green)]">
-                    ✓ 2,847 results in 23ms
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
-                    <span className="text-[var(--system-blue)]">pql&gt;</span>
-                    <span className="text-[var(--label)]">SELECT * WHERE metadata.lat BETWEEN 48.8 AND 48.9</span>
-                  </div>
-                  <div className="pl-6 text-[var(--picsellia-green)]">
-                    ✓ 156 results in 8ms
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
-                    <span className="text-[var(--system-blue)]">pql&gt;</span>
-                    <span className="text-[var(--label)]">SELECT * WHERE width &gt; 4000 AND format = &quot;TIFF&quot;</span>
-                  </div>
-                  <div className="pl-6 text-[var(--picsellia-green)]">
-                    ✓ 89 results in 5ms
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 text-[var(--tertiary-label)]">
-                  <span className="text-[var(--system-blue)]">pql&gt;</span>
-                  <span className="text-[var(--label)] animate-pulse">_</span>
-                </div>
-              </div>
+              <pre className="p-5 bg-[var(--black)] font-mono text-xs overflow-x-auto leading-relaxed">
+                <code>
+                  <span className="text-[var(--tertiary-label)]"># Query with tags</span>{'\n'}
+                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.list_data(</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;defects&quot;</span><span className="text-[var(--label)]">]</span>{'\n'}
+                  <span className="text-[var(--label)]">)</span>{'\n'}
+                  <span className="text-[var(--picsellia-green)]"># ✓ 2,847 results</span>{'\n\n'}
+                  <span className="text-[var(--tertiary-label)]"># Query with metadata filter</span>{'\n'}
+                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.list_data(</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">metadata</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">{'{'}</span><span className="text-[var(--picsellia-green)]">&quot;location&quot;</span><span className="text-[var(--label)]">:</span> <span className="text-[var(--picsellia-green)]">&quot;factory-A&quot;</span><span className="text-[var(--label)]">{'}'}</span>{'\n'}
+                  <span className="text-[var(--label)]">)</span>{'\n'}
+                  <span className="text-[var(--picsellia-green)]"># ✓ 1,245 results</span>{'\n\n'}
+                  <span className="text-[var(--tertiary-label)]"># Combine tags and dimensions</span>{'\n'}
+                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.list_data(</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">,</span> <span className="text-[var(--picsellia-green)]">&quot;validated&quot;</span><span className="text-[var(--label)]">],</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">limit</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--system-orange)]">1000</span>{'\n'}
+                  <span className="text-[var(--label)]">)</span>
+                </code>
+              </pre>
               <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
                 <div className="flex items-center justify-between text-[10px]">
-                  <span className="text-[var(--tertiary-label)]">Picsellia Query Language</span>
+                  <span className="text-[var(--tertiary-label)]">Python SDK</span>
                   <div className="flex gap-3">
-                    <span className="px-2 py-0.5 rounded bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">strings</span>
-                    <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">numeric</span>
-                    <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">geo</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">tags</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">metadata</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">filters</span>
                   </div>
                 </div>
               </div>
@@ -522,23 +508,6 @@ export default function DatalakePage() {
             </div>
           </div>
 
-          {/* Bottom stats */}
-          <div className="mt-16 p-6 rounded-xl border border-[var(--border)] bg-[var(--secondary-system-background)]">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { value: '10B+', label: 'Images processed', icon: '🖼️' },
-                { value: '<50ms', label: 'Query latency', icon: '⚡' },
-                { value: '99.9%', label: 'Uptime SLA', icon: '🛡️' },
-                { value: '∞', label: 'Scalability', icon: '📈' },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <div className="text-2xl mb-2">{stat.icon}</div>
-                  <div className="text-2xl md:text-3xl font-bold text-[var(--label)] font-mono">{stat.value}</div>
-                  <div className="text-xs text-[var(--tertiary-label)]">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
@@ -555,58 +524,57 @@ export default function DatalakePage() {
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-16">
             <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Query Language
+              Python SDK
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Picsellia Query Language (PQL)
+              Powerful Data Querying
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              A powerful SQL-like syntax designed specifically for visual data exploration.
-              Build complex filters with auto-completion and instant results.
+              Query your datalake programmatically with the Python SDK.
+              Filter by tags, metadata, and more with full type hints and auto-completion.
             </p>
           </div>
 
-          {/* Query Syntax Reference */}
+          {/* Query Parameters Reference */}
           <div className="grid lg:grid-cols-3 gap-6 mb-12">
-            {/* Operators */}
+            {/* list_data params */}
             <div className="card p-0 overflow-hidden">
               <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <span className="text-xs font-medium text-[var(--system-indigo)]">OPERATORS</span>
+                <span className="text-xs font-medium text-[var(--system-indigo)]">list_data() PARAMS</span>
               </div>
               <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
-                <div className="flex justify-between"><span className="text-[var(--label)]">=</span><span className="text-[var(--tertiary-label)]">equals</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">!=</span><span className="text-[var(--tertiary-label)]">not equals</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">&gt; &lt; &gt;= &lt;=</span><span className="text-[var(--tertiary-label)]">comparisons</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">LIKE</span><span className="text-[var(--tertiary-label)]">pattern match</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">IN</span><span className="text-[var(--tertiary-label)]">set membership</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">BETWEEN</span><span className="text-[var(--tertiary-label)]">range check</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">tags</span><span className="text-[var(--tertiary-label)]">List[str]</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">metadata</span><span className="text-[var(--tertiary-label)]">Dict[str, Any]</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">limit</span><span className="text-[var(--tertiary-label)]">int</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">offset</span><span className="text-[var(--tertiary-label)]">int</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">order_by</span><span className="text-[var(--tertiary-label)]">str</span></div>
               </div>
             </div>
 
-            {/* Logical */}
+            {/* Tag Operations */}
             <div className="card p-0 overflow-hidden">
               <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <span className="text-xs font-medium text-[var(--system-orange)]">LOGICAL</span>
+                <span className="text-xs font-medium text-[var(--system-orange)]">TAG OPERATIONS</span>
               </div>
               <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
-                <div className="flex justify-between"><span className="text-[var(--label)]">AND</span><span className="text-[var(--tertiary-label)]">all conditions</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">OR</span><span className="text-[var(--tertiary-label)]">any condition</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">NOT</span><span className="text-[var(--tertiary-label)]">negation</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">( )</span><span className="text-[var(--tertiary-label)]">grouping</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">add_tags()</span><span className="text-[var(--tertiary-label)]">add to data</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">remove_tags()</span><span className="text-[var(--tertiary-label)]">remove from data</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">list_tags()</span><span className="text-[var(--tertiary-label)]">get all tags</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">create_tag()</span><span className="text-[var(--tertiary-label)]">create new tag</span></div>
               </div>
             </div>
 
-            {/* Properties */}
+            {/* Filterable Properties */}
             <div className="card p-0 overflow-hidden">
               <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <span className="text-xs font-medium text-[var(--picsellia-green)]">SEARCHABLE</span>
+                <span className="text-xs font-medium text-[var(--picsellia-green)]">FILTERABLE</span>
               </div>
               <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
-                <div className="flex justify-between"><span className="text-[var(--label)]">tags.name</span><span className="text-[var(--tertiary-label)]">data tags</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">metadata.*</span><span className="text-[var(--tertiary-label)]">custom fields</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">width, height</span><span className="text-[var(--tertiary-label)]">dimensions</span></div>
-                <div className="flex justify-between"><span className="text-[var(--label)]">datasets.version</span><span className="text-[var(--tertiary-label)]">linked data</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">tags</span><span className="text-[var(--tertiary-label)]">DataTags</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">metadata</span><span className="text-[var(--tertiary-label)]">custom fields</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">filename</span><span className="text-[var(--tertiary-label)]">asset name</span></div>
                 <div className="flex justify-between"><span className="text-[var(--label)]">created_at</span><span className="text-[var(--tertiary-label)]">timestamps</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">type</span><span className="text-[var(--tertiary-label)]">image/video</span></div>
               </div>
             </div>
           </div>
@@ -618,26 +586,35 @@ export default function DatalakePage() {
                 <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/60" />
                 <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
                 <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
-                <span className="text-xs text-[var(--tertiary-label)]">PQL Query Console</span>
+                <span className="text-xs text-[var(--tertiary-label)]">advanced_query.py</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">auto-complete</span>
-                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">syntax highlight</span>
+                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">type hints</span>
               </div>
             </div>
             <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[var(--border)]">
               {/* Query Input */}
               <div className="p-6 bg-[var(--black)]">
-                <div className="font-mono text-sm space-y-1">
-                  <div><span className="text-[var(--system-indigo)]">SELECT</span> <span className="text-[var(--label)]">*</span> <span className="text-[var(--system-indigo)]">FROM</span> <span className="text-[var(--label)]">datalake</span></div>
-                  <div><span className="text-[var(--system-indigo)]">WHERE</span></div>
-                  <div className="pl-4"><span className="text-[var(--system-blue)]">tags.name</span> <span className="text-[var(--system-indigo)]">IN</span> <span className="text-[var(--label)]">(</span><span className="text-[var(--picsellia-green)]">&apos;production&apos;</span><span className="text-[var(--label)]">,</span> <span className="text-[var(--picsellia-green)]">&apos;validated&apos;</span><span className="text-[var(--label)]">)</span></div>
-                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">width</span> <span className="text-[var(--label)]">&gt;=</span> <span className="text-[var(--system-orange)]">1920</span></div>
-                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">metadata.location</span> <span className="text-[var(--system-indigo)]">LIKE</span> <span className="text-[var(--picsellia-green)]">&apos;factory-%&apos;</span></div>
-                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">created_at</span> <span className="text-[var(--system-indigo)]">BETWEEN</span> <span className="text-[var(--picsellia-green)]">&apos;2024-01-01&apos;</span> <span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--picsellia-green)]">&apos;2024-06-30&apos;</span></div>
-                  <div><span className="text-[var(--system-indigo)]">ORDER BY</span> <span className="text-[var(--system-blue)]">created_at</span> <span className="text-[var(--system-indigo)]">DESC</span></div>
-                  <div><span className="text-[var(--system-indigo)]">LIMIT</span> <span className="text-[var(--system-orange)]">1000</span></div>
-                </div>
+                <pre className="font-mono text-sm leading-relaxed">
+                  <code>
+                    <span className="text-[var(--tertiary-label)]"># Advanced data query</span>{'\n'}
+                    <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.list_data(</span>{'\n'}
+                    {'  '}<span className="text-[var(--tertiary-label)]"># Filter by tags</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span>{'\n'}
+                    {'    '}<span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">,</span>{'\n'}
+                    {'    '}<span className="text-[var(--picsellia-green)]">&quot;validated&quot;</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">],</span>{'\n'}
+                    {'  '}<span className="text-[var(--tertiary-label)]"># Filter by metadata</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">metadata</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">{'{'}</span>{'\n'}
+                    {'    '}<span className="text-[var(--picsellia-green)]">&quot;location&quot;</span><span className="text-[var(--label)]">:</span> <span className="text-[var(--picsellia-green)]">&quot;factory-A&quot;</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">{'}'},</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">limit</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--system-orange)]">1000</span>{'\n'}
+                    <span className="text-[var(--label)]">)</span>{'\n\n'}
+                    <span className="text-[var(--system-indigo)]">for</span> <span className="text-[var(--label)]">item</span> <span className="text-[var(--system-indigo)]">in</span> <span className="text-[var(--label)]">data:</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">print(item.filename)</span>
+                  </code>
+                </pre>
               </div>
               {/* Results */}
               <div className="p-6 bg-[var(--tertiary-system-background)]">
