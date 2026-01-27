@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const cloudProviders = [
   { name: 'AWS S3', icon: '/images/community/partners/amazon-s3.svg' },
@@ -10,35 +10,6 @@ const cloudProviders = [
   { name: 'Azure', icon: '/images/community/partners/azure.svg' },
 ];
 
-const viewModes = [
-  {
-    name: 'Grid View',
-    description: 'Visual overview with adjustable aspect ratios',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Table View',
-    description: 'Detailed metadata with sortable columns',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Details View',
-    description: 'Full inspection with zoom and navigation',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
-      </svg>
-    ),
-  },
-];
 
 const capabilities = [
   {
@@ -125,12 +96,6 @@ const capabilities = [
 
 const sampleTags = ['training', 'production', 'validated', 'edge-case', 'Q1-2024', 'factory-A'];
 
-const queryExamples = [
-  { query: 'tags.name = "production"', description: 'Filter by tag' },
-  { query: 'metadata.acquired_at > "2024-01-01"', description: 'Filter by date' },
-  { query: 'datasets.version = "v2.1"', description: 'Filter by dataset' },
-  { query: 'width > 1920 and height > 1080', description: 'Filter by resolution' },
-];
 
 // Floating decorative elements
 const FloatingElements = () => (
@@ -248,16 +213,6 @@ const UMAPVisualization = () => {
 };
 
 export default function DatalakePage() {
-  const [activeView, setActiveView] = useState(0);
-  const [activeQuery, setActiveQuery] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveQuery((prev) => (prev + 1) % queryExamples.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <>
       {/* Hero Section */}
@@ -321,85 +276,17 @@ export default function DatalakePage() {
               </div>
             </div>
 
-            {/* Right - Visual */}
+            {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              {/* Main interface mockup */}
-              <div className="card p-0 overflow-hidden shadow-2xl">
-                {/* Toolbar */}
-                <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/60" />
-                    <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
-                    <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    {viewModes.map((mode, index) => (
-                      <button
-                        key={mode.name}
-                        onClick={() => setActiveView(index)}
-                        className={`p-1.5 rounded transition-colors ${
-                          activeView === index
-                            ? 'bg-[var(--system-blue)]/20 text-[var(--system-blue)]'
-                            : 'text-[var(--tertiary-label)] hover:text-[var(--secondary-label)]'
-                        }`}
-                      >
-                        {mode.icon}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Search bar */}
-                <div className="px-4 py-3 border-b border-[var(--border)]">
-                  <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[var(--black)] border border-[var(--border)]">
-                    <svg className="w-4 h-4 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <span className="text-sm font-mono text-[var(--system-blue)]">
-                      {queryExamples[activeQuery].query}
-                    </span>
-                    <span className="text-xs text-[var(--tertiary-label)] ml-auto">
-                      {queryExamples[activeQuery].description}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Grid content */}
-                <div className="p-4 bg-[var(--black)]">
-                  <div className="grid grid-cols-4 gap-2">
-                    {[...Array(12)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="aspect-square rounded-lg overflow-hidden relative group"
-                        style={{
-                          backgroundColor: `hsl(${200 + i * 10}, 30%, ${15 + (i % 3) * 5}%)`,
-                        }}
-                      >
-                        {/* Simulated image content */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div
-                            className="w-1/2 h-1/2 rounded opacity-30"
-                            style={{
-                              backgroundColor: i % 3 === 0 ? 'var(--system-blue)' : i % 3 === 1 ? 'var(--picsellia-green)' : 'var(--system-orange)',
-                            }}
-                          />
-                        </div>
-                        {/* Tag indicator */}
-                        {i % 4 === 0 && (
-                          <div className="absolute top-1 right-1 w-2 h-2 rounded-full bg-[var(--picsellia-green)]" />
-                        )}
-                        {/* Hover overlay */}
-                        <div className="absolute inset-0 bg-[var(--system-blue)]/0 group-hover:bg-[var(--system-blue)]/20 transition-colors" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="px-4 py-2 border-t border-[var(--border)] bg-[var(--tertiary-system-background)] flex items-center justify-between">
-                  <span className="text-xs text-[var(--tertiary-label)]">2,847 items</span>
-                  <span className="text-xs text-[var(--picsellia-green)]">12 selected</span>
-                </div>
+              <div className="relative rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)] shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                  src="/videos/data layer view.mov"
+                />
               </div>
 
               {/* Floating tag panel */}
