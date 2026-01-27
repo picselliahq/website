@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 const capabilities = [
@@ -7,11 +8,7 @@ const capabilities = [
     description: 'Centralize all your visual data with built-in versioning, smart labeling, and automated pipelines.',
     color: 'var(--picsellia-green)',
     href: '/datalake',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
-      </svg>
-    ),
+    icon: '/images/community/icons/datalake.svg',
     items: [
       { name: 'Datalake', description: 'Unified storage for images, videos & 3D' },
       { name: 'Dataset Versioning', description: 'Git-like version control for data' },
@@ -25,11 +22,7 @@ const capabilities = [
     description: 'Train models with full experiment tracking, AutoML optimization, and seamless framework integration.',
     color: 'var(--picsellia-blue)',
     href: '/ai-laboratory',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-      </svg>
-    ),
+    icon: '/images/community/icons/experiment-tracking.svg',
     items: [
       { name: 'Experiment Tracking', description: 'Log metrics & parameters' },
       { name: 'AutoML', description: 'Automated hyperparameter search' },
@@ -43,11 +36,7 @@ const capabilities = [
     description: 'Deploy models anywhere with one click. Auto-scaling infrastructure from cloud to edge devices.',
     color: 'var(--system-orange)',
     href: '/model-deployment',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688zM12.75 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062a1.125 1.125 0 01-1.683-.977V8.688z" />
-      </svg>
-    ),
+    icon: '/images/community/icons/serverless-deployment.svg',
     items: [
       { name: 'One-Click Deploy', description: 'Cloud or edge in seconds' },
       { name: 'Auto-Scaling', description: 'Handle traffic spikes' },
@@ -61,11 +50,7 @@ const capabilities = [
     description: 'Track performance in production with real-time metrics, drift detection, and automated retraining.',
     color: 'var(--system-indigo)',
     href: '/model-monitoring',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
-      </svg>
-    ),
+    icon: '/images/community/icons/model-monitoring.svg',
     items: [
       { name: 'Performance Metrics', description: 'Real-time tracking' },
       { name: 'Drift Detection', description: 'Catch issues early' },
@@ -105,9 +90,9 @@ export default function Features() {
                 <div className="flex items-center gap-3 px-4 py-2">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 15%, transparent)`, color: cap.color }}
+                    style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 15%, transparent)` }}
                   >
-                    {cap.icon}
+                    <Image src={cap.icon} alt={cap.category} width={24} height={24} />
                   </div>
                   <div>
                     <div className="text-sm font-medium text-[var(--label)]">{cap.category}</div>
@@ -149,9 +134,9 @@ export default function Features() {
                       <div className="relative">
                         <div
                           className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                          style={{ backgroundColor: `color-mix(in srgb, ${section.color} 20%, transparent)`, color: section.color }}
+                          style={{ backgroundColor: `color-mix(in srgb, ${section.color} 20%, transparent)` }}
                         >
-                          {section.icon}
+                          <Image src={section.icon} alt={section.category} width={32} height={32} />
                         </div>
                         <div className="text-xs uppercase tracking-wider mb-2" style={{ color: section.color }}>
                           {section.tagline}
@@ -187,9 +172,9 @@ export default function Features() {
                     <div className="flex items-start justify-between mb-4">
                       <div
                         className="w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
-                        style={{ backgroundColor: `color-mix(in srgb, ${section.color} 15%, transparent)`, color: section.color }}
+                        style={{ backgroundColor: `color-mix(in srgb, ${section.color} 15%, transparent)` }}
                       >
-                        {section.icon}
+                        <Image src={section.icon} alt={section.category} width={28} height={28} />
                       </div>
                       <div className="w-8 h-8 rounded-full border border-[var(--border)] flex items-center justify-center group-hover:border-[var(--picsellia-green)] group-hover:bg-[var(--picsellia-green)] transition-all">
                         <svg className="w-4 h-4 text-[var(--secondary-label)] group-hover:text-[var(--white)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
