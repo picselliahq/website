@@ -3,21 +3,30 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const customerLogos = [
-  { name: 'Airbus', src: '/images/customers/airbus.svg' },
-  { name: 'Capgemini', src: '/images/customers/capgemini.svg' },
+/**
+ * Customer logos for the social proof section.
+ *
+ * To add a new logo:
+ * 1. Add the logo file (SVG preferred, PNG acceptable) to /public/images/customers/
+ * 2. Add an entry below with { name: 'Company Name', src: '/images/customers/filename.svg' }
+ *
+ * Logo requirements:
+ * - SVG format preferred for crisp rendering at any size
+ * - PNG should be at least 200px wide for retina displays
+ * - Logos will be displayed in grayscale and colorize on hover
+ */
+const customerLogos: { name: string; src: string }[] = [
   { name: 'SGS', src: '/images/customers/sgs.svg' },
   { name: 'RTE', src: '/images/customers/rte.svg' },
-  { name: 'PellencST', src: '/images/customers/pellenc.svg' },
+  { name: 'Pellenc', src: '/images/customers/pellenc.svg' },
+  { name: 'Skillcorner', src: '/images/customers/skillcorner.svg' },
+  { name: 'Fortil', src: '/images/customers/fortil.svg' },
+  { name: 'Isarsoft', src: '/images/customers/isarsoft.svg' },
+  { name: 'Upstride', src: '/images/customers/upstride.svg' },
   { name: 'Abelio', src: '/images/customers/abelio.png' },
   { name: 'Altaroad', src: '/images/customers/altaroad.png' },
-  { name: 'Geredis', src: '/images/customers/geredis.png' },
-  { name: 'Maneva', src: '/images/customers/maneva.png' },
-  { name: 'Shinkei', src: '/images/customers/shinkei.png' },
-  { name: 'SightCall', src: '/images/customers/sightcall.png' },
-  { name: 'Valvan', src: '/images/customers/valvan.png' },
   { name: 'Ficha', src: '/images/customers/ficha.png' },
-  { name: 'VOX', src: '/images/customers/vox.png' },
+  { name: 'Roc4t', src: '/images/customers/roc4t.png' },
   { name: 'SupAirVision', src: '/images/customers/supairvision.png' },
 ];
 
