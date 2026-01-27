@@ -40,36 +40,86 @@ const viewModes = [
   },
 ];
 
-const features = [
+const capabilities = [
   {
-    title: 'Multi-Source Aggregation',
-    description: 'Connect AWS, GCP, Azure, MinIO, or on-premise storage through unified connectors.',
-    color: 'var(--system-orange)',
+    title: 'Data Aggregation',
+    tagline: 'Connect everything',
+    description: 'Consolidate visual data from any source into one unified repository. AWS, GCP, Azure, MinIO, or on-premise — all accessible from a single interface.',
+    color: 'var(--system-blue)',
+    icon: '/images/community/icons/datalake.svg',
+    items: [
+      { name: 'AWS S3', description: 'Native connector' },
+      { name: 'Google Cloud', description: 'Full support' },
+      { name: 'Azure Blob', description: 'Seamless sync' },
+      { name: 'On-Premise', description: 'MinIO & more' },
+    ],
   },
   {
-    title: 'Any Format Support',
-    description: 'Images, videos, DICOM, satellite imagery, thermal, and proprietary formats.',
-    color: 'var(--system-blue)',
+    title: 'Format Support',
+    tagline: 'Any visual data',
+    description: 'Handle standard images, complex videos, DICOM medical files, satellite imagery, thermal captures, and proprietary formats at constant speed.',
+    color: 'var(--system-orange)',
+    icon: '/images/community/icons/data-management.svg',
+    items: [
+      { name: 'Images' },
+      { name: 'Videos' },
+      { name: 'DICOM' },
+      { name: 'Thermal' },
+      { name: 'Satellite' },
+      { name: '3D Point Clouds' },
+    ],
   },
   {
     title: 'Smart Organization',
-    description: 'DataTags, metadata, and geolocation for flexible, multi-dimensional categorization.',
+    tagline: 'Structure & categorize',
+    description: 'DataTags, rich metadata, and geolocation enable flexible, multi-dimensional data organization without moving files.',
     color: 'var(--picsellia-green)',
+    icon: '/images/community/icons/annotation-campaigns.svg',
+    items: [
+      { name: 'DataTags' },
+      { name: 'Metadata' },
+      { name: 'Geolocation' },
+      { name: 'Custom Fields' },
+    ],
   },
   {
-    title: 'SQL-Like Queries',
-    description: 'Build precise datasets with powerful query language and auto-completion.',
+    title: 'Query Language',
+    tagline: 'Search & filter',
+    description: 'SQL-like queries with auto-completion for building pixel-perfect datasets in seconds.',
     color: 'var(--system-indigo)',
+    icon: '/images/community/icons/experiment-tracking.svg',
+    items: [
+      { name: 'Pattern Matching' },
+      { name: 'Numeric Filters' },
+      { name: 'Logical Operators' },
+      { name: 'Nested Queries' },
+    ],
   },
   {
     title: 'Visual Search',
-    description: 'Find similar images with AI-powered embeddings and UMAP projections.',
+    tagline: 'AI-powered discovery',
+    description: 'Find similar images, search by text, and visualize clusters with embeddings and UMAP projections.',
     color: 'var(--system-pink)',
+    icon: '/images/community/icons/ai-laboratory.svg',
+    items: [
+      { name: 'Similarity Search' },
+      { name: 'Text-to-Image' },
+      { name: 'UMAP Clusters' },
+      { name: 'Anomaly Detection' },
+    ],
   },
   {
     title: 'Data Governance',
-    description: 'Permissions, retention policies, and comprehensive audit trails.',
+    tagline: 'Security & compliance',
+    description: 'Enterprise-grade controls with user permissions, retention policies, and comprehensive audit trails.',
     color: 'var(--system-teal)',
+    icon: '/images/community/icons/model-monitoring.svg',
+    items: [
+      { name: 'Permissions' },
+      { name: 'Retention' },
+      { name: 'Audit Logs' },
+      { name: 'Compliance' },
+    ],
   },
 ];
 
@@ -378,43 +428,136 @@ export default function DatalakePage() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Capabilities Bento Grid */}
       <section className="py-24 border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Capabilities
-            </span>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              One place for all your visual data
-            </h2>
-            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              The Datalake is your centralized repository for managing images and their metadata,
-              providing a unified interface for all computer vision projects.
-            </p>
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
+            <div>
+              <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+                Capabilities
+              </span>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+                One place for all your visual data
+              </h2>
+              <p className="text-[var(--secondary-label)] max-w-xl">
+                The Datalake is your centralized repository for managing images and their metadata,
+                providing a unified interface for all computer vision projects.
+              </p>
+            </div>
+            <Link href="https://documentation.picsellia.com/docs/datalake-3" className="btn-secondary whitespace-nowrap">
+              View docs
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature) => (
+          {/* Bento Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {capabilities.map((cap, index) => (
               <div
-                key={feature.title}
-                className="card p-6 group hover:border-[var(--system-blue)]/30 transition-all duration-300"
+                key={cap.title}
+                className={`group ${index === 0 ? 'md:row-span-2' : ''}`}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-                  style={{ backgroundColor: `color-mix(in srgb, ${feature.color} 15%, transparent)` }}
-                >
-                  <div
-                    className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: feature.color }}
-                  />
+                <div className={`card p-0 overflow-hidden h-full ${index === 0 ? 'min-h-[420px]' : ''}`}>
+                  {index === 0 ? (
+                    // Featured card - Data Aggregation
+                    <div className="h-full flex flex-col">
+                      <div
+                        className="p-8 flex-1 relative overflow-hidden"
+                        style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${cap.color} 10%, transparent), color-mix(in srgb, ${cap.color} 5%, transparent))` }}
+                      >
+                        {/* Decorative grid */}
+                        <div className="absolute inset-0 opacity-[0.03]" style={{
+                          backgroundImage: `linear-gradient(${cap.color} 1px, transparent 1px), linear-gradient(90deg, ${cap.color} 1px, transparent 1px)`,
+                          backgroundSize: '32px 32px'
+                        }} />
+
+                        <div className="relative">
+                          <div
+                            className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
+                            style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 20%, transparent)` }}
+                          >
+                            <Image src={cap.icon} alt={cap.title} width={32} height={32} />
+                          </div>
+                          <div className="text-xs uppercase tracking-wider mb-2" style={{ color: cap.color }}>
+                            {cap.tagline}
+                          </div>
+                          <h3 className="text-2xl font-semibold text-[var(--label)] mb-3">
+                            {cap.title}
+                          </h3>
+                          <p className="text-[var(--secondary-label)] mb-6">
+                            {cap.description}
+                          </p>
+                        </div>
+
+                        {/* Decorative circles */}
+                        <div className="absolute -bottom-16 -right-16 w-48 h-48 border rounded-full opacity-20" style={{ borderColor: cap.color }} />
+                        <div className="absolute -bottom-8 -right-8 w-32 h-32 border rounded-full opacity-30" style={{ borderColor: cap.color }} />
+                      </div>
+                      <div className="p-6 border-t border-[var(--border)]">
+                        <ul className="grid grid-cols-2 gap-3">
+                          {cap.items.map((item) => (
+                            <li key={item.name} className="flex items-start gap-2">
+                              <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: cap.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              <span className="text-sm text-[var(--secondary-label)]">{item.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    // Regular cards
+                    <div className="p-6 h-full flex flex-col">
+                      <div className="flex items-start justify-between mb-4">
+                        <div
+                          className="w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
+                          style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 15%, transparent)` }}
+                        >
+                          <Image src={cap.icon} alt={cap.title} width={28} height={28} />
+                        </div>
+                      </div>
+
+                      <div className="text-xs uppercase tracking-wider mb-1" style={{ color: cap.color }}>
+                        {cap.tagline}
+                      </div>
+                      <h3 className="text-lg font-semibold text-[var(--label)] mb-2">
+                        {cap.title}
+                      </h3>
+                      <p className="text-sm text-[var(--secondary-label)] mb-4 flex-1">
+                        {cap.description}
+                      </p>
+
+                      <div className="pt-4 border-t border-[var(--border)]">
+                        <ul className="flex flex-wrap gap-2">
+                          {cap.items.map((item) => (
+                            <li
+                              key={item.name}
+                              className="text-xs px-2 py-1 rounded-md bg-[var(--tertiary-system-background)] text-[var(--secondary-label)]"
+                            >
+                              {item.name}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold text-[var(--label)] mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-[var(--secondary-label)]">
-                  {feature.description}
-                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom stats */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+            {[
+              { value: '100+', label: 'Data formats supported' },
+              { value: '<50ms', label: 'Query response time' },
+              { value: '10B+', label: 'Images managed' },
+              { value: '99.9%', label: 'Platform uptime' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center p-4">
+                <div className="text-2xl md:text-3xl font-bold text-[var(--label)] mb-1">{stat.value}</div>
+                <div className="text-xs text-[var(--tertiary-label)]">{stat.label}</div>
               </div>
             ))}
           </div>
