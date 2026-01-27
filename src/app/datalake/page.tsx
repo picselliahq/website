@@ -542,132 +542,281 @@ export default function DatalakePage() {
         </div>
       </section>
 
-      {/* Query Language Section */}
+      {/* Query Language Section - Technical Deep Dive */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-[0.02]">
           <div className="w-full h-full" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, var(--system-indigo) 1px, transparent 0)`,
-            backgroundSize: '32px 32px',
+            backgroundImage: `linear-gradient(var(--system-indigo) 1px, transparent 1px), linear-gradient(90deg, var(--system-indigo) 1px, transparent 1px)`,
+            backgroundSize: '48px 48px',
           }} />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
-                Query Language
-              </span>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                Build pixel-perfect datasets<br />in seconds
-              </h2>
-              <p className="text-[var(--secondary-label)] mb-8">
-                Use our SQL-like query language to filter and retrieve data based on any criteria.
-                Search across all properties, metadata, tags, and linked objects with auto-completion support.
-              </p>
+          <div className="text-center mb-16">
+            <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              Query Language
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Picsellia Query Language (PQL)
+            </h2>
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+              A powerful SQL-like syntax designed specifically for visual data exploration.
+              Build complex filters with auto-completion and instant results.
+            </p>
+          </div>
 
-              <div className="space-y-3">
-                {[
-                  'String operations with pattern matching',
-                  'Numeric comparisons for dimensions and metrics',
-                  'Logical AND/OR operators for complex filters',
-                  'Nested object queries (datasets, experiments)',
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-[var(--system-indigo)]/20 flex items-center justify-center">
-                      <svg className="w-3 h-3 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-sm text-[var(--secondary-label)]">{item}</span>
-                  </div>
-                ))}
+          {/* Query Syntax Reference */}
+          <div className="grid lg:grid-cols-3 gap-6 mb-12">
+            {/* Operators */}
+            <div className="card p-0 overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs font-medium text-[var(--system-indigo)]">OPERATORS</span>
+              </div>
+              <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
+                <div className="flex justify-between"><span className="text-[var(--label)]">=</span><span className="text-[var(--tertiary-label)]">equals</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">!=</span><span className="text-[var(--tertiary-label)]">not equals</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">&gt; &lt; &gt;= &lt;=</span><span className="text-[var(--tertiary-label)]">comparisons</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">LIKE</span><span className="text-[var(--tertiary-label)]">pattern match</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">IN</span><span className="text-[var(--tertiary-label)]">set membership</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">BETWEEN</span><span className="text-[var(--tertiary-label)]">range check</span></div>
               </div>
             </div>
 
-            {/* Code example */}
-            <div className="card p-0 overflow-hidden shadow-xl">
-              <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+            {/* Logical */}
+            <div className="card p-0 overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs font-medium text-[var(--system-orange)]">LOGICAL</span>
+              </div>
+              <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
+                <div className="flex justify-between"><span className="text-[var(--label)]">AND</span><span className="text-[var(--tertiary-label)]">all conditions</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">OR</span><span className="text-[var(--tertiary-label)]">any condition</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">NOT</span><span className="text-[var(--tertiary-label)]">negation</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">( )</span><span className="text-[var(--tertiary-label)]">grouping</span></div>
+              </div>
+            </div>
+
+            {/* Properties */}
+            <div className="card p-0 overflow-hidden">
+              <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs font-medium text-[var(--picsellia-green)]">SEARCHABLE</span>
+              </div>
+              <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
+                <div className="flex justify-between"><span className="text-[var(--label)]">tags.name</span><span className="text-[var(--tertiary-label)]">data tags</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">metadata.*</span><span className="text-[var(--tertiary-label)]">custom fields</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">width, height</span><span className="text-[var(--tertiary-label)]">dimensions</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">datasets.version</span><span className="text-[var(--tertiary-label)]">linked data</span></div>
+                <div className="flex justify-between"><span className="text-[var(--label)]">created_at</span><span className="text-[var(--tertiary-label)]">timestamps</span></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Interactive Query Builder */}
+          <div className="card p-0 overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+              <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/60" />
                 <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
                 <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
-                <span className="ml-2 text-xs text-[var(--tertiary-label)]">query.pql</span>
+                <span className="text-xs text-[var(--tertiary-label)]">PQL Query Console</span>
               </div>
-              <pre className="p-6 text-sm overflow-x-auto bg-[var(--black)]">
-                <code>
-                  <span className="text-[var(--tertiary-label)]"># Find high-resolution production images</span>{'\n'}
-                  <span className="text-[var(--system-indigo)]">SELECT</span> <span className="text-[var(--label)]">*</span> <span className="text-[var(--system-indigo)]">FROM</span> <span className="text-[var(--label)]">datalake</span>{'\n'}
-                  <span className="text-[var(--system-indigo)]">WHERE</span>{'\n'}
-                  {'  '}<span className="text-[var(--system-blue)]">tags.name</span> <span className="text-[var(--label)]">=</span> <span className="text-[var(--picsellia-green)]">&quot;production&quot;</span>{'\n'}
-                  {'  '}<span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">width</span> <span className="text-[var(--label)]">&gt;</span> <span className="text-[var(--system-orange)]">1920</span>{'\n'}
-                  {'  '}<span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">metadata.validated</span> <span className="text-[var(--label)]">=</span> <span className="text-[var(--system-orange)]">true</span>{'\n\n'}
-                  <span className="text-[var(--tertiary-label)]"># Results: 2,847 images matching criteria</span>{'\n'}
-                  <span className="text-[var(--tertiary-label)]"># Query time: 23ms</span>
-                </code>
-              </pre>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">auto-complete</span>
+                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">syntax highlight</span>
+              </div>
+            </div>
+            <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[var(--border)]">
+              {/* Query Input */}
+              <div className="p-6 bg-[var(--black)]">
+                <div className="font-mono text-sm space-y-1">
+                  <div><span className="text-[var(--system-indigo)]">SELECT</span> <span className="text-[var(--label)]">*</span> <span className="text-[var(--system-indigo)]">FROM</span> <span className="text-[var(--label)]">datalake</span></div>
+                  <div><span className="text-[var(--system-indigo)]">WHERE</span></div>
+                  <div className="pl-4"><span className="text-[var(--system-blue)]">tags.name</span> <span className="text-[var(--system-indigo)]">IN</span> <span className="text-[var(--label)]">(</span><span className="text-[var(--picsellia-green)]">&apos;production&apos;</span><span className="text-[var(--label)]">,</span> <span className="text-[var(--picsellia-green)]">&apos;validated&apos;</span><span className="text-[var(--label)]">)</span></div>
+                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">width</span> <span className="text-[var(--label)]">&gt;=</span> <span className="text-[var(--system-orange)]">1920</span></div>
+                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">metadata.location</span> <span className="text-[var(--system-indigo)]">LIKE</span> <span className="text-[var(--picsellia-green)]">&apos;factory-%&apos;</span></div>
+                  <div className="pl-4"><span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--system-blue)]">created_at</span> <span className="text-[var(--system-indigo)]">BETWEEN</span> <span className="text-[var(--picsellia-green)]">&apos;2024-01-01&apos;</span> <span className="text-[var(--system-indigo)]">AND</span> <span className="text-[var(--picsellia-green)]">&apos;2024-06-30&apos;</span></div>
+                  <div><span className="text-[var(--system-indigo)]">ORDER BY</span> <span className="text-[var(--system-blue)]">created_at</span> <span className="text-[var(--system-indigo)]">DESC</span></div>
+                  <div><span className="text-[var(--system-indigo)]">LIMIT</span> <span className="text-[var(--system-orange)]">1000</span></div>
+                </div>
+              </div>
+              {/* Results */}
+              <div className="p-6 bg-[var(--tertiary-system-background)]">
+                <div className="mb-4">
+                  <div className="text-xs text-[var(--tertiary-label)] mb-2">EXECUTION</div>
+                  <div className="flex items-center gap-6 text-sm">
+                    <div>
+                      <span className="text-[var(--picsellia-green)] font-mono font-bold">2,847</span>
+                      <span className="text-[var(--tertiary-label)] ml-1">results</span>
+                    </div>
+                    <div>
+                      <span className="text-[var(--system-blue)] font-mono font-bold">23ms</span>
+                      <span className="text-[var(--tertiary-label)] ml-1">query time</span>
+                    </div>
+                    <div>
+                      <span className="text-[var(--system-orange)] font-mono font-bold">847MB</span>
+                      <span className="text-[var(--tertiary-label)] ml-1">scanned</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="text-xs text-[var(--tertiary-label)]">MATCHED TAGS</div>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">production (1,892)</span>
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">validated (2,103)</span>
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A (1,245)</span>
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-B (892)</span>
+                  </div>
+                </div>
+                <div className="mt-4 pt-4 border-t border-[var(--border)]">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs text-[var(--tertiary-label)]">Ready to create dataset</span>
+                    <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--system-indigo)] text-white">
+                      Create Dataset →
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Visual Search / Embeddings Section */}
-      <section className="py-24 border-b border-[var(--border)]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+      {/* Visual Search / Embeddings Section - Technical Deep Dive */}
+      <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--system-pink)]/5 rounded-full blur-[100px]" />
+
+        <div className="max-w-6xl mx-auto px-6 relative">
+          <div className="text-center mb-16">
+            <span className="text-[var(--system-pink)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              Visual Search
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              AI-Powered Data Exploration
+            </h2>
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+              Leverage OpenCLIP embeddings and vector search to discover patterns,
+              find similar images, and identify outliers at scale.
+            </p>
+          </div>
+
+          {/* Technical Specs */}
+          <div className="grid lg:grid-cols-4 gap-4 mb-12">
+            <div className="card p-4 text-center">
+              <div className="text-2xl font-bold font-mono text-[var(--system-pink)]">ViT-B/16</div>
+              <div className="text-xs text-[var(--tertiary-label)]">Embedding Model</div>
+            </div>
+            <div className="card p-4 text-center">
+              <div className="text-2xl font-bold font-mono text-[var(--system-blue)]">512-dim</div>
+              <div className="text-xs text-[var(--tertiary-label)]">Vector Size</div>
+            </div>
+            <div className="card p-4 text-center">
+              <div className="text-2xl font-bold font-mono text-[var(--picsellia-green)]">QDrant</div>
+              <div className="text-xs text-[var(--tertiary-label)]">Vector DB</div>
+            </div>
+            <div className="card p-4 text-center">
+              <div className="text-2xl font-bold font-mono text-[var(--system-orange)]">&lt;10ms</div>
+              <div className="text-xs text-[var(--tertiary-label)]">Search Latency</div>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
             {/* UMAP Visualization */}
-            <div className="order-2 lg:order-1">
-              <div className="card p-0 overflow-hidden shadow-xl">
-                <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <span className="text-xs text-[var(--tertiary-label)]">UMAP Projection</span>
-                  <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-pink)]/10 text-[var(--system-pink)]">
-                      DBSCAN clustering
-                    </span>
+            <div className="card p-0 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs text-[var(--tertiary-label)]">UMAP Projection</span>
+                <div className="flex items-center gap-2">
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-pink)]/10 text-[var(--system-pink)]">
+                    DBSCAN
+                  </span>
+                  <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">
+                    n_neighbors=15
+                  </span>
+                </div>
+              </div>
+              <div className="h-[320px] p-4 bg-[var(--black)]">
+                <UMAPVisualization />
+              </div>
+              <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4 text-xs">
+                    <span className="text-[var(--tertiary-label)]">Clusters: <span className="text-[var(--label)] font-mono">4</span></span>
+                    <span className="text-[var(--tertiary-label)]">Outliers: <span className="text-[var(--system-red)] font-mono">12</span></span>
+                    <span className="text-[var(--tertiary-label)]">Selected: <span className="text-[var(--picsellia-green)] font-mono">55</span></span>
                   </div>
-                </div>
-                <div className="h-[300px] p-4 bg-[var(--black)]">
-                  <UMAPVisualization />
-                </div>
-                <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)] flex items-center justify-between">
-                  <span className="text-xs text-[var(--tertiary-label)]">55 points in selection</span>
                   <button className="text-xs text-[var(--system-pink)] hover:underline">
-                    Create dataset from selection
+                    Export selection
                   </button>
                 </div>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="order-1 lg:order-2">
-              <span className="text-[var(--system-pink)] text-sm font-medium uppercase tracking-wider mb-3 block">
-                Visual Search
-              </span>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                Explore your data<br />with AI embeddings
-              </h2>
-              <p className="text-[var(--secondary-label)] mb-8">
-                Leverage AI-powered embeddings to discover patterns, find similar images,
-                and identify outliers in your visual data at scale.
-              </p>
+            {/* Search Methods */}
+            <div className="space-y-4">
+              {/* Similarity Search */}
+              <div className="card p-0 overflow-hidden">
+                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                  <span className="text-xs font-medium text-[var(--system-blue)]">SIMILARITY SEARCH</span>
+                </div>
+                <div className="p-4 bg-[var(--black)]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-lg bg-[var(--system-blue)]/20 flex items-center justify-center">
+                      <svg className="w-8 h-8 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="text-sm text-[var(--label)]">Reference: <span className="font-mono">IMG_4521.jpg</span></div>
+                      <div className="text-xs text-[var(--tertiary-label)] mt-1">cosine similarity &gt; 0.85</div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-lg font-bold font-mono text-[var(--picsellia-green)]">847</div>
+                      <div className="text-[10px] text-[var(--tertiary-label)]">matches</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <div className="space-y-4">
-                <div className="card p-4 border-[var(--system-blue)]/30">
-                  <h4 className="font-medium text-[var(--label)] mb-1">Similarity Search</h4>
-                  <p className="text-sm text-[var(--secondary-label)]">
-                    Find visually similar images to any reference in milliseconds.
-                  </p>
+              {/* Text-to-Image */}
+              <div className="card p-0 overflow-hidden">
+                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                  <span className="text-xs font-medium text-[var(--system-orange)]">TEXT-TO-IMAGE SEARCH</span>
                 </div>
-                <div className="card p-4 border-[var(--system-orange)]/30">
-                  <h4 className="font-medium text-[var(--label)] mb-1">Text-to-Image</h4>
-                  <p className="text-sm text-[var(--secondary-label)]">
-                    Search your data using natural language descriptions.
-                  </p>
+                <div className="p-4 bg-[var(--black)]">
+                  <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] mb-3">
+                    <svg className="w-4 h-4 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <span className="text-sm text-[var(--label)]">&quot;damaged surface with rust&quot;</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-[var(--tertiary-label)]">CLIP text encoder</span>
+                    <span className="text-[var(--picsellia-green)] font-mono">156 results in 8ms</span>
+                  </div>
                 </div>
-                <div className="card p-4 border-[var(--system-pink)]/30">
-                  <h4 className="font-medium text-[var(--label)] mb-1">UMAP Projections</h4>
-                  <p className="text-sm text-[var(--secondary-label)]">
-                    Visualize clusters and detect anomalies with interactive scatter plots.
-                  </p>
+              </div>
+
+              {/* Anomaly Detection */}
+              <div className="card p-0 overflow-hidden">
+                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                  <span className="text-xs font-medium text-[var(--system-red)]">ANOMALY DETECTION</span>
+                </div>
+                <div className="p-4 bg-[var(--black)]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-sm text-[var(--label)]">Isolation Forest</div>
+                      <div className="text-xs text-[var(--tertiary-label)] mt-1">contamination: 0.01</div>
+                    </div>
+                    <div className="flex items-center gap-4 text-xs">
+                      <div className="text-center">
+                        <div className="font-mono text-[var(--system-red)] font-bold">23</div>
+                        <div className="text-[var(--tertiary-label)]">corrupted</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="font-mono text-[var(--system-orange)] font-bold">89</div>
+                        <div className="text-[var(--tertiary-label)]">outliers</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -675,148 +824,152 @@ export default function DatalakePage() {
         </div>
       </section>
 
-      {/* Tagging System */}
+      {/* Tagging & Metadata Section - Combined Technical Deep Dive */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-[var(--picsellia-green)]/5 rounded-full blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.02]">
+          <div className="w-full h-full" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, var(--picsellia-green) 1px, transparent 0)`,
+            backgroundSize: '32px 32px',
+          }} />
+        </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-                Organization
-              </span>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                DataTags for flexible<br />data structuring
-              </h2>
-              <p className="text-[var(--secondary-label)] mb-8">
-                Combat data chaos with multi-dimensional organization. Each piece of data can have
-                multiple tags, enabling custom hierarchies without physically reorganizing storage.
-              </p>
+          <div className="text-center mb-16">
+            <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              Organization
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              DataTags & Metadata Schema
+            </h2>
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+              Multi-dimensional organization with flexible tagging and comprehensive metadata support.
+              Structure your data without moving files.
+            </p>
+          </div>
 
-              <div className="flex flex-wrap gap-2 mb-8">
-                {sampleTags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 rounded-full text-sm font-medium bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)] border border-[var(--picsellia-green)]/20 hover:bg-[var(--picsellia-green)]/20 transition-colors cursor-pointer"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* DataTags System */}
+            <div className="card p-0 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs font-medium text-[var(--picsellia-green)]">DATATAGS SYSTEM</span>
+                <span className="text-xs text-[var(--tertiary-label)]">organization ≠ annotation</span>
               </div>
+              <div className="p-6">
+                {/* Tag hierarchy visualization */}
+                <div className="mb-6">
+                  <div className="text-xs text-[var(--tertiary-label)] mb-3">TAG HIERARCHY</div>
+                  <div className="space-y-2 font-mono text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[var(--tertiary-label)]">├──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">source</span>
+                    </div>
+                    <div className="flex items-center gap-2 pl-6">
+                      <span className="text-[var(--tertiary-label)]">├──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A</span>
+                      <span className="text-[var(--tertiary-label)]">(1,245)</span>
+                    </div>
+                    <div className="flex items-center gap-2 pl-6">
+                      <span className="text-[var(--tertiary-label)]">└──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-B</span>
+                      <span className="text-[var(--tertiary-label)]">(892)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[var(--tertiary-label)]">├──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">status</span>
+                    </div>
+                    <div className="flex items-center gap-2 pl-6">
+                      <span className="text-[var(--tertiary-label)]">├──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">production</span>
+                      <span className="text-[var(--tertiary-label)]">(1,892)</span>
+                    </div>
+                    <div className="flex items-center gap-2 pl-6">
+                      <span className="text-[var(--tertiary-label)]">├──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">training</span>
+                      <span className="text-[var(--tertiary-label)]">(3,456)</span>
+                    </div>
+                    <div className="flex items-center gap-2 pl-6">
+                      <span className="text-[var(--tertiary-label)]">└──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">edge-case</span>
+                      <span className="text-[var(--tertiary-label)]">(234)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[var(--tertiary-label)]">└──</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">validated</span>
+                      <span className="text-[var(--tertiary-label)]">(2,103)</span>
+                    </div>
+                  </div>
+                </div>
 
-              <p className="text-sm text-[var(--tertiary-label)]">
-                <strong className="text-[var(--secondary-label)]">Note:</strong> DataTags are organizational markers,
-                distinct from ML labels or annotations.
-              </p>
-            </div>
-
-            {/* Visual */}
-            <div className="card p-6">
-              <div className="space-y-3">
-                {[
-                  { name: 'factory_inspection_001.jpg', tags: ['production', 'factory-A', 'validated'] },
-                  { name: 'defect_sample_042.png', tags: ['training', 'edge-case'] },
-                  { name: 'quality_check_2024.jpg', tags: ['Q1-2024', 'production'] },
-                  { name: 'calibration_ref.tiff', tags: ['training', 'validated'] },
-                ].map((item) => (
-                  <div
-                    key={item.name}
-                    className="flex items-center gap-4 p-3 rounded-lg bg-[var(--tertiary-system-background)] hover:bg-[var(--system-gray-4)] transition-colors"
-                  >
+                {/* Multi-tag example */}
+                <div className="p-4 rounded-lg bg-[var(--black)] border border-[var(--border)]">
+                  <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded bg-[var(--system-blue)]/20 flex items-center justify-center">
                       <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium text-[var(--label)] truncate">{item.name}</div>
-                      <div className="flex flex-wrap gap-1 mt-1">
-                        {item.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-1.5 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
+                    <div className="flex-1">
+                      <div className="text-sm font-mono text-[var(--label)]">inspection_042.tiff</div>
+                      <div className="text-xs text-[var(--tertiary-label)]">4032×3024 • 12.4MB</div>
                     </div>
                   </div>
-                ))}
+                  <div className="flex flex-wrap gap-1.5">
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">production</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">validated</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-orange)]/10 text-[var(--system-orange)]">Q1-2024</span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Metadata Section */}
-      <section className="py-24 border-b border-[var(--border)]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="text-[var(--system-teal)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Metadata
-            </span>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Rich context for every asset
-            </h2>
-            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Attach comprehensive metadata including geolocation, acquisition details,
-              technical properties, and custom business identifiers.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                category: 'Geolocation',
-                icon: '📍',
-                fields: ['Latitude / Longitude', 'Altitude', 'Region of Interest'],
-              },
-              {
-                category: 'Technical',
-                icon: '⚙️',
-                fields: ['Resolution (x, y)', 'Color Space', 'Compression Format'],
-              },
-              {
-                category: 'Acquisition',
-                icon: '📸',
-                fields: ['Timestamp', 'Acquired By', 'Weather Conditions'],
-              },
-              {
-                category: 'Imaging',
-                icon: '🔬',
-                fields: ['Focal Length', 'Sensor Width', 'Manufacturer'],
-              },
-              {
-                category: 'Orientation',
-                icon: '🧭',
-                fields: ['Yaw / Pitch / Roll', 'Custom Reference', 'Brand ID'],
-              },
-              {
-                category: 'Custom',
-                icon: '🏷️',
-                fields: ['Custom ID', 'Reference', 'Any Business Field'],
-              },
-            ].map((meta) => (
-              <div key={meta.category} className="card p-5 hover:border-[var(--system-teal)]/30 transition-colors">
-                <div className="text-2xl mb-3">{meta.icon}</div>
-                <h3 className="font-semibold text-[var(--label)] mb-3">{meta.category}</h3>
-                <ul className="space-y-2">
-                  {meta.fields.map((field) => (
-                    <li key={field} className="text-sm text-[var(--secondary-label)] flex items-center gap-2">
-                      <div className="w-1 h-1 rounded-full bg-[var(--system-teal)]" />
-                      {field}
-                    </li>
-                  ))}
-                </ul>
+            {/* Metadata Schema */}
+            <div className="card p-0 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <span className="text-xs font-medium text-[var(--system-teal)]">METADATA SCHEMA</span>
+                <span className="text-xs text-[var(--tertiary-label)]">SDK v6.9.0+ auto-EXIF</span>
               </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <p className="text-sm text-[var(--tertiary-label)]">
-              Automatic EXIF extraction supported via SDK v6.9.0+
-            </p>
+              <div className="p-4 bg-[var(--black)] font-mono text-xs overflow-x-auto">
+                <pre className="text-[var(--label)]">
+{`{
+  `}<span className="text-[var(--system-teal)]">&quot;geolocation&quot;</span>{`: {
+    `}<span className="text-[var(--secondary-label)]">&quot;latitude&quot;</span>{`: `}<span className="text-[var(--system-orange)]">48.8566</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;longitude&quot;</span>{`: `}<span className="text-[var(--system-orange)]">2.3522</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;altitude&quot;</span>{`: `}<span className="text-[var(--system-orange)]">35.2</span>{`
+  },
+  `}<span className="text-[var(--system-teal)]">&quot;acquisition&quot;</span>{`: {
+    `}<span className="text-[var(--secondary-label)]">&quot;acquired_at&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;2024-03-15T14:32:00Z&quot;</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;acquired_by&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;drone-unit-7&quot;</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;weather&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;clear, 18°C&quot;</span>{`
+  },
+  `}<span className="text-[var(--system-teal)]">&quot;imaging&quot;</span>{`: {
+    `}<span className="text-[var(--secondary-label)]">&quot;focal_length&quot;</span>{`: `}<span className="text-[var(--system-orange)]">24.0</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;sensor_width&quot;</span>{`: `}<span className="text-[var(--system-orange)]">36.0</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;manufacturer&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;DJI&quot;</span>{`
+  },
+  `}<span className="text-[var(--system-teal)]">&quot;orientation&quot;</span>{`: {
+    `}<span className="text-[var(--secondary-label)]">&quot;yaw&quot;</span>{`: `}<span className="text-[var(--system-orange)]">127.5</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;pitch&quot;</span>{`: `}<span className="text-[var(--system-orange)]">-45.0</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;roll&quot;</span>{`: `}<span className="text-[var(--system-orange)]">0.0</span>{`
+  },
+  `}<span className="text-[var(--system-teal)]">&quot;custom&quot;</span>{`: {
+    `}<span className="text-[var(--secondary-label)]">&quot;inspection_id&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;INS-2024-0042&quot;</span>{`,
+    `}<span className="text-[var(--secondary-label)]">&quot;batch_ref&quot;</span>{`: `}<span className="text-[var(--picsellia-green)]">&quot;B-789&quot;</span>{`
+  }
+}`}
+                </pre>
+              </div>
+              <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="text-[var(--tertiary-label)]">All fields queryable via PQL</span>
+                  <div className="flex gap-2">
+                    <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">EXIF</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">GPS</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">XMP</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
