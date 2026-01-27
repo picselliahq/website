@@ -4,14 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const customerLogos = [
+  { name: 'Airbus', src: '/images/customers/airbus.svg' },
+  { name: 'Capgemini', src: '/images/customers/capgemini.svg' },
   { name: 'SGS', src: '/images/customers/sgs.svg' },
   { name: 'RTE', src: '/images/customers/rte.svg' },
-  { name: 'Pellenc', src: '/images/customers/pellenc.svg' },
-  { name: 'Skillcorner', src: '/images/customers/skillcorner.svg' },
-  { name: 'Fortil', src: '/images/customers/fortil.svg' },
-  { name: 'Isarsoft', src: '/images/customers/isarsoft.svg' },
-  { name: 'Upstride', src: '/images/customers/upstride.svg' },
-  { name: 'Supairvision', src: '/images/customers/supairvision.png' },
+  { name: 'PellencST', src: '/images/customers/pellenc.svg' },
+  { name: 'Abelio', src: '/images/customers/abelio.png' },
+  { name: 'Altaroad', src: '/images/customers/altaroad.png' },
+  { name: 'Geredis', src: '/images/customers/geredis.png' },
+  { name: 'Maneva', src: '/images/customers/maneva.png' },
+  { name: 'Shinkei', src: '/images/customers/shinkei.png' },
+  { name: 'SightCall', src: '/images/customers/sightcall.png' },
+  { name: 'Valvan', src: '/images/customers/valvan.png' },
+  { name: 'Ficha', src: '/images/customers/ficha.png' },
+  { name: 'VOX', src: '/images/customers/vox.png' },
+  { name: 'SupAirVision', src: '/images/customers/supairvision.png' },
 ];
 
 export default function Hero() {
