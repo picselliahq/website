@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 
 const categories = [
@@ -8,10 +9,10 @@ const categories = [
     description: 'Deploy anywhere',
     color: 'var(--system-blue)',
     integrations: [
-      { name: 'AWS', logo: 'AWS' },
-      { name: 'Google Cloud', logo: 'GCP' },
-      { name: 'Azure', logo: 'AZ' },
-      { name: 'OVH', logo: 'OVH' },
+      { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
+      { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
+      { name: 'Azure', logo: '/images/community/partners/azure.svg' },
+      { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
     ],
   },
   {
@@ -19,10 +20,10 @@ const categories = [
     description: 'Train with any framework',
     color: 'var(--system-orange)',
     integrations: [
-      { name: 'PyTorch', logo: 'PT' },
-      { name: 'TensorFlow', logo: 'TF' },
-      { name: 'ONNX', logo: 'OX' },
-      { name: 'Ultralytics', logo: 'UL' },
+      { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
+      { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
+      { name: 'Keras', logo: '/images/community/partners/keras.svg' },
+      { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
     ],
   },
   {
@@ -30,10 +31,10 @@ const categories = [
     description: 'Scale seamlessly',
     color: 'var(--picsellia-green)',
     integrations: [
-      { name: 'Docker', logo: 'DK' },
-      { name: 'Kubernetes', logo: 'K8' },
-      { name: 'NVIDIA', logo: 'NV' },
-      { name: 'Triton', logo: 'TR' },
+      { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
+      { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
+      { name: 'SageMaker', logo: '/images/community/partners/sagemaker.svg' },
+      { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
     ],
   },
   {
@@ -41,18 +42,33 @@ const categories = [
     description: 'Connect everything',
     color: 'var(--system-indigo)',
     integrations: [
-      { name: 'Hugging Face', logo: 'HF' },
-      { name: 'MLflow', logo: 'ML' },
-      { name: 'Label Studio', logo: 'LS' },
-      { name: 'Roboflow', logo: 'RF' },
+      { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
+      { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
+      { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
+      { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
     ],
   },
 ];
 
 const allIntegrations = [
-  'AWS', 'Google Cloud', 'Azure', 'PyTorch', 'TensorFlow', 'ONNX',
-  'Docker', 'Kubernetes', 'NVIDIA', 'Hugging Face', 'MLflow', 'Weights & Biases',
-  'Ultralytics', 'Label Studio', 'Roboflow', 'Triton', 'OVH', 'Scaleway',
+  { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
+  { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
+  { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
+  { name: 'Azure', logo: '/images/community/partners/azure.svg' },
+  { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
+  { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
+  { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
+  { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
+  { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
+  { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
+  { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
+  { name: 'Keras', logo: '/images/community/partners/keras.svg' },
+  { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
+  { name: 'Anthropic', logo: '/images/community/partners/anthropic.svg' },
+  { name: 'Meta', logo: '/images/community/partners/meta.svg' },
+  { name: 'Mistral', logo: '/images/community/partners/mistral.svg' },
+  { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
+  { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
 ];
 
 export default function Integrations() {
@@ -131,15 +147,16 @@ export default function Integrations() {
                 {category.integrations.map((integration) => (
                   <div
                     key={integration.name}
-                    className="aspect-square rounded-lg bg-[var(--tertiary-system-background)] flex items-center justify-center group-hover:bg-[var(--secondary-system-background)] transition-colors relative"
+                    className="aspect-square rounded-lg bg-[var(--tertiary-system-background)] flex items-center justify-center group-hover:bg-[var(--secondary-system-background)] transition-colors relative p-2"
                     title={integration.name}
                   >
-                    <span
-                      className="text-xs font-bold"
-                      style={{ color: category.color }}
-                    >
-                      {integration.logo}
-                    </span>
+                    <Image
+                      src={integration.logo}
+                      alt={integration.name}
+                      width={28}
+                      height={28}
+                      className="object-contain opacity-70 group-hover:opacity-100 transition-opacity"
+                    />
                   </div>
                 ))}
               </div>
@@ -159,13 +176,21 @@ export default function Integrations() {
             style={{ scrollBehavior: 'auto' }}
           >
             {/* Double the items for seamless loop */}
-            {[...allIntegrations, ...allIntegrations].map((name, index) => (
+            {[...allIntegrations, ...allIntegrations].map((integration, index) => (
               <div
-                key={`${name}-${index}`}
-                className="flex-shrink-0 px-5 py-3 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] hover:border-[var(--picsellia-green)] transition-colors cursor-default"
+                key={`${integration.name}-${index}`}
+                className="flex-shrink-0 px-5 py-3 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] hover:border-[var(--picsellia-green)] transition-colors cursor-default flex items-center gap-3"
               >
+                <div className="relative w-6 h-6 flex-shrink-0">
+                  <Image
+                    src={integration.logo}
+                    alt={integration.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 <span className="text-sm font-medium text-[var(--secondary-label)] whitespace-nowrap">
-                  {name}
+                  {integration.name}
                 </span>
               </div>
             ))}
