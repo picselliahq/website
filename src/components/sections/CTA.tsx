@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const detections = [
   { id: 1, label: 'model', confidence: 98.5, x: 8, y: 15, w: 25, h: 30 },
   { id: 2, label: 'dataset', confidence: 95.2, x: 65, y: 10, w: 28, h: 25 },
-  { id: 3, label: 'pipeline', confidence: 97.8, x: 38, y: 55, w: 24, h: 35 },
+  { id: 3, label: 'pipeline', confidence: 97.8, x: 10, y: 55, w: 24, h: 35 },
   { id: 4, label: 'deploy', confidence: 99.1, x: 70, y: 50, w: 22, h: 28 },
 ];
 
