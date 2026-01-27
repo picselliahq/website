@@ -26,7 +26,7 @@ export default function CTA() {
       <div className="max-w-6xl mx-auto px-6">
         <div className="card p-0 overflow-hidden relative">
           {/* Background Grid Pattern */}
-          <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0 opacity-[0.08]">
             <div
               className="w-full h-full"
               style={{
@@ -42,7 +42,7 @@ export default function CTA() {
           {/* Scanning Line Animation */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-              className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--picsellia-green)] to-transparent opacity-50"
+              className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--picsellia-green)] to-transparent opacity-70"
               style={{
                 animation: 'scan 3s ease-in-out infinite',
                 top: '0%',
@@ -56,7 +56,7 @@ export default function CTA() {
               <div
                 key={det.id}
                 className={`absolute transition-all duration-500 ${
-                  index === activeDetection ? 'opacity-100' : 'opacity-30'
+                  index === activeDetection ? 'opacity-100' : 'opacity-50'
                 }`}
                 style={{
                   left: `${det.x}%`,
@@ -66,12 +66,12 @@ export default function CTA() {
                 }}
               >
                 {/* Bounding Box */}
-                <div className="absolute inset-0 border border-[var(--picsellia-green)]">
+                <div className="absolute inset-0 border-2 border-[var(--picsellia-green)] bg-[var(--picsellia-green)]/5">
                   {/* Corner Brackets */}
-                  <div className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 border-[var(--picsellia-green)]" />
-                  <div className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 border-[var(--picsellia-green)]" />
-                  <div className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 border-[var(--picsellia-green)]" />
-                  <div className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 border-[var(--picsellia-green)]" />
+                  <div className="absolute -top-px -left-px w-4 h-4 border-t-[3px] border-l-[3px] border-[var(--picsellia-green)]" />
+                  <div className="absolute -top-px -right-px w-4 h-4 border-t-[3px] border-r-[3px] border-[var(--picsellia-green)]" />
+                  <div className="absolute -bottom-px -left-px w-4 h-4 border-b-[3px] border-l-[3px] border-[var(--picsellia-green)]" />
+                  <div className="absolute -bottom-px -right-px w-4 h-4 border-b-[3px] border-r-[3px] border-[var(--picsellia-green)]" />
                 </div>
 
                 {/* Label */}
@@ -90,7 +90,7 @@ export default function CTA() {
           </div>
 
           {/* Crosshair Center */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-20">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-40">
             <div className="w-32 h-32 relative">
               <div className="absolute top-1/2 left-0 right-0 h-px bg-[var(--picsellia-green)]" />
               <div className="absolute left-1/2 top-0 bottom-0 w-px bg-[var(--picsellia-green)]" />
