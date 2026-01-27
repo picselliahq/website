@@ -278,16 +278,14 @@ export default function DatalakePage() {
 
             {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              <div className="relative rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)] shadow-2xl">
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-auto"
-                  src="/videos/data layer view.mov"
-                />
-              </div>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto rounded-xl"
+                src="/videos/data layer view.mov"
+              />
 
               {/* Floating tag panel */}
               <div className="absolute -bottom-6 -left-6 card p-4 shadow-xl max-w-[200px]">
