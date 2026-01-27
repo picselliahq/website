@@ -1,8 +1,18 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
-const logos = ['Renault', 'Airbus', 'EDF', 'Veolia', 'Michelin', 'Safran', 'Thales', 'SNCF'];
+const customerLogos = [
+  { name: 'SGS', src: '/images/customers/sgs.svg' },
+  { name: 'RTE', src: '/images/customers/rte.svg' },
+  { name: 'Pellenc', src: '/images/customers/pellenc.svg' },
+  { name: 'Skillcorner', src: '/images/customers/skillcorner.svg' },
+  { name: 'Fortil', src: '/images/customers/fortil.svg' },
+  { name: 'Isarsoft', src: '/images/customers/isarsoft.svg' },
+  { name: 'Upstride', src: '/images/customers/upstride.svg' },
+  { name: 'Supairvision', src: '/images/customers/supairvision.png' },
+];
 
 export default function Hero() {
   return (
@@ -71,14 +81,22 @@ export default function Hero() {
 
         {/* Logos */}
         <div className="text-center">
-          <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-6">
+          <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
             Trusted by industry leaders
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-4">
-            {logos.map((logo) => (
-              <span key={logo} className="text-sm text-[var(--system-gray)] font-medium">
-                {logo}
-              </span>
+          <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
+            {customerLogos.map((logo) => (
+              <div
+                key={logo.name}
+                className="relative h-8 w-24 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             ))}
           </div>
         </div>
