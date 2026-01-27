@@ -18,7 +18,7 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-center max-w-4xl mx-auto mb-6 tracking-tight">
-          The MLOps Platform for Computer Vision
+          Everything you need to ship <span className="text-[var(--picsellia-green)]">Vision AI</span>
         </h1>
 
         {/* Subheadline */}
