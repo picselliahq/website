@@ -10,90 +10,6 @@ const cloudProviders = [
   { name: 'Azure', icon: '/images/community/partners/azure.svg' },
 ];
 
-
-const capabilities = [
-  {
-    title: 'Data Aggregation',
-    tagline: 'Connect everything',
-    description: 'Consolidate visual data from any source into one unified repository. AWS, GCP, Azure, MinIO, or on-premise — all accessible from a single interface.',
-    color: 'var(--system-blue)',
-    icon: '/images/community/icons/datalake.svg',
-    items: [
-      { name: 'AWS S3', description: 'Native connector' },
-      { name: 'Google Cloud', description: 'Full support' },
-      { name: 'Azure Blob', description: 'Seamless sync' },
-      { name: 'On-Premise', description: 'MinIO & more' },
-    ],
-  },
-  {
-    title: 'Format Support',
-    tagline: 'Any visual data',
-    description: 'Handle standard images, complex videos, DICOM medical files, satellite imagery, thermal captures, and proprietary formats at constant speed.',
-    color: 'var(--system-orange)',
-    icon: '/images/community/icons/data-management.svg',
-    items: [
-      { name: 'Images' },
-      { name: 'Videos' },
-      { name: 'DICOM' },
-      { name: 'Thermal' },
-      { name: 'Satellite' },
-      { name: '3D Point Clouds' },
-    ],
-  },
-  {
-    title: 'Smart Organization',
-    tagline: 'Structure & categorize',
-    description: 'DataTags, rich metadata, and geolocation enable flexible, multi-dimensional data organization without moving files.',
-    color: 'var(--picsellia-green)',
-    icon: '/images/community/icons/annotation-campaigns.svg',
-    items: [
-      { name: 'DataTags' },
-      { name: 'Metadata' },
-      { name: 'Geolocation' },
-      { name: 'Custom Fields' },
-    ],
-  },
-  {
-    title: 'Query Language',
-    tagline: 'Search & filter',
-    description: 'SQL-like queries with auto-completion for building pixel-perfect datasets in seconds.',
-    color: 'var(--system-indigo)',
-    icon: '/images/community/icons/experiment-tracking.svg',
-    items: [
-      { name: 'Pattern Matching' },
-      { name: 'Numeric Filters' },
-      { name: 'Logical Operators' },
-      { name: 'Nested Queries' },
-    ],
-  },
-  {
-    title: 'Visual Search',
-    tagline: 'AI-powered discovery',
-    description: 'Find similar images, search by text, and visualize clusters with embeddings and UMAP projections.',
-    color: 'var(--system-pink)',
-    icon: '/images/community/icons/ai-laboratory.svg',
-    items: [
-      { name: 'Similarity Search' },
-      { name: 'Text-to-Image' },
-      { name: 'UMAP Clusters' },
-      { name: 'Anomaly Detection' },
-    ],
-  },
-  {
-    title: 'Data Governance',
-    tagline: 'Security & compliance',
-    description: 'Enterprise-grade controls with user permissions, retention policies, and comprehensive audit trails.',
-    color: 'var(--system-teal)',
-    icon: '/images/community/icons/model-monitoring.svg',
-    items: [
-      { name: 'Permissions' },
-      { name: 'Retention' },
-      { name: 'Audit Logs' },
-      { name: 'Compliance' },
-    ],
-  },
-];
-
 const sampleTags = ['training', 'production', 'validated', 'edge-case', 'Q1-2024', 'factory-A'];
 
 
@@ -313,138 +229,315 @@ export default function DatalakePage() {
         </div>
       </section>
 
-      {/* Capabilities Bento Grid */}
-      <section className="py-24 border-b border-[var(--border)]">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* Capabilities - Technical Deep Dive */}
+      <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
+        {/* Background grid */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+          backgroundSize: '48px 48px',
+        }} />
+
+        <div className="max-w-6xl mx-auto px-6 relative">
           {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
-            <div>
-              <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
-                Capabilities
-              </span>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-                One place for all your visual data
-              </h2>
-              <p className="text-[var(--secondary-label)] max-w-xl">
-                The Datalake is your centralized repository for managing images and their metadata,
-                providing a unified interface for all computer vision projects.
-              </p>
-            </div>
-            <Link href="https://documentation.picsellia.com/docs/datalake-3" className="btn-secondary whitespace-nowrap">
-              View docs
-            </Link>
+          <div className="text-center mb-20">
+            <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              Architecture
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              Built for scale and flexibility
+            </h2>
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+              A unified data layer that connects to any storage, handles any format,
+              and scales to billions of assets.
+            </p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {capabilities.map((cap, index) => (
-              <div
-                key={cap.title}
-                className={`group ${index === 0 ? 'md:row-span-2' : ''}`}
-              >
-                <div className={`card p-0 overflow-hidden h-full ${index === 0 ? 'min-h-[420px]' : ''}`}>
-                  {index === 0 ? (
-                    // Featured card - Data Aggregation
-                    <div className="h-full flex flex-col">
-                      <div
-                        className="p-8 flex-1 relative overflow-hidden"
-                        style={{ background: `linear-gradient(135deg, color-mix(in srgb, ${cap.color} 10%, transparent), color-mix(in srgb, ${cap.color} 5%, transparent))` }}
-                      >
-                        {/* Decorative grid */}
-                        <div className="absolute inset-0 opacity-[0.03]" style={{
-                          backgroundImage: `linear-gradient(${cap.color} 1px, transparent 1px), linear-gradient(90deg, ${cap.color} 1px, transparent 1px)`,
-                          backgroundSize: '32px 32px'
-                        }} />
+          {/* Data Flow Architecture */}
+          <div className="mb-20">
+            <div className="card p-8 relative overflow-hidden">
+              {/* Animated connection lines background */}
+              <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="var(--system-blue)" stopOpacity="0" />
+                    <stop offset="50%" stopColor="var(--system-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--system-blue)" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <line x1="20%" y1="30%" x2="40%" y2="50%" stroke="url(#lineGradient)" strokeWidth="1" />
+                <line x1="20%" y1="70%" x2="40%" y2="50%" stroke="url(#lineGradient)" strokeWidth="1" />
+                <line x1="60%" y1="50%" x2="80%" y2="30%" stroke="url(#lineGradient)" strokeWidth="1" />
+                <line x1="60%" y1="50%" x2="80%" y2="70%" stroke="url(#lineGradient)" strokeWidth="1" />
+              </svg>
 
-                        <div className="relative">
-                          <div
-                            className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6"
-                            style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 20%, transparent)` }}
-                          >
-                            <Image src={cap.icon} alt={cap.title} width={32} height={32} />
-                          </div>
-                          <div className="text-xs uppercase tracking-wider mb-2" style={{ color: cap.color }}>
-                            {cap.tagline}
-                          </div>
-                          <h3 className="text-2xl font-semibold text-[var(--label)] mb-3">
-                            {cap.title}
-                          </h3>
-                          <p className="text-[var(--secondary-label)] mb-6">
-                            {cap.description}
-                          </p>
-                        </div>
-
-                        {/* Decorative circles */}
-                        <div className="absolute -bottom-16 -right-16 w-48 h-48 border rounded-full opacity-20" style={{ borderColor: cap.color }} />
-                        <div className="absolute -bottom-8 -right-8 w-32 h-32 border rounded-full opacity-30" style={{ borderColor: cap.color }} />
-                      </div>
-                      <div className="p-6 border-t border-[var(--border)]">
-                        <ul className="grid grid-cols-2 gap-3">
-                          {cap.items.map((item) => (
-                            <li key={item.name} className="flex items-start gap-2">
-                              <svg className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: cap.color }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                              <span className="text-sm text-[var(--secondary-label)]">{item.name}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+              <div className="relative grid md:grid-cols-5 gap-4 items-center">
+                {/* Sources */}
+                <div className="space-y-3">
+                  <div className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">Sources</div>
+                  {[
+                    { name: 'AWS S3', icon: '/images/community/partners/amazon-s3.svg', status: 'connected' },
+                    { name: 'GCP', icon: '/images/community/partners/google-cloud.svg', status: 'connected' },
+                    { name: 'Azure', icon: '/images/community/partners/azure.svg', status: 'idle' },
+                  ].map((source) => (
+                    <div key={source.name} className="flex items-center gap-3 p-3 rounded-lg bg-[var(--black)] border border-[var(--border)]">
+                      <Image src={source.icon} alt={source.name} width={20} height={20} />
+                      <span className="text-xs text-[var(--label)] flex-1">{source.name}</span>
+                      <div className={`w-2 h-2 rounded-full ${source.status === 'connected' ? 'bg-[var(--picsellia-green)]' : 'bg-[var(--system-gray)]'}`} />
                     </div>
-                  ) : (
-                    // Regular cards
-                    <div className="p-6 h-full flex flex-col">
-                      <div className="flex items-start justify-between mb-4">
-                        <div
-                          className="w-12 h-12 rounded-xl flex items-center justify-center transition-all group-hover:scale-110"
-                          style={{ backgroundColor: `color-mix(in srgb, ${cap.color} 15%, transparent)` }}
-                        >
-                          <Image src={cap.icon} alt={cap.title} width={28} height={28} />
+                  ))}
+                </div>
+
+                {/* Arrow */}
+                <div className="hidden md:flex justify-center">
+                  <div className="flex items-center gap-2 text-[var(--system-blue)]">
+                    <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--system-blue)]" />
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Datalake Core */}
+                <div className="md:col-span-1">
+                  <div className="p-6 rounded-xl bg-gradient-to-br from-[var(--system-blue)]/20 to-[var(--system-blue)]/5 border border-[var(--system-blue)]/30 relative">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--system-blue)] text-[10px] font-medium text-white">
+                      DATALAKE
+                    </div>
+                    <div className="text-center pt-4">
+                      <div className="text-3xl font-bold text-[var(--label)] font-mono">2.4M</div>
+                      <div className="text-xs text-[var(--tertiary-label)]">assets indexed</div>
+                      <div className="mt-4 grid grid-cols-2 gap-2 text-[10px]">
+                        <div className="p-2 rounded bg-[var(--black)]/50">
+                          <div className="text-[var(--system-blue)] font-mono">847GB</div>
+                          <div className="text-[var(--tertiary-label)]">storage</div>
+                        </div>
+                        <div className="p-2 rounded bg-[var(--black)]/50">
+                          <div className="text-[var(--picsellia-green)] font-mono">12ms</div>
+                          <div className="text-[var(--tertiary-label)]">latency</div>
                         </div>
                       </div>
-
-                      <div className="text-xs uppercase tracking-wider mb-1" style={{ color: cap.color }}>
-                        {cap.tagline}
-                      </div>
-                      <h3 className="text-lg font-semibold text-[var(--label)] mb-2">
-                        {cap.title}
-                      </h3>
-                      <p className="text-sm text-[var(--secondary-label)] mb-4 flex-1">
-                        {cap.description}
-                      </p>
-
-                      <div className="pt-4 border-t border-[var(--border)]">
-                        <ul className="flex flex-wrap gap-2">
-                          {cap.items.map((item) => (
-                            <li
-                              key={item.name}
-                              className="text-xs px-2 py-1 rounded-md bg-[var(--tertiary-system-background)] text-[var(--secondary-label)]"
-                            >
-                              {item.name}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
                     </div>
-                  )}
+                  </div>
+                </div>
+
+                {/* Arrow */}
+                <div className="hidden md:flex justify-center">
+                  <div className="flex items-center gap-2 text-[var(--system-blue)]">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                    <div className="h-px w-8 bg-gradient-to-r from-[var(--system-blue)] to-transparent" />
+                  </div>
+                </div>
+
+                {/* Outputs */}
+                <div className="space-y-3">
+                  <div className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">Outputs</div>
+                  {[
+                    { name: 'Datasets', count: '24', color: 'var(--picsellia-green)' },
+                    { name: 'Experiments', count: '156', color: 'var(--system-orange)' },
+                    { name: 'Deployments', count: '8', color: 'var(--system-indigo)' },
+                  ].map((output) => (
+                    <div key={output.name} className="flex items-center gap-3 p-3 rounded-lg bg-[var(--black)] border border-[var(--border)]">
+                      <div className="w-5 h-5 rounded flex items-center justify-center" style={{ backgroundColor: `color-mix(in srgb, ${output.color} 20%, transparent)` }}>
+                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: output.color }} />
+                      </div>
+                      <span className="text-xs text-[var(--label)] flex-1">{output.name}</span>
+                      <span className="text-xs font-mono text-[var(--secondary-label)]">{output.count}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Technical Features Grid */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* SDK Integration */}
+            <div className="card p-0 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/60" />
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
+                </div>
+                <span className="text-xs text-[var(--tertiary-label)]">upload.py</span>
+              </div>
+              <pre className="p-5 text-xs overflow-x-auto bg-[var(--black)] font-mono leading-relaxed">
+                <code>
+                  <span className="text-[var(--system-indigo)]">from</span> <span className="text-[var(--label)]">picsellia</span> <span className="text-[var(--system-indigo)]">import</span> <span className="text-[var(--label)]">Client</span>{'\n\n'}
+                  <span className="text-[var(--label)]">client</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">Client()</span>{'\n'}
+                  <span className="text-[var(--label)]">datalake</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">client.get_datalake()</span>{'\n\n'}
+                  <span className="text-[var(--tertiary-label)]"># Upload with metadata</span>{'\n'}
+                  <span className="text-[var(--label)]">datalake.upload(</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">paths</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">&quot;./images/*.jpg&quot;</span><span className="text-[var(--label)]">,</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">,</span> <span className="text-[var(--picsellia-green)]">&quot;batch-42&quot;</span><span className="text-[var(--label)]">],</span>{'\n'}
+                  {'  '}<span className="text-[var(--label)]">metadata</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">{'{'}</span><span className="text-[var(--picsellia-green)]">&quot;source&quot;</span><span className="text-[var(--label)]">:</span> <span className="text-[var(--picsellia-green)]">&quot;factory-A&quot;</span><span className="text-[var(--label)]">{'}'}</span>{'\n'}
+                  <span className="text-[var(--label)]">)</span>{'\n\n'}
+                  <span className="text-[var(--tertiary-label)]"># Query with SQL-like syntax</span>{'\n'}
+                  <span className="text-[var(--label)]">data</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">datalake.query(</span>{'\n'}
+                  {'  '}<span className="text-[var(--picsellia-green)]">&quot;tags.name = &#39;production&#39; AND width &gt; 1920&quot;</span>{'\n'}
+                  <span className="text-[var(--label)]">)</span>
+                </code>
+              </pre>
+              <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center justify-between">
+                  <span className="text-[10px] text-[var(--tertiary-label)]">Python SDK v6.9.0</span>
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] text-[var(--picsellia-green)]">Auto EXIF extraction</span>
+                    <span className="text-[10px] text-[var(--system-blue)]">Batch upload</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Query Terminal */}
+            <div className="card p-0 overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/60" />
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/60" />
+                  <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/60" />
+                </div>
+                <span className="text-xs text-[var(--tertiary-label)]">query console</span>
+              </div>
+              <div className="p-5 bg-[var(--black)] font-mono text-xs space-y-4">
+                <div>
+                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
+                    <span className="text-[var(--system-blue)]">pql&gt;</span>
+                    <span className="text-[var(--label)]">SELECT * WHERE tags.name = &quot;defects&quot;</span>
+                  </div>
+                  <div className="pl-6 text-[var(--picsellia-green)]">
+                    ✓ 2,847 results in 23ms
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
+                    <span className="text-[var(--system-blue)]">pql&gt;</span>
+                    <span className="text-[var(--label)]">SELECT * WHERE metadata.lat BETWEEN 48.8 AND 48.9</span>
+                  </div>
+                  <div className="pl-6 text-[var(--picsellia-green)]">
+                    ✓ 156 results in 8ms
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 text-[var(--tertiary-label)] mb-2">
+                    <span className="text-[var(--system-blue)]">pql&gt;</span>
+                    <span className="text-[var(--label)]">SELECT * WHERE width &gt; 4000 AND format = &quot;TIFF&quot;</span>
+                  </div>
+                  <div className="pl-6 text-[var(--picsellia-green)]">
+                    ✓ 89 results in 5ms
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-[var(--tertiary-label)]">
+                  <span className="text-[var(--system-blue)]">pql&gt;</span>
+                  <span className="text-[var(--label)] animate-pulse">_</span>
+                </div>
+              </div>
+              <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
+                <div className="flex items-center justify-between text-[10px]">
+                  <span className="text-[var(--tertiary-label)]">Picsellia Query Language</span>
+                  <div className="flex gap-3">
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">strings</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">numeric</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">geo</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Format Support */}
+            <div className="card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-[var(--label)]">Universal Format Support</h3>
+                  <p className="text-sm text-[var(--tertiary-label)]">Ingest any visual data type at constant speed</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-2xl font-bold font-mono text-[var(--system-orange)]">100+</div>
+                  <div className="text-[10px] text-[var(--tertiary-label)]">formats</div>
+                </div>
+              </div>
+              <div className="grid grid-cols-4 gap-3">
+                {[
+                  { ext: 'JPG', type: 'image', color: 'var(--system-blue)' },
+                  { ext: 'PNG', type: 'image', color: 'var(--system-blue)' },
+                  { ext: 'TIFF', type: 'image', color: 'var(--system-blue)' },
+                  { ext: 'WebP', type: 'image', color: 'var(--system-blue)' },
+                  { ext: 'MP4', type: 'video', color: 'var(--system-orange)' },
+                  { ext: 'MOV', type: 'video', color: 'var(--system-orange)' },
+                  { ext: 'DICOM', type: 'medical', color: 'var(--system-pink)' },
+                  { ext: 'NIfTI', type: 'medical', color: 'var(--system-pink)' },
+                  { ext: 'GeoTIFF', type: 'geo', color: 'var(--picsellia-green)' },
+                  { ext: 'COG', type: 'geo', color: 'var(--picsellia-green)' },
+                  { ext: 'PCD', type: '3D', color: 'var(--system-indigo)' },
+                  { ext: 'PLY', type: '3D', color: 'var(--system-indigo)' },
+                ].map((format) => (
+                  <div
+                    key={format.ext}
+                    className="p-3 rounded-lg bg-[var(--black)] border border-[var(--border)] text-center group hover:border-[var(--system-blue)]/50 transition-colors"
+                  >
+                    <div className="text-sm font-mono font-bold text-[var(--label)]">.{format.ext.toLowerCase()}</div>
+                    <div className="text-[9px] mt-1" style={{ color: format.color }}>{format.type}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Real-time Metrics */}
+            <div className="card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-[var(--label)]">Real-time Processing</h3>
+                  <p className="text-sm text-[var(--tertiary-label)]">Live ingestion and indexing metrics</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[var(--picsellia-green)] animate-pulse" />
+                  <span className="text-xs text-[var(--picsellia-green)]">Live</span>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { label: 'Ingestion Rate', value: '2,847', unit: 'img/min', percent: 85, color: 'var(--system-blue)' },
+                  { label: 'Index Speed', value: '12', unit: 'ms/img', percent: 95, color: 'var(--picsellia-green)' },
+                  { label: 'Embedding Gen', value: '156', unit: 'vec/sec', percent: 72, color: 'var(--system-indigo)' },
+                  { label: 'Storage Sync', value: '99.9', unit: '%', percent: 99, color: 'var(--system-orange)' },
+                ].map((metric) => (
+                  <div key={metric.label}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs text-[var(--secondary-label)]">{metric.label}</span>
+                      <span className="text-sm font-mono text-[var(--label)]">
+                        {metric.value} <span className="text-[var(--tertiary-label)] text-xs">{metric.unit}</span>
+                      </span>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-[var(--black)] overflow-hidden">
+                      <div
+                        className="h-full rounded-full transition-all duration-1000"
+                        style={{ width: `${metric.percent}%`, backgroundColor: metric.color }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Bottom stats */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-            {[
-              { value: '100+', label: 'Data formats supported' },
-              { value: '<50ms', label: 'Query response time' },
-              { value: '10B+', label: 'Images managed' },
-              { value: '99.9%', label: 'Platform uptime' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center p-4">
-                <div className="text-2xl md:text-3xl font-bold text-[var(--label)] mb-1">{stat.value}</div>
-                <div className="text-xs text-[var(--tertiary-label)]">{stat.label}</div>
-              </div>
-            ))}
+          <div className="mt-16 p-6 rounded-xl border border-[var(--border)] bg-[var(--secondary-system-background)]">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: '10B+', label: 'Images processed', icon: '🖼️' },
+                { value: '<50ms', label: 'Query latency', icon: '⚡' },
+                { value: '99.9%', label: 'Uptime SLA', icon: '🛡️' },
+                { value: '∞', label: 'Scalability', icon: '📈' },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <div className="text-2xl mb-2">{stat.icon}</div>
+                  <div className="text-2xl md:text-3xl font-bold text-[var(--label)] font-mono">{stat.value}</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">{stat.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
