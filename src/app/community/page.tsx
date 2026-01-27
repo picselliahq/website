@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -7,43 +8,40 @@ const includedFeatures = [
   {
     category: "Data Management",
     color: "var(--picsellia-green)",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" />
-      </svg>
-    ),
+    icon: "/images/community/icons/data-management.svg",
     features: ["Datalake storage", "Dataset registry", "Smart versioning", "Data query language"],
   },
   {
     category: "Model Operations",
     color: "var(--picsellia-blue)",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5" />
-      </svg>
-    ),
+    icon: "/images/community/icons/experiment-tracking.svg",
     features: ["Experiment tracking", "Model evaluation", "Training metrics", "Artifact management"],
   },
   {
     category: "Deployment",
     color: "var(--system-orange)",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8.688c0-.864.933-1.405 1.683-.977l7.108 4.062a1.125 1.125 0 010 1.953l-7.108 4.062A1.125 1.125 0 013 16.81V8.688z" />
-      </svg>
-    ),
+    icon: "/images/community/icons/serverless-deployment.svg",
     features: ["Scalable deployment", "Model monitoring", "Basic inference", "API access"],
   },
   {
     category: "Resources",
     color: "var(--system-indigo)",
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-      </svg>
-    ),
+    icon: "/images/community/icons/ai-laboratory.svg",
     features: ["Documentation", "Tutorials", "Community support", "Sample projects"],
   },
+];
+
+const partnerLogos = [
+  { name: "PyTorch", src: "/images/community/partners/pytorch.svg" },
+  { name: "TensorFlow", src: "/images/community/partners/tensorflow.svg" },
+  { name: "Hugging Face", src: "/images/community/partners/huggingface.svg" },
+  { name: "Azure", src: "/images/community/partners/azure.svg" },
+  { name: "Google Cloud", src: "/images/community/partners/google-cloud.svg" },
+  { name: "Amazon S3", src: "/images/community/partners/amazon-s3.svg" },
+  { name: "MLflow", src: "/images/community/partners/mlflow.svg" },
+  { name: "Jupyter", src: "/images/community/partners/jupyter.svg" },
+  { name: "Ultralytics", src: "/images/community/partners/ultralytics.svg" },
+  { name: "NVIDIA Jetson", src: "/images/community/partners/nvidia-jetson.svg" },
 ];
 
 const stats = [
@@ -66,6 +64,17 @@ const comparisonTable = [
 // Floating elements for visual interest
 const FloatingElements = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {/* Bubble gradient background */}
+    <div className="absolute inset-0 opacity-30">
+      <Image
+        src="/images/community/backgrounds/bubble-gradient.jpg"
+        alt=""
+        fill
+        className="object-cover"
+        priority
+      />
+    </div>
+
     {/* Animated circles */}
     <div className="absolute top-20 left-[10%] w-64 h-64 rounded-full border border-[var(--picsellia-green)]/20 animate-pulse" />
     <div className="absolute top-40 left-[15%] w-32 h-32 rounded-full border border-[var(--picsellia-green)]/10" />
@@ -283,15 +292,20 @@ export default function CommunityPage() {
                 >
                   <div className="flex items-center gap-4">
                     <div
-                      className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center transition-colors relative overflow-hidden"
                       style={{
                         backgroundColor: activeFeature === index
                           ? `color-mix(in srgb, ${feature.color} 20%, transparent)`
                           : 'var(--tertiary-system-background)',
-                        color: activeFeature === index ? feature.color : 'var(--secondary-label)',
                       }}
                     >
-                      {feature.icon}
+                      <Image
+                        src={feature.icon}
+                        alt={feature.category}
+                        width={28}
+                        height={28}
+                        className={`transition-opacity ${activeFeature === index ? 'opacity-100' : 'opacity-60'}`}
+                      />
                     </div>
                     <div className="flex-1">
                       <h3 className={`font-semibold transition-colors ${
@@ -328,13 +342,17 @@ export default function CommunityPage() {
 
               <div className="relative">
                 <div
-                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                  className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 relative overflow-hidden"
                   style={{
                     backgroundColor: `color-mix(in srgb, ${includedFeatures[activeFeature].color} 15%, transparent)`,
-                    color: includedFeatures[activeFeature].color,
                   }}
                 >
-                  {includedFeatures[activeFeature].icon}
+                  <Image
+                    src={includedFeatures[activeFeature].icon}
+                    alt={includedFeatures[activeFeature].category}
+                    width={36}
+                    height={36}
+                  />
                 </div>
 
                 <h3 className="text-2xl font-semibold text-[var(--label)] mb-6">
@@ -461,10 +479,13 @@ export default function CommunityPage() {
               <div className="card p-8 h-full overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--system-blue)]/5 rounded-bl-full" />
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-blue)]/10 flex items-center justify-center text-[var(--system-blue)] mb-6 group-hover:scale-110 transition-transform">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                    </svg>
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-blue)]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Image
+                      src="/images/community/icons/datalake.svg"
+                      alt="Documentation"
+                      width={32}
+                      height={32}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-[var(--label)] mb-2 group-hover:text-[var(--system-blue)] transition-colors">
                     Documentation
@@ -487,10 +508,13 @@ export default function CommunityPage() {
               <div className="card p-8 h-full overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--system-orange)]/5 rounded-bl-full" />
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-orange)]/10 flex items-center justify-center text-[var(--system-orange)] mb-6 group-hover:scale-110 transition-transform">
-                    <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342" />
-                    </svg>
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-orange)]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Image
+                      src="/images/community/icons/annotation-campaigns.svg"
+                      alt="Tutorials"
+                      width={32}
+                      height={32}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-[var(--label)] mb-2 group-hover:text-[var(--system-orange)] transition-colors">
                     Tutorials
@@ -513,10 +537,13 @@ export default function CommunityPage() {
               <div className="card p-8 h-full overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--system-indigo)]/5 rounded-bl-full" />
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-gray)]/10 flex items-center justify-center text-[var(--label)] mb-6 group-hover:scale-110 transition-transform">
-                    <svg className="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                    </svg>
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--system-indigo)]/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Image
+                      src="/images/community/icons/ci-cd.svg"
+                      alt="GitHub"
+                      width={32}
+                      height={32}
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-[var(--label)] mb-2 group-hover:text-[var(--system-indigo)] transition-colors">
                     GitHub
@@ -533,6 +560,36 @@ export default function CommunityPage() {
                 </div>
               </div>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners / Integrations */}
+      <section className="py-20 border-t border-[var(--border)]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              Integrations
+            </span>
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+              Works with your favorite tools
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {partnerLogos.map((partner) => (
+              <div
+                key={partner.name}
+                className="relative w-24 h-12 md:w-32 md:h-16 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+              >
+                <Image
+                  src={partner.src}
+                  alt={partner.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
