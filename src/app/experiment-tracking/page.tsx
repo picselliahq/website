@@ -687,6 +687,18 @@ export default function ExperimentTrackingPage() {
             </p>
           </div>
 
+          {/* Video demo */}
+          <div className="max-w-4xl mx-auto mb-12 rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto"
+              src="/videos/model evaluation.webm"
+            />
+          </div>
+
           <div className="grid md:grid-cols-4 gap-4">
             {[
               { metric: 'mAP@50', value: 0.912, description: 'Mean Average Precision' },
