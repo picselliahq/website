@@ -657,13 +657,11 @@ export default function DatalakePage() {
         </div>
       </section>
 
-      {/* Visual Search / Embeddings Section - Technical Deep Dive */}
-      <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--system-pink)]/5 rounded-full blur-[100px]" />
-
-        <div className="max-w-6xl mx-auto px-6 relative">
+      {/* Visual Search / Embeddings Section */}
+      <section className="py-24 border-b border-[var(--border)]">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <span className="text-[var(--system-pink)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
               Visual Search
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -676,37 +674,30 @@ export default function DatalakePage() {
           </div>
 
           {/* Technical Specs */}
-          <div className="grid lg:grid-cols-4 gap-4 mb-12">
-            <div className="card p-4 text-center">
-              <div className="text-2xl font-bold font-mono text-[var(--system-pink)]">ViT-B/16</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Embedding Model</div>
-            </div>
-            <div className="card p-4 text-center">
-              <div className="text-2xl font-bold font-mono text-[var(--system-blue)]">512-dim</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Vector Size</div>
-            </div>
-            <div className="card p-4 text-center">
-              <div className="text-2xl font-bold font-mono text-[var(--picsellia-green)]">QDrant</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Vector DB</div>
-            </div>
-            <div className="card p-4 text-center">
-              <div className="text-2xl font-bold font-mono text-[var(--system-orange)]">&lt;10ms</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Search Latency</div>
-            </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {[
+              { value: 'ViT-B/16', label: 'Default Model' },
+              { value: '512-dim', label: 'Vector Size' },
+              { value: 'QDrant', label: 'Vector DB' },
+              { value: '<10ms', label: 'Search Latency' },
+            ].map((spec) => (
+              <div key={spec.label} className="p-4 border border-[var(--border)] rounded-xl text-center">
+                <div className="text-xl font-bold font-mono text-[var(--label)]">{spec.value}</div>
+                <div className="text-xs text-[var(--tertiary-label)] mt-1">{spec.label}</div>
+              </div>
+            ))}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Embeddings Viewer */}
-            <div className="card p-0 overflow-hidden">
-              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <span className="text-xs text-[var(--tertiary-label)]">Embeddings Viewer</span>
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-pink)]/10 text-[var(--system-pink)]">
-                    UMAP
-                  </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">
-                    DBSCAN
-                  </span>
+          {/* Main content */}
+          <div className="grid lg:grid-cols-2 gap-6 mb-8">
+            {/* Embeddings Viewer Video */}
+            <div className="border border-[var(--border)] rounded-xl overflow-hidden">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
+                <span className="text-sm font-medium text-[var(--label)]">Embeddings Viewer</span>
+                <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
+                  <span>UMAP</span>
+                  <span>•</span>
+                  <span>DBSCAN</span>
                 </div>
               </div>
               <video
@@ -722,71 +713,92 @@ export default function DatalakePage() {
             {/* Search Methods */}
             <div className="space-y-4">
               {/* Similarity Search */}
-              <div className="card p-0 overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <span className="text-xs font-medium text-[var(--system-blue)]">SIMILARITY SEARCH</span>
+              <div className="p-5 border border-[var(--border)] rounded-xl">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-medium text-[var(--label)]">Similarity Search</h3>
+                  <span className="text-xs text-[var(--system-indigo)]">Image → Images</span>
                 </div>
-                <div className="p-4 bg-[var(--black)]">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-lg bg-[var(--system-blue)]/20 flex items-center justify-center">
-                      <svg className="w-8 h-8 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <div className="text-sm text-[var(--label)]">Reference: <span className="font-mono">IMG_4521.jpg</span></div>
-                      <div className="text-xs text-[var(--tertiary-label)] mt-1">cosine similarity &gt; 0.85</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-lg font-bold font-mono text-[var(--picsellia-green)]">847</div>
-                      <div className="text-[10px] text-[var(--tertiary-label)]">matches</div>
-                    </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 rounded-lg border border-[var(--border)] flex items-center justify-center">
+                    <svg className="w-6 h-6 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm text-[var(--label)] font-mono">IMG_4521.jpg</div>
+                    <div className="text-xs text-[var(--tertiary-label)] mt-0.5">cosine similarity &gt; 0.85</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-2xl font-bold font-mono text-[var(--system-indigo)]">847</div>
+                    <div className="text-xs text-[var(--tertiary-label)]">matches</div>
                   </div>
                 </div>
               </div>
 
               {/* Text-to-Image */}
-              <div className="card p-0 overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <span className="text-xs font-medium text-[var(--system-orange)]">TEXT-TO-IMAGE SEARCH</span>
+              <div className="p-5 border border-[var(--border)] rounded-xl">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-medium text-[var(--label)]">Text-to-Image Search</h3>
+                  <span className="text-xs text-[var(--system-indigo)]">Text → Images</span>
                 </div>
-                <div className="p-4 bg-[var(--black)]">
-                  <div className="flex items-center gap-3 px-3 py-2 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] mb-3">
-                    <svg className="w-4 h-4 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                    <span className="text-sm text-[var(--label)]">&quot;damaged surface with rust&quot;</span>
-                  </div>
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-[var(--tertiary-label)]">CLIP text encoder</span>
-                    <span className="text-[var(--picsellia-green)] font-mono">156 results in 8ms</span>
-                  </div>
+                <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-[var(--border)] mb-3">
+                  <svg className="w-4 h-4 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <span className="text-sm text-[var(--label)]">&quot;damaged surface with rust&quot;</span>
+                </div>
+                <div className="flex items-center justify-between text-xs text-[var(--tertiary-label)]">
+                  <span>CLIP text encoder</span>
+                  <span className="font-mono text-[var(--system-indigo)]">156 results • 8ms</span>
                 </div>
               </div>
 
               {/* Anomaly Detection */}
-              <div className="card p-0 overflow-hidden">
-                <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <span className="text-xs font-medium text-[var(--system-red)]">ANOMALY DETECTION</span>
+              <div className="p-5 border border-[var(--border)] rounded-xl">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-medium text-[var(--label)]">Anomaly Detection</h3>
+                  <span className="text-xs text-[var(--system-indigo)]">Isolation Forest</span>
                 </div>
-                <div className="p-4 bg-[var(--black)]">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-sm text-[var(--label)]">Isolation Forest</div>
-                      <div className="text-xs text-[var(--tertiary-label)] mt-1">contamination: 0.01</div>
+                <div className="flex items-center justify-between">
+                  <div className="text-xs text-[var(--tertiary-label)]">contamination: 0.01</div>
+                  <div className="flex items-center gap-6">
+                    <div className="text-center">
+                      <div className="text-xl font-bold font-mono text-[var(--label)]">23</div>
+                      <div className="text-xs text-[var(--tertiary-label)]">corrupted</div>
                     </div>
-                    <div className="flex items-center gap-4 text-xs">
-                      <div className="text-center">
-                        <div className="font-mono text-[var(--system-red)] font-bold">23</div>
-                        <div className="text-[var(--tertiary-label)]">corrupted</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="font-mono text-[var(--system-orange)] font-bold">89</div>
-                        <div className="text-[var(--tertiary-label)]">outliers</div>
-                      </div>
+                    <div className="text-center">
+                      <div className="text-xl font-bold font-mono text-[var(--label)]">89</div>
+                      <div className="text-xs text-[var(--tertiary-label)]">outliers</div>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom CLIP Fine-tuning */}
+          <div className="p-6 border border-[var(--system-indigo)]/30 rounded-xl bg-[var(--system-indigo)]/5">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <svg className="w-5 h-5 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <h3 className="text-lg font-semibold text-[var(--label)]">Fine-tune Your Own CLIP Model</h3>
+                </div>
+                <p className="text-sm text-[var(--secondary-label)]">
+                  Generic embeddings not cutting it? Fine-tune a custom CLIP model on your domain-specific data
+                  for dramatically better similarity search and clustering results tailored to your use case.
+                </p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="text-center px-4">
+                  <div className="text-2xl font-bold font-mono text-[var(--system-indigo)]">+40%</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">Better accuracy</div>
+                </div>
+                <Link href="/demo" className="btn-secondary whitespace-nowrap">
+                  Learn more
+                </Link>
               </div>
             </div>
           </div>
