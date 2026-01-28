@@ -454,6 +454,12 @@ export default function Navigation() {
               Pricing
             </Link>
             <Link
+              href="/security"
+              className="px-4 py-2 text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors"
+            >
+              Security
+            </Link>
+            <Link
               href="/about-us"
               className="px-4 py-2 text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors"
             >
@@ -551,6 +557,13 @@ export default function Navigation() {
                 onClick={() => setMobileOpen(false)}
               >
                 Pricing
+              </Link>
+              <Link
+                href="/security"
+                className="block py-2 px-4 text-sm text-[var(--label)]"
+                onClick={() => setMobileOpen(false)}
+              >
+                Security
               </Link>
               <Link
                 href="/about-us"
