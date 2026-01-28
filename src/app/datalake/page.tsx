@@ -200,7 +200,7 @@ export default function DatalakePage() {
                 loop
                 playsInline
                 className="w-full h-auto rounded-xl"
-                src="/videos/data layer view.mov"
+                src="/videos/datalake.webm"
               />
 
               {/* Floating tag panel */}
@@ -697,34 +697,27 @@ export default function DatalakePage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6">
-            {/* UMAP Visualization */}
+            {/* Embeddings Viewer */}
             <div className="card p-0 overflow-hidden">
               <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <span className="text-xs text-[var(--tertiary-label)]">UMAP Projection</span>
+                <span className="text-xs text-[var(--tertiary-label)]">Embeddings Viewer</span>
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-pink)]/10 text-[var(--system-pink)]">
-                    DBSCAN
+                    UMAP
                   </span>
                   <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">
-                    n_neighbors=15
+                    DBSCAN
                   </span>
                 </div>
               </div>
-              <div className="h-[320px] p-4 bg-[var(--black)]">
-                <UMAPVisualization />
-              </div>
-              <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4 text-xs">
-                    <span className="text-[var(--tertiary-label)]">Clusters: <span className="text-[var(--label)] font-mono">4</span></span>
-                    <span className="text-[var(--tertiary-label)]">Outliers: <span className="text-[var(--system-red)] font-mono">12</span></span>
-                    <span className="text-[var(--tertiary-label)]">Selected: <span className="text-[var(--picsellia-green)] font-mono">55</span></span>
-                  </div>
-                  <button className="text-xs text-[var(--system-pink)] hover:underline">
-                    Export selection
-                  </button>
-                </div>
-              </div>
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto"
+                src="/videos/embeddings viewer.webm"
+              />
             </div>
 
             {/* Search Methods */}

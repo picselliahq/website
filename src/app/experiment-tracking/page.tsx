@@ -209,10 +209,17 @@ export default function ExperimentTrackingPage() {
               </div>
             </div>
 
-            {/* Right - Metrics Chart */}
+            {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              <div className="h-[350px] rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
-                <MetricsChart />
+              <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                  src="/videos/experiment tracking animation.webm"
+                />
               </div>
 
               {/* Floating experiment card */}

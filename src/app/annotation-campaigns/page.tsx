@@ -196,9 +196,18 @@ export default function AnnotationCampaignsPage() {
             </div>
           </div>
 
-          {/* Workflow visualization */}
+          {/* Video Demo */}
           <div className="max-w-4xl mx-auto">
-            <WorkflowVisualization />
+            <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-auto"
+                src="/videos/annotation campaign management.webm"
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -228,10 +228,17 @@ export default function ModelMonitoringPage() {
               </div>
             </div>
 
-            {/* Right - Live Metrics Chart */}
+            {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              <div className="h-[350px] rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
-                <LiveMetricsChart />
+              <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                  src="/videos/deployment monitoring .webm"
+                />
               </div>
 
               {/* Floating alert card */}

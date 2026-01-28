@@ -280,10 +280,17 @@ export default function LabelingToolPage() {
               </div>
             </div>
 
-            {/* Right - Interactive Canvas Demo */}
+            {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              <div className="h-[400px] rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
-                <AnnotationCanvas />
+              <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-auto"
+                  src="/videos/labeling tool animation.webm"
+                />
               </div>
 
               {/* Floating AI assist badge */}
