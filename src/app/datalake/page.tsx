@@ -200,7 +200,7 @@ export default function DatalakePage() {
                 loop
                 playsInline
                 className="w-full h-auto rounded-xl"
-                src="/videos/datalake.webm"
+                src="/videos/datalake.mov"
               />
 
               {/* Floating tag panel */}

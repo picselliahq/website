@@ -213,7 +213,7 @@ export default function DatasetManagementPage() {
           {/* Video Demo */}
           <div className="mb-16 relative">
             <div className="rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)]">
-              <video autoPlay muted loop playsInline className="w-full h-auto" src="/videos/data curation.webm" />
+              <video autoPlay muted loop playsInline className="w-full h-auto" src="/videos/dataset-management.mov" />
             </div>
 
             {/* Floating version card */}
