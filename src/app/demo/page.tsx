@@ -1,8 +1,93 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
+// Bot prevention: Mini annotation challenge with SVG illustrations
+const annotationChallenges = [
+  {
+    id: 1,
+    question: 'What class label fits this bounding box?',
+    visual: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Background */}
+        <rect width="100" height="100" fill="var(--secondary-system-background)" />
+        {/* Simple cat shape */}
+        <ellipse cx="50" cy="55" rx="25" ry="20" fill="var(--tertiary-label)" />
+        <ellipse cx="50" cy="35" rx="18" ry="15" fill="var(--tertiary-label)" />
+        <polygon points="35,25 40,40 30,40" fill="var(--tertiary-label)" />
+        <polygon points="65,25 60,40 70,40" fill="var(--tertiary-label)" />
+        <circle cx="44" cy="33" r="3" fill="var(--picsellia-green)" />
+        <circle cx="56" cy="33" r="3" fill="var(--picsellia-green)" />
+        {/* Bounding box */}
+        <rect x="20" y="18" width="60" height="60" fill="none" stroke="var(--picsellia-green)" strokeWidth="2" strokeDasharray="4" />
+      </svg>
+    ),
+    options: ['Dog', 'Cat', 'Bird', 'Rabbit'],
+    correct: 'Cat',
+  },
+  {
+    id: 2,
+    question: 'Select the correct annotation label',
+    visual: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Background */}
+        <rect width="100" height="100" fill="var(--secondary-system-background)" />
+        {/* Simple car shape */}
+        <rect x="15" y="50" width="70" height="25" rx="5" fill="var(--tertiary-label)" />
+        <rect x="25" y="35" width="45" height="20" rx="5" fill="var(--tertiary-label)" />
+        <circle cx="30" cy="75" r="8" fill="var(--secondary-label)" />
+        <circle cx="70" cy="75" r="8" fill="var(--secondary-label)" />
+        <circle cx="30" cy="75" r="4" fill="var(--tertiary-system-background)" />
+        <circle cx="70" cy="75" r="4" fill="var(--tertiary-system-background)" />
+        {/* Bounding box */}
+        <rect x="10" y="28" width="80" height="58" fill="none" stroke="var(--system-blue)" strokeWidth="2" strokeDasharray="4" />
+      </svg>
+    ),
+    options: ['Bicycle', 'Motorcycle', 'Car', 'Bus'],
+    correct: 'Car',
+  },
+  {
+    id: 3,
+    question: 'Which label would you assign?',
+    visual: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Background */}
+        <rect width="100" height="100" fill="var(--secondary-system-background)" />
+        {/* Simple apple shape */}
+        <ellipse cx="50" cy="55" rx="25" ry="28" fill="#e74c3c" />
+        <ellipse cx="42" cy="50" rx="8" ry="12" fill="#c0392b" opacity="0.5" />
+        <path d="M50 27 Q55 20 60 25" stroke="#27ae60" strokeWidth="3" fill="none" />
+        <ellipse cx="58" cy="22" rx="8" ry="5" fill="#27ae60" />
+        {/* Bounding box */}
+        <rect x="20" y="15" width="60" height="70" fill="none" stroke="var(--system-orange)" strokeWidth="2" strokeDasharray="4" />
+      </svg>
+    ),
+    options: ['Orange', 'Apple', 'Tomato', 'Peach'],
+    correct: 'Apple',
+  },
+  {
+    id: 4,
+    question: 'Identify the object class',
+    visual: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        {/* Background */}
+        <rect width="100" height="100" fill="var(--secondary-system-background)" />
+        {/* Simple house shape */}
+        <rect x="25" y="45" width="50" height="40" fill="var(--tertiary-label)" />
+        <polygon points="50,20 20,50 80,50" fill="var(--secondary-label)" />
+        <rect x="42" y="60" width="16" height="25" fill="var(--secondary-system-background)" />
+        <rect x="30" y="55" width="10" height="10" fill="var(--system-blue)" opacity="0.5" />
+        <rect x="60" y="55" width="10" height="10" fill="var(--system-blue)" opacity="0.5" />
+        {/* Bounding box */}
+        <rect x="15" y="15" width="70" height="75" fill="none" stroke="var(--system-indigo)" strokeWidth="2" strokeDasharray="4" />
+      </svg>
+    ),
+    options: ['Tree', 'Car', 'House', 'Building'],
+    correct: 'House',
+  },
+];
 
 // Industry options
 const industries = [
@@ -87,12 +172,38 @@ export default function DemoPage() {
     message: '',
   });
 
+  // Bot prevention state
+  const [challenge, setChallenge] = useState(annotationChallenges[0]);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [challengeError, setChallengeError] = useState(false);
+  const [challengePassed, setChallengePassed] = useState(false);
+
+  // Randomize challenge on mount
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * annotationChallenges.length);
+    setChallenge(annotationChallenges[randomIndex]);
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate challenge answer
+    if (selectedAnswer !== challenge.correct) {
+      setChallengeError(true);
+      setChallengePassed(false);
+      // Randomize to a new challenge on failure
+      const newIndex = Math.floor(Math.random() * annotationChallenges.length);
+      setChallenge(annotationChallenges[newIndex]);
+      setSelectedAnswer(null);
+      return;
+    }
+
+    setChallengeError(false);
+    setChallengePassed(true);
     setIsSubmitting(true);
 
     // HubSpot Form API submission
@@ -380,6 +491,50 @@ export default function DemoPage() {
                       className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors resize-none"
                       placeholder="Tell us about your project, timeline, or any specific requirements..."
                     />
+                  </div>
+
+                  {/* Bot Prevention: Annotation Challenge */}
+                  <div className={`p-4 rounded-lg border ${challengeError ? 'border-[var(--system-red)] bg-[var(--system-red)]/5' : challengePassed ? 'border-[var(--picsellia-green)] bg-[var(--picsellia-green)]/5' : 'border-[var(--border)] bg-[var(--tertiary-system-background)]'}`}>
+                    <div className="flex items-center gap-2 mb-3">
+                      <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      <span className="text-xs font-medium text-[var(--secondary-label)]">Quick annotation check</span>
+                    </div>
+
+                    <div className="flex gap-4">
+                      {/* Visual */}
+                      <div className="w-24 h-24 rounded-lg border border-[var(--border)] overflow-hidden flex-shrink-0">
+                        {challenge.visual}
+                      </div>
+
+                      {/* Options */}
+                      <div className="flex-1">
+                        <p className="text-xs text-[var(--secondary-label)] mb-2">{challenge.question}</p>
+                        <div className="grid grid-cols-2 gap-2">
+                          {challenge.options.map((option) => (
+                            <button
+                              key={option}
+                              type="button"
+                              onClick={() => {
+                                setSelectedAnswer(option);
+                                setChallengeError(false);
+                              }}
+                              className={`px-3 py-2 rounded text-xs font-medium transition-all ${
+                                selectedAnswer === option
+                                  ? 'bg-[var(--picsellia-green)] text-white'
+                                  : 'bg-[var(--secondary-system-background)] text-[var(--label)] hover:bg-[var(--tertiary-system-background)] border border-[var(--border)]'
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                        {challengeError && (
+                          <p className="text-xs text-[var(--system-red)] mt-2">Incorrect answer. Please try again.</p>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Submit */}
