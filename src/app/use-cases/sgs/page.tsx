@@ -67,22 +67,18 @@ const sgsData: CaseStudyData = {
     {
       title: 'Fragmented Toolchain',
       description: 'The team was juggling multiple disconnected tools for data management, annotation, training, and deployment. Context switching between tools wasted valuable engineering time.',
-      icon: 'fragmented',
     },
     {
       title: 'No Version Control for Data',
       description: 'Without proper dataset versioning, it was impossible to track which data was used for which model. Reproducing experiments or rolling back was a manual nightmare.',
-      icon: 'versioning',
     },
     {
       title: 'Collaboration Bottlenecks',
       description: 'With 4 engineers managing 10+ concurrent projects, there was no centralized way to share datasets, models, or experiment results. Knowledge was siloed.',
-      icon: 'collaboration',
     },
     {
       title: 'Slow Iteration Cycles',
       description: 'Each model iteration took approximately 3 days from data preparation to evaluation. This slow feedback loop significantly delayed project delivery.',
-      icon: 'slow',
     },
   ],
 

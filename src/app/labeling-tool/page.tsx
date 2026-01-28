@@ -76,7 +76,10 @@ const shortcuts = [
 const AnnotationCanvas = () => {
   const [activeShape, setActiveShape] = useState<number | null>(1);
 
-  const shapes = [
+  const shapes: Array<
+    | { id: number; type: 'box'; x: number; y: number; w: number; h: number; label: string; color: string }
+    | { id: number; type: 'polygon'; points: string; label: string; color: string }
+  > = [
     { id: 0, type: 'box', x: 15, y: 20, w: 25, h: 30, label: 'person', color: 'var(--system-blue)' },
     { id: 1, type: 'box', x: 55, y: 35, w: 20, h: 25, label: 'car', color: 'var(--system-orange)' },
     { id: 2, type: 'polygon', points: '82,15 95,15 95,40 88,45 82,40', label: 'sign', color: 'var(--picsellia-green)' },
