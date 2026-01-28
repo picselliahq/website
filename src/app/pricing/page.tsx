@@ -14,6 +14,8 @@ const platformModules = [
     extraUserMonthly: 500,
     extraUserAnnual: 6000,
     color: 'var(--system-blue)',
+    includedUsers: 3,
+    standalone: true,
     features: [
       'Unlimited data storage',
       'Dataset versioning',
@@ -32,6 +34,8 @@ const platformModules = [
     extraUserMonthly: 75,
     extraUserAnnual: 900,
     color: 'var(--picsellia-green)',
+    includedUsers: 3,
+    requiresDataEngine: true,
     popular: true,
     features: [
       'Experiment tracking',
@@ -51,6 +55,8 @@ const platformModules = [
     extraUserMonthly: 150,
     extraUserAnnual: 1800,
     color: 'var(--system-orange)',
+    includedUsers: 3,
+    requiresDataEngine: true,
     features: [
       'Real-time monitoring',
       'Anomaly detection',
@@ -94,7 +100,7 @@ const faqs = [
   },
   {
     question: 'Can I use modules independently?',
-    answer: 'Yes, you can subscribe to any combination of modules. However, the Reliability Engine requires VisionAI Factory for full functionality.',
+    answer: 'The Data Engine can be used standalone. VisionAI Factory and Reliability Engine both require the Data Engine as a foundation. Each module includes 3 user seats.',
   },
   {
     question: 'How does volume pricing work?',
@@ -182,8 +188,8 @@ export default function PricingPage() {
               Choose your modules
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Subscribe to the modules you need. Each module includes a base number of users
-              with the option to add more.
+              Start with Data Engine, then add VisionAI Factory and Reliability Engine as needed.
+              Each module includes 3 user seats with the option to add more.
             </p>
           </div>
 
@@ -250,13 +256,25 @@ export default function PricingPage() {
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-[var(--border)]">
+                  <div className="pt-4 border-t border-[var(--border)] space-y-2">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="text-[var(--tertiary-label)]">Included users</span>
+                      <span className="font-mono text-[var(--label)]">{module.includedUsers} seats</span>
+                    </div>
                     <div className="flex items-center justify-between text-xs text-[var(--tertiary-label)]">
                       <span>Extra user</span>
                       <span className="font-mono">
                         €{billingCycle === 'monthly' ? module.extraUserMonthly : Math.round(module.extraUserAnnual / 12)}/mo
                       </span>
                     </div>
+                    {module.requiresDataEngine && (
+                      <div className="flex items-center gap-1.5 text-xs text-[var(--system-blue)] mt-2">
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>Requires Data Engine</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
