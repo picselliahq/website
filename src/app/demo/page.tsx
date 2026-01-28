@@ -95,11 +95,53 @@ export default function DemoPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    // HubSpot Form API submission
+    const HUBSPOT_PORTAL_ID = 'YOUR_PORTAL_ID'; // Replace with your HubSpot Portal ID
+    const HUBSPOT_FORM_GUID = 'YOUR_FORM_GUID'; // Replace with your HubSpot Form GUID
 
-    // Redirect to thank you page
-    router.push('/thank-you-demo');
+    const hubspotData = {
+      fields: [
+        { name: 'firstname', value: formData.firstName },
+        { name: 'lastname', value: formData.lastName },
+        { name: 'email', value: formData.email },
+        { name: 'company', value: formData.company },
+        { name: 'jobtitle', value: formData.jobTitle },
+        { name: 'phone', value: formData.phone },
+        { name: 'industry', value: formData.industry },
+        { name: 'company_size', value: formData.companySize },
+        { name: 'use_case', value: formData.useCase },
+        { name: 'message', value: formData.message },
+      ],
+      context: {
+        pageUri: typeof window !== 'undefined' ? window.location.href : '',
+        pageName: 'Book a Demo',
+      },
+    };
+
+    try {
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(hubspotData),
+        }
+      );
+
+      if (response.ok) {
+        router.push('/thank-you-demo');
+      } else {
+        console.error('HubSpot submission failed:', await response.text());
+        // Still redirect on error for now - you may want to show an error message instead
+        router.push('/thank-you-demo');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Still redirect on error for now - you may want to show an error message instead
+      router.push('/thank-you-demo');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
