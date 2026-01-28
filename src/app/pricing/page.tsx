@@ -16,6 +16,7 @@ const platformModules = [
     color: 'var(--system-blue)',
     includedUsers: 3,
     standalone: true,
+    popular: true,
     features: [
       'Unlimited data storage',
       'Dataset versioning',
@@ -36,7 +37,6 @@ const platformModules = [
     color: 'var(--picsellia-green)',
     includedUsers: 3,
     requiresDataEngine: true,
-    popular: true,
     features: [
       'Experiment tracking',
       'Model registry',
