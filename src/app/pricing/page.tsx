@@ -157,20 +157,13 @@ export default function PricingPage() {
               </button>
               <button
                 onClick={() => setBillingCycle('annual')}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all flex items-center gap-2 ${
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
                   billingCycle === 'annual'
                     ? 'bg-[var(--picsellia-green)] text-white'
                     : 'text-[var(--secondary-label)] hover:text-[var(--label)]'
                 }`}
               >
                 Annual
-                <span className={`text-xs px-2 py-0.5 rounded-full ${
-                  billingCycle === 'annual'
-                    ? 'bg-white/20 text-white'
-                    : 'bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]'
-                }`}>
-                  Save 2 months
-                </span>
               </button>
             </div>
           </div>
