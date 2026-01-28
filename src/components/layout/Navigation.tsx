@@ -245,15 +245,15 @@ export default function Navigation() {
         scrolled ? 'bg-[var(--system-grouped-background)]/95 backdrop-blur-xl border-b border-[var(--border)]' : ''
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <nav className="flex items-center justify-between h-16">
+      <div className="max-w-[1600px] mx-auto px-12">
+        <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img src="/images/Full_logo_white.svg" alt="Picsellia" className="h-7" />
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-4">
             {/* Platform Dropdown */}
             <div
               className="relative"
@@ -268,12 +268,12 @@ export default function Navigation() {
               </button>
 
               {openDropdown === 'platform' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4">
-                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[720px]">
+                <div className="absolute top-full left-0 pt-4">
+                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[900px]">
                     {/* Groups grid */}
                     <div className="grid grid-cols-4 divide-x divide-[var(--border)]">
                       {productMenu.groups.map((group) => (
-                        <div key={group.title} className="p-4">
+                        <div key={group.title} className="p-6">
                           {/* Group header */}
                           <div className="mb-4">
                             <div className="flex items-center gap-2 mb-1">
@@ -306,7 +306,7 @@ export default function Navigation() {
                       ))}
                     </div>
                     {/* Footer */}
-                    <div className="px-5 py-3 bg-[var(--tertiary-system-background)] border-t border-[var(--border)]">
+                    <div className="px-6 py-4 bg-[var(--tertiary-system-background)] border-t border-[var(--border)]">
                       <Link
                         href={productMenu.footer.href}
                         className="flex items-center justify-between group"
@@ -341,11 +341,11 @@ export default function Navigation() {
               </button>
 
               {openDropdown === 'solutions' && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4">
-                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[520px]">
+                <div className="absolute top-full left-0 pt-4">
+                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[640px]">
                     <div className="grid grid-cols-2 divide-x divide-[var(--border)]">
                       {/* Industries */}
-                      <div className="p-4">
+                      <div className="p-6">
                         <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3">By Industry</div>
                         <div className="space-y-1">
                           {solutionsMenu.industries.map((item) => (
@@ -368,8 +368,8 @@ export default function Navigation() {
                         </div>
                       </div>
                       {/* Use Cases */}
-                      <div className="p-4">
-                        <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3">Use Cases</div>
+                      <div className="p-6">
+                        <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-4">Use Cases</div>
                         <div className="space-y-1">
                           {solutionsMenu.useCases.map((item) => (
                             <Link
@@ -414,8 +414,8 @@ export default function Navigation() {
 
               {openDropdown === 'resources' && (
                 <div className="absolute top-full right-0 pt-4">
-                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[280px]">
-                    <div className="p-3">
+                  <div className="bg-[var(--secondary-system-background)] border border-[var(--border)] rounded-2xl shadow-2xl overflow-hidden w-[320px]">
+                    <div className="p-5">
                       {resourcesMenu.map((item) => (
                         <Link
                           key={item.label}
