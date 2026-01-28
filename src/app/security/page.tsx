@@ -321,12 +321,26 @@ export default function SecurityPage() {
 
               <div className="space-y-4">
                 {[
-                  { label: 'Cloud Storage', desc: 'AWS S3, Google Cloud Storage, Azure Blob', icon: '🪣' },
-                  { label: 'GPU Compute', desc: 'Your AWS, GCP, or Azure GPU instances', icon: '⚡' },
-                  { label: 'Docker Registry', desc: 'ECR, GCR, ACR, or private registries', icon: '📦' },
+                  { label: 'Cloud Storage', desc: 'AWS S3, Google Cloud Storage, Azure Blob', icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                    </svg>
+                  )},
+                  { label: 'GPU Compute', desc: 'Your AWS, GCP, or Azure GPU instances', icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                    </svg>
+                  )},
+                  { label: 'Docker Registry', desc: 'ECR, GCR, ACR, or private registries', icon: (
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                    </svg>
+                  )},
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4 p-4 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)]">
-                    <span className="text-2xl">{item.icon}</span>
+                    <div className="w-10 h-10 rounded-lg bg-[var(--system-blue)]/10 flex items-center justify-center text-[var(--system-blue)] flex-shrink-0">
+                      {item.icon}
+                    </div>
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--label)]">{item.label}</h4>
                       <p className="text-xs text-[var(--tertiary-label)]">{item.desc}</p>
