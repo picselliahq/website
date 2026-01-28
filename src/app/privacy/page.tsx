@@ -171,7 +171,7 @@ To exercise these rights, contact us at privacy@picsellia.com. We will respond w
 - **Infrastructure:** ISO 27001 certified data centers in the EU
 - **Monitoring:** 24/7 security monitoring and intrusion detection
 - **Audits:** Regular security assessments and penetration testing
-- **Certifications:** SOC 2 Type II compliant, ISO/IEC 27001:2022 certified
+- **Certifications:** ISO/IEC 27001:2022 certified
 
 For more details, see our [Security page](/security).`,
   },

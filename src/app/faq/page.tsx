@@ -97,7 +97,7 @@ const faqCategories = [
     questions: [
       {
         q: 'What security certifications does Picsellia hold?',
-        a: 'Picsellia is SOC 2 Type II certified with annual audits. We are fully GDPR compliant with EU data processing agreements available. All data is encrypted with AES-256 at rest and TLS 1.3 in transit. We support enterprise SSO/SAML integration for identity management.',
+        a: 'Picsellia is ISO 27001:2022 certified with annual audits. We are fully GDPR compliant with EU data processing agreements available. All data is encrypted with AES-256 at rest and TLS 1.3 in transit. We support enterprise SSO/SAML integration for identity management.',
       },
       {
         q: 'What deployment options are available?',

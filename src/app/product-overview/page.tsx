@@ -88,7 +88,7 @@ const outcomes = [
 
 // Enterprise features
 const enterpriseFeatures = [
-  { title: 'ISO 27001 Certified', description: 'Bank-grade security with SOC 2 compliance' },
+  { title: 'ISO 27001:2022', description: 'Certified information security management' },
   { title: 'Deploy Anywhere', description: 'Cloud, on-premise, or hybrid deployment' },
   { title: 'Role-Based Access', description: 'SSO/SAML with fine-grained permissions' },
   { title: '99.9% Uptime SLA', description: 'Enterprise SLAs with 24/7 support' },
@@ -434,7 +434,7 @@ export default function ProductOverviewPage() {
                   <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>SOC2 & ISO 27001</span>
+                  <span>ISO 27001:2022 Certified</span>
                 </div>
               </div>
             </div>

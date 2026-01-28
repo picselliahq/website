@@ -559,8 +559,8 @@ export default function PricingPage() {
                       </svg>
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-[var(--label)]">SOC 2 Type II</div>
-                      <div className="text-xs text-[var(--tertiary-label)]">Enterprise security compliance</div>
+                      <div className="text-sm font-semibold text-[var(--label)]">ISO 27001:2022</div>
+                      <div className="text-xs text-[var(--tertiary-label)]">Information security certified</div>
                     </div>
                   </div>
                 </div>

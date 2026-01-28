@@ -66,18 +66,16 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Video Demo */}
+        {/* Hero Image */}
         <div className="mb-16">
-          <div className="relative rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)]">
-            <video
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-auto"
-              src="/videos/data layer view.mov"
-            />
-          </div>
+          <Image
+            src="/images/hero homepage.png"
+            alt="Picsellia platform - Complete MLOps for computer vision"
+            width={1920}
+            height={1080}
+            className="w-full h-auto"
+            priority
+          />
         </div>
 
         {/* Stats */}

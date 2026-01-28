@@ -152,7 +152,7 @@ export default function CTA() {
                 <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>SOC2 & ISO 27001</span>
+                <span>ISO 27001:2022 Certified</span>
               </div>
             </div>
           </div>
