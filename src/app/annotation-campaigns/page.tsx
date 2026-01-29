@@ -178,7 +178,7 @@ export default function AnnotationCampaignsPage() {
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
               Orchestrate annotation workflows with multi-step pipelines, team management,
-              and quality control. Scale your labeling operations without sacrificing quality.
+              and quality control. Add annotators, set sample rates, and track progress.
             </p>
 
             {/* CTAs */}
@@ -557,7 +557,7 @@ export default function AnnotationCampaignsPage() {
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
               Track time spent, monitor productivity, and identify bottlenecks.
-              Make data-driven decisions to optimize your annotation operations.
+              See where work slows down and fix it.
             </p>
           </div>
 
@@ -625,8 +625,8 @@ export default function AnnotationCampaignsPage() {
                 Ready to scale your annotation?
               </h2>
               <p className="text-[var(--secondary-label)] max-w-lg mx-auto mb-10 text-lg">
-                Start orchestrating annotation campaigns with enterprise-grade
-                workflow management and quality control.
+                Set up multi-step annotation workflows with built-in
+                review and quality control. Free trial, no credit card.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/trial" className="btn-primary px-10 py-4 text-base">

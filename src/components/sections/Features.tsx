@@ -5,7 +5,7 @@ const capabilities = [
   {
     category: 'Data',
     tagline: 'Organize & prepare',
-    description: 'Centralize all your visual data with built-in versioning, smart labeling, and automated pipelines.',
+    description: 'Store images and videos in one place. Version your datasets, label them, and pipe them into training.',
     color: 'var(--picsellia-green)',
     href: '/datalake',
     icon: '/images/community/icons/datalake.svg',
@@ -19,7 +19,7 @@ const capabilities = [
   {
     category: 'Train',
     tagline: 'Build & experiment',
-    description: 'Train models with full experiment tracking, AutoML optimization, and seamless framework integration.',
+    description: 'Run experiments, compare results, and iterate. Works with PyTorch, TensorFlow, and Ultralytics out of the box.',
     color: 'var(--picsellia-blue)',
     href: '/ai-laboratory',
     icon: '/images/community/icons/experiment-tracking.svg',
@@ -33,7 +33,7 @@ const capabilities = [
   {
     category: 'Deploy',
     tagline: 'Ship & scale',
-    description: 'Deploy models anywhere with one click. Auto-scaling infrastructure from cloud to edge devices.',
+    description: 'Push models to cloud endpoints or edge devices. Traffic spikes are handled automatically.',
     color: 'var(--system-orange)',
     href: '/model-deployment',
     icon: '/images/community/icons/serverless-deployment.svg',
@@ -47,15 +47,15 @@ const capabilities = [
   {
     category: 'Monitor',
     tagline: 'Observe & improve',
-    description: 'Track performance in production with real-time metrics, drift detection, and automated retraining.',
+    description: 'Watch how your models perform in production. Get alerts when accuracy drops, retrain when needed.',
     color: 'var(--system-indigo)',
     href: '/model-monitoring',
     icon: '/images/community/icons/model-monitoring.svg',
     items: [
       { name: 'Performance Metrics', description: 'Real-time tracking' },
       { name: 'Drift Detection', description: 'Catch issues early' },
-      { name: 'Alerting', description: 'Smart notifications' },
-      { name: 'Auto-Retraining', description: 'Continuous improvement' },
+      { name: 'Alerting', description: 'Get notified' },
+      { name: 'Auto-Retraining', description: 'Close the loop' },
     ],
   },
 ];
@@ -71,10 +71,10 @@ export default function Features() {
               Platform
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Built for the complete ML lifecycle
+              One platform, four stages
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Every tool you need to go from raw data to production-ready models, all in one unified platform.
+              Data goes in, predictions come out. Here is what happens in between.
             </p>
           </div>
           <Link href="/product-overview" className="btn-secondary">

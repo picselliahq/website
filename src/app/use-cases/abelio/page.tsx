@@ -11,7 +11,7 @@ const abelioData: CaseStudyData = {
     name: 'Abelio',
     logo: '/images/customers/abelio.png',
     industry: 'Agriculture',
-    description: 'Abelio is a digital farming solutions provider that leverages computer vision to process aerial imagery from drones and satellites. They deliver actionable insights helping farmers optimize yields, reduce costs, and minimize environmental impact across large-scale agricultural operations.',
+    description: 'Abelio is a digital farming solutions provider that uses computer vision to process aerial imagery from drones and satellites. They deliver insights that help farmers optimize yields, reduce costs, and minimize environmental impact across large-scale agricultural operations.',
     website: 'https://www.abelio.com',
   },
 
@@ -148,7 +148,7 @@ const abelioData: CaseStudyData = {
   ],
 
   quote: {
-    text: "With Picsellia, we can now deliver insights to farmers within 48 hours of image acquisition. The platform handles our seasonal data spikes seamlessly while maintaining full traceability.",
+    text: "With Picsellia, we can now deliver insights to farmers within 48 hours of image acquisition. The platform handles our seasonal data spikes without issues while maintaining full traceability.",
     author: 'Abelio Team',
     role: 'Data Science',
     company: 'Abelio',

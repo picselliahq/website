@@ -278,7 +278,7 @@ export default function AILaboratoryPage() {
                 Pre-built Pipelines
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-                State-of-the-art models, ready to train
+                Production-grade models, ready to train
               </h2>
               <p className="text-[var(--secondary-label)] mb-8">
                 Start training in minutes with our pre-built pipelines. Ultralytics for YOLO,
@@ -542,7 +542,7 @@ export default function AILaboratoryPage() {
               Connected to your entire workflow
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              AI Lab integrates seamlessly with datasets, experiment tracking, and model deployment.
+              AI Lab connects directly to datasets, experiment tracking, and model deployment.
               Full lineage from data to production.
             </p>
           </div>

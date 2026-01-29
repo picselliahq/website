@@ -255,7 +255,7 @@ export default function DatasetManagementPage() {
           {/* Logos */}
           <div className="text-center">
             <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
-              Trusted by ML teams worldwide
+              Used by teams at
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
               {customerLogos.map((logo) => (
@@ -351,7 +351,7 @@ export default function DatasetManagementPage() {
                 Everything you need to manage datasets
               </h2>
               <p className="text-[var(--secondary-label)] max-w-xl">
-                From raw data to production-ready datasets, all the tools your team needs in one place.
+                Version, organize, and share your datasets. Everything connects to your experiments.
               </p>
             </div>
           </div>
@@ -670,7 +670,7 @@ export default function DatasetManagementPage() {
               Fits into your existing workflow
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Datasets connect seamlessly to annotations, experiments, and deployments. No more manual handoffs.
+              Datasets connect directly to annotations, experiments, and deployments. No manual handoffs.
             </p>
           </div>
 
@@ -766,7 +766,7 @@ export default function DatasetManagementPage() {
                 Ready to version your datasets?
               </h2>
               <p className="text-[var(--secondary-label)] max-w-xl mx-auto mb-10 text-lg">
-                Join teams who've eliminated data chaos and achieved 100% experiment reproducibility.
+                Free trial, no credit card. Start versioning your datasets today.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

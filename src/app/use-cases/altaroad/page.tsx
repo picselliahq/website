@@ -32,7 +32,7 @@ const altaroadData: CaseStudyData = {
     {
       value: '150K+',
       label: 'Data Points',
-      description: 'Managed seamlessly',
+      description: 'Managed on-platform',
     },
   ],
 

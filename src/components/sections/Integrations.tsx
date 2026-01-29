@@ -28,7 +28,7 @@ const categories = [
   },
   {
     name: 'Infrastructure',
-    description: 'Scale seamlessly',
+    description: 'Run anywhere',
     color: 'var(--picsellia-green)',
     integrations: [
       { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
@@ -39,7 +39,7 @@ const categories = [
   },
   {
     name: 'Ecosystem',
-    description: 'Connect everything',
+    description: 'Extend your workflow',
     color: 'var(--system-indigo)',
     integrations: [
       { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
@@ -108,7 +108,7 @@ export default function Integrations() {
               Works with your stack
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Seamlessly integrate with the tools and platforms you already use. No vendor lock-in, full flexibility.
+              Plug into the tools you already use. Nothing proprietary, no lock-in.
             </p>
           </div>
           <div className="flex items-center gap-6">

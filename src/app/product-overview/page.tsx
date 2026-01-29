@@ -93,7 +93,7 @@ const enterpriseFeatures = [
   { title: 'Role-Based Access', description: 'SSO/SAML with fine-grained permissions' },
   { title: '99.9% Uptime SLA', description: 'Enterprise SLAs with 24/7 support' },
   { title: 'API-First', description: 'Full REST API and Python SDK' },
-  { title: 'Infinite Scale', description: 'Handle millions of images seamlessly' },
+  { title: 'Infinite Scale', description: 'Handle millions of images without breaking' },
 ];
 
 export default function ProductOverviewPage() {
@@ -154,7 +154,7 @@ export default function ProductOverviewPage() {
           {/* Logos */}
           <div className="text-center">
             <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
-              Trusted by ML teams at leading companies
+              Used by teams at
             </p>
             <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
               {customerLogos.map((logo) => (
@@ -183,7 +183,7 @@ export default function ProductOverviewPage() {
                 One platform. Zero friction.
               </h2>
               <p className="text-[var(--secondary-label)] max-w-xl">
-                Picsellia replaces your fragmented toolchain with a unified platform designed specifically for computer vision.
+                One platform instead of five tools duct-taped together. Built for computer vision from day one.
               </p>
             </div>
           </div>
@@ -402,7 +402,7 @@ export default function ProductOverviewPage() {
                 Ready to ship Vision AI faster?
               </h2>
               <p className="text-[var(--secondary-label)] max-w-xl mx-auto mb-10 text-lg">
-                Join 50+ companies who've unified their ML workflow and accelerated time-to-production by 80%.
+                Free trial, no credit card. See how it works on your own data.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

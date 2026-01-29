@@ -5,7 +5,7 @@ const useCases = [
   {
     title: 'Defect Detection',
     industry: 'Manufacturing',
-    description: 'Automated visual inspection for quality control. Detect surface defects, assembly errors, and anomalies in real-time on production lines.',
+    description: 'Spot surface defects and assembly errors on the production line. Cameras check every part, every time.',
     href: '/use-cases/defects-detection',
     stat: '99.5%',
     statLabel: 'Detection accuracy',
@@ -15,7 +15,7 @@ const useCases = [
   {
     title: 'Crop Monitoring',
     industry: 'Agriculture',
-    description: 'AI-powered crop health analysis using drone and satellite imagery. Monitor growth, detect diseases, and optimize yields.',
+    description: 'Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.',
     href: '/industry/agriculture',
     stat: '30%',
     statLabel: 'Yield increase',
@@ -24,7 +24,7 @@ const useCases = [
   {
     title: 'Infrastructure Inspection',
     industry: 'Energy',
-    description: 'Remote visual inspection using drone and satellite imagery. Monitor pipelines, power lines, and solar farms automatically.',
+    description: 'Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.',
     href: '/industry/energy',
     stat: '80%',
     statLabel: 'Cost reduction',
@@ -33,7 +33,7 @@ const useCases = [
   {
     title: 'Assembly Verification',
     industry: 'Manufacturing',
-    description: 'Real-time verification of assembly processes. Ensure components are correctly positioned and assembled on production lines.',
+    description: 'Check that every component is in the right place, in real time, on the line.',
     href: '/industry/manufacturing',
     stat: '60fps',
     statLabel: 'Real-time tracking',
@@ -42,7 +42,7 @@ const useCases = [
   {
     title: 'Waste Sorting',
     industry: 'Sustainability',
-    description: 'AI-powered waste classification for recycling facilities. Identify materials on conveyor belts for automated sorting.',
+    description: 'Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.',
     href: '/industry/waste-management',
     stat: '95%',
     statLabel: 'Sorting accuracy',
@@ -64,10 +64,10 @@ export default function UseCases() {
               Use Cases
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Proven across industries
+              What people build with it
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              See how leading companies use Picsellia to solve real-world computer vision challenges.
+              Manufacturing, agriculture, energy, logistics. Different industries, same workflow.
             </p>
           </div>
           <Link href="/use-cases" className="btn-secondary">

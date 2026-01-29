@@ -300,7 +300,7 @@ export default function DemoPage() {
 
               {/* Trusted by */}
               <div className="pt-8 border-t border-[var(--border)]">
-                <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">Trusted by industry leaders</p>
+                <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">Used by teams at</p>
                 <div className="flex flex-wrap items-center gap-6">
                   {trustedBy.map((company) => (
                     <span key={company} className="text-sm font-medium text-[var(--secondary-label)]">{company}</span>

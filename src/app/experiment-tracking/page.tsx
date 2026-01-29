@@ -266,7 +266,7 @@ export default function ExperimentTrackingPage() {
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
               Capture metrics, parameters, artifacts, and evaluations with a simple API.
-              Full lineage tracking with zero integration effort.
+              Full lineage tracking with minimal integration code.
             </p>
           </div>
 

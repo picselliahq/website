@@ -208,7 +208,7 @@ export default function EnergyPage() {
           {/* Customer proof */}
           <div className="text-center">
             <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-6">
-              Trusted by energy leaders
+              Used by teams at
             </p>
             <div className="flex justify-center items-center gap-12">
               <div className="relative h-10 w-28 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300">

@@ -49,8 +49,8 @@ export default function Hero() {
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-[var(--secondary-label)] text-center max-w-2xl mx-auto mb-10">
-          Build, deploy, and monitor vision AI applications at scale.
-          From data management to production monitoring, all in one platform.
+          The MLOps platform for computer vision. Manage your data, train models,
+          deploy them, and keep them running.
         </p>
 
         {/* CTAs */}
@@ -96,7 +96,7 @@ export default function Hero() {
         {/* Logos */}
         <div className="text-center">
           <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
-            Trusted by industry leaders
+            Used by teams at
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
             {customerLogos.map((logo) => (

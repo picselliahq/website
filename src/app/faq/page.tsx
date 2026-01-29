@@ -12,7 +12,7 @@ const faqCategories = [
     questions: [
       {
         q: 'What is Picsellia?',
-        a: 'Picsellia is a comprehensive MLOps platform purpose-built for computer vision. It unifies the entire lifecycle—from raw image management and annotation to model training, deployment, and monitoring—in one collaborative workspace. Data scientists, ML engineers, and operations teams work together seamlessly, shipping vision AI 10x faster than with fragmented toolchains.',
+        a: 'Picsellia is an MLOps platform built for computer vision. It covers the full lifecycle: image management, annotation, model training, deployment, and monitoring, all in one workspace. Data scientists, ML engineers, and operations teams work together on the same platform instead of juggling separate tools.',
       },
       {
         q: 'Who uses Picsellia?',
@@ -82,7 +82,7 @@ const faqCategories = [
       },
       {
         q: 'Is there volume pricing for large deployments?',
-        a: 'Yes. Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you automatically unlock better rates—up to 60% off for DPU and 50% off for MU. Enterprise customers can also negotiate custom committed-use pricing.',
+        a: 'Yes. Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you get better rates automatically: up to 60% off for DPU and 50% off for MU. Enterprise customers can also negotiate custom committed-use pricing.',
       },
       {
         q: 'What about GPU compute costs?',

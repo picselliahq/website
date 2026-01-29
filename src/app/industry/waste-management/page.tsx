@@ -444,7 +444,7 @@ export default function WasteManagementPage() {
               Tools for continuous improvement
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Every feature in Picsellia is designed for iteration. Collect new samples, retrain fast, deploy seamlessly.
+              Every feature in Picsellia is designed for iteration. Collect new samples, retrain fast, and push to production.
             </p>
           </div>
 

@@ -115,8 +115,8 @@ export default function CTA() {
               Start detecting in minutes
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl mx-auto mb-10 text-lg">
-              From raw images to production inference. Build, train, and deploy
-              computer vision models with enterprise-grade infrastructure.
+              Go from raw images to a model running in production.
+              Free trial, no credit card, cancel anytime.
             </p>
 
             {/* CTA Buttons */}

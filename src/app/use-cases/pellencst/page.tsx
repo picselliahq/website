@@ -148,7 +148,7 @@ const pellencstData: CaseStudyData = {
   ],
 
   quote: {
-    text: "Using Picsellia has revolutionized how we develop, monitor, and deploy our models, making complex CV applications more reliable and quicker to market.",
+    text: "Using Picsellia has changed how we develop, monitor, and deploy our models. Complex CV applications are more reliable and reach production faster.",
     author: 'Kévin Alazet',
     role: 'Product Owner AI',
     company: 'PellencST',

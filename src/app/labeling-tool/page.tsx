@@ -489,8 +489,8 @@ export default function LabelingToolPage() {
               10x your labeling with AI
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Leverage state-of-the-art models for intelligent pre-labeling and run
-              automated processings to accelerate your annotation pipeline.
+              Use SAM, DINOv2, and Grounding DINO for pre-labeling. Run automated
+              processings to speed up annotation.
             </p>
           </div>
 
@@ -763,8 +763,8 @@ export default function LabelingToolPage() {
                 Ready to accelerate labeling?
               </h2>
               <p className="text-[var(--secondary-label)] max-w-lg mx-auto mb-10 text-lg">
-                Start annotating with AI-assisted tools and enterprise-grade
-                quality control.
+                Start annotating with AI-assisted tools and built-in
+                review workflows. Free trial, no credit card.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/trial" className="btn-primary px-10 py-4 text-base">

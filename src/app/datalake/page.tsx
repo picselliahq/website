@@ -148,7 +148,7 @@ export default function DatalakePage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight max-w-4xl mx-auto">
-              Your Visual Data <span className="text-[var(--system-blue)]">Command Center</span>
+              All Your Images. <span className="text-[var(--system-blue)]">One Place.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
@@ -243,11 +243,11 @@ export default function DatalakePage() {
               Architecture
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Built for scale and flexibility
+              How it works under the hood
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              A unified data layer that connects to any storage, handles any format,
-              and scales to billions of assets.
+              Connects to S3, GCP, or Azure. Ingests any image or video format.
+              Indexes everything so you can query it later.
             </p>
           </div>
 
@@ -665,11 +665,11 @@ export default function DatalakePage() {
               Visual Search
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              AI-Powered Data Exploration
+              Find similar images instantly
             </h2>
             <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-              Leverage OpenCLIP embeddings and vector search to discover patterns,
-              find similar images, and identify outliers at scale.
+              OpenCLIP embeddings turn your images into vectors. Search by similarity,
+              cluster by content, and spot outliers without writing a single query.
             </p>
           </div>
 
@@ -787,8 +787,8 @@ export default function DatalakePage() {
                   <h3 className="text-lg font-semibold text-[var(--label)]">Fine-tune Your Own CLIP Model</h3>
                 </div>
                 <p className="text-sm text-[var(--secondary-label)]">
-                  Generic embeddings not cutting it? Fine-tune a custom CLIP model on your domain-specific data
-                  for dramatically better similarity search and clustering results tailored to your use case.
+                  Generic embeddings not cutting it? Fine-tune a CLIP model on your own data.
+                  Search and clustering get much better when the model knows your domain.
                 </p>
               </div>
               <div className="flex items-center gap-4">
@@ -975,8 +975,8 @@ export default function DatalakePage() {
                 Ready to centralize your data?
               </h2>
               <p className="text-[var(--secondary-label)] max-w-lg mx-auto mb-10 text-lg">
-                Start managing billions of visual assets with enterprise-grade
-                organization, search, and governance.
+                Connect your storage, upload your data, and start querying.
+                Free trial, no credit card.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/trial" className="btn-primary px-10 py-4 text-base">

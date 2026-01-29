@@ -44,7 +44,7 @@ const fichaData: CaseStudyData = {
         'Fragmented toolchain slowing down the team',
         'Difficult annotation organization and tracking',
         'Models improving slowly despite data growth',
-        'No structured process to leverage available data',
+        'No structured process to use available data',
       ],
     },
     after: {

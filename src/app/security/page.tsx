@@ -224,7 +224,7 @@ export default function SecurityPage() {
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
               From fully managed SaaS to air-gapped on-premise. Deploy Picsellia where your data lives,
-              with enterprise-grade security and fine-grained access control.
+              with ISO 27001 security and fine-grained access control.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -315,8 +315,8 @@ export default function SecurityPage() {
                 Connect your infrastructure
               </h2>
               <p className="text-[var(--secondary-label)] mb-8">
-                Keep sensitive data in your environment while leveraging Picsellia&apos;s managed control plane.
-                Connect your storage, compute, and container registry seamlessly.
+                Keep sensitive data in your environment while using Picsellia&apos;s managed control plane.
+                Connect your storage, compute, and container registry directly.
               </p>
 
               <div className="space-y-4">

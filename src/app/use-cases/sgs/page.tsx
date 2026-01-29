@@ -173,7 +173,7 @@ const sgsData: CaseStudyData = {
     },
     {
       title: 'Knowledge Preservation',
-      description: 'All experiments, decisions, and learnings are captured in the platform. New team members can onboard quickly and continue work seamlessly.',
+      description: 'All experiments, decisions, and learnings are captured in the platform. New team members can onboard quickly and pick up where others left off.',
     },
   ],
 

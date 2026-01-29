@@ -104,7 +104,7 @@ const faqs = [
   },
   {
     question: 'How does volume pricing work?',
-    answer: 'Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you automatically unlock better rates.',
+    answer: 'Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you get better rates automatically.',
   },
   {
     question: 'What about enterprise pricing?',
