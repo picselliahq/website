@@ -42,7 +42,7 @@ const comparisonTable = [
   { feature: "Data Processing Units", community: "150 DPU/year", business: "Custom", enterprise: "Unlimited" },
   { feature: "Model Processing Units", community: "—", business: "Custom", enterprise: "Unlimited" },
   { feature: "AutoML Training", community: "4 runs", business: "Unlimited", enterprise: "Unlimited" },
-  { feature: "Labeling Tool", community: "—", business: "✓", enterprise: "✓" },
+  { feature: "Labeling Tool", community: "✓", business: "✓", enterprise: "✓" },
   { feature: "Model Deployment", community: "—", business: "✓", enterprise: "✓" },
   { feature: "Model Monitoring", community: "—", business: "✓", enterprise: "✓" },
   { feature: "Team members", community: "1 user", business: "Up to 10", enterprise: "Unlimited" },
@@ -146,20 +146,23 @@ export default function CommunityPage() {
                   </div>
                   <pre className="p-6 text-sm overflow-x-auto bg-[var(--black)]">
                     <code>
-                      <span className="text-[var(--tertiary-label)]"># Get started in 3 lines</span>{'\n'}
+                      <span className="text-[var(--tertiary-label)]"># Install the SDK</span>{'\n'}
+                      <span className="text-[var(--system-indigo)]">pip install</span> <span className="text-[var(--label)]">picsellia</span>{'\n\n'}
+                      <span className="text-[var(--tertiary-label)]"># Connect to your workspace</span>{'\n'}
                       <span className="text-[var(--system-indigo)]">from</span> <span className="text-[var(--label)]">picsellia</span> <span className="text-[var(--system-indigo)]">import</span> <span className="text-[var(--label)]">Client</span>{'\n\n'}
-                      <span className="text-[var(--label)]">client</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">Client()</span>{'\n'}
-                      <span className="text-[var(--label)]">project</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">client.create_project(</span>{'\n'}
-                      <span className="text-[var(--label)]">    name</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">&quot;my-first-cv-project&quot;</span>{'\n'}
+                      <span className="text-[var(--label)]">client</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">Client(</span>{'\n'}
+                      <span className="text-[var(--label)]">    api_token</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">&quot;YOUR_API_TOKEN&quot;</span>{'\n'}
                       <span className="text-[var(--label)]">)</span>{'\n\n'}
-                      <span className="text-[var(--tertiary-label)]"># Upload your data</span>{'\n'}
-                      <span className="text-[var(--label)]">dataset</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">project.create_dataset(</span><span className="text-[var(--picsellia-green)]">&quot;v1&quot;</span><span className="text-[var(--label)]">)</span>{'\n'}
-                      <span className="text-[var(--label)]">dataset.upload(</span><span className="text-[var(--picsellia-green)]">&quot;./images&quot;</span><span className="text-[var(--label)]">)</span>{'\n\n'}
-                      <span className="text-[var(--tertiary-label)]"># Train with AutoML</span>{'\n'}
-                      <span className="text-[var(--label)]">experiment</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">project.train(</span>{'\n'}
-                      <span className="text-[var(--label)]">    model</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">&quot;yolov8&quot;</span><span className="text-[var(--label)]">,</span>{'\n'}
-                      <span className="text-[var(--label)]">    dataset</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">dataset</span>{'\n'}
-                      <span className="text-[var(--label)]">)</span>
+                      <span className="text-[var(--tertiary-label)]"># Create a project & dataset</span>{'\n'}
+                      <span className="text-[var(--label)]">project</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">client.create_project(</span><span className="text-[var(--picsellia-green)]">&quot;my-cv-project&quot;</span><span className="text-[var(--label)]">)</span>{'\n'}
+                      <span className="text-[var(--label)]">dataset</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">client.create_dataset(</span><span className="text-[var(--picsellia-green)]">&quot;my-dataset&quot;</span><span className="text-[var(--label)]">)</span>{'\n'}
+                      <span className="text-[var(--label)]">version</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">dataset.create_version(</span><span className="text-[var(--picsellia-green)]">&quot;v1&quot;</span><span className="text-[var(--label)]">)</span>{'\n\n'}
+                      <span className="text-[var(--tertiary-label)]"># Launch an experiment</span>{'\n'}
+                      <span className="text-[var(--label)]">exp</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">project.create_experiment(</span>{'\n'}
+                      <span className="text-[var(--label)]">    </span><span className="text-[var(--picsellia-green)]">&quot;first-run&quot;</span>{'\n'}
+                      <span className="text-[var(--label)]">)</span>{'\n'}
+                      <span className="text-[var(--label)]">exp.attach_dataset(</span><span className="text-[var(--picsellia-green)]">&quot;train&quot;</span><span className="text-[var(--label)]">, version)</span>{'\n'}
+                      <span className="text-[var(--label)]">exp.launch(gpus</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--system-orange)]">1</span><span className="text-[var(--label)]">)</span>
                     </code>
                   </pre>
                 </div>

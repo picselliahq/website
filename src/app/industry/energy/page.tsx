@@ -94,10 +94,10 @@ const platformCapabilities = [
 
 // Field applications architecture
 const fieldSources = [
-  { name: 'Inspection Drones', icon: '🛸', description: 'Autonomous flight paths' },
-  { name: 'Fixed Cameras', icon: '📷', description: 'Substation monitoring' },
-  { name: 'Thermal Sensors', icon: '🌡️', description: 'Hotspot detection' },
-  { name: 'Satellite Imagery', icon: '🛰️', description: 'Large-scale surveys' },
+  { name: 'Inspection Drones', description: 'Autonomous flight paths' },
+  { name: 'Fixed Cameras', description: 'Substation monitoring' },
+  { name: 'Thermal Sensors', description: 'Hotspot detection' },
+  { name: 'Satellite Imagery', description: 'Large-scale surveys' },
 ];
 
 export default function EnergyPage() {
@@ -333,15 +333,31 @@ export default function EnergyPage() {
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {[
-                  { name: 'Inspection Drones', desc: 'Autonomous flight + on-board inference', status: 'Running', metric: '< 50ms', icon: '/images/community/icons/ci-cd.svg' },
-                  { name: 'Fixed Cameras', desc: 'Substation monitoring + alerts', status: 'Running', metric: '24/7', icon: '/images/community/icons/model-monitoring.svg' },
-                  { name: 'Thermal Sensors', desc: 'Hotspot detection + anomaly alerts', status: 'Running', metric: 'Real-time', icon: '/images/community/icons/experiment-tracking.svg' },
-                  { name: 'Mobile Devices', desc: 'Field worker inspection app', status: 'Running', metric: 'On-demand', icon: '/images/community/icons/labeling-tool.svg' },
+                  { name: 'Inspection Drones', desc: 'Autonomous flight + on-board inference', status: 'Running', metric: '< 50ms', icon: (
+                    <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 5l2 2m0 0l-2 2m2-2H3m15-2l2 2m0 0l-2 2m2-2h-5M9 12a3 3 0 106 0 3 3 0 00-6 0zm3 3v4m-2 0h4" />
+                    </svg>
+                  )},
+                  { name: 'Fixed Cameras', desc: 'Substation monitoring + alerts', status: 'Running', metric: '24/7', icon: (
+                    <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
+                  )},
+                  { name: 'Thermal Sensors', desc: 'Hotspot detection + anomaly alerts', status: 'Running', metric: 'Real-time', icon: (
+                    <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  )},
+                  { name: 'Satellite Imagery', desc: 'Large-scale survey analysis', status: 'Running', metric: 'On-demand', icon: (
+                    <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )},
                 ].map((device) => (
                   <div key={device.name} className="p-4 rounded-xl bg-[var(--card)] border border-[var(--border)]">
                     <div className="flex items-center justify-between mb-3">
                       <div className="w-10 h-10 rounded-lg bg-[var(--system-blue)]/10 flex items-center justify-center">
-                        <Image src={device.icon} alt={device.name} width={22} height={22} />
+                        {device.icon}
                       </div>
                       <div className="flex items-center gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-[var(--picsellia-green)] animate-pulse" />
