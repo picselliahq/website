@@ -55,8 +55,10 @@ export default function UseCases() {
   const others = useCases.filter(uc => !uc.featured);
 
   return (
-    <section className="py-24 border-t border-[var(--border)]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(51, 171, 104, 0.03) 0%, transparent 70%)' }} />
+      <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>

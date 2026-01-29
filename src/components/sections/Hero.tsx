@@ -67,13 +67,19 @@ export default function Hero() {
         </div>
 
         {/* Hero Image */}
-        <div className="mb-16">
+        <div
+          className="mb-16 rounded-2xl overflow-hidden"
+          style={{
+            border: '1px solid var(--border)',
+            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)',
+          }}
+        >
           <Image
             src="/images/hero homepage.png"
             alt="Picsellia platform - Complete MLOps for computer vision"
             width={1920}
             height={1080}
-            className="w-full h-auto"
+            className="w-full h-auto block"
             priority
           />
         </div>

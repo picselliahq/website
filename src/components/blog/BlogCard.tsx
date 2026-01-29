@@ -21,9 +21,10 @@ export default function BlogCard({ post, featured = false }: { post: BlogPostMet
             src={post.frontmatter.image}
             alt={post.frontmatter.imageAlt || post.frontmatter.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes={featured ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
           />
+          <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[var(--card)] to-transparent" />
         </div>
       )}
       <div className="p-6">

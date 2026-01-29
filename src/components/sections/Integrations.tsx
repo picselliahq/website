@@ -96,8 +96,10 @@ export default function Integrations() {
   }, []);
 
   return (
-    <section className="py-24 border-t border-[var(--border)]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(97, 135, 226, 0.04) 0%, transparent 70%)' }} />
+      <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
           <div>
@@ -147,7 +149,7 @@ export default function Integrations() {
                 {category.integrations.map((integration) => (
                   <div
                     key={integration.name}
-                    className="aspect-square rounded-lg bg-[var(--tertiary-system-background)] flex items-center justify-center group-hover:bg-[var(--secondary-system-background)] transition-colors relative p-2"
+                    className="aspect-square rounded-lg bg-[var(--tertiary-system-background)] flex items-center justify-center group-hover:bg-[var(--secondary-system-background)] transition-all relative p-2 hover:scale-110 hover:shadow-md"
                     title={integration.name}
                   >
                     <Image
@@ -238,10 +240,10 @@ export default function Integrations() {
           {/* Right - Code Snippet */}
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <div className="w-3 h-3 rounded-full bg-[var(--system-red)]/50" />
-              <div className="w-3 h-3 rounded-full bg-[var(--system-yellow)]/50" />
-              <div className="w-3 h-3 rounded-full bg-[var(--system-green)]/50" />
-              <span className="ml-2 text-xs text-[var(--tertiary-label)]">quickstart.py</span>
+              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(255, 69, 58, 0.7)' }} />
+              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(255, 214, 10, 0.7)' }} />
+              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(48, 209, 88, 0.7)' }} />
+              <span className="ml-2 text-xs text-[var(--tertiary-label)] font-mono">quickstart.py</span>
             </div>
             <pre className="p-4 text-sm overflow-x-auto">
               <code className="text-[var(--secondary-label)]">
