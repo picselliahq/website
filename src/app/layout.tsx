@@ -4,6 +4,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.picsellia.com"),
   title: {
     default: "Picsellia - MLOps Platform for Computer Vision",
     template: "%s | Picsellia",
