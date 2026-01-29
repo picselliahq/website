@@ -1,0 +1,85 @@
+---
+title: "Data-Centric AI: A Guide to Improving ML Performance Through Data"
+description: "Learn how the benefits of Data-Centric AI, a new paradigm focusing on improving data quality applies to computer vision."
+date: "2023-03-21"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-hero.png"
+published: true
+---
+
+Data is the new oil, and how we refine this oil is the new science!
+
+Data-Centric AI is a new paradigm for data science and machine learning.
+
+‍
+
+In this article we explore what data-centric AI is, how you can implement a data-centric approach to computer vision, and explore its advantages through a computer vision coding example. 
+
+## **What is Data-Centric AI ?**
+
+Data-Centric AI, a term coined by the infamous Andrew Ng, is one of the latest trends in the machine learning world. Data-centric AI is a wide topic but, for this article, we will focus our lens on computer vision. 
+
+For those readers who might be interested in knowing more about data-centric AI, we will provide a list of useful resources at the end of this article.
+
+‍
+
+AI systems run both on code and data. “*All that progress in algorithms means it's actually time to spend more time on the data*,” Andrew Ng said at the recent[ EmTech Digital](https://event.technologyreview.com/emtech-digital-2022/?utm_medium=search&utm_source=google&utm_campaign=BL-ACQ-DYN&utm_content=categories&gclid=Cj0KCQjwhLKUBhDiARIsAMaTLnF2PMWYIsCMHjytFzix7FSkDIXxDq3tZ4jE_qKWqkVQIWylL4FVOUIaAlikEALw_wcB) conference hosted by MIT Technology Review.
+
+‍
+
+***Data-centric AI is the discipline of systematically engineering the data needed to build successful AI systems.*** 
+
+‍
+
+Usually, training datasets are treated as something stationary. Once a training dataset is formed and passes through ETL, it usually remains frozen and used as it is throughout multiple projects. After that, most of the emphasis is placed on training the “best” model possible. 
+
+‍
+
+The data-centric approach challenges this paradigm by bringing data to the focus of attention and handling datasets as a first-class citizen in ML. Datasets gain a place in the [machine learning feedback loop](https://www.picsellia.com/post/feedback-loops-and-versioning-in-computer-vision) and methodologies that increase the performance and generalizability of a model through data are considered more important than fine-tuning a model’s parameters.
+
+‍
+
+Cleaning, curating, and augmenting data to make datasets more representative of reality are the main pillars of a data-centric approach.
+
+‍
+
+## **Data-Centric vs Model-Centric AI**
+
+Model-Centric AI focuses on:
+
+- Model selection: which algorithm to use
+- Model architecture: how many layers in a CNN, how many attention heads in a [Visual Transformer](https://www.picsellia.com/post/are-transformers-replacing-cnns-in-object-detection) 
+- Feature engineering: creating/selecting features
+- [Hyperparameter tuning](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models): Finding the optimal set of hyperparameters for a model.
+
+‍
+
+Data-Centric AI focuses on:
+
+- Cleaning datasets: deleting duplicates, picking the most suitable frames from a video.
+- Curating datasets: discovering labeling mistakes, including edge cases.
+- Fixing bias: including more examples of underrepresented cases, deleting “unethical” examples.
+- Augmenting training datasets: using synthetic data, mimicking the deployment scenario (e.g. adding snow on images).
+- Fix labeling mistakes.
+- [Defining a systematic approach to data annotation](https://www.picsellia.com/post/how-to-ensure-data-quality-best-practices#10-2-Data-Annotation-Guides).
+- Curating data for test datasets: creating benchmarks representative of the deployment environment.
+
+‍
+
+## **Data-centric challenges in computer vision **
+
+### **Labels are imperfect**
+
+We are used to thinking of labels as the ultimate “ground truth”. Our models must be able to learn these labels and propagate their knowledge to new unseen datasets. 
+
+‍
+
+However, many interesting studies [1, 2, 3] have proved that even the most popular computer vision dataset benchmarks contain a lot of mistakes! 
+
+Sometimes, these mistakes are accidental, whereas other times human experts are not able to agree on their labeling. 
+
+                        
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-0.png)

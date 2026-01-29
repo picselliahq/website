@@ -1,0 +1,32 @@
+---
+title: "How We Built A Dataset Visual Similarity Search Feature"
+description: "Learn how we built a dataset visual similarity search feature with embeddings and Qdrant."
+date: "2022-05-17"
+author:
+  name: "Picsellia Team"
+category: "Product"
+image: "/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-hero.png"
+published: true
+---
+
+As we examined in our last [article](https://www.picsellia.com/post/data-management-in-ai-key-success-factor)** **some of the key features of an efficient data management system are data exploration and filtering. We have defended this for a long time now, but we never had the time to add this feature to our platform. These times are gone! 
+
+In this article, we’ll walk you through the general concept of image embedding, and how we implemented our scalable visual search feature to find similar images across millions of images for multiple clients at the same time.
+
+## **What’s an Embedding?**
+
+Embeddings are a way of mapping discrete variables to continuous numbers. In the context of neural networks, embeddings are low-dimensional vector representations of categorical variables.
+
+Neural network embeddings allow for close neighbors in the space and can be used to make recommendations based on user interests, cluster categories, or input into machine learning models for supervised tasks that need vectors as input, like classification tasks that use labels learned from labeled data (such as spam detection). 
+
+Embedding visualization is useful as it lets people see concepts and relations between different categories within a given dataset, more clearly than traditional methods do, by reducing dimensionality without losing information about what is being represented.
+
+Here, our goal is to leverage embeddings to quickly identify similarities in images (without a-priori info on the similarity features).
+
+## How to Generate Image Embeddings?
+
+**Transformation Based Descriptors**
+
+‍
+
+![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-0.png)

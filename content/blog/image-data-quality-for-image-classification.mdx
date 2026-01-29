@@ -1,0 +1,70 @@
+---
+title: "How to Ensure Image Dataset Quality In Image Classification"
+description: "Learn how to tackle the dataset quality main issues, and how to optimize the overall quality of your AI models for image classification use-cases."
+date: "2022-01-04"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/image-data-quality-for-image-classification-hero.png"
+published: true
+---
+
+Every project in Computer Vision starts with a data collection strategy and dataset creation. For the past years, people have been focusing on model development without investing in training data creation as much as needed. In fact, creating an image dataset was truly complicated and time-consuming, and was often done by engineers or interns in a rather inefficient way. This pain led the way for a generation of labeling tools startups and open-source tools such as:
+
+[• Labelbox](https://labelbox.com)
+
+[• Supervise.ly](http://supervise.ly)
+
+[• CVAT](https://cvat.org/)[‍](https://www.v7labs.com/)
+
+[• V7 Labs](https://www.v7labs.com/)
+
+[• Rectlabel](https://rectlabel.com/)
+
+**These times are gone**. Labeling tools are becoming a commodity. AI companies can now leverage a multitude of tools and services to get their datasets created.
+
+**Unfortunately, many enterprises are still experiencing issues with their AI models performance.**
+
+Most of these problems come from the dataset quality itself. And, by quality we mean:
+
+1. The quantity of data in the dataset
+
+2. The amount of mislabeled data in your dataset
+
+3. The relevancy of the images inside the dataset
+
+In this blog post, we'll go through these 3 points and how to monitor them in order to optimize the overall quality of your dataset for your use-cases. We’ll be focusing on an image classification as an example.
+
+## **How to Know if You Have Enough Images in Your Dataset?**
+
+### **1. Empirical Rules to Determine the Minimum Number of Images**
+
+It can be complicated to determine the number of images needed in your Image Dataset for an Image Classification task. However, there are some good rules of thumb that you can follow. According to one of them, around 1000 examples by class are a decent amount to start with.
+
+But, these types of rules are not strictly “data-science-ish”. Let’s take the rule of 1000 as an example (let’s call it that way). It can be completely wrong if you consider transfer learning.
+
+Fortunately, there are some more robust ways to determine if you have the right amount of data in your training set. The first one would be **Sample-Size Determination Methodology** by Balki et al. [explained by Keras.io](https://keras.io/examples/keras_recipes/sample_size_estimate/). 
+
+### **2. Sample-Size Determination Methodology Explained**
+
+*“A systematic review of*[* Sample-Size Determination Methodologies*](https://www.researchgate.net/publication/335779941_Sample-Size_Determination_Methodologies_for_Machine_Learning_in_Medical_Imaging_Research_A_Systematic_Review)* (Balki et al.) provides examples of several sample-size determination methods. In this example, a balanced subsampling scheme is used to determine the optimal sample size for our model. This is done by selecting a random subsample consisting of Y number of images and training the model using the subsample. The model is then evaluated on an independent test set. This process is repeated N times for each subsample with replacement to allow for the construction of a mean and confidence interval for the observed performance.”*
+
+**This method is simple to understand** but actually effective. In short, it consists of training multiple models N times with an increasingly bigger subset of your datasets (let’s say 5%, 10% 25% and 50%). Once this is done, record the mean accuracy and standard deviation to fit an exponential curve to predict the optimal number of images to obtain a certain accuracy target.
+
+To make it clearer, let’s visualize it with a simple example.
+
+**Let's say we have a training set of 1000 images evenly distributed between cats and dogs**.
+
+1. Train 5 models on 5% of the set → 50 images and record the accuracy for each of them
+
+**Model 1 :** *[0.3 , 0.33, 0.28, 0.35, 0.26]* (List of accuracy for every model)
+
+2. Let’s do the same thing with 10% of the set → 100 images and record the accuracy
+
+3. Repeat this with 20%, 35% and 50% of your set
+
+Now, you should have 5 lists of accuracies corresponding to 5 different training for 5 different sizes of training subsets.
+
+Next, you just have to calculate the average accuracy and standard deviation of each list, and fit an exponential curve over these data points. You should get a curve looking like this.
+
+![](/images/blog/image-data-quality-for-image-classification-img-0.png)

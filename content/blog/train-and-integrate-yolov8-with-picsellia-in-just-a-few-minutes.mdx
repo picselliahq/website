@@ -1,0 +1,39 @@
+---
+title: "Train and integrate YOLOv8 with Picsellia in just a few minutes"
+description: "In this tutorial, we will provide you with a detailed guide on how to train the YOLOv8 object detection model using Picsellia."
+date: "2023-02-09"
+author:
+  name: "Picsellia Team"
+category: "Tutorial"
+image: "/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-hero.png"
+published: true
+---
+
+YOLOv8 is the most recent edition in the highly renowned collection of models that implement the YOLO (You Only Look Once) architecture. This development was done by Ultralytics, a squad renowned for their work on YOLOv3 (PyTorch fork) and YOLOv5.
+
+Continuing the pattern set by YOLOv5, YOLOv6 and YOLOv7, we now have access not only to object detection, but also **instance segmentation** and **image classification**. The model itself was constructed in PyTorch, and is **capable of running on both CPUs and GPUs**. Similarly to YOLOv5, we also have several exports such as ONNX and Tensorflow SavedModel (which are not implemented yet).
+
+The fact that we are still seeking the Papers with Code benchmark to distinguish YOLOv8 from the other state of the art real-time models is an issue to assess the “real SOTA claimed”. So, the only way to know if YOLOv8 can be a good fit for your use-case, is to try it out!
+
+**In this tutorial, we will provide you with a detailed guide on how to train the YOLOv8 object detection model on a custom dataset. **You will learn how to use the fresh API, how to prepare the dataset and, most importantly, **how to train and validate the model**. 
+
+Let's get started!
+
+In this article, we will try to explain how to quickly integrate this new architecture into your Picsellia Workflow. 
+
+The main things we are going to explore will be: 
+
+- How to convert a COCO Dataset into YOLO Format.
+- How to Log Training Metrics to Picsellia platform.
+- Saving the trained weights in order to resume training.
+- Monitor your YOLO models with Picsellia monitoring service. 
+
+Obviously, **we made a github repo to help you with the coding**, you can find it here:
+
+https://github.com/picselliahq/yolo-notebooks
+
+You can also find some **relevant snippets** in our documentation: [https://documentation.picsellia.com/recipes](https://documentation.picsellia.com/recipes) 
+
+## Convert Picsellia COCO Dataset to YOLO Forat
+
+![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-0.png)

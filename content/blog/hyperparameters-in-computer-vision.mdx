@@ -1,0 +1,32 @@
+---
+title: "Hyperparameter Tuning in Computer Vision"
+description: "In this article, you will learn about the importance of hyperparameters, where, when and how to tune them."
+date: "2024-10-07"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/hyperparameters-in-computer-vision-hero.png"
+published: true
+---
+
+Amidst the dynamicity of machine learning and computer vision, achieving maximum model performance is a constant pursuit. One technique that stands at the forefront of this is **hyperparameter tuning**. In this article, we will introduce the concept of hyperparameter tuning, explain why and how it is done, and finally, help you understand the benefits of implementing it in computer vision.
+
+## Understanding Hyperparameters
+
+Before we delve into the intricacies of hyperparameter tuning, it is important to understand the concept of hyperparameters. Unlike model parameters that are learned during training, hyperparameters are external configuration settings that guide the learning process. These settings are manually set by data scientists before the training begins and play a pivotal role in shaping the model's behavior and performance. 
+
+Hyperparameters vary depending on the algorithms they are using as well as the task (such as computer vision or NLP), however here are some of the common hyperparameters that you will find in any situation:
+
+- **Learning rate** - The learning rate is a crucial hyperparameter that controls how much the model's weights are adjusted in response to the estimated error each time the model weights are updated. It essentially determines the step size at each iteration while moving toward a minimum of the loss function. Too high a learning rate can cause the model to overshoot the optimal solution, and too low a rate can make training slow or get stuck in local minima.
+- **Number of layers in a neural network **- This hyperparameter defines the depth of the neural network architecture. In computer vision tasks, deeper networks can learn more complex features but also require more computational resources and data to train effectively.
+- **Batch size** - Batch size refers to the number of training examples utilized in one iteration of the model training process. It significantly impacts both the model's learning dynamics and the computational efficiency of the training process.
+- **Number of epochs **- [An epoch represents one complete pass through the entire training dataset.](https://dev.to/edtbl76/understanding-gpt-how-to-implement-a-simple-gpt-model-with-pytorch-4jji) The number of epochs is a hyperparameter that defines how many times the learning algorithm will work through the entire training dataset.
+- **Regularization strength** - [Regularization is a technique used to prevent overfitting by adding a penalty term to the loss function.](https://eitca.org/artificial-intelligence/eitc-ai-gcml-google-cloud-machine-learning/introduction/what-is-machine-learning/what-are-some-examples-of-algorithms-hyperparameters/#:~:text=Regularization%20Strength%3A%20Regularization%20is%20a,term%20on%20the%20overall%20loss.) The regularization strength (often denoted as lambda or alpha) controls the impact of this penalty. Lambda is typically used in** **L2 regularization (Ridge), while alpha is used in L1 regularization (Lasso).
+
+## The Art of Hyperparameter Tuning
+
+Hyperparameter tuning is the process of finding the optimal combination of these settings to maximise model performance. It's akin to fine-tuning a musical instrument to produce a harmonious sound. In the context of computer vision, this process can significantly improve the accuracy and efficiency of image recognition, object detection, and segmentation models.
+
+‍
+
+![](/images/blog/hyperparameters-in-computer-vision-img-0.png)

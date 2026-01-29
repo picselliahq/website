@@ -1,0 +1,109 @@
+---
+title: "Key Metrics To Monitor Computer Vision Solutions"
+description: "In computer vision high-quality training data doesn't ensure high-performing production models. The work begins after deployment, and monitoring is a must."
+date: "2022-04-26"
+author:
+  name: "Picsellia Team"
+category: "Model Monitoring"
+image: "/images/blog/key-metrics-to-monitor-computer-vision-solutions-hero.png"
+published: true
+---
+
+In computer vision (CV), high-quality training data does not ensure high-performing production models. The real work begins after production deployment when the model’s performance starts deteriorating due to multiple factors that we’ll discuss in this article.
+
+Most importantly, disruption in the performance of a production-deployed computer vision model can lead to direct business loss. A robust computer vision monitoring solution aims to build a reliable system that can detect any underlying and previously unnoticed issues to prevent or mitigate production issues.
+
+Computer vision monitoring is a crucial component of the [CVOps pipeline](https://www.picsellia.com/post/how-to-apply-mlops-to-computer-vision-cvops) that can track key metrics, allowing computer vision vendors to make informed decisions. In this article, we’ll cover some of the key metrics to monitor when building computer vision monitoring solutions.
+
+## What Could Break Your Computer Vision Model?
+
+CVOps teams can effectively monitor and maintain CV models in production. However, the model performance starts degrading right after deployment, just like other market products get devalued after manufacturing.
+
+Computer vision models are dynamic and sensitive to changes in data distribution. The model goes out of context if any production data feature becomes unavailable or the real-world environment changes for which it was designed.
+
+Monitoring the differences in the characteristics and behavior of a model with the latest data is critical to building robust CV pipelines. Therefore, tracking the CV models with several metrics and generating alerts or notifications helps maintain model relevance and reliability.
+
+## Key Metrics To Monitor Computer Vision Solutions
+
+Metrics measure and record the performance of various business processes. The computer vision monitoring metrics can be split into unsupervised and supervised categories. Let’s discuss them below.
+
+### Unsupervised Monitoring Metrics
+
+Unsupervised computer vision monitoring metrics don’t require user input for evaluating model performance. At Picsellia, we calculate various unsupervised computer vision monitoring metrics using our robust CVOps platform to help AI teams dissect CV models and identify performance degradation in real-time.
+
+Following are some of these unsupervised metrics to monitor when building computer vision monitoring solutions:
+
+- Input Image Width and Height
+- Image Ratio Distribution
+- Image Area Distribution
+- Inference Time
+- [AE Outlier Score](https://documentation.picsellia.com/docs/ae-outlier)
+- [KS Drift](https://documentation.picsellia.com/docs/ks-drift)
+
+Let’s elaborate!
+
+**1. Input Image Width and Height**Input images sent for making predictions can have variable orientations (width and height) over time. Such as, the users may add portrait pictures in the daytime and horizontal images at night.
+
+Picsellia constructs a graph visualizing the widths and heights of pictures sent by the users. Analyzing the difference in image dimensions can reveal interesting facts about the behavior of users and data.
+
+**2. Image Ratio Distribution**Image ratio is the distribution of image width over height. Picsellia segregates the image ratios into six intervals. These six intervals are square, tall, very tall, wide, very wide, and extremely wide. Based on the value of the image ratio, the six intervals are thresholded at different values to segregate them on a histogram.
+
+**3. Image Area Distribution**Image area distribution is an important metric for defining the area covered by multiple input images, which helps in quick image validation. It is tracked using an area distribution histogram for multiple images.
+
+**4. Inference Time**The inference time of the model calculates the time taken to process novel data and make predictions. Inference time is calculated in the post-processing step of model development and gives an overview of the global latency of the CV model during inference.
+
+**5. AE Outlier Score**[Outlier](https://documentation.picsellia.com/docs/ae-outlier) is the data value different from the rest of the data points. Models cannot make accurate predictions in the presence of outliers, making it necessary to track outliers, especially in production.
+
+Picsellia uses an auto-encoder algorithm to determine outlier images from the production dataset by reconstructing images using a convolutional neural network (CNN) and assigns an outlier score to each image based on image reconstruction error. A higher value of the outlier score represents an outlier image.
+
+**6. KS Drift**Suppose at least one important data feature is no longer available to the same extent in the production dataset. In that case, the production set is considered to have drifted from the training dataset.
+
+The[ Kolmogorov Smirnov (KS) drift](https://documentation.picsellia.com/docs/ks-drift) assumes that the feature distribution functions for the production and training datasets are equal. However, if KS drift computes a greater distribution distance among two features, the relevant dataset is considered to have drifted.
+
+Picsellia tracks drift over a long period to categorize drifts as sudden, incremental, or recurring. After classifying the drift type, the relevant dataset can be modified.
+
+### Supervised Monitoring Metrics
+
+Supervised computer vision monitoring metrics need user input for measuring model performance. It usually requires manually verifying the real-world production data to observe any drastic changes that can result in performance degradation of the CV models. Following are some of the supervised monitoring metrics:
+
+- Data Drift
+- Concept Drift
+- Domain Shift
+- Prediction Drift
+- Upstream Drift
+
+Let’s discuss them in detail.
+
+**Data Drift**[Data drift](https://www.picsellia.com/post/what-is-data-drift-and-how-to-detect-it-with-mlops) happens when the computer vision model is trained on images different from the real-world data given in production. It indicates the change in production set distribution and training data distribution, resulting in a model that underperforms. Some common methods to measure the distance between these distributions are:
+
+- Wasserstein’s Distance
+- Kullback — Leibler divergence (KL divergence)
+- Population Stability Index (PSI)
+
+Variation in times or seasonal shifts can also lead to data drift. For instance, a dataset about roads built in Asia will highly vary from roads in Europe. Similarly, IoT sensor readings can vary in summer and winter, resulting in data drift.
+
+**Concept Drift**Concept drift occurs when the patterns on which the model was trained no longer hold and the relationship between input and output parameters changes. The model becomes less accurate or obsolete.
+
+Concept drift can be incremental, where the model grows old without adapting to the changing requirements. There can be a sudden drift where the patterns twist, such as overnight consumer demand shifts during pandemic lockdowns or recurring drift influenced by seasonal changes during holidays or festive events.
+
+Monitoring computer vision solutions for concept drift can help understand the model better for up-gradation to ensure accuracy and relevancy in the real world.**‍**
+
+**Domain Shift**Domain shift, also known as the distributional shift, happens when the training, validation, and test data are selected from a probability distribution different from the production data distribution.
+
+Domain shift is hard to detect, and it can result in performance deterioration of models in production. Its impact can be observed on the out-of-sample predictions, which can be minimized by carefully curating test samples.
+
+**Prediction Drift**Prediction drift, also known as model drift, monitors the difference in the model’s predictions over a period of time. It reflects the change in prediction from the production dataset compared to the training set.
+
+Ideally, if the production model is unchanged, it should produce similar inference on getting the same inputs. However, models degrade over time and make inaccurate predictions. It is essential to diagnose prediction drift before it negatively impacts customers or business goals.
+
+**Upstream Drift**Upstream drift, also known as operational data drift, indicates changes in the model’s data pipeline. A production set can have wrongly classified or mislabeled input images with significant differences from the training set.
+
+Operational data drift issues are not very obvious. It can occur due to changes in data features or the occurrence of missing values, adversely affecting the performance of the production model.
+
+## Streamline Computer Vision Model Monitoring in Production
+
+Computer vision models degrade over time and need continuous real-time upgrades. Common underlying data issues can weaken and even break the trained CV model pipelines. Therefore, it is important to build computer vision monitoring solutions and continuously track key computer vision monitoring metrics.
+
+Picsellia offers detection and mitigation of all such issues within a single [end-to-end CVOps platform](https://www.picsellia.com/post/creating-a-cvops-platform). It provides supervised and unsupervised metrics to aid in monitoring and automates the feedback loop so that no data drifts go unnoticed.
+
+If you want to leverage Picsellia’s CVOps platform for free, [book your trial](https://www.picsellia.com/trial) today!

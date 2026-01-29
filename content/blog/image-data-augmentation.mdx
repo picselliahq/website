@@ -1,0 +1,66 @@
+---
+title: "What Is Image Data Augmentation?"
+description: "To solve the problem of data scarcity, we use data augmentation techniques. But how do you augment image data? We'll go throw this in a simple way."
+date: "2022-07-18"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/image-data-augmentation-hero.png"
+published: true
+---
+
+You had a groundbreaking idea for a machine learning (ML) project and found a great dataset online. You train this data using state-of-the-art ML techniques and produce promising results in your first run.
+
+*But something seems off.*
+
+Your model seems to struggle when you deploy it in production. When faced with real-world data, the performance is not what you expected. 
+
+Problems arise when your data is insufficient, and your model cannot extract adequate information. Moreover, many open-source datasets are tiny because data collection is tedious and frustrating. 
+
+To solve the problem of data scarcity, we use data augmentation techniques. Data augmentation allows engineers to generate new samples of data from the original data used to train the model. Data augmentation has become necessary in any Deep Learning training pipeline and has proven to be particularly helpful in the case of computer vision (CV).
+
+But how do you augment image data? Let's discuss the process in detail.
+
+## What Is Image Data Augmentation?
+
+Image data augmentation is the process of generating new transformed versions of images from the given image dataset to increase its diversity. 
+
+To a computer, images are just a 2-dimensional array of numbers. These numbers represent pixel values, which you can tweak in many ways to generate new, augmented images. These augmented* *images resemble those already present in the original dataset but contain further information for better generalization of the machine learning algorithm.
+
+In a CVOps pipeline, image data augmentation is beneficial for improving the performance of object detection, classification, or segmentation models. More on this in the next section.
+
+## Why Use Data Augmentation in Computer Vision?
+
+For deployable computer vision solutions, more extensive datasets are preferable; datasets that cover all visual aspects of a target object. But this is easier said than done. 
+
+Image data collection requires manual capturing and annotations of images, and it is impossible to capture every single scenario that may be useful for the computer vision model. 
+
+Say you want to collect images of scenic landscapes for a CV project. It is not humanly possible to capture pictures in all lighting conditions. No matter how hard you try, your dataset will always have some information missing, which limits the ability of your CV model to learn, and the final output might not be as expected. Data augmentation techniques can help create new images to fill in this missing data.
+
+Image data augmentation saves several person-hours that would otherwise be spent trying to build the perfect dataset. It allows you to improve your model's performance using your existing dataset by protecting it from *overfitting.*
+
+We just introduced a new term there; let's talk more about overfitting. 
+
+## Overfitting–What, Why, & When?
+
+A common problem with underperforming machine learning models is overfitting.
+
+When your model has an excellent training score but fails to perform on real-world test data, the model is said to have *over-fitted*.
+
+To explain it further, modern machine learning models can learn discreet underlying patterns with high precision. They can perform very well on data they have seen, but the model may not be able to distinguish similar patterns from unseen examples. It is so used to seeing the training examples that it cannot develop familiarity with new data points.
+
+Typically, overfitting occurs when you have a small dataset. A small dataset means your machine learning model has only a limited number of patterns available for learning. 
+
+Let's say you want to build a cat classifier, but you only have images of black cats. The model might never fail to identify a black cat, but it will struggle for cats of different colors and breeds. The same would be the case if the images captured are all from the same angle; the model will demonstrate poor performance if your test image is from a changed perspective.
+
+Luckily there are multiple solutions available for such a problem. Computer vision researchers have developed several augmentation techniques to extend a dataset and improve model performance. 
+
+Let's discuss these image augmentation techniques in detail.
+
+## Image Augmentation Techniques for Computer Vision
+
+Image data is perhaps one of the easiest to augment due to the wide-ranging availability of relevant techniques. This plethora of augmentation techniques performs very well for computer vision tasks. Some of these include:
+
+- **Position Manipulation**:
+
+![](/images/blog/image-data-augmentation-img-0.png)

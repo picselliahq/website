@@ -1,0 +1,30 @@
+---
+title: "Are Transformers replacing CNNs in Object Detection?"
+description: "In the past decade, CNNs sparked a new revolution in computer vision. In 2020, ViTs gained a lot of attention. Are transformers replacing CNNs?"
+date: "2022-08-21"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/are-transformers-replacing-cnns-in-object-detection-hero.png"
+published: true
+---
+
+In the past decade, CNNs sparked a revolution in computer vision. Deep learning won the top spot in many computer vision challenges, and many traditional computer vision techniques became redundant. In 2020, a new architecture, the Vision Transformer (ViT), gained much research attention. It showed promising results in outperforming SOTA CNNs in many image recognition tasks before beating them in more advanced tasks such as object detection and segmentation.
+
+Are CNNs becoming redundant with the invention of Vision Transformers? 
+
+*First,* we will introduce the Vision Transformer architecture. *Second,* we will explain some essential differences between CNNs and ViTs. *Then,* we will dive into a quantitative comparison of the two architectures regarding performance, training data, and time. 
+
+### **TLDR**
+
+- CNNs are a more mature architecture, so it is easier to study, implement and train them compared to Transformers.
+- CNNs use convolution, a “local” operation bounded to a small neighborhood of an image. Visual Transformers use self-attention, a “global” operation, since it draws information from the whole image. This allows the ViT to capture distant semantic relevances in an image effectively.
+- Transformers have achieved higher metrics in many vision tasks, gaining a SOTA place.
+- Transformers need more training data to achieve similar results or surpass CNNs.
+- Transformers may need more GPU resources to be trained. 
+
+## **Transformers and Self-Attention**
+
+Initially designed for Natural Language Processing tasks, transformers are very efficient architectures for data that can be modeled as a sequence (e.g., a sentence is a sequence of words). It solves many issues other sequential models like Recurrent Neural Networks face. Transformers are made up of stacks of transformer blocks. These blocks are multilayer networks comprising simple linear layers, feedforward networks, and **self-attention layers,** the key innovation of transformers, represented with the “Multi-Head Attention” box in the image below. 
+
+![](/images/blog/are-transformers-replacing-cnns-in-object-detection-img-0.png)

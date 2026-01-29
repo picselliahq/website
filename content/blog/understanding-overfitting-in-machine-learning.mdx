@@ -1,0 +1,34 @@
+---
+title: "Understanding Overfitting in Machine Learning"
+description: "Learn to tackle overfitting in machine learning with effective strategies and Picsellia's MLops platform. Avoid model memorization."
+date: "2023-07-25"
+author:
+  name: "Picsellia Team"
+category: "Data Science"
+image: "/images/blog/understanding-overfitting-in-machine-learning-hero.png"
+published: true
+---
+
+Overfitting is a common phenomenon in machine learning where a model performs exceptionally well on the training data but fails to generalize effectively to new, unseen data. In essence, the model becomes too specialized in capturing the quirks and noise present in the training set, losing its ability to discern the underlying patterns that should generalize well.
+
+## Overfitting Illustration
+
+Let's consider a scenario where three chefs, A, B, and C, are learning to cook a specific dish. Each chef has a different approach to learning and preparing the recipe.
+
+Chef A focuses only on a few key ingredients and techniques and ignores the rest. Then, he becomes exceptionally skilled in those limited aspects of cooking the dish. However, if the recipe requires additional ingredients or techniques, Chef A would struggle to adapt and may produce a subpar dish.
+
+Chef B, on the other hand, meticulously memorizes every single detail of the recipe, including the precise measurements and steps. He has a fantastic memory and can reproduce the dish exactly as written. However, if any slight variation or unexpected ingredient is introduced, Chef B may find it challenging to adjust and may struggle to create a satisfactory outcome.
+
+Chef C takes a well-rounded approach. He not only studies the recipe but also experiments with different variations, techniques, and ingredients. Chef C practices extensively and understands the underlying principles and flavors. As a result, he can prepare the dish consistently well, even when faced with slight modifications or unfamiliar ingredients.
+
+In this example, Chef A represents underfitting. He has limited knowledge and can only perform well in specific circumstances. Chef B represents overfitting, as they have memorized the recipe but struggle with variations and unexpected inputs. Chef C represents a well-fit model that generalizes well and performs consistently, adapting to different situations.
+
+Similarly, in machine learning, an underfit model cannot capture the complexity of the data and performs poorly. An overfit model memorizes the training data too precisely, failing to generalize to new, unseen data. A well-fit model, like Chef C, strikes a balance, capturing the essential patterns and features while adapting to variations in the data and performing well on both training and unseen datasets.
+
+## How Overfitting Occurs?
+
+Overfitting typically happens when the model becomes excessively complex, having too many parameters relative to the available training data. With excessive complexity, the model can essentially memorize the training examples, including the random fluctuations and noise, rather than learning the essential underlying features.
+
+Additionally, overfitting can occur when the training data is unrepresentative of the target population or lacks diversity. If the training set is biased or does not adequately cover the range of potential scenarios, the model may develop biases or blind spots that hinder its generalization capability.
+
+![](/images/blog/understanding-overfitting-in-machine-learning-img-0.png)

@@ -1,7 +1,24 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'uploads-ssl.webflow.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.prod.website-files.com',
+      },
+    ],
+  },
+  async redirects() {
+    return [
+      // Legacy Webflow blog URLs redirect to new blog paths
+      // Individual post redirects are handled by /post/[slug]/page.tsx
+    ];
+  },
 };
 
 export default nextConfig;

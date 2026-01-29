@@ -1,0 +1,52 @@
+---
+title: "Why Do Classical MLOps Tools Not Fit Computer Vision?"
+description: "Computer vision pipelines require a set of processes that are exclusive to Computer Vision. This is where CVOps comes to play."
+date: "2022-06-30"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/why-do-classical-mlops-tools-not-fit-computer-vision-hero.png"
+published: true
+---
+
+Computer vision (CV) is one of the most mature domains in artificial intelligence (AI). However, building and operationalizing robust, end-to-end computer vision pipelines is challenging in the modern AI ecosystem.
+
+Why? Because production-deployed computer vision models show arbitrary behavior due to several factors related to data, model design, architecture, and deployment.
+
+In the ML ecosystem, MLOps (Machine Learning Operations) is a set of practices to track and monitor the performance of the entire ML pipeline using processes such as CI/CD (Continuous Integration/Continuous Delivery) and CT (Continuous Training). 
+
+Mainly, MLOps automates data validation, model validation, and model retraining cycle in a production environment. Moreover, it offers a monitoring mechanism that alerts the development team if the model’s performance deteriorates.
+
+However, in the computer vision ecosystem, regular MLOps practices are not optimal due to the following reasons:
+
+- Data is unstructured, and data manipulation is done differently.
+- Edge cases or under-represented classes can impact the model's performance more.
+- CV is more data and hardware intensive than other ML domains.
+
+Computer vision pipelines require a set of processes that are exclusive to Computer Vision. This is where CVOps–a fusion of MLOps and computer vision is more suited.
+
+In this article, we’ll have a detailed discussion about why classical MLOps tools are unsuitable for computer vision tasks. We’ll also discuss how a [CVOps pipeline](https://www.picsellia.com/post/how-to-apply-mlops-to-computer-vision-cvops) is better equipped to streamline your entire CV stack.
+
+## How Is Data Manipulation Different in Computer Vision?
+
+Data comes in all shapes and sizes, including structured, unstructured, and semi-structured. However, most of the enterprise data is unstructured. 
+
+In fact, a report suggests that more than [80%](https://mitsloan.mit.edu/ideas-made-to-matter/tapping-power-unstructured-data) of data is unstructured, which includes images, videos, emails, web server logs, and more. But only 18% of organizations leverage this data–a [Deloitte report](https://www2.deloitte.com/us/en/insights/topics/analytics/insight-driven-organization.html) suggests.
+
+In computer vision, the majority of data is unstructured in the form of images and videos. Hence, exploring and visualizing data is difficult compared to structured data. Imagine browsing through one million unstructured images compared to one million rows of structured textual data stored in a .csv file or relational database. Moreover, images and videos require more storage capacity and processing power than structured data.
+
+Furthermore, collecting and preparing labeled image and video datasets often require time-intensive manual intervention. Often there is not enough visual data to support CV model training. Other times the data requires hand annotation, which is labor-intensive and costly.
+
+Similarly, filtering images and videos is a challenge. Just imagine creating a dataset of seasonal flowers from a large collection of plant and flower images without any labels or tags. Enterprises employ metadata management tools to tag and categorize images to make them searchable and accessible. This, again, requires pricey human intervention. 
+
+Rather than an MLOps tool, a robust CVOps tool solves all these problems by providing a centralized and integrated solution that covers data collection, storage, manipulation, filtering, and more.
+
+## Model Validation Needs to Be Focused on Edge Case Visualization
+
+Model validation determines if the model is generalized enough to cater to all input scenarios. However, in the real-world, unlikely situations often occur. For instance, an autonomous car is trained for regular road scenarios. How would the vehicle respond if there was an unexpected event? Like a high-speed car chase by five police cars, sudden rain, and thunderstorm that changes the driving conditions. Or what if a person comes in front of the car by accident? These are known as edge cases which are unlikely and unusual but have a non-zero probability of occurring.
+
+Besides the unpredictability of input scenarios, edge cases occur due to bias and variance in the model. The model is either too simple or too inexperienced to handle the incoming real-world data. 
+
+In computer vision, edge cases have a significant impact on the performance of the model. Edge cases in computer vision are more subtle as they’re often related to ambiguous visual aspects. Human annotators can sometimes fail to identify edge cases resulting in mislabeling. In images, edge cases can also occur if two objects are entirely different in their nature and properties but look visually similar. Take a look at the image below.
+
+![](/images/blog/why-do-classical-mlops-tools-not-fit-computer-vision-img-0.png)

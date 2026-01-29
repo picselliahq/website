@@ -1,0 +1,80 @@
+---
+title: "Best Practices for Fine-Tuning Computer Vision Models"
+description: "This article will introduce you to the best practices for hyperparameter tuning, explored through a typical CV task with TensorFlow and Keras-Tuner."
+date: "2023-02-22"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/best-practices-for-fine-tuning-computer-vision-models-hero.jpg"
+published: true
+---
+
+Are you struggling to find resources that guide you through the hyperparameter tuning process?
+
+This article will introduce you to the best practices for hyperparameter tuning, explored through a typical computer vision task with TensorFlow and Keras-Tuner.
+
+## Intro 
+
+Hyperparameter tuning in deep learning models for computer vision applications can often be a challenging process. Training and tuning neural networks still involve an astonishing amount of guesswork! Despite the improved performance deep learning models provide, they come at the cost of an extensive trial and error tuning procedure. Even experts can get trapped in a rabbit hole of trial and error, in an effort to make those networks actually work!
+
+Scientific papers will usually present a set of optimal hyperparameters but the discovering process of this set is rarely elaborated. Moreover, finding resources that provide a generalized plan for hyperparameter tuning is hard (here’s [one](https://github.com/google-research/tuning_playbook) though! [1]).
+
+In this article, we will tackle a typical computer vision scenario. We will start with a pre-trained model and explore how we can efficiently perform hyperparameter tuning. We will follow some documented `best practices` and combine software tools and our deep learning expertise to search the hyperparameter space in a methodical manner.
+
+### Prerequisites
+
+Before you embark on the process of fine-tuning, it is important to ensure that you have properly prepared for the task at hand. This includes
+
+- Formulating your problem clearly, defining and implementing the[ necessary success metrics](https://www.picsellia.com/post/key-metrics-to-monitor-computer-vision-solutions).
+- [Preparing and cleaning your dataset](https://www.picsellia.com/post/how-to-ensure-data-quality-best-practices) up to point that spending time on model architecture actually makes sense.
+- Setting up a training & evaluation pipeline. This facilitates rapid experimentation!
+
+Once these criteria are met you can start the fun!
+
+## Exploration-Exploitation tradeoff.
+
+During the first stages, your aim is to gain intuition about the problem. This is the** exploration phase** where you are trying to understand the behavior of the model’s training.
+
+Experiments are costly. Every training experiment you execute must have a clear purpose. You must clearly pose a question you wish to answer. Example questions you may pose are 
+
+- Which parameters seem to have the greatest impact on validation loss?
+- Which parameters are heavily interdependent and should be tuned together?
+- What are some good limits for hyperparameter X ?
+- Can any complexities be removed without affecting performance?
+- Is overfitting present? Can it be solved by increasing regularization?
+- Are exploding gradients present? Are they smoothed by a smaller learning rate or should you try gradient clipping?
+- Which set of parameters converges faster?
+
+Once you have a solid understanding of the problem, you can translate this knowledge into a tighter hyperparameter search space. This marks the beginning of the **exploitation phase**. 
+
+During the exploitation phase, your sole focus is to increase the validation performance of your model. You can use search algorithms, such as Bayesian Optimization or Hyperband Optimization, to efficiently search for the most optimal hyperparameter values within the defined search space. These algorithms can provide excellent results when an expert defines a "good" search space.
+
+## 5 best practices for hyperparameter tuning 
+
+- **Act like a scientist!**  During any training experiment there are 3 types of parameters. Scientific , Nuisance, and fixed parameters.
+
+- Scientific parameters: the ones you are currently exploring and attempting to understand their effects.
+- Nuisance parameters: parameters highly interdependent with the scientific parameters. These must be tuned in relation to each other. For example, the learning rate is a nuisance parameter when the scientific parameter is the type of optimizer. You first need to find a decent learning rate for each optimizer before you compare them.
+- Fixed parameters: If it’s not scientific or nuisance then keep it fixed. You don’t want it to interact with the performance. If you change multiple parameters at once then you won’t be able to derive meaningful answers from your experiments!
+
+- **Try to iterate fast.** Select a batch size that maximizes GPU utilization. This will help your training converge faster. [Research has shown](https://arxiv.org/abs/1811.03600) [2] that batch size does not significantly affect final performance **as long as **other parameters (e.g. learning rate, regularization) are adjusted accordingly in relation to batch size.
+
+In general, the largest batch size you can use will be the best. Don’t use a larger batch size if it slows down training and don’t treat batch size as a hyperparameter. Choose a batch size and stick with it.
+
+- **Always inspect the training curves.** Going through dozens of plots just to tune a model can be tedious. We are all guilty of not inspecting them from time to time. However, a single metric value can tell you so much... Studying the training curves of at least the 2-3 top models in each experiment will give you much more insight. Overfitting, gradient explosion, performance stagnation, and more can be detected through plots.
+
+- **Automate the generation of important plots** (Yes, it’s plotting again). Try to plot as much information as possible. The more training curves, weight histograms, scatter plots, or [parallel line plots](https://en.wikipedia.org/wiki/Parallel_coordinates) you have the more information you can derive from your experiments. 
+
+If you need to spend effort to create them you are less likely to study them. Tools like Tensorboard and [**Picsellia’s experiment tracking**](https://www.picsellia.com/experiment-tracking) provide a better alternative to manual plotting so make sure to use one.
+
+- **Run multiple identical experiments** and calculate the mean and standard deviation values. It's not uncommon to have "lucky models" that perform well due to a favorable initialization, but rerunning the same experiment can reveal much lower performance.
+
+I know, computational budgets can be a limiting factor. Just keep in mind that the more runs you have, the more confident you can be in the outcome.
+
+## Fine-tuning pre-trained computer vision models
+
+### A Case of Computer Vision in Biology 
+
+Let’s lay out the following scenario. You are an engineer in a startup operating in the **biotechnology sector**. You are asked to deploy a deep learning model for the following computer vision task; detect Malaria-contaminated cells in microscopy images. 
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-0.png)

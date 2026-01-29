@@ -1,0 +1,38 @@
+---
+title: "Exploring Stable Diffusion: Revolutionizing Image-to-Image Generation in Computer Vision"
+description: "Stable diffusion is a type of generative model, which uses the power of AI and deep learning to generate images. Let’s take a closer look at it."
+date: "2023-06-15"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/exploring-stable-diffusion-revolutionizing-image-to-image-generation-in-computer-vision-hero.jpeg"
+published: true
+---
+
+‍
+
+‍
+
+Have you ever heard of an AI that enables the creation of high-quality, photorealistic images based on text descriptions or other descriptions? That’s exactly the point of Stable diffusion. It’s a type of generative model, which uses the power of AI and deep learning to generate images. Let’s take a closer look at it with this article.
+
+‍
+
+## What are Generative Models and what are the main types? 
+
+‍
+
+A generative model is a machine learning algorithm that aims to generate data samples, texts, sounds, or images, resembling the original data distribution. Several types of generative models exist but only four are widely used today:
+
+- ***Variational Autoencoders (VAE): ***Variational Autoencoders leverage an autoencoder architecture consisting of an encoder, a bottleneck, and a decoder. The encoder maps the input data to a latent space, while the decoder reconstructs the data from the latent space. By introducing a probabilistic aspect to the latent space, VAEs enable smoother and more diverse generations.
+-  ***Generative Adversarial Networks (GANs):*** Generative Adversarial Networks consist of two neural networks, a generator and a discriminator, trained together in a zero-sum game. The generator aims to create realistic data samples that the discriminator cannot distinguish from real data, while the discriminator's goal is to correctly classify samples as real or generated. GANs have gained significant popularity for their ability to generate high-quality images, but they can be challenging to train due to their adversarial nature.
+- ***Diffusion Models***: it’s a recent trend in generative modeling which consists in destroying training data through the successive addition of Gaussian noise, and then learning to recover the data by reversing this noising process. These models have demonstrated remarkable performance in image generation tasks, often surpassing the quality of GAN-generated images while avoiding issues like mode collapse.
+
+‍
+
+## How Diffusion Models Work
+
+Now that we have a better idea of what a generative model is, we can focus on diffusion models. It operates through two primary processes: forward diffusion and reverse diffusion.
+
+‍
+
+![](/images/blog/exploring-stable-diffusion-revolutionizing-image-to-image-generation-in-computer-vision-img-0.png)

@@ -1,0 +1,56 @@
+---
+title: "How to Integrate Picsellia into a Hugging Face Training Workflow"
+description: "Effortlessly scale computer vision model training with Picsellia's CVOps platform and HuggingFace."
+date: "2023-10-24"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-hero.webp"
+published: true
+---
+
+Implementing computer vision model training at scale requires a robust [computer vision operations ](https://www.picsellia.com/post/how-to-apply-mlops-to-computer-vision-cvops)workflow. Scaling training with a custom workflow can bottleneck at the point of traceability and repeatability. Tailoring this into your custom training workflow can be costly in terms of time and resources.
+
+A CVOps platform like Picsellia has robust architectural workflows that provide enough features to handle large-scale computer vision-based model development (training). It has the necessary tools to manage the entire CV development lifecycle. You have two options when leveraging Picsellia for training. You can re-develop your entire training workflow to use Picsellia's workflows and infrastructure. Or integrate Picsellia into your existing training workflow and still use your infrastructure. The integration option gives you the best of both worlds without a platform lock or the compulsory mandate of migrating your existing training workflows to the platform. It also creates two points of failure for the training workflows and multiple data locations since the training information generated in your local training environment (on the infrastructure) also exists on Picsellia's platform.
+
+Generally, integrating a program with a platform requires precision pipelining to manage the entire workflow due to specific requirements that the program is dependent on. In this case, you will consider metrics logging, associated training artifacts, model parameters, the training framework, etc.
+
+## **Prerequisites**
+
+To follow along with this article's demo comfortably, you must have the following: 
+
+- An active Picsellia account.
+- The Picsellia SDK is installed on your machine; see how to install it [here](https://documentation.picsellia.com/docs/installation).
+- HuggingFace is installed on your machine; see how to install it [here](https://huggingface.co/docs/transformers/installation).
+- Picsellia's requirements for an integration; see requirements [here](https://documentation.picsellia.com/docs/part-1-overview-1).
+- Basic-to-intermediate understanding of experiment tracking.
+
+**This tutorial will explain the integration of Picsellia into a DETR transformer training script that uses the HuggingFace framework.**
+
+In this tutorial, you will:
+
+- Initiate an experiment in Picsellia.
+- Pull the datasets associated with the experiment from Picsellia.
+- Train the model and log the results to Picsellia.
+- Send evaluations to Picsellia's evaluation platform.
+- Store artifacts in Picsellia's artifact store.
+- Store the retrained model in the Picsellia model registry.
+- Dockerize the code.
+
+You can find all the related codes in this tutorial [here](https://github.com/Tob-iee/picsellia_HF_transformers_od/tree/main).
+
+Before getting into the nitty-gritty bits of the integration, let's quickly get a brief overview of the model and framework for the task.
+
+[DETR model](https://arxiv.org/abs/2005.12872v3), also called *DEtection TRansformer,* is an object detection model that uses a transformer-based architecture developed using PyTorch. It comprises an image processor and an object detection model. The image processor encodes the data by converting annotations to DETR format, then resizes and normalizes both the images and annotations. The object detection half then carries out the detection by decoding the encoded data. It can be trained (fine-tuned) using native PyTorch, HuggingFace 
+
+ [Trainer](https://huggingface.co/docs/transformers/main_classes/trainer) 🤗 API, HuggingFace  [Accelerate](https://huggingface.co/docs/accelerate/index), or any other framework you prefer. For this tutorial, you will use the DETR model directly from the HuggingFace Transformers library and then retrain it using the HuggingFace Trainer API.
+
+It's time to retrain the DETR model and integrate Picsellia into your training workflow.
+
+## **Initiate a training experiment in Picsellia**
+
+To get started, you will create an experiment on Picsellia to manage your training run. An experiment can be created directly on the Picsellia platform through the user interface or with the SDK. To do this through the user interface, go to Projects and select a project. Within that project, move to the Experiment Tab and click the *New Experiment* button on the top right corner to add a new experiment. A new window containing four information sections will come up. In the *General Information* section, give the experiment a name (train_dataV_experiment) and description. The other three sections are optional. Only add the datasets you want to use in the *Datasets Versions *section and give them aliases. There is no need to fill out the *Base Architecture* and *Hyper-parameters* section since the model you will train isn't available on Picsellia. Just click the *Create* button to create the experiment.
+
+‍
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-0.png)

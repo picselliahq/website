@@ -1,0 +1,48 @@
+---
+title: "How To Optimize Computer Vision Models For Edge Devices"
+description: "Learn the best optimization techniques to decrease model size and increase inference speed in computer vision."
+date: "2022-06-29"
+author:
+  name: "Picsellia Team"
+category: "Edge AI"
+image: "/images/blog/optimize-computer-vision-models-on-the-edge-hero.jpg"
+published: true
+---
+
+This article will introduce you to ***“Inference at the Edge”*** and ***“Inference Optimization Techniques”*** in Machine Learning. By the end of this article, you will know about the most relevant optimization techniques for decreasing model size and increasing its inference speed in computer vision. You will also learn about the open-source tools* *you can use to achieve these optimizations. Last but not least, we will advise you on the deployment optimization techniques you should use in your computer vision projects, depending on your* *deployment hardware*. *
+
+## **What is Inference at the Edge and When Do You Need It?**
+
+You may have heard the phrases “AI at the Edge”, “Edge ML” or “Inference at the edge”. These terms refer to trained machine learning models running inference tasks near the production data collection point, usually in real-time. The inference is executed on edge devices (e.g.microcomputers, accelerators, mobiles, IoT). A typical example is self-driving cars. They gather information about the surrounding area through multiple sensors and process it in local hardware in real-time. Real-time refers to the maximum prediction delay we can afford and range from a few milliseconds up to a couple of seconds depending on the application.
+
+Inference at the Edge offers many benefits and is sometimes the only viable way to design your computer vision system. In short, Inference at the Edge offers:
+
+- Remote inference capabilities (production data lies on the field, away from a server)
+- Real-time predictions 
+- Independence from network connection
+- Data storage reduction (you only keep predictions and discard the production data)
+- Data security, as there is limited need to transfer (sensitive) data through a network
+
+However, it is subject to a lot of constraints like the limited processing power of the hardware, memory limitations, limited battery life unless connected to a power plug, possibly higher costs, and a slightly more complex model deployment phase. Hence, you should carefully decide if inference at the edge is necessary for your project. In short, if none of the above bullet points is a strict requirement, you can probably get away with transferring the collected data to a cloud server for inference and back if necessary. 
+
+If you have decided that Inference at the Edge is the best design for your application, you will need to respect the processing constraints. When you run inference in local low-power hardware you don’t have the luxury to process data with very large deep learning models, as the latency might exceed real-time constraints. Fortunately, there are optimization techniques to help reduce the size of a network and its inference delay.
+
+## **Speed and Memory Optimization Techniques**
+
+Edge devices often have limited memory or computational power. You can apply various optimizations to your models to run them within these constraints. Model optimization is especially useful for:
+
+- Reducing inference latency for both cloud and edge devices.
+- Deploying models on edge devices with restrictions on processing, memory, and/or power consumption.
+- Enabling execution on hardware restricted-to or optimized-for fixed-point operations (integer numbers).
+- Optimizing models for special purpose hardware accelerators.
+- Reducing model storage costs and model update pay-loads (for over-the-air updates).  
+
+We will go through some of the most crucial techniques of size and speed optimization.
+
+## **1. Choose the Best Model for the Application**
+
+The following step is not an optimization technique, but it’s the most relevant stage to start with. Before you train your model take into account the precision and inference speed you need to achieve. You need make a tradeoff between model complexity and size. Smaller models are often good enough for most tasks, require less disk space and memory, and are much faster and energy efficient. The graphs below help understand this tradeoff better. Looking at the accuracy vs. latency chart, you need to decide whether a Mobilenet v2 has enough accuracy for your needs or if you need to move to a more complex model like the NASNet mobile or Inception v3 (quantized). In any case, Inception v4 is probably not an option for real-time inference.                                              
+
+‍
+
+![Source : www.tensorflow.org/lite](/images/blog/optimize-computer-vision-models-on-the-edge-img-0.png)

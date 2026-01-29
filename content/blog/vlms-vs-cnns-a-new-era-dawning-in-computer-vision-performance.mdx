@@ -1,0 +1,74 @@
+---
+title: "VLMs vs. CNNs: Is a New Era Dawning in Computer Vision Performance?"
+description: "Discover if Vision Language Models (VLMs) outperform Convolutional Neural Networks (CNNs) in computer vision."
+date: "2024-06-26"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-hero.jpg"
+published: true
+---
+
+The meteoric rise of large language models (LLMs) like ChatGPT and GPT-4 captured our imagination with their powerful abilities for understanding and generating human-like text in areas of the natural language process (NLP). This remarkable advancement led to a surge of excitement and speculation [about the potential of their visual counterpart—vision language models (VLMs)—](https://medium.com/voxel51/why-2023-was-the-most-exciting-year-in-computer-vision-history-so-far-8a812aa7a11f)to revolutionize computer vision with their multifaceted ability to process textual and visual information seamlessly. Considering this ability, it's plausible to suggest that VLMs are better than conventional CNNs for computer vision tasks.
+
+Despite this growing speculation, crucial questions remain: Are VLMs truly the silver bullet for all computer vision tasks, or are the VLM speculations a potential oversight of their abilities and benefits?
+
+In this article, we explore the fundamental differences between CNNs and VLMs. We then carry out a practical comparison and in-depth analysis of the performance of these two model types on two computer vision tasks to assess whether VLMs are ushering in a new era in computer vision or if CNNs are still very relevant. 
+
+## From Convolution to VLMs: Have VLMs Disrupted the Status Quo of CNNs in Computer Vision Applications?
+
+**TL;DR: **The fundamentals of the CNN vs. VLM debate start with examining the differences in architectural designs. CNNs use a strong inductive bias for spatial information to capture local patterns and progressively build up to more abstract representations. This often excels at tasks that require precise localization and fine-grained detail. On the other hand, VLM's incorporate vision transformers (ViTs), allowing them to model complex relationships and leverage multi-modal information, making them better suited for tasks that require a deeper understanding of image content and its connection to language.
+
+CNNs rely on convolutional layers to extract hierarchical features from images. They use inductive bias processing techniques to learn spatial relationships. This technique applies filters that scan the grid-like image through the convolution layers, allowing them to capture local patterns and progressively build up to more abstract representations. This inductive bias approach has proven highly effective for tasks like image classification and object detection, where understanding spatial relationships is key.
+
+Conversely, VLMs often incorporate vision transformers (ViTs), which extend the transformer architecture to image processing by dividing images into patches and treating them as sequences of tokens. This allows VLMs to model complex connections between textual and visual data, potentially capturing global context more effectively than CNNs. This makes them well-suited for tasks that require understanding the semantic meaning of images and their connection to language, such as image captioning and visual question answering.
+
+ViT is also very helpful in quickly exchanging information between those far-away pixels. Consider an image where you need more than one piece of information to understand what's going on, and those pieces are scattered throughout the scene. 
+
+The CNN or VLM value propositions based on their architectural designs present different implications in terms of:
+
+- Compute Resource 
+- Scalability 
+- Maturity and extensive research
+
+‍
+
+## **Compute Resource**
+
+The primary way to improve VLMs is to make them bigger. Because of the ViT architecture, they require a lot of data for training to achieve a good initial performance level. As a result, VLMs often require more training effort and computational resources to perform on par with CNNs. This makes VLMs require large computing resources for training and deployment.
+
+### **Scalability**
+
+CNNs can be trained and deployed more efficiently than VLMs, especially for large-scale datasets. This is due to their simpler architecture and the ability to leverage parallel processing hardware for faster computations.
+
+### **Maturity and Extensive Research**
+
+CNNs have a long history of research and development, with a vast amount of literature, pre-trained models, and established best practices available. This maturity makes them a reliable choice for many computer vision tasks. While rapidly advancing, VLMs are still a relatively newer field with ongoing research and development.
+
+After viewing these models' value propositions and implications through the lens of their core architectural designs, it is not easy to conclude that VLMs are entirely a better option than CNNs. However, their architectural differences already form the basis of their potential performance in practice on different computer vision tasks. Using a practical case study, let’s further analyze their differences, benefits, and implications.
+
+## **Case Study**
+
+We want to integrate classification and object detection models into our computer vision platform to enable automatic labeling and annotation. The system runs on an H100. However, we are unsure if a CNN or VLM is optimal for our use case and system specification.
+
+The aim is to conduct a comprehensive comparative analysis and explore each approach's advantages and limitations. To achieve this, we assess their capabilities based on the following criteria: accuracy (i.e., classification and detection), inference time, ability to generalize to unseen data, and practicality for integration with expanding computer vision platforms. 
+
+### Classification Task
+
+We use a defective or good tire dataset to determine the models' effectiveness in accurately classifying the tires' condition for the classification task.
+
+### CNN
+
+We train a YOLOv8 model on the dataset. After training these models over 100 epochs, the results show a significant improvement in classifying tires as defective or good. The model correctly classifies good tires 80% of the time and defective tires 82% of the time.
+
+### Performance Table
+
+  
+     Epochs 
+     Validation Accuracy 
+     Test Loss 
+  
+  
+     100 
+     0.8709677457809448 
+     Follows a decrease until stabilization after 80 epochs

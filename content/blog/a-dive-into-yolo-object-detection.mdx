@@ -1,0 +1,52 @@
+---
+title: "A dive into YOLO object detection"
+description: "We will explore the family of YOLO object detection models, from the original YOLO network up to the latest YOLOv8 and NAS networks."
+date: "2022-11-29"
+author:
+  name: "Picsellia Team"
+category: "YOLO"
+image: "/images/blog/a-dive-into-yolo-object-detection-hero.png"
+published: true
+---
+
+## **What is YOLO ?**
+
+YOLO (You Only Look Once)  networks are a very popular family of deep convolutional networks for real-time object detection. Real-time object detection models need to output predictions very fast, usually under 200 ms or process video streams at 30 FPS or more. In order to meet the speed requirements they are often smaller than non real-time models which often reduces precision. 
+
+The first yolo version was proposed in May 2016 by Joseph Redmon. He explained his novel idea with the paper “[You Only Look Once : Unified Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)”. As the name suggests, the main novelty of YOLO is that you only need to process an image once, a trait that provides great speedup during object detection. 
+
+The YOLO architecture became a great success in computer vision and 8 more versions followed after that ! The latest of which, YOLO-NAS, was released in may 2023, no longer after YOLOv8. Many deep learning practitioners use yolo object detection in their applications, with YOLOv8 probably being the most popular and widely used due to its great open source repository that offers an easy and abstract implementation.
+
+## **What makes YOLO different ?**
+
+The main advantage of YOLO is its unparalleled inference speed. Previous object detection architectures would use an image classifier. In contrast YOLO’s novelty is that it changed the paradigm from classification to regression. Older architectures repurposed image classifiers and used them for object detection.  Architectures like deformable parts models (DPM) use the sliding window technique, scanning subregions of an image with a moving window and applying a classifier on each subregion searching for the object of interest. On the other hand, R-CNN used the region proposal method that first generated proposal bounding boxes upon which the classifier would do the classification. The region proposal method offered a more noble method compared to the “brute force” technique of sliding window, but still multiple classifications need to be executed and post-processing is needed to eliminate duplicate detections. Such pipelines are slow and difficult to optimize.
+
+YOLO changed the paradigm by transforming the object detection problem from classification to regression. Bounding box coordinates and class probabilities are being regressed directly from image pixels. You only need to look and classify an image once. A single convolutional neural network predicts multiple bounding boxes. Advantages : 
+
+- Fast : It’s able to achieve real-time object detection,  >40 FPS.
+- Simple : It only relies on a single convolutional neural network which outputs both the bounding box coordinates but also the class probabilities. R-CNN, in comparison, consists of 3 different modules[3].
+- Trains on whole images : Since it trains on whole images it learns more generalized features. It sees both object and context (background). Hence, it is less prone to false positives due to background pixels.
+
+## **How original YOLO object detector operates**
+
+Before we describe the different YOLO versions up to YOLO-NAS, it’s wise to explain the inference operation of the original YOLO model. The steps below are also visually presented in figure 1. 
+
+- The input image is separated into an SxS grid, where S in an adjustable hyperparameter. Each grid cell is responsible for detecting objects whose centers fall into that grid cell. 
+
+- Each grid cell predicts B bounding boxes, where B is again an adjustable hyperparameter. For every box it also outputs a confidence score (0.0 to 1.0) which represents how confident the model is that an object exists in the box and how accurate the box is. Essentially confidence is just the IOU(ground truth, prediction) , but formally it’s calculated as    
+
+                   P(object) * IOU(ground truth, prediction) 
+
+to account for the cases where no object exists in the box, since the probability will be zero.
+
+- For each box Bi the model outputs 5 regression predictions (x, y, w, h, confidence). Variables x,y determine the object’s bounding box center while w, h are the box’s width and height.
+
+- The model also outputs a “classification” prediction for each grid cell, which represents the probability of the class Classi being present inside a grid cell.
+
+- The final score is calculated as shown below and it encodes both the accuracy of the bounding box and the class-specific classification confidence ******.
+
+      Score = P(Classi| obj)* P(obj) *IOU = P(Classi)*IOU 
+
+All in all, the model will output an S S (B*5 + len(Class)) tensor, meaning that for each cell we have 5 outputs per bounding box (related to its position and fitness) and len(Class) outputs, one for each class in the dataset. 
+
+![](/images/blog/a-dive-into-yolo-object-detection-img-0.png)

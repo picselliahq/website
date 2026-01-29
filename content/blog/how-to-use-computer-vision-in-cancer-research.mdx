@@ -1,0 +1,51 @@
+---
+title: "How to Use Computer Vision in Cancer Research With MLOps"
+description: "We introduced Picsellia's new features by presenting a cancer cell research real use-case. Learn how we applied computer vision to medical research."
+date: "2022-03-28"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/how-to-use-computer-vision-in-cancer-research-hero.png"
+published: true
+---
+
+We casted a webinar to introduce the new version of our platform, now centered on MLOps, and more precisely, on [CVOps](https://www.picsellia.com/post/how-to-apply-mlops-to-computer-vision-cvops?utm_source=webinar&utm_medium=medium&utm_campaign=webinar+post)–MLOps applied computer vision. At [Picsellia](https://www.picsellia.com/?utm_source=webinar&utm_medium=medium&utm_campaign=webinar+post), we offer an end-to-end computer vision (CV) platform that lets you manage AI data, run experiments, deploy models into production and monitor them with automated pipelines.
+
+To introduce you to Picsellia’s new features, we’ve prepared a use-case in collaboration with the [Toulouse Cancer Research Center](https://www.crct-inserm.fr/en/). If you’d like to watch a replay of our webinar, it’s available on youtube, right [here](https://youtu.be/UpwzH8bRRXQ)!
+
+## Summary
+
+- About the use-case
+- Annotating your dataset
+- Training your model
+- Launching the experiment
+- Exporting the model
+- Deploying the model
+- Making predictions/inferences
+- Training a model on a custom dataset of fibroblast nucleus
+- Continuous training and alert system
+- Comparing shadow models
+
+## **About the use-case**
+
+The use-case was possible thanks to the Toulouse Cancer Research Center, whose collaborators shared with us some of their obstacles for testing and researching.
+
+The center is studying the propagation of cancer cells under microscopes, and researching how some other cells that are natively in our body, called fibroblasts, are helping cancer propagate.
+
+Nowadays, what scientists measure regarding propagation is global fluorescence. By activating some enzymes on the cells, they can monitor the global fluorescence of an image. But, this fluorescence must be reported to the number of cells in the photo to have significant results.
+
+Just counting the cells of an image, can take from 2–3 hours, up to 10–12 hours a week, hampering their research process.
+
+At Picsellia, we thought that AI and computer vision could help them in detecting those cells’ nucleus and automating the cell counting process, bringing the 10-hour counting process to something like 2–3 minutes for a thousand of images.
+
+## Methodology
+
+In short, we’ll try to train a new model that will serve as a base-model on our dataset, and we will fine tune it and use it to pre-annotate our images and see how it performs. Our dataset was suited for segmentation but we will use it for object detection just to make the use case simpler, and because object detection is suited for cell counting.
+
+## **Annotating your dataset**
+
+We’ll start in the data lake. This is where all the assets stored can be viewed and searched, for example by tag or other attributes.
+
+Here we have many more images than needed for our use case so we’re going to filter only the images from the Nature dataset, by the tag “nature”.
+
+![](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4bb_623c46bc0f775651c366e8b3_Ex1.gif)

@@ -1,0 +1,42 @@
+---
+title: "How to Reduce Training Data with Self-Supervised Learning"
+description: "Self-Supervised Learning (SSL) aims to leverage large unlabeled datasets to train capable feature extractors such as CNN or ViT encoders. But what is SSL?"
+date: "2022-07-25"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/reduce-training-data-with-self-supervised-learning-hero.jpeg"
+published: true
+---
+
+## **Introduction and Motivation**
+
+Deep Neural Networks such as Deep CNNs are excellent feature extractors. That's why they have gained a top spot in many visual tasks. Visual Transformers (ViT) are pushing the limits even further. However, their success is largely attributed to Supervised Learning and the immense amount of training data from datasets like ImageNet, Places, Kinetics, etc.
+
+However, collection and annotation of large-scale Image/Video datasets are very time-consuming and quite expensive, not to mention that there is not often enough unlabelled material to annotate (e.g., Medical Imaging). As a reference, the Places dataset consists of 2.5 million labeled images, ImageNet 1.3 million. At the same time, Kinetics is a labeled video dataset comprising around 500K videos, each with a duration of about 10 seconds.
+
+With this motivation, Self-Supervised Learning (SSL) aims to leverage large **unlabeled datasets **to train capable feature extractors such as CNN or ViT encoders. Those are later used with smaller labeled datasets to train networks on a task of choice, using fewer data. Self-supervised learning derives from unsupervised learning. It aims at learning rich representations and semantically meaningful features from unlabeled data. In other words, SSL is a learning method in which you can train Networks with **automatically generated labels **produced from unlabeled datasets.
+
+## **What is Self-Supervised Learning?**
+
+Simply put, Self-Supervised Learning refers to learning methods in Machine Learning that make use of automatically generated labels that originate from large unlabelled datasets. It offers very good performance without the need for large labelled datasets.
+
+## **Key Concepts in Self-Supervised Learning**
+
+Before we explain how Self-Supervised Learning (SSL) works and how you can leverage it to reduce the training data, it's best to explain some key concepts.
+
+- **Human-annotated labels** are labels of data that human annotators manually create. These are the typical labels used in classic Supervised Learning.
+
+- **Pseudo-labels **refer to automatically generated labels that data scientists use to train the feature extraction network, commonly called "Encoder," on some pretext task. For example, we could randomly rotate images by 0°, 90°, 180°, or 270° and assign the labels 0,1,2,3, respectively, depending on the rotation. It's possible to create these labels without any human assistance!
+
+- **Pretext tasks **are pre-designed tasks that act as an essential strategy to learn data representations using pseudo-labels. Its goal is to help the model discover critical visual features of the data. Common pretext tasks include geometrical/color transformations and context-based tasks such as solving jigsaw puzzles. For example, a pretext task could be classifying an augmented image either as rotated by 0°, 90°, 180°, or 270°. 
+
+- **Downstream tasks** are application-specific tasks that utilize the knowledge learned during the pretext task. They are chosen by the developer depending on the application's end goal. Examples include classification, object detection, semantic segmentation, and action recognition. 
+
+## **The Self-Supervised Framework**
+
+Now that we have introduced the core concepts, let's combine them to understand the Self-Supervised Learning workflow. Figure 1 offers a visual illustration. Very briefly, SSL aims at transforming an unsupervised task into a supervised task (pretext task) through automatically generated labels (pseudo-labels). Then it transfers the knowledge acquired from the pretext task to solve the final task (downstream task). 
+
+‍
+
+![](/images/blog/reduce-training-data-with-self-supervised-learning-img-0.png)

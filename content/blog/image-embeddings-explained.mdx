@@ -1,0 +1,52 @@
+---
+title: "Image Embeddings explained"
+description: "In a nutshell, embedding is a dimensionality reduction technique. It is a lower dimensional vector representation of high dimensional feature vectors (i.e."
+date: "2023-05-29"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/image-embeddings-explained-hero.png"
+published: true
+---
+
+## ‍**Introduction**
+
+‍
+
+Today, data is ubiquitous and growing exponentially. It is still challenging for computers to understand and handle computer vision-based data like humans. In the past, computer vision techniques used brittle edge detection methods, color profiles, and a slew of manually coded processes that also required high-quality image annotations. They still didn't provide the most effective means for computers to understand the semantics of the data. Advances in techniques in machine learning presented an opportunity for computers to leverage big data and efficiently execute computer vision tasks.
+
+‍
+
+Machine learning (ML) embedding has become an essential technique for handling various forms and types of data effectively and efficiently for ML tasks like computer vision, natural language processing (NLP), speech recognition, recommender systems, fraud detection, etc. This article discusses the fundamentals of applying the embedding technique to computer vision by breaking down the concept of image embedding using convolutional neural networks (CNNs).
+
+‍
+
+## **What is Image Embedding**
+
+‍
+
+In a nutshell, embedding is a dimensionality reduction technique. It is a lower dimensional vector representation of high dimensional feature vectors (i.e., raw input data) like words or images. Technically, the concept entails creating dense clusters of similarities or relationships within the data, which serve as a semantic feature encoded in a vector space. These encoded features are unique identifying vectors for a particular data class. The dimensional vectors make it possible to efficiently manage data features that stand out, enabling the machine learning model to understand a data class better.
+
+‍
+
+Generally, image embedding algorithms extract distinct features in an image and represent them with dense vectors (i.e., unique numerical identifiers) in a different dimensional space. The generated dense vectors are then compared against the vector of the image to measure similarities. Think of it as representing only the most distinct features of a 3-D image in 2-D and comparing how well the features appear in 2-D. 
+
+‍
+
+Methods for generating image embedding have evolved and become more advanced with the rise of deep learning (DL). Since the DL era, techniques like Bag of Visual Words (BOVW), Convolutional Neural Networks (CNN), and Visual Transformers (VIT) have been developed. Deep learning techniques use ML models that learn how to generate embeddings from images within the models and directly learn from the embedding weights rather than manually extracting embeddings (features) from images as a separate pre-processing step. They enabled the development of computer vision solutions for many datasets and use cases.
+
+‍
+
+## **CNN Image Embeddings **
+
+‍
+
+At the time of this writing, CNNs are the de-facto standard in the CV field, with many practical and production use cases. However, they are computationally expensive and require a lot of data.
+
+‍
+
+A CNN is a deep neural network model architecture containing two sets of blocks: convolutional and classification blocks. These blocks are the faces involved in generating image embedding with CNN. Each block of CNNs plays a specific role in extracting embeddings for the computer to understand the images, as we will dive into below. Although they are different CNN architectures like LeNet-5, AlexNet, VGGNet, ResNet, e.t.c., the fundamental process for extracting embedding is the same.
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbefc0be9d26f9af7863_759558c3.png)

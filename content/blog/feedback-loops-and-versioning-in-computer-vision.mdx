@@ -1,0 +1,65 @@
+---
+title: "Data Versioning & Feedback Loop Best Practices"
+description: "Data versioning is an effective methodology used when running many experiments that entail different data processing techniques. Find our best practices!"
+date: "2022-05-29"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/feedback-loops-and-versioning-in-computer-vision-hero.png"
+published: true
+---
+
+Software code versioning has long been a standard practice in the IT industry, using tools like git. Environment versioning is also gaining a lot of traction, using tools like Docker. However, data versioning is still not as prevalent in the Machine Learning industry even though its adoption offers valuable benefits. Then you may wonder, why is versioning so important?
+
+Just like with software code, versioning datasets at different times lets you roll back to previous versions easily. This is vital for experiment reproducibility, as any change in the data will stir a model’s results in different directions. Moreover, it offers an adequate solution to documenting data lineage and origin, **especially crucial when feedback loops are incorporated into a system**. Versioning is also an indirect way of backing up data,** **although it should not replace formal backups. 
+
+Furthermore, data versioning is an effective methodology you should follow when running many experiments that entail different data processing techniques. Each experiment should be versioned, offering easy access to a specific stage and avoiding unintended changes. Finally, versioning’s importance shines when big engineering teams are working on the same data. We will further elaborate on data governance later on.
+
+But first, let’s introduce some data versioning best practices you must consider in your computer vision projects.
+
+## **5 Best Practices For Data Versioning in Computer Vision**
+
+- Version on the pipeline’s key stages. Data versions are most meaningful when used during the start and/or completion of data pipeline tasks. An ETL script finished running? Create a version. Did you run a corruption-detection script and deleted corrupted images? Create a version. Ideally, you want a version after every pipeline task, from raw data up to the final version.
+- Version's names should reflect the data status and position in the pipeline. A version’s name should be descriptive. You shouldn't need to roll back to a version to check the dataset’s stage. Some examples of self-descriptive version names could be “defects_dataset-cleaned-normalized-feedback_loop”, “non_defects_dataset-raw”.  However, a standard [three-part semantic version number convention](https://devopedia.org/semantic-versioning) can be used to effectively encode a pipeline’s stages. In either case, the name should convey relevant information.
+- Create metadata for each version. This could even be a simple .txt file documenting important information about the dataset up to that point. You should include information that can’t fit in the title but is important to document. A metadata file should state which data, in particular, was affected by the changes, the number of new and total images included in the dataset, the origin of the new data, the processing that has been performed in detail, and any other valuable fact decided by your Data team. This necessity is reinforced when feedback loops are introduced, but more on that later. 
+- Automate the versioning. In most cases, data versioning is a repetitive and dull task. Such tasks cut away time from data scientists who ought to spend their time creating and deploying valuable models. Aim to automatically version a dataset after every key pipeline stage. Picsellia’s unique [data management platform](https://www.picsellia.com/dataset-management) can save valuable time and take the burden off your shoulders. Check for yourself [how you can use code and no-code solutions to quickly version datasets](https://documentation.picsellia.com/docs/create-a-new-dataset-version) without any hustle, by using Picsellia.
+- Leverage versioning for intra-team cooperation. When multiple people are working on the same version of a dataset, there is always a possibility of inadvertently making changes that affect others' work. Usually, each collaborator should work on his/her version during experiments, while also maintaining a main (“master”) version, which everyone can read, but not write on. This is a data governance policy that team leaders should implement.
+
+## **The Importance of Data Governance **
+
+With predictive analytics and Machine Learning’s huge adoption, data is fuel for growth. Data influx is increasing month by month in most companies. Data is a resource and should be managed accordingly. However, when working across large engineering teams, efficient data management becomes a complex, nonetheless crucial, operation. It is integral to set up a Data Governance System in place. By data governance, we mean a set of rules, policies, and standards to be followed. 
+
+Some important policies and standards you should define are:
+
+- How data is collected.
+- What metadata needs to be documented.
+- What data quality is acceptable, and what happens to data that don’t meet the criteria. E.g. blurred, corrupted, and/or high contrast images should be deleted and not moved down the pipeline.
+- Set up naming conventions for files, datasets, and versions. 
+- When datasets should be versioned. Will different team members work on their versions? Who is allowed to write on the main version?
+- What type of data storage architecture best fits your organization's needs. Should you store it in a data lake or a data warehouse? Is it worth creating a feature store? 
+
+Defining, setting up, and abiding by these rules and guidelines helps put order into the increasing amount of data influx and avoid the chaos that comes along with it. Most of the time, using an MLOps platform to help with data management, [is worth the investment](https://www.picsellia.com/post/mlops-platform-build-vs-buy-what-you-must-know) as data scientists and ML engineers can focus their energy on how to deliver value with their models. 
+
+This need becomes more prevalent as we move away from traditional data lifecycles to modern ones like feedback loops. 
+
+## **The Feedback Loop Deployment Scenario**
+
+Machine Learning model deployment is an ongoing** process** rather than a task. It is dynamic as it entails constant [monitoring](https://www.picsellia.com/model-monitoring) of a model’s performance. Models in production have expiration dates. Data and concept drift quickly degrade a model’s performance, ultimately hurting business metrics and profits. But even without drifts, once deployed, a model’s performance might simply not meet the expectations set during the evaluation stage. This is where feedback loops and online learning become vital. They allow for quick model updates, adjusted to new data distributions and environmental variables.
+
+Think of a defect-detection model in an industrial setting; a visual detection system for broken or scratched mobile screens. After gathering data, training, and deploying a model, shifts take place in the industrial setting, out of the machine learning engineers’ control. Light intensity is altered, and the background conveyor belt’s color changes. Even these small environmental changes can produce unintended underperformance of the visual system. Hence, retraining becomes necessary. 
+
+In this example, assuming that the model is not completely useless anymore and starting the training process from ground zero, is not cost-effective and demands plenty of time. You need a system able to dynamically retrain a model online, using **fewer but relevant** data. Retraining can be triggered by performance thresholds, data drift detection, or fixed time intervals. When the model produces an incorrect output, it should be captured, documented, and included in an **updated version** of the dataset. Picsellia’s [monitoring](https://www.picsellia.com/model-monitoring) features offer these capabilities. Detection of wrong predictions always requires a human to enter the loop. Consequently, a combination of old and newly acquired data is used to retrain the model. This updated dataset provides a better representation of the “new” reality. 
+
+## Feedback Loops Pros
+
+With feedback loops set in place:
+
+-  Models don’t become outdated and performance is maintained at high levels throughout the deployment phase. Depending on a model’s use case, this translates into superior quality services or higher profits.
+-  You'll decrease model downtime. Less time redesigning, retraining, and evaluating a model correlates to more time serving. 
+-  Computational resources are saved. Since retraining is typically conducted with fewer epochs and data, you'll reduce computational needs. This is crucial when you're using cloud solutions and are billed on usage.
+
+## Feedback Loops Cons
+
+However, feedback loops have hidden drawbacks. First, since the dataset versions created during a feedback loop are mainly sampled from a model’s mistakes, the version might be inherently coupled to the model used while generating it. Thus, it may not transfer well to another model. Second, the engineering team may get trapped in a never-ending loop of retraining, to revive a “dead” model. Sometimes, concept and data drifts are so wide that the only viable option is to start the training from ground zero again. 
+
+Moreover, feedback loops add complexity to a system’s architecture. The typical train-evaluate-deploy architecture can’t handle feedback loops efficiently. You need an architecture that incorporates performance, concept, and data drift monitoring. Such systems are harder to design and maintain. Hopefully, [Picsellia’s CVOps platform](https://www.picsellia.com/) offers these services through an easy-to-use and collaborative interface, helping you preserve relevant resources.

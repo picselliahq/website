@@ -1,0 +1,28 @@
+---
+title: "What is Data Drift and How to Detect it in Computer Vision?"
+description: "Data-drift happens when the dataset that used to train your model doesn't mimic the data you receive in production, causing your model to underperform."
+date: "2022-01-18"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-hero.png"
+published: true
+---
+
+Data-drift occurs when the dataset used to train your model does not mimic the data that you receive in production. This is when your model starts to act strange and underperform. 
+
+The difference between training and production data can be caused by multiple factors. It could be an inaccurate dataset creation, like using open-data not suited for your use-case. For example, if you use a road dataset built in Europe, it will highly vary from US roads. If you run your computer vision models on US roads, this will probably result in data drift.
+
+Another reason could be the time interval between gathering data for testing and validation purposes and deploying it in real-time scenarios. Examples of this would be if there's an error in collecting your initial dataset; or seasonality cases that respond to the season you collected your initial dataset in (e.g., winter data/summer data). 
+
+## **How to Detect Data-Drift**
+
+When deploying a computer vision model, it's important to regularly monitor its performance. If the data used to train your model changes or becomes out-of-date, its effectiveness might be affected. This is called data-drift. 
+
+Let’s suppose we have a computer vision model built using a dataset of 100 different types of dog breeds, and we want to know if our accuracy decreases due to data-drift. For this, we’ll have to log all the new images and predictions ingested by our feedback loop system. Then we’ll need to review, edit or validate those predictions.
+
+Now you have all the data needed to compare the initial predictions versus the edited ones and compute your performance metrics to see if they are above your average performance metrics.* *EASY, RIGHT? 
+
+ 
+
+![](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-0.gif)

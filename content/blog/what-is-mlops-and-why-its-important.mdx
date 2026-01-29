@@ -1,0 +1,68 @@
+---
+title: "What is MLOps? And Why is it Important? Part 1"
+description: "MLOps, short for Machine Learning Operations, is a discipline that aims to unify ML system's development and deployment to optimize high-performing models."
+date: "2021-10-11"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/what-is-mlops-and-why-its-important-hero.png"
+published: true
+---
+
+MLOps is short for Machine Learning Operations. It is an engineering discipline that aims to unify machine learning systems' development and deployment to streamline the delivery of high-performing models in production.
+
+It's all about deploying a model that brings value in the end! But we will see that today, with the establishment of DevOps, doing this consistently, with as much precision and coordination as we manage in software, is a really hard subject.
+
+But don't worry! Today, many companies put a lot of effort into simplifying those processes for you to help you durably mature your machine learning work.
+
+In terms of maturity, it has been established that there exist 3 levels of MLOps maturity:
+
+- **Lvl 0** is about building and deploying models manually for every step and iteration
+
+- **Lvl 1 **is getting more interesting and is mostly about Continuous Training by automating the ML pipeline 
+
+- **Lvl 2** is when your ML pipelines look just like your Code pipeline with DevOps practices, like Continuous Integration and Delivery.
+
+## **What is NOT MLOps**
+
+Now that we have introduced what MLOps is, I'd like to remark what MLOps is NOT.
+
+Just two examples to illustrate this:
+
+MLOps is not about adapting existing non-production-fitted tools to make them production-ready, such as trying obscure ways to put Jupyter Notebooks in production so data scientists can keep their everyday way of work.
+
+Notebooks are a really important and an unavoidable tool when you start dealing with data science in general, but even if some companies like Netflix tell amazing stories about how their processes are notebook-focused and how they manage their pipeline with notebooks in it, it’s not for everyone. They have put a lot of work to own their tools and platform to do so.
+
+‍
+
+>  So keep in mind that try to "productionize" notebooks is globally a bad idea.
+
+‍
+
+The second one is monitoring. If you monitor a lot of things about your models, some you never look at and most of that are not related to your business Key Performance Indicators, but you just check to make sure your model is alive, you're missing out on many important insights. This is the “Act now, reflect never” way of thinking and it prevents you from going further into your MLOps journey.
+
+## **MLOps Level 0**
+
+Let’s start with the first level of MLOps maturity, don't worry if you identify with some of these elements, it’s normal and there are not a lot of people and companies worldwide that have attained the other levels. This article may help you reflect on those points and see how you can take your machine learning game to the next level.
+
+There's a pattern we recognized in many companies, even those where we started as ML Engineers: business teams came with a ‘Client Problem’ or ‘Brand new project’ that needed to involve AI. So they handed the requirements to the data science team, that had to go the extra mile, working for a long time to find and clean data, and then spend weeks trying to optimize a model that reached a certain percentage of accuracy. 
+
+What defines this level 0 the most, is the manual way of doing everything in the so-called ‘pipeline’.
+
+‍
+
+> But then what?
+
+‍
+
+Usually what happens is that clients or the projects present more complicated needs than those anticipated at the beginning, and because of the iterative, test, and learn nature of AI, everything has to be done again from scratch. This is indeed not following the Agile practices that usually rule Project and Software management.
+
+Anotjher characteristic of this level is that usually AI models are deployed when they **can** be deployed, not when they **should**, which makes a huge difference in how they solve real-life business problems.
+
+Of course, the testing of machine learning scripts has always been way behind the one for software, and is usually contained in the script, if any.
+
+Continuous Deployment is rarely considered, or is plain considered unattainable, which mostly responds to the manual steps I mentioned before, and because there are no large-scale, high-frequency deployment needs. And finally, the global ML system is rarely monitored, or is monitored using anti-patterns.
+
+To wrap up this level, when you deploy ML models, the whole system can’t and doesn't adapt to real-world changes as they occur, and sadly the models are often non-relevant.
+
+If you want to learn about level 1 MLOps, you can check our second part of this series. There, we also go in depth with Picsellia's built-in features that could help you level up your MLOps game.

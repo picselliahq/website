@@ -1,0 +1,26 @@
+---
+title: "Mask R-CNN - Everything explained"
+description: "Explore Mask R-CNN: a groundbreaking tool in computer vision for object detection & instance segmentation. Dive deep into its architecture & applications."
+date: "2023-08-13"
+author:
+  name: "Picsellia Team"
+category: "Data Science"
+image: "/images/blog/mask-r-cnn-everything-explained-hero.png"
+published: true
+---
+
+In computer vision, different tasks exists as introduced in our previous blogpost [Segmentation vs Detection vs Classification in Computer Vision: A Comparative Analysis](https://www.picsellia.com/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis). As explained in the article, there are two types of segmentation, semantic segmentation and instance segmentation. In this article we will discover one of the most powerful archtecture for instance segmentation, which is Mask R-CNN.
+
+## Understanding Instance Segmentation
+
+Instance segmentation goes beyond traditional image classification and object detection by providing a pixel-level understanding of objects within an image. 
+
+‍
+
+Instance segmentation is actually a combination of  two sub problems: object detection and semantic segmentation. It aims to differentiate individual instances of objects and outline their boundaries accurately. The bounding box is created from image detection and shaded masks are the output of semantic segementtion.
+
+‍
+
+This level of granularity opens up a wide range of applications, from object counting and tracking to understanding object shapes and interactions.
+
+![](/images/blog/mask-r-cnn-everything-explained-img-0.png)
