@@ -18,7 +18,7 @@ const FloatingElements = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {/* Gradient mesh background */}
     <div className="absolute top-0 left-0 w-full h-full opacity-30">
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--system-blue)]/20 rounded-full blur-[100px]" />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--picsellia-blue)]/20 rounded-full blur-[100px]" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--picsellia-green)]/15 rounded-full blur-[100px]" />
       <div className="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-[var(--system-indigo)]/10 rounded-full blur-[80px]" />
     </div>
@@ -26,7 +26,7 @@ const FloatingElements = () => (
     {/* Floating data cards */}
     <div className="absolute top-32 right-[15%] px-3 py-2 rounded-lg bg-[var(--card)] border border-[var(--border)] shadow-xl animate-bounce hidden lg:block" style={{ animationDuration: '4s' }}>
       <div className="flex items-center gap-2">
-        <div className="w-8 h-8 rounded bg-[var(--system-blue)]/20" />
+        <div className="w-8 h-8 rounded bg-[var(--picsellia-blue)]/20" />
         <div className="text-xs">
           <div className="text-[var(--label)] font-medium">IMG_0042.jpg</div>
           <div className="text-[var(--tertiary-label)]">4032 × 3024</div>
@@ -55,7 +55,7 @@ const UMAPVisualization = () => {
   const [points] = useState(() => {
     const clusters = [
       { cx: 25, cy: 30, color: 'var(--picsellia-green)', count: 15 },
-      { cx: 70, cy: 25, color: 'var(--system-blue)', count: 12 },
+      { cx: 70, cy: 25, color: 'var(--picsellia-blue)', count: 12 },
       { cx: 45, cy: 65, color: 'var(--system-orange)', count: 18 },
       { cx: 80, cy: 70, color: 'var(--system-indigo)', count: 10 },
     ];
@@ -116,7 +116,7 @@ const UMAPVisualization = () => {
           Cluster A
         </div>
         <div className="flex items-center gap-1.5 text-[9px] text-[var(--secondary-label)]">
-          <div className="w-2 h-2 rounded-full bg-[var(--system-blue)]" />
+          <div className="w-2 h-2 rounded-full bg-[var(--picsellia-blue)]" />
           Cluster B
         </div>
         <div className="flex items-center gap-1.5 text-[9px] text-[var(--secondary-label)]">
@@ -138,17 +138,17 @@ export default function DatalakePage() {
         <div className="max-w-6xl mx-auto px-6 relative">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-blue)]/10 border border-[var(--system-blue)]/20 mb-8">
-              <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
+              <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
               </svg>
-              <span className="text-sm font-medium text-[var(--system-blue)]">
+              <span className="text-sm font-medium text-[var(--picsellia-blue)]">
                 Data Management
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight max-w-4xl mx-auto">
-              All Your Images. <span className="text-[var(--system-blue)]">One Place.</span>
+              All Your Images. <span className="text-[var(--picsellia-blue)]">One Place.</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
@@ -177,7 +177,7 @@ export default function DatalakePage() {
                 {cloudProviders.map((provider) => (
                   <div
                     key={provider.name}
-                    className="w-10 h-10 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center hover:border-[var(--system-blue)]/50 transition-colors"
+                    className="w-10 h-10 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center hover:border-[var(--picsellia-blue)]/50 transition-colors"
                     title={provider.name}
                   >
                     <Image src={provider.icon} alt={provider.name} width={24} height={24} />
@@ -222,7 +222,7 @@ export default function DatalakePage() {
             <div className="absolute -top-4 right-6 card px-4 py-3 shadow-xl hidden lg:block">
               <div className="text-xs text-[var(--tertiary-label)]">Storage</div>
               <div className="text-xl font-bold text-[var(--label)] font-mono">2.4 TB</div>
-              <div className="text-[10px] text-[var(--system-blue)]">AWS S3 connected</div>
+              <div className="text-[10px] text-[var(--picsellia-blue)]">AWS S3 connected</div>
             </div>
           </div>
         </div>
@@ -232,14 +232,14 @@ export default function DatalakePage() {
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background grid */}
         <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
           {/* Header */}
           <div className="text-center mb-20">
-            <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
               Architecture
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -258,9 +258,9 @@ export default function DatalakePage() {
               <svg className="absolute inset-0 w-full h-full opacity-20" preserveAspectRatio="none">
                 <defs>
                   <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="var(--system-blue)" stopOpacity="0" />
-                    <stop offset="50%" stopColor="var(--system-blue)" stopOpacity="1" />
-                    <stop offset="100%" stopColor="var(--system-blue)" stopOpacity="0" />
+                    <stop offset="0%" stopColor="var(--picsellia-blue)" stopOpacity="0" />
+                    <stop offset="50%" stopColor="var(--picsellia-blue)" stopOpacity="1" />
+                    <stop offset="100%" stopColor="var(--picsellia-blue)" stopOpacity="0" />
                   </linearGradient>
                 </defs>
                 <line x1="20%" y1="30%" x2="40%" y2="50%" stroke="url(#lineGradient)" strokeWidth="1" />
@@ -288,8 +288,8 @@ export default function DatalakePage() {
 
                 {/* Arrow */}
                 <div className="hidden md:flex justify-center">
-                  <div className="flex items-center gap-2 text-[var(--system-blue)]">
-                    <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--system-blue)]" />
+                  <div className="flex items-center gap-2 text-[var(--picsellia-blue)]">
+                    <div className="h-px w-8 bg-gradient-to-r from-transparent to-[var(--picsellia-blue)]" />
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
@@ -298,8 +298,8 @@ export default function DatalakePage() {
 
                 {/* Datalake Core */}
                 <div className="md:col-span-1">
-                  <div className="p-6 rounded-xl bg-gradient-to-br from-[var(--system-blue)]/20 to-[var(--system-blue)]/5 border border-[var(--system-blue)]/30 relative">
-                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--system-blue)] text-[10px] font-medium text-white">
+                  <div className="p-6 rounded-xl bg-gradient-to-br from-[var(--picsellia-blue)]/20 to-[var(--picsellia-blue)]/5 border border-[var(--picsellia-blue)]/30 relative">
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--picsellia-blue)] text-[10px] font-medium text-white">
                       DATALAKE
                     </div>
                     <div className="text-center pt-4">
@@ -307,7 +307,7 @@ export default function DatalakePage() {
                       <div className="text-xs text-[var(--tertiary-label)]">assets indexed</div>
                       <div className="mt-4 grid grid-cols-2 gap-2 text-[10px]">
                         <div className="p-2 rounded bg-[var(--black)]/50">
-                          <div className="text-[var(--system-blue)] font-mono">847GB</div>
+                          <div className="text-[var(--picsellia-blue)] font-mono">847GB</div>
                           <div className="text-[var(--tertiary-label)]">storage</div>
                         </div>
                         <div className="p-2 rounded bg-[var(--black)]/50">
@@ -321,11 +321,11 @@ export default function DatalakePage() {
 
                 {/* Arrow */}
                 <div className="hidden md:flex justify-center">
-                  <div className="flex items-center gap-2 text-[var(--system-blue)]">
+                  <div className="flex items-center gap-2 text-[var(--picsellia-blue)]">
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                    <div className="h-px w-8 bg-gradient-to-r from-[var(--system-blue)] to-transparent" />
+                    <div className="h-px w-8 bg-gradient-to-r from-[var(--picsellia-blue)] to-transparent" />
                   </div>
                 </div>
 
@@ -384,7 +384,7 @@ export default function DatalakePage() {
                   <span className="text-[10px] text-[var(--tertiary-label)]">Python SDK v6.9.0</span>
                   <div className="flex items-center gap-4">
                     <span className="text-[10px] text-[var(--picsellia-green)]">Auto EXIF extraction</span>
-                    <span className="text-[10px] text-[var(--system-blue)]">Batch upload</span>
+                    <span className="text-[10px] text-[var(--picsellia-blue)]">Batch upload</span>
                   </div>
                 </div>
               </div>
@@ -445,10 +445,10 @@ export default function DatalakePage() {
               </div>
               <div className="grid grid-cols-4 gap-3">
                 {[
-                  { ext: 'JPG', type: 'image', color: 'var(--system-blue)' },
-                  { ext: 'PNG', type: 'image', color: 'var(--system-blue)' },
-                  { ext: 'TIFF', type: 'image', color: 'var(--system-blue)' },
-                  { ext: 'WebP', type: 'image', color: 'var(--system-blue)' },
+                  { ext: 'JPG', type: 'image', color: 'var(--picsellia-blue)' },
+                  { ext: 'PNG', type: 'image', color: 'var(--picsellia-blue)' },
+                  { ext: 'TIFF', type: 'image', color: 'var(--picsellia-blue)' },
+                  { ext: 'WebP', type: 'image', color: 'var(--picsellia-blue)' },
                   { ext: 'MP4', type: 'video', color: 'var(--system-orange)' },
                   { ext: 'MOV', type: 'video', color: 'var(--system-orange)' },
                   { ext: 'DICOM', type: 'medical', color: 'var(--system-pink)' },
@@ -460,7 +460,7 @@ export default function DatalakePage() {
                 ].map((format) => (
                   <div
                     key={format.ext}
-                    className="p-3 rounded-lg bg-[var(--black)] border border-[var(--border)] text-center group hover:border-[var(--system-blue)]/50 transition-colors"
+                    className="p-3 rounded-lg bg-[var(--black)] border border-[var(--border)] text-center group hover:border-[var(--picsellia-blue)]/50 transition-colors"
                   >
                     <div className="text-sm font-mono font-bold text-[var(--label)]">.{format.ext.toLowerCase()}</div>
                     <div className="text-[9px] mt-1" style={{ color: format.color }}>{format.type}</div>
@@ -483,7 +483,7 @@ export default function DatalakePage() {
               </div>
               <div className="space-y-4">
                 {[
-                  { label: 'Ingestion Rate', value: '2,847', unit: 'img/min', percent: 85, color: 'var(--system-blue)' },
+                  { label: 'Ingestion Rate', value: '2,847', unit: 'img/min', percent: 85, color: 'var(--picsellia-blue)' },
                   { label: 'Index Speed', value: '12', unit: 'ms/img', percent: 95, color: 'var(--picsellia-green)' },
                   { label: 'Embedding Gen', value: '156', unit: 'vec/sec', percent: 72, color: 'var(--system-indigo)' },
                   { label: 'Storage Sync', value: '99.9', unit: '%', percent: 99, color: 'var(--system-orange)' },
@@ -589,7 +589,7 @@ export default function DatalakePage() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">auto-complete</span>
-                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">type hints</span>
+                <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">type hints</span>
               </div>
             </div>
             <div className="grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[var(--border)]">
@@ -625,7 +625,7 @@ export default function DatalakePage() {
                       <span className="text-[var(--tertiary-label)] ml-1">results</span>
                     </div>
                     <div>
-                      <span className="text-[var(--system-blue)] font-mono font-bold">23ms</span>
+                      <span className="text-[var(--picsellia-blue)] font-mono font-bold">23ms</span>
                       <span className="text-[var(--tertiary-label)] ml-1">query time</span>
                     </div>
                     <div>
@@ -639,8 +639,8 @@ export default function DatalakePage() {
                   <div className="flex flex-wrap gap-2">
                     <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">production (1,892)</span>
                     <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">validated (2,103)</span>
-                    <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A (1,245)</span>
-                    <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-B (892)</span>
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">factory-A (1,245)</span>
+                    <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">factory-B (892)</span>
                   </div>
                 </div>
                 <div className="mt-4 pt-4 border-t border-[var(--border)]">
@@ -842,16 +842,16 @@ export default function DatalakePage() {
                   <div className="space-y-2 font-mono text-xs">
                     <div className="flex items-center gap-2">
                       <span className="text-[var(--tertiary-label)]">├──</span>
-                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">source</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">source</span>
                     </div>
                     <div className="flex items-center gap-2 pl-6">
                       <span className="text-[var(--tertiary-label)]">├──</span>
-                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">factory-A</span>
                       <span className="text-[var(--tertiary-label)]">(1,245)</span>
                     </div>
                     <div className="flex items-center gap-2 pl-6">
                       <span className="text-[var(--tertiary-label)]">└──</span>
-                      <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-B</span>
+                      <span className="px-2 py-0.5 rounded bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">factory-B</span>
                       <span className="text-[var(--tertiary-label)]">(892)</span>
                     </div>
                     <div className="flex items-center gap-2">
@@ -884,8 +884,8 @@ export default function DatalakePage() {
                 {/* Multi-tag example */}
                 <div className="p-4 rounded-lg bg-[var(--black)] border border-[var(--border)]">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded bg-[var(--system-blue)]/20 flex items-center justify-center">
-                      <svg className="w-5 h-5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-10 h-10 rounded bg-[var(--picsellia-blue)]/20 flex items-center justify-center">
+                      <svg className="w-5 h-5 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
                     </div>
@@ -895,7 +895,7 @@ export default function DatalakePage() {
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-1.5">
-                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">factory-A</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">factory-A</span>
                     <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">production</span>
                     <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-indigo)]/10 text-[var(--system-indigo)]">validated</span>
                     <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-orange)]/10 text-[var(--system-orange)]">Q1-2024</span>
@@ -945,7 +945,7 @@ export default function DatalakePage() {
                   <span className="text-[var(--tertiary-label)]">All fields queryable via PQL</span>
                   <div className="flex gap-2">
                     <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">EXIF</span>
-                    <span className="px-2 py-0.5 rounded bg-[var(--system-blue)]/10 text-[var(--system-blue)]">GPS</span>
+                    <span className="px-2 py-0.5 rounded bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">GPS</span>
                     <span className="px-2 py-0.5 rounded bg-[var(--system-orange)]/10 text-[var(--system-orange)]">XMP</span>
                   </div>
                 </div>
@@ -958,14 +958,14 @@ export default function DatalakePage() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--system-blue)]/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--picsellia-blue)]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--system-blue)]/20">
+          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--picsellia-blue)]/20">
             <div className="absolute inset-0 opacity-[0.03]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
                 backgroundSize: '32px 32px',
               }} />
             </div>

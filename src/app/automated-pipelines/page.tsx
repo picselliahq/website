@@ -7,7 +7,7 @@ const PipelineFlow = () => {
   const stages = [
     { id: 'production', label: 'Production', sublabel: 'Model serving', color: 'var(--system-blue)', active: false },
     { id: 'monitor', label: 'Monitor', sublabel: 'Anomaly detection', color: 'var(--system-orange)', active: false },
-    { id: 'feedback', label: 'Feedback', sublabel: 'Review & label', color: 'var(--system-indigo)', active: true },
+    { id: 'feedback', label: 'Feedback', sublabel: 'Review & label', color: 'var(--picsellia-green)', active: true },
     { id: 'retrain', label: 'Retrain', sublabel: 'Auto trigger', color: 'var(--picsellia-green)', active: false },
     { id: 'deploy', label: 'Deploy', sublabel: 'Shadow → Prod', color: 'var(--system-pink)', active: false },
   ];
@@ -191,21 +191,21 @@ export default function AutomatedPipelinesPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[var(--system-indigo)]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[var(--picsellia-green)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--picsellia-green)]/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-indigo)]/10 border border-[var(--system-indigo)]/20 mb-8">
-              <svg className="w-4 h-4 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-green)]/10 border border-[var(--picsellia-green)]/20 mb-8">
+              <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
               </svg>
-              <span className="text-sm font-medium text-[var(--system-indigo)]">CT/CD Automation</span>
+              <span className="text-sm font-medium text-[var(--picsellia-green)]">CT/CD Automation</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight max-w-4xl mx-auto">
-              Models That <span className="text-[var(--system-indigo)]">Improve Themselves</span>
+              Models That <span className="text-[var(--picsellia-green)]">Improve Themselves</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
@@ -236,7 +236,7 @@ export default function AutomatedPipelinesPage() {
                 { value: '∞', label: 'Model iterations' },
               ].map((stat) => (
                 <div key={stat.label} className="p-4 border border-[var(--border)] rounded-xl text-center">
-                  <div className="text-xl font-bold font-mono text-[var(--system-indigo)]">{stat.value}</div>
+                  <div className="text-xl font-bold font-mono text-[var(--picsellia-green)]">{stat.value}</div>
                   <div className="text-xs text-[var(--tertiary-label)] mt-1">{stat.label}</div>
                 </div>
               ))}
@@ -255,7 +255,7 @@ export default function AutomatedPipelinesPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
                 Feedback Loop
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold mb-6">
@@ -274,8 +274,8 @@ export default function AutomatedPipelinesPage() {
                   { title: 'Trigger retraining', desc: 'Automated based on thresholds' },
                 ].map((item, i) => (
                   <div key={item.title} className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--system-indigo)]/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-sm font-bold text-[var(--system-indigo)]">{i + 1}</span>
+                    <div className="w-8 h-8 rounded-lg bg-[var(--picsellia-green)]/10 flex items-center justify-center flex-shrink-0">
+                      <span className="text-sm font-bold text-[var(--picsellia-green)]">{i + 1}</span>
                     </div>
                     <div>
                       <h4 className="text-sm font-semibold text-[var(--label)]">{item.title}</h4>
@@ -287,7 +287,7 @@ export default function AutomatedPipelinesPage() {
 
               <div className="card p-0 overflow-hidden">
                 <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-                  <span className="text-xs font-medium text-[var(--system-indigo)]">SDK</span>
+                  <span className="text-xs font-medium text-[var(--picsellia-green)]">SDK</span>
                 </div>
                 <pre className="p-4 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
                   <code>
@@ -295,7 +295,7 @@ export default function AutomatedPipelinesPage() {
                     <span className="text-[var(--label)]">deployment.setup_feedback_loop()</span>{'\n\n'}
                     <span className="text-[var(--tertiary-label)]"># Attach dataset for enrichment</span>{'\n'}
                     <span className="text-[var(--label)]">deployment.attach_dataset_version_to_feedback_loop(</span>{'\n'}
-                    {'  '}<span className="text-[var(--label)]">dataset_version</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">training_set</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">dataset_version</span><span className="text-[var(--picsellia-green)]">=</span><span className="text-[var(--label)]">training_set</span>{'\n'}
                     <span className="text-[var(--label)]">)</span>{'\n\n'}
                     <span className="text-[var(--tertiary-label)]"># Activate</span>{'\n'}
                     <span className="text-[var(--label)]">deployment.toggle_feedback_loop(</span><span className="text-[var(--picsellia-green)]">True</span><span className="text-[var(--label)]">)</span>
@@ -517,7 +517,7 @@ export default function AutomatedPipelinesPage() {
                   <code>
                     <span className="text-[var(--tertiary-label)]"># Deploy shadow model</span>{'\n'}
                     <span className="text-[var(--label)]">deployment.set_shadow_model(</span>{'\n'}
-                    {'  '}<span className="text-[var(--label)]">model_version</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">new_version</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">model_version</span><span className="text-[var(--picsellia-green)]">=</span><span className="text-[var(--label)]">new_version</span>{'\n'}
                     <span className="text-[var(--label)]">)</span>{'\n\n'}
                     <span className="text-[var(--tertiary-label)]"># Run shadow prediction</span>{'\n'}
                     <span className="text-[var(--label)]">prediction.predict_shadow()</span>
@@ -529,8 +529,8 @@ export default function AutomatedPipelinesPage() {
                   <code>
                     <span className="text-[var(--tertiary-label)]"># Setup auto-promotion policy</span>{'\n'}
                     <span className="text-[var(--label)]">deployment.setup_continuous_deployment(</span>{'\n'}
-                    {'  '}<span className="text-[var(--label)]">promotion_threshold</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">0.05</span><span className="text-[var(--label)]">,</span>{'\n'}
-                    {'  '}<span className="text-[var(--label)]">min_samples</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">1000</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">promotion_threshold</span><span className="text-[var(--picsellia-green)]">=</span><span className="text-[var(--picsellia-green)]">0.05</span><span className="text-[var(--label)]">,</span>{'\n'}
+                    {'  '}<span className="text-[var(--label)]">min_samples</span><span className="text-[var(--picsellia-green)]">=</span><span className="text-[var(--picsellia-green)]">1000</span>{'\n'}
                     <span className="text-[var(--label)]">)</span>{'\n\n'}
                     <span className="text-[var(--label)]">deployment.toggle_continuous_deployment(</span><span className="text-[var(--picsellia-green)]">True</span><span className="text-[var(--label)]">)</span>
                   </code>
@@ -624,7 +624,7 @@ export default function AutomatedPipelinesPage() {
           <div className="card p-0 overflow-hidden relative">
             <div className="absolute inset-0 opacity-[0.08]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-indigo) 1px, transparent 1px), linear-gradient(90deg, var(--system-indigo) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-green) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-green) 1px, transparent 1px)`,
                 backgroundSize: '40px 40px',
               }} />
             </div>

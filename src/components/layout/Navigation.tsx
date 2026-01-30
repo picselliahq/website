@@ -9,7 +9,7 @@ const productMenu = {
     {
       title: 'Data',
       description: 'Collect & organize',
-      color: 'var(--system-blue)',
+      color: 'var(--picsellia-blue)',
       items: [
         {
           label: 'Datalake',
@@ -36,7 +36,7 @@ const productMenu = {
     {
       title: 'Annotate',
       description: 'Label & review',
-      color: 'var(--system-orange)',
+      color: 'var(--picsellia-blue)',
       items: [
         {
           label: 'Labeling Tool',
@@ -63,7 +63,7 @@ const productMenu = {
     {
       title: 'Train',
       description: 'Build & experiment',
-      color: 'var(--system-indigo)',
+      color: 'var(--picsellia-green)',
       items: [
         {
           label: 'AI Laboratory',
@@ -100,7 +100,7 @@ const productMenu = {
     {
       title: 'Deploy',
       description: 'Ship & monitor',
-      color: 'var(--picsellia-green)',
+      color: 'var(--system-red)',
       items: [
         {
           label: 'Model Deployment',

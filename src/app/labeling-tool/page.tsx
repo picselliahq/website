@@ -14,7 +14,7 @@ const annotationTypes = [
         <rect x="6" y="8" width="8" height="6" rx="1" strokeWidth={2} />
       </svg>
     ),
-    color: 'var(--system-blue)',
+    color: 'var(--picsellia-blue)',
   },
   {
     name: 'Segmentation',
@@ -80,7 +80,7 @@ const AnnotationCanvas = () => {
     | { id: number; type: 'box'; x: number; y: number; w: number; h: number; label: string; color: string }
     | { id: number; type: 'polygon'; points: string; label: string; color: string }
   > = [
-    { id: 0, type: 'box', x: 15, y: 20, w: 25, h: 30, label: 'person', color: 'var(--system-blue)' },
+    { id: 0, type: 'box', x: 15, y: 20, w: 25, h: 30, label: 'person', color: 'var(--picsellia-blue)' },
     { id: 1, type: 'box', x: 55, y: 35, w: 20, h: 25, label: 'car', color: 'var(--system-orange)' },
     { id: 2, type: 'polygon', points: '82,15 95,15 95,40 88,45 82,40', label: 'sign', color: 'var(--picsellia-green)' },
   ];
@@ -93,7 +93,7 @@ const AnnotationCanvas = () => {
           <button
             key={tool}
             className={`w-8 h-8 rounded flex items-center justify-center transition-colors ${
-              i === 1 ? 'bg-[var(--system-blue)] text-white' : 'bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] hover:bg-[var(--quaternary-system-fill)]'
+              i === 1 ? 'bg-[var(--picsellia-blue)] text-white' : 'bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] hover:bg-[var(--quaternary-system-fill)]'
             }`}
           >
             {tool === 'cursor' && (
@@ -228,7 +228,7 @@ export default function LabelingToolPage() {
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--system-blue)]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--picsellia-blue)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--picsellia-green)]/10 rounded-full blur-[100px]" />
         </div>
 
@@ -236,16 +236,16 @@ export default function LabelingToolPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-blue)]/10 border border-[var(--system-blue)]/20 mb-8">
-                <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
+                <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                 </svg>
-                <span className="text-sm font-medium text-[var(--system-blue)]">Annotation</span>
+                <span className="text-sm font-medium text-[var(--picsellia-blue)]">Annotation</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
                 Precision Labeling<br />
-                <span className="text-[var(--system-blue)]">AI-Assisted</span>
+                <span className="text-[var(--picsellia-blue)]">AI-Assisted</span>
               </h1>
 
               <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-lg">
@@ -258,7 +258,7 @@ export default function LabelingToolPage() {
                 {annotationTypes.slice(0, 4).map((type) => (
                   <div
                     key={type.name}
-                    className="w-10 h-10 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center transition-colors hover:border-[var(--system-blue)]/50"
+                    className="w-10 h-10 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center transition-colors hover:border-[var(--picsellia-blue)]/50"
                     style={{ color: type.color }}
                     title={type.name}
                   >
@@ -326,13 +326,13 @@ export default function LabelingToolPage() {
       {/* Annotation Types Section */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-16">
-            <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
               Annotation Types
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -349,7 +349,7 @@ export default function LabelingToolPage() {
             {annotationTypes.map((type) => (
               <div
                 key={type.name}
-                className="card p-6 text-center group hover:border-[var(--system-blue)]/30 transition-all"
+                className="card p-6 text-center group hover:border-[var(--picsellia-blue)]/30 transition-all"
               >
                 <div
                   className="w-14 h-14 rounded-xl mx-auto mb-4 flex items-center justify-center transition-transform group-hover:scale-110"
@@ -519,7 +519,7 @@ export default function LabelingToolPage() {
 
             <div className="card p-6">
               <div className="flex items-center gap-4 mb-4">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--system-blue)] to-[var(--system-teal)] flex items-center justify-center">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--picsellia-blue)] to-[var(--system-teal)] flex items-center justify-center">
                   <span className="text-white font-bold text-sm">DINOv2</span>
                 </div>
                 <div>
@@ -532,7 +532,7 @@ export default function LabelingToolPage() {
                 and transfer learning without labels.
               </p>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">Embeddings</span>
+                <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">Embeddings</span>
                 <span className="px-2 py-1 rounded text-xs bg-[var(--system-teal)]/10 text-[var(--system-teal)]">Clustering</span>
                 <span className="px-2 py-1 rounded text-xs bg-[var(--system-orange)]/10 text-[var(--system-orange)]">Self-supervised</span>
               </div>
@@ -634,9 +634,9 @@ export default function LabelingToolPage() {
               <div className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full bg-[var(--system-blue)] flex items-center justify-center text-white text-xs font-bold">1</div>
-                    <div className="flex-1 p-3 rounded-lg bg-[var(--system-blue)]/10 border border-[var(--system-blue)]/20">
-                      <span className="text-sm text-[var(--system-blue)]">Select processing type</span>
+                    <div className="w-8 h-8 rounded-full bg-[var(--picsellia-blue)] flex items-center justify-center text-white text-xs font-bold">1</div>
+                    <div className="flex-1 p-3 rounded-lg bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20">
+                      <span className="text-sm text-[var(--picsellia-blue)]">Select processing type</span>
                     </div>
                   </div>
                   <div className="flex justify-center">
@@ -722,8 +722,8 @@ export default function LabelingToolPage() {
               <p className="text-sm text-[var(--tertiary-label)]">Reviewed annotations are automatically locked to prevent accidental modifications.</p>
             </div>
             <div className="card p-6">
-              <div className="w-12 h-12 rounded-xl bg-[var(--system-blue)]/10 flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="w-12 h-12 rounded-xl bg-[var(--picsellia-blue)]/10 flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                 </svg>
               </div>
@@ -746,14 +746,14 @@ export default function LabelingToolPage() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--system-blue)]/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--picsellia-blue)]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--system-blue)]/20">
+          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--picsellia-blue)]/20">
             <div className="absolute inset-0 opacity-[0.03]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
                 backgroundSize: '32px 32px',
               }} />
             </div>

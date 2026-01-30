@@ -19,7 +19,7 @@ const logTypes = [
   { name: 'Image', description: 'Visualizations & samples', color: 'var(--system-pink)', icon: 'image' },
   { name: 'Table', description: 'Structured data', color: 'var(--system-orange)', icon: 'table' },
   { name: 'Histogram', description: 'Distributions', color: 'var(--system-indigo)', icon: 'histogram' },
-  { name: 'Confusion Matrix', description: 'Classification results', color: 'var(--system-teal)', icon: 'matrix' },
+  { name: 'Confusion Matrix', description: 'Classification results', color: 'var(--picsellia-green)', icon: 'matrix' },
 ];
 
 // Metrics chart visualization
@@ -103,7 +103,7 @@ const ComparisonTable = () => {
   return (
     <div className="card p-0 overflow-hidden">
       <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-        <span className="text-xs font-medium text-[var(--system-teal)]">EXPERIMENT COMPARISON</span>
+        <span className="text-xs font-medium text-[var(--picsellia-green)]">EXPERIMENT COMPARISON</span>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
@@ -152,7 +152,7 @@ export default function ExperimentTrackingPage() {
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[var(--system-teal)]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[var(--picsellia-green)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--system-indigo)]/10 rounded-full blur-[100px]" />
         </div>
 
@@ -160,16 +160,16 @@ export default function ExperimentTrackingPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-teal)]/10 border border-[var(--system-teal)]/20 mb-8">
-                <svg className="w-4 h-4 text-[var(--system-teal)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-green)]/10 border border-[var(--picsellia-green)]/20 mb-8">
+                <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
-                <span className="text-sm font-medium text-[var(--system-teal)]">MLOps</span>
+                <span className="text-sm font-medium text-[var(--picsellia-green)]">MLOps</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
                 Track Experiments<br />
-                <span className="text-[var(--system-teal)]">Ship Better Models</span>
+                <span className="text-[var(--picsellia-green)]">Ship Better Models</span>
               </h1>
 
               <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-lg">
@@ -252,13 +252,13 @@ export default function ExperimentTrackingPage() {
       {/* Logging Capabilities Section */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(var(--system-teal) 1px, transparent 1px), linear-gradient(90deg, var(--system-teal) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--picsellia-green) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-green) 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-16">
-            <span className="text-[var(--system-teal)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
               Logging
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -275,7 +275,7 @@ export default function ExperimentTrackingPage() {
             {logTypes.map((type) => (
               <div
                 key={type.name}
-                className="card p-5 group hover:border-[var(--system-teal)]/30 transition-all"
+                className="card p-5 group hover:border-[var(--picsellia-green)]/30 transition-all"
               >
                 <div className="flex items-start gap-4">
                   <div
@@ -727,14 +727,14 @@ export default function ExperimentTrackingPage() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--system-teal)]/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--picsellia-green)]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--system-teal)]/20">
+          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--picsellia-green)]/20">
             <div className="absolute inset-0 opacity-[0.03]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-teal) 1px, transparent 1px), linear-gradient(90deg, var(--system-teal) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-green) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-green) 1px, transparent 1px)`,
                 backgroundSize: '32px 32px',
               }} />
             </div>

@@ -19,7 +19,7 @@ const capabilities = [
     title: 'Git-like Version Control',
     tagline: 'Never lose your data again',
     description: 'Track every change to your datasets. Compare versions, rollback mistakes, and branch for experiments. Full lineage from raw data to trained models.',
-    color: 'var(--system-blue)',
+    color: 'var(--picsellia-blue)',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
@@ -83,7 +83,7 @@ const VersionTimeline = () => {
       {/* Timeline track */}
       <div className="absolute top-5 left-0 right-0 h-0.5 bg-[var(--border)]" />
       <div
-        className="absolute top-5 left-0 h-0.5 bg-[var(--system-blue)] transition-all duration-500"
+        className="absolute top-5 left-0 h-0.5 bg-[var(--picsellia-blue)] transition-all duration-500"
         style={{ width: `${(activeVersion / (versions.length - 1)) * 100}%` }}
       />
 
@@ -97,9 +97,9 @@ const VersionTimeline = () => {
             <div
               className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all ${
                 version.id === activeVersion
-                  ? 'bg-[var(--system-blue)] border-[var(--system-blue)] text-white scale-110'
+                  ? 'bg-[var(--picsellia-blue)] border-[var(--picsellia-blue)] text-white scale-110'
                   : version.id < activeVersion
-                  ? 'bg-[var(--system-blue)]/20 border-[var(--system-blue)] text-[var(--system-blue)]'
+                  ? 'bg-[var(--picsellia-blue)]/20 border-[var(--picsellia-blue)] text-[var(--picsellia-blue)]'
                   : 'bg-[var(--card)] border-[var(--border)] text-[var(--tertiary-label)]'
               }`}
             >
@@ -127,8 +127,8 @@ const VersionTimeline = () => {
       <div className="mt-8 p-4 rounded-xl bg-[var(--black)] border border-[var(--border)]">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-[var(--system-blue)]/20 flex items-center justify-center">
-              <span className="text-xs font-mono text-[var(--system-blue)] font-bold">{versions[activeVersion].name}</span>
+            <div className="w-8 h-8 rounded-lg bg-[var(--picsellia-blue)]/20 flex items-center justify-center">
+              <span className="text-xs font-mono text-[var(--picsellia-blue)] font-bold">{versions[activeVersion].name}</span>
             </div>
             <div>
               <div className="text-sm font-medium text-[var(--label)]">Dataset: defect-detection</div>
@@ -136,10 +136,10 @@ const VersionTimeline = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] hover:bg-[var(--system-blue)]/10 hover:text-[var(--system-blue)] transition-colors">
+            <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] hover:bg-[var(--picsellia-blue)]/10 hover:text-[var(--picsellia-blue)] transition-colors">
               Compare
             </button>
-            <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--system-blue)] text-white">
+            <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--picsellia-blue)] text-white">
               Checkout
             </button>
           </div>
@@ -172,7 +172,7 @@ export default function DatasetManagementPage() {
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--system-blue)]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--picsellia-blue)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] bg-[var(--picsellia-green)]/10 rounded-full blur-[100px]" />
         </div>
 
@@ -180,16 +180,16 @@ export default function DatasetManagementPage() {
           {/* Badge */}
           <div className="flex justify-center mb-8">
             <span className="badge">
-              <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
               </svg>
-              <span className="text-sm font-medium text-[var(--system-blue)]">Dataset Management</span>
+              <span className="text-sm font-medium text-[var(--picsellia-blue)]">Dataset Management</span>
             </span>
           </div>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-center max-w-4xl mx-auto mb-6 tracking-tight">
-            Your datasets deserve <span className="text-[var(--system-blue)]">version control</span>
+            Your datasets deserve <span className="text-[var(--picsellia-blue)]">version control</span>
           </h1>
 
           {/* Subheadline */}
@@ -219,8 +219,8 @@ export default function DatasetManagementPage() {
             {/* Floating version card */}
             <div className="absolute -bottom-6 -left-6 card px-4 py-3 shadow-xl hidden lg:block">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[var(--system-blue)]/20 flex items-center justify-center">
-                  <span className="text-sm font-mono text-[var(--system-blue)] font-bold">v3</span>
+                <div className="w-10 h-10 rounded-lg bg-[var(--picsellia-blue)]/20 flex items-center justify-center">
+                  <span className="text-sm font-mono text-[var(--picsellia-blue)] font-bold">v3</span>
                 </div>
                 <div>
                   <div className="text-xs text-[var(--tertiary-label)]">Current Version</div>
@@ -246,7 +246,7 @@ export default function DatasetManagementPage() {
               { value: '∞', label: 'Version history' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-semibold text-[var(--system-blue)] mb-1">{stat.value}</div>
+                <div className="text-2xl md:text-3xl font-semibold text-[var(--picsellia-blue)] mb-1">{stat.value}</div>
                 <div className="text-sm text-[var(--tertiary-label)]">{stat.label}</div>
               </div>
             ))}
@@ -274,7 +274,7 @@ export default function DatasetManagementPage() {
       {/* Version Control Deep Dive */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }} />
 
@@ -282,7 +282,7 @@ export default function DatasetManagementPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left - Content */}
             <div>
-              <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
                 Version Control
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold mb-6">
@@ -312,8 +312,8 @@ export default function DatasetManagementPage() {
                   },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-4">
-                    <div className="w-6 h-6 rounded-full bg-[var(--system-blue)]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <svg className="w-3.5 h-3.5 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="w-6 h-6 rounded-full bg-[var(--picsellia-blue)]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <svg className="w-3.5 h-3.5 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
@@ -330,7 +330,7 @@ export default function DatasetManagementPage() {
             <div className="card p-6">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-semibold text-[var(--label)]">Version Timeline</h3>
-                <span className="px-2 py-1 rounded text-xs bg-[var(--system-blue)]/10 text-[var(--system-blue)]">Interactive</span>
+                <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">Interactive</span>
               </div>
               <VersionTimeline />
             </div>
@@ -536,7 +536,7 @@ export default function DatasetManagementPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-[var(--tertiary-label)]">Supports COCO, YOLO, Pascal VOC</span>
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--system-blue)]/10 text-[var(--system-blue)]">label.update()</span>
+                    <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">label.update()</span>
                   </div>
                 </div>
               </div>
@@ -582,7 +582,7 @@ export default function DatasetManagementPage() {
                 {/* Split visualization */}
                 <div className="space-y-3">
                   {[
-                    { name: 'train', count: 8400, percent: 70, color: 'var(--system-blue)' },
+                    { name: 'train', count: 8400, percent: 70, color: 'var(--picsellia-blue)' },
                     { name: 'validation', count: 1800, percent: 15, color: 'var(--system-orange)' },
                     { name: 'test', count: 1800, percent: 15, color: 'var(--picsellia-green)' },
                   ].map((split) => (
@@ -724,7 +724,7 @@ export default function DatasetManagementPage() {
 
             <div className="mt-8 pt-8 border-t border-[var(--border)] grid md:grid-cols-3 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold font-mono text-[var(--system-blue)]">Auto-sync</div>
+                <div className="text-2xl font-bold font-mono text-[var(--picsellia-blue)]">Auto-sync</div>
                 <div className="text-sm text-[var(--tertiary-label)]">From datalake</div>
               </div>
               <div>
@@ -747,19 +747,19 @@ export default function DatasetManagementPage() {
             {/* Background Grid */}
             <div className="absolute inset-0 opacity-[0.08]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-blue) 1px, transparent 1px), linear-gradient(90deg, var(--system-blue) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
                 backgroundSize: '40px 40px',
               }} />
             </div>
 
             {/* Content */}
             <div className="relative z-10 p-12 md:p-20 text-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--system-blue)]/10 border border-[var(--system-blue)]/20 mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--system-blue)] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--system-blue)]"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--picsellia-blue)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--picsellia-blue)]"></span>
                 </span>
-                <span className="text-xs font-mono text-[var(--system-blue)]">VERSION_CONTROL</span>
+                <span className="text-xs font-mono text-[var(--picsellia-blue)]">VERSION_CONTROL</span>
               </div>
 
               <h2 className="text-3xl md:text-5xl font-semibold mb-4 tracking-tight">
@@ -783,19 +783,19 @@ export default function DatasetManagementPage() {
 
               <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--tertiary-label)]">
                 <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>No credit card required</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>14-day free trial</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-4 h-4 text-[var(--system-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <span>Unlimited versions</span>

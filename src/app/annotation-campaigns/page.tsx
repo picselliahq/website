@@ -158,22 +158,22 @@ export default function AnnotationCampaignsPage() {
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--system-orange)]/10 rounded-full blur-[120px]" />
+          <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-[var(--picsellia-blue)]/10 rounded-full blur-[120px]" />
           <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[var(--system-indigo)]/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-orange)]/10 border border-[var(--system-orange)]/20 mb-8">
-              <svg className="w-4 h-4 text-[var(--system-orange)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
+              <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
-              <span className="text-sm font-medium text-[var(--system-orange)]">Workflow</span>
+              <span className="text-sm font-medium text-[var(--picsellia-blue)]">Workflow</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
               Human-In-The-Loop<br />
-              <span className="text-[var(--system-orange)]">At Scale</span>
+              <span className="text-[var(--picsellia-blue)]">At Scale</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
@@ -215,14 +215,14 @@ export default function AnnotationCampaignsPage() {
       {/* Multi-Step Workflows Section */}
       <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.02]" style={{
-          backgroundImage: `linear-gradient(var(--system-orange) 1px, transparent 1px), linear-gradient(90deg, var(--system-orange) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
           backgroundSize: '48px 48px',
         }} />
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[var(--system-orange)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
                 Workflows
               </span>
               <h2 className="text-3xl md:text-4xl font-semibold mb-6">
@@ -608,14 +608,14 @@ export default function AnnotationCampaignsPage() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--system-orange)]/5 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--picsellia-blue)]/5 rounded-full blur-3xl" />
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--system-orange)]/20">
+          <div className="card p-12 md:p-20 text-center relative overflow-hidden border-[var(--picsellia-blue)]/20">
             <div className="absolute inset-0 opacity-[0.03]">
               <div className="w-full h-full" style={{
-                backgroundImage: `linear-gradient(var(--system-orange) 1px, transparent 1px), linear-gradient(90deg, var(--system-orange) 1px, transparent 1px)`,
+                backgroundImage: `linear-gradient(var(--picsellia-blue) 1px, transparent 1px), linear-gradient(90deg, var(--picsellia-blue) 1px, transparent 1px)`,
                 backgroundSize: '32px 32px',
               }} />
             </div>

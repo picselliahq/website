@@ -10,7 +10,7 @@ const platformStages = [
     headline: 'Stop drowning in unorganized data',
     problem: 'Your images are scattered across cloud buckets, hard drives, and legacy systems. Finding the right data for training takes days, not minutes.',
     solution: 'One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.',
-    color: 'var(--system-blue)',
+    color: 'var(--picsellia-blue)',
     video: '/videos/datalake.webm',
     features: [
       { name: 'Datalake', href: '/datalake' },
@@ -25,7 +25,7 @@ const platformStages = [
     headline: 'Labeling shouldn\'t be your bottleneck',
     problem: 'Manual annotation is slow, expensive, and error-prone. Your ML team is wasting time on labeling instead of building models.',
     solution: 'AI-assisted labeling cuts annotation time by 10x. Built-in quality control ensures consistent, high-quality training data.',
-    color: 'var(--system-orange)',
+    color: 'var(--picsellia-blue)',
     video: '/videos/labeling tool animation.webm',
     features: [
       { name: 'Labeling Tool', href: '/labeling-tool' },
@@ -40,7 +40,7 @@ const platformStages = [
     headline: 'Experiments shouldn\'t disappear',
     problem: 'You\'ve run hundreds of experiments but can\'t reproduce your best results. Model versions are scattered across notebooks.',
     solution: 'Every experiment tracked, every model versioned, every result reproducible. Compare runs side-by-side.',
-    color: 'var(--system-indigo)',
+    color: 'var(--picsellia-green)',
     video: '/videos/experiment tracking animation.webm',
     features: [
       { name: 'AI Laboratory', href: '/ai-laboratory' },
@@ -56,7 +56,7 @@ const platformStages = [
     headline: 'Production shouldn\'t be a black box',
     problem: 'Your model works in the lab but fails in production. You only find out when customers complain.',
     solution: 'Deploy with confidence. Real-time monitoring catches drift before it impacts users.',
-    color: 'var(--picsellia-green)',
+    color: 'var(--system-red)',
     video: '/videos/deployment monitoring .webm',
     features: [
       { name: 'Model Deployment', href: '/model-deployment' },
