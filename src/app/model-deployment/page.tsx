@@ -1,5 +1,12 @@
-import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { Metadata } from "next";
+import {
+  DeploymentHero,
+  DeploymentArchitecture,
+  DeploymentSDK,
+  DeploymentScaling,
+  DeploymentFeatures,
+  DeploymentCTA,
+} from "@/components/model-deployment";
 
 export const metadata: Metadata = {
   title: "Model Deployment",
@@ -8,10 +15,13 @@ export const metadata: Metadata = {
 
 export default function ModelDeploymentPage() {
   return (
-    <PlaceholderPage
-      title="Model Deployment"
-      description="Deploy models to cloud or edge. Auto-scaling serverless infrastructure with 99.9% uptime."
-      badge="Deployment"
-    />
+    <>
+      <DeploymentHero />
+      <DeploymentArchitecture />
+      <DeploymentSDK />
+      <DeploymentScaling />
+      <DeploymentFeatures />
+      <DeploymentCTA />
+    </>
   );
 }
