@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
     return [
       // Legacy Webflow blog URLs redirect to new blog paths
       // Individual post redirects are handled by /post/[slug]/page.tsx
+      {
+        source: '/security',
+        destination: '/enterprise',
+        permanent: true,
+      },
     ];
   },
 };
