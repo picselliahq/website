@@ -486,7 +486,7 @@ export default function CookiesPage() {
             </Link>
 
             <Link
-              href="/security"
+              href="/enterprise"
               className="card p-6 hover:border-[var(--system-orange)]/50 transition-colors"
             >
               <div className="w-10 h-10 rounded-lg bg-[var(--system-indigo)]/10 flex items-center justify-center mb-4">

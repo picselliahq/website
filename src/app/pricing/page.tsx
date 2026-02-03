@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import PricingCalculator from './PricingCalculator';
 
 // Platform modules data
 const platformModules = [
@@ -501,6 +502,9 @@ export default function PricingPage() {
         </div>
       </section>
 
+      {/* Cost Calculator */}
+      <PricingCalculator billingCycle={billingCycle} />
+
       {/* Enterprise Section */}
       <section className="py-20 border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6">
@@ -525,12 +529,12 @@ export default function PricingPage() {
                   with negotiated rates, dedicated support, and enterprise SLAs.
                 </p>
 
-                <div className="space-y-3 mb-8">
+                <div className="space-y-3 mb-4">
                   {[
                     'Custom volume commitments',
                     'Dedicated customer success manager',
                     'Priority support & SLAs',
-                    'On-premise deployment options',
+                    'Enterprise deployment options',
                     'Custom integrations',
                   ].map((feature) => (
                     <div key={feature} className="flex items-center gap-3">
@@ -542,12 +546,24 @@ export default function PricingPage() {
                   ))}
                 </div>
 
-                <Link href="/demo" className="btn-primary px-8 py-3">
-                  Contact Sales
-                  <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <Link
+                  href="/enterprise"
+                  className="inline-flex items-center gap-2 text-sm text-[var(--system-indigo)] hover:underline mb-8"
+                >
+                  Explore deployment options
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
+
+                <div>
+                  <Link href="/demo" className="btn-primary px-8 py-3">
+                    Contact Sales
+                    <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
 
               <div className="space-y-4">
