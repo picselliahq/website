@@ -1,0 +1,150 @@
+{
+  "hero": {
+    "badge": "ISO 27001 Certified",
+    "headline": "Everything you need to ship",
+    "headlineHighlight": "Vision AI",
+    "subheadline": "The MLOps platform for computer vision. Manage your data, train models, deploy them, and keep them running.",
+    "startFreeTrial": "Start Free Trial",
+    "requestDemo": "Request Demo",
+    "heroImageAlt": "Picsellia platform - Complete MLOps for computer vision",
+    "stats": {
+      "imagesIndexed": { "value": "50M+", "label": "Images Indexed" },
+      "onPrem": { "value": "On-prem", "label": "Deployment possible" },
+      "modelsTrained": { "value": "5k+", "label": "Models Trained" },
+      "predictions": { "value": "1b+", "label": "Predictions Monitored" }
+    },
+    "usedByTeams": "Used by teams at"
+  },
+  "platformLifecycle": {
+    "sectionLabel": "Platform",
+    "title": "One platform. Zero friction.",
+    "description": "One platform instead of five tools duct-taped together. Built for computer vision from day one.",
+    "explorePlatform": "Explore platform",
+    "withPicsellia": "With Picsellia:",
+    "stages": {
+      "data": {
+        "category": "Data",
+        "tagline": "Collect & organize",
+        "headline": "Stop drowning in unorganized data",
+        "problem": "Your images are scattered across cloud buckets, hard drives, and legacy systems. Finding the right data for training takes days, not minutes.",
+        "solution": "One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.",
+        "features": ["Datalake", "Dataset Management"],
+        "statsValue": "10B+",
+        "statsLabel": "Images managed"
+      },
+      "annotate": {
+        "category": "Annotate",
+        "tagline": "Label & review",
+        "headline": "Labeling shouldn't be your bottleneck",
+        "problem": "Manual annotation is slow, expensive, and error-prone. Your ML team is wasting time on labeling instead of building models.",
+        "solution": "AI-assisted labeling cuts annotation time by 10x. Built-in quality control ensures consistent, high-quality training data.",
+        "features": ["Labeling Tool", "Annotation Campaigns"],
+        "statsValue": "10x",
+        "statsLabel": "Faster labeling"
+      },
+      "train": {
+        "category": "Train",
+        "tagline": "Build & experiment",
+        "headline": "Experiments shouldn't disappear",
+        "problem": "You've run hundreds of experiments but can't reproduce your best results. Model versions are scattered across notebooks.",
+        "solution": "Every experiment tracked, every model versioned, every result reproducible. Compare runs side-by-side.",
+        "features": ["AI Laboratory", "Experiment Tracking", "Automated Pipelines"],
+        "statsValue": "100%",
+        "statsLabel": "Reproducibility"
+      },
+      "deploy": {
+        "category": "Deploy",
+        "tagline": "Ship & monitor",
+        "headline": "Production shouldn't be a black box",
+        "problem": "Your model works in the lab but fails in production. You only find out when customers complain.",
+        "solution": "Deploy with confidence. Real-time monitoring catches drift before it impacts users.",
+        "features": ["Model Deployment", "Model Monitoring"],
+        "statsValue": "99.9%",
+        "statsLabel": "Uptime SLA"
+      }
+    }
+  },
+  "useCases": {
+    "sectionLabel": "Use Cases",
+    "title": "What people build with it",
+    "description": "Manufacturing, agriculture, energy, logistics. Different industries, same workflow.",
+    "viewAllUseCases": "View all use cases",
+    "featured": "Featured",
+    "readCaseStudy": "Read case study",
+    "cases": {
+      "defectDetection": {
+        "title": "Defect Detection",
+        "industry": "Manufacturing",
+        "description": "Spot surface defects and assembly errors on the production line. Cameras check every part, every time.",
+        "stat": "99.5%",
+        "statLabel": "Detection accuracy"
+      },
+      "cropMonitoring": {
+        "title": "Crop Monitoring",
+        "industry": "Agriculture",
+        "description": "Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.",
+        "stat": "30%",
+        "statLabel": "Yield increase"
+      },
+      "infrastructureInspection": {
+        "title": "Infrastructure Inspection",
+        "industry": "Energy",
+        "description": "Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.",
+        "stat": "80%",
+        "statLabel": "Cost reduction"
+      },
+      "assemblyVerification": {
+        "title": "Assembly Verification",
+        "industry": "Manufacturing",
+        "description": "Check that every component is in the right place, in real time, on the line.",
+        "stat": "60fps",
+        "statLabel": "Real-time tracking"
+      },
+      "wasteSorting": {
+        "title": "Waste Sorting",
+        "industry": "Sustainability",
+        "description": "Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.",
+        "stat": "95%",
+        "statLabel": "Sorting accuracy"
+      }
+    }
+  },
+  "integrations": {
+    "sectionLabel": "Integrations",
+    "title": "Works with your stack",
+    "description": "Plug into the tools you already use. Nothing proprietary, no lock-in.",
+    "integrationsCount": "50+",
+    "integrationsLabel": "Integrations",
+    "apiLabel": "API",
+    "apiDescription": "First approach",
+    "categories": {
+      "cloudProviders": { "name": "Cloud Providers", "description": "Deploy anywhere" },
+      "mlFrameworks": { "name": "ML Frameworks", "description": "Train with any framework" },
+      "infrastructure": { "name": "Infrastructure", "description": "Run anywhere" },
+      "ecosystem": { "name": "Ecosystem", "description": "Extend your workflow" }
+    },
+    "pythonSdk": "Python SDK",
+    "pipInstall": "pip install picsellia",
+    "sdkFeatures": {
+      "typeSafe": "Type-safe with full IDE support",
+      "asyncSupport": "Async support for high throughput",
+      "jupyter": "Works with Jupyter notebooks"
+    }
+  },
+  "ctaSection": {
+    "badge": "SYSTEM_READY",
+    "title": "Start detecting in minutes",
+    "description": "Go from raw images to a model running in production. Free trial, no credit card, cancel anytime.",
+    "startFreeTrial": "Start Free Trial",
+    "scheduleDemo": "Schedule Demo",
+    "noCreditCard": "No credit card required",
+    "freeTrial": "14-day free trial",
+    "isoCertified": "ISO 27001:2022 Certified",
+    "stats": {
+      "imagesProcessed": { "value": "50M+", "label": "Images processed" },
+      "inferenceLatency": { "value": "<100ms", "label": "Inference latency" },
+      "uptimeSla": { "value": "99.9%", "label": "Uptime SLA" },
+      "support": { "value": "24/7", "label": "Support" }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "title": "Picsellia - Plateforme MLOps pour la Vision par Ordinateur",
+    "description": "La plateforme MLOps complète pour la vision par ordinateur. Construisez, déployez et supervisez vos applications d'IA visuelle à grande échelle. Centralisez vos données, optimisez l'entraînement des modèles et déployez en toute confiance.",
+    "ogDescription": "La plateforme MLOps complète pour la vision par ordinateur. Construisez, déployez et supervisez vos applications d'IA visuelle à grande échelle."
+  },
+  "nav": {
+    "platform": "Plateforme",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "pricing": "Tarifs",
+    "security": "Sécurité",
+    "about": "À propos",
+    "contactSales": "Contacter l'équipe commerciale",
+    "startFree": "Essai gratuit",
+    "startFreeTrial": "Essai gratuit",
+    "byIndustry": "Par industrie",
+    "useCases": "Cas d'usage",
+    "viewAllUseCases": "Voir tous les cas d'usage",
+    "product": {
+      "data": {
+        "title": "Données",
+        "description": "Collecter & organiser",
+        "datalake": { "label": "Datalake", "description": "Référentiel centralisé de données visuelles" },
+        "datasetManagement": { "label": "Gestion de datasets", "description": "Versionnez et organisez vos datasets" }
+      },
+      "annotate": {
+        "title": "Annoter",
+        "description": "Étiqueter & vérifier",
+        "labelingTool": { "label": "Outil d'annotation", "description": "Interface d'annotation assistée par IA" },
+        "annotationCampaigns": { "label": "Campagnes d'annotation", "description": "Workflows d'équipe & contrôle qualité" }
+      },
+      "train": {
+        "title": "Entraîner",
+        "description": "Construire & expérimenter",
+        "aiLaboratory": { "label": "Laboratoire IA", "description": "Construisez et entraînez vos modèles" },
+        "experimentTracking": { "label": "Suivi d'expériences", "description": "Suivez les métriques & comparez les runs" },
+        "automatedPipelines": { "label": "Pipelines automatisés", "description": "CI/CD pour le machine learning" }
+      },
+      "deploy": {
+        "title": "Déployer",
+        "description": "Livrer & superviser",
+        "modelDeployment": { "label": "Déploiement de modèles", "description": "Déployez vos modèles à grande échelle" },
+        "modelMonitoring": { "label": "Monitoring de modèles", "description": "Suivez les performances en production" }
+      },
+      "footer": { "label": "Vue d'ensemble", "description": "Découvrez la plateforme MLOps complète" }
+    },
+    "industries": {
+      "manufacturing": { "label": "Industrie", "description": "Contrôle qualité & détection de défauts" },
+      "energy": { "label": "Énergie", "description": "Inspection d'infrastructures & maintenance" },
+      "agriculture": { "label": "Agriculture", "description": "Suivi des cultures & optimisation des rendements" },
+      "wasteManagement": { "label": "Gestion des déchets", "description": "Automatisation du tri & recyclage" }
+    },
+    "useCaseItems": {
+      "defectsDetection": "Détection de défauts",
+      "documentProcessing": "Traitement de documents",
+      "liveSportAnalysis": "Analyse sportive en direct"
+    },
+    "resourceItems": {
+      "documentation": { "label": "Documentation", "description": "Guides, référence API & tutoriels" },
+      "blog": { "label": "Blog", "description": "Actualités & analyses" },
+      "community": { "label": "Communauté", "description": "Rejoignez notre Slack & GitHub" },
+      "whitePapers": { "label": "Livres blancs", "description": "Ressources techniques approfondies" }
+    },
+    "mobile": {
+      "platform": "Plateforme",
+      "solutions": "Solutions",
+      "resources": "Ressources"
+    }
+  },
+  "footer": {
+    "tagline": "La plateforme MLOps pour la vision par ordinateur. Construisez, déployez et supervisez l'IA à grande échelle.",
+    "product": "Produit",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "company": "Entreprise",
+    "links": {
+      "overview": "Vue d'ensemble",
+      "datalake": "Datalake",
+      "datasetManagement": "Gestion de datasets",
+      "labelingTool": "Outil d'annotation",
+      "aiLaboratory": "Laboratoire IA",
+      "modelDeployment": "Déploiement de modèles",
+      "modelMonitoring": "Monitoring de modèles",
+      "manufacturing": "Industrie",
+      "energy": "Énergie",
+      "agriculture": "Agriculture",
+      "wasteManagement": "Gestion des déchets",
+      "blog": "Blog",
+      "useCases": "Cas d'usage",
+      "documentation": "Documentation",
+      "faq": "FAQ",
+      "about": "À propos",
+      "contact": "Contact",
+      "pricing": "Tarifs",
+      "privacy": "Confidentialité"
+    },
+    "copyright": "© {year} Picsellia. Tous droits réservés.",
+    "iso": "Certifié ISO 27001"
+  },
+  "cta": {
+    "startFreeTrial": "Essai gratuit",
+    "requestDemo": "Demander une démo",
+    "scheduleDemo": "Planifier une démo",
+    "contactSales": "Contacter l'équipe commerciale",
+    "bookDemo": "Réserver une démo",
+    "backToHome": "Retour à l'accueil",
+    "learnMore": "En savoir plus",
+    "explorePlatform": "Explorer la plateforme",
+    "viewPricing": "Voir les tarifs",
+    "readDocumentation": "Lire la documentation"
+  },
+  "languageSwitcher": {
+    "en": "EN",
+    "fr": "FR"
+  }
+}

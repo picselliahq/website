@@ -1,0 +1,201 @@
+{
+  "hero": {
+    "badge": "Sécurité entreprise",
+    "title": "Sécurité et déploiement",
+    "titleHighlight": "à votre façon",
+    "description": "Du SaaS entièrement managé au on-premise air-gapped. Déployez Picsellia là où vivent vos données, avec une sécurité ISO 27001 et un contrôle d'accès granulaire.",
+    "talkToSecurity": "Parler à l'équipe sécurité",
+    "securityDocs": "Documentation sécurité"
+  },
+  "deployment": {
+    "sectionLabel": "Options de déploiement",
+    "title": "Déployez là où vivent vos données",
+    "description": "Choisissez le modèle de déploiement qui correspond à vos exigences de sécurité et à votre infrastructure.",
+    "bestFor": "Idéal pour :",
+    "saas": {
+      "name": "SaaS",
+      "description": "Plateforme cloud entièrement managée",
+      "tagline": "Démarrez en quelques minutes",
+      "features": [
+        "Zéro gestion d'infrastructure",
+        "Mises à jour et correctifs automatiques",
+        "Redondance et sauvegardes intégrées",
+        "Certifié ISO 27001:2022",
+        "Centres de données UE et US",
+        "Provisionnement instantané"
+      ],
+      "bestFor": "Les équipes qui veulent se concentrer sur le ML, pas sur l'infrastructure"
+    },
+    "hybrid": {
+      "name": "Hybride",
+      "description": "Vos données, notre plateforme",
+      "tagline": "Le meilleur des deux mondes",
+      "features": [
+        "Connectez votre propre stockage (S3, GCS, Azure)",
+        "Utilisez vos ressources de calcul GPU",
+        "Apportez votre registre Docker",
+        "Les données ne quittent jamais votre infrastructure",
+        "Picsellia gère le plan de contrôle",
+        "Intégration transparente"
+      ],
+      "bestFor": "Les organisations avec une infrastructure cloud existante et des exigences de résidence des données"
+    },
+    "onPremise": {
+      "name": "On-Premise",
+      "description": "Contrôle total, votre infrastructure",
+      "tagline": "Sécurité et conformité maximales",
+      "features": [
+        "Kubernetes (charts Helm)",
+        "Déploiement Docker Compose",
+        "Environnements air-gapped supportés",
+        "Déployez sur n'importe quel cloud ou bare metal",
+        "Isolation réseau complète",
+        "Politiques de sécurité personnalisées"
+      ],
+      "bestFor": "Les entreprises avec des exigences de conformité strictes ou des environnements air-gapped"
+    }
+  },
+  "hybridArchitecture": {
+    "sectionLabel": "Architecture hybride",
+    "title": "Connectez votre infrastructure",
+    "description": "Gardez les données sensibles dans votre environnement tout en utilisant le plan de contrôle managé de Picsellia. Connectez directement votre stockage, calcul et registre de conteneurs.",
+    "cloudStorage": {
+      "label": "Stockage cloud",
+      "description": "AWS S3, Google Cloud Storage, Azure Blob"
+    },
+    "gpuCompute": {
+      "label": "GPU Compute",
+      "description": "Vos instances GPU AWS, GCP ou Azure"
+    },
+    "dockerRegistry": {
+      "label": "Registre Docker",
+      "description": "ECR, GCR, ACR ou registres privés"
+    },
+    "diagram": {
+      "title": "Vue d'ensemble de l'architecture",
+      "yourInfrastructure": "Votre infrastructure",
+      "storage": "Stockage",
+      "compute": "Calcul",
+      "registry": "Registre",
+      "controlPlane": "Plan de contrôle Picsellia",
+      "uiApi": "UI et API",
+      "orchestration": "Orchestration",
+      "monitoring": "Monitoring",
+      "metadata": "Métadonnées",
+      "dataNeverLeaves": "Vos données ne quittent jamais votre infrastructure"
+    }
+  },
+  "onPremise": {
+    "sectionLabel": "Déploiement on-premise",
+    "title": "Contrôle total sur votre infrastructure",
+    "description": "Déployez la stack complète Picsellia dans votre propre centre de données ou cloud privé. Support des clusters Kubernetes ou des configurations Docker Compose simples.",
+    "features": [
+      "Déployez sur AWS, GCP, Azure ou bare metal",
+      "Isolation réseau complète et contrôle pare-feu",
+      "Certificats SSL personnalisés",
+      "Intégration avec les fournisseurs d'identité internes",
+      "Vos politiques de sauvegarde et reprise d'activité"
+    ],
+    "kubernetes": {
+      "title": "Kubernetes",
+      "description": "Déployez avec des charts Helm sur n'importe quel cluster Kubernetes"
+    },
+    "dockerCompose": {
+      "title": "Docker Compose",
+      "description": "Déploiement simple pour les petites équipes"
+    },
+    "airGapped": {
+      "title": "Support air-gapped",
+      "description": "Installation hors ligne complète disponible. Les images de conteneurs et les charts peuvent être transférés via un support sécurisé pour les environnements isolés."
+    }
+  },
+  "certifications": {
+    "sectionLabel": "Conformité et certifications",
+    "title": "Standards de sécurité de niveau entreprise",
+    "description": "Picsellia répond aux exigences rigoureuses de sécurité et de conformité pour les déploiements entreprise.",
+    "iso27001": {
+      "name": "ISO 27001:2022",
+      "description": "Standard international pour la gestion de la sécurité de l'information"
+    },
+    "gdpr": {
+      "name": "Conforme au RGPD",
+      "description": "Standards de protection des données et de confidentialité de l'UE"
+    },
+    "encryption": {
+      "name": "Chiffrement des données",
+      "description": "AES-256 au repos, TLS 1.3 en transit"
+    },
+    "sso": {
+      "name": "SSO / SAML",
+      "description": "Intégration des fournisseurs d'identité entreprise"
+    }
+  },
+  "securityFeatures": {
+    "auditLogs": {
+      "title": "Journaux d'audit",
+      "description": "Suivi complet des activités pour la conformité et l'investigation"
+    },
+    "apiKeyManagement": {
+      "title": "Gestion des clés API",
+      "description": "Jetons à portée limitée avec expiration et révocation"
+    },
+    "ipAllowlisting": {
+      "title": "Liste blanche d'IP",
+      "description": "Restreignez l'accès aux réseaux de confiance"
+    },
+    "mfa": {
+      "title": "2FA / MFA",
+      "description": "Authentification multi-facteurs pour tous les utilisateurs"
+    },
+    "dataIsolation": {
+      "title": "Isolation des données",
+      "description": "Séparation des tenants au niveau du stockage et du calcul"
+    },
+    "backupRecovery": {
+      "title": "Sauvegarde et récupération",
+      "description": "Sauvegardes automatisées avec récupération à un instant donné"
+    }
+  },
+  "rbac": {
+    "sectionLabel": "Contrôle d'accès",
+    "title": "Contrôle d'accès basé sur les rôles",
+    "description": "Permissions granulaires à chaque niveau. Contrôlez qui peut accéder à quoi, des paramètres organisationnels jusqu'aux projets individuels.",
+    "levelSuffix": "Niveau",
+    "organization": {
+      "level": "Organisation",
+      "roles": {
+        "owner": { "name": "Propriétaire", "description": "Contrôle administratif complet, facturation, gestion des utilisateurs" },
+        "admin": { "name": "Admin", "description": "Gérer les utilisateurs, les workspaces et les paramètres de l'organisation" },
+        "member": { "name": "Membre", "description": "Accès aux workspaces et projets assignés" }
+      }
+    },
+    "workspace": {
+      "level": "Workspace",
+      "roles": {
+        "manager": { "name": "Manager", "description": "Créer des projets, gérer les membres du workspace" },
+        "contributor": { "name": "Contributeur", "description": "Modifier les projets, datasets et expériences" },
+        "viewer": { "name": "Lecteur", "description": "Accès en lecture seule aux ressources du workspace" }
+      }
+    },
+    "project": {
+      "level": "Projet",
+      "roles": {
+        "lead": { "name": "Lead", "description": "Contrôle complet du projet, gestion des collaborateurs" },
+        "editor": { "name": "Éditeur", "description": "Modifier les datasets, lancer des expériences, déployer des modèles" },
+        "annotator": { "name": "Annotateur", "description": "Labéliser les données dans les campagnes assignées" },
+        "reviewer": { "name": "Réviseur", "description": "Réviser et approuver les annotations" }
+      }
+    },
+    "customRoles": {
+      "title": "Rôles personnalisés bientôt disponibles",
+      "description": "Créez des rôles personnalisés avec des ensembles de permissions granulaires adaptés à votre organisation.",
+      "requestAccess": "Demander un accès anticipé"
+    }
+  },
+  "cta": {
+    "title": "Prêt à discuter de vos exigences de sécurité ?",
+    "description": "Notre équipe sécurité peut vous aider à choisir le bon modèle de déploiement et répondre à toutes vos questions de conformité.",
+    "talkToSecurity": "Parler à l'équipe sécurité",
+    "viewPricing": "Voir les tarifs"
+  }
+}

@@ -1,0 +1,828 @@
+{
+  "productOverview": {
+    "hero": {
+      "badge": "The Complete Vision AI Platform",
+      "titleStart": "Ship Vision AI",
+      "titleHighlight": "10x faster",
+      "description": "The only platform where data scientists, ML engineers, and operations teams work together—from raw images to production models.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "See Live Demo"
+    },
+    "outcomes": {
+      "fasterProduction": { "metric": "80%", "label": "Faster time to production" },
+      "lowerCosts": { "metric": "60%", "label": "Lower operational costs" },
+      "moreExperiments": { "metric": "10x", "label": "More experiments per week" },
+      "noFailures": { "metric": "0", "label": "Surprise production failures" }
+    },
+    "logos": {
+      "label": "Used by teams at"
+    },
+    "enterprise": {
+      "badge": "Enterprise Ready",
+      "title": "Built for teams that can't afford to fail",
+      "description": "Security, compliance, and reliability that enterprise teams demand.",
+      "ctaSales": "Talk to Sales",
+      "features": {
+        "iso": { "title": "ISO 27001:2022", "description": "Certified information security management" },
+        "deploy": { "title": "Deploy Anywhere", "description": "Cloud, on-premise, or hybrid deployment" },
+        "rbac": { "title": "Role-Based Access", "description": "SSO/SAML with fine-grained permissions" },
+        "uptime": { "title": "99.9% Uptime SLA", "description": "Enterprise SLAs with 24/7 support" },
+        "api": { "title": "API-First", "description": "Full REST API and Python SDK" },
+        "scale": { "title": "Infinite Scale", "description": "Handle millions of images without breaking" }
+      }
+    },
+    "cta": {
+      "statusBadge": "READY_TO_SHIP",
+      "title": "Ready to ship Vision AI faster?",
+      "description": "Free trial, no credit card. See how it works on your own data.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Schedule Demo",
+      "noCreditCard": "No credit card required",
+      "freeTrial": "14-day free trial",
+      "isoCertified": "ISO 27001:2022 Certified",
+      "stats": {
+        "imagesProcessed": { "value": "50M+", "label": "Images processed" },
+        "inferenceLatency": { "value": "<100ms", "label": "Inference latency" },
+        "uptimeSla": { "value": "99.9%", "label": "Uptime SLA" },
+        "support": { "value": "24/7", "label": "Support" }
+      }
+    }
+  },
+  "datalake": {
+    "hero": {
+      "badge": "Data Management",
+      "titleStart": "All Your Images.",
+      "titleHighlight": "One Place.",
+      "description": "Aggregate, organize, and explore billions of images from any source. One unified repository for all your computer vision data.",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation",
+      "cloudConnect": "Connect:"
+    },
+    "architecture": {
+      "badge": "Architecture",
+      "title": "How it works under the hood",
+      "description": "Connects to S3, GCP, or Azure. Ingests any image or video format. Indexes everything so you can query it later.",
+      "sources": "Sources",
+      "outputs": "Outputs",
+      "datalakeLabel": "DATALAKE",
+      "assetsIndexed": "assets indexed",
+      "storage": "storage",
+      "latency": "latency",
+      "outputDatasets": "Datasets",
+      "outputExperiments": "Experiments",
+      "outputDeployments": "Deployments"
+    },
+    "formatSupport": {
+      "title": "Universal Format Support",
+      "description": "Ingest any visual data type at constant speed",
+      "formatsCount": "100+",
+      "formatsLabel": "formats"
+    },
+    "realTimeProcessing": {
+      "title": "Real-time Processing",
+      "description": "Live ingestion and indexing metrics",
+      "live": "Live",
+      "ingestionRate": "Ingestion Rate",
+      "indexSpeed": "Index Speed",
+      "embeddingGen": "Embedding Gen",
+      "storageSync": "Storage Sync"
+    },
+    "querying": {
+      "badge": "Python SDK",
+      "title": "Powerful Data Querying",
+      "description": "Query your datalake programmatically with the Python SDK. Filter by tags, metadata, and more with full type hints and auto-completion.",
+      "listDataParams": "list_data() PARAMS",
+      "tagOperations": "TAG OPERATIONS",
+      "filterable": "FILTERABLE",
+      "execution": "EXECUTION",
+      "results": "results",
+      "queryTime": "query time",
+      "scanned": "scanned",
+      "matchedTags": "MATCHED TAGS",
+      "readyToCreateDataset": "Ready to create dataset",
+      "createDataset": "Create Dataset →"
+    },
+    "visualSearch": {
+      "badge": "Visual Search",
+      "title": "Find similar images instantly",
+      "description": "OpenCLIP embeddings turn your images into vectors. Search by similarity, cluster by content, and spot outliers without writing a single query.",
+      "specs": {
+        "defaultModel": { "value": "ViT-B/16", "label": "Default Model" },
+        "vectorSize": { "value": "512-dim", "label": "Vector Size" },
+        "vectorDb": { "value": "QDrant", "label": "Vector DB" },
+        "searchLatency": { "value": "<10ms", "label": "Search Latency" }
+      },
+      "embeddingsViewer": "Embeddings Viewer",
+      "similaritySearch": "Similarity Search",
+      "imageToImages": "Image → Images",
+      "textToImageSearch": "Text-to-Image Search",
+      "textToImages": "Text → Images",
+      "anomalyDetection": "Anomaly Detection",
+      "isolationForest": "Isolation Forest",
+      "corrupted": "corrupted",
+      "outliers": "outliers",
+      "matches": "matches",
+      "fineTuneTitle": "Fine-tune Your Own CLIP Model",
+      "fineTuneDescription": "Generic embeddings not cutting it? Fine-tune a CLIP model on your own data. Search and clustering get much better when the model knows your domain.",
+      "betterAccuracy": "+40%",
+      "betterAccuracyLabel": "Better accuracy",
+      "learnMore": "Learn more"
+    },
+    "organization": {
+      "badge": "Organization",
+      "title": "DataTags & Metadata Schema",
+      "description": "Multi-dimensional organization with flexible tagging and comprehensive metadata support. Structure your data without moving files.",
+      "dataTagsSystem": "DATATAGS SYSTEM",
+      "organizationNotAnnotation": "organization ≠ annotation",
+      "tagHierarchy": "TAG HIERARCHY",
+      "metadataSchema": "METADATA SCHEMA",
+      "allFieldsQueryable": "All fields queryable via PQL"
+    },
+    "cta": {
+      "title": "Ready to centralize your data?",
+      "description": "Connect your storage, upload your data, and start querying. Free trial, no credit card.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "datasetManagement": {
+    "hero": {
+      "badge": "Dataset Management",
+      "titleStart": "Your datasets deserve",
+      "titleHighlight": "version control",
+      "description": "Git for your computer vision data. Track changes, compare versions, and ensure every experiment is reproducible.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Read Documentation",
+      "floatingVersion": "Current Version",
+      "floatingImages": "+2,340 images",
+      "floatingDatasets": "Datasets",
+      "floatingDatasetsCount": "24",
+      "allVersioned": "All versioned"
+    },
+    "stats": {
+      "reproducibility": { "value": "100%", "label": "Reproducibility" },
+      "dataLoss": { "value": "0", "label": "Data loss" },
+      "fasterIterations": { "value": "5x", "label": "Faster iterations" },
+      "versionHistory": { "value": "∞", "label": "Version history" }
+    },
+    "logos": {
+      "label": "Used by teams at"
+    },
+    "versionControl": {
+      "badge": "Version Control",
+      "title": "Track every change, reproduce any result",
+      "description": "Your datasets evolve constantly—new images, corrected labels, filtered samples. Without version control, you're flying blind.",
+      "features": {
+        "snapshots": { "title": "Immutable snapshots", "description": "Every dataset version is a permanent snapshot. Reference exact data states in experiments." },
+        "labelManagement": { "title": "Label management", "description": "Create, rename, and merge labels across your dataset. Keep your taxonomy clean and consistent." },
+        "fork": { "title": "Fork for experiments", "description": "Fork dataset versions to test hypotheses without affecting production data." },
+        "auditHistory": { "title": "Audit-ready history", "description": "Complete changelog with who changed what, when, and why. Perfect for compliance." }
+      },
+      "versionTimeline": "Version Timeline",
+      "interactive": "Interactive",
+      "compare": "Compare",
+      "checkout": "Checkout",
+      "images": "Images",
+      "annotations": "Annotations",
+      "change": "Change"
+    },
+    "capabilities": {
+      "badge": "Capabilities",
+      "title": "Everything you need to manage datasets",
+      "description": "Version, organize, and share your datasets. Everything connects to your experiments.",
+      "versioning": {
+        "title": "Git-like Version Control",
+        "tagline": "Never lose your data again",
+        "description": "Track every change to your datasets. Compare versions, rollback mistakes, and branch for experiments. Full lineage from raw data to trained models.",
+        "statValue": "100%",
+        "statLabel": "Reproducibility",
+        "auditTrail": "Full audit trail included"
+      },
+      "organization": {
+        "title": "Smart Data Organization",
+        "tagline": "Structure without chaos",
+        "description": "Tag, filter, and slice your data in seconds. Create custom views, save queries, and share collections. No more hunting through folders.",
+        "statValue": "5x",
+        "statLabel": "Faster discovery"
+      },
+      "collaboration": {
+        "title": "Team Collaboration",
+        "tagline": "Work together, not in silos",
+        "description": "Share datasets across teams with fine-grained permissions. Track who changed what, when, and why. Comments and reviews built-in.",
+        "statValue": "60%",
+        "statLabel": "Less coordination"
+      },
+      "traceability": {
+        "title": "Full Data Lineage",
+        "tagline": "Know where your data comes from",
+        "description": "Trace any prediction back to its training data. Audit-ready lineage for compliance. Understand model behavior through data.",
+        "statValue": "100%",
+        "statLabel": "Audit compliance"
+      }
+    },
+    "sdk": {
+      "badge": "Developer Experience",
+      "title": "Programmatic dataset management",
+      "description": "Full Python SDK with type hints, auto-completion, and comprehensive documentation. Integrate datasets directly into your ML pipelines.",
+      "exportFormats": {
+        "coco": { "name": "COCO", "description": "Object detection & segmentation" },
+        "yolo": { "name": "YOLO", "description": "YOLOv5/v8 format" },
+        "pascalVoc": { "name": "Pascal VOC", "description": "XML annotations" },
+        "custom": { "name": "Custom", "description": "JSON/CSV exports" }
+      },
+      "supportsCoco": "Supports COCO, YOLO, Pascal VOC"
+    },
+    "dataOrganization": {
+      "badge": "Data Organization",
+      "title": "Structure your data the right way",
+      "description": "Proper data splits are crucial for model performance. Create reproducible train/val/test splits, stratify by class, and ensure no data leakage.",
+      "datasetBrowser": "Dataset Browser",
+      "grid": "Grid",
+      "split": "Split",
+      "features": [
+        "Automatic stratified splits by class distribution",
+        "Custom split ratios with reproducible seeds",
+        "No overlap guarantee between splits",
+        "Re-split without losing annotations"
+      ],
+      "totalImages": "Total images",
+      "annotationsLabel": "Annotations",
+      "balanced": "Balanced",
+      "classDist": "Class dist."
+    },
+    "workflowIntegration": {
+      "badge": "Workflow Integration",
+      "title": "Fits into your existing workflow",
+      "description": "Datasets connect directly to annotations, experiments, and deployments. No manual handoffs.",
+      "datalake": "Datalake",
+      "dataset": "Dataset",
+      "experiment": "Experiment",
+      "autoSync": "Auto-sync",
+      "fromDatalake": "From datalake",
+      "version": "Version",
+      "everyChange": "Every change",
+      "reference": "Reference",
+      "inExperiments": "In experiments"
+    },
+    "cta": {
+      "statusBadge": "VERSION_CONTROL",
+      "title": "Ready to version your datasets?",
+      "description": "Free trial, no credit card. Start versioning your datasets today.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Schedule Demo",
+      "noCreditCard": "No credit card required",
+      "freeTrial": "14-day free trial",
+      "unlimitedVersions": "Unlimited versions",
+      "stats": {
+        "imagesVersioned": { "value": "50M+", "label": "Images versioned" },
+        "versionHistory": { "value": "∞", "label": "Version history" },
+        "reproducibility": { "value": "100%", "label": "Reproducibility" },
+        "dataLoss": { "value": "0", "label": "Data loss" }
+      }
+    }
+  },
+  "labelingTool": {
+    "hero": {
+      "badge": "Annotation",
+      "titleLine1": "Precision Labeling",
+      "titleHighlight": "AI-Assisted",
+      "description": "Turn your data into annotated datasets with precision and speed. Support for bounding boxes, polygons, segmentation, keypoints, and more.",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation",
+      "moreAnnotationTypes": "+1 more",
+      "aiAssistBadge": "SAM + DINOv2",
+      "aiAssistLabel": "AI-assisted labeling",
+      "drawMode": "Draw mode"
+    },
+    "annotationTypes": {
+      "badge": "Annotation Types",
+      "title": "Every shape you need",
+      "description": "From simple bounding boxes to complex polygon masks, annotate any type of visual data with precision tools built for computer vision.",
+      "types": {
+        "objectDetection": { "name": "Object Detection", "description": "Bounding boxes with two clicks" },
+        "segmentation": { "name": "Segmentation", "description": "Precise polygon masks" },
+        "classification": { "name": "Classification", "description": "Whole-image labels" },
+        "keypoints": { "name": "Keypoints", "description": "Point-based annotations" },
+        "polyline": { "name": "Polyline", "description": "Connected line segments" }
+      },
+      "dataFormatsLabel": "Supports diverse data formats",
+      "dataFormats": ["Images", "Videos", "Satellite Imagery", "Medical Scans", "Multispectral"]
+    },
+    "tooling": {
+      "badge": "Tooling",
+      "title": "Built for speed and precision",
+      "description": "Keyboard shortcuts, smart selection, and intuitive controls designed to maximize annotation throughput.",
+      "keyboardShortcuts": "KEYBOARD SHORTCUTS",
+      "shortcuts": {
+        "drawMode": { "keys": ["D"], "action": "Draw mode" },
+        "selectionMode": { "keys": ["Esc"], "action": "Selection mode" },
+        "resetZoom": { "keys": ["R"], "action": "Reset zoom" },
+        "navigateAssets": { "keys": ["O", "P"], "action": "Navigate assets" },
+        "saveAnnotations": { "keys": ["⌘", "S"], "action": "Save annotations" },
+        "deleteShape": { "keys": ["Del"], "action": "Delete shape" }
+      },
+      "navigation": "NAVIGATION",
+      "scrollToZoom": { "title": "Scroll to Zoom", "description": "Use scroll wheel to zoom in/out. Press spacebar to drag and pan around the canvas." },
+      "assetGallery": { "title": "Asset Gallery", "description": "Browse your dataset queue at the bottom. Navigate with O/P keys or click thumbnails." },
+      "groupSelection": { "title": "Group Selection", "description": "Draw rectangle to select multiple shapes. Select by label for batch operations." }
+    },
+    "aiAssisted": {
+      "badge": "AI-Assisted & Processings",
+      "title": "10x your labeling with AI",
+      "description": "Use SAM, DINOv2, and Grounding DINO for pre-labeling. Run automated processings to speed up annotation.",
+      "sam": {
+        "name": "Segment Anything Model",
+        "provider": "Meta AI",
+        "description": "One-click segmentation for any object. Point, box, or text prompts generate precise masks instantly.",
+        "tags": ["Segmentation", "Interactive", "Zero-shot"]
+      },
+      "dinov2": {
+        "name": "DINOv2",
+        "provider": "Meta AI",
+        "description": "Self-supervised visual features for similarity search, clustering, and transfer learning without labels.",
+        "tags": ["Embeddings", "Clustering", "Self-supervised"]
+      },
+      "automatedProcessings": "Automated Processings",
+      "preAnnotation": { "title": "Pre-Annotation", "description": "Auto-generate initial labels using your trained models" },
+      "autoAnnotation": { "title": "Auto-Annotation", "description": "Fully automated annotation with confidence thresholds" },
+      "dataAugmentation": { "title": "Data Augmentation", "description": "Expand datasets with transforms and variations" },
+      "autoTagging": { "title": "Auto-Tagging", "description": "Automatically tag data in your datalake" },
+      "speedComparisonValue": "10x",
+      "speedComparisonLabel": "Faster annotation with AI assistance",
+      "manualLabeling": "Manual labeling",
+      "manualSpeed": "~2 min/image",
+      "aiAssistedLabel": "AI-assisted",
+      "aiAssistedSpeed": "~12 sec/image",
+      "humanValidation": "Human validation for accuracy",
+      "processingPipeline": "PROCESSING PIPELINE",
+      "dockerBased": "Docker-based",
+      "step1": "Select processing type",
+      "step2": "Configure inputs & model",
+      "step3": "Run & review results",
+      "gpuCpuConfigurable": "GPU/CPU configurable",
+      "scalableInfrastructure": "Scalable infrastructure"
+    },
+    "qualityControl": {
+      "badge": "Quality Control",
+      "title": "Built-in review workflow",
+      "description": "Every annotation goes through a structured review process. Accept, reject, or send back for revision with full traceability.",
+      "toReview": "To Review",
+      "accepted": "Accepted",
+      "or": "or",
+      "rejected": "Rejected",
+      "autoLock": { "title": "Auto-lock on review", "description": "Reviewed annotations are automatically locked to prevent accidental modifications." },
+      "returnToEdit": { "title": "Return to edit mode", "description": "Clear review status to unlock and continue editing when needed." },
+      "fullTraceability": { "title": "Full traceability", "description": "Track who annotated what and when with complete audit history." }
+    },
+    "cta": {
+      "title": "Ready to accelerate labeling?",
+      "description": "Start annotating with AI-assisted tools and built-in review workflows. Free trial, no credit card.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "annotationCampaigns": {
+    "hero": {
+      "badge": "Workflow",
+      "titleLine1": "Human-In-The-Loop",
+      "titleHighlight": "At Scale",
+      "description": "Orchestrate annotation workflows with multi-step pipelines, team management, and quality control. Add annotators, set sample rates, and track progress.",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation"
+    },
+    "workflows": {
+      "badge": "Workflows",
+      "title": "Custom multi-step pipelines",
+      "description": "Design annotation workflows that match your quality requirements. Chain annotation and review steps with configurable sample rates.",
+      "annotationSteps": { "title": "Annotation Steps", "description": "Workers create initial annotations on assigned assets" },
+      "reviewSteps": { "title": "Review Steps", "description": "Team members validate and accept/reject previous work" },
+      "sampleRates": { "title": "Sample Rates", "description": "Control what percentage of assets proceed to each step" },
+      "examplePipeline": "Example Pipeline",
+      "initialAnnotation": "Initial Annotation",
+      "firstReview": "First Review",
+      "finalValidation": "Final Validation"
+    },
+    "taskManagement": {
+      "badge": "Task Management",
+      "title": "Full visibility on progress",
+      "description": "Track every task through its lifecycle. Reassign work, manage priorities, and ensure nothing falls through the cracks.",
+      "statuses": {
+        "inProgress": { "name": "In Progress", "count": "234" },
+        "toRework": { "name": "To Rework", "count": "12" },
+        "done": { "name": "Done", "count": "1,847" },
+        "skipped": { "name": "Skipped", "count": "8" }
+      },
+      "taskLifecycle": "Task Lifecycle",
+      "submitted": "Submitted",
+      "or": "or"
+    },
+    "teamManagement": {
+      "badge": "Team Management",
+      "title": "Scale with external teams",
+      "description": "Onboard external annotators quickly with clear guidelines. Control access, distribute work evenly, and maintain quality standards.",
+      "features": [
+        "Equal or weighted task distribution",
+        "Instruction PDFs for annotators",
+        "Role-based access controls",
+        "Bulk task reassignment"
+      ]
+    },
+    "qualityControl": {
+      "badge": "Quality Control",
+      "title": "Collaborative issue tracking",
+      "description": "Flag problems, discuss solutions, and ensure quality before assets leave the pipeline. No asset can be marked done with open issues.",
+      "zoneIssues": { "title": "Zone Issues", "description": "Flag specific areas with rectangular markers. Perfect for pointing out boundary errors, missing annotations, or unclear regions." },
+      "imageIssues": { "title": "Image Issues", "description": "Flag concerns about the entire asset. Use for classification errors, image quality problems, or incorrect labeling approach." },
+      "blockingRule": "Assets cannot be marked Done with open issues",
+      "issues": "ISSUES",
+      "openCount": "2 open"
+    },
+    "analytics": {
+      "badge": "Analytics",
+      "title": "Real-time performance insights",
+      "description": "Track time spent, monitor productivity, and identify bottlenecks. See where work slows down and fix it.",
+      "avgTimePerAsset": { "value": "2.4min", "title": "Avg. Time per Asset", "description": "Detailed time tracking for each task" },
+      "teamThroughput": { "value": "847/day", "title": "Team Throughput", "description": "Assets completed by all workers" },
+      "acceptanceRate": { "value": "98.2%", "title": "Acceptance Rate", "description": "First-pass review approval" }
+    },
+    "cta": {
+      "title": "Ready to scale your annotation?",
+      "description": "Set up multi-step annotation workflows with built-in review and quality control. Free trial, no credit card.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "aiLaboratory": {
+    "hero": {
+      "badge": "Model Training",
+      "titleStart": "Train Models",
+      "titleHighlight": "Your Way",
+      "description": "From no-code training to custom PyTorch pipelines. Choose your level of control and let Picsellia handle the infrastructure.",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation",
+      "worksWith": "Works with:",
+      "plusMore": "+more"
+    },
+    "stats": {
+      "gpuAllocation": { "value": "1-click", "label": "GPU allocation" },
+      "preBuiltPipelines": { "value": "4+", "label": "Pre-built pipelines" },
+      "customFlexibility": { "value": "∞", "label": "Custom flexibility" },
+      "infrastructure": { "value": "0", "label": "Infrastructure to manage" }
+    },
+    "trainingModes": {
+      "badge": "Flexibility",
+      "title": "Choose your level of control",
+      "description": "Start with no-code for quick iterations, use the SDK for automation, or build fully custom pipelines when you need complete control.",
+      "noCode": {
+        "title": "No-Code Training",
+        "description": "Launch training jobs directly from the UI. Select a pre-built pipeline, configure parameters, and start training.",
+        "features": ["Visual parameter configuration", "One-click GPU allocation", "Real-time progress monitoring"],
+        "configureInUI": "Configure in UI",
+        "selectGPU": "Select GPU",
+        "launchTraining": "Launch training"
+      },
+      "sdk": {
+        "title": "Python SDK",
+        "description": "Full programmatic control with our Python SDK. Integrate into your existing workflows and CI/CD pipelines.",
+        "features": ["Type-safe API", "Jupyter support", "Pipeline automation"]
+      },
+      "custom": {
+        "title": "Custom Pipelines",
+        "description": "Build custom training pipelines with CV Engine. Modular steps, any framework, full flexibility.",
+        "features": ["Composable steps", "Framework agnostic", "Local + remote execution"]
+      }
+    },
+    "preBuiltPipelines": {
+      "badge": "Pre-built Pipelines",
+      "title": "Production-grade models, ready to train",
+      "description": "Start training in minutes with our pre-built pipelines. Ultralytics for YOLO, SAM2 for segmentation, Grounding DINO for zero-shot detection, and more.",
+      "features": [
+        "One-click deployment to GPU",
+        "Pre-configured hyperparameters",
+        "Automatic metric logging",
+        "Model export to registry"
+      ],
+      "pipelines": {
+        "ultralytics": { "name": "Ultralytics", "description": "Train YOLOv8/v11 models for detection, segmentation, and classification", "tasks": ["Detection", "Segmentation", "Classification"], "status": "production" },
+        "sam2": { "name": "SAM2", "description": "Segment Anything Model for automatic mask generation and refinement", "tasks": ["Segmentation", "Pre-annotation"], "status": "production" },
+        "groundingDino": { "name": "Grounding DINO", "description": "Open-set object detection with text prompts for zero-shot labeling", "tasks": ["Detection", "Zero-shot"], "status": "production" },
+        "clip": { "name": "CLIP", "description": "Fine-tune embeddings for domain-specific similarity search", "tasks": ["Embeddings", "Classification"], "status": "production" }
+      }
+    },
+    "cvEngine": {
+      "badge": "CV Engine",
+      "title": "Build custom pipelines with ease",
+      "description": "Picsellia CV Engine is a modular toolkit for building computer vision workflows. Composable steps, framework extensions, and CLI automation.",
+      "cliLabel": "CLI + Python decorators",
+      "viewDocs": "View Docs →",
+      "features": {
+        "modularSteps": { "title": "Modular Steps", "description": "Build pipelines from reusable, composable steps with @step decorators" },
+        "frameworkExtensions": { "title": "Framework Extensions", "description": "Pre-built integrations for Ultralytics, SAM2, CLIP, and more" },
+        "localRemote": { "title": "Local & Remote", "description": "Test locally, deploy to Picsellia cloud with one command" },
+        "autoLogging": { "title": "Auto Logging", "description": "Metrics, artifacts, and parameters logged automatically" }
+      }
+    },
+    "infrastructure": {
+      "badge": "Infrastructure",
+      "title": "Zero infrastructure to manage",
+      "description": "Focus on your models, not your servers. Picsellia handles GPU provisioning, environment setup, and job orchestration. Just click train.",
+      "gpuSelection": "GPU Selection",
+      "availableNow": "Available now",
+      "recommended": "Recommended",
+      "payPerUse": "Pay only for what you use",
+      "autoShutdown": "Auto-shutdown on completion",
+      "features": [
+        "On-demand GPU allocation",
+        "Pre-configured CUDA environments",
+        "Automatic job queuing",
+        "Real-time training logs"
+      ]
+    },
+    "workflow": {
+      "badge": "End-to-End",
+      "title": "Connected to your entire workflow",
+      "description": "AI Lab connects directly to datasets, experiment tracking, and model deployment. Full lineage from data to production.",
+      "steps": {
+        "dataset": "Dataset",
+        "aiLab": "AI Lab",
+        "experiment": "Experiment",
+        "model": "Model",
+        "production": "Production"
+      }
+    },
+    "cta": {
+      "title": "Ready to train your models?",
+      "description": "Start with no-code training or build custom pipelines. Zero infrastructure to manage.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "experimentTracking": {
+    "hero": {
+      "badge": "MLOps",
+      "titleLine1": "Track Experiments",
+      "titleHighlight": "Ship Better Models",
+      "description": "Full reproducibility with metrics, parameters, and artifacts. Compare runs, collaborate with your team, and version models automatically.",
+      "worksWith": "Works with:",
+      "plusMore": "+more",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation",
+      "bestModel": "Best Model",
+      "bestModelDetail": "mAP: 0.91 • exp-003",
+      "trainingOnGPU": "Training on GPU"
+    },
+    "logging": {
+      "badge": "Logging",
+      "title": "Log everything, miss nothing",
+      "description": "Capture metrics, parameters, artifacts, and evaluations with a simple API. Full lineage tracking with minimal integration code.",
+      "logTypes": {
+        "scalar": { "name": "Scalar", "description": "Single values (loss, accuracy)" },
+        "line": { "name": "Line", "description": "Time-series metrics" },
+        "image": { "name": "Image", "description": "Visualizations & samples" },
+        "table": { "name": "Table", "description": "Structured data" },
+        "histogram": { "name": "Histogram", "description": "Distributions" },
+        "confusionMatrix": { "name": "Confusion Matrix", "description": "Classification results" }
+      },
+      "artifactStorage": { "title": "Artifact Storage", "description": "Store checkpoints, configs, and outputs" },
+      "datasetAttachment": { "title": "Dataset Attachment", "description": "Link training data for reproducibility" },
+      "modelExport": { "title": "Model Export", "description": "Push to model registry with one call" }
+    },
+    "compare": {
+      "badge": "Compare",
+      "title": "Compare trainings instantly",
+      "description": "See the exact training distribution, hyperparameters, and augmentations behind every performance change. Find your best model faster.",
+      "features": [
+        "Side-by-side metric comparison",
+        "Parameter diff highlighting",
+        "Dataset version tracking",
+        "Collaborative comments"
+      ],
+      "experimentComparison": "EXPERIMENT COMPARISON",
+      "tableHeaders": { "name": "Name", "mAP": "mAP", "loss": "Loss", "lr": "LR", "epochs": "Epochs", "status": "Status" }
+    },
+    "cvEngine": {
+      "badge": "CV Engine",
+      "title": "Build training pipelines with ease",
+      "description": "Picsellia CV Engine is a modular toolkit for constructing computer vision workflows. Composable steps, framework extensions, and CLI automation.",
+      "trainingPipelines": { "title": "Training Pipelines", "description": "Data → Model → Results. Streamlined training processes with built-in logic." },
+      "processingPipelines": { "title": "Processing Pipelines", "description": "Dataset transformation, pre-annotation, and data cleaning operations." },
+      "frameworkExtensions": { "title": "Framework Extensions", "description": "Pluggable architecture supporting multiple training libraries." },
+      "cliLabel": "CLI + Python decorators",
+      "viewDocumentation": "View Documentation →"
+    },
+    "modelRegistry": {
+      "badge": "Model Registry",
+      "title": "Version your models automatically",
+      "description": "Export experiments to the model registry with a single call. Track versions, compare performance, and deploy with confidence.",
+      "features": [
+        "Automatic version incrementation",
+        "Framework metadata (TensorFlow, PyTorch, etc.)",
+        "Docker configuration for deployment",
+        "Lineage to training experiment"
+      ],
+      "latest": "latest"
+    },
+    "evaluation": {
+      "badge": "Evaluation",
+      "title": "COCO metrics built-in",
+      "description": "Add predictions, compare against ground truth, and compute standard evaluation metrics automatically.",
+      "metrics": {
+        "map50": { "metric": "mAP@50", "description": "Mean Average Precision" },
+        "map5095": { "metric": "mAP@50:95", "description": "Strict mAP" },
+        "precision": { "metric": "Precision", "description": "True Positives / Predicted" },
+        "recall": { "metric": "Recall", "description": "True Positives / Actual" }
+      },
+      "supportsFormats": "Supports rectangles, polygons, classifications, and keypoints"
+    },
+    "cta": {
+      "title": "Ready to track your experiments?",
+      "description": "Start logging metrics, comparing runs, and shipping better models with full reproducibility.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "automatedPipelines": {
+    "hero": {
+      "badge": "CT/CD Automation",
+      "titleStart": "Models That",
+      "titleHighlight": "Improve Themselves",
+      "description": "Continuous Training and Continuous Deployment. Close the feedback loop, automate retraining, and deploy with confidence using shadow models.",
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation"
+    },
+    "stats": {
+      "manualIntervention": { "value": "0", "label": "Manual intervention" },
+      "automatedLoop": { "value": "24/7", "label": "Automated loop" },
+      "safeDeployments": { "value": "100%", "label": "Safe deployments" },
+      "modelIterations": { "value": "∞", "label": "Model iterations" }
+    },
+    "pipelineFlow": {
+      "production": { "label": "Production", "sublabel": "Model serving" },
+      "monitor": { "label": "Monitor", "sublabel": "Anomaly detection" },
+      "feedback": { "label": "Feedback", "sublabel": "Review & label" },
+      "retrain": { "label": "Retrain", "sublabel": "Auto trigger" },
+      "deploy": { "label": "Deploy", "sublabel": "Shadow → Prod" },
+      "continuousLoop": "Continuous loop"
+    },
+    "feedbackLoop": {
+      "badge": "Feedback Loop",
+      "title": "Production data becomes training data",
+      "description": "Connect your deployment to your training pipeline. Reviewed predictions automatically flow into your training datasets, creating a continuous improvement cycle.",
+      "steps": {
+        "capture": { "title": "Capture predictions", "description": "Every inference logged automatically" },
+        "review": { "title": "Review anomalies", "description": "Flag and correct mispredictions" },
+        "enrich": { "title": "Enrich datasets", "description": "Add reviewed data to training sets" },
+        "trigger": { "title": "Trigger retraining", "description": "Automated based on thresholds" }
+      },
+      "feedbackPipeline": "Feedback Pipeline",
+      "active": "Active",
+      "predictionsLogged": "Predictions logged",
+      "reviewed": "Reviewed",
+      "addedToTrainingSet": "Added to training set",
+      "readyToTrigger": "Ready to trigger",
+      "thresholdReached": "1,892 / 2,000 threshold reached"
+    },
+    "trainingOrchestration": {
+      "badge": "Training Orchestration",
+      "title": "Automated retraining on your terms",
+      "description": "Define triggers based on review thresholds, drift detection, or schedules. When conditions are met, Picsellia automatically provisions GPUs and launches training.",
+      "retrainingTriggers": "Retraining Triggers",
+      "configure": "Configure",
+      "reviewThreshold": { "name": "Review Threshold", "description": "Trigger retraining when reviewed predictions reach threshold", "status": "Active" },
+      "driftAlert": { "name": "Drift Alert", "description": "Trigger when distribution drift exceeds threshold", "status": "Monitoring" },
+      "scheduled": { "name": "Scheduled", "description": "Retrain on a fixed schedule (weekly, monthly)", "status": "Disabled" },
+      "features": [
+        "Review threshold triggers",
+        "Distribution drift detection",
+        "Scheduled retraining",
+        "Automatic GPU provisioning",
+        "Full experiment tracking"
+      ]
+    },
+    "shadowDeployment": {
+      "badge": "Shadow Deployment",
+      "title": "Deploy with confidence",
+      "description": "Test new models in production without risk. Shadow models run alongside your primary model, comparing performance on real traffic before you promote.",
+      "howItWorks": "How Shadow Deployment Works",
+      "step1": { "title": "Deploy shadow model", "description": "New model version runs in parallel, processing the same inputs as production" },
+      "step2": { "title": "Compare predictions", "description": "Both models make predictions, but only primary results are returned to users" },
+      "step3": { "title": "Promote when ready", "description": "Once shadow outperforms primary, promote it with a single command" },
+      "liveComparison": "Live Comparison",
+      "primary": "Primary",
+      "shadow": "Shadow",
+      "shadowOutperforming": "Shadow outperforming on 3/4 metrics",
+      "promote": "Promote →",
+      "shadowDeploymentSdk": "SHADOW DEPLOYMENT SDK"
+    },
+    "endToEnd": {
+      "badge": "End-to-End",
+      "title": "The complete automation stack",
+      "description": "From data collection to model deployment, every step is connected and automated. Full lineage, full visibility.",
+      "continuousTraining": {
+        "title": "Continuous Training",
+        "description": "Automatic retraining triggered by review thresholds or drift detection",
+        "features": ["Review-based triggers", "Drift detection", "GPU auto-provisioning"]
+      },
+      "continuousDeployment": {
+        "title": "Continuous Deployment",
+        "description": "Safe model promotion with shadow deployment and automated policies",
+        "features": ["Shadow model testing", "A/B comparison", "One-click promotion"]
+      },
+      "fullObservability": {
+        "title": "Full Observability",
+        "description": "Monitor every prediction, track every metric, trace every decision",
+        "features": ["Real-time dashboards", "Anomaly alerts", "Complete lineage"]
+      }
+    },
+    "cta": {
+      "title": "Ready to automate your ML lifecycle?",
+      "description": "Set up continuous training and deployment in minutes. Let your models improve themselves.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  },
+  "modelDeployment": {
+    "title": "Model Deployment",
+    "description": "Deploy models to cloud or edge. Auto-scaling serverless infrastructure with 99.9% uptime.",
+    "badge": "Deployment"
+  },
+  "modelMonitoring": {
+    "hero": {
+      "badge": "Observability",
+      "titleLine1": "Monitor Models",
+      "titleHighlight": "In Production",
+      "description": "Real-time observability for computer vision models. Detect anomalies, track drift, and close the feedback loop automatically.",
+      "metrics": {
+        "monitoring": { "value": "24/7", "label": "Monitoring" },
+        "anomalyRate": { "value": "<1%", "label": "Anomaly Rate" },
+        "latencyP99": { "value": "<50ms", "label": "Latency P99" }
+      },
+      "ctaPrimary": "See It In Action",
+      "ctaSecondary": "Documentation",
+      "anomalyDetectedTitle": "Anomaly Detected",
+      "anomalyDetectedDetail": "Low confidence spike at 12:34",
+      "avgLatency": "Avg latency:",
+      "avgLatencyValue": "46ms"
+    },
+    "anomalyDetection": {
+      "badge": "Anomaly Detection",
+      "title": "Catch failures before users do",
+      "description": "Automatic 24/7 monitoring flags anomalous inputs and low-confidence predictions. Reveal blindspots and discover edge cases in production data.",
+      "lowConfidence": { "title": "Low Confidence Alerts", "description": "Flag predictions below confidence thresholds automatically" },
+      "distributionShift": { "title": "Distribution Shift", "description": "Detect when production data drifts from training data" },
+      "novelPatterns": { "title": "Novel Patterns", "description": "Discover previously unseen data patterns and edge cases" },
+      "flaggedPredictions": "FLAGGED PREDICTIONS",
+      "lastHour": "Last hour",
+      "anomaliesDetected": "6 anomalies detected",
+      "reviewAll": "Review all →"
+    },
+    "liveDashboard": {
+      "badge": "Live Dashboard",
+      "title": "Real-time prediction insights",
+      "description": "Filter millions of inferences to identify the top anomalies. From edge case detection to training dataset integration in seconds.",
+      "totalInferences": { "value": "1.2M", "title": "Total Inferences", "description": "Last 24 hours" },
+      "avgLatency": { "value": "47ms", "title": "Avg Latency", "description": "P50 response time" },
+      "accuracy": { "value": "99.1%", "title": "Accuracy", "description": "Based on reviewed predictions" },
+      "monitoringMethods": "MONITORING METHODS"
+    },
+    "driftDetection": {
+      "badge": "Data Drift",
+      "title": "Track distribution changes",
+      "description": "Compare production data against your training baseline. Get alerted when distributions shift beyond acceptable thresholds.",
+      "driftDetectionLabel": "DRIFT DETECTION",
+      "vsBaseline": "vs. training baseline",
+      "metrics": {
+        "meanBrightness": "Mean Brightness",
+        "contrast": "Contrast",
+        "classDistribution": "Class Distribution",
+        "objectSize": "Object Size (avg)",
+        "confidence": "Confidence (avg)"
+      },
+      "metricsDrifting": "2 metrics drifting",
+      "last7Days": "Last 7 days",
+      "features": [
+        "Image statistics (brightness, contrast, blur)",
+        "Class distribution changes",
+        "Confidence score degradation",
+        "Custom threshold alerts"
+      ]
+    },
+    "continuousImprovement": {
+      "badge": "Continuous Improvement",
+      "title": "Close the feedback loop",
+      "description": "Convert production failures into training data. Review predictions, attach to datasets, and trigger retraining automatically.",
+      "monitor": { "label": "Monitor", "sublabel": "Production inference" },
+      "detect": { "label": "Detect", "sublabel": "Anomalies & drift" },
+      "review": { "label": "Review", "sublabel": "Verify & label" },
+      "retrain": { "label": "Retrain", "sublabel": "Improve model" },
+      "continuousTraining": { "title": "Continuous Training", "description": "Automatically trigger retraining when prediction review thresholds are met. Keep models fresh with production data." },
+      "continuousDeployment": { "title": "Continuous Deployment", "description": "Manage model promotion policies between staging and production. Shadow model support for A/B testing." }
+    },
+    "cta": {
+      "title": "Ready to monitor your models?",
+      "description": "Start detecting anomalies, tracking drift, and improving models with production feedback.",
+      "ctaPrimary": "Start Free Trial",
+      "ctaSecondary": "Request Demo"
+    }
+  }
+}

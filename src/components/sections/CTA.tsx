@@ -1,9 +1,9 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 import { useEffect, useState } from 'react';
 
-// Simulated detection boxes that animate
 const detections = [
   { id: 1, label: 'model', confidence: 98.5, x: 8, y: 15, w: 25, h: 30 },
   { id: 2, label: 'dataset', confidence: 95.2, x: 65, y: 10, w: 28, h: 25 },
@@ -12,6 +12,7 @@ const detections = [
 ];
 
 export default function CTA() {
+  const t = useTranslations('home.ctaSection');
   const [activeDetection, setActiveDetection] = useState(0);
 
   useEffect(() => {
@@ -20,6 +21,13 @@ export default function CTA() {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const stats = [
+    { value: t('stats.imagesProcessed.value'), label: t('stats.imagesProcessed.label') },
+    { value: t('stats.inferenceLatency.value'), label: t('stats.inferenceLatency.label') },
+    { value: t('stats.uptimeSla.value'), label: t('stats.uptimeSla.label') },
+    { value: t('stats.support.value'), label: t('stats.support.label') },
+  ];
 
   return (
     <section className="py-24 border-t border-[var(--border)]">
@@ -65,16 +73,12 @@ export default function CTA() {
                   height: `${det.h}%`,
                 }}
               >
-                {/* Bounding Box */}
                 <div className="absolute inset-0 border-2 border-[var(--picsellia-green)] bg-[var(--picsellia-green)]/5">
-                  {/* Corner Brackets */}
                   <div className="absolute -top-px -left-px w-4 h-4 border-t-[3px] border-l-[3px] border-[var(--picsellia-green)]" />
                   <div className="absolute -top-px -right-px w-4 h-4 border-t-[3px] border-r-[3px] border-[var(--picsellia-green)]" />
                   <div className="absolute -bottom-px -left-px w-4 h-4 border-b-[3px] border-l-[3px] border-[var(--picsellia-green)]" />
                   <div className="absolute -bottom-px -right-px w-4 h-4 border-b-[3px] border-r-[3px] border-[var(--picsellia-green)]" />
                 </div>
-
-                {/* Label */}
                 <div
                   className={`absolute -top-6 left-0 flex items-center gap-1 px-2 py-0.5 text-xs font-mono rounded transition-all duration-500 ${
                     index === activeDetection
@@ -100,59 +104,55 @@ export default function CTA() {
 
           {/* Content */}
           <div className="relative z-10 p-12 md:p-20 text-center">
-            {/* Status Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--picsellia-green)]/10 border border-[var(--picsellia-green)]/20 mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--picsellia-green)] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--picsellia-green)]"></span>
               </span>
               <span className="text-xs font-mono text-[var(--picsellia-green)]">
-                SYSTEM_READY
+                {t('badge')}
               </span>
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold mb-4 tracking-tight">
-              Start detecting in minutes
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl mx-auto mb-10 text-lg">
-              Go from raw images to a model running in production.
-              Free trial, no credit card, cancel anytime.
+              {t('description')}
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Link href="/trial" className="btn-primary px-8 py-3 text-base relative group overflow-hidden">
                 <span className="relative z-10 flex items-center gap-2">
-                  Start Free Trial
+                  {t('startFreeTrial')}
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
               </Link>
               <Link href="/demo" className="btn-secondary px-8 py-3 text-base">
-                Schedule Demo
+                {t('scheduleDemo')}
               </Link>
             </div>
 
-            {/* Trust Indicators */}
             <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--tertiary-label)]">
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>No credit card required</span>
+                <span>{t('noCreditCard')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>14-day free trial</span>
+                <span>{t('freeTrial')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span>ISO 27001:2022 Certified</span>
+                <span>{t('isoCertified')}</span>
               </div>
             </div>
           </div>
@@ -160,12 +160,7 @@ export default function CTA() {
           {/* Bottom Stats Bar */}
           <div className="relative z-10 border-t border-[var(--border)] bg-[var(--secondary-system-background)]/50 backdrop-blur-sm">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[var(--border)]">
-              {[
-                { value: '50M+', label: 'Images processed' },
-                { value: '<100ms', label: 'Inference latency' },
-                { value: '99.9%', label: 'Uptime SLA' },
-                { value: '24/7', label: 'Support' },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label} className="p-4 md:p-6 text-center">
                   <div className="text-lg md:text-xl font-bold text-[var(--label)] font-mono">{stat.value}</div>
                   <div className="text-xs text-[var(--tertiary-label)]">{stat.label}</div>
@@ -176,7 +171,6 @@ export default function CTA() {
         </div>
       </div>
 
-      {/* CSS Animation */}
       <style jsx>{`
         @keyframes scan {
           0%, 100% { top: 0%; opacity: 0; }

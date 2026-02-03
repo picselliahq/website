@@ -1,0 +1,641 @@
+{
+  "manufacturing": {
+    "badge": "Manufacturing",
+    "hero": {
+      "headline": "Visual inspection at <highlight>human-level precision</highlight>",
+      "subheadline": "Quality AI that matches your best inspectors. Built on high-quality labels, rigorous evaluation, and secure on-premise deployment.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "See Defect Detection",
+      "heroImageAlt": "Manufacturing inspection",
+      "floatingCards": {
+        "detectionAccuracy": { "label": "Detection Accuracy", "value": "99.5%" },
+        "vsHumanInspector": { "label": "vs Human Inspector", "value": "+12%" },
+        "deployment": { "label": "Deployment", "value": "On-Premise" }
+      },
+      "stats": [
+        { "value": "99.5%", "label": "Defect detection rate" },
+        { "value": "<0.1%", "label": "False positive rate" },
+        { "value": "80%", "label": "Inspection cost reduction" },
+        { "value": "100%", "label": "On-premise capable" }
+      ]
+    },
+    "qualityFirst": {
+      "badge": "Quality First",
+      "heading": "Precision starts with perfect labels",
+      "description": "In manufacturing, a false positive stops the line. A missed defect ships to customers. That's why we obsess over annotation quality — multi-reviewer consensus, expert validation, and golden test sets that catch edge cases before they reach production.",
+      "pillars": [
+        { "title": "Multi-reviewer workflows", "description": "Every label is validated by multiple experts. Consensus ensures accuracy." },
+        { "title": "Golden test datasets", "description": "Benchmark every model version against curated edge cases before deployment." },
+        { "title": "Per-defect metrics", "description": "Track precision and recall for each defect type. No blind spots." },
+        { "title": "Human-level benchmarks", "description": "Compare model performance against your best inspectors. Prove ROI." }
+      ],
+      "labelQualityReport": {
+        "title": "Label Quality Report",
+        "badge": "Production Ready",
+        "interAnnotatorAgreement": { "label": "Inter-annotator agreement", "value": "96.8%" },
+        "expertValidationRate": { "label": "Expert validation rate", "value": "100%" },
+        "edgeCasesCovered": { "label": "Edge cases covered", "value": "847 samples" },
+        "summaryStats": {
+          "totalImages": { "value": "12,450", "label": "Total images" },
+          "defectClasses": { "value": "8", "label": "Defect classes" },
+          "reviewers": { "value": "3", "label": "Reviewers" }
+        }
+      }
+    },
+    "evaluation": {
+      "badge": "Evaluation",
+      "heading": "Test before you trust",
+      "description": "Every model is evaluated against curated test scenarios before deployment. Track per-defect metrics, compare to human baselines, and catch regressions early.",
+      "goldenTestSets": {
+        "title": "Golden Test Sets",
+        "subtitle": "Curated edge cases",
+        "description": "Build test datasets with your hardest cases — lighting variations, rare defects, borderline calls. Every model version runs against them before promotion.",
+        "items": ["Lighting edge cases", "Rare defect coverage", "Borderline samples", "Historical failures"]
+      },
+      "perClassMetrics": {
+        "title": "Per-Class Metrics",
+        "subtitle": "No blind spots",
+        "description": "Overall accuracy hides weak spots. Track precision, recall, and F1 for each defect type. Know exactly where your model excels and where it struggles.",
+        "defects": {
+          "scratch": { "label": "Scratch", "value": "99.2%" },
+          "dent": { "label": "Dent", "value": "98.7%" },
+          "discoloration": { "label": "Discoloration", "value": "94.1%" },
+          "contamination": { "label": "Contamination", "value": "97.8%" }
+        }
+      },
+      "humanBaseline": {
+        "title": "Human Baseline",
+        "subtitle": "Prove the ROI",
+        "description": "Have your inspectors label the same test set. Compare model performance to human accuracy. Quantify the improvement you're getting.",
+        "humanAvg": { "value": "87.3%", "label": "Human avg" },
+        "model": { "value": "99.5%", "label": "Model" },
+        "improvement": "+12.2% improvement"
+      }
+    },
+    "useCases": {
+      "badge": "Applications",
+      "heading": "Built for the production floor",
+      "description": "From surface inspection to assembly verification, Picsellia powers quality control across manufacturing.",
+      "items": [
+        {
+          "title": "Surface Defect Detection",
+          "description": "Detect scratches, dents, discoloration, and surface anomalies with sub-millimeter precision. Trained on your exact defect taxonomy.",
+          "statsValue": "99.5%",
+          "statsLabel": "Detection accuracy"
+        },
+        {
+          "title": "Assembly Verification",
+          "description": "Verify component presence, orientation, and positioning. Catch assembly errors before they reach the next station.",
+          "statsValue": "0.1%",
+          "statsLabel": "Escape rate"
+        },
+        {
+          "title": "Packaging Inspection",
+          "description": "Validate labels, seals, barcodes, and packaging integrity. Ensure every product ships correctly.",
+          "statsValue": "100%",
+          "statsLabel": "Traceability"
+        },
+        {
+          "title": "Safety Compliance",
+          "description": "Monitor PPE usage, restricted zones, and safety protocols. Protect workers with automated visual checks.",
+          "statsValue": "24/7",
+          "statsLabel": "Monitoring"
+        }
+      ]
+    },
+    "operations": {
+      "badge": "Operations",
+      "heading": "Monitor in production. Deploy on-premise.",
+      "description": "Asynchronous monitoring catches drift without blocking the line. On-premise deployment keeps your data where it belongs.",
+      "asyncMonitoring": {
+        "title": "Asynchronous Monitoring",
+        "subtitle": "Non-blocking production insights",
+        "description": "Your inspection line runs at full speed. Meanwhile, Picsellia samples predictions, tracks confidence trends, and flags anomalies — without adding latency to your process.",
+        "features": [
+          { "label": "Sampling rate", "value": "Configurable" },
+          { "label": "Trend analysis", "value": "Hourly" },
+          { "label": "Drift alerts", "value": "Real-time" },
+          { "label": "Reports", "value": "Daily" }
+        ],
+        "footer": "Batch review suspicious predictions at end of shift"
+      },
+      "onPremise": {
+        "title": "On-Premise Deployment",
+        "subtitle": "Your data stays in your factory",
+        "description": "Manufacturing data is sensitive — product designs, defect patterns, production volumes. Deploy Picsellia entirely on your infrastructure. Air-gapped environments supported.",
+        "features": [
+          "Full platform on your servers",
+          "No cloud dependency required",
+          "Air-gapped network support",
+          "RBAC and audit logging",
+          "Your security policies enforced"
+        ],
+        "footer": "ISO 27001:2022 certified."
+      },
+      "deploymentArchitecture": {
+        "title": "Deployment Architecture",
+        "edgeInference": {
+          "title": "Edge Inference",
+          "description": "Models run on industrial PCs at each inspection station. Sub-100ms latency."
+        },
+        "onPremServer": {
+          "title": "On-Prem Server",
+          "description": "Picsellia platform runs on your data center. Training, labeling, versioning — all local."
+        },
+        "airGapReady": {
+          "title": "Air-Gap Ready",
+          "description": "Zero internet required. Sync updates via secure media when needed."
+        }
+      }
+    },
+    "cta": {
+      "badge": "QUALITY_FIRST",
+      "heading": "Ready to outperform human inspection?",
+      "description": "See how Picsellia delivers 99.5% defect detection with on-premise deployment.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "Contact Sales",
+      "stats": [
+        { "value": "99.5%", "label": "Detection rate" },
+        { "value": "<0.1%", "label": "False positives" },
+        { "value": "On-Prem", "label": "Deployment" },
+        { "value": "ISO 27001", "label": "Certified" }
+      ]
+    }
+  },
+
+  "energy": {
+    "badge": "Energy & Utilities",
+    "hero": {
+      "headline": "AI-powered inspection for <highlight>critical infrastructure</highlight>",
+      "subheadline": "From drone imagery to actionable insights. Build, deploy, and monitor computer vision models that keep your grid running.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "See Use Cases",
+      "heroImageAlt": "Wind turbine inspection",
+      "floatingCards": {
+        "defectsDetected": { "label": "Defects Detected", "value": "2,847" },
+        "modelAccuracy": { "label": "Model Accuracy", "value": "97.3%" }
+      },
+      "stats": [
+        { "value": "10M+", "label": "Inspection images processed" },
+        { "value": "95%", "label": "Defect detection accuracy" },
+        { "value": "60%", "label": "Inspection cost reduction" },
+        { "value": "24/7", "label": "Continuous monitoring" }
+      ],
+      "usedByTeamsAt": "Used by teams at"
+    },
+    "architecture": {
+      "badge": "Architecture",
+      "heading": "One platform orchestrating your entire vision AI stack",
+      "description": "Picsellia sits at the center of your ML operations, connecting field applications with centralized data management, training, and deployment.",
+      "platform": {
+        "title": "Picsellia MLOps Platform",
+        "subtitle": "Centralized orchestration layer",
+        "statusActive": "ACTIVE",
+        "modules": [
+          { "name": "Data Management", "desc": "Centralize & version" },
+          { "name": "Annotation", "desc": "Label & review" },
+          { "name": "Training", "desc": "Build & experiment" },
+          { "name": "Deployment", "desc": "Ship & monitor" }
+        ]
+      },
+      "connections": [
+        { "label": "Data Upload" },
+        { "label": "Inference" },
+        { "label": "Visualization" },
+        { "label": "Human Feedback" }
+      ],
+      "fieldApplications": {
+        "title": "Field Applications",
+        "subtitle": "Connected devices running inference at the edge",
+        "statusConnected": "4 CONNECTED",
+        "devices": [
+          { "name": "Inspection Drones", "desc": "Autonomous flight + on-board inference", "status": "Running", "metric": "< 50ms", "metricLabel": "Latency" },
+          { "name": "Fixed Cameras", "desc": "Substation monitoring + alerts", "status": "Running", "metric": "24/7", "metricLabel": "Latency" },
+          { "name": "Thermal Sensors", "desc": "Hotspot detection + anomaly alerts", "status": "Running", "metric": "Real-time", "metricLabel": "Latency" },
+          { "name": "Satellite Imagery", "desc": "Large-scale survey analysis", "status": "Running", "metric": "On-demand", "metricLabel": "Latency" }
+        ]
+      },
+      "feedbackLoop": "Continuous improvement: Field data → Annotation → Retraining → Deployment"
+    },
+    "useCases": {
+      "badge": "Applications",
+      "heading": "Built for energy infrastructure",
+      "description": "From transmission lines to solar farms, Picsellia powers inspection workflows across the energy sector.",
+      "items": [
+        {
+          "title": "Infrastructure Inspection",
+          "description": "Detect damaged insulators, corrosion, and vegetation encroachment from drone imagery. Replace manual inspection with AI-powered analysis.",
+          "statsValue": "95%",
+          "statsLabel": "Detection accuracy"
+        },
+        {
+          "title": "Predictive Maintenance",
+          "description": "Identify equipment degradation before failures occur. Thermal and visual analysis for transformers, turbines, and grid components.",
+          "statsValue": "40%",
+          "statsLabel": "Less downtime"
+        },
+        {
+          "title": "Security & Surveillance",
+          "description": "Monitor perimeters, detect intrusions, and ensure site security across remote energy installations with real-time video analytics.",
+          "statsValue": "24/7",
+          "statsLabel": "Monitoring"
+        },
+        {
+          "title": "Safety Protocols",
+          "description": "Ensure PPE compliance, detect hazardous conditions, and monitor worker safety across energy facilities with automated visual checks.",
+          "statsValue": "80%",
+          "statsLabel": "Fewer incidents"
+        }
+      ]
+    },
+    "platform": {
+      "badge": "Platform",
+      "heading": "From raw images to production AI",
+      "description": "Four steps to transform your inspection data into automated defect detection. Each step builds on the last.",
+      "steps": [
+        {
+          "stage": "Collect",
+          "title": "Centralize all your inspection data",
+          "description": "Stop juggling files across hard drives and cloud folders. Every image from every drone flight, every camera feed, every thermal scan — all in one searchable place.",
+          "features": ["Connect any storage (S3, Azure, GCS)", "Auto-extract GPS & metadata", "Search by location, date, or equipment", "Version your datasets automatically"],
+          "linkLabel": "Learn about Datalake",
+          "imageLabel": "Datalake"
+        },
+        {
+          "stage": "Annotate",
+          "title": "Label defects with your experts",
+          "description": "Your maintenance engineers know what a cracked insulator looks like. Capture that knowledge by marking defects in images. AI suggestions speed up the work by 10x.",
+          "features": ["AI pre-labels obvious defects", "Experts review and correct", "Custom defect categories", "Quality control workflows"],
+          "linkLabel": "Learn about Labeling Tool",
+          "imageLabel": "Labeling Tool"
+        },
+        {
+          "stage": "Train",
+          "title": "Build your detection models",
+          "description": "Turn your labeled data into AI models that detect defects automatically. No PhD required — pick a model type, click train, and track progress in real-time.",
+          "features": ["One-click model training", "Compare different approaches", "Track all experiments", "Reproducible results"],
+          "linkLabel": "Learn about Experiment Tracking",
+          "imageLabel": "Training"
+        },
+        {
+          "stage": "Deploy",
+          "title": "Put AI to work in the field",
+          "description": "Deploy your model to drones, cameras, or cloud APIs with one click. Monitor performance live and get alerts if accuracy drops. Retrain when needed.",
+          "features": ["Deploy to edge or cloud", "Real-time monitoring", "Automatic drift detection", "One-click retraining"],
+          "linkLabel": "Learn about Deployment",
+          "imageLabel": "Deployment"
+        }
+      ],
+      "resultHeading": "The result? AI-powered inspection at scale.",
+      "resultStats": [
+        { "value": "10x", "label": "Faster labeling with AI assistance" },
+        { "value": "95%", "label": "Defect detection accuracy" },
+        { "value": "< 100ms", "label": "Edge inference latency" },
+        { "value": "24/7", "label": "Continuous monitoring" }
+      ]
+    },
+    "enterprise": {
+      "badge": "Enterprise Ready",
+      "heading": "Built for critical infrastructure requirements",
+      "description": "Energy companies operate under strict security and compliance requirements. Picsellia is designed to meet these demands from day one.",
+      "requirements": [
+        { "title": "ISO 27001 Certified", "description": "Enterprise-grade security and data protection" },
+        { "title": "On-Premise Deployment", "description": "Keep sensitive infrastructure data within your network" },
+        { "title": "Air-Gapped Support", "description": "Operate in disconnected environments" },
+        { "title": "Role-Based Access", "description": "Fine-grained permissions for teams and contractors" },
+        { "title": "Audit Logging", "description": "Complete traceability for compliance requirements" }
+      ],
+      "securityCard": {
+        "title": "Security First",
+        "description": "Your infrastructure data stays protected",
+        "specs": [
+          { "label": "Encryption", "value": "AES-256" },
+          { "label": "Uptime SLA", "value": "99.9%" },
+          { "label": "Data Residency", "value": "EU/US" },
+          { "label": "Backup", "value": "Daily" }
+        ]
+      }
+    },
+    "cta": {
+      "badge": "INFRASTRUCTURE_AI",
+      "heading": "Ready to modernize your inspection workflow?",
+      "description": "See how leading energy companies use Picsellia to detect defects faster and reduce inspection costs.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "Contact Sales",
+      "stats": [
+        { "value": "10M+", "label": "Images analyzed" },
+        { "value": "<100ms", "label": "Edge inference" },
+        { "value": "99.9%", "label": "Uptime" },
+        { "value": "ISO 27001", "label": "Certified" }
+      ]
+    }
+  },
+
+  "agriculture": {
+    "badge": "Agriculture",
+    "hero": {
+      "headline": "Precision agriculture built on <highlight>geo-referenced data</highlight>",
+      "subheadline": "Manage massive drone datasets with GPS metadata intact. Train models on multi-spectral imagery. Validate with agronomist expertise.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "See Use Cases",
+      "heroImageAlt": "Aerial view of agricultural fields",
+      "floatingCards": {
+        "maxFileSize": { "label": "Max File Size", "value": "10GB+" },
+        "gpsPrecision": { "label": "GPS Precision", "value": "RTK/PPK" },
+        "expertReview": { "label": "Expert Review", "value": "In-Loop" }
+      },
+      "stats": [
+        { "value": "10GB+", "label": "Single file support" },
+        { "value": "RTK", "label": "GPS precision" },
+        { "value": "5 bands", "label": "Multi-spectral" },
+        { "value": "98%", "label": "Expert-validated" }
+      ]
+    },
+    "dataLayer": {
+      "badge": "Data Layer",
+      "heading": "Built for drone-scale imagery",
+      "description": "Agricultural imagery is different. Orthomosaics stretch into gigabytes. Every pixel has GPS coordinates. Multi-spectral bands reveal what RGB cannot. Picsellia handles it all — no compromises on data fidelity.",
+      "capabilities": [
+        { "title": "Orthomosaic support", "description": "Upload multi-gigabyte stitched maps. Automatic tiling for efficient viewing and annotation." },
+        { "title": "GPS metadata extraction", "description": "Automatic parsing of EXIF coordinates, altitude, heading. Every annotation is geo-referenced." },
+        { "title": "Multi-spectral layers", "description": "RGB, NIR, thermal, NDVI — all linked to the same capture. Switch views during annotation." },
+        { "title": "Field & plot hierarchy", "description": "Organize imagery by farm, field, plot, and season. Query across time to track changes." }
+      ],
+      "dataIngestion": {
+        "title": "Data Ingestion",
+        "badge": "Processing",
+        "fileName": "field_north_orthomosaic.tif",
+        "fileDetails": "8.4 GB • GeoTIFF",
+        "extractedMetadata": "Extracted Metadata",
+        "coordinates": "45.7640°N, 4.8357°E",
+        "timestamp": "2024-07-15 10:32 UTC",
+        "location": "Vineyard A / Block 3",
+        "bands": "5 bands (RGB+NIR+RE)",
+        "tilingTitle": "Auto-tiling for annotation",
+        "tilingStatus": "In progress",
+        "tilingDescription": "Generating 256 tiles at 2048×2048px...",
+        "tilingFooter": "Original file preserved. Tiles generated for efficient annotation."
+      }
+    },
+    "humanInTheLoop": {
+      "badge": "Human-in-the-Loop",
+      "heading": "Agronomist expertise in every prediction",
+      "description": "AI spots the patterns. Experts confirm the diagnosis. This loop ensures your disease detection and yield models reach the precision agriculture demands.",
+      "expertReview": {
+        "title": "Expert Review Workflows",
+        "subtitle": "Agronomists validate AI predictions",
+        "description": "Route low-confidence detections to your agronomists. They confirm disease identifications, correct misclassifications, and add domain knowledge the model lacks.",
+        "items": [
+          "Disease confirmation by plant pathologists",
+          "Phenological stage validation",
+          "Nutrient deficiency verification",
+          "False positive filtering"
+        ],
+        "agronomistsActive": "3 agronomists active",
+        "pendingReviews": "47 pending reviews"
+      },
+      "activeLearning": {
+        "title": "Active Learning",
+        "subtitle": "Smart sampling for maximum impact",
+        "description": "Not all samples need expert review. Picsellia identifies the edge cases — unusual disease presentations, ambiguous growth stages, rare conditions — and routes only those for annotation.",
+        "uncertaintyThreshold": "Uncertainty threshold",
+        "uncertaintyValue": "0.65",
+        "samplesRequiringReview": "Samples requiring review",
+        "samplesValue": "12% of predictions",
+        "labelingEffortSaved": "Labeling effort saved",
+        "labelingValue": "88%",
+        "footer": "Focus expert time on samples that improve model accuracy most"
+      },
+      "precisionMetrics": [
+        { "value": "98.2%", "label": "Disease ID accuracy", "detail": "After expert review" },
+        { "value": "0.3%", "label": "False positive rate", "detail": "Agronomist-validated" },
+        { "value": "4.2h", "label": "Avg review time", "detail": "Per 1000 samples" },
+        { "value": "12×", "label": "Throughput increase", "detail": "vs manual scouting" }
+      ]
+    },
+    "useCases": {
+      "badge": "Applications",
+      "heading": "From vineyard to broadacre",
+      "description": "Picsellia powers precision agriculture across crop types, from high-value vineyards to large-scale row crops.",
+      "items": [
+        {
+          "title": "Crop Health Monitoring",
+          "description": "Track plant health across entire fields with drone and satellite imagery. Detect stress, nutrient deficiencies, and growth anomalies before they spread.",
+          "statsValue": "500ha",
+          "statsLabel": "Per flight coverage"
+        },
+        {
+          "title": "Disease Detection",
+          "description": "Identify fungal infections, bacterial diseases, and pest damage at early stages. Geo-tagged alerts for precise treatment application.",
+          "statsValue": "14 days",
+          "statsLabel": "Earlier detection"
+        },
+        {
+          "title": "Yield Estimation",
+          "description": "Count fruits, measure crop density, and predict harvest volumes from aerial imagery. Plan logistics with accurate forecasts.",
+          "statsValue": "±5%",
+          "statsLabel": "Forecast accuracy"
+        },
+        {
+          "title": "Soil Analysis",
+          "description": "Map soil variability, moisture levels, and organic matter content. Create prescription maps for variable-rate application.",
+          "statsValue": "10m",
+          "statsLabel": "Resolution"
+        }
+      ]
+    },
+    "dataManagement": {
+      "badge": "Data Management",
+      "heading": "Organize seasons of imagery",
+      "description": "Agricultural data compounds over time. Query across years, compare seasonal patterns, track field evolution.",
+      "temporalTracking": {
+        "title": "Temporal tracking",
+        "description": "Link captures to growth stages. Compare same plot across weeks, months, years. Time-series analysis built in.",
+        "seasons": ["2024 Season", "2023 Season", "2022 Season"],
+        "flightsSuffix": "flights"
+      },
+      "spatialHierarchy": {
+        "title": "Spatial hierarchy",
+        "description": "Farm → Field → Plot → Row. Organize imagery to match your physical layout. Filter and search by location.",
+        "exampleFarm": "Domaine du Château",
+        "examplePlots": ["Parcelle Nord (12 ha)", "Parcelle Sud (8 ha)", "Parcelle Est (15 ha)"]
+      },
+      "smartQueries": {
+        "title": "Smart queries",
+        "description": "Find all disease detections from July 2024 in Block A. Export with GPS for precision spraying.",
+        "queryComment": "# Query example",
+        "queryResult": "→ 147 detections found"
+      }
+    },
+    "cta": {
+      "badge": "PRECISION_AGRICULTURE",
+      "heading": "Ready to scale your farm analytics?",
+      "description": "See how Picsellia handles drone-scale imagery with GPS precision and expert validation.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "Contact Sales",
+      "stats": [
+        { "value": "10GB+", "label": "File support" },
+        { "value": "RTK/PPK", "label": "GPS precision" },
+        { "value": "98%", "label": "Validated accuracy" },
+        { "value": "12×", "label": "Faster than scouting" }
+      ]
+    }
+  },
+
+  "wasteManagement": {
+    "badge": "Waste Management",
+    "hero": {
+      "headline": "AI that keeps up with <highlight>changing waste streams</highlight>",
+      "subheadline": "Packaging changes. Materials evolve. Your AI should too. Build waste sorting models that continuously learn and adapt.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "See Use Cases",
+      "heroImageAlt": "Waste sorting facility",
+      "floatingCards": {
+        "modelUpdates": { "label": "Model Updates", "value": "Weekly" },
+        "classification": { "label": "Classification", "value": "95.2%" },
+        "driftMonitoring": { "label": "Drift Monitoring", "value": "24/7" }
+      },
+      "stats": [
+        { "value": "50M+", "label": "Items classified daily" },
+        { "value": "95%", "label": "Sorting accuracy" },
+        { "value": "40%", "label": "Cost reduction" },
+        { "value": "<50ms", "label": "Classification speed" }
+      ]
+    },
+    "challenge": {
+      "badge": "The Challenge",
+      "heading": "Your training data is already outdated",
+      "description": "Static models don't work in waste management. New packaging hits shelves every week. Seasonal products come and go. Brand redesigns happen overnight. Your sorting AI needs to adapt — or accuracy plummets.",
+      "items": [
+        { "title": "New packaging every week", "description": "Brands redesign, seasonal editions launch, new materials enter the market. Your model trained on last year's packaging is already outdated." },
+        { "title": "Regional variations", "description": "Products in France differ from Germany. Local brands, different recycling symbols, varying material compositions across regions." },
+        { "title": "Mixed & damaged items", "description": "Crushed cans, torn labels, multi-layer packaging. Real-world waste looks nothing like pristine training images." },
+        { "title": "Model drift over time", "description": "A model that worked great in January underperforms by June. Without monitoring, you won't know until sorting quality drops." }
+      ],
+      "failureStat": {
+        "value": "73%",
+        "title": "of waste AI projects fail",
+        "subtitle": "due to model degradation over time"
+      },
+      "degradationTimeline": {
+        "modelTrained": { "label": "Model trained", "value": "January" },
+        "newProductsLaunched": { "label": "New products launched", "value": "+2,400/month" },
+        "accuracyByJune": { "label": "Accuracy by June", "value": "↓ 15%" }
+      },
+      "warning": {
+        "title": "Without continuous learning",
+        "description": "Your sorting line misclassifies thousands of items daily"
+      }
+    },
+    "solution": {
+      "badge": "The Solution",
+      "heading": "Continuous learning, not one-time training",
+      "description": "Picsellia creates a closed loop: monitor production, catch drift, retrain, and redeploy — automatically.",
+      "steps": [
+        { "step": 1, "title": "Deploy & Monitor", "description": "Models run on your sorting line. Every prediction is logged with confidence scores." },
+        { "step": 2, "title": "Detect Drift", "description": "When confidence drops or new item types appear, the system flags them automatically." },
+        { "step": 3, "title": "Smart Labeling", "description": "Low-confidence samples are routed to human reviewers. AI pre-labels, experts validate." },
+        { "step": 4, "title": "Retrain & Redeploy", "description": "Updated models are trained on new data and deployed without downtime." }
+      ],
+      "loopMessage": "Continuous loop — models improve every week"
+    },
+    "useCases": {
+      "badge": "Applications",
+      "heading": "Built for sorting facilities",
+      "description": "From MRFs to collection points, Picsellia powers waste classification across the recycling chain.",
+      "items": [
+        {
+          "title": "Automated Waste Sorting",
+          "description": "Classify materials on conveyor belts in real-time. PET, HDPE, cardboard, aluminum — your model learns to distinguish them all, even as packaging evolves.",
+          "statsValue": "95%",
+          "statsLabel": "Classification accuracy"
+        },
+        {
+          "title": "Contamination Detection",
+          "description": "Spot contaminated recyclables before they ruin an entire batch. Identify food residue, mixed materials, and non-recyclable items in the stream.",
+          "statsValue": "60%",
+          "statsLabel": "Less contamination"
+        },
+        {
+          "title": "Fill Level Monitoring",
+          "description": "Track container fill levels across your network. Optimize collection routes based on actual need, not fixed schedules.",
+          "statsValue": "30%",
+          "statsLabel": "Fewer truck runs"
+        },
+        {
+          "title": "Material Composition",
+          "description": "Analyze waste streams to understand what's coming through. Generate reports for regulatory compliance and recycling optimization.",
+          "statsValue": "100%",
+          "statsLabel": "Traceability"
+        }
+      ]
+    },
+    "platformTools": {
+      "badge": "Platform",
+      "heading": "Tools for continuous improvement",
+      "description": "Every feature in Picsellia is designed for iteration. Collect new samples, retrain fast, and push to production.",
+      "modelMonitoring": {
+        "title": "Model Monitoring",
+        "subtitle": "Catch drift before it hurts",
+        "description": "Track prediction confidence in real-time. When your model sees packaging it wasn't trained on, you'll know immediately — not weeks later when sorting quality drops.",
+        "features": ["Confidence score tracking", "Drift detection alerts", "Performance dashboards", "Anomaly detection"],
+        "learnMore": "Learn more"
+      },
+      "activeLearning": {
+        "title": "Active Learning",
+        "subtitle": "Label smarter, not harder",
+        "description": "Low-confidence predictions are automatically queued for review. Your team labels only the samples that matter — the edge cases your model struggles with.",
+        "features": ["Uncertainty sampling", "Pre-annotation", "Review workflows", "Quality assurance"],
+        "learnMore": "Learn more"
+      },
+      "automatedPipelines": {
+        "title": "Automated Pipelines",
+        "subtitle": "Retrain on schedule or trigger",
+        "description": "Set up pipelines that retrain models weekly, or trigger retraining when enough new samples accumulate. Deploy updated models without stopping your line.",
+        "features": ["Scheduled retraining", "Trigger-based updates", "A/B model testing", "Zero-downtime deployment"],
+        "learnMore": "Learn more"
+      },
+      "resultBanner": {
+        "heading": "The result? Models that never go stale.",
+        "description": "Keep 95%+ accuracy year-round, even as packaging changes weekly.",
+        "retrainingCycles": { "value": "52", "label": "Retraining cycles/year" },
+        "accuracyVariance": { "value": "<1%", "label": "Accuracy variance" }
+      }
+    },
+    "integration": {
+      "badge": "Integration",
+      "heading": "Connects to your sorting infrastructure",
+      "description": "Picsellia integrates with existing camera systems, conveyor controls, and sorting robots. Deploy models to edge devices or process in the cloud — your choice.",
+      "items": [
+        { "title": "Camera Integration", "description": "Works with industrial cameras, line-scan sensors, and hyperspectral imaging" },
+        { "title": "Edge Deployment", "description": "Run inference on NVIDIA Jetson, industrial PCs, or embedded systems" },
+        { "title": "PLC & SCADA", "description": "Send classification signals to sorting actuators and robotics" },
+        { "title": "Data Pipelines", "description": "Automatic upload of production images for retraining datasets" },
+        { "title": "MES Integration", "description": "Feed classification data into manufacturing execution systems" }
+      ],
+      "edgePerformance": {
+        "title": "Edge Performance",
+        "description": "Optimized for industrial throughput",
+        "specs": [
+          { "label": "Latency", "value": "<50ms" },
+          { "label": "Throughput", "value": "20 FPS" },
+          { "label": "Models", "value": "ONNX/TRT" },
+          { "label": "Uptime", "value": "99.9%" }
+        ]
+      }
+    },
+    "cta": {
+      "badge": "CONTINUOUS_LEARNING",
+      "heading": "Ready to future-proof your sorting AI?",
+      "description": "See how Picsellia keeps waste classification accurate — even as packaging evolves every week.",
+      "ctaPrimary": "Request Demo",
+      "ctaSecondary": "Contact Sales",
+      "stats": [
+        { "value": "50M+", "label": "Items/day" },
+        { "value": "95%+", "label": "Accuracy maintained" },
+        { "value": "Weekly", "label": "Model updates" },
+        { "value": "<50ms", "label": "Classification" }
+      ]
+    }
+  }
+}

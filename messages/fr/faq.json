@@ -1,0 +1,191 @@
+{
+  "hero": {
+    "badge": "Centre d'aide",
+    "title": "Questions",
+    "titleHighlight": "fréquentes",
+    "description": "Tout ce que vous devez savoir sur Picsellia. Vous ne trouvez pas ce que vous cherchez ?",
+    "contactLink": "Contactez notre équipe",
+    "searchPlaceholder": "Rechercher des questions..."
+  },
+  "categories": {
+    "title": "Catégories",
+    "general": {
+      "name": "Général",
+      "questions": [
+        {
+          "q": "Qu'est-ce que Picsellia ?",
+          "a": "Picsellia est une plateforme MLOps conçue pour la vision par ordinateur. Elle couvre l'intégralité du cycle de vie : gestion des images, annotation, entraînement de modèles, déploiement et monitoring, le tout dans un seul espace de travail. Data scientists, ingénieurs ML et équipes opérationnelles collaborent sur la même plateforme au lieu de jongler entre des outils distincts."
+        },
+        {
+          "q": "Qui utilise Picsellia ?",
+          "a": "Picsellia sert les équipes qui développent des applications de vision par ordinateur dans tous les secteurs : industrie (détection de défauts), agriculture (surveillance des cultures), énergie (inspection d'infrastructures), analyse sportive, traitement de documents, et bien plus. Nos utilisateurs vont des startups déployant leur premier modèle aux équipes entreprise gérant des milliards d'images."
+        },
+        {
+          "q": "En quoi Picsellia se distingue des autres outils MLOps ?",
+          "a": "Contrairement aux plateformes MLOps génériques, Picsellia est conçue spécifiquement pour les données visuelles. Cela signifie une gestion native des images et vidéos à toute échelle, des outils d'annotation intégrés avec assistance IA, une évaluation de modèles spécialisée pour la détection/segmentation/classification, et une recherche par similarité visuelle basée sur les embeddings CLIP. Tout fonctionne ensemble dès le départ."
+        },
+        {
+          "q": "Puis-je essayer Picsellia avant de m'engager ?",
+          "a": "Oui. Nous proposons un essai gratuit de 14 jours avec un accès complet à la plateforme, sans carte bancaire requise. Vous bénéficiez de 10 000 imports d'images, 100 heures GPU pour l'entraînement et l'accès à toutes les fonctionnalités. Commencez à construire immédiatement et voyez les résultats avant de vous engager."
+        }
+      ]
+    },
+    "platform": {
+      "name": "Plateforme et fonctionnalités",
+      "questions": [
+        {
+          "q": "Quels sont les principaux modules de la plateforme ?",
+          "a": "Picsellia dispose de trois modules principaux : Data Engine (gestion des données, versionnement et curation intelligente), VisionAI Factory (suivi des expériences, entraînement de modèles et déploiement), et Reliability Engine (monitoring en production, détection de drift et amélioration continue). Le Data Engine peut être utilisé seul ; les autres s'appuient dessus."
+        },
+        {
+          "q": "Quels formats de données Picsellia supporte-t-il ?",
+          "a": "Nous supportons tous les formats d'image courants (JPEG, PNG, TIFF, BMP, WebP), les fichiers vidéo (MP4, AVI, MOV) et les formats spécialisés comme l'imagerie multi-spectrale. Pour les annotations, nous importons/exportons COCO, YOLO, Pascal VOC et des formats personnalisés. Les données peuvent être importées localement ou connectées directement depuis S3, Google Cloud Storage ou Azure Blob."
+        },
+        {
+          "q": "Comment fonctionne l'outil d'annotation ?",
+          "a": "Notre outil de labélisation supporte les boîtes englobantes, les polygones, les masques de segmentation, les points clés et la classification. La labélisation assistée par IA utilise vos modèles entraînés pour pré-annoter les images, réduisant le travail manuel jusqu'à 10 fois. Les fonctionnalités de contrôle qualité incluent des workflows de révision, le suivi du consensus et la détection automatique des incohérences."
+        },
+        {
+          "q": "Quelles sont les capacités de suivi d'expériences incluses ?",
+          "a": "Chaque entraînement est automatiquement enregistré : hyperparamètres, métriques, artefacts et détails de l'environnement. Comparez les expériences côte à côte avec des graphiques visuels. Tous les modèles sont versionnés dans un registre central avec traçabilité de la lignée jusqu'à la version exacte du dataset utilisé. L'intégration avec MLflow est également disponible."
+        },
+        {
+          "q": "Comment fonctionne le déploiement de modèles ?",
+          "a": "Déployez des modèles en un clic sur notre infrastructure managée ou exportez vers la vôtre. Nous supportons les endpoints d'API REST, les pipelines d'inférence par lots et les packages de déploiement edge. Les déploiements shadow vous permettent de tester de nouveaux modèles sur le trafic de production avant de les promouvoir."
+        },
+        {
+          "q": "Quelles fonctionnalités de monitoring sont disponibles ?",
+          "a": "Le Reliability Engine suit la qualité des prédictions en temps réel : métriques de précision, distributions de confiance et dérive des données. Configurez des alertes pour les anomalies et automatisez les boucles de rétroaction qui redirigent les cas limites vers votre pipeline d'entraînement. Cela permet une amélioration continue sans intervention manuelle."
+        }
+      ]
+    },
+    "pricing": {
+      "name": "Tarification et offres",
+      "questions": [
+        {
+          "q": "Comment fonctionne la tarification de Picsellia ?",
+          "a": "La tarification combine des abonnements aux modules et des coûts basés sur l'utilisation. Vous vous abonnez aux modules de la plateforme (Data Engine, VisionAI Factory, Reliability Engine) avec des places utilisateur incluses. L'utilisation est mesurée en Data Processing Units (DPU) pour l'ingestion de données et en Monitoring Units (MU) pour les prédictions en production. Les remises sur volume s'appliquent automatiquement au fur et à mesure que vous montez en charge."
+        },
+        {
+          "q": "Qu'est-ce qu'un Data Processing Unit (DPU) ?",
+          "a": "Le DPU mesure l'ingestion et le traitement des données. Les images standard se convertissent à 60 images = 1 DPU, les vidéos à 1 vidéo = 1 DPU, et les images multi-spectrales à 5 images = 1 DPU. Le tarif de base est de 0,80 € par DPU, avec des remises jusqu'à 60 % pour les volumes élevés."
+        },
+        {
+          "q": "Qu'est-ce qu'un Monitoring Unit (MU) ?",
+          "a": "Le MU mesure le monitoring des inférences en production. Chaque MU couvre 1 000 prédictions monitorées via le Reliability Engine pour le suivi de la qualité et la détection de drift. La tarification commence à 1,00 € par MU avec des remises sur volume jusqu'à 50 %."
+        },
+        {
+          "q": "Puis-je utiliser les modules indépendamment ?",
+          "a": "Le Data Engine peut être utilisé seul pour la gestion et la curation des données. VisionAI Factory et Reliability Engine nécessitent tous deux le Data Engine comme fondation, puisqu'ils opèrent sur vos données gérées. Chaque module inclut 3 places utilisateur, avec la possibilité d'en ajouter."
+        },
+        {
+          "q": "Existe-t-il une tarification sur volume pour les grands déploiements ?",
+          "a": "Oui. Les remises sur volume sont appliquées en fonction de votre utilisation cumulée annuelle. Plus vous traitez de données ou monitorez de prédictions, plus vous obtenez automatiquement de meilleurs tarifs : jusqu'à 60 % de réduction pour les DPU et 50 % pour les MU. Les clients entreprise peuvent également négocier une tarification personnalisée avec engagement."
+        },
+        {
+          "q": "Qu'en est-il des coûts de calcul GPU ?",
+          "a": "Les ressources GPU pour l'entraînement et l'inférence sont facturées séparément sur la base de l'utilisation réelle. Nous proposons différents niveaux de GPU (T4, A10G, A100) avec des tarifs horaires transparents. L'option bring-your-own-compute est également supportée si vous préférez utiliser vos GPU cloud existants."
+        }
+      ]
+    },
+    "security": {
+      "name": "Sécurité et conformité",
+      "questions": [
+        {
+          "q": "Quelles certifications de sécurité Picsellia détient-il ?",
+          "a": "Picsellia est certifié ISO 27001:2022 avec des audits annuels. Nous sommes entièrement conformes au RGPD avec des accords de traitement des données UE disponibles. Toutes les données sont chiffrées avec AES-256 au repos et TLS 1.3 en transit. Nous supportons l'intégration SSO/SAML entreprise pour la gestion des identités."
+        },
+        {
+          "q": "Quelles options de déploiement sont disponibles ?",
+          "a": "Trois options : SaaS (cloud entièrement managé dans des centres de données UE ou US), Hybride (votre stockage de données et calcul, notre plan de contrôle) et On-Premise (déploiement complet sur votre infrastructure via Kubernetes ou Docker). Les environnements air-gapped sont supportés pour une isolation maximale."
+        },
+        {
+          "q": "Puis-je conserver mes données sur ma propre infrastructure ?",
+          "a": "Absolument. Le déploiement Hybride se connecte à votre stockage S3, GCS ou Azure existant : les données ne quittent jamais votre infrastructure. Vous pouvez également apporter votre propre calcul GPU et registre Docker. Picsellia gère le plan de contrôle tandis que vous conservez la souveraineté totale sur vos données."
+        },
+        {
+          "q": "Comment fonctionne le contrôle d'accès ?",
+          "a": "Le contrôle d'accès basé sur les rôles (RBAC) opère à trois niveaux : Organisation (Propriétaire, Admin, Membre), Workspace (Manager, Contributeur, Lecteur) et Projet (Lead, Éditeur, Annotateur, Réviseur). Cela permet des permissions granulaires afin que les annotateurs ne voient que leurs tâches assignées tandis que les leads gèrent des projets entiers."
+        },
+        {
+          "q": "Y a-t-il un journal d'audit ?",
+          "a": "Oui. Le suivi complet des activités enregistre toutes les actions utilisateur, les appels API et les événements système. Les journaux d'audit sont immuables, consultables et exportables pour les revues de conformité. Les offres entreprise incluent des périodes de rétention étendues et l'intégration SIEM."
+        }
+      ]
+    },
+    "gettingStarted": {
+      "name": "Premiers pas",
+      "questions": [
+        {
+          "q": "Comment démarrer avec Picsellia ?",
+          "a": "Commencez avec notre essai gratuit de 14 jours, sans carte bancaire requise. Créez votre organisation, importez des images dans le Datalake et explorez la plateforme. Nos guides de démarrage rapide vous accompagnent dans la création de votre premier dataset, le lancement d'une campagne d'annotation et l'entraînement d'un modèle."
+        },
+        {
+          "q": "Existe-t-il un SDK Python ?",
+          "a": "Oui. Le SDK Python Picsellia fournit un accès programmatique à toutes les fonctionnalités de la plateforme. Importez des données, gérez des datasets, lancez des tâches d'entraînement et intégrez avec vos pipelines existants. Installez avec pip install picsellia et consultez notre documentation SDK pour des exemples."
+        },
+        {
+          "q": "Puis-je importer des données et modèles existants ?",
+          "a": "Absolument. Connectez votre stockage cloud existant (S3, GCS, Azure) et Picsellia indexe vos données sans les copier. Importez des annotations au format COCO, YOLO ou Pascal VOC. Enregistrez des modèles pré-entraînés depuis vos fichiers locaux ou des registres externes."
+        },
+        {
+          "q": "Quel support est disponible ?",
+          "a": "Toutes les offres incluent la documentation, les forums communautaires et le support par email. Les offres Pro ajoutent un support prioritaire avec des temps de réponse plus rapides. Les offres entreprise incluent des customer success managers dédiés, un support 24/7 et des SLA personnalisés. Nous proposons également une assistance à l'intégration et des ateliers de formation."
+        },
+        {
+          "q": "Proposez-vous de la formation ou de l'aide à l'intégration ?",
+          "a": "Oui. Nous fournissons de la documentation, des tutoriels vidéo et des guides de démarrage rapide interactifs. Les clients entreprise bénéficient d'un onboarding dédié avec des ateliers pratiques. Notre équipe customer success vous aide à migrer vos workflows existants et à optimiser votre configuration pour votre cas d'usage spécifique."
+        }
+      ]
+    },
+    "technical": {
+      "name": "Technique et intégration",
+      "questions": [
+        {
+          "q": "Picsellia s'intègre-t-il avec ma stack ML existante ?",
+          "a": "Oui. Nous nous intégrons avec les outils populaires : MLflow pour la migration du suivi d'expériences, les fournisseurs de stockage cloud (AWS, GCP, Azure), les registres de conteneurs pour les environnements d'entraînement personnalisés et les systèmes CI/CD pour les pipelines automatisés. Notre API REST et notre SDK Python permettent des intégrations personnalisées."
+        },
+        {
+          "q": "Puis-je utiliser mon propre code d'entraînement ?",
+          "a": "Absolument. Apportez n'importe quel framework (PyTorch, TensorFlow, Ultralytics, etc.) et conteneurisez vos scripts d'entraînement. Picsellia fournit les ressources GPU, gère le chargement des données et suit les expériences, tandis que vous gardez le contrôle total sur votre logique d'entraînement."
+        },
+        {
+          "q": "Comment fonctionne le versionnement des datasets ?",
+          "a": "Chaque modification de dataset crée une nouvelle version immuable. Suivez la lignée depuis les données brutes à travers le prétraitement, l'augmentation et les splits. Reproduisez n'importe quelle expérience en référençant la version exacte du dataset utilisée. Comparez les versions pour comprendre comment les changements de données impactent les performances du modèle."
+        },
+        {
+          "q": "Qu'est-ce que la recherche par similarité visuelle ?",
+          "a": "Basée sur les embeddings CLIP, la recherche par similarité vous permet de trouver des images par contenu visuel plutôt que par métadonnées. Importez une image de référence et découvrez des échantillons similaires dans votre Datalake. Utilisez cela pour la curation de données, la recherche de doublons ou la construction de sets d'entraînement équilibrés."
+        },
+        {
+          "q": "Puis-je automatiser les workflows avec des pipelines ?",
+          "a": "Oui. Les pipelines automatisés enchaînent les étapes de traitement des données, d'entraînement, d'évaluation et de déploiement. Déclenchez des pipelines selon des planifications, des changements de données ou des appels API. Des templates pré-construits couvrent les workflows courants comme l'apprentissage actif et l'entraînement continu."
+        },
+        {
+          "q": "Y a-t-il une API ?",
+          "a": "Accès complet par API REST à toutes les fonctionnalités de la plateforme. Chaque action disponible dans l'interface peut être automatisée via l'API. La spécification OpenAPI est disponible pour générer des bibliothèques clientes dans n'importe quel langage. Les webhooks notifient vos systèmes des événements en temps réel."
+        }
+      ]
+    }
+  },
+  "quickLinks": {
+    "title": "Liens rapides",
+    "documentation": "Documentation",
+    "pricing": "Tarification",
+    "requestDemo": "Demander une démo"
+  },
+  "search": {
+    "resultsFor": "résultat{count, plural, one {} other {s}} pour",
+    "clearSearch": "Effacer la recherche",
+    "noResults": "Aucune question trouvée",
+    "noResultsHint": "Essayez d'autres mots-clés ou",
+    "contactUs": "contactez-nous",
+    "questionsInCategory": "questions dans cette catégorie"
+  },
+  "cta": {
+    "title": "Vous avez encore des questions ?",
+    "description": "Notre équipe est là pour vous aider. Contactez-nous et nous vous répondrons dans les plus brefs délais.",
+    "contactSales": "Contacter les ventes",
+    "readDocumentation": "Lire la documentation"
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "privacy": {
+    "sectionLabel": "Legal",
+    "title": "Privacy Policy",
+    "description": "Your privacy matters to us. This policy explains how Picsellia collects, uses, and protects your personal information.",
+    "lastUpdated": "Last Updated: January 2025",
+    "gdprCompliant": "GDPR Compliant",
+    "tableOfContents": "Table of Contents",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "Picsellia SAS (\"Picsellia\", \"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our MLOps platform for computer vision, visit our website, or interact with our services.\n\nWe process personal data in compliance with the General Data Protection Regulation (GDPR), the French Data Protection Act (Loi Informatique et Libertes), and other applicable data protection laws."
+      },
+      "dataController": {
+        "title": "Data Controller",
+        "content": "Picsellia SAS is the data controller for the personal data collected through our services.\n\n**Contact Information:**\nPicsellia SAS\nToulouse, France\nEmail: privacy@picsellia.com\n\nFor any privacy-related inquiries, please contact our Data Protection Officer at dpo@picsellia.com."
+      },
+      "dataCollected": {
+        "title": "Information We Collect",
+        "content": "**Account Information**\nWhen you create an account, we collect:\n- Name and email address\n- Organization name\n- Job title and role\n- Password (encrypted)\n- Profile preferences\n\n**Usage Data**\nWe automatically collect:\n- Log data (IP address, browser type, device information)\n- Platform usage analytics (features used, session duration)\n- Performance metrics\n\n**Platform Data**\nWhen using our services, you may upload:\n- Images and datasets for computer vision tasks\n- Model configurations and training parameters\n- Annotations and labels\n- API tokens and integration credentials\n\n**Communication Data**\nWhen you contact us, we collect:\n- Email correspondence\n- Support tickets\n- Feedback and survey responses\n\n**Payment Information**\nFor paid plans, we collect:\n- Billing address\n- Payment method (processed by our payment provider Stripe)\n- Invoice history"
+      },
+      "legalBasis": {
+        "title": "Legal Basis for Processing",
+        "content": "We process your personal data based on the following legal grounds:\n\n**Contract Performance**\nProcessing necessary to provide our services, manage your account, and fulfill our contractual obligations.\n\n**Legitimate Interests**\nProcessing for our legitimate business interests, such as improving our services, ensuring security, and conducting analytics—balanced against your rights and freedoms.\n\n**Consent**\nWhere required, we obtain your explicit consent for specific processing activities, such as marketing communications.\n\n**Legal Obligations**\nProcessing required to comply with applicable laws, regulations, and legal processes."
+      },
+      "howWeUse": {
+        "title": "How We Use Your Information",
+        "content": "We use collected information to:\n\n- **Provide Services:** Operate and maintain the Picsellia platform\n- **Improve Products:** Analyze usage patterns to enhance features and user experience\n- **Customer Support:** Respond to inquiries and provide technical assistance\n- **Security:** Detect, prevent, and address technical issues and security threats\n- **Communications:** Send important updates, newsletters (with consent), and service notifications\n- **Billing:** Process payments and manage subscriptions\n- **Compliance:** Meet legal obligations and enforce our terms of service"
+      },
+      "dataSharing": {
+        "title": "Data Sharing and Disclosure",
+        "content": "We do not sell your personal data. We may share information with:\n\n**Service Providers**\nTrusted third parties who assist in operating our platform:\n- Cloud infrastructure (OVHcloud, AWS)\n- Payment processing (Stripe)\n- Email services (HubSpot)\n- Analytics (privacy-focused tools)\n\n**Legal Requirements**\nWhen required by law, court order, or governmental authority.\n\n**Business Transfers**\nIn connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections.\n\n**With Your Consent**\nWhen you explicitly authorize sharing with specific third parties.\n\nAll service providers are bound by data processing agreements ensuring GDPR compliance and adequate data protection."
+      },
+      "dataRetention": {
+        "title": "Data Retention",
+        "content": "We retain personal data only as long as necessary for the purposes described.",
+        "table": {
+          "headers": ["Data Type", "Retention Period"],
+          "rows": [
+            ["Account data", "Duration of account + 3 years"],
+            ["Usage logs", "12 months"],
+            ["Platform data", "Duration of account + 30 days"],
+            ["Support tickets", "5 years"],
+            ["Invoices", "10 years (legal requirement)"]
+          ]
+        },
+        "contentAfterTable": "When data is no longer needed, we securely delete or anonymize it in accordance with our data retention policies."
+      },
+      "yourRights": {
+        "title": "Your Rights",
+        "content": "Under GDPR and applicable laws, you have the right to:\n\n**Access**\nRequest a copy of your personal data we hold.\n\n**Rectification**\nRequest correction of inaccurate or incomplete data.\n\n**Erasure (\"Right to be Forgotten\")**\nRequest deletion of your personal data under certain circumstances.\n\n**Restriction**\nRequest limitation of processing in specific situations.\n\n**Data Portability**\nReceive your data in a structured, commonly used format.\n\n**Object**\nObject to processing based on legitimate interests or direct marketing.\n\n**Withdraw Consent**\nWithdraw consent at any time where processing is based on consent.\n\n**Lodge a Complaint**\nFile a complaint with your local data protection authority (in France: CNIL).\n\nTo exercise these rights, contact us at privacy@picsellia.com. We will respond within 30 days."
+      },
+      "security": {
+        "title": "Data Security",
+        "content": "We implement robust technical and organizational measures to protect your data:\n\n- **Encryption:** AES-256 encryption at rest, TLS 1.3 in transit\n- **Access Controls:** Role-based access with multi-factor authentication\n- **Infrastructure:** ISO 27001 certified data centers in the EU\n- **Monitoring:** 24/7 security monitoring and intrusion detection\n- **Audits:** Regular security assessments and penetration testing\n- **Certifications:** ISO/IEC 27001:2022 certified\n\nFor more details, see our Security page."
+      },
+      "internationalTransfers": {
+        "title": "International Data Transfers",
+        "content": "Picsellia primarily stores data in European Union data centers. When we transfer data outside the EU/EEA, we ensure appropriate safeguards:\n\n- Standard Contractual Clauses (SCCs) approved by the European Commission\n- Adequacy decisions where applicable\n- Additional technical and organizational measures\n\nWe do not transfer data to countries without adequate protection unless appropriate safeguards are in place."
+      },
+      "cookies": {
+        "title": "Cookies and Tracking",
+        "content": "We use cookies and similar technologies to enhance your experience:\n\n**Essential Cookies**\nRequired for platform functionality (authentication, security).\n\n**Analytics Cookies**\nHelp us understand how visitors interact with our website (with consent).\n\n**Preference Cookies**\nRemember your settings and preferences.\n\nYou can manage cookie preferences through our cookie banner or your browser settings. For details, see our Cookie Policy."
+      },
+      "children": {
+        "title": "Children's Privacy",
+        "content": "Picsellia services are not directed to individuals under 16 years of age. We do not knowingly collect personal data from children. If we become aware that we have collected data from a child without parental consent, we will take steps to delete that information."
+      },
+      "changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will notify you of significant changes via email or a prominent notice on our platform.\n\nThe \"Last Updated\" date at the top of this policy indicates when it was last revised. Continued use of our services after changes constitutes acceptance of the updated policy."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "For questions about this Privacy Policy or our data practices:\n\n**Email:** privacy@picsellia.com\n**Data Protection Officer:** dpo@picsellia.com\n\n**Postal Address:**\nPicsellia SAS\nToulouse, France\n\nWe aim to respond to all inquiries within 30 days."
+      }
+    },
+    "relatedPolicies": {
+      "title": "Related Policies",
+      "cookiePolicy": { "title": "Cookie Policy", "description": "Learn about our cookie usage" },
+      "security": { "title": "Security", "description": "Our security practices" },
+      "contactUs": { "title": "Contact Us", "description": "Privacy questions?" }
+    }
+  },
+  "cookies": {
+    "sectionLabel": "Legal",
+    "title": "Cookie Policy",
+    "description": "This policy explains how Picsellia uses cookies and similar technologies, and how you can control them.",
+    "lastUpdated": "Last Updated: January 2025",
+    "compliance": "GDPR & ePrivacy Compliant",
+    "quickSummary": "Quick Summary",
+    "required": "Required",
+    "optional": "Optional",
+    "cookiesWeUse": "Cookies We Use",
+    "tableHeaders": {
+      "cookieName": "Cookie Name",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "provider": "Provider"
+    },
+    "categories": {
+      "essential": {
+        "name": "Essential Cookies",
+        "description": "Required for the website to function properly. These cannot be disabled.",
+        "cookies": [
+          { "name": "session_id", "purpose": "Maintains your session state across page requests", "duration": "Session", "provider": "Picsellia" },
+          { "name": "csrf_token", "purpose": "Protects against cross-site request forgery attacks", "duration": "Session", "provider": "Picsellia" },
+          { "name": "cookie_consent", "purpose": "Stores your cookie consent preferences", "duration": "1 year", "provider": "Picsellia" },
+          { "name": "__cf_bm", "purpose": "Cloudflare bot management - distinguishes humans from bots", "duration": "30 minutes", "provider": "Cloudflare" }
+        ]
+      },
+      "functional": {
+        "name": "Functional Cookies",
+        "description": "Enable personalized features and remember your preferences.",
+        "cookies": [
+          { "name": "theme_preference", "purpose": "Remembers your preferred color theme (light/dark)", "duration": "1 year", "provider": "Picsellia" },
+          { "name": "language", "purpose": "Stores your preferred language setting", "duration": "1 year", "provider": "Picsellia" },
+          { "name": "sidebar_collapsed", "purpose": "Remembers sidebar state in the platform", "duration": "1 year", "provider": "Picsellia" }
+        ]
+      },
+      "analytics": {
+        "name": "Analytics Cookies",
+        "description": "Help us understand how visitors interact with our website to improve user experience.",
+        "cookies": [
+          { "name": "_ga", "purpose": "Google Analytics - distinguishes unique users", "duration": "2 years", "provider": "Google" },
+          { "name": "_ga_*", "purpose": "Google Analytics 4 - maintains session state", "duration": "2 years", "provider": "Google" },
+          { "name": "_gid", "purpose": "Google Analytics - distinguishes users", "duration": "24 hours", "provider": "Google" },
+          { "name": "_gat", "purpose": "Google Analytics - throttles request rate", "duration": "1 minute", "provider": "Google" }
+        ]
+      },
+      "marketing": {
+        "name": "Marketing Cookies",
+        "description": "Used to track visitors across websites for advertising purposes.",
+        "cookies": [
+          { "name": "__hssc", "purpose": "HubSpot - tracks sessions for analytics", "duration": "30 minutes", "provider": "HubSpot" },
+          { "name": "__hssrc", "purpose": "HubSpot - determines if user has restarted browser", "duration": "Session", "provider": "HubSpot" },
+          { "name": "__hstc", "purpose": "HubSpot - tracks visitors across visits", "duration": "6 months", "provider": "HubSpot" },
+          { "name": "hubspotutk", "purpose": "HubSpot - tracks visitor identity", "duration": "6 months", "provider": "HubSpot" },
+          { "name": "_fbp", "purpose": "Facebook Pixel - tracks visits across websites", "duration": "3 months", "provider": "Meta" },
+          { "name": "_li_fat_id", "purpose": "LinkedIn - member indirect identifier for conversion tracking", "duration": "30 days", "provider": "LinkedIn" }
+        ]
+      }
+    },
+    "sections": {
+      "whatAreCookies": {
+        "title": "What Are Cookies?",
+        "content": "Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website owners useful information about how their site is being used.\n\nCookies can be \"first-party\" (set by the website you're visiting) or \"third-party\" (set by other services used on the website, such as analytics or advertising platforms)."
+      },
+      "howWeUse": {
+        "title": "How We Use Cookies",
+        "content": "Picsellia uses cookies and similar technologies for several purposes:\n\n- **Essential Functions:** To enable core website functionality, security, and accessibility\n- **Preferences:** To remember your settings and personalize your experience\n- **Analytics:** To understand how visitors use our website and improve our services\n- **Marketing:** To deliver relevant content and measure the effectiveness of our campaigns\n\nWe are committed to transparency about the cookies we use and giving you control over your preferences."
+      },
+      "legalBasis": {
+        "title": "Legal Basis",
+        "content": "Under the GDPR and ePrivacy Directive, we process cookie data based on:\n\n**Strictly Necessary Cookies**\nThese cookies are essential for the website to function and do not require consent. They are placed automatically when you access our services.\n\n**Optional Cookies**\nFor all non-essential cookies (functional, analytics, and marketing), we rely on your explicit consent. You can manage your preferences at any time using the cookie settings panel or by adjusting your browser settings.\n\nWe only activate optional cookies after you have provided consent, and we respect your right to withdraw consent at any time."
+      },
+      "yourChoices": {
+        "title": "Your Choices",
+        "content": "You have several options to control cookies:\n\n**Cookie Consent Banner**\nWhen you first visit our website, you'll see a cookie banner allowing you to accept or decline optional cookies. You can change these preferences at any time.\n\n**Browser Settings**\nMost browsers allow you to:\n- View cookies stored on your device\n- Delete individual or all cookies\n- Block third-party cookies\n- Block all cookies from specific sites\n- Clear cookies when you close the browser\n\n**Do Not Track**\nWe respect Do Not Track (DNT) browser signals. When enabled, we disable non-essential tracking.\n\nNote: Blocking certain cookies may impact website functionality."
+      },
+      "thirdParties": {
+        "title": "Third-Party Cookies",
+        "content": "Some cookies on our website are placed by third-party services we use. These services have their own privacy policies.\n\nWe carefully select third-party services that comply with GDPR and maintain appropriate data protection standards."
+      },
+      "retention": {
+        "title": "Cookie Retention",
+        "content": "Cookies have varying lifespans:\n\n**Session Cookies**\nTemporary cookies deleted when you close your browser. Used for essential functions like maintaining your session.\n\n**Persistent Cookies**\nRemain on your device for a set period or until manually deleted. Used for remembering preferences and analytics.\n\nWe regularly review the cookies we use and remove any that are no longer necessary. See the detailed cookie table below for specific retention periods."
+      },
+      "updates": {
+        "title": "Updates to This Policy",
+        "content": "We may update this Cookie Policy to reflect changes in our practices, the cookies we use, or legal requirements. When we make significant changes, we will:\n\n- Update the \"Last Updated\" date at the top of this page\n- Reset your cookie consent preferences if we add new cookie categories\n- Notify you via a banner on your next visit\n\nWe recommend reviewing this policy periodically to stay informed about our cookie practices."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have questions about our use of cookies or this policy:\n\n**Email:** privacy@picsellia.com\n**Data Protection Officer:** dpo@picsellia.com\n\n**Postal Address:**\nPicsellia SAS\nToulouse, France\n\nYou can also manage your cookie preferences using the button below."
+      }
+    },
+    "managePreferences": {
+      "title": "Manage Your Cookie Preferences",
+      "description": "You can update your cookie preferences at any time. Changes will take effect immediately.",
+      "button": "Open Cookie Settings"
+    },
+    "relatedPolicies": {
+      "title": "Related Policies",
+      "privacyPolicy": { "title": "Privacy Policy", "description": "How we collect and use your personal data" },
+      "security": { "title": "Security", "description": "Our security practices and certifications" }
+    }
+  }
+}

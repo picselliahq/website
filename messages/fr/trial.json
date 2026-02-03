@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "badge": "Essai gratuit de 14 jours",
+    "title": "Commencez à construire dès aujourd'hui",
+    "description": "Accédez à l'intégralité de la plateforme MLOps Picsellia. Sans carte bancaire, sans engagement, annulable à tout moment."
+  },
+  "benefits": {
+    "freeDays": { "title": "14 jours gratuits", "description": "Accès complet à toutes les fonctionnalités" },
+    "noCreditCard": { "title": "Sans carte bancaire", "description": "Démarrez immédiatement, aucune information de paiement requise" },
+    "images": { "title": "10 000 images", "description": "Traitez jusqu'à 10 000 images pendant l'essai" },
+    "gpuHours": { "title": "100 heures GPU", "description": "Entraînez des modèles avec le calcul inclus" }
+  },
+  "included": {
+    "title": "Ce qui est inclus",
+    "features": [
+      "Datalake et gestion de datasets",
+      "Outil de labélisation avec assistance IA",
+      "Suivi des expériences",
+      "Entraînement de modèles (Ultralytics, SAM2)",
+      "Déploiement de modèles",
+      "Monitoring de base"
+    ]
+  },
+  "form": {
+    "title": "Demandez votre essai gratuit",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Jean",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Dupont",
+    "workEmail": "Email professionnel",
+    "workEmailPlaceholder": "jean.dupont@entreprise.com",
+    "company": "Entreprise",
+    "companyPlaceholder": "Acme SAS (optionnel)",
+    "termsAgree": "J'accepte les",
+    "termsOfService": "Conditions d'utilisation",
+    "and": "et la",
+    "privacyPolicy": "Politique de confidentialité",
+    "submit": "Demander l'essai gratuit",
+    "submitting": "Envoi en cours...",
+    "existingUser": "Déjà utilisateur Picsellia ?",
+    "signIn": "Connectez-vous à votre compte"
+  },
+  "challenge": {
+    "label": "Vérification rapide d'annotation",
+    "questions": {
+      "1": "Quelle étiquette correspond à cette boîte englobante ?",
+      "2": "Sélectionnez l'étiquette d'annotation correcte",
+      "3": "Quelle étiquette assigneriez-vous ?",
+      "4": "Identifiez la classe de l'objet"
+    },
+    "errorMessage": "Réponse incorrecte. Veuillez réessayer."
+  },
+  "socialProof": {
+    "trustedBy": "Utilisé par les équipes de"
+  }
+}

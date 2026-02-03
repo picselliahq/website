@@ -2,53 +2,41 @@
 
 import Image from 'next/image';
 import { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
-const categories = [
-  {
-    name: 'Cloud Providers',
-    description: 'Deploy anywhere',
-    color: 'var(--system-blue)',
-    integrations: [
-      { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
-      { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
-      { name: 'Azure', logo: '/images/community/partners/azure.svg' },
-      { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
-    ],
-  },
-  {
-    name: 'ML Frameworks',
-    description: 'Train with any framework',
-    color: 'var(--system-orange)',
-    integrations: [
-      { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
-      { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
-      { name: 'Keras', logo: '/images/community/partners/keras.svg' },
-      { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
-    ],
-  },
-  {
-    name: 'Infrastructure',
-    description: 'Run anywhere',
-    color: 'var(--picsellia-green)',
-    integrations: [
-      { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
-      { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
-      { name: 'SageMaker', logo: '/images/community/partners/sagemaker.svg' },
-      { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
-    ],
-  },
-  {
-    name: 'Ecosystem',
-    description: 'Extend your workflow',
-    color: 'var(--system-indigo)',
-    integrations: [
-      { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
-      { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
-      { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
-      { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
-    ],
-  },
-];
+const categoryKeys = ['cloudProviders', 'mlFrameworks', 'infrastructure', 'ecosystem'] as const;
+const categoryColors = {
+  cloudProviders: 'var(--system-blue)',
+  mlFrameworks: 'var(--system-orange)',
+  infrastructure: 'var(--picsellia-green)',
+  ecosystem: 'var(--system-indigo)',
+};
+const categoryIntegrations = {
+  cloudProviders: [
+    { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
+    { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
+    { name: 'Azure', logo: '/images/community/partners/azure.svg' },
+    { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
+  ],
+  mlFrameworks: [
+    { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
+    { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
+    { name: 'Keras', logo: '/images/community/partners/keras.svg' },
+    { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
+  ],
+  infrastructure: [
+    { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
+    { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
+    { name: 'SageMaker', logo: '/images/community/partners/sagemaker.svg' },
+    { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
+  ],
+  ecosystem: [
+    { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
+    { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
+    { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
+    { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
+  ],
+};
 
 const allIntegrations = [
   { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
@@ -72,6 +60,7 @@ const allIntegrations = [
 ];
 
 export default function Integrations() {
+  const t = useTranslations('home.integrations');
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -97,56 +86,52 @@ export default function Integrations() {
 
   return (
     <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
-      {/* Ambient glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(97, 135, 226, 0.04) 0%, transparent 70%)' }} />
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
           <div>
             <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Integrations
+              {t('sectionLabel')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              Works with your stack
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Plug into the tools you already use. Nothing proprietary, no lock-in.
+              {t('description')}
             </p>
           </div>
           <div className="flex items-center gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-[var(--label)]">50+</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Integrations</div>
+              <div className="text-3xl font-bold text-[var(--label)]">{t('integrationsCount')}</div>
+              <div className="text-xs text-[var(--tertiary-label)]">{t('integrationsLabel')}</div>
             </div>
             <div className="w-px h-12 bg-[var(--border)]" />
             <div className="text-center">
-              <div className="text-3xl font-bold text-[var(--label)]">API</div>
-              <div className="text-xs text-[var(--tertiary-label)]">First approach</div>
+              <div className="text-3xl font-bold text-[var(--label)]">{t('apiLabel')}</div>
+              <div className="text-xs text-[var(--tertiary-label)]">{t('apiDescription')}</div>
             </div>
           </div>
         </div>
 
         {/* Categories Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {categories.map((category) => (
-            <div key={category.name} className="card p-6 group hover:border-[var(--system-gray-3)] transition-all">
-              {/* Category Header */}
+          {categoryKeys.map((key) => (
+            <div key={key} className="card p-6 group hover:border-[var(--system-gray-3)] transition-all">
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: `color-mix(in srgb, ${category.color} 15%, transparent)` }}
+                  style={{ backgroundColor: `color-mix(in srgb, ${categoryColors[key]} 15%, transparent)` }}
                 >
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
+                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: categoryColors[key] }} />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-[var(--label)]">{category.name}</h3>
-                  <p className="text-xs text-[var(--tertiary-label)]">{category.description}</p>
+                  <h3 className="text-sm font-medium text-[var(--label)]">{t(`categories.${key}.name`)}</h3>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t(`categories.${key}.description`)}</p>
                 </div>
               </div>
-
-              {/* Integration Logos */}
               <div className="grid grid-cols-4 gap-2">
-                {category.integrations.map((integration) => (
+                {categoryIntegrations[key].map((integration) => (
                   <div
                     key={integration.name}
                     className="aspect-square rounded-lg bg-[var(--tertiary-system-background)] flex items-center justify-center group-hover:bg-[var(--secondary-system-background)] transition-all relative p-2 hover:scale-110 hover:shadow-md"
@@ -168,16 +153,13 @@ export default function Integrations() {
 
         {/* Marquee */}
         <div className="relative overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--secondary-system-background)] p-1">
-          {/* Gradient Masks */}
           <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--secondary-system-background)] to-transparent z-10 pointer-events-none" />
           <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--secondary-system-background)] to-transparent z-10 pointer-events-none" />
-
           <div
             ref={scrollRef}
             className="flex gap-4 overflow-hidden py-4 px-8"
             style={{ scrollBehavior: 'auto' }}
           >
-            {/* Double the items for seamless loop */}
             {[...allIntegrations, ...allIntegrations].map((integration, index) => (
               <div
                 key={`${integration.name}-${index}`}
@@ -199,9 +181,8 @@ export default function Integrations() {
           </div>
         </div>
 
-        {/* Bottom Section - Code Example */}
+        {/* Bottom Section */}
         <div className="mt-12 grid md:grid-cols-2 gap-6">
-          {/* Left - API Info */}
           <div className="card p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-[var(--picsellia-green)]/10 flex items-center justify-center text-[var(--picsellia-green)]">
@@ -210,34 +191,22 @@ export default function Integrations() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-[var(--label)]">Python SDK</h3>
-                <p className="text-sm text-[var(--tertiary-label)]">pip install picsellia</p>
+                <h3 className="text-lg font-semibold text-[var(--label)]">{t('pythonSdk')}</h3>
+                <p className="text-sm text-[var(--tertiary-label)]">{t('pipInstall')}</p>
               </div>
             </div>
-
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Type-safe with full IDE support</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Async support for high throughput</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Works with Jupyter notebooks</span>
-              </div>
+              {(['typeSafe', 'asyncSupport', 'jupyter'] as const).map((feat) => (
+                <div key={feat} className="flex items-center gap-3">
+                  <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span className="text-sm text-[var(--secondary-label)]">{t(`sdkFeatures.${feat}`)}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right - Code Snippet */}
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(255, 69, 58, 0.7)' }} />

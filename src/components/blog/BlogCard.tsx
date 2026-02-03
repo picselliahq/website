@@ -1,18 +1,20 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import type { BlogPostMeta } from '@/types/blog';
 
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
-
 export default function BlogCard({ post, featured = false }: { post: BlogPostMeta; featured?: boolean }) {
+  const locale = useLocale();
+
+  function formatDate(dateStr: string): string {
+    return new Date(dateStr).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  }
   return (
     <Link href={`/blog/${post.slug}`} className={`card group block overflow-hidden ${featured ? 'md:col-span-2' : ''}`}>
       {post.frontmatter.image && (

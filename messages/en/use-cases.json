@@ -1,0 +1,505 @@
+{
+  "caseStudyTemplate": {
+    "breadcrumb": "Case Studies",
+    "ctaHero": "Get Similar Results",
+    "companyLabel": "Company",
+    "overviewLabel": "Overview",
+    "challengeSection": "01 — The Challenge",
+    "transformationSection": "02 — The Transformation",
+    "transformationHeading": "From challenges to solutions",
+    "beforePicsellia": "Before Picsellia",
+    "afterPicsellia": "After Picsellia",
+    "workflowSection": "03 — The Workflow",
+    "workflowHeading": "How {companyName} uses Picsellia",
+    "solutionSection": "04 — The Solution",
+    "solutionHeading": "How Picsellia delivered",
+    "resultsSection": "05 — The Results",
+    "resultsHeading": "Business impact",
+    "featuresUsedLabel": "Picsellia Features Used",
+    "moreCaseStudies": "More Case Studies",
+    "viewAll": "View All →",
+    "ctaBottomHeading": "Ready to achieve similar results?",
+    "ctaBottomDescription": "See how Picsellia can help your team build and deploy computer vision models faster.",
+    "ctaRequestDemo": "Request Demo",
+    "ctaStartFreeTrial": "Start Free Trial"
+  },
+
+  "index": {
+    "badge": "Customer Success Stories",
+    "headline": "See how teams ship <highlight>AI faster</highlight> with Picsellia",
+    "description": "From startups to industry leaders, discover how companies across industries use Picsellia to accelerate computer vision development.",
+    "stats": [
+      { "value": "90%", "label": "Average time reduction" },
+      { "value": "5+", "label": "Industries served" },
+      { "value": "2,500+", "label": "Models in production" }
+    ],
+    "readCaseStudy": "Read case study",
+    "caseStudies": [
+      {
+        "slug": "sgs",
+        "company": "SGS",
+        "industry": "Testing & Certification",
+        "headline": "How SGS Slashed Development Time by 66%",
+        "description": "SGS reduced model development from 3 days to 1 day using Picsellia for industrial inspection automation.",
+        "stats": [
+          { "value": "66%", "label": "Time Saved" },
+          { "value": "3→1", "label": "Days per Model" },
+          { "value": "100+", "label": "AI Apps" }
+        ]
+      },
+      {
+        "slug": "pellencst",
+        "company": "PellencST",
+        "industry": "Waste Sorting Technology",
+        "headline": "How PellencST Cut Time-to-Model by 90%",
+        "description": "PellencST reduced model development from 6-9 months to 1 month using Picsellia for waste sorting machines.",
+        "stats": [
+          { "value": "90%", "label": "Faster" },
+          { "value": "2,500+", "label": "Machines" },
+          { "value": "4x", "label": "Deployment" }
+        ]
+      },
+      {
+        "slug": "altaroad",
+        "company": "Altaroad",
+        "industry": "Construction & Waste Monitoring",
+        "headline": "How Altaroad Saved 50% Time Operating Models",
+        "description": "Altaroad reduced data scientist time on model maintenance from 50% to 10% using Picsellia.",
+        "stats": [
+          { "value": "50%", "label": "Time Saved" },
+          { "value": "150K+", "label": "Data Points" },
+          { "value": "4x", "label": "Faster" }
+        ]
+      },
+      {
+        "slug": "ficha",
+        "company": "Ficha",
+        "industry": "Waste Management",
+        "headline": "How Ficha Accelerated Innovation in WasteTech",
+        "description": "Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia for waste classification.",
+        "stats": [
+          { "value": "3x", "label": "Faster Annotation" },
+          { "value": "20%", "label": "Time Saved" },
+          { "value": "50%", "label": "Shorter Cycles" }
+        ]
+      },
+      {
+        "slug": "abelio",
+        "company": "Abelio",
+        "industry": "Agriculture",
+        "headline": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+        "description": "Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery using Picsellia.",
+        "stats": [
+          { "value": "48h", "label": "Retraining" },
+          { "value": "4x", "label": "Scaling" },
+          { "value": "TBs", "label": "Data" }
+        ]
+      }
+    ],
+    "ctaHeading": "Ready to accelerate your CV development?",
+    "ctaDescription": "Join industry leaders who have reduced their time-to-production by up to 90% with Picsellia.",
+    "ctaPrimary": "Request Demo",
+    "ctaSecondary": "Start Free Trial"
+  },
+
+  "defectsDetection": {
+    "title": "Defects Detection",
+    "description": "Automate quality control with AI-powered visual inspection. Detect micro-defects with 99.5% accuracy and reduce manual inspection time by 80%.",
+    "badge": "Use Case"
+  },
+
+  "documentProcessing": {
+    "title": "Document Processing",
+    "description": "Transform document workflows with AI. Extract data automatically, classify documents, and reduce manual processing by 95%.",
+    "badge": "Use Case"
+  },
+
+  "liveSportAnalysis": {
+    "title": "Live Sport Analysis",
+    "description": "Real-time player tracking and game analytics. Transform raw footage into actionable insights with sub-50ms latency.",
+    "badge": "Use Case"
+  },
+
+  "remoteVisualInspection": {
+    "title": "Remote Visual Inspection",
+    "description": "Scale infrastructure inspection with AI. Analyze drone and satellite imagery to detect issues before they become problems.",
+    "badge": "Use Case"
+  },
+
+  "sgs": {
+    "company": {
+      "name": "SGS",
+      "industry": "Testing, Inspection & Certification",
+      "description": "SGS is the world's leading testing, inspection, and certification company. With over 99,000 employees in 2,600 offices and laboratories, they provide critical services across agriculture, mining, oil, gas, chemicals, and consumer goods. Their computer vision team develops AI solutions to automate visual inspection processes at scale."
+    },
+    "headline": "How SGS Slashed Model Development Time by 66%",
+    "subheadline": "From fragmented tools to unified MLOps: SGS transformed their computer vision workflow and went from 3 days to 1 day per model iteration.",
+    "metrics": [
+      { "value": "66%", "label": "Faster Development", "description": "Per model iteration" },
+      { "value": "3→1", "label": "Days per Model", "description": "Development cycle" },
+      { "value": "10+", "label": "Active Projects", "description": "Running simultaneously" }
+    ],
+    "transformation": {
+      "before": [
+        "3 days per model iteration",
+        "Disconnected tools for each step",
+        "No dataset version control",
+        "Manual experiment tracking",
+        "Knowledge siloed between team members",
+        "Reproducibility was a nightmare"
+      ],
+      "after": [
+        "1 day per model iteration",
+        "Single platform for entire workflow",
+        "Git-like versioning for all data",
+        "Automatic experiment logging",
+        "Shared workspaces and collaboration",
+        "100% reproducible experiments"
+      ]
+    },
+    "challengeIntro": "SGS's computer vision team was building inspection models across multiple industries, but their workflow was fragmented across disconnected tools. This created significant bottlenecks in their development process.",
+    "challenges": [
+      { "title": "Fragmented Toolchain", "description": "The team was juggling multiple disconnected tools for data management, annotation, training, and deployment. Context switching between tools wasted valuable engineering time." },
+      { "title": "No Version Control for Data", "description": "Without proper dataset versioning, it was impossible to track which data was used for which model. Reproducing experiments or rolling back was a manual nightmare." },
+      { "title": "Collaboration Bottlenecks", "description": "With 4 engineers managing 10+ concurrent projects, there was no centralized way to share datasets, models, or experiment results. Knowledge was siloed." },
+      { "title": "Slow Iteration Cycles", "description": "Each model iteration took approximately 3 days from data preparation to evaluation. This slow feedback loop significantly delayed project delivery." }
+    ],
+    "workflow": [
+      { "title": "Centralize & Version Data", "description": "All images and annotations stored in one place with full version history", "feature": "Dataset Management" },
+      { "title": "Annotate & Review", "description": "Built-in labeling with quality assurance workflows and team collaboration", "feature": "Labeling Tool" },
+      { "title": "Train & Compare", "description": "Run experiments with automatic logging of metrics, parameters, and artifacts", "feature": "Experiment Tracking" },
+      { "title": "Deploy & Monitor", "description": "Ship models to production with full lineage and performance monitoring", "feature": "Model Deployment" }
+    ],
+    "solutionIntro": "Picsellia provided SGS with a unified platform that consolidated their entire computer vision workflow under one roof.",
+    "solutions": [
+      { "title": "Unified Data Management", "description": "All datasets, annotations, and metadata centralized in one platform with full version control. Every change is tracked, making experiments reproducible.", "feature": "Datalake", "metricValue": "100%", "metricLabel": "Data traceability" },
+      { "title": "Streamlined Annotation", "description": "Built-in labeling tools with quality assurance workflows. SGS's team can annotate, review, and validate data without leaving the platform.", "feature": "Labeling Tool" },
+      { "title": "Experiment Tracking", "description": "Automatic logging of all training runs, hyperparameters, and metrics. Compare experiments side-by-side and never lose track of what worked.", "feature": "Experiment Tracking", "metricValue": "0", "metricLabel": "Lost experiments" },
+      { "title": "Team Collaboration", "description": "Shared workspaces where all team members can access datasets, models, and experiments. Knowledge is preserved and accessible to everyone.", "feature": "Dataset Management", "metricValue": "4→10+", "metricLabel": "Projects per team" }
+    ],
+    "quote": {
+      "text": "Picsellia unified our entire workflow. What used to take us 3 days now takes 1. We can finally focus on solving computer vision problems instead of wrestling with our toolchain.",
+      "author": "Tristan Cotte",
+      "role": "Computer Vision Engineer",
+      "company": "SGS"
+    },
+    "resultsIntro": "The switch to Picsellia transformed SGS's computer vision operations, delivering measurable improvements across their entire workflow.",
+    "results": [
+      { "title": "66% Faster Iterations", "description": "Model development cycles dropped from 3 days to 1 day. Faster iterations mean faster time-to-value for SGS clients." },
+      { "title": "Scalable Project Management", "description": "A 4-person team now effectively manages 10+ concurrent projects. Clear organization and shared workflows eliminate confusion." },
+      { "title": "Full Traceability", "description": "Every model can be traced back to its exact training data, parameters, and evaluation metrics. Critical for SGS's quality certification standards." },
+      { "title": "Knowledge Preservation", "description": "All experiments, decisions, and learnings are captured in the platform. New team members can onboard quickly and pick up where others left off." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Centralized storage for all computer vision assets" },
+      { "name": "Dataset Management", "description": "Version control and organization for training data" },
+      { "name": "Labeling Tool", "description": "Built-in annotation with QA workflows" },
+      { "name": "Experiment Tracking", "description": "Automatic logging of all training runs" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Scaling Computer Vision for Live Sports Analysis", "company": "SkillCorner", "industry": "Sports Analytics" },
+      { "title": "Real-Time Video Analytics at Scale", "company": "Isarsoft", "industry": "Smart Cities" },
+      { "title": "Precision Agriculture with AI-Powered Vision", "company": "Pellenc", "industry": "Agriculture" }
+    ]
+  },
+
+  "pellencst": {
+    "company": {
+      "name": "PellencST",
+      "industry": "Waste Sorting Technology",
+      "description": "PellencST is a pioneering waste sorting machine manufacturer operating over 2,500 machines across 40+ countries. They collaborate with major environmental organizations like Paprec, Veolia, and Suez, serving as the market leader in France and a key international player in recycling technology."
+    },
+    "headline": "How PellencST Cut Time-to-Model by 90%",
+    "subheadline": "From 6-9 months to 1 month: PellencST gained a competitive edge in the sorting machine market with Picsellia.",
+    "metrics": [
+      { "value": "90%", "label": "Time Reduction", "description": "Model development" },
+      { "value": "4x", "label": "Faster Deployment", "description": "Building & deploying CV" },
+      { "value": "2,500+", "label": "Machines", "description": "Operating worldwide" }
+    ],
+    "transformation": {
+      "before": [
+        "6-9 months for model development",
+        "1 month for annotation alone",
+        "1-2 months for data acquisition",
+        "Relied on external CV development",
+        "Bottlenecks in customization requests"
+      ],
+      "after": [
+        "1 month total time-to-model",
+        "2 weeks for annotation",
+        "3-4 days for data acquisition",
+        "Full internal AI capabilities",
+        "Rapid response to client needs"
+      ]
+    },
+    "challengeIntro": "PellencST faced growing demand for complex sorting capabilities that traditional sensors couldn't handle. They needed to internalize AI development to stay competitive.",
+    "challenges": [
+      { "title": "Complex Sorting Demands", "description": "Growing demand for complex capabilities like silicone cartridge sorting and improved paper/cardboard separation that regular sensors cannot handle." },
+      { "title": "External Development Bottleneck", "description": "Initially relied on external CV model development, creating bottlenecks when clients requested customizations or new capabilities." },
+      { "title": "Long Development Cycles", "description": "Model development took 6-9 months from start to finish, with annotation alone requiring a full month." },
+      { "title": "Real-Time Processing Needs", "description": "Sorting machines require real-time AI processing. Needed to internalize capabilities while maintaining performance." }
+    ],
+    "workflow": [
+      { "title": "Rapid Data Acquisition", "description": "Capture and organize waste sorting images in days instead of months", "feature": "Datalake" },
+      { "title": "Accelerated Annotation", "description": "Pre-annotation and structured campaigns cut labeling time in half", "feature": "Labeling Tool" },
+      { "title": "Unified Model Development", "description": "All AI tools consolidated in one platform for rapid iteration", "feature": "Experiment Tracking" },
+      { "title": "Continuous Deployment", "description": "Ship models to sorting machines with lifecycle management", "feature": "Model Deployment" }
+    ],
+    "solutionIntro": "Picsellia unified PellencST's MLOps workflow, enabling them to internalize AI capabilities and respond rapidly to market demands.",
+    "solutions": [
+      { "title": "Unified MLOps Platform", "description": "All AI tools consolidated in one location. Centralized repository for models, datasets, and experiments.", "feature": "AI Laboratory", "metricValue": "1", "metricLabel": "Unified platform" },
+      { "title": "Pre-Annotation Capabilities", "description": "Accelerated data preparation with AI-assisted labeling. Annotation time cut from 1 month to 2 weeks.", "feature": "Labeling Tool", "metricValue": "50%", "metricLabel": "Faster annotation" },
+      { "title": "Model Lifecycle Management", "description": "Complete monitoring and management of models across 2,500+ machines worldwide.", "feature": "Model Monitoring", "metricValue": "2,500+", "metricLabel": "Machines managed" },
+      { "title": "Open-Source Integration", "description": "Seamless integration with existing tools like Airflow and MLFlow for custom workflows.", "feature": "Automated Pipelines" }
+    ],
+    "quote": {
+      "text": "Using Picsellia has changed how we develop, monitor, and deploy our models. Complex CV applications are more reliable and reach production faster.",
+      "author": "Kévin Alazet",
+      "role": "Product Owner AI",
+      "company": "PellencST"
+    },
+    "resultsIntro": "PellencST transformed their competitive position through dramatically faster AI development and deployment.",
+    "results": [
+      { "title": "90% Faster Development", "description": "Time-to-model reduced from 6-9 months to just 1 month for training, testing, and validation." },
+      { "title": "Major Contracts Secured", "description": "Faster customized solution development enabled PellencST to win major contracts." },
+      { "title": "Market Leadership Reinforced", "description": "Technological innovation through AI positioned them ahead of competitors." },
+      { "title": "Full Operational Autonomy", "description": "Complete internal capability for model retraining and deployment without external dependencies." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Centralized data storage" },
+      { "name": "Labeling Tool", "description": "Pre-annotation capabilities" },
+      { "name": "Model Monitoring", "description": "Lifecycle management" },
+      { "name": "Experiment Tracking", "description": "Unified development" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "How Ficha Accelerated Innovation in WasteTech", "company": "Ficha", "industry": "Waste Management" },
+      { "title": "How Altaroad Saved 50% Time in Production", "company": "Altaroad", "industry": "Construction" },
+      { "title": "How SGS Slashed Development Time by 66%", "company": "SGS", "industry": "Testing & Certification" }
+    ]
+  },
+
+  "altaroad": {
+    "company": {
+      "name": "Altaroad",
+      "industry": "Construction & Waste Monitoring",
+      "description": "Altaroad is a waste and material monitoring leader providing automated traceability solutions for construction and industrial sites. They use Computer Vision to track material and waste flows via heavy goods vehicles, ensuring compliance and optimizing logistics."
+    },
+    "headline": "How Altaroad Saved 50% Time Operating Models in Production",
+    "subheadline": "From maintenance burden to innovation focus: Altaroad reduced data scientist time on model maintenance from 50% to just 10%.",
+    "metrics": [
+      { "value": "50%", "label": "Time Saved", "description": "Operating models" },
+      { "value": "4x", "label": "Faster Deployment", "description": "Building & deploying" },
+      { "value": "150K+", "label": "Data Points", "description": "Managed on-platform" }
+    ],
+    "transformation": {
+      "before": [
+        "50% of data scientist time on maintenance",
+        "Complex model management across sites",
+        "Slow adaptation to new CV operations",
+        "Difficult team onboarding",
+        "Limited product expansion capability"
+      ],
+      "after": [
+        "Only 10% time on maintenance",
+        "Efficient and structured monitoring",
+        "Rapid model development cycles",
+        "Quick team member onboarding",
+        "Diversified product offerings"
+      ]
+    },
+    "challengeIntro": "Altaroad needed to develop and deploy multiple computer vision models while managing continuous improvements under time constraints for major contracts.",
+    "challenges": [
+      { "title": "Multiple Model Types", "description": "Needed to develop and deploy classification, object detection, and segmentation models simultaneously for different use cases." },
+      { "title": "Major Contract Deadlines", "description": "Time constraints for a major contract opportunity required dramatically accelerated model development." },
+      { "title": "Maintenance Burden", "description": "Data scientists spent 50% of their time maintaining existing models instead of building new capabilities." },
+      { "title": "Software Adaptation", "description": "Complexity in adapting existing software infrastructure to CV operations created friction." }
+    ],
+    "workflow": [
+      { "title": "Collect Site Data", "description": "Aggregate images from construction and industrial sites into organized datasets", "feature": "Datalake" },
+      { "title": "Train Multiple Models", "description": "Develop classification, detection, and segmentation models in parallel", "feature": "Experiment Tracking" },
+      { "title": "Automated Deployment", "description": "Ship models to production with automated pipelines", "feature": "Automated Pipelines" },
+      { "title": "Continuous Monitoring", "description": "Track performance across all sites with proactive alerts", "feature": "Model Monitoring" }
+    ],
+    "solutionIntro": "Picsellia provided Altaroad with an end-to-end platform that streamlined their entire CV operations from development to production.",
+    "solutions": [
+      { "title": "End-to-End Platform", "description": "Complete Computer Vision platform for streamlined operations. From data collection to production monitoring in one place.", "feature": "AI Laboratory", "metricValue": "4x", "metricLabel": "Faster deployment" },
+      { "title": "Efficient Model Management", "description": "Deployment and management capabilities that reduced maintenance time from 50% to 10% of data scientist effort.", "feature": "Model Monitoring", "metricValue": "40%", "metricLabel": "Time recovered" },
+      { "title": "MLOps Workflow Automation", "description": "Automated pipelines for continuous training and deployment. Models improve automatically as new data arrives.", "feature": "Automated Pipelines" },
+      { "title": "Collaborative Workspace", "description": "Unified environment where business and technical teams can work together effectively.", "feature": "Dataset Management", "metricValue": "150K+", "metricLabel": "Data points managed" }
+    ],
+    "quote": {
+      "text": "Picsellia allows us to monitor all our models in production in an efficient and structured way, while constantly improving their performances to deliver the most reliable and efficient models to our clients.",
+      "author": "Younes",
+      "role": "CV Expert",
+      "company": "Altaroad"
+    },
+    "resultsIntro": "Altaroad transformed their operations and secured market leadership through efficient CV model management.",
+    "results": [
+      { "title": "50% Time Saved", "description": "Data scientist time on maintenance reduced from 50% to 10%, freeing up resources for innovation." },
+      { "title": "Major Contracts Secured", "description": "Accelerated development cycles enabled Altaroad to meet critical contract deadlines." },
+      { "title": "Rapid Team Onboarding", "description": "New team members can quickly get up to speed with the unified platform." },
+      { "title": "Revenue Diversification", "description": "Increased product offerings through faster model development capabilities." }
+    ],
+    "featuresUsed": [
+      { "name": "Model Monitoring", "description": "Production tracking" },
+      { "name": "Experiment Tracking", "description": "Multi-model development" },
+      { "name": "Automated Pipelines", "description": "Continuous deployment" },
+      { "name": "Datalake", "description": "Site data storage" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "How Ficha Accelerated Innovation in WasteTech", "company": "Ficha", "industry": "Waste Management" },
+      { "title": "How PellencST Cut Time-to-Model by 90%", "company": "PellencST", "industry": "Waste Management" },
+      { "title": "How SGS Slashed Development Time by 66%", "company": "SGS", "industry": "Testing & Certification" }
+    ]
+  },
+
+  "ficha": {
+    "company": {
+      "name": "Ficha",
+      "industry": "Waste Management",
+      "description": "Ficha is an AI-powered waste management company using computer vision in garbage trucks and collection bins to provide cities and housing associations with recycling quality data and insights. Their technology helps municipalities improve recycling rates and reduce contamination."
+    },
+    "headline": "How Ficha Accelerated Iteration and Innovation in WasteTech",
+    "subheadline": "From fragmented scripts to structured MLOps: Ficha transformed their workflow to iterate 3x faster on waste classification models.",
+    "metrics": [
+      { "value": "3x", "label": "Faster Annotation", "description": "Speed improvement" },
+      { "value": "20%", "label": "Time Saved Weekly", "description": "On tracking & management" },
+      { "value": "50%", "label": "Shorter Cycles", "description": "Iteration time reduced" }
+    ],
+    "transformation": {
+      "before": [
+        "Script-based workflows with manual data transfers",
+        "Fragmented toolchain slowing down the team",
+        "Difficult annotation organization and tracking",
+        "Models improving slowly despite data growth",
+        "No structured process to use available data"
+      ],
+      "after": [
+        "Centralized data visualization and querying",
+        "Structured annotation campaigns",
+        "Integrated experiment tracking with traceability",
+        "End-to-end visibility from predictions to source",
+        "Standardized processes ensuring data reliability"
+      ]
+    },
+    "challengeIntro": "Ficha was growing rapidly, but their fragmented toolchain couldn't keep up. Despite having access to more data, their models were improving slowly.",
+    "challenges": [
+      { "title": "Fragmented Toolchain", "description": "Script-based workflows and manual data transfers created significant bottlenecks, preventing the team from moving fast despite rapid company growth." },
+      { "title": "Annotation Chaos", "description": "Organization and tracking of annotations was difficult, making it hard to maintain quality and consistency across the growing dataset." },
+      { "title": "Slow Model Improvement", "description": "Model performance improvements lagged despite increasing data availability. Without structured processes, data potential was untapped." },
+      { "title": "No Traceability", "description": "Connecting predictions back to source images and annotations was nearly impossible, making debugging and improvement difficult." }
+    ],
+    "workflow": [
+      { "title": "Ingest Waste Images", "description": "Centralize images from garbage trucks and bins into a searchable datalake", "feature": "Datalake" },
+      { "title": "Run Annotation Campaigns", "description": "Structured campaigns with progress tracking and quality control", "feature": "Annotation Campaigns" },
+      { "title": "Train & Track Experiments", "description": "Run experiments with full traceability from data to metrics", "feature": "Experiment Tracking" },
+      { "title": "Monitor in Production", "description": "Track model performance on live waste streams", "feature": "Model Monitoring" }
+    ],
+    "solutionIntro": "Picsellia gave Ficha the structure they needed to iterate faster and keep innovating in waste classification.",
+    "solutions": [
+      { "title": "Centralized Data Management", "description": "All waste images centralized with powerful visualization and querying capabilities. No more scattered files or manual transfers.", "feature": "Datalake", "metricValue": "100%", "metricLabel": "Data centralized" },
+      { "title": "Structured Annotation Workflows", "description": "Annotation campaigns with clear progress tracking, quality control, and team coordination. 3x improvement in annotation speed.", "feature": "Annotation Campaigns", "metricValue": "3x", "metricLabel": "Faster annotation" },
+      { "title": "Full Experiment Traceability", "description": "Every experiment tracked with complete lineage. Connect any prediction back to its source images and annotations.", "feature": "Experiment Tracking" },
+      { "title": "End-to-End Visibility", "description": "Unified platform replacing fragmented processes. Team can focus on innovation rather than maintenance.", "feature": "AI Laboratory", "metricValue": "20%", "metricLabel": "Weekly time saved" }
+    ],
+    "quote": {
+      "text": "We suddenly had access to a lot of data, but our models were improving quite slowly. Without a strong process, we couldn't fully benefit from it. Picsellia gave us the structure we needed to iterate faster and keep innovating.",
+      "author": "Ficha Team",
+      "role": "Data Science",
+      "company": "Ficha"
+    },
+    "resultsIntro": "With Picsellia, Ficha transformed their waste classification pipeline and accelerated their innovation cycle.",
+    "results": [
+      { "title": "3x Faster Annotation", "description": "Structured campaigns and better tooling dramatically improved annotation throughput." },
+      { "title": "20% Weekly Time Saved", "description": "Reduced administrative overhead on tracking and management, freeing up time for innovation." },
+      { "title": "Shorter Iteration Cycles", "description": "Faster feedback loops between data collection, annotation, training, and deployment." },
+      { "title": "Standardized Processes", "description": "Reliable, trustworthy AI built on structured workflows and quality-controlled data." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Centralized image storage" },
+      { "name": "Annotation Campaigns", "description": "Structured labeling workflows" },
+      { "name": "Experiment Tracking", "description": "Full training traceability" },
+      { "name": "Model Monitoring", "description": "Production performance tracking" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "How PellencST Cut Time-to-Model by 90%", "company": "PellencST", "industry": "Waste Management" },
+      { "title": "How Altaroad Saved 50% Time in Production", "company": "Altaroad", "industry": "Construction" },
+      { "title": "How SGS Slashed Development Time by 66%", "company": "SGS", "industry": "Testing & Certification" }
+    ]
+  },
+
+  "abelio": {
+    "company": {
+      "name": "Abelio",
+      "industry": "Agriculture",
+      "description": "Abelio is a digital farming solutions provider that uses computer vision to process aerial imagery from drones and satellites. They deliver insights that help farmers optimize yields, reduce costs, and minimize environmental impact across large-scale agricultural operations."
+    },
+    "headline": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+    "subheadline": "From fragmented AWS infrastructure to unified MLOps: Abelio now delivers farmer insights within 48 hours of image acquisition.",
+    "metrics": [
+      { "value": "48h", "label": "Retraining Cycle", "description": "Image to insights" },
+      { "value": "4x", "label": "Seasonal Scaling", "description": "Peak processing increase" },
+      { "value": "TBs", "label": "Data Managed", "description": "Dozens of terabytes" }
+    ],
+    "transformation": {
+      "before": [
+        "Fragmented AWS infrastructure (S3, EC2, SageMaker)",
+        "No integrated tools for image visualization",
+        "Time-consuming model retraining processes",
+        "Lack of traceability across environments",
+        "Difficult to reproduce experiments"
+      ],
+      "after": [
+        "Centralized data management platform",
+        "Efficient retraining workflows",
+        "Full experiment reproducibility",
+        "Streamlined annotation campaigns",
+        "48-hour delivery to farmers"
+      ]
+    },
+    "challengeIntro": "Abelio needed to process massive volumes of aerial imagery during peak farming seasons while meeting strict 48-hour delivery timelines.",
+    "challenges": [
+      { "title": "Massive Data Volumes", "description": "During peak farming seasons, image processing increased fourfold. Managing terabytes of drone and satellite imagery required robust infrastructure." },
+      { "title": "Tight Delivery Timelines", "description": "Farmers needed insights within 48 hours of image acquisition. Time-consuming model retraining threatened these critical deadlines." },
+      { "title": "Fragmented Infrastructure", "description": "AWS services (S3, EC2, SageMaker) lacked integrated tools for image visualization and dataset management, creating workflow gaps." },
+      { "title": "No Reproducibility", "description": "Lack of traceability across diverse environments made it impossible to reproduce experiments or track what worked." }
+    ],
+    "workflow": [
+      { "title": "Ingest Aerial Imagery", "description": "Centralize drone and satellite images with metadata into searchable datalake", "feature": "Datalake" },
+      { "title": "Run Annotation Campaigns", "description": "Structured campaigns with progress tracking and quality control for crop analysis", "feature": "Annotation Campaigns" },
+      { "title": "Rapid Model Retraining", "description": "Fast iteration cycles with versioned datasets and tracked parameters", "feature": "Experiment Tracking" },
+      { "title": "Monitor Model Performance", "description": "Track accuracy across different crop types and seasonal conditions", "feature": "Model Monitoring" }
+    ],
+    "solutionIntro": "Picsellia provided Abelio with a unified platform to manage their entire agricultural imaging pipeline at scale.",
+    "solutions": [
+      { "title": "Centralized Data Management", "description": "Simplified image storage and organization for terabytes of aerial imagery. Powerful querying and visualization capabilities.", "feature": "Datalake", "metricValue": "TBs", "metricLabel": "Images managed" },
+      { "title": "Efficient Retraining Workflows", "description": "Streamlined processes to meet 48-hour delivery timelines. From image acquisition to farmer insights in record time.", "feature": "Experiment Tracking", "metricValue": "48h", "metricLabel": "Delivery time" },
+      { "title": "Annotation Quality Control", "description": "Campaign tools enabling progress tracking and quality control. Improved annotation efficiency and consistency.", "feature": "Annotation Campaigns" },
+      { "title": "Full Reproducibility", "description": "Dataset versioning and parameter recording ensures every experiment can be reproduced and compared.", "feature": "Dataset Management", "metricValue": "100%", "metricLabel": "Reproducibility" }
+    ],
+    "quote": {
+      "text": "With Picsellia, we can now deliver insights to farmers within 48 hours of image acquisition. The platform handles our seasonal data spikes without issues while maintaining full traceability.",
+      "author": "Abelio Team",
+      "role": "Data Science",
+      "company": "Abelio"
+    },
+    "resultsIntro": "Abelio transformed their agricultural imaging pipeline to deliver faster, more reliable insights to farmers.",
+    "results": [
+      { "title": "48-Hour Delivery", "description": "Reduced retraining cycles to meet strict farmer delivery timelines, from image acquisition to actionable insights." },
+      { "title": "Improved Model Accuracy", "description": "Better dataset reliability stabilized models, increasing precision and recall across crop analysis tasks." },
+      { "title": "Seasonal Scalability", "description": "Effectively managed fourfold increases in data volume during peak farming seasons." },
+      { "title": "Enhanced Reproducibility", "description": "Full experiment tracking through dataset versioning and parameter recording." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Large-scale image storage" },
+      { "name": "Annotation Campaigns", "description": "Quality-controlled labeling" },
+      { "name": "Experiment Tracking", "description": "Reproducible training" },
+      { "name": "Model Monitoring", "description": "Performance tracking" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "How Ficha Accelerated Innovation in WasteTech", "company": "Ficha", "industry": "Waste Management" },
+      { "title": "How SGS Slashed Development Time by 66%", "company": "SGS", "industry": "Testing & Certification" },
+      { "title": "How PellencST Cut Time-to-Model by 90%", "company": "PellencST", "industry": "Waste Management" }
+    ]
+  }
+}

@@ -1,10 +1,12 @@
 'use client';
 
 import { useState, type FormEvent } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const t = useTranslations('blog.newsletter');
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -38,14 +40,14 @@ export default function NewsletterSignup() {
         border: '1px solid var(--border)',
       }}
     >
-      <h3 className="text-lg font-semibold text-label mb-2">Stay up to date</h3>
+      <h3 className="text-lg font-semibold text-label mb-2">{t('title')}</h3>
       <p className="text-sm text-secondary mb-4">
-        Get the latest posts on computer vision, MLOps, and AI delivered to your inbox.
+        {t('description')}
       </p>
 
       {status === 'success' ? (
         <p className="text-sm font-medium" style={{ color: 'var(--picsellia-green)' }}>
-          You&apos;re subscribed! Check your inbox.
+          {t('success')}
         </p>
       ) : (
         <form onSubmit={handleSubmit} className="flex gap-2">
@@ -53,7 +55,7 @@ export default function NewsletterSignup() {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="you@company.com"
+            placeholder={t('placeholder')}
             required
             className="flex-1 px-4 py-2.5 rounded-lg text-sm text-label placeholder:text-tertiary focus:outline-none focus:ring-2"
             style={{
@@ -67,14 +69,14 @@ export default function NewsletterSignup() {
             className="btn-primary whitespace-nowrap"
             style={{ backgroundColor: 'var(--picsellia-green)' }}
           >
-            {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+            {status === 'loading' ? t('subscribing') : t('subscribe')}
           </button>
         </form>
       )}
 
       {status === 'error' && (
         <p className="text-sm mt-2" style={{ color: 'var(--system-red)' }}>
-          Something went wrong. Please try again.
+          {t('error')}
         </p>
       )}
     </div>

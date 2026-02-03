@@ -1,36 +1,42 @@
-import Link from "next/link";
-
-const footerLinks = {
-  Product: [
-    { label: "Overview", href: "/product-overview" },
-    { label: "Datalake", href: "/datalake" },
-    { label: "Dataset Management", href: "/dataset-management" },
-    { label: "Labeling Tool", href: "/labeling-tool" },
-    { label: "AI Laboratory", href: "/ai-laboratory" },
-    { label: "Model Deployment", href: "/model-deployment" },
-    { label: "Model Monitoring", href: "/model-monitoring" },
-  ],
-  Solutions: [
-    { label: "Manufacturing", href: "/industry/manufacturing" },
-    { label: "Energy", href: "/industry/energy" },
-    { label: "Agriculture", href: "/industry/agriculture" },
-    { label: "Waste Management", href: "/industry/waste-management" },
-  ],
-  Resources: [
-    { label: "Blog", href: "/blog" },
-    { label: "Use Cases", href: "/use-cases" },
-    { label: "Documentation", href: "https://documentation.picsellia.com" },
-    { label: "FAQ", href: "/faq" },
-  ],
-  Company: [
-    { label: "About", href: "/about-us" },
-    { label: "Contact", href: "/contact" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Privacy", href: "/privacy" },
-  ],
-};
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("common.footer");
+
+  const footerLinks = {
+    [t("product")]: [
+      { label: t("links.overview"), href: "/product-overview" },
+      { label: t("links.datalake"), href: "/datalake" },
+      { label: t("links.datasetManagement"), href: "/dataset-management" },
+      { label: t("links.labelingTool"), href: "/labeling-tool" },
+      { label: t("links.aiLaboratory"), href: "/ai-laboratory" },
+      { label: t("links.modelDeployment"), href: "/model-deployment" },
+      { label: t("links.modelMonitoring"), href: "/model-monitoring" },
+    ],
+    [t("solutions")]: [
+      { label: t("links.manufacturing"), href: "/industry/manufacturing" },
+      { label: t("links.energy"), href: "/industry/energy" },
+      { label: t("links.agriculture"), href: "/industry/agriculture" },
+      { label: t("links.wasteManagement"), href: "/industry/waste-management" },
+    ],
+    [t("resources")]: [
+      { label: t("links.blog"), href: "/blog" },
+      { label: t("links.useCases"), href: "/use-cases" },
+      {
+        label: t("links.documentation"),
+        href: "https://documentation.picsellia.com",
+      },
+      { label: t("links.faq"), href: "/faq" },
+    ],
+    [t("company")]: [
+      { label: t("links.about"), href: "/about-us" },
+      { label: t("links.contact"), href: "/contact" },
+      { label: t("links.pricing"), href: "/pricing" },
+      { label: t("links.privacy"), href: "/privacy" },
+    ],
+  };
+
   return (
     <footer className="border-t border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6 py-16">
@@ -45,8 +51,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-sm text-[var(--secondary-label)] max-w-xs mb-6">
-              The MLOps platform for computer vision. Build, deploy, and monitor
-              AI at scale.
+              {t("tagline")}
             </p>
             <div className="flex gap-4">
               <a
@@ -98,7 +103,7 @@ export default function Footer() {
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link
-                      href={link.href}
+                      href={link.href as any}
                       className="text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors"
                     >
                       {link.label}
@@ -113,11 +118,11 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-[var(--tertiary-label)]">
-            © {new Date().getFullYear()} Picsellia. All rights reserved.
+            {t("copyright", { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-2 text-sm text-[var(--tertiary-label)]">
             <span className="w-2 h-2 rounded-full bg-[var(--picsellia-green)]"></span>
-            ISO 27001 Certified
+            {t("iso")}
           </div>
         </div>
       </div>

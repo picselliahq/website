@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "badge": "Free Forever",
+    "title": "Community",
+    "titleHighlight": "Edition",
+    "description": "Get started with data management and AutoML training. No credit card, no time limit.",
+    "startBuilding": "Start Building Free",
+    "comparePlans": "Compare Plans",
+    "quickBenefits": {
+      "noCreditCard": "No credit card",
+      "instantAccess": "Instant access",
+      "freeDpu": "150 DPU free"
+    },
+    "terminal": {
+      "fileName": "quickstart.py",
+      "modelTrained": "Model trained",
+      "automl": "AutoML",
+      "runs": "4 runs"
+    }
+  },
+  "stats": {
+    "dpu": { "value": "150", "unit": "DPU", "label": "Data Processing Units / year" },
+    "runs": { "value": "4", "unit": "Runs", "label": "AutoML training runs" },
+    "projects": { "value": "3", "unit": "Projects", "label": "Active projects included" },
+    "access": { "value": "24/7", "unit": "Access", "label": "Platform availability" }
+  },
+  "included": {
+    "sectionLabel": "What's Included",
+    "title": "Two core capabilities",
+    "description": "The Community Edition gives you data management and AutoML training to get started with computer vision.",
+    "dataManagement": {
+      "category": "Data Management",
+      "description": "Organize, version, and manage all your visual data in one place.",
+      "features": [
+        "Datalake storage with smart search",
+        "Dataset registry & versioning",
+        "Data query language",
+        "Metadata management",
+        "Multi-format support (images, video)"
+      ]
+    },
+    "automlTraining": {
+      "category": "AutoML Training",
+      "description": "Train computer vision models with zero infrastructure setup.",
+      "features": [
+        "4 AutoML training runs included",
+        "Pre-configured model architectures",
+        "Automatic hyperparameter tuning",
+        "Training metrics & logging"
+      ]
+    },
+    "needMore": {
+      "title": "Need more?",
+      "description": "Labeling tools, annotation campaigns, model deployment, monitoring, team collaboration, and unlimited training are available on",
+      "plansLink": "Business and Enterprise plans"
+    }
+  },
+  "comparison": {
+    "sectionLabel": "Compare Plans",
+    "title": "Scale when you're ready",
+    "description": "Start free and upgrade as your needs grow. No pressure, no lock-in.",
+    "featureHeader": "Feature",
+    "communityHeader": "Community",
+    "communityPrice": "Free",
+    "businessHeader": "Business",
+    "businessPrice": "From $499/mo",
+    "enterpriseHeader": "Enterprise",
+    "enterprisePrice": "Custom",
+    "features": {
+      "dpu": { "feature": "Data Processing Units", "community": "150 DPU/year", "business": "Custom", "enterprise": "Unlimited" },
+      "mpu": { "feature": "Model Processing Units", "community": "\u2014", "business": "Custom", "enterprise": "Unlimited" },
+      "automl": { "feature": "AutoML Training", "community": "4 runs", "business": "Unlimited", "enterprise": "Unlimited" },
+      "labeling": { "feature": "Labeling Tool", "community": "\u2713", "business": "\u2713", "enterprise": "\u2713" },
+      "deployment": { "feature": "Model Deployment", "community": "\u2014", "business": "\u2713", "enterprise": "\u2713" },
+      "monitoring": { "feature": "Model Monitoring", "community": "\u2014", "business": "\u2713", "enterprise": "\u2713" },
+      "team": { "feature": "Team members", "community": "1 user", "business": "Up to 10", "enterprise": "Unlimited" },
+      "projects": { "feature": "Projects", "community": "3 projects", "business": "Unlimited", "enterprise": "Unlimited" },
+      "support": { "feature": "Support", "community": "Community", "business": "Email", "enterprise": "Dedicated" },
+      "sso": { "feature": "SSO / SAML", "community": "\u2014", "business": "\u2014", "enterprise": "\u2713" },
+      "onPremise": { "feature": "On-premise deployment", "community": "\u2014", "business": "\u2014", "enterprise": "\u2713" }
+    }
+  },
+  "resources": {
+    "sectionLabel": "Resources",
+    "title": "Learn, build, connect",
+    "documentation": {
+      "title": "Documentation",
+      "description": "Comprehensive guides, API references, and best practices.",
+      "link": "Read docs"
+    },
+    "tutorials": {
+      "title": "Tutorials",
+      "description": "Step-by-step guides to build your first CV project.",
+      "link": "Start learning"
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Sample projects, SDKs, and open-source tools.",
+      "link": "View repos"
+    }
+  },
+  "integrations": {
+    "sectionLabel": "Integrations",
+    "title": "Works with your favorite tools"
+  },
+  "cta": {
+    "badge": "No credit card required",
+    "title": "Start building today",
+    "description": "Get data management and AutoML training for free. Upgrade when you need the full platform.",
+    "button": "Create Free Account"
+  }
+}

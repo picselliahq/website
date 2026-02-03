@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "badge": "Our Story",
+    "title": "Building the future of",
+    "titleHighlight": " computer vision",
+    "description": "We're a team of AI engineers on a mission to make computer vision accessible to every team. Born from frustration with fragmented tools, Picsellia is the platform we wished existed.",
+    "metrics": {
+      "modelsTrained": {
+        "value": "500+",
+        "label": "AI Models Trained"
+      },
+      "imagesAnnotated": {
+        "value": "3M+",
+        "label": "Images Annotated"
+      },
+      "globalUsers": {
+        "value": "1K+",
+        "label": "Global Users"
+      },
+      "founded": {
+        "value": "2019",
+        "label": "Founded"
+      }
+    }
+  },
+  "mission": {
+    "sectionLabel": "Our Mission",
+    "title": "From experiments to production, without the chaos",
+    "paragraphs": [
+      "In 2019, as AI engineers building computer vision systems, we faced a common frustration: the tools we needed didn't exist. Data management was scattered across folders. Experiments were tracked in spreadsheets. Deployment was a nightmare of custom scripts.",
+      "We built Picsellia to solve these problems—not as consultants or enterprise software veterans, but as practitioners who lived the pain every day. Our platform is shaped by real-world experience deploying CV models at scale.",
+      "Today, Picsellia helps teams worldwide turn fragmented workflows into streamlined pipelines. From labeling to monitoring, every feature exists because we needed it ourselves."
+    ],
+    "quote": "Picsellia is the kind of tool we had wished existed during our early development work. We built it to close the operational gaps across the entire computer vision lifecycle.",
+    "quoteAuthor": "Thibaut Lucas",
+    "quoteRole": "CEO & Co-founder"
+  },
+  "values": {
+    "sectionLabel": "What Drives Us",
+    "title": "Our values",
+    "description": "These principles guide everything we build and how we work with our customers.",
+    "engineerFirst": {
+      "title": "Engineer-First",
+      "description": "Built by ML engineers who understand the daily challenges of production AI. Every feature solves a real problem we faced ourselves."
+    },
+    "transparency": {
+      "title": "Transparency",
+      "description": "Full visibility into your ML pipeline. Reproducible experiments, complete data lineage, and no black boxes. You own your data."
+    },
+    "flexibility": {
+      "title": "Flexibility",
+      "description": "Deploy anywhere—cloud, hybrid, or on-premise. Use your existing tools. Picsellia adapts to your infrastructure, not the other way around."
+    },
+    "simplicity": {
+      "title": "Simplicity",
+      "description": "Powerful features without complexity. Our platform reduces cognitive load so teams can focus on building great AI, not managing tools."
+    }
+  },
+  "timeline": {
+    "sectionLabel": "Our Journey",
+    "title": "Key milestones",
+    "items": [
+      {
+        "year": "2019",
+        "title": "Founded",
+        "description": "Picsellia founded in Toulouse, France by two AI engineers"
+      },
+      {
+        "year": "2021",
+        "title": "First Funding",
+        "description": "Seed funding from Acequia Capital and early backers"
+      },
+      {
+        "year": "2022",
+        "title": "Series Seed",
+        "description": "$1.94M raised led by Axeleo Capital to accelerate growth"
+      },
+      {
+        "year": "2023",
+        "title": "ISO 27001",
+        "description": "Achieved ISO/IEC 27001:2022 certification"
+      },
+      {
+        "year": "2024",
+        "title": "1K+ Users",
+        "description": "Crossed 1,000 global users and 500+ models trained"
+      },
+      {
+        "year": "2025",
+        "title": "Atlas Launch",
+        "description": "Launched Atlas, our open-source AI agent for VisionAI"
+      }
+    ]
+  },
+  "leadership": {
+    "sectionLabel": "Leadership",
+    "title": "Meet the founders",
+    "members": {
+      "thibautLucas": {
+        "name": "Thibaut Lucas",
+        "role": "CEO & Co-founder",
+        "bio": "Former AI engineer who experienced firsthand the challenges of deploying computer vision in production. Founded Picsellia to build the tools he wished existed."
+      },
+      "pierreNicolasTiffreau": {
+        "name": "Pierre-Nicolas Tiffreau",
+        "role": "CTO & Co-founder",
+        "bio": "Deep expertise in ML infrastructure and scalable systems. Leads the technical vision and architecture of the Picsellia platform."
+      }
+    }
+  },
+  "team": {
+    "sectionLabel": "The Team",
+    "title": "Built by a small, focused team",
+    "description": "Based in Toulouse, France, with team members and clients around the world.",
+    "joinTeam": "Join Our Team",
+    "members": {
+      "hichamBakri": { "name": "Hicham Bakri", "role": "Full-stack Developer" },
+      "clementBrunie": { "name": "Clément Brunie", "role": "Front-end Engineer" },
+      "thomasDarget": { "name": "Thomas Darget", "role": "Back-end Engineer" },
+      "lucienHaurat": { "name": "Lucien Haurat", "role": "DevOps Engineer" },
+      "guillaumeHerlaut": { "name": "Guillaume Herlaut", "role": "Account Executive" },
+      "victorPery": { "name": "Victor Pery", "role": "Account Executive" },
+      "valentinPhilipp": { "name": "Valentin Philipp", "role": "Sales Engineer" },
+      "soniaGarrouch": { "name": "Sonia Garrouch", "role": "Data Scientist" }
+    }
+  },
+  "investors": {
+    "sectionLabel": "Backed By",
+    "title": "Our investors",
+    "description": "We've raised $3.45M from leading European investors who share our vision for the future of MLOps.",
+    "items": {
+      "axeleo": { "name": "Axeleo Capital", "type": "Lead Investor" },
+      "acequia": { "name": "Acequia Capital", "type": "Seed Investor" },
+      "nubbo": { "name": "Nubbo", "type": "Strategic Partner" },
+      "ovhcloud": { "name": "OVHcloud", "type": "Startup Program" }
+    }
+  },
+  "location": {
+    "sectionLabel": "Where We Are",
+    "title": "Headquartered in Toulouse",
+    "description": "Known as the European capital of aerospace, Toulouse is home to a thriving tech ecosystem and some of the world's most innovative engineering talent. Our team works from here, serving clients across Europe, North America, and beyond.",
+    "address": "Toulouse, France",
+    "worldwide": "Serving clients worldwide",
+    "compliance": "EU data centers, GDPR compliant"
+  },
+  "cta": {
+    "title": "Ready to build with us?",
+    "description": "See how Picsellia can transform your computer vision workflow. Start with a free trial or talk to our team.",
+    "startTrial": "Start Free Trial",
+    "bookDemo": "Book a Demo"
+  }
+}

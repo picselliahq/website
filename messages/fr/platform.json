@@ -1,0 +1,828 @@
+{
+  "productOverview": {
+    "hero": {
+      "badge": "La plateforme Vision AI complète",
+      "titleStart": "Livrez vos projets Vision AI",
+      "titleHighlight": "10x plus vite",
+      "description": "La seule plateforme où data scientists, ingénieurs ML et équipes opérationnelles collaborent ensemble — des images brutes aux modèles en production.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Voir la démo"
+    },
+    "outcomes": {
+      "fasterProduction": { "metric": "80%", "label": "Plus rapide en production" },
+      "lowerCosts": { "metric": "60%", "label": "Réduction des coûts opérationnels" },
+      "moreExperiments": { "metric": "10x", "label": "Plus d'expériences par semaine" },
+      "noFailures": { "metric": "0", "label": "Échec surprise en production" }
+    },
+    "logos": {
+      "label": "Utilisé par les équipes de"
+    },
+    "enterprise": {
+      "badge": "Prêt pour l'entreprise",
+      "title": "Conçu pour les équipes qui ne peuvent pas se permettre d'échouer",
+      "description": "Sécurité, conformité et fiabilité exigées par les équipes entreprise.",
+      "ctaSales": "Contacter l'équipe commerciale",
+      "features": {
+        "iso": { "title": "ISO 27001:2022", "description": "Gestion de la sécurité de l'information certifiée" },
+        "deploy": { "title": "Déployez partout", "description": "Déploiement cloud, on-premise ou hybride" },
+        "rbac": { "title": "Contrôle d'accès par rôle", "description": "SSO/SAML avec permissions granulaires" },
+        "uptime": { "title": "SLA 99,9% de disponibilité", "description": "SLA entreprise avec support 24/7" },
+        "api": { "title": "API-First", "description": "API REST complète et SDK Python" },
+        "scale": { "title": "Scalabilité infinie", "description": "Gérez des millions d'images sans limite" }
+      }
+    },
+    "cta": {
+      "statusBadge": "READY_TO_SHIP",
+      "title": "Prêt à livrer vos projets Vision AI plus vite ?",
+      "description": "Essai gratuit, sans carte bancaire. Testez sur vos propres données.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Planifier une démo",
+      "noCreditCard": "Sans carte bancaire",
+      "freeTrial": "Essai gratuit de 14 jours",
+      "isoCertified": "Certifié ISO 27001:2022",
+      "stats": {
+        "imagesProcessed": { "value": "50M+", "label": "Images traitées" },
+        "inferenceLatency": { "value": "<100ms", "label": "Latence d'inférence" },
+        "uptimeSla": { "value": "99,9%", "label": "SLA de disponibilité" },
+        "support": { "value": "24/7", "label": "Support" }
+      }
+    }
+  },
+  "datalake": {
+    "hero": {
+      "badge": "Gestion des données",
+      "titleStart": "Toutes vos images.",
+      "titleHighlight": "Un seul endroit.",
+      "description": "Agrégez, organisez et explorez des milliards d'images depuis n'importe quelle source. Un référentiel unifié pour toutes vos données de vision par ordinateur.",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation",
+      "cloudConnect": "Connecter :"
+    },
+    "architecture": {
+      "badge": "Architecture",
+      "title": "Comment ça fonctionne en coulisses",
+      "description": "Se connecte à S3, GCP ou Azure. Ingère tout format d'image ou de vidéo. Indexe tout pour des requêtes ultérieures.",
+      "sources": "Sources",
+      "outputs": "Sorties",
+      "datalakeLabel": "DATALAKE",
+      "assetsIndexed": "assets indexés",
+      "storage": "stockage",
+      "latency": "latence",
+      "outputDatasets": "Datasets",
+      "outputExperiments": "Expériences",
+      "outputDeployments": "Déploiements"
+    },
+    "formatSupport": {
+      "title": "Support universel des formats",
+      "description": "Ingérez tout type de données visuelles à vitesse constante",
+      "formatsCount": "100+",
+      "formatsLabel": "formats"
+    },
+    "realTimeProcessing": {
+      "title": "Traitement en temps réel",
+      "description": "Métriques d'ingestion et d'indexation en direct",
+      "live": "En direct",
+      "ingestionRate": "Taux d'ingestion",
+      "indexSpeed": "Vitesse d'indexation",
+      "embeddingGen": "Génération d'embeddings",
+      "storageSync": "Synchronisation stockage"
+    },
+    "querying": {
+      "badge": "SDK Python",
+      "title": "Requêtage avancé des données",
+      "description": "Interrogez votre datalake de manière programmatique avec le SDK Python. Filtrez par tags, métadonnées et plus encore avec des indications de type et l'auto-complétion.",
+      "listDataParams": "PARAMÈTRES list_data()",
+      "tagOperations": "OPÉRATIONS SUR LES TAGS",
+      "filterable": "FILTRABLE",
+      "execution": "EXÉCUTION",
+      "results": "résultats",
+      "queryTime": "temps de requête",
+      "scanned": "scanné",
+      "matchedTags": "TAGS CORRESPONDANTS",
+      "readyToCreateDataset": "Prêt à créer un dataset",
+      "createDataset": "Créer un dataset →"
+    },
+    "visualSearch": {
+      "badge": "Recherche visuelle",
+      "title": "Trouvez des images similaires instantanément",
+      "description": "Les embeddings OpenCLIP transforment vos images en vecteurs. Recherchez par similarité, regroupez par contenu et détectez les valeurs aberrantes sans écrire une seule requête.",
+      "specs": {
+        "defaultModel": { "value": "ViT-B/16", "label": "Modèle par défaut" },
+        "vectorSize": { "value": "512-dim", "label": "Taille du vecteur" },
+        "vectorDb": { "value": "QDrant", "label": "Base vectorielle" },
+        "searchLatency": { "value": "<10ms", "label": "Latence de recherche" }
+      },
+      "embeddingsViewer": "Visualiseur d'embeddings",
+      "similaritySearch": "Recherche par similarité",
+      "imageToImages": "Image → Images",
+      "textToImageSearch": "Recherche texte-image",
+      "textToImages": "Texte → Images",
+      "anomalyDetection": "Détection d'anomalies",
+      "isolationForest": "Isolation Forest",
+      "corrupted": "corrompues",
+      "outliers": "valeurs aberrantes",
+      "matches": "correspondances",
+      "fineTuneTitle": "Affinez votre propre modèle CLIP",
+      "fineTuneDescription": "Les embeddings génériques ne suffisent pas ? Affinez un modèle CLIP sur vos propres données. La recherche et le clustering deviennent bien meilleurs quand le modèle connaît votre domaine.",
+      "betterAccuracy": "+40%",
+      "betterAccuracyLabel": "Meilleure précision",
+      "learnMore": "En savoir plus"
+    },
+    "organization": {
+      "badge": "Organisation",
+      "title": "DataTags et schéma de métadonnées",
+      "description": "Organisation multidimensionnelle avec un système de tags flexible et un support complet des métadonnées. Structurez vos données sans déplacer de fichiers.",
+      "dataTagsSystem": "SYSTÈME DE DATATAGS",
+      "organizationNotAnnotation": "organisation ≠ annotation",
+      "tagHierarchy": "HIÉRARCHIE DES TAGS",
+      "metadataSchema": "SCHÉMA DE MÉTADONNÉES",
+      "allFieldsQueryable": "Tous les champs interrogeables via PQL"
+    },
+    "cta": {
+      "title": "Prêt à centraliser vos données ?",
+      "description": "Connectez votre stockage, importez vos données et commencez à requêter. Essai gratuit, sans carte bancaire.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "datasetManagement": {
+    "hero": {
+      "badge": "Gestion des datasets",
+      "titleStart": "Vos datasets méritent le",
+      "titleHighlight": "contrôle de version",
+      "description": "Git pour vos données de vision par ordinateur. Suivez les modifications, comparez les versions et garantissez la reproductibilité de chaque expérience.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Lire la documentation",
+      "floatingVersion": "Version actuelle",
+      "floatingImages": "+2 340 images",
+      "floatingDatasets": "Datasets",
+      "floatingDatasetsCount": "24",
+      "allVersioned": "Tous versionnés"
+    },
+    "stats": {
+      "reproducibility": { "value": "100%", "label": "Reproductibilité" },
+      "dataLoss": { "value": "0", "label": "Perte de données" },
+      "fasterIterations": { "value": "5x", "label": "Itérations plus rapides" },
+      "versionHistory": { "value": "∞", "label": "Historique des versions" }
+    },
+    "logos": {
+      "label": "Utilisé par les équipes de"
+    },
+    "versionControl": {
+      "badge": "Contrôle de version",
+      "title": "Suivez chaque modification, reproduisez tout résultat",
+      "description": "Vos datasets évoluent constamment — nouvelles images, labels corrigés, échantillons filtrés. Sans contrôle de version, vous naviguez à l'aveugle.",
+      "features": {
+        "snapshots": { "title": "Snapshots immuables", "description": "Chaque version de dataset est un snapshot permanent. Référencez des états de données précis dans vos expériences." },
+        "labelManagement": { "title": "Gestion des labels", "description": "Créez, renommez et fusionnez des labels dans votre dataset. Gardez votre taxonomie propre et cohérente." },
+        "fork": { "title": "Fork pour les expériences", "description": "Dupliquez les versions de datasets pour tester des hypothèses sans affecter les données de production." },
+        "auditHistory": { "title": "Historique prêt pour l'audit", "description": "Journal des modifications complet : qui a changé quoi, quand et pourquoi. Idéal pour la conformité." }
+      },
+      "versionTimeline": "Chronologie des versions",
+      "interactive": "Interactif",
+      "compare": "Comparer",
+      "checkout": "Checkout",
+      "images": "Images",
+      "annotations": "Annotations",
+      "change": "Variation"
+    },
+    "capabilities": {
+      "badge": "Fonctionnalités",
+      "title": "Tout ce qu'il vous faut pour gérer vos datasets",
+      "description": "Versionnez, organisez et partagez vos datasets. Tout est connecté à vos expériences.",
+      "versioning": {
+        "title": "Contrôle de version à la Git",
+        "tagline": "Ne perdez plus jamais vos données",
+        "description": "Suivez chaque modification de vos datasets. Comparez les versions, annulez les erreurs et créez des branches pour vos expériences. Traçabilité complète des données brutes aux modèles entraînés.",
+        "statValue": "100%",
+        "statLabel": "Reproductibilité",
+        "auditTrail": "Piste d'audit complète incluse"
+      },
+      "organization": {
+        "title": "Organisation intelligente des données",
+        "tagline": "De la structure sans le chaos",
+        "description": "Taguez, filtrez et découpez vos données en quelques secondes. Créez des vues personnalisées, sauvegardez vos requêtes et partagez des collections. Fini la recherche dans les dossiers.",
+        "statValue": "5x",
+        "statLabel": "Découverte plus rapide"
+      },
+      "collaboration": {
+        "title": "Collaboration en équipe",
+        "tagline": "Travaillez ensemble, pas en silos",
+        "description": "Partagez des datasets entre équipes avec des permissions granulaires. Suivez qui a modifié quoi, quand et pourquoi. Commentaires et revues intégrés.",
+        "statValue": "60%",
+        "statLabel": "Moins de coordination"
+      },
+      "traceability": {
+        "title": "Traçabilité complète des données",
+        "tagline": "Sachez d'où viennent vos données",
+        "description": "Remontez de n'importe quelle prédiction jusqu'aux données d'entraînement. Traçabilité prête pour l'audit. Comprenez le comportement du modèle à travers les données.",
+        "statValue": "100%",
+        "statLabel": "Conformité d'audit"
+      }
+    },
+    "sdk": {
+      "badge": "Expérience développeur",
+      "title": "Gestion programmatique des datasets",
+      "description": "SDK Python complet avec indications de type, auto-complétion et documentation exhaustive. Intégrez les datasets directement dans vos pipelines ML.",
+      "exportFormats": {
+        "coco": { "name": "COCO", "description": "Détection d'objets et segmentation" },
+        "yolo": { "name": "YOLO", "description": "Format YOLOv5/v8" },
+        "pascalVoc": { "name": "Pascal VOC", "description": "Annotations XML" },
+        "custom": { "name": "Personnalisé", "description": "Exports JSON/CSV" }
+      },
+      "supportsCoco": "Supporte COCO, YOLO, Pascal VOC"
+    },
+    "dataOrganization": {
+      "badge": "Organisation des données",
+      "title": "Structurez vos données correctement",
+      "description": "Des splits de données appropriés sont essentiels pour la performance du modèle. Créez des splits train/val/test reproductibles, stratifiez par classe et évitez les fuites de données.",
+      "datasetBrowser": "Explorateur de datasets",
+      "grid": "Grille",
+      "split": "Split",
+      "features": [
+        "Splits stratifiés automatiques par distribution de classes",
+        "Ratios de split personnalisés avec seeds reproductibles",
+        "Garantie d'absence de chevauchement entre les splits",
+        "Re-split sans perdre les annotations"
+      ],
+      "totalImages": "Total des images",
+      "annotationsLabel": "Annotations",
+      "balanced": "Équilibré",
+      "classDist": "Dist. classes"
+    },
+    "workflowIntegration": {
+      "badge": "Intégration au workflow",
+      "title": "S'intègre à votre workflow existant",
+      "description": "Les datasets sont connectés directement aux annotations, expériences et déploiements. Aucun transfert manuel.",
+      "datalake": "Datalake",
+      "dataset": "Dataset",
+      "experiment": "Expérience",
+      "autoSync": "Sync. auto",
+      "fromDatalake": "Depuis le datalake",
+      "version": "Version",
+      "everyChange": "Chaque modification",
+      "reference": "Référence",
+      "inExperiments": "Dans les expériences"
+    },
+    "cta": {
+      "statusBadge": "VERSION_CONTROL",
+      "title": "Prêt à versionner vos datasets ?",
+      "description": "Essai gratuit, sans carte bancaire. Commencez à versionner vos datasets dès aujourd'hui.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Planifier une démo",
+      "noCreditCard": "Sans carte bancaire",
+      "freeTrial": "Essai gratuit de 14 jours",
+      "unlimitedVersions": "Versions illimitées",
+      "stats": {
+        "imagesVersioned": { "value": "50M+", "label": "Images versionnées" },
+        "versionHistory": { "value": "∞", "label": "Historique des versions" },
+        "reproducibility": { "value": "100%", "label": "Reproductibilité" },
+        "dataLoss": { "value": "0", "label": "Perte de données" }
+      }
+    }
+  },
+  "labelingTool": {
+    "hero": {
+      "badge": "Annotation",
+      "titleLine1": "Labellisation de précision",
+      "titleHighlight": "Assistée par IA",
+      "description": "Transformez vos données en datasets annotés avec précision et rapidité. Support des boîtes englobantes, polygones, segmentation, points clés et plus encore.",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation",
+      "moreAnnotationTypes": "+1 de plus",
+      "aiAssistBadge": "SAM + DINOv2",
+      "aiAssistLabel": "Labellisation assistée par IA",
+      "drawMode": "Mode dessin"
+    },
+    "annotationTypes": {
+      "badge": "Types d'annotation",
+      "title": "Toutes les formes dont vous avez besoin",
+      "description": "Des simples boîtes englobantes aux masques polygonaux complexes, annotez tout type de données visuelles avec des outils de précision conçus pour la vision par ordinateur.",
+      "types": {
+        "objectDetection": { "name": "Détection d'objets", "description": "Boîtes englobantes en deux clics" },
+        "segmentation": { "name": "Segmentation", "description": "Masques polygonaux précis" },
+        "classification": { "name": "Classification", "description": "Labels sur l'image entière" },
+        "keypoints": { "name": "Points clés", "description": "Annotations par points" },
+        "polyline": { "name": "Polyligne", "description": "Segments de lignes connectés" }
+      },
+      "dataFormatsLabel": "Supporte divers formats de données",
+      "dataFormats": ["Images", "Vidéos", "Imagerie satellite", "Imagerie médicale", "Multispectral"]
+    },
+    "tooling": {
+      "badge": "Outillage",
+      "title": "Conçu pour la vitesse et la précision",
+      "description": "Raccourcis clavier, sélection intelligente et contrôles intuitifs conçus pour maximiser le débit d'annotation.",
+      "keyboardShortcuts": "RACCOURCIS CLAVIER",
+      "shortcuts": {
+        "drawMode": { "keys": ["D"], "action": "Mode dessin" },
+        "selectionMode": { "keys": ["Esc"], "action": "Mode sélection" },
+        "resetZoom": { "keys": ["R"], "action": "Réinitialiser le zoom" },
+        "navigateAssets": { "keys": ["O", "P"], "action": "Naviguer entre les assets" },
+        "saveAnnotations": { "keys": ["⌘", "S"], "action": "Sauvegarder les annotations" },
+        "deleteShape": { "keys": ["Suppr"], "action": "Supprimer la forme" }
+      },
+      "navigation": "NAVIGATION",
+      "scrollToZoom": { "title": "Défilement pour zoomer", "description": "Utilisez la molette pour zoomer/dézoomer. Appuyez sur la barre d'espace pour déplacer et naviguer dans le canevas." },
+      "assetGallery": { "title": "Galerie d'assets", "description": "Parcourez la file d'attente de votre dataset en bas. Naviguez avec les touches O/P ou cliquez sur les miniatures." },
+      "groupSelection": { "title": "Sélection groupée", "description": "Dessinez un rectangle pour sélectionner plusieurs formes. Sélectionnez par label pour les opérations en lot." }
+    },
+    "aiAssisted": {
+      "badge": "Assistance IA et traitements",
+      "title": "Multipliez par 10 votre labellisation grâce à l'IA",
+      "description": "Utilisez SAM, DINOv2 et Grounding DINO pour le pré-labelling. Lancez des traitements automatisés pour accélérer l'annotation.",
+      "sam": {
+        "name": "Segment Anything Model",
+        "provider": "Meta AI",
+        "description": "Segmentation en un clic pour n'importe quel objet. Les prompts par point, boîte ou texte génèrent des masques précis instantanément.",
+        "tags": ["Segmentation", "Interactif", "Zero-shot"]
+      },
+      "dinov2": {
+        "name": "DINOv2",
+        "provider": "Meta AI",
+        "description": "Caractéristiques visuelles auto-supervisées pour la recherche par similarité, le clustering et le transfer learning sans labels.",
+        "tags": ["Embeddings", "Clustering", "Auto-supervisé"]
+      },
+      "automatedProcessings": "Traitements automatisés",
+      "preAnnotation": { "title": "Pré-annotation", "description": "Générez automatiquement des labels initiaux avec vos modèles entraînés" },
+      "autoAnnotation": { "title": "Auto-annotation", "description": "Annotation entièrement automatisée avec seuils de confiance" },
+      "dataAugmentation": { "title": "Augmentation de données", "description": "Enrichissez vos datasets avec des transformations et variations" },
+      "autoTagging": { "title": "Auto-tagging", "description": "Taguez automatiquement les données dans votre datalake" },
+      "speedComparisonValue": "10x",
+      "speedComparisonLabel": "Annotation plus rapide avec l'assistance IA",
+      "manualLabeling": "Labellisation manuelle",
+      "manualSpeed": "~2 min/image",
+      "aiAssistedLabel": "Assistée par IA",
+      "aiAssistedSpeed": "~12 sec/image",
+      "humanValidation": "Validation humaine pour la précision",
+      "processingPipeline": "PIPELINE DE TRAITEMENT",
+      "dockerBased": "Basé sur Docker",
+      "step1": "Sélectionner le type de traitement",
+      "step2": "Configurer les entrées et le modèle",
+      "step3": "Lancer et examiner les résultats",
+      "gpuCpuConfigurable": "GPU/CPU configurable",
+      "scalableInfrastructure": "Infrastructure scalable"
+    },
+    "qualityControl": {
+      "badge": "Contrôle qualité",
+      "title": "Workflow de revue intégré",
+      "description": "Chaque annotation passe par un processus de revue structuré. Acceptez, rejetez ou renvoyez pour révision avec une traçabilité complète.",
+      "toReview": "À vérifier",
+      "accepted": "Acceptée",
+      "or": "ou",
+      "rejected": "Rejetée",
+      "autoLock": { "title": "Verrouillage automatique à la revue", "description": "Les annotations vérifiées sont automatiquement verrouillées pour empêcher les modifications accidentelles." },
+      "returnToEdit": { "title": "Retour au mode édition", "description": "Réinitialisez le statut de revue pour déverrouiller et continuer l'édition si nécessaire." },
+      "fullTraceability": { "title": "Traçabilité complète", "description": "Suivez qui a annoté quoi et quand avec un historique d'audit complet." }
+    },
+    "cta": {
+      "title": "Prêt à accélérer la labellisation ?",
+      "description": "Commencez à annoter avec des outils assistés par IA et des workflows de revue intégrés. Essai gratuit, sans carte bancaire.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "annotationCampaigns": {
+    "hero": {
+      "badge": "Workflow",
+      "titleLine1": "Human-In-The-Loop",
+      "titleHighlight": "À grande échelle",
+      "description": "Orchestrez des workflows d'annotation avec des pipelines multi-étapes, la gestion d'équipe et le contrôle qualité. Ajoutez des annotateurs, définissez des taux d'échantillonnage et suivez la progression.",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation"
+    },
+    "workflows": {
+      "badge": "Workflows",
+      "title": "Pipelines multi-étapes personnalisés",
+      "description": "Concevez des workflows d'annotation adaptés à vos exigences de qualité. Enchaînez les étapes d'annotation et de revue avec des taux d'échantillonnage configurables.",
+      "annotationSteps": { "title": "Étapes d'annotation", "description": "Les annotateurs créent les annotations initiales sur les assets assignés" },
+      "reviewSteps": { "title": "Étapes de revue", "description": "Les membres de l'équipe valident et acceptent/rejettent le travail précédent" },
+      "sampleRates": { "title": "Taux d'échantillonnage", "description": "Contrôlez le pourcentage d'assets passant à chaque étape" },
+      "examplePipeline": "Pipeline d'exemple",
+      "initialAnnotation": "Annotation initiale",
+      "firstReview": "Première revue",
+      "finalValidation": "Validation finale"
+    },
+    "taskManagement": {
+      "badge": "Gestion des tâches",
+      "title": "Visibilité complète sur l'avancement",
+      "description": "Suivez chaque tâche tout au long de son cycle de vie. Réattribuez le travail, gérez les priorités et assurez-vous que rien ne passe entre les mailles du filet.",
+      "statuses": {
+        "inProgress": { "name": "En cours", "count": "234" },
+        "toRework": { "name": "À retravailler", "count": "12" },
+        "done": { "name": "Terminée", "count": "1 847" },
+        "skipped": { "name": "Ignorée", "count": "8" }
+      },
+      "taskLifecycle": "Cycle de vie des tâches",
+      "submitted": "Soumise",
+      "or": "ou"
+    },
+    "teamManagement": {
+      "badge": "Gestion d'équipe",
+      "title": "Passez à l'échelle avec des équipes externes",
+      "description": "Intégrez rapidement des annotateurs externes avec des consignes claires. Contrôlez les accès, répartissez le travail équitablement et maintenez les standards de qualité.",
+      "features": [
+        "Distribution des tâches égale ou pondérée",
+        "PDF d'instructions pour les annotateurs",
+        "Contrôle d'accès par rôle",
+        "Réassignation en lot des tâches"
+      ]
+    },
+    "qualityControl": {
+      "badge": "Contrôle qualité",
+      "title": "Suivi collaboratif des problèmes",
+      "description": "Signalez les problèmes, discutez des solutions et assurez la qualité avant que les assets ne quittent le pipeline. Aucun asset ne peut être marqué comme terminé avec des problèmes ouverts.",
+      "zoneIssues": { "title": "Problèmes de zone", "description": "Signalez des zones spécifiques avec des marqueurs rectangulaires. Idéal pour signaler des erreurs de délimitation, des annotations manquantes ou des régions floues." },
+      "imageIssues": { "title": "Problèmes d'image", "description": "Signalez des problèmes concernant l'asset entier. Utilisez pour les erreurs de classification, les problèmes de qualité d'image ou une approche de labellisation incorrecte." },
+      "blockingRule": "Les assets ne peuvent pas être marqués comme Terminés avec des problèmes ouverts",
+      "issues": "PROBLÈMES",
+      "openCount": "2 ouverts"
+    },
+    "analytics": {
+      "badge": "Analytique",
+      "title": "Informations de performance en temps réel",
+      "description": "Suivez le temps passé, surveillez la productivité et identifiez les goulets d'étranglement. Voyez où le travail ralentit et corrigez-le.",
+      "avgTimePerAsset": { "value": "2,4 min", "title": "Temps moyen par asset", "description": "Suivi détaillé du temps pour chaque tâche" },
+      "teamThroughput": { "value": "847/jour", "title": "Débit de l'équipe", "description": "Assets complétés par tous les annotateurs" },
+      "acceptanceRate": { "value": "98,2%", "title": "Taux d'acceptation", "description": "Approbation au premier passage de revue" }
+    },
+    "cta": {
+      "title": "Prêt à passer votre annotation à l'échelle ?",
+      "description": "Mettez en place des workflows d'annotation multi-étapes avec revue et contrôle qualité intégrés. Essai gratuit, sans carte bancaire.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "aiLaboratory": {
+    "hero": {
+      "badge": "Entraînement de modèles",
+      "titleStart": "Entraînez vos modèles",
+      "titleHighlight": "à votre façon",
+      "description": "De l'entraînement no-code aux pipelines PyTorch personnalisés. Choisissez votre niveau de contrôle et laissez Picsellia gérer l'infrastructure.",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation",
+      "worksWith": "Compatible avec :",
+      "plusMore": "+plus"
+    },
+    "stats": {
+      "gpuAllocation": { "value": "1-click", "label": "Allocation GPU" },
+      "preBuiltPipelines": { "value": "4+", "label": "Pipelines pré-construits" },
+      "customFlexibility": { "value": "∞", "label": "Flexibilité personnalisée" },
+      "infrastructure": { "value": "0", "label": "Infrastructure à gérer" }
+    },
+    "trainingModes": {
+      "badge": "Flexibilité",
+      "title": "Choisissez votre niveau de contrôle",
+      "description": "Commencez en no-code pour des itérations rapides, utilisez le SDK pour l'automatisation, ou construisez des pipelines entièrement personnalisés quand vous avez besoin d'un contrôle total.",
+      "noCode": {
+        "title": "Entraînement No-Code",
+        "description": "Lancez des jobs d'entraînement directement depuis l'interface. Sélectionnez un pipeline pré-construit, configurez les paramètres et lancez l'entraînement.",
+        "features": ["Configuration visuelle des paramètres", "Allocation GPU en un clic", "Suivi de progression en temps réel"],
+        "configureInUI": "Configurer dans l'interface",
+        "selectGPU": "Sélectionner le GPU",
+        "launchTraining": "Lancer l'entraînement"
+      },
+      "sdk": {
+        "title": "SDK Python",
+        "description": "Contrôle programmatique complet avec notre SDK Python. Intégrez-le dans vos workflows existants et pipelines CI/CD.",
+        "features": ["API typée", "Support Jupyter", "Automatisation de pipelines"]
+      },
+      "custom": {
+        "title": "Pipelines personnalisés",
+        "description": "Construisez des pipelines d'entraînement personnalisés avec CV Engine. Étapes modulaires, tout framework, flexibilité totale.",
+        "features": ["Étapes composables", "Agnostique au framework", "Exécution locale + distante"]
+      }
+    },
+    "preBuiltPipelines": {
+      "badge": "Pipelines pré-construits",
+      "title": "Modèles production-ready, prêts à entraîner",
+      "description": "Lancez l'entraînement en quelques minutes avec nos pipelines pré-construits. Ultralytics pour YOLO, SAM2 pour la segmentation, Grounding DINO pour la détection zero-shot, et plus encore.",
+      "features": [
+        "Déploiement en un clic sur GPU",
+        "Hyperparamètres pré-configurés",
+        "Logging automatique des métriques",
+        "Export du modèle vers le registre"
+      ],
+      "pipelines": {
+        "ultralytics": { "name": "Ultralytics", "description": "Entraînez des modèles YOLOv8/v11 pour la détection, segmentation et classification", "tasks": ["Détection", "Segmentation", "Classification"], "status": "production" },
+        "sam2": { "name": "SAM2", "description": "Segment Anything Model pour la génération automatique de masques et leur affinement", "tasks": ["Segmentation", "Pré-annotation"], "status": "production" },
+        "groundingDino": { "name": "Grounding DINO", "description": "Détection d'objets en domaine ouvert avec prompts textuels pour le labelling zero-shot", "tasks": ["Détection", "Zero-shot"], "status": "production" },
+        "clip": { "name": "CLIP", "description": "Affinez les embeddings pour une recherche par similarité spécifique à votre domaine", "tasks": ["Embeddings", "Classification"], "status": "production" }
+      }
+    },
+    "cvEngine": {
+      "badge": "CV Engine",
+      "title": "Construisez des pipelines personnalisés facilement",
+      "description": "Picsellia CV Engine est une boîte à outils modulaire pour construire des workflows de vision par ordinateur. Étapes composables, extensions de frameworks et automatisation CLI.",
+      "cliLabel": "CLI + décorateurs Python",
+      "viewDocs": "Voir la documentation →",
+      "features": {
+        "modularSteps": { "title": "Étapes modulaires", "description": "Construisez des pipelines à partir d'étapes réutilisables et composables avec les décorateurs @step" },
+        "frameworkExtensions": { "title": "Extensions de frameworks", "description": "Intégrations pré-construites pour Ultralytics, SAM2, CLIP et plus" },
+        "localRemote": { "title": "Local et distant", "description": "Testez localement, déployez sur le cloud Picsellia en une commande" },
+        "autoLogging": { "title": "Logging automatique", "description": "Métriques, artefacts et paramètres enregistrés automatiquement" }
+      }
+    },
+    "infrastructure": {
+      "badge": "Infrastructure",
+      "title": "Zéro infrastructure à gérer",
+      "description": "Concentrez-vous sur vos modèles, pas sur vos serveurs. Picsellia gère le provisionnement GPU, la configuration de l'environnement et l'orchestration des jobs. Cliquez simplement sur entraîner.",
+      "gpuSelection": "Sélection GPU",
+      "availableNow": "Disponible maintenant",
+      "recommended": "Recommandé",
+      "payPerUse": "Payez uniquement ce que vous utilisez",
+      "autoShutdown": "Arrêt automatique à la fin",
+      "features": [
+        "Allocation GPU à la demande",
+        "Environnements CUDA pré-configurés",
+        "File d'attente automatique des jobs",
+        "Logs d'entraînement en temps réel"
+      ]
+    },
+    "workflow": {
+      "badge": "De bout en bout",
+      "title": "Connecté à l'ensemble de votre workflow",
+      "description": "AI Lab est connecté directement aux datasets, au suivi d'expériences et au déploiement de modèles. Traçabilité complète des données à la production.",
+      "steps": {
+        "dataset": "Dataset",
+        "aiLab": "AI Lab",
+        "experiment": "Expérience",
+        "model": "Modèle",
+        "production": "Production"
+      }
+    },
+    "cta": {
+      "title": "Prêt à entraîner vos modèles ?",
+      "description": "Commencez avec l'entraînement no-code ou construisez des pipelines personnalisés. Zéro infrastructure à gérer.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "experimentTracking": {
+    "hero": {
+      "badge": "MLOps",
+      "titleLine1": "Suivez vos expériences",
+      "titleHighlight": "Livrez de meilleurs modèles",
+      "description": "Reproductibilité complète avec métriques, paramètres et artefacts. Comparez les runs, collaborez avec votre équipe et versionnez les modèles automatiquement.",
+      "worksWith": "Compatible avec :",
+      "plusMore": "+plus",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation",
+      "bestModel": "Meilleur modèle",
+      "bestModelDetail": "mAP : 0.91 • exp-003",
+      "trainingOnGPU": "Entraînement sur GPU"
+    },
+    "logging": {
+      "badge": "Logging",
+      "title": "Loggez tout, ne manquez rien",
+      "description": "Capturez métriques, paramètres, artefacts et évaluations avec une API simple. Traçabilité complète avec un code d'intégration minimal.",
+      "logTypes": {
+        "scalar": { "name": "Scalaire", "description": "Valeurs simples (loss, accuracy)" },
+        "line": { "name": "Ligne", "description": "Métriques en séries temporelles" },
+        "image": { "name": "Image", "description": "Visualisations et échantillons" },
+        "table": { "name": "Tableau", "description": "Données structurées" },
+        "histogram": { "name": "Histogramme", "description": "Distributions" },
+        "confusionMatrix": { "name": "Matrice de confusion", "description": "Résultats de classification" }
+      },
+      "artifactStorage": { "title": "Stockage d'artefacts", "description": "Stockez checkpoints, configs et sorties" },
+      "datasetAttachment": { "title": "Attachement de dataset", "description": "Liez les données d'entraînement pour la reproductibilité" },
+      "modelExport": { "title": "Export de modèle", "description": "Poussez vers le registre de modèles en un appel" }
+    },
+    "compare": {
+      "badge": "Comparaison",
+      "title": "Comparez les entraînements instantanément",
+      "description": "Visualisez la distribution d'entraînement exacte, les hyperparamètres et les augmentations derrière chaque changement de performance. Trouvez votre meilleur modèle plus rapidement.",
+      "features": [
+        "Comparaison de métriques côte à côte",
+        "Mise en évidence des différences de paramètres",
+        "Suivi des versions de dataset",
+        "Commentaires collaboratifs"
+      ],
+      "experimentComparison": "COMPARAISON D'EXPÉRIENCES",
+      "tableHeaders": { "name": "Nom", "mAP": "mAP", "loss": "Loss", "lr": "LR", "epochs": "Epochs", "status": "Statut" }
+    },
+    "cvEngine": {
+      "badge": "CV Engine",
+      "title": "Construisez des pipelines d'entraînement facilement",
+      "description": "Picsellia CV Engine est une boîte à outils modulaire pour construire des workflows de vision par ordinateur. Étapes composables, extensions de frameworks et automatisation CLI.",
+      "trainingPipelines": { "title": "Pipelines d'entraînement", "description": "Données → Modèle → Résultats. Processus d'entraînement rationalisés avec logique intégrée." },
+      "processingPipelines": { "title": "Pipelines de traitement", "description": "Transformation de datasets, pré-annotation et opérations de nettoyage de données." },
+      "frameworkExtensions": { "title": "Extensions de frameworks", "description": "Architecture modulaire supportant de multiples bibliothèques d'entraînement." },
+      "cliLabel": "CLI + décorateurs Python",
+      "viewDocumentation": "Voir la documentation →"
+    },
+    "modelRegistry": {
+      "badge": "Registre de modèles",
+      "title": "Versionnez vos modèles automatiquement",
+      "description": "Exportez les expériences vers le registre de modèles en un seul appel. Suivez les versions, comparez les performances et déployez en toute confiance.",
+      "features": [
+        "Incrémentation automatique des versions",
+        "Métadonnées de framework (TensorFlow, PyTorch, etc.)",
+        "Configuration Docker pour le déploiement",
+        "Traçabilité vers l'expérience d'entraînement"
+      ],
+      "latest": "dernière"
+    },
+    "evaluation": {
+      "badge": "Évaluation",
+      "title": "Métriques COCO intégrées",
+      "description": "Ajoutez des prédictions, comparez avec la vérité terrain et calculez automatiquement les métriques d'évaluation standard.",
+      "metrics": {
+        "map50": { "metric": "mAP@50", "description": "Mean Average Precision" },
+        "map5095": { "metric": "mAP@50:95", "description": "mAP strict" },
+        "precision": { "metric": "Precision", "description": "Vrais positifs / Prédits" },
+        "recall": { "metric": "Recall", "description": "Vrais positifs / Réels" }
+      },
+      "supportsFormats": "Supporte rectangles, polygones, classifications et points clés"
+    },
+    "cta": {
+      "title": "Prêt à suivre vos expériences ?",
+      "description": "Commencez à logger des métriques, comparer des runs et livrer de meilleurs modèles avec une reproductibilité complète.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "automatedPipelines": {
+    "hero": {
+      "badge": "Automatisation CT/CD",
+      "titleStart": "Des modèles qui",
+      "titleHighlight": "s'améliorent tout seuls",
+      "description": "Continuous Training et Continuous Deployment. Bouclez la boucle de feedback, automatisez le ré-entraînement et déployez en toute confiance avec les modèles shadow.",
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation"
+    },
+    "stats": {
+      "manualIntervention": { "value": "0", "label": "Intervention manuelle" },
+      "automatedLoop": { "value": "24/7", "label": "Boucle automatisée" },
+      "safeDeployments": { "value": "100%", "label": "Déploiements sûrs" },
+      "modelIterations": { "value": "∞", "label": "Itérations de modèles" }
+    },
+    "pipelineFlow": {
+      "production": { "label": "Production", "sublabel": "Service du modèle" },
+      "monitor": { "label": "Monitoring", "sublabel": "Détection d'anomalies" },
+      "feedback": { "label": "Feedback", "sublabel": "Revue et labellisation" },
+      "retrain": { "label": "Ré-entraînement", "sublabel": "Déclenchement auto" },
+      "deploy": { "label": "Déploiement", "sublabel": "Shadow → Prod" },
+      "continuousLoop": "Boucle continue"
+    },
+    "feedbackLoop": {
+      "badge": "Boucle de feedback",
+      "title": "Les données de production deviennent des données d'entraînement",
+      "description": "Connectez votre déploiement à votre pipeline d'entraînement. Les prédictions vérifiées alimentent automatiquement vos datasets d'entraînement, créant un cycle d'amélioration continue.",
+      "steps": {
+        "capture": { "title": "Capturer les prédictions", "description": "Chaque inférence est enregistrée automatiquement" },
+        "review": { "title": "Vérifier les anomalies", "description": "Signalez et corrigez les prédictions erronées" },
+        "enrich": { "title": "Enrichir les datasets", "description": "Ajoutez les données vérifiées aux jeux d'entraînement" },
+        "trigger": { "title": "Déclencher le ré-entraînement", "description": "Automatisé selon les seuils définis" }
+      },
+      "feedbackPipeline": "Pipeline de feedback",
+      "active": "Actif",
+      "predictionsLogged": "Prédictions enregistrées",
+      "reviewed": "Vérifiées",
+      "addedToTrainingSet": "Ajoutées au jeu d'entraînement",
+      "readyToTrigger": "Prêt à déclencher",
+      "thresholdReached": "1 892 / 2 000 — seuil atteint"
+    },
+    "trainingOrchestration": {
+      "badge": "Orchestration d'entraînement",
+      "title": "Ré-entraînement automatisé selon vos règles",
+      "description": "Définissez des déclencheurs basés sur les seuils de revue, la détection de drift ou des planifications. Quand les conditions sont remplies, Picsellia provisionne automatiquement les GPU et lance l'entraînement.",
+      "retrainingTriggers": "Déclencheurs de ré-entraînement",
+      "configure": "Configurer",
+      "reviewThreshold": { "name": "Seuil de revue", "description": "Déclencher le ré-entraînement quand les prédictions vérifiées atteignent le seuil", "status": "Actif" },
+      "driftAlert": { "name": "Alerte de drift", "description": "Déclencher quand le drift de distribution dépasse le seuil", "status": "Surveillance" },
+      "scheduled": { "name": "Planifié", "description": "Ré-entraîner selon un calendrier fixe (hebdomadaire, mensuel)", "status": "Désactivé" },
+      "features": [
+        "Déclencheurs par seuil de revue",
+        "Détection de drift de distribution",
+        "Ré-entraînement planifié",
+        "Provisionnement automatique GPU",
+        "Suivi complet des expériences"
+      ]
+    },
+    "shadowDeployment": {
+      "badge": "Déploiement shadow",
+      "title": "Déployez en toute confiance",
+      "description": "Testez de nouveaux modèles en production sans risque. Les modèles shadow tournent en parallèle de votre modèle principal, comparant les performances sur le trafic réel avant la promotion.",
+      "howItWorks": "Fonctionnement du déploiement shadow",
+      "step1": { "title": "Déployer le modèle shadow", "description": "La nouvelle version du modèle tourne en parallèle, traitant les mêmes entrées que la production" },
+      "step2": { "title": "Comparer les prédictions", "description": "Les deux modèles font des prédictions, mais seuls les résultats du principal sont renvoyés aux utilisateurs" },
+      "step3": { "title": "Promouvoir quand c'est prêt", "description": "Une fois que le shadow surpasse le principal, promouvez-le en une seule commande" },
+      "liveComparison": "Comparaison en direct",
+      "primary": "Principal",
+      "shadow": "Shadow",
+      "shadowOutperforming": "Le shadow surpasse sur 3/4 des métriques",
+      "promote": "Promouvoir →",
+      "shadowDeploymentSdk": "SDK DÉPLOIEMENT SHADOW"
+    },
+    "endToEnd": {
+      "badge": "De bout en bout",
+      "title": "La stack d'automatisation complète",
+      "description": "De la collecte de données au déploiement du modèle, chaque étape est connectée et automatisée. Traçabilité complète, visibilité totale.",
+      "continuousTraining": {
+        "title": "Continuous Training",
+        "description": "Ré-entraînement automatique déclenché par les seuils de revue ou la détection de drift",
+        "features": ["Déclencheurs basés sur la revue", "Détection de drift", "Provisionnement GPU automatique"]
+      },
+      "continuousDeployment": {
+        "title": "Continuous Deployment",
+        "description": "Promotion sûre des modèles avec déploiement shadow et politiques automatisées",
+        "features": ["Test de modèle shadow", "Comparaison A/B", "Promotion en un clic"]
+      },
+      "fullObservability": {
+        "title": "Observabilité complète",
+        "description": "Surveillez chaque prédiction, suivez chaque métrique, tracez chaque décision",
+        "features": ["Tableaux de bord en temps réel", "Alertes d'anomalies", "Traçabilité complète"]
+      }
+    },
+    "cta": {
+      "title": "Prêt à automatiser votre cycle de vie ML ?",
+      "description": "Mettez en place le Continuous Training et Deployment en quelques minutes. Laissez vos modèles s'améliorer tout seuls.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  },
+  "modelDeployment": {
+    "title": "Déploiement de modèles",
+    "description": "Déployez vos modèles sur le cloud ou en edge. Infrastructure serverless auto-scalable avec 99,9% de disponibilité.",
+    "badge": "Déploiement"
+  },
+  "modelMonitoring": {
+    "hero": {
+      "badge": "Observabilité",
+      "titleLine1": "Surveillez vos modèles",
+      "titleHighlight": "en production",
+      "description": "Observabilité en temps réel pour les modèles de vision par ordinateur. Détectez les anomalies, suivez le drift et bouclez la boucle de feedback automatiquement.",
+      "metrics": {
+        "monitoring": { "value": "24/7", "label": "Surveillance" },
+        "anomalyRate": { "value": "<1%", "label": "Taux d'anomalies" },
+        "latencyP99": { "value": "<50ms", "label": "Latence P99" }
+      },
+      "ctaPrimary": "Voir en action",
+      "ctaSecondary": "Documentation",
+      "anomalyDetectedTitle": "Anomalie détectée",
+      "anomalyDetectedDetail": "Pic de faible confiance à 12:34",
+      "avgLatency": "Latence moy. :",
+      "avgLatencyValue": "46ms"
+    },
+    "anomalyDetection": {
+      "badge": "Détection d'anomalies",
+      "title": "Détectez les problèmes avant vos utilisateurs",
+      "description": "Le monitoring automatique 24/7 signale les entrées anormales et les prédictions à faible confiance. Révélez les angles morts et découvrez les cas limites dans les données de production.",
+      "lowConfidence": { "title": "Alertes de faible confiance", "description": "Signalez automatiquement les prédictions en dessous des seuils de confiance" },
+      "distributionShift": { "title": "Shift de distribution", "description": "Détectez quand les données de production dérivent des données d'entraînement" },
+      "novelPatterns": { "title": "Patterns inédits", "description": "Découvrez des patterns de données jamais vus et des cas limites" },
+      "flaggedPredictions": "PRÉDICTIONS SIGNALÉES",
+      "lastHour": "Dernière heure",
+      "anomaliesDetected": "6 anomalies détectées",
+      "reviewAll": "Tout examiner →"
+    },
+    "liveDashboard": {
+      "badge": "Tableau de bord en direct",
+      "title": "Insights de prédiction en temps réel",
+      "description": "Filtrez des millions d'inférences pour identifier les principales anomalies. De la détection de cas limites à l'intégration dans le dataset d'entraînement en quelques secondes.",
+      "totalInferences": { "value": "1,2M", "title": "Total des inférences", "description": "Dernières 24 heures" },
+      "avgLatency": { "value": "47ms", "title": "Latence moyenne", "description": "Temps de réponse P50" },
+      "accuracy": { "value": "99,1%", "title": "Précision", "description": "Basée sur les prédictions vérifiées" },
+      "monitoringMethods": "MÉTHODES DE MONITORING"
+    },
+    "driftDetection": {
+      "badge": "Drift de données",
+      "title": "Suivez les changements de distribution",
+      "description": "Comparez les données de production à votre baseline d'entraînement. Recevez des alertes quand les distributions dérivent au-delà des seuils acceptables.",
+      "driftDetectionLabel": "DÉTECTION DE DRIFT",
+      "vsBaseline": "vs. baseline d'entraînement",
+      "metrics": {
+        "meanBrightness": "Luminosité moyenne",
+        "contrast": "Contraste",
+        "classDistribution": "Distribution des classes",
+        "objectSize": "Taille des objets (moy.)",
+        "confidence": "Confiance (moy.)"
+      },
+      "metricsDrifting": "2 métriques en dérive",
+      "last7Days": "7 derniers jours",
+      "features": [
+        "Statistiques d'image (luminosité, contraste, flou)",
+        "Changements de distribution des classes",
+        "Dégradation du score de confiance",
+        "Alertes à seuil personnalisé"
+      ]
+    },
+    "continuousImprovement": {
+      "badge": "Amélioration continue",
+      "title": "Bouclez la boucle de feedback",
+      "description": "Convertissez les échecs en production en données d'entraînement. Vérifiez les prédictions, attachez-les aux datasets et déclenchez le ré-entraînement automatiquement.",
+      "monitor": { "label": "Surveiller", "sublabel": "Inférence en production" },
+      "detect": { "label": "Détecter", "sublabel": "Anomalies et drift" },
+      "review": { "label": "Vérifier", "sublabel": "Valider et labelliser" },
+      "retrain": { "label": "Ré-entraîner", "sublabel": "Améliorer le modèle" },
+      "continuousTraining": { "title": "Continuous Training", "description": "Déclenchez automatiquement le ré-entraînement quand les seuils de revue des prédictions sont atteints. Gardez vos modèles à jour avec les données de production." },
+      "continuousDeployment": { "title": "Continuous Deployment", "description": "Gérez les politiques de promotion de modèles entre staging et production. Support de modèle shadow pour les tests A/B." }
+    },
+    "cta": {
+      "title": "Prêt à surveiller vos modèles ?",
+      "description": "Commencez à détecter les anomalies, suivre le drift et améliorer vos modèles grâce au feedback de production.",
+      "ctaPrimary": "Essai gratuit",
+      "ctaSecondary": "Demander une démo"
+    }
+  }
+}

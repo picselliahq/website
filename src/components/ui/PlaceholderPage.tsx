@@ -1,12 +1,19 @@
-import Link from 'next/link';
+'use client';
+
+import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 interface PlaceholderPageProps {
   title: string;
   description: string;
   badge?: string;
+  requestDemoLabel?: string;
+  backToHomeLabel?: string;
 }
 
-export default function PlaceholderPage({ title, description, badge }: PlaceholderPageProps) {
+export default function PlaceholderPage({ title, description, badge, requestDemoLabel, backToHomeLabel }: PlaceholderPageProps) {
+  const t = useTranslations('common');
+
   return (
     <section className="pt-32 pb-24">
       <div className="max-w-6xl mx-auto px-6 text-center">
@@ -21,10 +28,10 @@ export default function PlaceholderPage({ title, description, badge }: Placehold
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link href="/demo" className="btn-primary">
-            Request Demo
+            {requestDemoLabel || t('cta.requestDemo')}
           </Link>
           <Link href="/" className="btn-secondary">
-            Back to Home
+            {backToHomeLabel || t('cta.backToHome')}
           </Link>
         </div>
       </div>

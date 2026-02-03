@@ -1,20 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
-/**
- * Customer logos for the social proof section.
- *
- * To add a new logo:
- * 1. Add the logo file (SVG preferred, PNG acceptable) to /public/images/customers/
- * 2. Add an entry below with { name: 'Company Name', src: '/images/customers/filename.svg' }
- *
- * Logo requirements:
- * - SVG format preferred for crisp rendering at any size
- * - PNG should be at least 200px wide for retina displays
- * - Logos will be displayed in grayscale and colorize on hover
- */
 const customerLogos: { name: string; src: string }[] = [
   { name: "SGS", src: "/images/customers/sgs.svg" },
   { name: "RTE", src: "/images/customers/rte.svg" },
@@ -31,6 +20,15 @@ const customerLogos: { name: string; src: string }[] = [
 ];
 
 export default function Hero() {
+  const t = useTranslations("home.hero");
+
+  const stats = [
+    { value: t("stats.imagesIndexed.value"), label: t("stats.imagesIndexed.label") },
+    { value: t("stats.onPrem.value"), label: t("stats.onPrem.label") },
+    { value: t("stats.modelsTrained.value"), label: t("stats.modelsTrained.label") },
+    { value: t("stats.predictions.value"), label: t("stats.predictions.label") },
+  ];
+
   return (
     <section className="pt-32 pb-20 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6">
@@ -38,26 +36,25 @@ export default function Hero() {
         <div className="flex justify-center mb-8">
           <span className="badge">
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--picsellia-green)]"></span>
-            ISO 27001 Certified
+            {t("badge")}
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-center max-w-4xl mx-auto mb-6 tracking-tight">
-          Everything you need to ship{" "}
-          <span className="text-[var(--picsellia-green)]">Vision AI</span>
+          {t("headline")}{" "}
+          <span className="text-[var(--picsellia-green)]">{t("headlineHighlight")}</span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-[var(--secondary-label)] text-center max-w-2xl mx-auto mb-10">
-          The MLOps platform for computer vision. Manage your data, train
-          models, deploy them, and keep them running.
+          {t("subheadline")}
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <Link href="/trial" className="btn-primary px-6 py-3">
-            Start Free Trial
+            {t("startFreeTrial")}
             <svg
               className="w-4 h-4"
               fill="none"
@@ -73,7 +70,7 @@ export default function Hero() {
             </svg>
           </Link>
           <Link href="/demo" className="btn-secondary px-6 py-3">
-            Request Demo
+            {t("requestDemo")}
           </Link>
         </div>
 
@@ -88,7 +85,7 @@ export default function Hero() {
         >
           <Image
             src="/images/hero homepage.png"
-            alt="Picsellia platform - Complete MLOps for computer vision"
+            alt={t("heroImageAlt")}
             width={1920}
             height={1080}
             className="w-full h-auto block"
@@ -98,12 +95,7 @@ export default function Hero() {
 
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16 pb-16 border-b border-[var(--border)]">
-          {[
-            { value: "50M+", label: "Images Indexed" },
-            { value: "On-prem", label: "Deployment possible" },
-            { value: "5k+", label: "Models Trained" },
-            { value: "1b+", label: "Predictions Monitored" },
-          ].map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl md:text-3xl font-semibold text-[var(--label)] mb-1">
                 {stat.value}
@@ -118,7 +110,7 @@ export default function Hero() {
         {/* Logos */}
         <div className="text-center">
           <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
-            Used by teams at
+            {t("usedByTeams")}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
             {customerLogos.map((logo) => (

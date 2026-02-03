@@ -1,0 +1,164 @@
+{
+  "hero": {
+    "badge": "Transparent Pricing",
+    "title": "Pay for what you",
+    "titleHighlight": "actually use",
+    "description": "Modular platform pricing plus usage-based costs. Scale from pilot to production with volume discounts that grow with you.",
+    "billingMonthly": "Monthly",
+    "billingAnnual": "Annual"
+  },
+  "modules": {
+    "sectionLabel": "Platform Modules",
+    "title": "Choose your modules",
+    "description": "Start with Data Engine, then add VisionAI Factory and Reliability Engine as needed. Each module includes 3 user seats with the option to add more.",
+    "mostPopular": "Most Popular",
+    "perMonth": "/month",
+    "perYearBilledAnnually": "/year billed annually",
+    "includedUsers": "Included users",
+    "seats": "seats",
+    "extraUser": "Extra user",
+    "requiresDataEngine": "Requires Data Engine",
+    "dataEngine": {
+      "name": "Data Engine",
+      "description": "Data management, versioning, and preparation",
+      "features": {
+        "unlimitedStorage": "Unlimited data storage",
+        "datasetVersioning": "Dataset versioning",
+        "smartCuration": "Smart data curation",
+        "visualSimilarity": "Visual similarity search",
+        "clipEmbeddings": "CLIP embeddings",
+        "multiFormat": "Multi-format support"
+      }
+    },
+    "visionaiFactory": {
+      "name": "VisionAI Factory",
+      "description": "Model training, experimentation, and deployment",
+      "features": {
+        "experimentTracking": "Experiment tracking",
+        "modelRegistry": "Model registry",
+        "preBuiltPipelines": "Pre-built pipelines",
+        "customPipelines": "Custom training pipelines",
+        "gpuAllocation": "One-click GPU allocation",
+        "modelDeployment": "Model deployment"
+      }
+    },
+    "reliabilityEngine": {
+      "name": "Reliability Engine",
+      "description": "Model monitoring, performance tracking, drift detection",
+      "features": {
+        "realTimeMonitoring": "Real-time monitoring",
+        "anomalyDetection": "Anomaly detection",
+        "driftDetection": "Drift detection",
+        "feedbackLoops": "Feedback loops",
+        "continuousTraining": "Continuous training",
+        "shadowDeployments": "Shadow deployments"
+      }
+    },
+    "labelerSeats": {
+      "title": "Labeler Seats",
+      "description": "Add annotation workforce access. Unlimited seats available.",
+      "perLabelerMonth": "per labeler/month",
+      "annual": "Annual"
+    }
+  },
+  "usage": {
+    "sectionLabel": "Usage-Based Pricing",
+    "title": "Volume discounts that scale with you",
+    "description": "Pay only for what you use. As your volume grows, your per-unit cost decreases automatically.",
+    "dpu": {
+      "title": "Data Processing Units (DPU)",
+      "subtitle": "For data ingestion & processing",
+      "basePrice": "base price/DPU",
+      "conversionRates": "Conversion rates",
+      "images": "imgs",
+      "video": "video",
+      "multiSpec": "multi-spec",
+      "equalsDpu": "= 1 DPU",
+      "annualImages": "Annual Images",
+      "discount": "Discount",
+      "priceDpu": "Price/DPU"
+    },
+    "mu": {
+      "title": "Monitoring Units (MU)",
+      "subtitle": "For production inference monitoring",
+      "basePrice": "base price/MU",
+      "conversionRate": "Conversion rate",
+      "conversionValue": "1,000 predictions = 1 MU",
+      "conversionNote": "Each monitored inference counts as 1 prediction",
+      "annualPredictions": "Annual Predictions",
+      "discount": "Discount",
+      "priceMu": "Price/MU"
+    },
+    "gpu": {
+      "title": "GPU Compute",
+      "perHour": "/hour",
+      "description": "Pay-per-use GPU allocation for training and inference. No commitment required.",
+      "tagGpus": "T4 \u2022 A10G \u2022 A100",
+      "tagAutoShutdown": "Auto-shutdown"
+    },
+    "annotation": {
+      "title": "Annotation Services",
+      "perHour": "/hour",
+      "description": "Professional labeling services with trained annotators for your projects.",
+      "tagQuality": "Quality assured",
+      "tagAllTypes": "All task types"
+    }
+  },
+  "enterprise": {
+    "sectionLabel": "Enterprise",
+    "title": "Custom pricing for large deployments",
+    "description": "For organizations with high-volume needs, we offer custom pricing packages with negotiated rates, dedicated support, and enterprise SLAs.",
+    "features": {
+      "volumeCommitments": "Custom volume commitments",
+      "csm": "Dedicated customer success manager",
+      "prioritySupport": "Priority support & SLAs",
+      "onPremise": "On-premise deployment options",
+      "customIntegrations": "Custom integrations"
+    },
+    "contactSales": "Contact Sales",
+    "iso": {
+      "title": "ISO 27001:2022",
+      "description": "Information security certified"
+    },
+    "privateCloud": {
+      "title": "Private Cloud",
+      "description": "Dedicated infrastructure options"
+    },
+    "support": {
+      "title": "24/7 Support",
+      "description": "Dedicated technical support"
+    }
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title": "Common questions",
+    "items": [
+      {
+        "question": "What is a Data Processing Unit (DPU)?",
+        "answer": "DPU is our unit for measuring data ingestion and processing. Standard images convert at 60 images = 1 DPU, videos at 1 video = 1 DPU, and multi-spectral images at 5 images = 1 DPU."
+      },
+      {
+        "question": "What is a Monitoring Unit (MU)?",
+        "answer": "MU measures production inference monitoring. Each MU covers 1,000 monitored predictions through the Reliability Engine for quality tracking and drift detection."
+      },
+      {
+        "question": "Can I use modules independently?",
+        "answer": "The Data Engine can be used standalone. VisionAI Factory and Reliability Engine both require the Data Engine as a foundation. Each module includes 3 user seats."
+      },
+      {
+        "question": "How does volume pricing work?",
+        "answer": "Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you get better rates automatically."
+      },
+      {
+        "question": "What about enterprise pricing?",
+        "answer": "For large deployments, we offer custom pricing with negotiated volume commitments, dedicated support, and SLAs. Contact our sales team for details."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "description": "Start with a free trial or talk to our team to find the right plan for your needs.",
+    "startTrial": "Start Free Trial",
+    "talkToSales": "Talk to Sales"
+  }
+}

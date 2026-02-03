@@ -4,23 +4,48 @@ import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import { FrontmatterSchema, type BlogPost, type BlogPostMeta, type TableOfContentsItem } from '@/types/blog';
 
-const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog');
+const BLOG_ROOT = path.join(process.cwd(), 'content', 'blog');
 
-function ensureContentDir() {
-  if (!fs.existsSync(CONTENT_DIR)) {
-    fs.mkdirSync(CONTENT_DIR, { recursive: true });
+function getContentDir(locale: string = 'en') {
+  return path.join(BLOG_ROOT, locale);
+}
+
+function ensureContentDir(locale: string = 'en') {
+  const dir = getContentDir(locale);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-export function getAllPosts(): BlogPostMeta[] {
-  ensureContentDir();
+export function getAllPosts(locale: string = 'en'): BlogPostMeta[] {
+  ensureContentDir('en');
+  if (locale !== 'en') ensureContentDir(locale);
 
-  const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'));
+  const contentDir = getContentDir(locale);
+  const fallbackDir = getContentDir('en');
+
+  // Get posts from the requested locale
+  const localeFiles = fs.existsSync(contentDir)
+    ? fs.readdirSync(contentDir).filter((f) => f.endsWith('.mdx'))
+    : [];
+
+  // Build file list: locale files first, then English fallback for untranslated posts
+  let files: { filename: string; dir: string }[] = localeFiles.map((f) => ({ filename: f, dir: contentDir }));
+
+  if (locale !== 'en' && fs.existsSync(fallbackDir)) {
+    const enFiles = fs.readdirSync(fallbackDir).filter((f) => f.endsWith('.mdx'));
+    const localeFilenames = new Set(localeFiles);
+    for (const f of enFiles) {
+      if (!localeFilenames.has(f)) {
+        files.push({ filename: f, dir: fallbackDir });
+      }
+    }
+  }
 
   const posts = files
-    .map((filename) => {
+    .map(({ filename, dir }) => {
       const slug = filename.replace(/\.mdx$/, '');
-      const filePath = path.join(CONTENT_DIR, filename);
+      const filePath = path.join(dir, filename);
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(fileContent);
 
@@ -45,14 +70,16 @@ export function getAllPosts(): BlogPostMeta[] {
   );
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
-  ensureContentDir();
-
+export function getPostBySlug(slug: string, locale: string = 'en'): BlogPost | null {
   // Validate slug to prevent path traversal
   if (!/^[a-zA-Z0-9_-]+$/.test(slug)) return null;
 
-  const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
+  // Try locale-specific dir first, then fall back to English
+  const localePath = path.join(getContentDir(locale), `${slug}.mdx`);
+  const enPath = path.join(getContentDir('en'), `${slug}.mdx`);
+
+  const filePath = fs.existsSync(localePath) ? localePath : fs.existsSync(enPath) ? enPath : null;
+  if (!filePath) return null;
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
   const { data, content } = matter(fileContent);
@@ -71,17 +98,30 @@ export function getPostBySlug(slug: string): BlogPost | null {
   };
 }
 
-export function getAllSlugs(): string[] {
-  ensureContentDir();
+export function getAllSlugs(locale: string = 'en'): string[] {
+  ensureContentDir('en');
 
-  return fs
-    .readdirSync(CONTENT_DIR)
+  const enDir = getContentDir('en');
+  const enSlugs = fs.readdirSync(enDir)
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace(/\.mdx$/, ''));
+
+  if (locale === 'en') return enSlugs;
+
+  // For other locales, also include locale-specific slugs
+  const localeDir = getContentDir(locale);
+  if (fs.existsSync(localeDir)) {
+    const localeSlugs = fs.readdirSync(localeDir)
+      .filter((f) => f.endsWith('.mdx'))
+      .map((f) => f.replace(/\.mdx$/, ''));
+    return Array.from(new Set([...enSlugs, ...localeSlugs]));
+  }
+
+  return enSlugs;
 }
 
-export function getCategories(): string[] {
-  const posts = getAllPosts();
+export function getCategories(locale: string = 'en'): string[] {
+  const posts = getAllPosts(locale);
   const categories = new Set(posts.map((p) => p.frontmatter.category));
   return Array.from(categories).sort();
 }

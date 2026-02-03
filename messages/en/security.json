@@ -1,0 +1,201 @@
+{
+  "hero": {
+    "badge": "Enterprise Security",
+    "title": "Security & Deployment",
+    "titleHighlight": "Your Way",
+    "description": "From fully managed SaaS to air-gapped on-premise. Deploy Picsellia where your data lives, with ISO 27001 security and fine-grained access control.",
+    "talkToSecurity": "Talk to Security Team",
+    "securityDocs": "Security Docs"
+  },
+  "deployment": {
+    "sectionLabel": "Deployment Options",
+    "title": "Deploy where your data lives",
+    "description": "Choose the deployment model that fits your security requirements and infrastructure.",
+    "bestFor": "Best for:",
+    "saas": {
+      "name": "SaaS",
+      "description": "Fully managed cloud platform",
+      "tagline": "Get started in minutes",
+      "features": [
+        "Zero infrastructure management",
+        "Automatic updates & patches",
+        "Built-in redundancy & backups",
+        "ISO 27001:2022 certified",
+        "EU & US data centers",
+        "Instant provisioning"
+      ],
+      "bestFor": "Teams who want to focus on ML, not infrastructure"
+    },
+    "hybrid": {
+      "name": "Hybrid",
+      "description": "Your data, our platform",
+      "tagline": "Best of both worlds",
+      "features": [
+        "Connect your own storage (S3, GCS, Azure)",
+        "Use your GPU compute resources",
+        "Bring your Docker registry",
+        "Data never leaves your infrastructure",
+        "Picsellia manages the control plane",
+        "Seamless integration"
+      ],
+      "bestFor": "Organizations with existing cloud infrastructure & data residency requirements"
+    },
+    "onPremise": {
+      "name": "On-Premise",
+      "description": "Full control, your infrastructure",
+      "tagline": "Maximum security & compliance",
+      "features": [
+        "Kubernetes (Helm charts)",
+        "Docker Compose deployment",
+        "Air-gapped environments supported",
+        "Deploy on any cloud or bare metal",
+        "Full network isolation",
+        "Custom security policies"
+      ],
+      "bestFor": "Enterprises with strict compliance requirements or air-gapped environments"
+    }
+  },
+  "hybridArchitecture": {
+    "sectionLabel": "Hybrid Architecture",
+    "title": "Connect your infrastructure",
+    "description": "Keep sensitive data in your environment while using Picsellia's managed control plane. Connect your storage, compute, and container registry directly.",
+    "cloudStorage": {
+      "label": "Cloud Storage",
+      "description": "AWS S3, Google Cloud Storage, Azure Blob"
+    },
+    "gpuCompute": {
+      "label": "GPU Compute",
+      "description": "Your AWS, GCP, or Azure GPU instances"
+    },
+    "dockerRegistry": {
+      "label": "Docker Registry",
+      "description": "ECR, GCR, ACR, or private registries"
+    },
+    "diagram": {
+      "title": "Architecture Overview",
+      "yourInfrastructure": "Your Infrastructure",
+      "storage": "Storage",
+      "compute": "Compute",
+      "registry": "Registry",
+      "controlPlane": "Picsellia Control Plane",
+      "uiApi": "UI & API",
+      "orchestration": "Orchestration",
+      "monitoring": "Monitoring",
+      "metadata": "Metadata",
+      "dataNeverLeaves": "Your data never leaves your infrastructure"
+    }
+  },
+  "onPremise": {
+    "sectionLabel": "On-Premise Deployment",
+    "title": "Full control on your infrastructure",
+    "description": "Deploy the complete Picsellia stack in your own data center or private cloud. Support for Kubernetes clusters or simple Docker Compose setups.",
+    "features": [
+      "Deploy on AWS, GCP, Azure, or bare metal",
+      "Full network isolation & firewall control",
+      "Custom SSL certificates",
+      "Integration with internal identity providers",
+      "Your backup & disaster recovery policies"
+    ],
+    "kubernetes": {
+      "title": "Kubernetes",
+      "description": "Deploy with Helm charts on any Kubernetes cluster"
+    },
+    "dockerCompose": {
+      "title": "Docker Compose",
+      "description": "Simple deployment for smaller teams"
+    },
+    "airGapped": {
+      "title": "Air-gapped support",
+      "description": "Full offline installation available. Container images and charts can be transferred via secure media for isolated environments."
+    }
+  },
+  "certifications": {
+    "sectionLabel": "Compliance & Certifications",
+    "title": "Enterprise-grade security standards",
+    "description": "Picsellia meets rigorous security and compliance requirements for enterprise deployments.",
+    "iso27001": {
+      "name": "ISO 27001:2022",
+      "description": "International standard for information security management"
+    },
+    "gdpr": {
+      "name": "GDPR Compliant",
+      "description": "EU data protection & privacy standards"
+    },
+    "encryption": {
+      "name": "Data Encryption",
+      "description": "AES-256 at rest, TLS 1.3 in transit"
+    },
+    "sso": {
+      "name": "SSO / SAML",
+      "description": "Enterprise identity provider integration"
+    }
+  },
+  "securityFeatures": {
+    "auditLogs": {
+      "title": "Audit Logs",
+      "description": "Complete activity tracking for compliance and forensics"
+    },
+    "apiKeyManagement": {
+      "title": "API Key Management",
+      "description": "Scoped tokens with expiration and revocation"
+    },
+    "ipAllowlisting": {
+      "title": "IP Allowlisting",
+      "description": "Restrict access to trusted networks"
+    },
+    "mfa": {
+      "title": "2FA / MFA",
+      "description": "Multi-factor authentication for all users"
+    },
+    "dataIsolation": {
+      "title": "Data Isolation",
+      "description": "Tenant separation at storage and compute level"
+    },
+    "backupRecovery": {
+      "title": "Backup & Recovery",
+      "description": "Automated backups with point-in-time recovery"
+    }
+  },
+  "rbac": {
+    "sectionLabel": "Access Control",
+    "title": "Role-based access control",
+    "description": "Fine-grained permissions at every level. Control who can access what, from organization-wide settings down to individual projects.",
+    "levelSuffix": "Level",
+    "organization": {
+      "level": "Organization",
+      "roles": {
+        "owner": { "name": "Owner", "description": "Full administrative control, billing, user management" },
+        "admin": { "name": "Admin", "description": "Manage users, workspaces, and organization settings" },
+        "member": { "name": "Member", "description": "Access assigned workspaces and projects" }
+      }
+    },
+    "workspace": {
+      "level": "Workspace",
+      "roles": {
+        "manager": { "name": "Manager", "description": "Create projects, manage workspace members" },
+        "contributor": { "name": "Contributor", "description": "Edit projects, datasets, and experiments" },
+        "viewer": { "name": "Viewer", "description": "Read-only access to workspace resources" }
+      }
+    },
+    "project": {
+      "level": "Project",
+      "roles": {
+        "lead": { "name": "Lead", "description": "Full project control, manage collaborators" },
+        "editor": { "name": "Editor", "description": "Modify datasets, run experiments, deploy models" },
+        "annotator": { "name": "Annotator", "description": "Label data within assigned campaigns" },
+        "reviewer": { "name": "Reviewer", "description": "Review and approve annotations" }
+      }
+    },
+    "customRoles": {
+      "title": "Custom roles coming soon",
+      "description": "Create custom roles with granular permission sets tailored to your organization.",
+      "requestAccess": "Request early access"
+    }
+  },
+  "cta": {
+    "title": "Ready to discuss your security requirements?",
+    "description": "Our security team can help you choose the right deployment model and answer any compliance questions.",
+    "talkToSecurity": "Talk to Security Team",
+    "viewPricing": "View Pricing"
+  }
+}

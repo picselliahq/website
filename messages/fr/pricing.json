@@ -1,0 +1,164 @@
+{
+  "hero": {
+    "badge": "Tarification transparente",
+    "title": "Payez pour ce que vous",
+    "titleHighlight": "utilisez vraiment",
+    "description": "Tarification modulaire de la plateforme et couts basés sur l'utilisation. Passez du pilote à la production avec des remises sur volume qui évoluent avec vous.",
+    "billingMonthly": "Mensuel",
+    "billingAnnual": "Annuel"
+  },
+  "modules": {
+    "sectionLabel": "Modules de la plateforme",
+    "title": "Choisissez vos modules",
+    "description": "Commencez avec le Data Engine, puis ajoutez VisionAI Factory et Reliability Engine selon vos besoins. Chaque module inclut 3 places utilisateur avec la possibilité d'en ajouter.",
+    "mostPopular": "Le plus populaire",
+    "perMonth": "/mois",
+    "perYearBilledAnnually": "/an facturé annuellement",
+    "includedUsers": "Utilisateurs inclus",
+    "seats": "places",
+    "extraUser": "Utilisateur supplémentaire",
+    "requiresDataEngine": "Nécessite le Data Engine",
+    "dataEngine": {
+      "name": "Data Engine",
+      "description": "Gestion, versionnement et préparation des données",
+      "features": {
+        "unlimitedStorage": "Stockage de données illimité",
+        "datasetVersioning": "Versionnement des datasets",
+        "smartCuration": "Curation intelligente des données",
+        "visualSimilarity": "Recherche par similarité visuelle",
+        "clipEmbeddings": "Embeddings CLIP",
+        "multiFormat": "Support multi-format"
+      }
+    },
+    "visionaiFactory": {
+      "name": "VisionAI Factory",
+      "description": "Entraînement de modèles, expérimentation et déploiement",
+      "features": {
+        "experimentTracking": "Suivi des expériences",
+        "modelRegistry": "Registre de modèles",
+        "preBuiltPipelines": "Pipelines pré-construits",
+        "customPipelines": "Pipelines d'entraînement personnalisés",
+        "gpuAllocation": "Allocation GPU en un clic",
+        "modelDeployment": "Déploiement de modèles"
+      }
+    },
+    "reliabilityEngine": {
+      "name": "Reliability Engine",
+      "description": "Monitoring des modèles, suivi des performances, détection de drift",
+      "features": {
+        "realTimeMonitoring": "Monitoring en temps réel",
+        "anomalyDetection": "Détection d'anomalies",
+        "driftDetection": "Détection de drift",
+        "feedbackLoops": "Boucles de rétroaction",
+        "continuousTraining": "Entraînement continu",
+        "shadowDeployments": "Déploiements shadow"
+      }
+    },
+    "labelerSeats": {
+      "title": "Places annotateurs",
+      "description": "Ajoutez l'accès pour votre équipe d'annotation. Places illimitées disponibles.",
+      "perLabelerMonth": "par annotateur/mois",
+      "annual": "Annuel"
+    }
+  },
+  "usage": {
+    "sectionLabel": "Tarification à l'usage",
+    "title": "Des remises sur volume qui évoluent avec vous",
+    "description": "Payez uniquement ce que vous utilisez. Plus votre volume augmente, plus votre coût unitaire diminue automatiquement.",
+    "dpu": {
+      "title": "Data Processing Units (DPU)",
+      "subtitle": "Pour l'ingestion et le traitement des données",
+      "basePrice": "prix de base/DPU",
+      "conversionRates": "Taux de conversion",
+      "images": "imgs",
+      "video": "vidéo",
+      "multiSpec": "multi-spec",
+      "equalsDpu": "= 1 DPU",
+      "annualImages": "Images annuelles",
+      "discount": "Remise",
+      "priceDpu": "Prix/DPU"
+    },
+    "mu": {
+      "title": "Monitoring Units (MU)",
+      "subtitle": "Pour le monitoring des inférences en production",
+      "basePrice": "prix de base/MU",
+      "conversionRate": "Taux de conversion",
+      "conversionValue": "1 000 prédictions = 1 MU",
+      "conversionNote": "Chaque inférence monitorée compte comme 1 prédiction",
+      "annualPredictions": "Prédictions annuelles",
+      "discount": "Remise",
+      "priceMu": "Prix/MU"
+    },
+    "gpu": {
+      "title": "GPU Compute",
+      "perHour": "/heure",
+      "description": "Allocation GPU à l'usage pour l'entraînement et l'inférence. Aucun engagement requis.",
+      "tagGpus": "T4 \u2022 A10G \u2022 A100",
+      "tagAutoShutdown": "Arrêt automatique"
+    },
+    "annotation": {
+      "title": "Services d'annotation",
+      "perHour": "/heure",
+      "description": "Services de labélisation professionnels avec des annotateurs formés pour vos projets.",
+      "tagQuality": "Qualité garantie",
+      "tagAllTypes": "Tous types de tâches"
+    }
+  },
+  "enterprise": {
+    "sectionLabel": "Entreprise",
+    "title": "Tarification personnalisée pour les grands déploiements",
+    "description": "Pour les organisations ayant des besoins en volume élevé, nous proposons des offres tarifaires personnalisées avec des tarifs négociés, un support dédié et des SLA entreprise.",
+    "features": {
+      "volumeCommitments": "Engagements de volume personnalisés",
+      "csm": "Customer success manager dédié",
+      "prioritySupport": "Support prioritaire et SLA",
+      "onPremise": "Options de déploiement on-premise",
+      "customIntegrations": "Intégrations personnalisées"
+    },
+    "contactSales": "Contacter les ventes",
+    "iso": {
+      "title": "ISO 27001:2022",
+      "description": "Certifié sécurité de l'information"
+    },
+    "privateCloud": {
+      "title": "Cloud privé",
+      "description": "Options d'infrastructure dédiée"
+    },
+    "support": {
+      "title": "Support 24/7",
+      "description": "Support technique dédié"
+    }
+  },
+  "faq": {
+    "sectionLabel": "FAQ",
+    "title": "Questions fréquentes",
+    "items": [
+      {
+        "question": "Qu'est-ce qu'un Data Processing Unit (DPU) ?",
+        "answer": "Le DPU est notre unité de mesure pour l'ingestion et le traitement des données. Les images standard se convertissent à 60 images = 1 DPU, les vidéos à 1 vidéo = 1 DPU, et les images multi-spectrales à 5 images = 1 DPU."
+      },
+      {
+        "question": "Qu'est-ce qu'un Monitoring Unit (MU) ?",
+        "answer": "Le MU mesure le monitoring des inférences en production. Chaque MU couvre 1 000 prédictions monitorées via le Reliability Engine pour le suivi de la qualité et la détection de drift."
+      },
+      {
+        "question": "Puis-je utiliser les modules indépendamment ?",
+        "answer": "Le Data Engine peut être utilisé seul. VisionAI Factory et Reliability Engine nécessitent tous deux le Data Engine comme fondation. Chaque module inclut 3 places utilisateur."
+      },
+      {
+        "question": "Comment fonctionnent les remises sur volume ?",
+        "answer": "Les remises sur volume sont appliquées en fonction de votre utilisation cumulée annuelle. Plus vous traitez de données ou monitorez de prédictions, plus vous obtenez automatiquement de meilleurs tarifs."
+      },
+      {
+        "question": "Qu'en est-il de la tarification entreprise ?",
+        "answer": "Pour les grands déploiements, nous proposons une tarification personnalisée avec des engagements de volume négociés, un support dédié et des SLA. Contactez notre équipe commerciale pour plus de détails."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Prêt à commencer ?",
+    "description": "Commencez avec un essai gratuit ou parlez à notre équipe pour trouver l'offre adaptée à vos besoins.",
+    "startTrial": "Démarrer l'essai gratuit",
+    "talkToSales": "Parler aux ventes"
+  }
+}

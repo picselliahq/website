@@ -1,88 +1,67 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
 
-const useCases = [
-  {
-    title: 'Defect Detection',
-    industry: 'Manufacturing',
-    description: 'Spot surface defects and assembly errors on the production line. Cameras check every part, every time.',
-    href: '/use-cases/defects-detection',
-    stat: '99.5%',
-    statLabel: 'Detection accuracy',
-    image: '/images/use-cases/manufacturing/anomaly-detection.jpg',
-    featured: true,
-  },
-  {
-    title: 'Crop Monitoring',
-    industry: 'Agriculture',
-    description: 'Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.',
-    href: '/industry/agriculture',
-    stat: '30%',
-    statLabel: 'Yield increase',
-    image: '/images/use-cases/agriculture/crop-monitoring.jpg',
-  },
-  {
-    title: 'Infrastructure Inspection',
-    industry: 'Energy',
-    description: 'Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.',
-    href: '/industry/energy',
-    stat: '80%',
-    statLabel: 'Cost reduction',
-    image: '/images/use-cases/energy/infrastructure-inspection.jpg',
-  },
-  {
-    title: 'Assembly Verification',
-    industry: 'Manufacturing',
-    description: 'Check that every component is in the right place, in real time, on the line.',
-    href: '/industry/manufacturing',
-    stat: '60fps',
-    statLabel: 'Real-time tracking',
-    image: '/images/use-cases/manufacturing/assembly-verification.jpg',
-  },
-  {
-    title: 'Waste Sorting',
-    industry: 'Sustainability',
-    description: 'Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.',
-    href: '/industry/waste-management',
-    stat: '95%',
-    statLabel: 'Sorting accuracy',
-    image: '/images/use-cases/waste-management/automated-segregation.jpg',
-  },
-];
+const caseKeys = ['defectDetection', 'cropMonitoring', 'infrastructureInspection', 'assemblyVerification', 'wasteSorting'] as const;
+const caseImages = {
+  defectDetection: '/images/use-cases/manufacturing/anomaly-detection.jpg',
+  cropMonitoring: '/images/use-cases/agriculture/crop-monitoring.jpg',
+  infrastructureInspection: '/images/use-cases/energy/infrastructure-inspection.jpg',
+  assemblyVerification: '/images/use-cases/manufacturing/assembly-verification.jpg',
+  wasteSorting: '/images/use-cases/waste-management/automated-segregation.jpg',
+};
+const caseHrefs = {
+  defectDetection: '/use-cases/defects-detection',
+  cropMonitoring: '/industry/agriculture',
+  infrastructureInspection: '/industry/energy',
+  assemblyVerification: '/industry/manufacturing',
+  wasteSorting: '/industry/waste-management',
+};
 
 export default function UseCases() {
+  const t = useTranslations('home.useCases');
+
+  const useCases = caseKeys.map((key, index) => ({
+    title: t(`cases.${key}.title`),
+    industry: t(`cases.${key}.industry`),
+    description: t(`cases.${key}.description`),
+    href: caseHrefs[key],
+    stat: t(`cases.${key}.stat`),
+    statLabel: t(`cases.${key}.statLabel`),
+    image: caseImages[key],
+    featured: index === 0,
+  }));
+
   const featured = useCases.find(uc => uc.featured);
   const others = useCases.filter(uc => !uc.featured);
 
   return (
     <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
-      {/* Ambient glow */}
       <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(51, 171, 104, 0.03) 0%, transparent 70%)' }} />
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
           <div>
             <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Use Cases
+              {t('sectionLabel')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              What people build with it
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Manufacturing, agriculture, energy, logistics. Different industries, same workflow.
+              {t('description')}
             </p>
           </div>
           <Link href="/use-cases" className="btn-secondary">
-            View all use cases
+            {t('viewAllUseCases')}
           </Link>
         </div>
 
         {/* Featured Use Case */}
         {featured && (
-          <Link href={featured.href} className="group block mb-8">
+          <Link href={featured.href as any} className="group block mb-8">
             <div className="card p-0 overflow-hidden">
               <div className="grid md:grid-cols-2">
-                {/* Visual Side */}
                 <div className="relative min-h-[300px] md:min-h-[400px]">
                   <Image
                     src={featured.image}
@@ -100,10 +79,9 @@ export default function UseCases() {
                     </div>
                   </div>
                 </div>
-                {/* Content Side */}
                 <div className="p-8 md:p-12 flex flex-col justify-center">
                   <span className="text-xs text-[var(--picsellia-green)] uppercase tracking-wider mb-3 font-medium">
-                    {featured.industry} — Featured
+                    {featured.industry} — {t('featured')}
                   </span>
                   <h3 className="text-2xl md:text-3xl font-semibold text-[var(--label)] mb-4 group-hover:text-[var(--picsellia-green)] transition-colors">
                     {featured.title}
@@ -112,7 +90,7 @@ export default function UseCases() {
                     {featured.description}
                   </p>
                   <div className="flex items-center text-sm text-[var(--secondary-label)] group-hover:text-[var(--picsellia-green)] transition-colors">
-                    Read case study
+                    {t('readCaseStudy')}
                     <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                     </svg>
@@ -123,16 +101,15 @@ export default function UseCases() {
           </Link>
         )}
 
-        {/* Other Use Cases - Bento Grid */}
+        {/* Other Use Cases */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {others.map((useCase, index) => (
             <Link
               key={useCase.title}
-              href={useCase.href}
+              href={useCase.href as any}
               className={`group ${index === 0 ? 'lg:col-span-2' : ''}`}
             >
               <div className="card p-0 h-full flex flex-col overflow-hidden">
-                {/* Image */}
                 <div className={`relative ${index === 0 ? 'h-48' : 'h-36'} overflow-hidden`}>
                   <Image
                     src={useCase.image}
@@ -145,20 +122,13 @@ export default function UseCases() {
                     {useCase.industry}
                   </span>
                 </div>
-
-                {/* Content */}
                 <div className="p-5 flex flex-col flex-1">
-                  {/* Title */}
                   <h3 className="text-lg font-medium text-[var(--label)] mb-2 group-hover:text-[var(--picsellia-green)] transition-colors">
                     {useCase.title}
                   </h3>
-
-                  {/* Description */}
                   <p className="text-sm text-[var(--secondary-label)] flex-1 mb-4 line-clamp-2">
                     {useCase.description}
                   </p>
-
-                  {/* Stat */}
                   <div className="flex items-end justify-between pt-4 border-t border-[var(--border)]">
                     <div>
                       <div className="text-2xl font-bold text-[var(--label)]">{useCase.stat}</div>

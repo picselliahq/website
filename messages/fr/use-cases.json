@@ -1,0 +1,505 @@
+{
+  "caseStudyTemplate": {
+    "breadcrumb": "Études de cas",
+    "ctaHero": "Obtenir des résultats similaires",
+    "companyLabel": "Entreprise",
+    "overviewLabel": "Présentation",
+    "challengeSection": "01 — Le défi",
+    "transformationSection": "02 — La transformation",
+    "transformationHeading": "Des défis aux solutions",
+    "beforePicsellia": "Avant Picsellia",
+    "afterPicsellia": "Après Picsellia",
+    "workflowSection": "03 — Le workflow",
+    "workflowHeading": "Comment {companyName} utilise Picsellia",
+    "solutionSection": "04 — La solution",
+    "solutionHeading": "Comment Picsellia a répondu",
+    "resultsSection": "05 — Les résultats",
+    "resultsHeading": "Impact business",
+    "featuresUsedLabel": "Fonctionnalités Picsellia utilisées",
+    "moreCaseStudies": "Plus d'études de cas",
+    "viewAll": "Tout voir →",
+    "ctaBottomHeading": "Prêt à obtenir des résultats similaires ?",
+    "ctaBottomDescription": "Découvrez comment Picsellia peut aider votre équipe à construire et déployer des modèles de vision par ordinateur plus rapidement.",
+    "ctaRequestDemo": "Demander une démo",
+    "ctaStartFreeTrial": "Démarrer l'essai gratuit"
+  },
+
+  "index": {
+    "badge": "Témoignages clients",
+    "headline": "Découvrez comment les équipes déploient <highlight>l'IA plus vite</highlight> avec Picsellia",
+    "description": "Des startups aux leaders de l'industrie, découvrez comment les entreprises de tous secteurs utilisent Picsellia pour accélérer le développement de la vision par ordinateur.",
+    "stats": [
+      { "value": "90%", "label": "Réduction moyenne du temps" },
+      { "value": "5+", "label": "Secteurs desservis" },
+      { "value": "2 500+", "label": "Modèles en production" }
+    ],
+    "readCaseStudy": "Lire l'étude de cas",
+    "caseStudies": [
+      {
+        "slug": "sgs",
+        "company": "SGS",
+        "industry": "Tests & Certification",
+        "headline": "Comment SGS a réduit le temps de développement de 66%",
+        "description": "SGS a réduit le développement de modèles de 3 jours à 1 jour en utilisant Picsellia pour l'automatisation de l'inspection industrielle.",
+        "stats": [
+          { "value": "66%", "label": "Temps gagné" },
+          { "value": "3→1", "label": "Jours par modèle" },
+          { "value": "100+", "label": "Apps IA" }
+        ]
+      },
+      {
+        "slug": "pellencst",
+        "company": "PellencST",
+        "industry": "Technologie de tri des déchets",
+        "headline": "Comment PellencST a réduit le temps de développement de modèle de 90%",
+        "description": "PellencST a réduit le développement de modèles de 6-9 mois à 1 mois en utilisant Picsellia pour les machines de tri des déchets.",
+        "stats": [
+          { "value": "90%", "label": "Plus rapide" },
+          { "value": "2 500+", "label": "Machines" },
+          { "value": "4x", "label": "Déploiement" }
+        ]
+      },
+      {
+        "slug": "altaroad",
+        "company": "Altaroad",
+        "industry": "Construction & Suivi des déchets",
+        "headline": "Comment Altaroad a économisé 50% du temps d'exploitation des modèles",
+        "description": "Altaroad a réduit le temps consacré par les data scientists à la maintenance des modèles de 50% à 10% grâce à Picsellia.",
+        "stats": [
+          { "value": "50%", "label": "Temps gagné" },
+          { "value": "150K+", "label": "Points de données" },
+          { "value": "4x", "label": "Plus rapide" }
+        ]
+      },
+      {
+        "slug": "ficha",
+        "company": "Ficha",
+        "industry": "Gestion des déchets",
+        "headline": "Comment Ficha a accéléré l'innovation dans le WasteTech",
+        "description": "Ficha a obtenu une annotation 3x plus rapide et 20% d'économie de temps hebdomadaire en utilisant Picsellia pour la classification des déchets.",
+        "stats": [
+          { "value": "3x", "label": "Annotation plus rapide" },
+          { "value": "20%", "label": "Temps gagné" },
+          { "value": "50%", "label": "Cycles plus courts" }
+        ]
+      },
+      {
+        "slug": "abelio",
+        "company": "Abelio",
+        "industry": "Agriculture",
+        "headline": "Comment Abelio a réduit le temps de développement de modèle pour l'agriculture de précision",
+        "description": "Abelio a obtenu des cycles de réentraînement de 48 heures et géré des téraoctets d'imagerie drone grâce à Picsellia.",
+        "stats": [
+          { "value": "48h", "label": "Réentraînement" },
+          { "value": "4x", "label": "Montée en charge" },
+          { "value": "To", "label": "Données" }
+        ]
+      }
+    ],
+    "ctaHeading": "Prêt à accélérer votre développement CV ?",
+    "ctaDescription": "Rejoignez les leaders du secteur qui ont réduit leur délai de mise en production jusqu'à 90% avec Picsellia.",
+    "ctaPrimary": "Demander une démo",
+    "ctaSecondary": "Démarrer l'essai gratuit"
+  },
+
+  "defectsDetection": {
+    "title": "Détection de défauts",
+    "description": "Automatisez le contrôle qualité avec l'inspection visuelle par IA. Détectez les micro-défauts avec 99,5% de précision et réduisez le temps d'inspection manuelle de 80%.",
+    "badge": "Cas d'usage"
+  },
+
+  "documentProcessing": {
+    "title": "Traitement de documents",
+    "description": "Transformez vos workflows documentaires avec l'IA. Extrayez les données automatiquement, classifiez les documents et réduisez le traitement manuel de 95%.",
+    "badge": "Cas d'usage"
+  },
+
+  "liveSportAnalysis": {
+    "title": "Analyse sportive en direct",
+    "description": "Suivi des joueurs en temps réel et analyses de match. Transformez les images brutes en insights actionnables avec une latence inférieure à 50ms.",
+    "badge": "Cas d'usage"
+  },
+
+  "remoteVisualInspection": {
+    "title": "Inspection visuelle à distance",
+    "description": "Passez à l'échelle l'inspection d'infrastructures avec l'IA. Analysez l'imagerie drone et satellite pour détecter les problèmes avant qu'ils ne s'aggravent.",
+    "badge": "Cas d'usage"
+  },
+
+  "sgs": {
+    "company": {
+      "name": "SGS",
+      "industry": "Tests, Inspection & Certification",
+      "description": "SGS est le leader mondial des tests, de l'inspection et de la certification. Avec plus de 99 000 employés répartis dans 2 600 bureaux et laboratoires, ils fournissent des services critiques dans l'agriculture, les mines, le pétrole, le gaz, la chimie et les biens de consommation. Leur équipe de vision par ordinateur développe des solutions d'IA pour automatiser les processus d'inspection visuelle à grande échelle."
+    },
+    "headline": "Comment SGS a réduit le temps de développement de modèle de 66%",
+    "subheadline": "D'outils fragmentés au MLOps unifié : SGS a transformé son workflow de vision par ordinateur et est passé de 3 jours à 1 jour par itération de modèle.",
+    "metrics": [
+      { "value": "66%", "label": "Développement plus rapide", "description": "Par itération de modèle" },
+      { "value": "3→1", "label": "Jours par modèle", "description": "Cycle de développement" },
+      { "value": "10+", "label": "Projets actifs", "description": "Exécutés simultanément" }
+    ],
+    "transformation": {
+      "before": [
+        "3 jours par itération de modèle",
+        "Outils déconnectés pour chaque étape",
+        "Pas de contrôle de version des jeux de données",
+        "Suivi manuel des expériences",
+        "Connaissances cloisonnées entre les membres de l'équipe",
+        "La reproductibilité était un cauchemar"
+      ],
+      "after": [
+        "1 jour par itération de modèle",
+        "Plateforme unique pour tout le workflow",
+        "Versionnage de type Git pour toutes les données",
+        "Journalisation automatique des expériences",
+        "Espaces de travail partagés et collaboration",
+        "Expériences 100% reproductibles"
+      ]
+    },
+    "challengeIntro": "L'équipe de vision par ordinateur de SGS construisait des modèles d'inspection pour plusieurs industries, mais leur workflow était fragmenté entre des outils déconnectés. Cela créait des goulots d'étranglement importants dans leur processus de développement.",
+    "challenges": [
+      { "title": "Chaîne d'outils fragmentée", "description": "L'équipe jonglait entre plusieurs outils déconnectés pour la gestion des données, l'annotation, l'entraînement et le déploiement. Le changement de contexte entre les outils gaspillait un temps d'ingénierie précieux." },
+      { "title": "Pas de contrôle de version des données", "description": "Sans versionnage approprié des jeux de données, il était impossible de tracer quelles données avaient été utilisées pour quel modèle. Reproduire des expériences ou revenir en arrière était un cauchemar manuel." },
+      { "title": "Goulots de collaboration", "description": "Avec 4 ingénieurs gérant plus de 10 projets simultanés, il n'y avait aucun moyen centralisé de partager les jeux de données, les modèles ou les résultats d'expériences. Les connaissances étaient cloisonnées." },
+      { "title": "Cycles d'itération lents", "description": "Chaque itération de modèle prenait environ 3 jours de la préparation des données à l'évaluation. Cette boucle de retour lente retardait significativement la livraison des projets." }
+    ],
+    "workflow": [
+      { "title": "Centraliser & Versionner les données", "description": "Toutes les images et annotations stockées en un seul endroit avec un historique complet des versions", "feature": "Gestion des jeux de données" },
+      { "title": "Annoter & Réviser", "description": "Annotation intégrée avec workflows d'assurance qualité et collaboration d'équipe", "feature": "Outil d'annotation" },
+      { "title": "Entraîner & Comparer", "description": "Exécutez des expériences avec journalisation automatique des métriques, paramètres et artefacts", "feature": "Suivi d'expériences" },
+      { "title": "Déployer & Surveiller", "description": "Déployez les modèles en production avec traçabilité complète et surveillance des performances", "feature": "Déploiement de modèle" }
+    ],
+    "solutionIntro": "Picsellia a fourni à SGS une plateforme unifiée qui a consolidé l'ensemble de leur workflow de vision par ordinateur sous un même toit.",
+    "solutions": [
+      { "title": "Gestion unifiée des données", "description": "Tous les jeux de données, annotations et métadonnées centralisés sur une seule plateforme avec contrôle de version complet. Chaque modification est tracée, rendant les expériences reproductibles.", "feature": "Datalake", "metricValue": "100%", "metricLabel": "Traçabilité des données" },
+      { "title": "Annotation simplifiée", "description": "Outils d'annotation intégrés avec workflows d'assurance qualité. L'équipe SGS peut annoter, réviser et valider les données sans quitter la plateforme.", "feature": "Outil d'annotation" },
+      { "title": "Suivi d'expériences", "description": "Journalisation automatique de tous les entraînements, hyperparamètres et métriques. Comparez les expériences côte à côte et ne perdez plus jamais la trace de ce qui a fonctionné.", "feature": "Suivi d'expériences", "metricValue": "0", "metricLabel": "Expériences perdues" },
+      { "title": "Collaboration d'équipe", "description": "Espaces de travail partagés où tous les membres de l'équipe peuvent accéder aux jeux de données, modèles et expériences. Les connaissances sont préservées et accessibles à tous.", "feature": "Gestion des jeux de données", "metricValue": "4→10+", "metricLabel": "Projets par équipe" }
+    ],
+    "quote": {
+      "text": "Picsellia a unifié l'ensemble de notre workflow. Ce qui nous prenait 3 jours n'en prend plus qu'un. Nous pouvons enfin nous concentrer sur la résolution des problèmes de vision par ordinateur au lieu de lutter avec notre chaîne d'outils.",
+      "author": "Tristan Cotte",
+      "role": "Ingénieur Vision par Ordinateur",
+      "company": "SGS"
+    },
+    "resultsIntro": "Le passage à Picsellia a transformé les opérations de vision par ordinateur de SGS, offrant des améliorations mesurables sur l'ensemble de leur workflow.",
+    "results": [
+      { "title": "Itérations 66% plus rapides", "description": "Les cycles de développement de modèle sont passés de 3 jours à 1 jour. Des itérations plus rapides signifient une création de valeur plus rapide pour les clients de SGS." },
+      { "title": "Gestion de projet évolutive", "description": "Une équipe de 4 personnes gère désormais efficacement plus de 10 projets simultanés. Une organisation claire et des workflows partagés éliminent la confusion." },
+      { "title": "Traçabilité complète", "description": "Chaque modèle peut être retracé jusqu'à ses données d'entraînement exactes, ses paramètres et ses métriques d'évaluation. Essentiel pour les normes de certification qualité de SGS." },
+      { "title": "Préservation des connaissances", "description": "Toutes les expériences, décisions et apprentissages sont capturés dans la plateforme. Les nouveaux membres de l'équipe peuvent s'intégrer rapidement et reprendre là où les autres se sont arrêtés." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Stockage centralisé pour tous les assets de vision par ordinateur" },
+      { "name": "Gestion des jeux de données", "description": "Contrôle de version et organisation des données d'entraînement" },
+      { "name": "Outil d'annotation", "description": "Annotation intégrée avec workflows d'assurance qualité" },
+      { "name": "Suivi d'expériences", "description": "Journalisation automatique de tous les entraînements" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Mise à l'échelle de la vision par ordinateur pour l'analyse sportive en direct", "company": "SkillCorner", "industry": "Analyse sportive" },
+      { "title": "Analyse vidéo en temps réel à grande échelle", "company": "Isarsoft", "industry": "Villes intelligentes" },
+      { "title": "Agriculture de précision avec la vision par IA", "company": "Pellenc", "industry": "Agriculture" }
+    ]
+  },
+
+  "pellencst": {
+    "company": {
+      "name": "PellencST",
+      "industry": "Technologie de tri des déchets",
+      "description": "PellencST est un fabricant pionnier de machines de tri des déchets exploitant plus de 2 500 machines dans plus de 40 pays. Ils collaborent avec de grands acteurs environnementaux comme Paprec, Veolia et Suez, et sont le leader du marché en France et un acteur international clé de la technologie du recyclage."
+    },
+    "headline": "Comment PellencST a réduit le temps de développement de modèle de 90%",
+    "subheadline": "De 6-9 mois à 1 mois : PellencST a acquis un avantage concurrentiel sur le marché des machines de tri avec Picsellia.",
+    "metrics": [
+      { "value": "90%", "label": "Réduction du temps", "description": "Développement de modèle" },
+      { "value": "4x", "label": "Déploiement plus rapide", "description": "Construction & déploiement CV" },
+      { "value": "2 500+", "label": "Machines", "description": "En opération dans le monde" }
+    ],
+    "transformation": {
+      "before": [
+        "6-9 mois pour le développement de modèle",
+        "1 mois pour l'annotation seule",
+        "1-2 mois pour l'acquisition de données",
+        "Dépendance au développement CV externe",
+        "Goulots d'étranglement sur les demandes de personnalisation"
+      ],
+      "after": [
+        "1 mois de temps total de développement",
+        "2 semaines pour l'annotation",
+        "3-4 jours pour l'acquisition de données",
+        "Capacités IA internes complètes",
+        "Réponse rapide aux besoins clients"
+      ]
+    },
+    "challengeIntro": "PellencST faisait face à une demande croissante de capacités de tri complexes que les capteurs traditionnels ne pouvaient pas gérer. Ils devaient internaliser le développement IA pour rester compétitifs.",
+    "challenges": [
+      { "title": "Demandes de tri complexes", "description": "Demande croissante de capacités complexes comme le tri de cartouches de silicone et l'amélioration de la séparation papier/carton que les capteurs classiques ne peuvent pas gérer." },
+      { "title": "Goulot de développement externe", "description": "Dépendance initiale au développement CV externe, créant des goulots d'étranglement quand les clients demandaient des personnalisations ou de nouvelles capacités." },
+      { "title": "Longs cycles de développement", "description": "Le développement de modèle prenait 6 à 9 mois du début à la fin, l'annotation seule nécessitant un mois complet." },
+      { "title": "Besoins de traitement temps réel", "description": "Les machines de tri exigent un traitement IA en temps réel. Il fallait internaliser les capacités tout en maintenant les performances." }
+    ],
+    "workflow": [
+      { "title": "Acquisition rapide de données", "description": "Capture et organisation des images de tri des déchets en jours au lieu de mois", "feature": "Datalake" },
+      { "title": "Annotation accélérée", "description": "La pré-annotation et les campagnes structurées réduisent le temps d'annotation de moitié", "feature": "Outil d'annotation" },
+      { "title": "Développement de modèle unifié", "description": "Tous les outils IA consolidés sur une seule plateforme pour une itération rapide", "feature": "Suivi d'expériences" },
+      { "title": "Déploiement continu", "description": "Déployez les modèles sur les machines de tri avec gestion du cycle de vie", "feature": "Déploiement de modèle" }
+    ],
+    "solutionIntro": "Picsellia a unifié le workflow MLOps de PellencST, leur permettant d'internaliser les capacités IA et de répondre rapidement aux demandes du marché.",
+    "solutions": [
+      { "title": "Plateforme MLOps unifiée", "description": "Tous les outils IA consolidés en un seul endroit. Répertoire centralisé pour les modèles, jeux de données et expériences.", "feature": "AI Laboratory", "metricValue": "1", "metricLabel": "Plateforme unifiée" },
+      { "title": "Capacités de pré-annotation", "description": "Préparation accélérée des données avec l'annotation assistée par IA. Temps d'annotation réduit de 1 mois à 2 semaines.", "feature": "Outil d'annotation", "metricValue": "50%", "metricLabel": "Annotation plus rapide" },
+      { "title": "Gestion du cycle de vie des modèles", "description": "Surveillance et gestion complètes des modèles sur plus de 2 500 machines dans le monde.", "feature": "Surveillance des modèles", "metricValue": "2 500+", "metricLabel": "Machines gérées" },
+      { "title": "Intégration open-source", "description": "Intégration transparente avec les outils existants comme Airflow et MLFlow pour des workflows personnalisés.", "feature": "Pipelines automatisés" }
+    ],
+    "quote": {
+      "text": "L'utilisation de Picsellia a changé notre façon de développer, surveiller et déployer nos modèles. Les applications CV complexes sont plus fiables et atteignent la production plus rapidement.",
+      "author": "Kévin Alazet",
+      "role": "Product Owner IA",
+      "company": "PellencST"
+    },
+    "resultsIntro": "PellencST a transformé sa position concurrentielle grâce à un développement et un déploiement IA considérablement plus rapides.",
+    "results": [
+      { "title": "Développement 90% plus rapide", "description": "Le temps de développement de modèle est passé de 6-9 mois à seulement 1 mois pour l'entraînement, les tests et la validation." },
+      { "title": "Contrats majeurs remportés", "description": "Le développement plus rapide de solutions personnalisées a permis à PellencST de remporter des contrats majeurs." },
+      { "title": "Leadership de marché renforcé", "description": "L'innovation technologique par l'IA les a positionnés en avance sur les concurrents." },
+      { "title": "Autonomie opérationnelle complète", "description": "Capacité interne complète pour le réentraînement et le déploiement de modèles sans dépendances externes." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Stockage centralisé des données" },
+      { "name": "Outil d'annotation", "description": "Capacités de pré-annotation" },
+      { "name": "Surveillance des modèles", "description": "Gestion du cycle de vie" },
+      { "name": "Suivi d'expériences", "description": "Développement unifié" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Comment Ficha a accéléré l'innovation dans le WasteTech", "company": "Ficha", "industry": "Gestion des déchets" },
+      { "title": "Comment Altaroad a économisé 50% du temps en production", "company": "Altaroad", "industry": "Construction" },
+      { "title": "Comment SGS a réduit le temps de développement de 66%", "company": "SGS", "industry": "Tests & Certification" }
+    ]
+  },
+
+  "altaroad": {
+    "company": {
+      "name": "Altaroad",
+      "industry": "Construction & Suivi des déchets",
+      "description": "Altaroad est un leader du suivi des déchets et des matériaux, fournissant des solutions de traçabilité automatisées pour les chantiers de construction et les sites industriels. Ils utilisent la vision par ordinateur pour suivre les flux de matériaux et de déchets via les poids lourds, garantissant la conformité et optimisant la logistique."
+    },
+    "headline": "Comment Altaroad a économisé 50% du temps d'exploitation des modèles en production",
+    "subheadline": "Du fardeau de la maintenance à l'innovation : Altaroad a réduit le temps consacré par les data scientists à la maintenance des modèles de 50% à seulement 10%.",
+    "metrics": [
+      { "value": "50%", "label": "Temps gagné", "description": "Exploitation des modèles" },
+      { "value": "4x", "label": "Déploiement plus rapide", "description": "Construction & déploiement" },
+      { "value": "150K+", "label": "Points de données", "description": "Gérés sur la plateforme" }
+    ],
+    "transformation": {
+      "before": [
+        "50% du temps des data scientists en maintenance",
+        "Gestion complexe des modèles entre les sites",
+        "Adaptation lente aux nouvelles opérations CV",
+        "Intégration difficile des nouveaux membres",
+        "Capacité d'expansion produit limitée"
+      ],
+      "after": [
+        "Seulement 10% du temps en maintenance",
+        "Surveillance efficace et structurée",
+        "Cycles de développement de modèle rapides",
+        "Intégration rapide des nouveaux membres",
+        "Offres produits diversifiées"
+      ]
+    },
+    "challengeIntro": "Altaroad devait développer et déployer plusieurs modèles de vision par ordinateur tout en gérant les améliorations continues sous contraintes de temps pour des contrats majeurs.",
+    "challenges": [
+      { "title": "Types de modèles multiples", "description": "Besoin de développer et déployer simultanément des modèles de classification, de détection d'objets et de segmentation pour différents cas d'usage." },
+      { "title": "Échéances de contrats majeurs", "description": "Les contraintes de temps pour une opportunité de contrat majeur exigeaient un développement de modèle considérablement accéléré." },
+      { "title": "Fardeau de la maintenance", "description": "Les data scientists passaient 50% de leur temps à maintenir les modèles existants au lieu de développer de nouvelles capacités." },
+      { "title": "Adaptation logicielle", "description": "La complexité d'adaptation de l'infrastructure logicielle existante aux opérations CV créait des frictions." }
+    ],
+    "workflow": [
+      { "title": "Collecter les données de site", "description": "Agrégez les images des chantiers de construction et des sites industriels dans des jeux de données organisés", "feature": "Datalake" },
+      { "title": "Entraîner plusieurs modèles", "description": "Développez des modèles de classification, détection et segmentation en parallèle", "feature": "Suivi d'expériences" },
+      { "title": "Déploiement automatisé", "description": "Déployez les modèles en production avec des pipelines automatisés", "feature": "Pipelines automatisés" },
+      { "title": "Surveillance continue", "description": "Suivez les performances sur tous les sites avec des alertes proactives", "feature": "Surveillance des modèles" }
+    ],
+    "solutionIntro": "Picsellia a fourni à Altaroad une plateforme de bout en bout qui a rationalisé l'ensemble de leurs opérations CV du développement à la production.",
+    "solutions": [
+      { "title": "Plateforme de bout en bout", "description": "Plateforme complète de vision par ordinateur pour des opérations rationalisées. De la collecte de données à la surveillance en production en un seul endroit.", "feature": "AI Laboratory", "metricValue": "4x", "metricLabel": "Déploiement plus rapide" },
+      { "title": "Gestion efficace des modèles", "description": "Des capacités de déploiement et de gestion qui ont réduit le temps de maintenance de 50% à 10% de l'effort des data scientists.", "feature": "Surveillance des modèles", "metricValue": "40%", "metricLabel": "Temps récupéré" },
+      { "title": "Automatisation du workflow MLOps", "description": "Pipelines automatisés pour l'entraînement et le déploiement continus. Les modèles s'améliorent automatiquement à mesure que de nouvelles données arrivent.", "feature": "Pipelines automatisés" },
+      { "title": "Espace de travail collaboratif", "description": "Environnement unifié où les équipes métier et techniques peuvent travailler ensemble efficacement.", "feature": "Gestion des jeux de données", "metricValue": "150K+", "metricLabel": "Points de données gérés" }
+    ],
+    "quote": {
+      "text": "Picsellia nous permet de surveiller tous nos modèles en production de manière efficace et structurée, tout en améliorant constamment leurs performances pour livrer les modèles les plus fiables et efficaces à nos clients.",
+      "author": "Younes",
+      "role": "Expert CV",
+      "company": "Altaroad"
+    },
+    "resultsIntro": "Altaroad a transformé ses opérations et s'est imposé sur le marché grâce à une gestion efficace des modèles CV.",
+    "results": [
+      { "title": "50% de temps gagné", "description": "Le temps des data scientists consacré à la maintenance est passé de 50% à 10%, libérant des ressources pour l'innovation." },
+      { "title": "Contrats majeurs remportés", "description": "Des cycles de développement accélérés ont permis à Altaroad de respecter les échéances critiques des contrats." },
+      { "title": "Intégration rapide de l'équipe", "description": "Les nouveaux membres de l'équipe sont rapidement opérationnels grâce à la plateforme unifiée." },
+      { "title": "Diversification des revenus", "description": "Des offres produits accrues grâce à des capacités de développement de modèle plus rapides." }
+    ],
+    "featuresUsed": [
+      { "name": "Surveillance des modèles", "description": "Suivi en production" },
+      { "name": "Suivi d'expériences", "description": "Développement multi-modèles" },
+      { "name": "Pipelines automatisés", "description": "Déploiement continu" },
+      { "name": "Datalake", "description": "Stockage des données de site" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Comment Ficha a accéléré l'innovation dans le WasteTech", "company": "Ficha", "industry": "Gestion des déchets" },
+      { "title": "Comment PellencST a réduit le temps de développement de modèle de 90%", "company": "PellencST", "industry": "Gestion des déchets" },
+      { "title": "Comment SGS a réduit le temps de développement de 66%", "company": "SGS", "industry": "Tests & Certification" }
+    ]
+  },
+
+  "ficha": {
+    "company": {
+      "name": "Ficha",
+      "industry": "Gestion des déchets",
+      "description": "Ficha est une entreprise de gestion des déchets alimentée par l'IA qui utilise la vision par ordinateur dans les camions poubelles et les bacs de collecte pour fournir aux villes et aux associations de logement des données et des insights sur la qualité du recyclage. Leur technologie aide les municipalités à améliorer les taux de recyclage et à réduire la contamination."
+    },
+    "headline": "Comment Ficha a accéléré l'itération et l'innovation dans le WasteTech",
+    "subheadline": "De scripts fragmentés au MLOps structuré : Ficha a transformé son workflow pour itérer 3x plus vite sur les modèles de classification des déchets.",
+    "metrics": [
+      { "value": "3x", "label": "Annotation plus rapide", "description": "Amélioration de la vitesse" },
+      { "value": "20%", "label": "Temps gagné par semaine", "description": "Sur le suivi et la gestion" },
+      { "value": "50%", "label": "Cycles plus courts", "description": "Temps d'itération réduit" }
+    ],
+    "transformation": {
+      "before": [
+        "Workflows basés sur des scripts avec transferts de données manuels",
+        "Chaîne d'outils fragmentée ralentissant l'équipe",
+        "Organisation et suivi des annotations difficiles",
+        "Modèles s'améliorant lentement malgré la croissance des données",
+        "Pas de processus structuré pour exploiter les données disponibles"
+      ],
+      "after": [
+        "Visualisation et interrogation centralisées des données",
+        "Campagnes d'annotation structurées",
+        "Suivi d'expériences intégré avec traçabilité",
+        "Visibilité de bout en bout des prédictions aux sources",
+        "Processus standardisés garantissant la fiabilité des données"
+      ]
+    },
+    "challengeIntro": "Ficha connaissait une croissance rapide, mais leur chaîne d'outils fragmentée ne suivait pas. Malgré l'accès à davantage de données, leurs modèles s'amélioraient lentement.",
+    "challenges": [
+      { "title": "Chaîne d'outils fragmentée", "description": "Les workflows basés sur des scripts et les transferts de données manuels créaient des goulots d'étranglement importants, empêchant l'équipe d'avancer vite malgré la croissance rapide de l'entreprise." },
+      { "title": "Chaos d'annotation", "description": "L'organisation et le suivi des annotations étaient difficiles, rendant compliqué le maintien de la qualité et de la cohérence sur un jeu de données en croissance." },
+      { "title": "Amélioration lente des modèles", "description": "Les améliorations de performance des modèles étaient en retard malgré la disponibilité croissante des données. Sans processus structurés, le potentiel des données restait inexploité." },
+      { "title": "Pas de traçabilité", "description": "Relier les prédictions aux images sources et aux annotations était quasi impossible, rendant le débogage et l'amélioration difficiles." }
+    ],
+    "workflow": [
+      { "title": "Ingérer les images de déchets", "description": "Centralisez les images des camions poubelles et des bacs dans un datalake consultable", "feature": "Datalake" },
+      { "title": "Lancer des campagnes d'annotation", "description": "Campagnes structurées avec suivi de progression et contrôle qualité", "feature": "Campagnes d'annotation" },
+      { "title": "Entraîner & Suivre les expériences", "description": "Exécutez des expériences avec traçabilité complète des données aux métriques", "feature": "Suivi d'expériences" },
+      { "title": "Surveiller en production", "description": "Suivez les performances du modèle sur les flux de déchets en direct", "feature": "Surveillance des modèles" }
+    ],
+    "solutionIntro": "Picsellia a donné à Ficha la structure nécessaire pour itérer plus vite et continuer à innover dans la classification des déchets.",
+    "solutions": [
+      { "title": "Gestion centralisée des données", "description": "Toutes les images de déchets centralisées avec des capacités puissantes de visualisation et d'interrogation. Plus de fichiers dispersés ni de transferts manuels.", "feature": "Datalake", "metricValue": "100%", "metricLabel": "Données centralisées" },
+      { "title": "Workflows d'annotation structurés", "description": "Campagnes d'annotation avec un suivi clair de la progression, contrôle qualité et coordination d'équipe. Amélioration de 3x de la vitesse d'annotation.", "feature": "Campagnes d'annotation", "metricValue": "3x", "metricLabel": "Annotation plus rapide" },
+      { "title": "Traçabilité complète des expériences", "description": "Chaque expérience est suivie avec un lignage complet. Reliez n'importe quelle prédiction à ses images sources et annotations.", "feature": "Suivi d'expériences" },
+      { "title": "Visibilité de bout en bout", "description": "Plateforme unifiée remplaçant les processus fragmentés. L'équipe peut se concentrer sur l'innovation plutôt que la maintenance.", "feature": "AI Laboratory", "metricValue": "20%", "metricLabel": "Temps gagné par semaine" }
+    ],
+    "quote": {
+      "text": "Nous avions soudain accès à beaucoup de données, mais nos modèles s'amélioraient assez lentement. Sans un processus solide, nous ne pouvions pas en tirer pleinement parti. Picsellia nous a donné la structure nécessaire pour itérer plus vite et continuer à innover.",
+      "author": "Équipe Ficha",
+      "role": "Data Science",
+      "company": "Ficha"
+    },
+    "resultsIntro": "Avec Picsellia, Ficha a transformé son pipeline de classification des déchets et accéléré son cycle d'innovation.",
+    "results": [
+      { "title": "Annotation 3x plus rapide", "description": "Des campagnes structurées et de meilleurs outils ont considérablement amélioré le débit d'annotation." },
+      { "title": "20% de temps gagné par semaine", "description": "Réduction de la charge administrative sur le suivi et la gestion, libérant du temps pour l'innovation." },
+      { "title": "Cycles d'itération plus courts", "description": "Boucles de retour plus rapides entre la collecte de données, l'annotation, l'entraînement et le déploiement." },
+      { "title": "Processus standardisés", "description": "Une IA fiable et de confiance construite sur des workflows structurés et des données contrôlées en qualité." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Stockage d'images centralisé" },
+      { "name": "Campagnes d'annotation", "description": "Workflows d'annotation structurés" },
+      { "name": "Suivi d'expériences", "description": "Traçabilité complète de l'entraînement" },
+      { "name": "Surveillance des modèles", "description": "Suivi des performances en production" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Comment PellencST a réduit le temps de développement de modèle de 90%", "company": "PellencST", "industry": "Gestion des déchets" },
+      { "title": "Comment Altaroad a économisé 50% du temps en production", "company": "Altaroad", "industry": "Construction" },
+      { "title": "Comment SGS a réduit le temps de développement de 66%", "company": "SGS", "industry": "Tests & Certification" }
+    ]
+  },
+
+  "abelio": {
+    "company": {
+      "name": "Abelio",
+      "industry": "Agriculture",
+      "description": "Abelio est un fournisseur de solutions agricoles numériques qui utilise la vision par ordinateur pour traiter l'imagerie aérienne provenant de drones et de satellites. Ils fournissent des insights qui aident les agriculteurs à optimiser les rendements, réduire les coûts et minimiser l'impact environnemental dans les opérations agricoles à grande échelle."
+    },
+    "headline": "Comment Abelio a réduit le temps de développement de modèle pour l'agriculture de précision",
+    "subheadline": "D'une infrastructure AWS fragmentée au MLOps unifié : Abelio livre désormais des insights aux agriculteurs dans les 48 heures suivant l'acquisition d'images.",
+    "metrics": [
+      { "value": "48h", "label": "Cycle de réentraînement", "description": "De l'image aux insights" },
+      { "value": "4x", "label": "Montée en charge saisonnière", "description": "Augmentation du traitement en pic" },
+      { "value": "To", "label": "Données gérées", "description": "Des dizaines de téraoctets" }
+    ],
+    "transformation": {
+      "before": [
+        "Infrastructure AWS fragmentée (S3, EC2, SageMaker)",
+        "Pas d'outils intégrés pour la visualisation d'images",
+        "Processus de réentraînement de modèle chronophages",
+        "Manque de traçabilité entre les environnements",
+        "Difficulté à reproduire les expériences"
+      ],
+      "after": [
+        "Plateforme de gestion de données centralisée",
+        "Workflows de réentraînement efficaces",
+        "Reproductibilité complète des expériences",
+        "Campagnes d'annotation rationalisées",
+        "Livraison en 48 heures aux agriculteurs"
+      ]
+    },
+    "challengeIntro": "Abelio devait traiter des volumes massifs d'imagerie aérienne pendant les pics de saison agricole tout en respectant des délais stricts de livraison en 48 heures.",
+    "challenges": [
+      { "title": "Volumes de données massifs", "description": "Pendant les pics de saison agricole, le traitement d'images augmentait de quatre fois. Gérer des téraoctets d'imagerie drone et satellite nécessitait une infrastructure robuste." },
+      { "title": "Délais de livraison serrés", "description": "Les agriculteurs avaient besoin d'insights dans les 48 heures suivant l'acquisition d'images. Le réentraînement chronophage des modèles menaçait ces échéances critiques." },
+      { "title": "Infrastructure fragmentée", "description": "Les services AWS (S3, EC2, SageMaker) manquaient d'outils intégrés pour la visualisation d'images et la gestion de jeux de données, créant des lacunes dans le workflow." },
+      { "title": "Pas de reproductibilité", "description": "Le manque de traçabilité entre les différents environnements rendait impossible la reproduction des expériences ou le suivi de ce qui fonctionnait." }
+    ],
+    "workflow": [
+      { "title": "Ingérer l'imagerie aérienne", "description": "Centralisez les images drone et satellite avec métadonnées dans un datalake consultable", "feature": "Datalake" },
+      { "title": "Lancer des campagnes d'annotation", "description": "Campagnes structurées avec suivi de progression et contrôle qualité pour l'analyse des cultures", "feature": "Campagnes d'annotation" },
+      { "title": "Réentraînement rapide de modèle", "description": "Cycles d'itération rapides avec jeux de données versionnés et paramètres suivis", "feature": "Suivi d'expériences" },
+      { "title": "Surveiller les performances du modèle", "description": "Suivez la précision pour différents types de cultures et conditions saisonnières", "feature": "Surveillance des modèles" }
+    ],
+    "solutionIntro": "Picsellia a fourni à Abelio une plateforme unifiée pour gérer l'ensemble de leur pipeline d'imagerie agricole à grande échelle.",
+    "solutions": [
+      { "title": "Gestion centralisée des données", "description": "Stockage et organisation simplifiés des images pour des téraoctets d'imagerie aérienne. Capacités puissantes d'interrogation et de visualisation.", "feature": "Datalake", "metricValue": "To", "metricLabel": "Images gérées" },
+      { "title": "Workflows de réentraînement efficaces", "description": "Processus rationalisés pour respecter les délais de livraison de 48 heures. De l'acquisition d'images aux insights agricoles en un temps record.", "feature": "Suivi d'expériences", "metricValue": "48h", "metricLabel": "Délai de livraison" },
+      { "title": "Contrôle qualité des annotations", "description": "Outils de campagne permettant le suivi de progression et le contrôle qualité. Efficacité et cohérence améliorées des annotations.", "feature": "Campagnes d'annotation" },
+      { "title": "Reproductibilité complète", "description": "Le versionnage des jeux de données et l'enregistrement des paramètres garantissent que chaque expérience peut être reproduite et comparée.", "feature": "Gestion des jeux de données", "metricValue": "100%", "metricLabel": "Reproductibilité" }
+    ],
+    "quote": {
+      "text": "Avec Picsellia, nous pouvons désormais livrer des insights aux agriculteurs dans les 48 heures suivant l'acquisition d'images. La plateforme gère nos pics de données saisonniers sans problème tout en maintenant une traçabilité complète.",
+      "author": "Équipe Abelio",
+      "role": "Data Science",
+      "company": "Abelio"
+    },
+    "resultsIntro": "Abelio a transformé son pipeline d'imagerie agricole pour livrer des insights plus rapides et plus fiables aux agriculteurs.",
+    "results": [
+      { "title": "Livraison en 48 heures", "description": "Réduction des cycles de réentraînement pour respecter les délais stricts de livraison aux agriculteurs, de l'acquisition d'images aux insights actionnables." },
+      { "title": "Précision améliorée des modèles", "description": "Une meilleure fiabilité des jeux de données a stabilisé les modèles, augmentant la précision et le rappel pour les tâches d'analyse des cultures." },
+      { "title": "Scalabilité saisonnière", "description": "Gestion efficace des augmentations de volume de données quadruplées pendant les pics de saison agricole." },
+      { "title": "Reproductibilité améliorée", "description": "Suivi complet des expériences grâce au versionnage des jeux de données et à l'enregistrement des paramètres." }
+    ],
+    "featuresUsed": [
+      { "name": "Datalake", "description": "Stockage d'images à grande échelle" },
+      { "name": "Campagnes d'annotation", "description": "Annotation avec contrôle qualité" },
+      { "name": "Suivi d'expériences", "description": "Entraînement reproductible" },
+      { "name": "Surveillance des modèles", "description": "Suivi des performances" }
+    ],
+    "relatedCaseStudies": [
+      { "title": "Comment Ficha a accéléré l'innovation dans le WasteTech", "company": "Ficha", "industry": "Gestion des déchets" },
+      { "title": "Comment SGS a réduit le temps de développement de 66%", "company": "SGS", "industry": "Tests & Certification" },
+      { "title": "Comment PellencST a réduit le temps de développement de modèle de 90%", "company": "PellencST", "industry": "Gestion des déchets" }
+    ]
+  }
+}

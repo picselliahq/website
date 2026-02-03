@@ -1,0 +1,150 @@
+{
+  "hero": {
+    "badge": "Certifié ISO 27001",
+    "headline": "Tout ce qu'il vous faut pour déployer la",
+    "headlineHighlight": "Vision IA",
+    "subheadline": "La plateforme MLOps pour la vision par ordinateur. Gérez vos données, entraînez vos modèles, déployez-les et assurez leur suivi.",
+    "startFreeTrial": "Essai gratuit",
+    "requestDemo": "Demander une démo",
+    "heroImageAlt": "Plateforme Picsellia - MLOps complet pour la vision par ordinateur",
+    "stats": {
+      "imagesIndexed": { "value": "50M+", "label": "Images indexées" },
+      "onPrem": { "value": "On-prem", "label": "Déploiement possible" },
+      "modelsTrained": { "value": "5k+", "label": "Modèles entraînés" },
+      "predictions": { "value": "1Md+", "label": "Prédictions supervisées" }
+    },
+    "usedByTeams": "Utilisé par les équipes de"
+  },
+  "platformLifecycle": {
+    "sectionLabel": "Plateforme",
+    "title": "Une plateforme. Zéro friction.",
+    "description": "Une seule plateforme au lieu de cinq outils bricolés ensemble. Conçue pour la vision par ordinateur dès le premier jour.",
+    "explorePlatform": "Explorer la plateforme",
+    "withPicsellia": "Avec Picsellia :",
+    "stages": {
+      "data": {
+        "category": "Données",
+        "tagline": "Collecter & organiser",
+        "headline": "Ne vous noyez plus dans des données désorganisées",
+        "problem": "Vos images sont dispersées entre des buckets cloud, des disques durs et des systèmes legacy. Trouver les bonnes données pour l'entraînement prend des jours, pas des minutes.",
+        "solution": "Une source unique de vérité pour toutes vos données visuelles. Connectez n'importe quel stockage, organisez automatiquement avec l'IA, et trouvez exactement ce dont vous avez besoin en quelques secondes.",
+        "features": ["Datalake", "Gestion de datasets"],
+        "statsValue": "10Md+",
+        "statsLabel": "Images gérées"
+      },
+      "annotate": {
+        "category": "Annoter",
+        "tagline": "Étiqueter & vérifier",
+        "headline": "L'annotation ne devrait pas être votre goulot d'étranglement",
+        "problem": "L'annotation manuelle est lente, coûteuse et sujette aux erreurs. Votre équipe ML perd du temps à étiqueter au lieu de construire des modèles.",
+        "solution": "L'annotation assistée par IA divise le temps d'annotation par 10. Le contrôle qualité intégré garantit des données d'entraînement cohérentes et de haute qualité.",
+        "features": ["Outil d'annotation", "Campagnes d'annotation"],
+        "statsValue": "10x",
+        "statsLabel": "Annotation plus rapide"
+      },
+      "train": {
+        "category": "Entraîner",
+        "tagline": "Construire & expérimenter",
+        "headline": "Les expériences ne devraient pas disparaître",
+        "problem": "Vous avez lancé des centaines d'expériences mais ne pouvez pas reproduire vos meilleurs résultats. Les versions de modèles sont dispersées dans des notebooks.",
+        "solution": "Chaque expérience suivie, chaque modèle versionné, chaque résultat reproductible. Comparez les runs côte à côte.",
+        "features": ["Laboratoire IA", "Suivi d'expériences", "Pipelines automatisés"],
+        "statsValue": "100%",
+        "statsLabel": "Reproductibilité"
+      },
+      "deploy": {
+        "category": "Déployer",
+        "tagline": "Livrer & superviser",
+        "headline": "La production ne devrait pas être une boîte noire",
+        "problem": "Votre modèle fonctionne en laboratoire mais échoue en production. Vous ne le découvrez que lorsque les clients se plaignent.",
+        "solution": "Déployez en toute confiance. Le monitoring en temps réel détecte la dérive avant qu'elle n'impacte les utilisateurs.",
+        "features": ["Déploiement de modèles", "Monitoring de modèles"],
+        "statsValue": "99,9%",
+        "statsLabel": "SLA de disponibilité"
+      }
+    }
+  },
+  "useCases": {
+    "sectionLabel": "Cas d'usage",
+    "title": "Ce que les équipes construisent avec",
+    "description": "Industrie, agriculture, énergie, logistique. Des secteurs différents, un même workflow.",
+    "viewAllUseCases": "Voir tous les cas d'usage",
+    "featured": "En vedette",
+    "readCaseStudy": "Lire l'étude de cas",
+    "cases": {
+      "defectDetection": {
+        "title": "Détection de défauts",
+        "industry": "Industrie",
+        "description": "Repérez les défauts de surface et les erreurs d'assemblage sur la chaîne de production. Les caméras vérifient chaque pièce, à chaque fois.",
+        "stat": "99,5%",
+        "statLabel": "Précision de détection"
+      },
+      "cropMonitoring": {
+        "title": "Suivi des cultures",
+        "industry": "Agriculture",
+        "description": "Survolez vos champs avec un drone, alimentez un modèle avec les images, et identifiez les parcelles nécessitant une attention avant que ce ne soit visible à l'œil nu.",
+        "stat": "30%",
+        "statLabel": "Augmentation du rendement"
+      },
+      "infrastructureInspection": {
+        "title": "Inspection d'infrastructures",
+        "industry": "Énergie",
+        "description": "Inspectez les pipelines, les lignes électriques et les panneaux solaires à partir d'images de drones plutôt que d'envoyer des équipes sur le terrain.",
+        "stat": "80%",
+        "statLabel": "Réduction des coûts"
+      },
+      "assemblyVerification": {
+        "title": "Vérification d'assemblage",
+        "industry": "Industrie",
+        "description": "Vérifiez que chaque composant est au bon endroit, en temps réel, sur la chaîne.",
+        "stat": "60fps",
+        "statLabel": "Suivi en temps réel"
+      },
+      "wasteSorting": {
+        "title": "Tri des déchets",
+        "industry": "Développement durable",
+        "description": "Distinguez le plastique du carton sur un tapis roulant. Les centres de tri utilisent cette technologie pour automatiser ce qui était autrefois manuel.",
+        "stat": "95%",
+        "statLabel": "Précision du tri"
+      }
+    }
+  },
+  "integrations": {
+    "sectionLabel": "Intégrations",
+    "title": "Compatible avec votre stack",
+    "description": "Connectez-vous aux outils que vous utilisez déjà. Rien de propriétaire, pas de verrouillage.",
+    "integrationsCount": "50+",
+    "integrationsLabel": "Intégrations",
+    "apiLabel": "API",
+    "apiDescription": "Approche API-first",
+    "categories": {
+      "cloudProviders": { "name": "Fournisseurs cloud", "description": "Déployez partout" },
+      "mlFrameworks": { "name": "Frameworks ML", "description": "Entraînez avec n'importe quel framework" },
+      "infrastructure": { "name": "Infrastructure", "description": "Exécutez partout" },
+      "ecosystem": { "name": "Écosystème", "description": "Étendez votre workflow" }
+    },
+    "pythonSdk": "SDK Python",
+    "pipInstall": "pip install picsellia",
+    "sdkFeatures": {
+      "typeSafe": "Typage fort avec support IDE complet",
+      "asyncSupport": "Support asynchrone pour un haut débit",
+      "jupyter": "Compatible avec les notebooks Jupyter"
+    }
+  },
+  "ctaSection": {
+    "badge": "SYSTEM_READY",
+    "title": "Commencez à détecter en quelques minutes",
+    "description": "Passez d'images brutes à un modèle en production. Essai gratuit, sans carte bancaire, résiliable à tout moment.",
+    "startFreeTrial": "Essai gratuit",
+    "scheduleDemo": "Planifier une démo",
+    "noCreditCard": "Sans carte bancaire",
+    "freeTrial": "Essai gratuit de 14 jours",
+    "isoCertified": "Certifié ISO 27001:2022",
+    "stats": {
+      "imagesProcessed": { "value": "50M+", "label": "Images traitées" },
+      "inferenceLatency": { "value": "<100ms", "label": "Latence d'inférence" },
+      "uptimeSla": { "value": "99,9%", "label": "SLA de disponibilité" },
+      "support": { "value": "24/7", "label": "Support" }
+    }
+  }
+}

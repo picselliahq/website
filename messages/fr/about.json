@@ -1,0 +1,152 @@
+{
+  "hero": {
+    "badge": "Notre histoire",
+    "title": "Construire le futur de la",
+    "titleHighlight": " vision par ordinateur",
+    "description": "Nous sommes une équipe d'ingénieurs IA en mission pour rendre la vision par ordinateur accessible à toutes les équipes. Née de la frustration face aux outils fragmentés, Picsellia est la plateforme que nous aurions voulu avoir.",
+    "metrics": {
+      "modelsTrained": {
+        "value": "500+",
+        "label": "Modèles IA entraînés"
+      },
+      "imagesAnnotated": {
+        "value": "3M+",
+        "label": "Images annotées"
+      },
+      "globalUsers": {
+        "value": "1K+",
+        "label": "Utilisateurs dans le monde"
+      },
+      "founded": {
+        "value": "2019",
+        "label": "Fondée en"
+      }
+    }
+  },
+  "mission": {
+    "sectionLabel": "Notre mission",
+    "title": "De l'expérimentation à la production, sans le chaos",
+    "paragraphs": [
+      "En 2019, en tant qu'ingénieurs IA développant des systèmes de vision par ordinateur, nous avons fait face à une frustration commune : les outils dont nous avions besoin n'existaient pas. La gestion des données était dispersée dans des dossiers. Les expériences étaient suivies dans des tableurs. Le déploiement était un cauchemar de scripts personnalisés.",
+      "Nous avons construit Picsellia pour résoudre ces problèmes, non pas en tant que consultants ou vétérans du logiciel entreprise, mais en tant que praticiens qui vivaient cette douleur au quotidien. Notre plateforme est façonnée par l'expérience réelle du déploiement de modèles CV à grande échelle.",
+      "Aujourd'hui, Picsellia aide des équipes dans le monde entier à transformer des workflows fragmentés en pipelines rationalisés. De la labélisation au monitoring, chaque fonctionnalité existe parce que nous en avions besoin nous-mêmes."
+    ],
+    "quote": "Picsellia est le type d'outil que nous aurions aimé avoir lors de nos premiers travaux de développement. Nous l'avons construit pour combler les lacunes opérationnelles sur l'ensemble du cycle de vie de la vision par ordinateur.",
+    "quoteAuthor": "Thibaut Lucas",
+    "quoteRole": "CEO et co-fondateur"
+  },
+  "values": {
+    "sectionLabel": "Ce qui nous anime",
+    "title": "Nos valeurs",
+    "description": "Ces principes guident tout ce que nous construisons et notre façon de travailler avec nos clients.",
+    "engineerFirst": {
+      "title": "Ingénieur d'abord",
+      "description": "Construit par des ingénieurs ML qui comprennent les défis quotidiens de l'IA en production. Chaque fonctionnalité résout un vrai problème que nous avons rencontré nous-mêmes."
+    },
+    "transparency": {
+      "title": "Transparence",
+      "description": "Visibilité complète sur votre pipeline ML. Expériences reproductibles, lignée de données complète et aucune boîte noire. Vous êtes propriétaire de vos données."
+    },
+    "flexibility": {
+      "title": "Flexibilité",
+      "description": "Déployez n'importe où : cloud, hybride ou on-premise. Utilisez vos outils existants. Picsellia s'adapte à votre infrastructure, pas l'inverse."
+    },
+    "simplicity": {
+      "title": "Simplicité",
+      "description": "Des fonctionnalités puissantes sans complexité. Notre plateforme réduit la charge cognitive pour que les équipes puissent se concentrer sur la construction d'une IA performante, pas sur la gestion des outils."
+    }
+  },
+  "timeline": {
+    "sectionLabel": "Notre parcours",
+    "title": "Étapes clés",
+    "items": [
+      {
+        "year": "2019",
+        "title": "Fondation",
+        "description": "Picsellia fondée à Toulouse, France par deux ingénieurs IA"
+      },
+      {
+        "year": "2021",
+        "title": "Premier financement",
+        "description": "Financement seed d'Acequia Capital et des premiers investisseurs"
+      },
+      {
+        "year": "2022",
+        "title": "Series Seed",
+        "description": "1,94 M$ levés menés par Axeleo Capital pour accélérer la croissance"
+      },
+      {
+        "year": "2023",
+        "title": "ISO 27001",
+        "description": "Obtention de la certification ISO/IEC 27001:2022"
+      },
+      {
+        "year": "2024",
+        "title": "1K+ utilisateurs",
+        "description": "Franchissement des 1 000 utilisateurs mondiaux et 500+ modèles entraînés"
+      },
+      {
+        "year": "2025",
+        "title": "Lancement d'Atlas",
+        "description": "Lancement d'Atlas, notre agent IA open-source pour VisionAI"
+      }
+    ]
+  },
+  "leadership": {
+    "sectionLabel": "Direction",
+    "title": "Rencontrez les fondateurs",
+    "members": {
+      "thibautLucas": {
+        "name": "Thibaut Lucas",
+        "role": "CEO et co-fondateur",
+        "bio": "Ancien ingénieur IA ayant vécu de première main les défis du déploiement de la vision par ordinateur en production. A fondé Picsellia pour construire les outils qu'il aurait souhaité avoir."
+      },
+      "pierreNicolasTiffreau": {
+        "name": "Pierre-Nicolas Tiffreau",
+        "role": "CTO et co-fondateur",
+        "bio": "Expertise approfondie en infrastructure ML et systèmes scalables. Dirige la vision technique et l'architecture de la plateforme Picsellia."
+      }
+    }
+  },
+  "team": {
+    "sectionLabel": "L'équipe",
+    "title": "Construite par une petite équipe concentrée",
+    "description": "Basée à Toulouse, France, avec des membres d'équipe et des clients dans le monde entier.",
+    "joinTeam": "Rejoindre notre équipe",
+    "members": {
+      "hichamBakri": { "name": "Hicham Bakri", "role": "Développeur full-stack" },
+      "clementBrunie": { "name": "Clément Brunie", "role": "Ingénieur front-end" },
+      "thomasDarget": { "name": "Thomas Darget", "role": "Ingénieur back-end" },
+      "lucienHaurat": { "name": "Lucien Haurat", "role": "Ingénieur DevOps" },
+      "guillaumeHerlaut": { "name": "Guillaume Herlaut", "role": "Chargé de compte" },
+      "victorPery": { "name": "Victor Pery", "role": "Chargé de compte" },
+      "valentinPhilipp": { "name": "Valentin Philipp", "role": "Ingénieur avant-vente" },
+      "soniaGarrouch": { "name": "Sonia Garrouch", "role": "Data scientist" }
+    }
+  },
+  "investors": {
+    "sectionLabel": "Soutenus par",
+    "title": "Nos investisseurs",
+    "description": "Nous avons levé 3,45 M$ auprès d'investisseurs européens de premier plan qui partagent notre vision pour le futur du MLOps.",
+    "items": {
+      "axeleo": { "name": "Axeleo Capital", "type": "Investisseur principal" },
+      "acequia": { "name": "Acequia Capital", "type": "Investisseur seed" },
+      "nubbo": { "name": "Nubbo", "type": "Partenaire stratégique" },
+      "ovhcloud": { "name": "OVHcloud", "type": "Programme startup" }
+    }
+  },
+  "location": {
+    "sectionLabel": "Où nous sommes",
+    "title": "Siège à Toulouse",
+    "description": "Connue comme la capitale européenne de l'aérospatiale, Toulouse abrite un écosystème tech florissant et certains des talents d'ingénierie les plus innovants au monde. Notre équipe travaille d'ici, au service de clients en Europe, en Amérique du Nord et au-delà.",
+    "address": "Toulouse, France",
+    "worldwide": "Au service de clients dans le monde entier",
+    "compliance": "Centres de données UE, conforme au RGPD"
+  },
+  "cta": {
+    "title": "Prêt à construire avec nous ?",
+    "description": "Découvrez comment Picsellia peut transformer votre workflow de vision par ordinateur. Commencez avec un essai gratuit ou parlez à notre équipe.",
+    "startTrial": "Démarrer l'essai gratuit",
+    "bookDemo": "Réserver une démo"
+  }
+}

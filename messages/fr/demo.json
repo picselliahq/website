@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "badge": "Réserver une démo",
+    "title": "Découvrez Picsellia en action",
+    "description": "Obtenez une présentation personnalisée de notre plateforme MLOps. Notre équipe vous montrera comment Picsellia peut accélérer vos projets de vision par ordinateur."
+  },
+  "benefits": {
+    "personalizedDemo": {
+      "title": "Démo personnalisée",
+      "description": "Découvrez Picsellia en action avec des exemples pertinents pour votre secteur"
+    },
+    "technicalDeepDive": {
+      "title": "Approfondissement technique",
+      "description": "Obtenez des réponses à vos questions techniques spécifiques de la part de nos ingénieurs"
+    },
+    "customPricing": {
+      "title": "Tarification personnalisée",
+      "description": "Recevez un devis adapté à vos besoins spécifiques"
+    }
+  },
+  "trustedBy": "Utilisé par les équipes de",
+  "form": {
+    "title": "Demander une démo",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Jean",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Dupont",
+    "workEmail": "Email professionnel",
+    "workEmailPlaceholder": "jean.dupont@entreprise.com",
+    "company": "Entreprise",
+    "companyPlaceholder": "Acme SAS",
+    "jobTitle": "Poste",
+    "jobTitlePlaceholder": "Ingénieur ML",
+    "phone": "Numéro de téléphone",
+    "phonePlaceholder": "+33 6 12 34 56 78",
+    "industry": "Secteur d'activité",
+    "industryPlaceholder": "Sélectionnez un secteur",
+    "companySize": "Taille de l'entreprise",
+    "companySizePlaceholder": "Sélectionnez une taille",
+    "useCase": "Cas d'usage principal",
+    "useCasePlaceholder": "Sélectionnez un cas d'usage",
+    "message": "Autre chose que vous aimeriez nous dire ?",
+    "messagePlaceholder": "Parlez-nous de votre projet, calendrier ou exigences spécifiques...",
+    "submit": "Demander une démo",
+    "submitting": "Envoi en cours...",
+    "privacyNote": "En soumettant ce formulaire, vous acceptez notre",
+    "privacyLink": "Politique de confidentialité",
+    "privacyNoteEnd": ". Nous ne partagerons jamais vos informations avec des tiers."
+  },
+  "industries": {
+    "manufacturing": "Industrie manufacturière",
+    "energy": "Énergie et services publics",
+    "agriculture": "Agriculture",
+    "healthcare": "Santé et sciences de la vie",
+    "retail": "Commerce et e-commerce",
+    "transportation": "Transport et logistique",
+    "financial": "Services financiers",
+    "media": "Médias et divertissement",
+    "other": "Autre"
+  },
+  "companySizes": {
+    "xs": "1-10 employés",
+    "sm": "11-50 employés",
+    "md": "51-200 employés",
+    "lg": "201-1000 employés",
+    "xl": "1000+ employés"
+  },
+  "useCases": {
+    "defectDetection": "Détection de défauts et contrôle qualité",
+    "documentProcessing": "Traitement de documents et OCR",
+    "objectDetection": "Détection et suivi d'objets",
+    "imageClassification": "Classification d'images",
+    "semanticSegmentation": "Segmentation sémantique",
+    "videoAnalytics": "Analyse vidéo",
+    "other": "Autre"
+  },
+  "challenge": {
+    "label": "Vérification rapide d'annotation",
+    "questions": {
+      "1": "Quelle étiquette correspond à cette boîte englobante ?",
+      "2": "Sélectionnez l'étiquette d'annotation correcte",
+      "3": "Quelle étiquette assigneriez-vous ?",
+      "4": "Identifiez la classe de l'objet"
+    },
+    "errorMessage": "Réponse incorrecte. Veuillez réessayer."
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "description": "Tout ce que vous devez savoir sur la réservation d'une démo.",
+    "items": [
+      {
+        "q": "Quelle est la durée de la démo ?",
+        "a": "Généralement 30 à 45 minutes, selon vos questions et la profondeur de la discussion."
+      },
+      {
+        "q": "Qui devrait assister à la démo ?",
+        "a": "Nous recommandons d'inclure les parties prenantes techniques (ingénieurs ML, data scientists) et les décideurs qui seront impliqués dans l'évaluation."
+      },
+      {
+        "q": "Puis-je voir des fonctionnalités spécifiques à mon cas d'usage ?",
+        "a": "Oui ! Nous adaptons chaque démo à votre secteur et à vos défis spécifiques en vision par ordinateur. Indiquez-nous votre cas d'usage dans le formulaire."
+      },
+      {
+        "q": "La démo est-elle gratuite ?",
+        "a": "Absolument. La démo est gratuite et sans engagement. Nous voulons nous assurer que Picsellia correspond à vos besoins."
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "hero": {
+    "badge": "14-Day Free Trial",
+    "title": "Start building today",
+    "description": "Get full access to Picsellia's MLOps platform. No credit card required, no commitment, cancel anytime."
+  },
+  "benefits": {
+    "freeDays": { "title": "14 days free", "description": "Full access to all platform features" },
+    "noCreditCard": { "title": "No credit card", "description": "Start immediately, no payment info needed" },
+    "images": { "title": "10,000 images", "description": "Process up to 10K images during trial" },
+    "gpuHours": { "title": "100 GPU hours", "description": "Train models with included compute" }
+  },
+  "included": {
+    "title": "What's included",
+    "features": [
+      "Datalake & Dataset Management",
+      "Labeling Tool with AI-assist",
+      "Experiment Tracking",
+      "Model Training (Ultralytics, SAM2)",
+      "Model Deployment",
+      "Basic Monitoring"
+    ]
+  },
+  "form": {
+    "title": "Request your free trial",
+    "firstName": "First name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Doe",
+    "workEmail": "Work email",
+    "workEmailPlaceholder": "john.doe@company.com",
+    "company": "Company",
+    "companyPlaceholder": "Acme Inc. (optional)",
+    "termsAgree": "I agree to the",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "privacyPolicy": "Privacy Policy",
+    "submit": "Request Free Trial",
+    "submitting": "Submitting...",
+    "existingUser": "Already a Picsellia user?",
+    "signIn": "Sign in to your account"
+  },
+  "challenge": {
+    "label": "Quick annotation check",
+    "questions": {
+      "1": "What class label fits this bounding box?",
+      "2": "Select the correct annotation label",
+      "3": "Which label would you assign?",
+      "4": "Identify the object class"
+    },
+    "errorMessage": "Incorrect answer. Please try again."
+  },
+  "socialProof": {
+    "trustedBy": "Trusted by teams at"
+  }
+}

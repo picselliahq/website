@@ -1,0 +1,112 @@
+{
+  "hero": {
+    "badge": "Gratuit pour toujours",
+    "title": "Édition",
+    "titleHighlight": "Community",
+    "description": "Démarrez avec la gestion de données et l'entraînement AutoML. Sans carte bancaire, sans limite de temps.",
+    "startBuilding": "Commencer gratuitement",
+    "comparePlans": "Comparer les offres",
+    "quickBenefits": {
+      "noCreditCard": "Sans carte bancaire",
+      "instantAccess": "Accès instantané",
+      "freeDpu": "150 DPU gratuits"
+    },
+    "terminal": {
+      "fileName": "quickstart.py",
+      "modelTrained": "Modèle entraîné",
+      "automl": "AutoML",
+      "runs": "4 exécutions"
+    }
+  },
+  "stats": {
+    "dpu": { "value": "150", "unit": "DPU", "label": "Unités de traitement de données / an" },
+    "runs": { "value": "4", "unit": "Exécutions", "label": "Exécutions d'entraînement AutoML" },
+    "projects": { "value": "3", "unit": "Projets", "label": "Projets actifs inclus" },
+    "access": { "value": "24/7", "unit": "Accès", "label": "Disponibilité de la plateforme" }
+  },
+  "included": {
+    "sectionLabel": "Ce qui est inclus",
+    "title": "Deux fonctionnalités clés",
+    "description": "L'édition Community vous offre la gestion de données et l'entraînement AutoML pour débuter en vision par ordinateur.",
+    "dataManagement": {
+      "category": "Gestion des données",
+      "description": "Organisez, versionnez et gérez toutes vos données visuelles en un seul endroit.",
+      "features": [
+        "Stockage Datalake avec recherche intelligente",
+        "Registre de datasets et versionnage",
+        "Langage de requête de données",
+        "Gestion des métadonnées",
+        "Support multi-format (images, vidéo)"
+      ]
+    },
+    "automlTraining": {
+      "category": "Entraînement AutoML",
+      "description": "Entraînez des modèles de vision par ordinateur sans configuration d'infrastructure.",
+      "features": [
+        "4 exécutions d'entraînement AutoML incluses",
+        "Architectures de modèles pré-configurées",
+        "Optimisation automatique des hyperparamètres",
+        "Métriques d'entraînement et journalisation"
+      ]
+    },
+    "needMore": {
+      "title": "Besoin de plus ?",
+      "description": "Les outils d'étiquetage, les campagnes d'annotation, le déploiement de modèles, le monitoring, la collaboration en équipe et l'entraînement illimité sont disponibles dans les",
+      "plansLink": "offres Business et Enterprise"
+    }
+  },
+  "comparison": {
+    "sectionLabel": "Comparer les offres",
+    "title": "Évoluez quand vous êtes prêt",
+    "description": "Commencez gratuitement et montez en gamme selon vos besoins. Sans pression, sans engagement.",
+    "featureHeader": "Fonctionnalité",
+    "communityHeader": "Community",
+    "communityPrice": "Gratuit",
+    "businessHeader": "Business",
+    "businessPrice": "À partir de 499 $/mois",
+    "enterpriseHeader": "Enterprise",
+    "enterprisePrice": "Sur mesure",
+    "features": {
+      "dpu": { "feature": "Unités de traitement de données", "community": "150 DPU/an", "business": "Sur mesure", "enterprise": "Illimité" },
+      "mpu": { "feature": "Unités de traitement de modèles", "community": "\u2014", "business": "Sur mesure", "enterprise": "Illimité" },
+      "automl": { "feature": "Entraînement AutoML", "community": "4 exécutions", "business": "Illimité", "enterprise": "Illimité" },
+      "labeling": { "feature": "Outil d'étiquetage", "community": "\u2713", "business": "\u2713", "enterprise": "\u2713" },
+      "deployment": { "feature": "Déploiement de modèles", "community": "\u2014", "business": "\u2713", "enterprise": "\u2713" },
+      "monitoring": { "feature": "Monitoring de modèles", "community": "\u2014", "business": "\u2713", "enterprise": "\u2713" },
+      "team": { "feature": "Membres de l'équipe", "community": "1 utilisateur", "business": "Jusqu'à 10", "enterprise": "Illimité" },
+      "projects": { "feature": "Projets", "community": "3 projets", "business": "Illimité", "enterprise": "Illimité" },
+      "support": { "feature": "Support", "community": "Communauté", "business": "E-mail", "enterprise": "Dédié" },
+      "sso": { "feature": "SSO / SAML", "community": "\u2014", "business": "\u2014", "enterprise": "\u2713" },
+      "onPremise": { "feature": "Déploiement sur site", "community": "\u2014", "business": "\u2014", "enterprise": "\u2713" }
+    }
+  },
+  "resources": {
+    "sectionLabel": "Ressources",
+    "title": "Apprenez, construisez, connectez",
+    "documentation": {
+      "title": "Documentation",
+      "description": "Guides complets, références API et bonnes pratiques.",
+      "link": "Lire la doc"
+    },
+    "tutorials": {
+      "title": "Tutoriels",
+      "description": "Guides pas à pas pour créer votre premier projet de vision par ordinateur.",
+      "link": "Commencer à apprendre"
+    },
+    "github": {
+      "title": "GitHub",
+      "description": "Projets exemples, SDKs et outils open source.",
+      "link": "Voir les dépôts"
+    }
+  },
+  "integrations": {
+    "sectionLabel": "Intégrations",
+    "title": "Compatible avec vos outils préférés"
+  },
+  "cta": {
+    "badge": "Sans carte bancaire",
+    "title": "Commencez à construire dès aujourd'hui",
+    "description": "Bénéficiez de la gestion de données et de l'entraînement AutoML gratuitement. Passez à la version supérieure quand vous avez besoin de la plateforme complète.",
+    "button": "Créer un compte gratuit"
+  }
+}

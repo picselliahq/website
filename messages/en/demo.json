@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "badge": "Book a Demo",
+    "title": "See Picsellia in action",
+    "description": "Get a personalized walkthrough of our MLOps platform. Our team will show you how Picsellia can accelerate your computer vision projects."
+  },
+  "benefits": {
+    "personalizedDemo": {
+      "title": "Personalized Demo",
+      "description": "See Picsellia in action with examples relevant to your industry"
+    },
+    "technicalDeepDive": {
+      "title": "Technical Deep Dive",
+      "description": "Get answers to your specific technical questions from our engineers"
+    },
+    "customPricing": {
+      "title": "Custom Pricing",
+      "description": "Receive a tailored quote based on your specific requirements"
+    }
+  },
+  "trustedBy": "Used by teams at",
+  "form": {
+    "title": "Request a demo",
+    "firstName": "First name",
+    "firstNamePlaceholder": "John",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Doe",
+    "workEmail": "Work email",
+    "workEmailPlaceholder": "john.doe@company.com",
+    "company": "Company",
+    "companyPlaceholder": "Acme Inc.",
+    "jobTitle": "Job title",
+    "jobTitlePlaceholder": "ML Engineer",
+    "phone": "Phone number",
+    "phonePlaceholder": "+33 6 12 34 56 78",
+    "industry": "Industry",
+    "industryPlaceholder": "Select industry",
+    "companySize": "Company size",
+    "companySizePlaceholder": "Select size",
+    "useCase": "Primary use case",
+    "useCasePlaceholder": "Select use case",
+    "message": "Anything else you'd like us to know?",
+    "messagePlaceholder": "Tell us about your project, timeline, or any specific requirements...",
+    "submit": "Request Demo",
+    "submitting": "Submitting...",
+    "privacyNote": "By submitting this form, you agree to our",
+    "privacyLink": "Privacy Policy",
+    "privacyNoteEnd": ". We'll never share your information with third parties."
+  },
+  "industries": {
+    "manufacturing": "Manufacturing",
+    "energy": "Energy & Utilities",
+    "agriculture": "Agriculture",
+    "healthcare": "Healthcare & Life Sciences",
+    "retail": "Retail & E-commerce",
+    "transportation": "Transportation & Logistics",
+    "financial": "Financial Services",
+    "media": "Media & Entertainment",
+    "other": "Other"
+  },
+  "companySizes": {
+    "xs": "1-10 employees",
+    "sm": "11-50 employees",
+    "md": "51-200 employees",
+    "lg": "201-1000 employees",
+    "xl": "1000+ employees"
+  },
+  "useCases": {
+    "defectDetection": "Defect Detection & Quality Control",
+    "documentProcessing": "Document Processing & OCR",
+    "objectDetection": "Object Detection & Tracking",
+    "imageClassification": "Image Classification",
+    "semanticSegmentation": "Semantic Segmentation",
+    "videoAnalytics": "Video Analytics",
+    "other": "Other"
+  },
+  "challenge": {
+    "label": "Quick annotation check",
+    "questions": {
+      "1": "What class label fits this bounding box?",
+      "2": "Select the correct annotation label",
+      "3": "Which label would you assign?",
+      "4": "Identify the object class"
+    },
+    "errorMessage": "Incorrect answer. Please try again."
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Everything you need to know about booking a demo.",
+    "items": [
+      {
+        "q": "How long is the demo?",
+        "a": "Typically 30-45 minutes, depending on your questions and the depth of discussion."
+      },
+      {
+        "q": "Who should attend the demo?",
+        "a": "We recommend including technical stakeholders (ML engineers, data scientists) and decision-makers who will be involved in the evaluation."
+      },
+      {
+        "q": "Can I see features specific to my use case?",
+        "a": "Yes! We tailor each demo to your industry and specific computer vision challenges. Let us know your use case in the form."
+      },
+      {
+        "q": "Is the demo free?",
+        "a": "Absolutely. The demo is free with no obligation. We want to make sure Picsellia is the right fit for your needs."
+      }
+    ]
+  }
+}

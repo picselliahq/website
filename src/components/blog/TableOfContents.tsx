@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import type { TableOfContentsItem } from '@/types/blog';
 
 export default function TableOfContents({ items }: { items: TableOfContentsItem[] }) {
   const [activeId, setActiveId] = useState<string>('');
+  const t = useTranslations('blog');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +34,7 @@ export default function TableOfContents({ items }: { items: TableOfContentsItem[
   return (
     <nav className="sticky top-24" aria-label="Table of contents">
       <p className="text-xs font-semibold uppercase tracking-wider text-tertiary mb-4">
-        On this page
+        {t('onThisPage')}
       </p>
       <ul className="space-y-1">
         {items.map((item) => (

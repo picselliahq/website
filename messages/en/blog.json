@@ -1,0 +1,20 @@
+{
+  "title": "Blog",
+  "description": "Insights on computer vision, MLOps, and building AI applications at scale.",
+  "search": "Search articles...",
+  "allCategories": "All",
+  "readingTime": "{minutes} min read",
+  "publishedOn": "Published on",
+  "onThisPage": "On this page",
+  "relatedArticles": "Related Articles",
+  "newsletter": {
+    "title": "Stay up to date",
+    "description": "Get the latest posts on computer vision, MLOps, and AI delivered to your inbox.",
+    "placeholder": "you@company.com",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "success": "You're subscribed! Check your inbox.",
+    "error": "Something went wrong. Please try again."
+  },
+  "notAvailableInLocale": "This article is available in English only"
+}

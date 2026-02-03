@@ -1,0 +1,30 @@
+{
+  "general": {
+    "badge": "Succès",
+    "title": "Merci !",
+    "description": "Nous avons bien reçu votre demande. Notre équipe vous contactera prochainement pour vous aider à démarrer avec Picsellia.",
+    "requestDemo": "Demander une démo",
+    "backToHome": "Retour à l'accueil"
+  },
+  "demo": {
+    "badge": "Succès",
+    "title": "Démo planifiée !",
+    "description": "Merci d'avoir réservé une démo. Vous recevrez prochainement une invitation de calendrier avec tous les détails.",
+    "requestDemo": "Demander une démo",
+    "backToHome": "Retour à l'accueil"
+  },
+  "pricing": {
+    "badge": "Succès",
+    "title": "Demande reçue !",
+    "description": "Merci de votre intérêt. Notre équipe préparera un devis personnalisé et vous contactera sous 24 heures.",
+    "requestDemo": "Demander une démo",
+    "backToHome": "Retour à l'accueil"
+  },
+  "trial": {
+    "badge": "Succès",
+    "title": "Essai activé !",
+    "description": "Votre essai gratuit de 14 jours est maintenant actif. Consultez vos e-mails pour les instructions de connexion et commencez à construire !",
+    "requestDemo": "Demander une démo",
+    "backToHome": "Retour à l'accueil"
+  }
+}

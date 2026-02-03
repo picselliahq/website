@@ -1,0 +1,20 @@
+{
+  "title": "Blog",
+  "description": "Analyses sur la vision par ordinateur, le MLOps et la création d'applications IA à grande échelle.",
+  "search": "Rechercher des articles...",
+  "allCategories": "Tous",
+  "readingTime": "{minutes} min de lecture",
+  "publishedOn": "Publié le",
+  "onThisPage": "Sur cette page",
+  "relatedArticles": "Articles connexes",
+  "newsletter": {
+    "title": "Restez informé",
+    "description": "Recevez les derniers articles sur la vision par ordinateur, le MLOps et l'IA dans votre boîte mail.",
+    "placeholder": "vous@entreprise.com",
+    "subscribe": "S'abonner",
+    "subscribing": "Inscription...",
+    "success": "Vous êtes inscrit ! Vérifiez votre boîte mail.",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
+  "notAvailableInLocale": "Cet article est disponible en anglais uniquement"
+}

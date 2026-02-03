@@ -1,11 +1,15 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface BlogSearchProps {
   value: string;
   onChange: (value: string) => void;
 }
 
 export default function BlogSearch({ value, onChange }: BlogSearchProps) {
+  const t = useTranslations('blog');
+
   return (
     <div className="relative">
       <svg
@@ -26,7 +30,7 @@ export default function BlogSearch({ value, onChange }: BlogSearchProps) {
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        placeholder="Search articles..."
+        placeholder={t('search')}
         className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm text-label placeholder:text-tertiary focus:outline-none focus:ring-2 focus:ring-accent"
         style={{
           backgroundColor: 'var(--secondary-system-background)',
