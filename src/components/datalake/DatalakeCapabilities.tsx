@@ -297,10 +297,12 @@ export default function DatalakeCapabilities() {
                   # Upload with metadata
                 </span>
                 {"\n"}
-                <span className="text-[var(--label)]">datalake.upload(</span>
+                <span className="text-[var(--label)]">
+                  datalake.upload_data(
+                </span>
                 {"\n"}
                 {"  "}
-                <span className="text-[var(--label)]">paths</span>
+                <span className="text-[var(--label)]">filepaths</span>
                 <span className="text-[var(--system-indigo)]">=</span>
                 <span className="text-[var(--picsellia-green)]">
                   &quot;./images/*.jpg&quot;
@@ -325,7 +327,7 @@ export default function DatalakeCapabilities() {
                 <span className="text-[var(--system-indigo)]">=</span>
                 <span className="text-[var(--label)]">{"{"}</span>
                 <span className="text-[var(--picsellia-green)]">
-                  &quot;source&quot;
+                  &quot;reference&quot;
                 </span>
                 <span className="text-[var(--label)]">:</span>{" "}
                 <span className="text-[var(--picsellia-green)]">

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 export default function DeploymentSDK() {
   return (
@@ -14,8 +14,8 @@ export default function DeploymentSDK() {
             Deploy in a few lines of code
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Use the Python SDK to deploy, update, and manage models programmatically.
-            Full API access for CI/CD integration.
+            Use the Python SDK to deploy, update, and manage models
+            programmatically. Full API access for CI/CD integration.
           </p>
         </div>
 
@@ -23,45 +23,110 @@ export default function DeploymentSDK() {
         <div className="grid lg:grid-cols-2 gap-6 mb-12">
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">DEPLOY A MODEL</span>
-              <span className="text-xs text-[var(--tertiary-label)]">Python SDK</span>
+              <span className="text-xs font-medium text-[var(--system-indigo)]">
+                DEPLOY A MODEL
+              </span>
+              <span className="text-xs text-[var(--tertiary-label)]">
+                Python SDK
+              </span>
             </div>
             <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
               <code>
-                <span className="text-[var(--tertiary-label)]"># Connect to your project</span>{'\n'}
-                <span className="text-[var(--system-indigo)]">from</span> <span className="text-[var(--label)]">picsellia</span> <span className="text-[var(--system-indigo)]">import</span> <span className="text-[var(--label)]">Client</span>{'\n\n'}
-                <span className="text-[var(--label)]">client</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">Client()</span>{'\n'}
-                <span className="text-[var(--label)]">project</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">client.get_project(</span>{'\n'}
-                {'  '}<span className="text-[var(--picsellia-green)]">&quot;defect-detection&quot;</span>{'\n'}
-                <span className="text-[var(--label)]">)</span>{'\n\n'}
-                <span className="text-[var(--tertiary-label)]"># Create deployment</span>{'\n'}
-                <span className="text-[var(--label)]">deployment</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">project.create_deployment(</span>{'\n'}
-                {'  '}<span className="text-[var(--label)]">name</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--picsellia-green)]">&quot;prod-v3&quot;</span><span className="text-[var(--label)]">,</span>{'\n'}
-                {'  '}<span className="text-[var(--label)]">model_version</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">best_model</span>{'\n'}
+                <span className="text-[var(--tertiary-label)]">
+                  # Connect and get deployment
+                </span>
+                {"\n"}
+                <span className="text-[var(--system-indigo)]">from</span>{" "}
+                <span className="text-[var(--label)]">picsellia</span>{" "}
+                <span className="text-[var(--system-indigo)]">import</span>{" "}
+                <span className="text-[var(--label)]">Client</span>
+                {"\n\n"}
+                <span className="text-[var(--label)]">client</span>{" "}
+                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--label)]">Client()</span>
+                {"\n\n"}
+                <span className="text-[var(--tertiary-label)]">
+                  # Create deployment with model
+                </span>
+                {"\n"}
+                <span className="text-[var(--label)]">deployment</span>{" "}
+                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--label)]">
+                  client.create_deployment(
+                </span>
+                {"\n"}
+                {"  "}
+                <span className="text-[var(--label)]">name</span>
+                <span className="text-[var(--system-indigo)]">=</span>
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;prod-v3&quot;
+                </span>
+                {"\n"}
                 <span className="text-[var(--label)]">)</span>
+                {"\n"}
+                <span className="text-[var(--label)]">
+                  deployment.set_model(model_version)
+                </span>
               </code>
             </pre>
           </div>
 
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">RUN INFERENCE</span>
-              <span className="text-xs text-[var(--tertiary-label)]">Python SDK</span>
+              <span className="text-xs font-medium text-[var(--system-indigo)]">
+                RUN INFERENCE
+              </span>
+              <span className="text-xs text-[var(--tertiary-label)]">
+                Python SDK
+              </span>
             </div>
             <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
               <code>
-                <span className="text-[var(--tertiary-label)]"># Get prediction from file</span>{'\n'}
-                <span className="text-[var(--label)]">prediction</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">deployment.predict(</span>{'\n'}
-                {'  '}<span className="text-[var(--picsellia-green)]">&quot;image.jpg&quot;</span>{'\n'}
-                <span className="text-[var(--label)]">)</span>{'\n\n'}
-                <span className="text-[var(--tertiary-label)]"># Get prediction from bytes</span>{'\n'}
-                <span className="text-[var(--label)]">prediction</span> <span className="text-[var(--system-indigo)]">=</span> <span className="text-[var(--label)]">deployment.predict_from_bytes(</span>{'\n'}
-                {'  '}<span className="text-[var(--label)]">raw_bytes</span><span className="text-[var(--label)]">,</span>{'\n'}
-                {'  '}<span className="text-[var(--label)]">tags</span><span className="text-[var(--system-indigo)]">=</span><span className="text-[var(--label)]">[</span><span className="text-[var(--picsellia-green)]">&quot;production&quot;</span><span className="text-[var(--label)]">]</span>{'\n'}
-                <span className="text-[var(--label)]">)</span>{'\n\n'}
-                <span className="text-[var(--tertiary-label)]"># Access results</span>{'\n'}
-                <span className="text-[var(--label)]">print(prediction.boxes)</span>{'\n'}
-                <span className="text-[var(--label)]">print(prediction.confidences)</span>
+                <span className="text-[var(--tertiary-label)]">
+                  # Run prediction from file path
+                </span>
+                {"\n"}
+                <span className="text-[var(--label)]">result</span>{" "}
+                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--label)]">deployment.predict(</span>
+                {"\n"}
+                {"  "}
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;image.jpg&quot;
+                </span>
+                {"\n"}
+                <span className="text-[var(--label)]">)</span>
+                {"\n\n"}
+                <span className="text-[var(--tertiary-label)]">
+                  # Run prediction from bytes
+                </span>
+                {"\n"}
+                <span className="text-[var(--label)]">result</span>{" "}
+                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--label)]">
+                  deployment.predict_bytes(
+                </span>
+                {"\n"}
+                {"  "}
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;image.jpg&quot;
+                </span>
+                <span className="text-[var(--label)]">,</span>
+                {"\n"}
+                {"  "}
+                <span className="text-[var(--label)]">raw_image</span>
+                {"\n"}
+                <span className="text-[var(--label)]">)</span>
+                {"\n\n"}
+                <span className="text-[var(--tertiary-label)]">
+                  # Send to monitoring
+                </span>
+                {"\n"}
+                <span className="text-[var(--label)]">deployment.monitor(</span>
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;image.jpg&quot;
+                </span>
+                <span className="text-[var(--label)]">)</span>
               </code>
             </pre>
           </div>
@@ -70,16 +135,43 @@ export default function DeploymentSDK() {
         {/* API endpoint preview */}
         <div className="card p-0 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-            <span className="text-xs font-medium text-[var(--picsellia-green)]">REST API</span>
+            <span className="text-xs font-medium text-[var(--picsellia-green)]">
+              REST API
+            </span>
             <span className="text-xs text-[var(--tertiary-label)]">cURL</span>
           </div>
           <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
             <code>
-              <span className="text-[var(--tertiary-label)]"># Direct API call</span>{'\n'}
-              <span className="text-[var(--system-indigo)]">curl</span> <span className="text-[var(--label)]">-X POST</span> <span className="text-[var(--picsellia-green)]">&quot;https://serving.picsellia.com/v1/predict&quot;</span> <span className="text-[var(--label)]">\</span>{'\n'}
-              {'  '}<span className="text-[var(--label)]">-H</span> <span className="text-[var(--picsellia-green)]">&quot;Authorization: Bearer $API_KEY&quot;</span> <span className="text-[var(--label)]">\</span>{'\n'}
-              {'  '}<span className="text-[var(--label)]">-F</span> <span className="text-[var(--picsellia-green)]">&quot;image=@photo.jpg&quot;</span> <span className="text-[var(--label)]">\</span>{'\n'}
-              {'  '}<span className="text-[var(--label)]">-F</span> <span className="text-[var(--picsellia-green)]">&quot;deployment_id=dep_abc123&quot;</span>
+              <span className="text-[var(--tertiary-label)]">
+                # Direct API call
+              </span>
+              {"\n"}
+              <span className="text-[var(--system-indigo)]">curl</span>{" "}
+              <span className="text-[var(--label)]">-X POST</span>{" "}
+              <span className="text-[var(--picsellia-green)]">
+                &quot;https://serving.picsellia.com/v1/predict&quot;
+              </span>{" "}
+              <span className="text-[var(--label)]">\</span>
+              {"\n"}
+              {"  "}
+              <span className="text-[var(--label)]">-H</span>{" "}
+              <span className="text-[var(--picsellia-green)]">
+                &quot;Authorization: Bearer $API_KEY&quot;
+              </span>{" "}
+              <span className="text-[var(--label)]">\</span>
+              {"\n"}
+              {"  "}
+              <span className="text-[var(--label)]">-F</span>{" "}
+              <span className="text-[var(--picsellia-green)]">
+                &quot;image=@photo.jpg&quot;
+              </span>{" "}
+              <span className="text-[var(--label)]">\</span>
+              {"\n"}
+              {"  "}
+              <span className="text-[var(--label)]">-F</span>{" "}
+              <span className="text-[var(--picsellia-green)]">
+                &quot;deployment_id=dep_abc123&quot;
+              </span>
             </code>
           </pre>
         </div>
