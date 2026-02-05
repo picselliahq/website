@@ -1,74 +1,95 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useEffect, useRef } from 'react';
+import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const categories = [
   {
-    name: 'Cloud Providers',
-    description: 'Deploy anywhere',
-    color: 'var(--system-blue)',
+    name: "Cloud Providers",
+    description: "Deploy anywhere",
+    color: "var(--system-blue)",
     integrations: [
-      { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
-      { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
-      { name: 'Azure', logo: '/images/community/partners/azure.svg' },
-      { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
+      { name: "Amazon S3", logo: "/images/community/partners/amazon-s3.svg" },
+      {
+        name: "Google Cloud",
+        logo: "/images/community/partners/google-cloud.svg",
+      },
+      { name: "Azure", logo: "/images/community/partners/azure.svg" },
+      { name: "Snowflake", logo: "/images/community/partners/snowflake.svg" },
     ],
   },
   {
-    name: 'ML Frameworks',
-    description: 'Train with any framework',
-    color: 'var(--system-orange)',
+    name: "ML Frameworks",
+    description: "Train with any framework",
+    color: "var(--system-orange)",
     integrations: [
-      { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
-      { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
-      { name: 'Keras', logo: '/images/community/partners/keras.svg' },
-      { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
+      { name: "PyTorch", logo: "/images/community/partners/pytorch.svg" },
+      { name: "TensorFlow", logo: "/images/community/partners/tensorflow.svg" },
+      { name: "Keras", logo: "/images/community/partners/keras.svg" },
+      {
+        name: "Ultralytics",
+        logo: "/images/community/partners/ultralytics.svg",
+      },
     ],
   },
   {
-    name: 'Infrastructure',
-    description: 'Run anywhere',
-    color: 'var(--picsellia-green)',
+    name: "Infrastructure",
+    description: "Run anywhere",
+    color: "var(--picsellia-green)",
     integrations: [
-      { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
-      { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
-      { name: 'SageMaker', logo: '/images/community/partners/sagemaker.svg' },
-      { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
+      {
+        name: "NVIDIA Jetson",
+        logo: "/images/community/partners/nvidia-jetson.svg",
+      },
+      { name: "Databricks", logo: "/images/community/partners/databricks.svg" },
+      { name: "SageMaker", logo: "/images/community/partners/sagemaker.svg" },
+      { name: "Jupyter", logo: "/images/community/partners/jupyter.svg" },
     ],
   },
   {
-    name: 'Ecosystem',
-    description: 'Extend your workflow',
-    color: 'var(--system-indigo)',
+    name: "Ecosystem",
+    description: "Extend your workflow",
+    color: "var(--system-indigo)",
     integrations: [
-      { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
-      { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
-      { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
-      { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
+      {
+        name: "Hugging Face",
+        logo: "/images/community/partners/huggingface.svg",
+      },
+      { name: "MLflow", logo: "/images/community/partners/mlflow.svg" },
+      {
+        name: "Weights & Biases",
+        logo: "/images/community/partners/weights-biases.svg",
+      },
+      { name: "OpenAI", logo: "/images/community/partners/openai.svg" },
     ],
   },
 ];
 
 const allIntegrations = [
-  { name: 'PyTorch', logo: '/images/community/partners/pytorch.svg' },
-  { name: 'TensorFlow', logo: '/images/community/partners/tensorflow.svg' },
-  { name: 'Hugging Face', logo: '/images/community/partners/huggingface.svg' },
-  { name: 'Azure', logo: '/images/community/partners/azure.svg' },
-  { name: 'Google Cloud', logo: '/images/community/partners/google-cloud.svg' },
-  { name: 'Amazon S3', logo: '/images/community/partners/amazon-s3.svg' },
-  { name: 'MLflow', logo: '/images/community/partners/mlflow.svg' },
-  { name: 'Jupyter', logo: '/images/community/partners/jupyter.svg' },
-  { name: 'Ultralytics', logo: '/images/community/partners/ultralytics.svg' },
-  { name: 'NVIDIA Jetson', logo: '/images/community/partners/nvidia-jetson.svg' },
-  { name: 'Weights & Biases', logo: '/images/community/partners/weights-biases.svg' },
-  { name: 'Keras', logo: '/images/community/partners/keras.svg' },
-  { name: 'OpenAI', logo: '/images/community/partners/openai.svg' },
-  { name: 'Anthropic', logo: '/images/community/partners/anthropic.svg' },
-  { name: 'Meta', logo: '/images/community/partners/meta.svg' },
-  { name: 'Mistral', logo: '/images/community/partners/mistral.svg' },
-  { name: 'Databricks', logo: '/images/community/partners/databricks.svg' },
-  { name: 'Snowflake', logo: '/images/community/partners/snowflake.svg' },
+  { name: "PyTorch", logo: "/images/community/partners/pytorch.svg" },
+  { name: "TensorFlow", logo: "/images/community/partners/tensorflow.svg" },
+  { name: "Hugging Face", logo: "/images/community/partners/huggingface.svg" },
+  { name: "Azure", logo: "/images/community/partners/azure.svg" },
+  { name: "Google Cloud", logo: "/images/community/partners/google-cloud.svg" },
+  { name: "Amazon S3", logo: "/images/community/partners/amazon-s3.svg" },
+  { name: "MLflow", logo: "/images/community/partners/mlflow.svg" },
+  { name: "Jupyter", logo: "/images/community/partners/jupyter.svg" },
+  { name: "Ultralytics", logo: "/images/community/partners/ultralytics.svg" },
+  {
+    name: "NVIDIA Jetson",
+    logo: "/images/community/partners/nvidia-jetson.svg",
+  },
+  {
+    name: "Weights & Biases",
+    logo: "/images/community/partners/weights-biases.svg",
+  },
+  { name: "Keras", logo: "/images/community/partners/keras.svg" },
+  { name: "OpenAI", logo: "/images/community/partners/openai.svg" },
+  { name: "Anthropic", logo: "/images/community/partners/anthropic.svg" },
+  { name: "Meta", logo: "/images/community/partners/meta.svg" },
+  { name: "Mistral", logo: "/images/community/partners/mistral.svg" },
+  { name: "Databricks", logo: "/images/community/partners/databricks.svg" },
+  { name: "Snowflake", logo: "/images/community/partners/snowflake.svg" },
 ];
 
 export default function Integrations() {
@@ -98,7 +119,13 @@ export default function Integrations() {
   return (
     <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(97, 135, 226, 0.04) 0%, transparent 70%)' }} />
+      <div
+        className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(97, 135, 226, 0.04) 0%, transparent 70%)",
+        }}
+      />
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
@@ -110,18 +137,23 @@ export default function Integrations() {
               Works with your stack
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Plug into the tools you already use. Nothing proprietary, no lock-in.
+              Plug into the tools you already use. Nothing proprietary, no
+              lock-in.
             </p>
           </div>
           <div className="flex items-center gap-6">
             <div className="text-center">
               <div className="text-3xl font-bold text-[var(--label)]">50+</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Integrations</div>
+              <div className="text-xs text-[var(--tertiary-label)]">
+                Integrations
+              </div>
             </div>
             <div className="w-px h-12 bg-[var(--border)]" />
             <div className="text-center">
               <div className="text-3xl font-bold text-[var(--label)]">API</div>
-              <div className="text-xs text-[var(--tertiary-label)]">First approach</div>
+              <div className="text-xs text-[var(--tertiary-label)]">
+                First approach
+              </div>
             </div>
           </div>
         </div>
@@ -129,18 +161,30 @@ export default function Integrations() {
         {/* Categories Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {categories.map((category) => (
-            <div key={category.name} className="card p-6 group hover:border-[var(--system-gray-3)] transition-all">
+            <div
+              key={category.name}
+              className="card p-6 group hover:border-[var(--system-gray-3)] transition-all"
+            >
               {/* Category Header */}
               <div className="flex items-center gap-3 mb-4">
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: `color-mix(in srgb, ${category.color} 15%, transparent)` }}
+                  style={{
+                    backgroundColor: `color-mix(in srgb, ${category.color} 15%, transparent)`,
+                  }}
                 >
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: category.color }} />
+                  <div
+                    className="w-3 h-3 rounded-full"
+                    style={{ backgroundColor: category.color }}
+                  />
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-[var(--label)]">{category.name}</h3>
-                  <p className="text-xs text-[var(--tertiary-label)]">{category.description}</p>
+                  <h3 className="text-sm font-medium text-[var(--label)]">
+                    {category.name}
+                  </h3>
+                  <p className="text-xs text-[var(--tertiary-label)]">
+                    {category.description}
+                  </p>
                 </div>
               </div>
 
@@ -175,27 +219,29 @@ export default function Integrations() {
           <div
             ref={scrollRef}
             className="flex gap-4 overflow-hidden py-4 px-8"
-            style={{ scrollBehavior: 'auto' }}
+            style={{ scrollBehavior: "auto" }}
           >
             {/* Double the items for seamless loop */}
-            {[...allIntegrations, ...allIntegrations].map((integration, index) => (
-              <div
-                key={`${integration.name}-${index}`}
-                className="flex-shrink-0 px-5 py-3 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] hover:border-[var(--picsellia-green)] transition-colors cursor-default flex items-center gap-3"
-              >
-                <div className="relative w-6 h-6 flex-shrink-0">
-                  <Image
-                    src={integration.logo}
-                    alt={integration.name}
-                    fill
-                    className="object-contain"
-                  />
+            {[...allIntegrations, ...allIntegrations].map(
+              (integration, index) => (
+                <div
+                  key={`${integration.name}-${index}`}
+                  className="flex-shrink-0 px-5 py-3 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] hover:border-[var(--picsellia-green)] transition-colors cursor-default flex items-center gap-3"
+                >
+                  <div className="relative w-6 h-6 flex-shrink-0">
+                    <Image
+                      src={integration.logo}
+                      alt={integration.name}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-[var(--secondary-label)] whitespace-nowrap">
+                    {integration.name}
+                  </span>
                 </div>
-                <span className="text-sm font-medium text-[var(--secondary-label)] whitespace-nowrap">
-                  {integration.name}
-                </span>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
 
@@ -205,34 +251,84 @@ export default function Integrations() {
           <div className="card p-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-xl bg-[var(--picsellia-green)]/10 flex items-center justify-center text-[var(--picsellia-green)]">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={1.5}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"
+                  />
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-[var(--label)]">Python SDK</h3>
-                <p className="text-sm text-[var(--tertiary-label)]">pip install picsellia</p>
+                <h3 className="text-lg font-semibold text-[var(--label)]">
+                  Python SDK
+                </h3>
+                <p className="text-sm text-[var(--tertiary-label)]">
+                  pip install picsellia
+                </p>
               </div>
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-[var(--picsellia-green)]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Type-safe with full IDE support</span>
+                <span className="text-sm text-[var(--secondary-label)]">
+                  Type-safe with full IDE support
+                </span>
               </div>
               <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-[var(--picsellia-green)]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Async support for high throughput</span>
+                <span className="text-sm text-[var(--secondary-label)]">
+                  Async support for high throughput
+                </span>
               </div>
               <div className="flex items-center gap-3">
-                <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <svg
+                  className="w-5 h-5 text-[var(--picsellia-green)]"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                  />
                 </svg>
-                <span className="text-sm text-[var(--secondary-label)]">Works with Jupyter notebooks</span>
+                <span className="text-sm text-[var(--secondary-label)]">
+                  Works with Jupyter notebooks
+                </span>
               </div>
             </div>
           </div>
@@ -240,20 +336,52 @@ export default function Integrations() {
           {/* Right - Code Snippet */}
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(255, 69, 58, 0.7)' }} />
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(255, 214, 10, 0.7)' }} />
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: 'rgba(48, 209, 88, 0.7)' }} />
-              <span className="ml-2 text-xs text-[var(--tertiary-label)] font-mono">quickstart.py</span>
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: "rgba(255, 69, 58, 0.7)" }}
+              />
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: "rgba(255, 214, 10, 0.7)" }}
+              />
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: "rgba(48, 209, 88, 0.7)" }}
+              />
+              <span className="ml-2 text-xs text-[var(--tertiary-label)] font-mono">
+                quickstart.py
+              </span>
             </div>
             <pre className="p-4 text-sm overflow-x-auto">
               <code className="text-[var(--secondary-label)]">
-                <span className="text-[var(--system-indigo)]">from</span> picsellia <span className="text-[var(--system-indigo)]">import</span> Client{'\n\n'}
-                <span className="text-[var(--tertiary-label)]"># Connect to your workspace</span>{'\n'}
-                client = Client(){'\n'}
-                project = client.get_project(<span className="text-[var(--picsellia-green)]">&quot;defect-detection&quot;</span>){'\n\n'}
-                <span className="text-[var(--tertiary-label)]"># Train and deploy in one line</span>{'\n'}
-                model = project.train(framework=<span className="text-[var(--picsellia-green)]">&quot;yolov8&quot;</span>){'\n'}
-                model.deploy(target=<span className="text-[var(--picsellia-green)]">&quot;production&quot;</span>)
+                <span className="text-[var(--system-indigo)]">from</span>{" "}
+                picsellia{" "}
+                <span className="text-[var(--system-indigo)]">import</span>{" "}
+                Client{"\n\n"}
+                <span className="text-[var(--tertiary-label)]">
+                  # Connect to your workspace
+                </span>
+                {"\n"}
+                client = Client(){"\n"}
+                project = client.get_project(
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;defect-detection&quot;
+                </span>
+                ){"\n\n"}
+                <span className="text-[var(--tertiary-label)]">
+                  # Create experiment and attach data
+                </span>
+                {"\n"}
+                exp = project.create_experiment(
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;yolov8-run&quot;
+                </span>
+                ){"\n"}
+                exp.attach_dataset(
+                <span className="text-[var(--picsellia-green)]">
+                  &quot;train&quot;
+                </span>
+                , dataset_version)
               </code>
             </pre>
           </div>
