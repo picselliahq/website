@@ -50,7 +50,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="https://github.com/picsellia"
+                href="https://github.com/picselliahq"
                 className="text-[var(--system-gray)] hover:text-[var(--label)] transition-colors"
               >
                 <svg
@@ -74,7 +74,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://twitter.com/picsellia"
+                href="https://x.com/picsellia"
                 className="text-[var(--system-gray)] hover:text-[var(--label)] transition-colors"
               >
                 <svg

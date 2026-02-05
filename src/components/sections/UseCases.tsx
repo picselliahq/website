@@ -1,63 +1,74 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from "next/image";
+import Link from "next/link";
 
 const useCases = [
   {
-    title: 'Defect Detection',
-    industry: 'Manufacturing',
-    description: 'Spot surface defects and assembly errors on the production line. Cameras check every part, every time.',
-    href: '/use-cases/defects-detection',
-    stat: '99.5%',
-    statLabel: 'Detection accuracy',
-    image: '/images/use-cases/manufacturing/anomaly-detection.jpg',
+    title: "Defect Detection",
+    industry: "Manufacturing",
+    description:
+      "Spot surface defects and assembly errors on the production line. Cameras check every part, every time.",
+    href: "/industry/manufacturing",
+    stat: "99.5%",
+    statLabel: "Detection accuracy",
+    image: "/images/use-cases/manufacturing/anomaly-detection.jpg",
     featured: true,
   },
   {
-    title: 'Crop Monitoring',
-    industry: 'Agriculture',
-    description: 'Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.',
-    href: '/industry/agriculture',
-    stat: '30%',
-    statLabel: 'Yield increase',
-    image: '/images/use-cases/agriculture/crop-monitoring.jpg',
+    title: "Crop Monitoring",
+    industry: "Agriculture",
+    description:
+      "Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.",
+    href: "/industry/agriculture",
+    stat: "30%",
+    statLabel: "Yield increase",
+    image: "/images/use-cases/agriculture/crop-monitoring.jpg",
   },
   {
-    title: 'Infrastructure Inspection',
-    industry: 'Energy',
-    description: 'Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.',
-    href: '/industry/energy',
-    stat: '80%',
-    statLabel: 'Cost reduction',
-    image: '/images/use-cases/energy/infrastructure-inspection.jpg',
+    title: "Infrastructure Inspection",
+    industry: "Energy",
+    description:
+      "Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.",
+    href: "/industry/energy",
+    stat: "80%",
+    statLabel: "Cost reduction",
+    image: "/images/use-cases/energy/infrastructure-inspection.jpg",
   },
   {
-    title: 'Assembly Verification',
-    industry: 'Manufacturing',
-    description: 'Check that every component is in the right place, in real time, on the line.',
-    href: '/industry/manufacturing',
-    stat: '60fps',
-    statLabel: 'Real-time tracking',
-    image: '/images/use-cases/manufacturing/assembly-verification.jpg',
+    title: "Assembly Verification",
+    industry: "Manufacturing",
+    description:
+      "Check that every component is in the right place, in real time, on the line.",
+    href: "/industry/manufacturing",
+    stat: "60fps",
+    statLabel: "Real-time tracking",
+    image: "/images/use-cases/manufacturing/assembly-verification.jpg",
   },
   {
-    title: 'Waste Sorting',
-    industry: 'Sustainability',
-    description: 'Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.',
-    href: '/industry/waste-management',
-    stat: '95%',
-    statLabel: 'Sorting accuracy',
-    image: '/images/use-cases/waste-management/automated-segregation.jpg',
+    title: "Waste Sorting",
+    industry: "Sustainability",
+    description:
+      "Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.",
+    href: "/industry/waste-management",
+    stat: "95%",
+    statLabel: "Sorting accuracy",
+    image: "/images/use-cases/waste-management/automated-segregation.jpg",
   },
 ];
 
 export default function UseCases() {
-  const featured = useCases.find(uc => uc.featured);
-  const others = useCases.filter(uc => !uc.featured);
+  const featured = useCases.find((uc) => uc.featured);
+  const others = useCases.filter((uc) => !uc.featured);
 
   return (
     <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(51, 171, 104, 0.03) 0%, transparent 70%)' }} />
+      <div
+        className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(51, 171, 104, 0.03) 0%, transparent 70%)",
+        }}
+      />
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
@@ -69,7 +80,8 @@ export default function UseCases() {
               What people build with it
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              Manufacturing, agriculture, energy, logistics. Different industries, same workflow.
+              Manufacturing, agriculture, energy, logistics. Different
+              industries, same workflow.
             </p>
           </div>
           <Link href="/use-cases" className="btn-secondary">
@@ -113,8 +125,18 @@ export default function UseCases() {
                   </p>
                   <div className="flex items-center text-sm text-[var(--secondary-label)] group-hover:text-[var(--picsellia-green)] transition-colors">
                     Read case study
-                    <svg className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                    <svg
+                      className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                      />
                     </svg>
                   </div>
                 </div>
@@ -129,11 +151,13 @@ export default function UseCases() {
             <Link
               key={useCase.title}
               href={useCase.href}
-              className={`group ${index === 0 ? 'lg:col-span-2' : ''}`}
+              className={`group ${index === 0 ? "lg:col-span-2" : ""}`}
             >
               <div className="card p-0 h-full flex flex-col overflow-hidden">
                 {/* Image */}
-                <div className={`relative ${index === 0 ? 'h-48' : 'h-36'} overflow-hidden`}>
+                <div
+                  className={`relative ${index === 0 ? "h-48" : "h-36"} overflow-hidden`}
+                >
                   <Image
                     src={useCase.image}
                     alt={useCase.title}
@@ -161,12 +185,26 @@ export default function UseCases() {
                   {/* Stat */}
                   <div className="flex items-end justify-between pt-4 border-t border-[var(--border)]">
                     <div>
-                      <div className="text-2xl font-bold text-[var(--label)]">{useCase.stat}</div>
-                      <div className="text-xs text-[var(--tertiary-label)]">{useCase.statLabel}</div>
+                      <div className="text-2xl font-bold text-[var(--label)]">
+                        {useCase.stat}
+                      </div>
+                      <div className="text-xs text-[var(--tertiary-label)]">
+                        {useCase.statLabel}
+                      </div>
                     </div>
                     <div className="w-8 h-8 rounded-full border border-[var(--border)] flex items-center justify-center group-hover:border-[var(--picsellia-green)] group-hover:bg-[var(--picsellia-green)] transition-all">
-                      <svg className="w-4 h-4 text-[var(--secondary-label)] group-hover:text-[var(--white)] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                      <svg
+                        className="w-4 h-4 text-[var(--secondary-label)] group-hover:text-[var(--white)] transition-colors"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        />
                       </svg>
                     </div>
                   </div>
