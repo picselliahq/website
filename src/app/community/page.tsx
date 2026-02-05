@@ -697,7 +697,7 @@ export default function CommunityPage() {
             </Link>
 
             <Link
-              href="https://github.com/picsellia"
+              href="https://github.com/picselliahq"
               className="group relative"
             >
               <div className="card p-8 h-full overflow-hidden">
