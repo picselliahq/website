@@ -63,7 +63,7 @@ const leadership = [
 
 // Team members
 const teamMembers = [
-  { name: 'Hicham Bakri', role: 'Full-stack Developer' },
+  { name: 'Hicham Bakri', role: 'Typing on computer' },
   { name: 'Clément Brunie', role: 'Front-end Engineer' },
   { name: 'Thomas Darget', role: 'Back-end Engineer' },
   { name: 'Lucien Haurat', role: 'DevOps Engineer' },
