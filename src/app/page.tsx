@@ -4,11 +4,12 @@ import PlatformLifecycle from "@/components/sections/PlatformLifecycle";
 import UseCases from "@/components/sections/UseCases";
 import Integrations from "@/components/sections/Integrations";
 import CTA from "@/components/sections/CTA";
+import { JsonLd, organizationJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Picsellia - MLOps Platform for Computer Vision",
   description:
-    "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale. Centralize data, streamline model training, and deploy with confidence.",
+    "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia.",
   alternates: {
     canonical: "/",
   },
@@ -23,6 +24,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
+      <JsonLd data={organizationJsonLd()} />
       <Hero />
       <PlatformLifecycle />
       <UseCases />

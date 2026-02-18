@@ -1,9 +1,20 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 export const metadata: Metadata = {
-  title: 'Enterprise Deployment & Security | Picsellia',
-  description: 'Enterprise-grade deployment options for Picsellia MLOps platform. SaaS, hybrid, and on-premise with ISO 27001 security, RBAC, and full compliance.',
+  title: 'Enterprise - Secure Deployment & Compliance',
+  description:
+    'Enterprise-grade deployment options for Picsellia MLOps platform. SaaS, hybrid, and on-premise with ISO 27001 security, RBAC, and full compliance.',
+  alternates: {
+    canonical: '/enterprise',
+  },
+  openGraph: {
+    title: 'Enterprise - Secure Deployment & Compliance',
+    description:
+      'Enterprise-grade deployment options for Picsellia MLOps platform. SaaS, hybrid, and on-premise with ISO 27001 security.',
+    url: '/enterprise',
+  },
 };
 
 // Deployment options
@@ -121,6 +132,7 @@ const enterpriseValues = [
 export default function EnterprisePage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Enterprise', url: '/enterprise' }])} />
       {/* Hero Section */}
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -153,7 +165,7 @@ export default function EnterprisePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-              <Link href="https://documentation.picsellia.com" className="btn-secondary px-8 py-4 text-base">
+              <Link href="https://documentation.picsellia.com" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
                 Documentation
               </Link>
             </div>

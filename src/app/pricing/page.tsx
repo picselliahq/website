@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import PricingPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: "Pricing - Modular Platform Pricing",
+  title: "Pricing - Modular Usage-Based Plans",
   description:
     "Transparent, usage-based pricing for Picsellia's MLOps platform. Pay for what you use with Data Engine, VisionAI Factory, and Reliability Engine modules.",
   alternates: {
     canonical: "/pricing",
   },
   openGraph: {
-    title: "Pricing - Modular Platform Pricing",
+    title: "Pricing - Modular Usage-Based Plans",
     description:
       "Transparent, usage-based pricing for Picsellia's MLOps platform. Pay for what you use with modular pricing and volume discounts.",
     url: "/pricing",
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function PricingPage() {
-  return <PricingPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Pricing', url: '/pricing' }])} />
+      <PricingPageContent />
+    </>
+  );
 }

@@ -1,9 +1,18 @@
 import CaseStudyTemplate, { CaseStudyData } from '@/components/use-cases/CaseStudyTemplate';
 import { Metadata } from 'next';
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: 'How Altaroad Saved 50% Time Operating Models in Production | Picsellia',
-  description: 'Learn how Altaroad reduced model maintenance time from 50% to 10% using Picsellia for construction site monitoring.',
+  title: 'How Altaroad Saved 50% Time Operating Models in Production',
+  description: 'Learn how Altaroad reduced model maintenance time from 50% to 10% using Picsellia\'s MLOps platform for construction site monitoring and waste traceability.',
+  alternates: {
+    canonical: '/use-cases/altaroad',
+  },
+  openGraph: {
+    title: 'How Altaroad Saved 50% Time Operating Models in Production',
+    description: 'Learn how Altaroad reduced model maintenance time from 50% to 10% using Picsellia\'s MLOps platform for construction site monitoring and waste traceability.',
+    url: '/use-cases/altaroad',
+  },
 };
 
 const altaroadData: CaseStudyData = {
@@ -230,5 +239,10 @@ const altaroadData: CaseStudyData = {
 };
 
 export default function AltaroadCaseStudyPage() {
-  return <CaseStudyTemplate data={altaroadData} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Customer Stories', url: '/use-cases' }, { name: 'Altaroad', url: '/use-cases/altaroad' }])} />
+      <CaseStudyTemplate data={altaroadData} />
+    </>
+  );
 }

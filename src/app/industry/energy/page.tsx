@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import EnergyPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Energy - Infrastructure Inspection & Monitoring",
   description:
-    "Deploy computer vision for energy infrastructure inspection, predictive maintenance, and asset monitoring. Automate visual inspections with Picsellia's MLOps platform.",
+    "Deploy computer vision for energy infrastructure inspection, predictive maintenance, and asset monitoring. Automate visual inspections with Picsellia.",
   alternates: {
     canonical: "/industry/energy",
   },
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function EnergyPage() {
-  return <EnergyPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Energy', url: '/industry/energy' }])} />
+      <EnergyPageContent />
+    </>
+  );
 }
