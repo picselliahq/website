@@ -1,9 +1,18 @@
 import CaseStudyTemplate, { CaseStudyData } from '@/components/use-cases/CaseStudyTemplate';
 import { Metadata } from 'next';
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: 'How PellencST Cut Time-to-Model by 90% | Picsellia',
-  description: 'Learn how PellencST reduced model development from 6-9 months to 1 month using Picsellia for waste sorting machines.',
+  title: 'How PellencST Cut Time-to-Model by 90%',
+  description: 'Learn how PellencST reduced model development from 6-9 months to 1 month using Picsellia\'s MLOps platform for AI-powered waste sorting machines.',
+  alternates: {
+    canonical: '/use-cases/pellencst',
+  },
+  openGraph: {
+    title: 'How PellencST Cut Time-to-Model by 90%',
+    description: 'Learn how PellencST reduced model development from 6-9 months to 1 month using Picsellia\'s MLOps platform for AI-powered waste sorting machines.',
+    url: '/use-cases/pellencst',
+  },
 };
 
 const pellencstData: CaseStudyData = {
@@ -230,5 +239,10 @@ const pellencstData: CaseStudyData = {
 };
 
 export default function PellencSTCaseStudyPage() {
-  return <CaseStudyTemplate data={pellencstData} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Customer Stories', url: '/use-cases' }, { name: 'PellencST', url: '/use-cases/pellencst' }])} />
+      <CaseStudyTemplate data={pellencstData} />
+    </>
+  );
 }

@@ -1,9 +1,18 @@
 import CaseStudyTemplate, { CaseStudyData } from '@/components/use-cases/CaseStudyTemplate';
 import { Metadata } from 'next';
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: 'How SGS Slashed Model Development Time by 66% | Picsellia',
-  description: 'Learn how SGS reduced model development time from 3 days to 1 day using Picsellia platform for testing, inspection, and certification workflows.',
+  title: 'How SGS Slashed Model Development Time by 66%',
+  description: 'Learn how SGS reduced model development time from 3 days to 1 day using Picsellia\'s MLOps platform for automated testing, inspection, and certification workflows.',
+  alternates: {
+    canonical: '/use-cases/sgs',
+  },
+  openGraph: {
+    title: 'How SGS Slashed Model Development Time by 66%',
+    description: 'Learn how SGS reduced model development time from 3 days to 1 day using Picsellia\'s MLOps platform for automated testing, inspection, and certification workflows.',
+    url: '/use-cases/sgs',
+  },
 };
 
 const sgsData: CaseStudyData = {
@@ -232,5 +241,10 @@ const sgsData: CaseStudyData = {
 };
 
 export default function SGSCaseStudyPage() {
-  return <CaseStudyTemplate data={sgsData} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Customer Stories', url: '/use-cases' }, { name: 'SGS', url: '/use-cases/sgs' }])} />
+      <CaseStudyTemplate data={sgsData} />
+    </>
+  );
 }

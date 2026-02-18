@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+
+export const viewport: Viewport = {
+  themeColor: "#0F1117",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.picsellia.com"),
@@ -10,7 +14,7 @@ export const metadata: Metadata = {
     template: "%s | Picsellia",
   },
   description:
-    "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale. Centralize data, streamline model training, and deploy with confidence.",
+    "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia.",
   keywords: [
     "MLOps",
     "Computer Vision",
@@ -27,26 +31,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://picsellia.com",
+    url: "https://www.picsellia.com",
     siteName: "Picsellia",
     title: "Picsellia - MLOps Platform for Computer Vision",
     description:
       "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Picsellia - MLOps Platform for Computer Vision",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Picsellia - MLOps Platform for Computer Vision",
-    description:
-      "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
-    images: ["/og-image.png"],
+    site: "@picsellia",
     creator: "@picsellia",
   },
   robots: {

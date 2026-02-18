@@ -2,10 +2,19 @@ import { Metadata } from 'next';
 import { getAllPosts, getCategories } from '@/lib/blog';
 import BlogListClient from '@/components/blog/BlogListClient';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
+import { JsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Latest insights, tutorials, and news about computer vision, MLOps, and AI from the Picsellia team.',
+  title: 'Computer Vision & MLOps Blog',
+  description: 'Practical guides, tutorials, and insights on computer vision, MLOps workflows, and building production AI systems from the Picsellia team.',
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title: 'Computer Vision & MLOps Blog',
+    description: 'Practical guides, tutorials, and insights on computer vision, MLOps workflows, and building production AI systems from the Picsellia team.',
+    url: '/blog',
+  },
 };
 
 export default function BlogPage() {
@@ -13,6 +22,8 @@ export default function BlogPage() {
   const categories = getCategories();
 
   return (
+    <>
+    <JsonLd data={breadcrumbJsonLd([{ name: 'Blog', url: '/blog' }])} />
     <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
@@ -35,5 +46,6 @@ export default function BlogPage() {
         </div>
       </div>
     </section>
+    </>
   );
 }

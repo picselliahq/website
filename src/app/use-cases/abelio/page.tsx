@@ -1,9 +1,18 @@
 import CaseStudyTemplate, { CaseStudyData } from '@/components/use-cases/CaseStudyTemplate';
 import { Metadata } from 'next';
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: 'How Abelio Reduced Time-to-Model for Precision Agriculture | Picsellia',
-  description: 'Learn how Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery using Picsellia.',
+  title: 'How Abelio Reduced Time-to-Model for Precision Agriculture',
+  description: 'Learn how Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery for precision agriculture using Picsellia\'s MLOps platform.',
+  alternates: {
+    canonical: '/use-cases/abelio',
+  },
+  openGraph: {
+    title: 'How Abelio Reduced Time-to-Model for Precision Agriculture',
+    description: 'Learn how Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery for precision agriculture using Picsellia\'s MLOps platform.',
+    url: '/use-cases/abelio',
+  },
 };
 
 const abelioData: CaseStudyData = {
@@ -230,5 +239,10 @@ const abelioData: CaseStudyData = {
 };
 
 export default function AbelioCaseStudyPage() {
-  return <CaseStudyTemplate data={abelioData} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Customer Stories', url: '/use-cases' }, { name: 'Abelio', url: '/use-cases/abelio' }])} />
+      <CaseStudyTemplate data={abelioData} />
+    </>
+  );
 }

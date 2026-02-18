@@ -1,9 +1,18 @@
 import CaseStudyTemplate, { CaseStudyData } from '@/components/use-cases/CaseStudyTemplate';
 import { Metadata } from 'next';
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
-  title: 'How Ficha Accelerated Iteration and Innovation in WasteTech | Picsellia',
-  description: 'Learn how Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia for waste management AI.',
+  title: 'How Ficha Accelerated Iteration and Innovation in WasteTech',
+  description: 'Learn how Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia\'s MLOps platform for waste classification and recycling AI.',
+  alternates: {
+    canonical: '/use-cases/ficha',
+  },
+  openGraph: {
+    title: 'How Ficha Accelerated Iteration and Innovation in WasteTech',
+    description: 'Learn how Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia\'s MLOps platform for waste classification and recycling AI.',
+    url: '/use-cases/ficha',
+  },
 };
 
 const fichaData: CaseStudyData = {
@@ -230,5 +239,10 @@ const fichaData: CaseStudyData = {
 };
 
 export default function FichaCaseStudyPage() {
-  return <CaseStudyTemplate data={fichaData} />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Customer Stories', url: '/use-cases' }, { name: 'Ficha', url: '/use-cases/ficha' }])} />
+      <CaseStudyTemplate data={fichaData} />
+    </>
+  );
 }
