@@ -14,3 +14,80 @@ The advent of [foundational models](https://crfm.stanford.edu/report.html) usher
 This article profoundly examines the underlying techniques and design of DINOv2.
 
 ![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-0.gif)
+*Demo of DINOv2 by ai.facebook.com*
+
+## What is DINOv2?
+
+[DINOv2](https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/) (self-DIstillation with NO labels) is a self-supervised learning model that employs a novel self-distillation technique to develop foundational computer vision models. Its multipurpose backbone results from training a large, well-curated set of images on a network architecture powered by a Visual Transformer (ViT) model.
+
+DINOv2 can learn adaptable, high-quality, all-purpose visual features, enabling it to perform various CV tasks, such as classification, estimating depth, semantic segmentation, instance retrieval, and more, without fine-tuning specific tasks. This visual ability enables it to outperform existing state-of-the-art semi-supervised learning ([SSL](https://arxiv.org/abs/2301.05712)) and weakly-supervised learning ([WSL](https://arxiv.org/abs/2305.17442)) models.
+
+![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-1.png)
+*[Source](https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/)*
+
+## Explanation of DINOv2 
+
+DINOv2 implements a self-supervised learning approach contrary to previous intuitive training methods on text and image modalities for richer features. The rationale for this is that the text is a distraction because not all complex instances of image features are defined in training image examples.
+
+Like any model you train, data is an essential training component; embeddings are crucial to equipping DINOv2 with the innate ability to generalize better. Therefore, they can learn new things without having labeled data.
+
+## DinoV2 Data Pipeline 
+
+Meta AI researchers set up an automatic data pipeline that assembles the DINOv2 training data, called LVD-142M. It has a self-supervised structure to collect, clean, and process the images. The main processing components of the data pipeline consist of the data source, deduplication, and retrieval stages. The deduplication and retrieval stages of the pipeline are similarity search computations. They implemented these computations with [Faiss](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/).
+
+![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-2.png)
+*[Source](https://arxiv.org/abs/2304.07193)*
+
+### Data Source
+
+The pipeline's data source is a database containing uncurated and curated images. The uncurated images were gathered by web crawling for image tags, which consisted of raw data. After filtering and post-processing, the uncurated images amounted to 1.2 billion unique images. The curated dataset comprises images from  [ImageNet-22k](https://arxiv.org/abs/2104.10972), the train split of [ImageNet-1k](https://www.image-net.org/download.php), [Google Landmarks](https://paperswithcode.com/dataset/google-landmarks-dataset-v2), and several fine-grained datasets.
+
+![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-3.png)
+
+### Deduplication
+
+Images go through a deduplication process to remove identical or near-duplicate image embeddings to reduce redundancy and increase diversity within the dataset. This process uses what is called a [copy detection pipeline](https://arxiv.org/abs/2202.10261). The first step in the process is to run the images through a feature encoder. In this case, a self-supervised ViT-H/16 network. It computes their respective image embeddings, which are easier to deal with because they are lower-dimensional vectors of the images. The pipeline compares the embeddings of the uncurated images using k-nearest neighbors. Each cluster reserves only the representative image embeddings and discards the rest. This filtering reduces the uncurated images to a total of 744 million images after deduplication.
+
+### Retrieval 
+
+The pipeline creates a final, curated dataset for pre-training at the retrieval stage. The retrieval process finds images in the uncurated dataset that are similar to images in the curated dataset. It uses sample-based and cluster-based similarity to perform this retrieval search. They both use cosine similarity to measure the similarities of the embedding samples based on their distance. 
+
+For the sample-based search, they sample a number (K) of uncurated images nearest to a given curated image, including those above a similarity threshold, and then discard the rest. They use 4 and 32 for the value of k. In cluster-based retrieval, It clusters the uncurated data into different clusters and, from each cluster, samples 10,000 images and discards the rest
+
+After doing these steps, by the end of the retrieval process, the resulting dataset had 142 million curated images that the researchers named LVD-142M.
+
+## DINOv2 Network Architecture 
+
+The DINOv2 model uses a discriminative, self-supervised method with a series of improvements to the initial [DINO](https://arxiv.org/abs/2104.14294) model. Its network architecture combines DINO and [iBOT](https://arxiv.org/abs/2111.07832) losses with the centering of SwAV. The researchers introduced a bag of tricks on this connected network that focused on accelerating and stabilizing the training at scale. It also enables the learning of features about the image at the image and patch levels. DINO and iBOT are both self-distilation models that use student-teacher architecture. However, their objectives differ. DINO provides an image-level objective since it uses the image features for training, while iBOT provides a patch-level objective since it uses the patch features of images for training. 
+
+In DINOv2, the researchers executed a [principal component analysis (PCA)](https://builtin.com/machine-learning/pca-in-python) computation on the iBOT network patches. This PCA adds another level for feature extraction. It results in a segmented representation of the image features in different colors, creating an implicit understanding of distinct features. Images of the same class will always generate the same color segment across the same features. 
+
+‍
+
+![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-4.png)
+*[Source](https://arxiv.org/pdf/2304.07193v1.pdf)*
+
+The added computation makes it possible for DINOv2 to learn transferable frozen features that can handle complex pixel-level information without supervision from text or caption.  
+
+In addition to the patch-wise objective, they untie the head weights between both objectives and increase the resolution of the training images to 518 x 518 towards the end of the pre-training. They also use larger batch sizes, [KoLeo regularization](https://arxiv.org/pdf/1806.03198.pdf), [L2-normalization](https://neptune.ai/blog/fighting-overfitting-with-l1-or-l2-regularization), and [softmax normalization](https://www.pinecone.io/learn/softmax-activation/) for the training parameters, which inherently gives better results and a more stable gradient in one direction.
+
+All these additional techniques resulted in DINOv2 being two times faster and requiring three times less memory than similar discriminative self-supervised models. ViT-S/14 distilled, ViT-B/14 distilled, and ViT-L/14 distilled are the smaller, distilled versions of the pre-trained DINOv2.
+
+## What can you do with DINOv2?
+
+DINOv2 is a versatile model that can handle various computer vision tasks, like image classification, object detection, image segmentation, depth estimation, and image retrieval. It is still under development, but it can potentially revolutionize the field of computer vision. Some practical applications of DINOv2 include:
+
+- A self-driving car could use DINOv2 to find obstacles and estimate their depth. The driver could utilize this data to navigate the car safely.
+- Social media companies can use Dinov2 for violent or offensive content recognition in images and then seamlessly filter out inappropriate content from their sites.
+
+## Drawbacks of DINOv2
+
+Although DINOv2 has phenomenal capabilities, it also has pitfalls. These pitfalls are, ironically, implications of its impressive fine-tuning-free performance, out-of-domain ability, and foundational model design. 
+
+When presented with data that deviates significantly from its training distribution, DINOv2 can still struggle despite its remarkable out-of-domain performance. This highlights the necessity of continually improving the model's generalizability through continuous evaluation and refinement.
+
+As a result, DINOv2 will occasionally still require performance enhancements to take on unfamiliar tasks successfully. It must be retrained using high-quality and diverse training data rather than fine-tuned with just a small amount of data to increase its vision intelligence and operate better across various scenarios. This process is time-consuming, computationally expensive, and may also require additional data or expertise.
+
+## Conclusion 
+
+DINOv2 is currently the most advanced self-taught vision model. Its potential to change the field of computer vision will only expand as it evolves. It is an exciting time to work in computer vision, as it is one of the most promising new technologies in the field.

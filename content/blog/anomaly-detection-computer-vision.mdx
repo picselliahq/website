@@ -10,3 +10,93 @@ published: true
 ---
 
 ![](/images/blog/anomaly-detection-computer-vision-img-0.jpeg)
+*Source: [Pexels](https://www.pexels.com/)*
+
+An anomaly is an outlier or anything that deviates from the regular contents of image data. The goal of [anomaly detection in computer vision is to detect when an image or video frame](https://arxiv.org/abs/2109.13157) contains an outlier or deviates from normal. It leverages advanced deep-learning techniques to achieve these results.
+
+Anomaly detection in computer vision can be performed using supervised or unsupervised learning. While you can use supervised learning techniques to perform anomaly detection, they are an intrinsically handicapped solution for this task, given that training datasets for anomaly detection use cases tend to have [unbalanced label classes](https://www.picsellia.com/post/improve-imbalanced-datasets-in-computer-vision). 
+
+Fortunately, computer vision is more effective with deep learning techniques. Combining unsupervised learning and deep learning techniques like convolutional neural networks (CNN), auto-encoders, etc., is a good option. The type of approach you choose would depend mainly on the given dataset and the goal of anomaly detection.
+
+Anomaly detection using computer vision has various applications:
+
+- Security and surveillance
+- Programming autonomous vehicles
+- Detecting abnormalities in medical imaging
+- Building maintenance and inventory monitoring
+- Retail shelf monitoring
+- Manufacturing line monitoring
+
+## Approaching anomaly detection in computer vision
+
+Detecting image anomalies should be seen as something other than a herculean task. It typically only requires understanding computer vision and the task at hand. Anomaly detection in computer vision has many use cases and endless applications in our daily lives, some of which are still being discovered.
+
+For example, a pharmaceutical corporation can introduce an anomaly detection model into its [computer vision pipeline to automate](https://www.picsellia.com/automated-pipelines) the identification of medications that are flawed or ineligible for consumption. You would generally take the following steps for every anomaly detection use case or scenario:
+
+- **Problem Understanding:** Different problems have different implementation strategies, and understanding which strategy would work best for a given task is vital to success in anomaly detection. An algorithm that would work best on a tabular dataset might perform poorly on an image data set.
+
+- **Data Pre-processing: **The data set must be processed for any data project to prepare for model training. Pre-processing handles missing data, inconsistency, imbalance, scaling, etc.
+
+- **Feature Engineering:** The pre-processed data set needs to undergo feature engineering and be divided into a testing and training image data set.
+
+- **Model Selection and Training:** Model selection is another important part of developing an anomaly detection model. You would often have to experiment with multiple deep-learning techniques to find the best model for your data set.
+
+- **Model Evaluation: **Model evaluation provides information about the model's performance. The learned deep-learning model must be evaluated using the feature engineering testing images. 
+
+- **Threshold Selection: **A threshold can be considered the deciding factor. If the threshold is too high, the model may categorize some normal photos as anomalies and others as normal. Thresholds are frequently selected based on statistical research, domain knowledge, or testing.
+
+- **Model Deployment:** This is the final stage of the anomaly detection process. In this stage, the final model is deployed into production, where you can make inferences. You would require additional monitoring and periodic model maintenance.
+
+## Detecting Anomalies in a Haystack of Data
+
+Although detecting anomalies in big data might seem overwhelming, many algorithms and techniques have been developed to help ML and AI engineers implement anomaly detection in computer vision.
+
+‍
+
+- **Density Estimation:** Density estimation employs sample context and neighbor densities to estimate anomalies. A probability distribution model of the photos is applied in this case. This model maps the distribution of each normal picture into a single bin. Anything outside of the range is regarded as an outlier. This strategy necessitates an enormous amount of training images. Deep generative models can assist in overcoming this data limitation.
+
+- **One-class Classification: **As the name implies, one-class classifiers are classification models trained to identify a single class. Anything that falls outside the decision threshold for that single class is labeled as an anomaly. This method overcomes the data limitation of density estimation as it only requires a little data for training. A good example is the one-class support vector machine (SVM).
+
+- **Image Reconstruction: **This approach assigns a low error to normal images and a high error to abnormal images. By doing so, it reconstructs anomalies to generate more normal images. One common algorithm used for image reconstruction is autoencoders. An autoencoder is an artificial neural network widely used in anomaly detection because of its ability to learn representations of data and reconstruct data accurately. In computer vision anomaly detection, autoencoders are trained on a regular image data dataset. During training, the model learns to encode and decode the regular instances. You can then identify anomalies by observing the model's reconstruction errors.
+
+- **Self-supervised Classification: **This works on the principle of self-learning models. The models extract essential features from the given image data without supervision. These models can then distinguish between normal and abnormal images by learning the position, direction, and shape of various features or objects in the image.
+
+## Techniques to handle imbalanced data in anomaly detection
+
+- **Data Augmentation: **Data Augmentation uses data manipulation techniques such as shear, rotation, coloring, and noise to increase the size of a small data set. Data augmentation is beneficial when handling imbalanced data. With data augmentation, a single image example can become ten examples by transforming some key features.
+
+Assuming a machine learning engineer is trying to build a model that can detect hands in real-time, the engineer would have to source images of hands in different locations, shades, shear, and colors to build a robust model that would not overfit. One way to get a vast set of images is to augment it. Hence, each image can be sheared and transformed to fit every use case.
+
+![](/images/blog/anomaly-detection-computer-vision-img-1.png)
+
+![](/images/blog/anomaly-detection-computer-vision-img-2.png)
+
+The image above compares the original image with four (4) other augmented variations of the same ground truth
+
+‍
+
+- **Class Weighting:** Different weights are assigned to different classes in class weighting. When a data set has more features concentrated in a single class, you can remedy data imbalance by increasing the weights of the minority class and reducing the weights of the more populated class. Class weighting is optimal when a model is trained to identify a single class (anomaly detection).
+
+![](/images/blog/anomaly-detection-computer-vision-img-3.png)
+
+- **Hierarchical Classification: **This classification method uses a predetermined hierarchical system to classify data. For instance, if you have a dataset of clothes, the first hierarchy could be "cloth," followed by the cloth type, which could be “shirt” or "dress.” Here, multiple models are trained at various hierarchies and combined to give the final prediction. Hierarchical classification is used to classify imbalanced data as it improves the overall accuracy of machine learning models.
+
+![](/images/blog/anomaly-detection-computer-vision-img-4.png)
+
+## Benefits of Leveraging Computer Vision for Anomaly Detection 
+
+- **Realtime Fault Detection: **By utilizing computer vision for facility monitoring, workers don’t have to be on-site to monitor faults; anomaly detection models can detect and flag faults in real-time.
+
+- **Predictive Maintenance: **Anomaly detection can help companies proactively maintain their facilities. In the long run, little faults that could cause more significant problems are detected as anomalies and treated proactively.
+
+- **Scalability and Efficiency: **Anomaly detection models are easy to scale and quite efficient for many use-case scenarios. Computer vision systems can be easily scaled to simultaneously analyze many images or video streams.
+
+- **Reduced False Positives: **Anomaly detection models reduce false positives in models as they contain only one class.
+
+- **Enhanced Safety and Security:** Anomaly detection models can improve safety and security by applying advanced computer surveillance techniques to detect outliers.
+
+## The Future Advances of Deep Learning for Anomaly Detection Model
+
+Deep learning is at the heart of anomaly detection with computer vision. Still, technological advances are being made to build a hybrid model that combines different models to increase anomaly detection model accuracy. This proposed model is still being developed but can potentially change the field of anomaly detection using computer vision.
+
+In our present day, anomaly detection models are proactive because they flag anomalies before bigger faults arise. In the future, anomaly detection models will be less assertive and more reactive. They could respond to faults and eliminate them as they arise.

@@ -12,3 +12,65 @@ published: true
 As most of you reading this blog know, SAHI stands for[ Slicing Aided Hyper Inference](https://github.com/obss/sahi). It has made it easier for developers to detect smaller objects on the screen without having to retrain their models. 
 
 ![](/images/blog/sahi-computer-vision-tiling-img-0.gif)
+
+[*Source*](https://github.com/obss/sahi?tab=readme-ov-file)
+
+## SAHI at Picsellia
+
+In the beginning, SAHI was employed from a public repository available on GitHub. The code did not belong to Picsellia. But our team wanted to do more and unfortunately, SAHI was not flexible enough for us. Hence, we redeveloped the core functionalities of SAHI and are now ready to launch our own tiling model. For Alexis, Software Engineer at Picsellia, "tiling" is a more fitting term for their model compared to SAHI. Let’s find out why.
+
+## Tiling - What, why and when?
+
+Before an image arrives into the neural network for prediction and further processing, it is resized to a square format. Resizing an image involves reshaping and dimensionally reducing an image into a 640x640 square. Hence, after resizing, the resolution of the concerned image diminishes and valuable information may be lost. Tiling is useful to bypass the impact of losing information during resizing. 
+
+In simple terms, tiling adjusts the image content according to the size of the objects. Larger objects typically don't require tiling, while smaller objects need greater focus to ensure accurate detection, making the model's training process more efficient.
+
+![](/images/blog/sahi-computer-vision-tiling-66f6a684cfaf64373c73fd23_66f6a677ce0d587b4bdca0dc_Presentation1-25203.gif)
+
+[Tiling is a crucial technique in image analysis for computer vision, enabling a closer examination of specific image regions while maintaining high resolution. This method is often applied to detect small objects within large, high-resolution images.](https://plainsight.ai/blog/tiling-and-small-object-detection/) In simple words, tiling is adjusting the image content to the object sizes. The bigger the object you need to annotate, the less likely you need to tile. The smaller the object, the more refocusing is required around it to make the model's training process easier.
+
+## Tiling - A Hyperparameter
+
+According to Alexis, tile size can be treated as an additional hyperparameter while training a model because when you train a model with a tiling process, theoretically there is an optimal tile size for your problem and you need to find it. The performance of the model depends on how accurately sized your tiles are and to find the accurate size, you have to keep experimenting. [The size of the tile greatly influences a model's performance, with the ideal range being between 500 and 1000 pixels.](https://pdf.sciencedirectassets.com/312075/1-s2.0-S2352914821X0007X/1-s2.0-S2352914822000053/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIEbWVtCwuM0oH5tOI2e8DVgG%2Ffno5bpiCzN%2BAZ2d%2ByDDAiEAyW7cex6nNIdorZAd4QuRdqnewP0bC4uZpSb%2BqJtazOAqsgUIWRAFGgwwNTkwMDM1NDY4NjUiDK%2BWgsYCJEDyKTTkuCqPBRBkCq6%2BhKJYlzCvOwP9%2FiFBkwQsdyM3nxYp5N5O49dy79GT3saYIyKOUGO%2F7oLRSyeRm42Ajy4McHR9mq%2F3%2BkDK1gAh9ieFAT75s5URkXnql9eXvKd%2F9Irf3j0kH51fOQJCU05tQ9ZjQ7mrHyrXmfZO9mtuhsok8MTMChkqmEAbRczXsHBdpTWFrVW%2B9YVS60n%2Bwl8ylSYv1bPb1vhu7b64nqSPURSYQmFDom2Wx1Kz%2BryGDMT%2BHGdcbhTi3x13MNly4LVc6cSQPLMzdVq4RO2z8wuqvRIDs4Srr2nIV6mZcQ%2Bj5yBTPODrEqNEBHMRk%2FWRBRqqKDpdr9YWxL%2B7xokkd1BTDPaxWngEM%2B8D5%2B5tp0sN4lVvRzXIHEYnD4SiG9wj2EiXS2mw2gStMSPUKzvunhnVbOb9NmfUtIb0Z06ZGLI7EhcBsRaY4WMaSSAzKhTyJZGu%2F2qIKuc9Jf2URIQAbT5I7c0pk%2FGDQeJoBi35yBukqHO%2BeogK4ELMLZ7DLLJNntDA%2BxP8Go61vzHAFQSwWGFC3HcN0cn8rNR1iKHYIqtv1xg1symk%2FYcRyC18IXINSFWhs%2BSGBNEOilcTCmp6A%2F5dws%2FJtPbndZjBvj%2B%2F1qMORin0kKEavn9WHzXUPMnPdyGCqM0KHI8%2B2YKnIMcY78ahJymm3W7o%2FUePPKyi7efpLKcg466cm7bN9H%2B3yZ938b3KVcUNEQm4VDaZ3mr7J0CRTrAiMIaTMPaT9hPUsBxX1n%2BGQBfL6lP4q%2B6aD1ZlPawL%2B1Q4Aliqjd8OLSqdh194HjJaEw8tqcG2r5u1IASFG85nHe5p%2FvI3BYNuFWj6q7vdzabGy562wauhiD%2BZ9ehrb5KCvknnfACTMNYw1a%2BvtwY6sQEVOcJ4NSAr1kW36jRPVokAQFYR8lto1c0lV5OD4ZXKQEWRRgcsGTgR4Dy5Mi1VGrfmlqZZya3YTmVrkehgdmTrSX3VD%2FtJjjPLXc3KMpwS2Eq3u0cRmHItrPboQxT9SDuV0fh891i7IvVe7NsIBwTpMkmZfzYEhFyBRb%2FF8wgB%2BjL2bHoQGeId5K5rK6yDBelHv%2BWNldWxkYSCHqw0OUP%2F2bmU4XoBsF7Sk6M6HFCgNlU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240919T083448Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUCVSM5FG%2F20240919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=be1bb31fbe92a737c6f8d9b6016fd2a8291a109f685548a772cb919bbf040282&hash=33902de1923dbc8c78d44fe95e95f864cefe6fefdfef40805f504e1d4450fcfa&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2352914822000053&tid=spdf-666dba7c-cdc7-4376-83d7-5ca6ae7c87f4&sid=b76030b82d7be4400e999f17260e2d3178e8gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=1c175f02535a5000510b0b&rr=8c583d1edc496f93&cc=fr)
+
+However, applying tiling processes to a dataset is NOT the best option depending on the use case. Tiling will not always yield the best results, nor the most accurate ones. There are several tiling strategies available on the internet. Public repositories provide [public codes](https://the-lay.github.io/tiler/) for all of these different strategies.
+
+## Tiling Modes
+
+Let’s say, you have a picture 100 pixels in width and you are using two tiles to split it. The first tile covers 80 pixels out of the 100, but the second tile will only have 20 remaining pixels available to cover. How will you tile 20 pixels for an 80 pixels bounding box? There are [several tiling ‘modes’ available](https://the-lay.github.io/tiler/) to resolve this issue. In this case, SAHI focuses on following the ‘drop’ mode where, as the name suggests, SAHI drops the second tile with the 20 pixels. And with those pixels, SAHI also drops information present in them. 
+
+But there are at least 6-7 tiling modes to adjust the “border” tiles (like the 20 pixels tile in the previous example) and at Picsellia, the team is implementing most of them to prevent the loss of information during the training process. Having several tiling modes also provides flexibility to the users to decide which tiling mode they want to implement for their specific use cases, empowering them to take control of their data and model training. 
+
+Some of the tiling modes include - 
+
+### Constant: this is a classic use case, enabled by default.
+
+![](/images/blog/sahi-computer-vision-tiling-img-2.png)
+
+### Drop: this is what SAHI did.
+
+![](/images/blog/sahi-computer-vision-tiling-img-3.png)
+
+### Reflect: apply a reflection of the tile until the tile is complete. Similar to a mirror.
+
+![](/images/blog/sahi-computer-vision-tiling-img-4.png)
+
+### Edge: Taks the last row or column of the pixel and repeat it until the tile is complete.
+
+![](/images/blog/sahi-computer-vision-tiling-img-5.png)
+
+### Wrap: Repeat the tile until the tile is complete.
+
+![](/images/blog/sahi-computer-vision-tiling-img-6.png)
+
+## NMS or NMM
+
+Object detection models often generate duplicate detections for the same object due to overlapping bounding boxes. Non-max Merging (NMM) merges overlapping boxes into a single detection. It builds groups of overlapping detections and combines their properties to create a more consolidated result. On the other hand, NMS or Non-max Suppression is an algorithm that addresses double detection by keeping the most confident bounding box and discarding the rest. It works by comparing overlaps between boxes based on the Intersection-Over-Union (IOU) value, eliminating less confident detections. Between the two, NMS is faster and should be the default choice for most cases. NMS is almost always used when a prediction is made with an AI model. NMM is an additional step needed when merging back the tiles' annotations. However, NMM is useful when more precise merging of overlapping detections is needed, especially when objects are under-detected. Both methods can be tested and adjusted depending on the specific requirements of the task.
+
+## Conclusion
+
+SAHI has been a valuable tool for improving object detection, especially for smaller objects, without the need for extensive retraining. However, the Picsellia team recognized its limitations and took the initiative to develop a more flexible and comprehensive tiling model. They have introduced a more refined approach to image processing, allowing for high-resolution analysis without losing important details.
+
+The flexibility of various tiling modes and the ability to treat tile size as a hyperparameter gives developers greater control over the training process, making it easier to tailor solutions for specific use cases. 
+
+Picsellia’s approach to tiling empowers developers to achieve better performance in their computer vision models, leading to more precise and efficient model training. [Book your demo](http://picsellia.com/demo) now!

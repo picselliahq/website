@@ -24,3 +24,163 @@ I have been working in Computer Vision the whole year, talking with lots of diff
 ‍
 
 ![](/images/blog/thats-a-wrap-2022-img-0.png)
+
+‍
+
+We have been talking with so many companies during the past year either wanting to kick off their computer vision journey or improve their existing workflows. After learning about their use cases I can guarantee that the actual scenario is pretty far from those fancy situations you read about on LinkedIn or Reddit. People who are serious about computer vision are trying to drive ROI in the fastest way possible, but how can that be done efficiently?? For example, if you pick a simple task and accelerate it by X % you make sure you will save time (and money!). 
+
+‍
+
+Most of the time, computer vision is not creating new use cases, but it is mainly augmenting or optimizing the ones that already exist. 
+
+‍
+
+I will explain. 
+
+‍
+
+- **Image Classification still rules **
+
+Being able to quickly classify millions of images - a task which previously required a lot of time-consuming human work - is still the number one use case of computer vision. Those of you guys who have been following me for some time might think that’s an easy-to-solve problem which has already been overcome. Spoiler: it’s not. 
+
+‍
+
+‍
+
+- **Object detection may be a thing, but in most cases it’s a 2-stage thing**
+
+In industrial or real-world scenarios, you don’t want to make mistakes in the classification stage. What if you fail to detect some flaws? It sucks, right? But what if the bounding box around those defects is not perfect? Well... you might say that at least you localized them. It sucks… just less. 
+
+‍
+
+This simple but legit thought drives companies to set up 2 separate projects: one for localization and one for classification. This results in 2 models, so 2 stages. When it could be one!
+
+‍
+
+‍
+
+- **The quality metrics to monitor are not the same**
+
+In real-world applications the most important quality metrics that must be taken into account might be quite different from the ones we are used to dealing with in an academic scenario. 
+
+‍
+
+Corporate AI systems are, in fact, integrated with way more engineering aspects. For example, if you want to integrate a model into something moving at 3 m/s, you will need to have an inference speed waaay above the norm. Even though this is possible in most cases, that’s when one starts thinking about alternative strategies. Another thing to take into account is the average confidence of the model’s predictions. Having a consistency in the confidence threshold is crucial if you want to integrate it into a software. 
+
+‍
+
+Last, sometimes pragmatism is better than scientific rigor. As in, we could say that **“Every CV model on production lines is overfitted”**, but who cares if it works? :) 
+
+‍
+
+![](/images/blog/thats-a-wrap-2022-img-1.png)
+
+### 2 . The most common problem is unbalanced data
+
+‍
+
+Well, we could see this as great news ;) 
+
+Something to keep in mind is that datasets are supposed to be a representation of the world: while high-value events do not occur all the time, the norm does. 
+
+‍
+
+There are a few reasons why building a balanced dataset for computer vision tasks is not always straightforward:
+
+‍
+
+- Data availability: It may be difficult to find a sufficient amount of data for the minority classes in a dataset, especially if the task is highly specialized or the data is difficult to collect.
+- Data quality: The data for the minority classes may be of lower quality, which can make it difficult to build a balanced dataset. For example, the images for the minority classes may be poorly labeled or have low resolution.
+- Data annotation: Building a balanced dataset may require manually annotating a large number of images, which can be time-consuming and costly.
+- Data distribution: The distribution of the data in the real world may be inherently unbalanced. For example, there may be significantly more images of common objects like cars or dogs compared to rarer objects like airplanes or exotic animals.
+
+‍
+
+Overall, building a balanced dataset can be a challenge because it may require a significant amount of effort to collect and annotate high-quality data for the minority classes, and the data distribution in the real world may not be equally balanced across all classes.
+
+‍
+
+### 3. Just like we don’t need more delivery service, we don’t need more labeling tools
+
+‍
+
+![](/images/blog/thats-a-wrap-2022-img-2.png)
+
+**There are sooo many, I can’t even put them all in my graph, like .. please aha.**
+
+‍
+
+It can be difficult to determine which one is the best fit for a particular project. Some factors to consider when selecting an image labeling tool include:
+
+‍
+
+- The type of data being labeled: Different tools may be better suited for different types of data, such as images, video, or text.
+- The labeling tasks being performed: Some tools may be better suited for certain types of labeling tasks, such as bounding box annotation, polygon annotation, or keypoint annotation.
+- The size and complexity of the dataset: Some tools may be better suited for large datasets with many images, while others may be more suitable for smaller datasets.
+- The budget and resources available: Some tools may be more expensive or require more technical expertise to use, which may not be practical for all projects.
+
+‍
+
+Ultimately, the best image labeling tool will depend on the specific needs and constraints of the project. It may be useful to evaluate several different tools and compare their features and capabilities before making a decision.
+
+‍
+
+**But please young founders, stop creating new startups about labeling, it’s enough aha.**
+
+‍
+
+### 4. People understood that deep learning needs to be narrow if you want good results
+
+‍
+
+In general, narrow deep learning models tend to be more specialized and perform better on specific tasks than wider models. This is because narrow models have fewer parameters and are therefore less prone to overfitting, which occurs when a model is too complex and learns patterns in the training data that do not generalize to new, unseen data.
+
+Narrow models are also **easier to train and require less computation**, which can be especially important for tasks that require real-time performance or when there are resource constraints, such as on mobile devices or in embedded systems.
+
+However, it's important to note that the best model for a particular task will depend on the specific characteristics of the data and the task at hand. In some cases, a wider model may be more suitable, especially if the task requires a more general-purpose model that can handle a wide range of inputs. It's also possible to use transfer learning, where a model trained on one task is fine-tuned for another task, to take advantage of the knowledge learned by a wider model while still achieving good performance on a specific task.
+
+‍
+
+### 5. MLOps needs to dive into edge deployment FAST 
+
+‍
+
+It is difficult to estimate the proportion of computer vision models running in production at the edge, as it depends on the specific industry and application. However, it is becoming increasingly common for computer vision models to be deployed at the edge, especially in industries such as manufacturing, retail, and transportation, where it is important to process data quickly and efficiently without the need for a network connection.
+
+In some cases, computer vision models may be deployed on edge devices such as smartphones, drones, or security cameras, where they can analyze images and videos in real time. 
+
+‍
+
+It's worth mentioning that not all computer vision models are suitable for deployment at the edge, as some tasks may require more computation or memory than can be provided by a small device. In these cases, it may be more suitable to send the data to a central server or cloud for processing.
+
+‍
+
+MLOps platforms can certainly focus on facilitating edge deployment of computer vision models, as this is an important and growing area in the field of machine learning. MLOps platforms are designed to streamline the process of building, deploying, and managing machine learning models in production, and this includes deploying models at the edge.
+
+‍
+
+There are a number of challenges that need to be considered when deploying machine learning models at the edge, such as the limited resources and compute power of edge devices, the need for real-time performance, and the potential for variable and unreliable network conditions. 
+
+‍
+
+MLOps platforms can help address these challenges by providing tools and frameworks for optimizing and deploying models at the edge, as well as monitoring and managing their performance in production.
+
+‍
+
+That being said, it is not necessarily the case that all MLOps platforms should focus exclusively on edge deployment for computer vision. **The specific focus of an MLOps platform will depend on the needs of the organization and the types of machine learning tasks it is trying to solve.** Some organizations may have a greater need for edge deployment, while others may be more focused on deploying models in the cloud or on-premises.
+
+ 
+
+‍
+
+## Conclusion
+
+‍
+
+I truly believe that 2022 has been a tipping point for computer vision in the industry. I’m 26 years old... but back in the early days - meaning 2018/19 - we used to struggle to drive the stakeholders’ attention onto computer vision and AI. These days are gone, now we hear about people wanting to put a full MLOps cycle into a factory offline but monitoring the drift and outliers on a raspberry pi. :) This means that things are evolving: people are getting more acquainted with AI and they are aware computer vision can improve their business strategies. Nevertheless, there’s still a long way to go! Good for us :P
+
+‍
+
+If you are considering entering this field, please do, there are so many exciting things to explore and use-cases to build, it’s still the beginning of AI for the industry :)
+
+‍

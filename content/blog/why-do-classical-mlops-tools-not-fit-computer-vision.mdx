@@ -50,3 +50,57 @@ Besides the unpredictability of input scenarios, edge cases occur due to bias an
 In computer vision, edge cases have a significant impact on the performance of the model. Edge cases in computer vision are more subtle as they’re often related to ambiguous visual aspects. Human annotators can sometimes fail to identify edge cases resulting in mislabeling. In images, edge cases can also occur if two objects are entirely different in their nature and properties but look visually similar. Take a look at the image below.
 
 ![](/images/blog/why-do-classical-mlops-tools-not-fit-computer-vision-img-0.png)
+** Source: *[*Live With AI*](https://medium.com/@livewithai/the-significance-of-edge-cases-and-the-cost-of-imperfection-as-it-pertains-to-ai-adoption-dc1cebeef72c)*
+
+The only similarity between a dog and fried chicken is that humans love them–one as a pet and the other as food. These kinds of visually similar images jeopardize the performance of computer vision models. In mission-critical applications, such similarities can prove fatal. Even one in ten misspredictions could result in loss of revenue or mission failure.
+
+Complex CV tasks require tools to visualize image data to effectively identify edge cases in order to avoid any real damage. A robust CVOps platform can provide the necessary tools to handle such edge cases.
+
+## Monitoring Needs to Be Focused on Data and Hardware
+
+Computer vision tasks are data and hardware-intensive. Classical MLOps strategy does not offer detailed monitoring of production-deployed CV models because it is not equipped to monitor them. 
+
+In particular, computer vision monitoring includes tracking hardware devices like CCTV cameras, medical scanning and imaging instruments, and other edge devices. Each device can have specific configurations that might affect the performance of the CV model. For instance, the orientation of cameras installed on a roadside for traffic analytics might change due to wind or other environmental factors, causing the model to capture inaccurate input images for which the model was not trained.
+
+To monitor such changes, you might require out-of-the-box or vision-specific metrics that differ from classical ML performance metrics. Some of these [CV monitoring metrics](https://www.picsellia.com/post/key-metrics-to-monitor-computer-vision-solutions) include:
+
+- Input image width and height
+- Image ratio distribution
+- Inference time
+- AE outlier score
+- KS drift
+
+Besides these, the development team should be able to monitor various distribution drifts such as data drift, concept drift, domain drift, prediction drift, and upstream drift. A robust CVOps model offers monitoring capabilities that are often missing in regular MLOps tools.
+
+We have discussed various reasons why regular MLOps pipelines are not suitable for computer vision applications. And lastly, we introduced CVOps as an appropriate solution. Now, let’s demystify CVOps in detail.
+
+## In Comes CVOps–Specialized MLOps for Computer Vision
+
+If you are wondering, what is CVOps, exactly? Simply put, it is a combination of MLOps and computer vision, similar to how MLOps is a combination of DevOps practices tailored for machine learning tasks.
+
+CVOps curates enterprise best practices, business processes, and tools and employs CV-specialized experts for building production-ready computer vision products. The product environment usually includes a camera or edge device installed in a real-world setting–for instance, cameras installed on the roadside for road safety and traffic monitoring systems.
+
+In addition, CVOps tools specialize in tracking the behavior of data and models over time. They can track metrics and KPIs to identify distribution drift and device calibration issues. A CVOps tool can notify your development team if the threshold values of these metrics are reached, enabling them to deliver timely data and model updates.
+
+Moreover, a robust CVOps strategy includes factors such as data and model scalability and the costs associated with it. It includes managing multiple edge devices and implementing solutions for each device simultaneously. 
+
+An enterprise CVOps strategy is also concerned with tracking and maintaining customer satisfaction over time. If the model performance deteriorates, the CVOps strategy should provide quick resolution of any related issues to ensure customer success.
+
+## Build Robust CVOps Pipelines With Picsellia
+
+General MLOps tools are suitable for most machine learning and deep learning tasks. However, CVOps tools are more capable of solving the unique challenges of vision-powered systems. They can manage, manipulate, analyze, annotate, and validate image and video data. They can train, validate, retrain, monitor, and release CV pipelines in a production environment. 
+
+Depending on business requirements, CV teams can use packaged enterprise CVOps tools or build their custom CVOps strategy. If you opt for a pre-built platform, look no further than Picsellia.
+
+[Picsellia](https://www.picsellia.com/) is a robust [end-to-end CVOps](https://www.picsellia.com/post/creating-a-cvops-platform) platform that offers the following features to assist data scientists and enterprise vision teams: 
+
+- Centralized dataset management for unstructured data like images and videos
+- Integrated image labeling and model training tools
+- Experiment tracking fine-tuning and obtaining the best performing model
+- Production-ready serverless model deployment
+- Real-time CV model monitoring with edge case identification
+- ML automated workflows covering each component of the CV pipeline.
+
+Moreover, Picsellia offers [supervised and unsupervised metrics](https://www.picsellia.com/post/key-metrics-to-monitor-computer-vision-solutions) to identify any drift and monitor overall CV workflows.
+
+Start using Picsellia’s CVOps platform. [Book your trial](https://www.picsellia.com/trial) today!

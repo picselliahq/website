@@ -57,6 +57,7 @@
     --card-hover: var(--tertiary-system-background);
     --accent: var(--picsellia-green);
     --accent-secondary: var(--picsellia-blue);
+    --prose-body: rgba(235, 235, 245, 0.45);
   }
 
   /* Light Theme */
@@ -104,6 +105,7 @@
     --foreground: var(--label);
     --card: var(--secondary-system-grouped-background);
     --card-hover: var(--system-gray-6);
+    --prose-body: rgba(60, 60, 67, 0.45);
   }
 
   * {

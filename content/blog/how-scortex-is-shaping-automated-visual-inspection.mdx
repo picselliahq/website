@@ -23,3 +23,37 @@ Over the years, Scortex has focused on making sure its customers succeed and giv
 ### **2. A Product Built on Integration: From Hardware to the Cloud**
 
 ![](/images/blog/how-scortex-is-shaping-automated-visual-inspection-img-0.png)
+*The spark system (from scortex.io)*
+
+In order to meet industrial constraints, the company decided to focus on a system called “Spark” whose various components form an end-to-end AI hardware solution. At Spark’s core is a “box” linking the camera, lighting, and the production line’s automated controls. This box contains enough computing power to run real-time inference and, in some cases, quickly retrain the model right on-site. It is also designed for cloud connectivity because the idea is to supervise each station remotely, analyze aggregate metrics, and potentially roll out new versions of the inspection model. 
+
+> *Historically, manufacturers were hesitant to connect their factories to a cloud-based service, but the benefits of real-time monitoring and remote machine learning training have largely helped overcome such reservations.*
+
+Effective integration relies on adapting to line speed, pre-existing protocols, and the human factor present in every facility. In many scenarios, operators must be able to take control and decide whether a part flagged as suspicious is truly defective or acceptable. The interface, displayed on a screen located next to the production line, was therefore designed to be as readable and straightforward as possible. The operator inspects the part in question, confirms or rejects the model’s decision, and that label is then reinjected into the database to enhance the system. 
+
+**At a scale of thousands of parts produced daily, these feedback loops continually boost model accuracy as new validated annotations become available for retraining. **
+
+Essentially, the final product is an amalgamation of elements: calibrated hardware, seamless integration with robust industrial systems, and a software layer that leverages AI for a clear purpose, sorting parts but also identifying the root cause of defects.
+
+### **3. Moving from Fully Supervised Learning to Anomaly Detection**
+
+![](/images/blog/how-scortex-is-shaping-automated-visual-inspection-img-1.png)
+*Anomaly detection (from scortex.io) *
+
+Initially, much like many computer vision projects, Scortex relied heavily on supervised learning. The principle was to gather as many defective parts as possible for the model to recognize, backed by a large set of thoroughly annotated images. However, on-the-ground feedback highlighted a well-known limitation: certain defect categories rarely appear in the available data, despite manufacturers considering them critical. Collecting large volumes of these negative samples was becoming impractical, especially when clients were unwilling (and who wouldn’t be ?) to generate defective parts on purpose just to expand the dataset.
+
+The solution came from turning to so-called “unsupervised” anomaly detection. Instead of trying to predict everything in advance, the model learns what a normal part looks like, flagging any deviation from this “baseline” as suspicious. In practice, this approach dramatically lowers the entry barrier, since gathering examples of normal parts is far easier than tracking down vast quantities of defective parts and labeling them. Subsequently, an operator or quality engineer clarifies the nature of the issue, further refining the model’s relevance. This shift redefines the role of AI: it spots deviations and alerts the human operator, rather than proclaiming an absolute truth about each defect. 
+
+In an industrial setting, this approach changes how people interact with the “Spark” system. **Instead of needing a perfect algorithm, the system simply flags items that seem truly suspicious, leaving humans to decide. **
+
+As a result, productivity rises without giving up the final say to human operators.
+
+### **4. Toward a Data-Driven Factory Powered by Artificial Intelligence**‍
+
+The true goal is not just to reduce manual efforts or lower scrap rates; it is also to transform every defect detection into actionable insights that prevent recurrence. Computer vision becomes a vital sensor in a continuous improvement system. Data feedback to a dashboard or central platform proves indispensable, providing a statistical overview for decision-makers and making it possible to identify latent issues before they evolve into massive production bottlenecks.
+
+Over time, Scortex has considered taking this logic a step further into a closed-loop approach, where temperature, speed, or other production parameters might be automatically adjusted based on the measured quality at the output. Yet, this ambition collides with industrial realities: many factories still rely on equipment built decades ago, use non-uniform protocols, and impose stringent safety requirements. Nonetheless, the momentum is in place: improvements in image processing, hardware miniaturization, and the growing push for thorough production traceability all support the concept of seamlessly integrating visual inspection into machine control. Whether the goal is reducing waste, speeding up diagnostics, or furnishing real-time information to operators, everything is trending toward increasingly automated, data-driven systems.
+
+> *This journey demonstrates that success depends less on any single algorithm than on an enterprise’s capacity to tailor its technology to production-line realities. *
+
+By combining the precision of computer vision and the down-to-earth demands of on-site teams, Scortex offers a glimpse of a possible path for those aiming to modernize industry for the 4.0 era. In the end, the final product results from a holistic approach: calibrated hardware, a user-friendly software environment, close collaboration with factory teams, and intelligent data management. This synergy integrates artificial intelligence into the actual conditions of workshops that, for the most part, still rely on manual inspections. There remains much work to be done to further refine flexibility and human-machine interaction, but the progress made in recent years shows that AI is already a strong catalyst for change. Scortex’s story also underscores that successful deployment requires both talented individuals who understand business constraints and cutting-edge technology. The industrial adoption of computer vision is only beginning, and factories—becoming more open to automation and predictive tools, offer a vast playing field for anyone prepared to tackle practical problems, step by step.

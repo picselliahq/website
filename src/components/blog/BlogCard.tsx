@@ -14,7 +14,7 @@ function formatDate(dateStr: string): string {
 
 export default function BlogCard({ post, featured = false }: { post: BlogPostMeta; featured?: boolean }) {
   return (
-    <Link href={`/blog/${post.slug}`} className={`card group block overflow-hidden ${featured ? 'md:col-span-2' : ''}`}>
+    <Link href={`/post/${post.slug}`} className={`card group block overflow-hidden ${featured ? 'md:col-span-2' : ''}`}>
       {post.frontmatter.image && (
         <div className="relative overflow-hidden" style={{ aspectRatio: featured ? '2/1' : '16/9' }}>
           <Image

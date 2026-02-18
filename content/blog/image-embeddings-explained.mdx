@@ -50,3 +50,114 @@ A CNN is a deep neural network model architecture containing two sets of blocks:
 ‍
 
 ![](/images/blog/image-embeddings-explained-6475bbefc0be9d26f9af7863_759558c3.png)
+*Typical architecture of a CNN*
+
+‍
+
+## **Convolutional Block**
+
+‍
+
+This block is responsible for extracting features from images and mapping the extracted features to image embeddings. As the name suggests, this block consists of convolutional layers. Each layer contains a filter and an activation function; in between, they also use other optional layers, which commonly include pooling and normalization layers. These layers provide additional benefits, such as regularization and improved training dynamics.
+
+‍
+
+The convolutional layers can extract abstract features and ideas within an image and encode them as embeddings. It consists of several convolutional layers stacked on top of one another to enable them to recognize simple features, like edges, shapes, textures, etc. As the network gets more profound, it can capture more abstract and distinctive traits, which the models eventually use to identify a particular object's concept in an image.
+
+‍
+
+[Pixels with a color channel](https://medium.com/analytics-vidhya/getting-started-with-image-data-deep-learning-328faad6d929) make up an image. The computer sees pixels and color channels as an array of vectors (matrix) with a value range of 0 (for no color) to 255 (for maximum color). These values represent the edges, shapes, and textures of different features in an image.
+
+‍
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbef63db6e5b5f396503_b871ba67.png)
+
+‍
+
+The convolutional layer filter reduces the image matrix to a lower dimensional representation by image compression. Filters are randomly initialized values with a smaller matrix shape (window size). The filter matrix is multiplied across the pixel values and returns a single value (scalar product) to represent that window portion of the image. As the filter matrix slides across each image window, it generates a complete feature map (i.e., a lower dimensional matrix embedding) of the image.
+
+‍
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf0591b8cffd5733af7_8d7292fa.gif)
+
+‍
+
+This process suppresses noise in the image to produce a smaller and smoother copy of the snippets that map the most prominent image feature, detected in the convolutional layer. These mappings are extracted embeddings that contain abstract qualities of the image. Generating embedding is done by compressing the image with CNN. Consider it is converting a video from 1080p to 360p; although the resolution is blurry, you can still identify objects within a frame because of their distinct shapes, colors, etc.
+
+‍
+
+Since the extracted image embeddings in the lower dimension are smoother copies of the input image, it is essential to be mindful of excessive image compression to avoid losing vital feature information in the embedding. There are a couple of ways to control the amount of image compression. 
+
+‍
+
+Modifying the filter size and stride (i.e., the number of pixels a filter moves per window) is a way of controlling compression. Increasing the stride causes the filter to traverse the entire image in fewer steps, yielding fewer values and a more compressed feature map, and vice versa.
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf03afdd871f2679a11_a50ab3f7.png)
+
+‍
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf2a6288220f6a1a4e1_19c3a4f2.png)
+
+‍
+
+Using padding layers can also limit compression. The layer adds zero value pixels to the edge of the image vector; as a result, the filter has more pixel vectors and image windows to aggregate. Padding is a more effective remedy for smaller images, typically placed before the convolutional layer.
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf0fd0a85c9a831d4a0_0c71a021.png)
+
+‍
+
+The pooling layer ensures robust embedding extraction, enabling stability when identifying the compressed information in an extracted embedding. It downsamples the embeddings to reduce the size of the feature maps by taking the maximum or average value of a group of neighboring pixels. It is helpful in cases where the pixels of the embedding features shift a bit out of place due to compression, and identifying the object becomes due to the slight deviation in shapes, edges, etc.
+
+‍
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf157682c73f77f1e7d_0a8ca290.png)
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf2c0be9d26f9af7c29_764190b7.png)
+
+‍
+
+Before passing the embedding to the next layer within the convolutional block, the activation function in each convolutional layer applies non-linearity to the model, which allows the layer to learn the complex relationships between the image and the extracted embeddings. Rectified linear unit (ReLU), Exponential linear unit (ELU), Sigmoid function, and Tanh function are some of the most common activation functions used in a convolutional block.
+
+‍
+
+The depth of the Convolutional layers is a critical component that contributes to the high performance of extracting useful embeddings. At every successive layer within this block, the embedding gets a more abstract understanding of the peculiar features of objects in the initial images. For example, there is an image of an iPhone 14 Pro Max. With the extracted embeddings in the first few convolutional layers, it recognizes there is a mobile phone in the image; by the intermediate layers, it pulls more embedding and can tell it's an iPhone, and with more embeddings by the last layer, its able to it identify it as an iPhone 14 Pro Max.
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475be0710544b746a2882f4_Capture-20d-E2-80-99e-CC-81cran-202023-05-30-20a-CC-80-2011-12-24.png)
+
+## **Classification Block**
+
+This part of the CNN is the fully connected linear layer. Typically located comes after the convolutional block. It takes the embeddings from the convolutional layers and calculates the probability of the feature embedding belonging to an object class.
+
+‍
+
+This layer transforms the vector embeddings from a vector to a scalar data point. The data point embedding shows a more precise numeric representation of the abstract features as a cluster, making identifying an object's class easier. The clusters represent different features of an object class.
+
+‍
+
+![](/images/blog/image-embeddings-explained-6475bbf210acd004ecd53080_e61e89e6.png)
+
+## **Conclusion **
+
+Image embeddings have revolutionized the field of computer vision by providing a compact and meaningful representation of images. With their ability to capture rich visual information, image embeddings have opened doors to numerous applications and paved the way for advancements in image analysis, interpretation, and generation.
+
+‍
+
+However, the techniques for generating image embeddings are associated with typical challenges of sensitivity to image variations, computational complexity, and the need for large datasets for training. Nonetheless, ongoing research and innovation continue to address these limitations and improve the effectiveness and efficiency of image embedding techniques. As research and development in this field progress, image embeddings will undoubtedly continue to shape the future of computer vision.
+
+‍

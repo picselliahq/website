@@ -71,4 +71,112 @@ We train a YOLOv8 model on the dataset. After training these models over 100 epo
   
      100 
      0.8709677457809448 
-     Follows a decrease until stabilization after 80 epochs
+     Follows a decrease until stabilization after 80 epochs 
+  
+
+### VLM
+
+We finetuned several VLMs on the tire dataset, including LLAVA v1.5, LLAVA v1.5 LoRA, LLAVA v1.5 LoRA Finetuned, MiniGPT v2, and MiniGPT v2 Finetuned. 
+
+### Summary of Metrics Table
+
+    
+    
+    Model Performance Table
+    
+
+    
+        
+            Model
+            Test Set Accuracy
+            Average Inference Time (seconds)
+        
+        
+            LLAVA v1.5
+            0.704
+            0.3
+        
+        
+            LAVA v1.5 LoRA
+            0.615
+            0.2
+        
+        
+            LLAVA v1.5 LoRA Finetuned
+            0.615
+            0.2
+        
+        
+            MiniGPT v2
+            0.577
+            0.1
+        
+        
+            MiniGPT v2 Finetuned
+            0.959
+            0.1
+        
+    
+
+‍
+
+The table shows that the MiniGPT v2 model significantly improved its accuracy after fine-tuning, increasing from 0.577 to 0.959 while maintaining a rapid inference time. On the other hand, the LLAVA v1.5 LoRA model did not improve its accuracy after fine-tuning, although the inference time was slightly reduced.
+
+### Result Summary 
+
+At the end of the experiment, the VLM fine-tuned MiniGPT v2 model was the best-performing model, with 0.959 percent accuracy while maintaining a rapid inference time. However, the YOLOv8 model also demonstrates high efficiency, with a validation accuracy of about 0.87. This result suggests that CNNs remain competitive, especially when optimized for specific tasks and trained over an adequate number of epochs.
+
+Considering these factors, VLMs can potentially improve outcomes beyond standard CNNs, especially after a targeted fine-tuning process. Nevertheless, the choice between a CNN like YOLOv8 and a VLM like Mini GPT v2 might depend on the specific application context, the complexity of the dataset, and the resources available for training and fine-tuning.
+
+## Object Detection
+
+We use a vineyard “wine grapes” dataset for the objection detection task. The goal is to detect grape clusters within each image. We measure the performance and accuracy with which these advanced models can identify and locate grape clusters in a natural and varied environment, which is crucial for agricultural management and automated harvesting applications.
+
+### CNN
+
+The results obtained after training the YOLOv8 model on the "Wine Grape" dataset for only 4 epochs suggest a promising performance. The confidence scores for detecting grape clusters range between 0.3 and 0.9, with an average of around 0.6, indicating relatively high accuracy for a model early in its learning phase. This demonstrates the model's ability to correctly identify grape clusters in diverse vineyard conditions.
+
+- The loss on validation boxes (val_box_loss) decreases steadily, suggesting that the model is more accurate in predicting object locations as training progresses.
+- The average precision on the intersection over union (mAP50) shows an upward trend, meaning the model can increasingly overlay its detection predictions with the actual annotations.
+- The recall metric also increases, suggesting the model lacks fewer relevant objects in the image.
+- The precision remains relatively stable, indicating that the number of false positives does not significantly increase during the early stages of training.
+
+These results indicate that the model has good learning potential, even with fewer epochs. Maintaining consistency in predictions and the rarity of missed boxes demonstrate YOLOv8's advanced capabilities for object detection in natural environments.
+
+![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-0.png)
+
+### VLM
+
+MiniGPT-v2 and LLAVA v1.5 show the most promising results among all the fine-tuned VLMs. 
+
+### LLAVA
+
+Before fine-tuning, LLAVA v1.5 was inconsistent in detecting grape clusters, with missed detections and sometimes imprecise identification of areas of interest. These errors can be attributed to the model's insufficient generalization or difficulty distinguishing grape clusters in a complex environment like a vineyard.
+
+The results after fine-tuning LLAVA v1.5 show that, despite improvement, the model still struggles to achieve a high level of accuracy in detecting grape clusters. Even after extensive training, the model still fails to consistently detect and identify relevant regions, suggesting that it has certain limitations.
+
+![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-1.png)
+
+The fact that the model performs better on the training set but not on the test set raises concerns about its generalization capability. This suggests that the model might be overfitting or memorizing specific details of the training data instead of understanding the general characteristics needed to perform well on new, unseen data.
+
+These observations indicate that LLAVA v1.5, although an advanced visual language model, may not be suitable for object detection in highly variable scenarios without additional adjustments or exploration of alternative training techniques.
+
+### MiniGPT-v2
+
+For MiniGPT-v2, when applied to the same "Wine Grape" dataset, the results also show significant room for improvement. Before fine-tuning, the model managed to make some accurate detections, but there are also inconsistencies in the dimensions of the bounding boxes and some difficulty in consistently identifying the region of interest.
+
+![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-2.png)
+
+After fine-tuning, the localization of grape clusters improves, indicating a better understanding of relevant visual characteristics. However, we observed disparities in the size of detections, which could lead to quantification errors in practical applications. Additionally, the inference time varies significantly, which poses a problem for real-time applications.
+
+![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-3.png)
+
+The presence of variations in inference time, even after fine-tuning, may indicate the model's volatility in the face of intrinsic variations in the test images. This raises questions about MiniGPT-v2's robustness and reliability for use in real-world conditions, where consistency and predictability are essential.
+
+### Result Summary
+
+- YOLOv8 proves promising, even after training for only 4 epochs, with metrics indicating an increasing ability to detect grape clusters. The validation loss and the average precision on the intersection over the union (mAP50) show that YOLOv8 could become highly efficient for detection in complex natural environments with extended training.
+- LLAVA v1.5, a VLM model, improved post fine-tuning but struggled with accuracy and generalization. This suggests the model could benefit from more diverse training data and special attention to avoiding overfitting. The notable difference between performance on the training and test sets indicates a limitation in the model's ability to generalize beyond the training data.
+- Mini GPT-v2 also improved after fine-tuning, especially in locating grape clusters. However, there remains variability in the size of detections and inference time that could impact its real-time application, raising concerns about its reliability for practical applications in precision agriculture
+
+During the practical implementation of VLMs or CNNs, factors such as compute, scalability, etc., contribute to determining if they are the best option for your use case. The performance examination of our case study's classification and object detection tasks shows their varying strengths and weaknesses based on these factors. Therefore, you must remember that the choice between CNNs and VLMs depends on the specific task, available resources, and desired trade-offs. We hope this comprehensive analysis offers you valuable insights into computer vision and guides your decisions when choosing between VLMs and CNNs. Try [Picsellia](https://www.picsellia.com/) for your computer vision solutions.

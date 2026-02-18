@@ -64,3 +64,129 @@ Data engineers are required to collect data from multiple sources under various 
 ‍
 
 ![](/images/blog/how-to-ensure-data-quality-best-practices-63287777fcaad2e4cbbcc493_data-20diversity.png)
+
+‍
+
+For computer vision applications, this means collecting images for a given subject. Say you want to create a dataset of bird photos. You will have to capture images of all kinds of birds. Each category (or bird species) will require pictures from multiple angles, in different lighting conditions, and at different elevations. These are just some of the variations. In reality, you will have to take care of many more scenarios.
+
+‍
+
+### 2. Data Source Accuracy
+
+‍
+
+Raw data is the foundation of all data science and machine learning practices, so any inaccuracy costs an organization significantly. When you collect data from various sources, ensuring accurate measurements becomes challenging. If inaccurate information passes on to further processing stages, it becomes even more difficult to trace the source of error.
+
+‍
+
+### 3. Data Annotation
+
+‍
+
+Once you have collected data, creating ground truths is the next necessary step. Labeling data is just as tedious as data collection since you have thousands or millions of images. Image datasets are labeled in different ways depending on the problem. A few examples are:
+
+‍
+
+- Class Association for classification tasks.
+- Bounding box/mask creation for object detection.
+- Image descriptions for image captioning.
+
+‍
+
+### 4. Data Security
+
+‍
+
+Data security and privacy are always a top priority for organizations as hackers constantly look for opportunities for a break-in. Companies spend a lot of resources, money, and time on data collection and refining, and any kind of infringement results in huge losses.
+
+‍
+
+### 5. Complex Storage Architecture
+
+‍
+
+Data should be accessible to all relevant data engineers and non-data team members. Traditional SQL databases are more than enough for easy storage and access for structured or tabular data, but they cannot be used to store image data. Storing unstructured data requires NoSQL databases such as [MongoDB](https://www.mongodb.com) or cloud storage like [Amazon S3](https://aws.amazon.com/s3/) bucket. Moreover, a centralized data repository like a data warehouse or data lake can be a more flexible option.
+
+These shortcomings are a significant reason many data-intensive ML projects fail. Without following the correct practices, organizations end up wasting a lot of time fixing errors and mistakes. 
+
+‍
+
+*But what are the proper practices for curating data? *
+
+Let's discuss them below.
+
+‍
+
+## Best Practices for Image Data Curation
+
+‍
+
+Building a suitable dataset can be overwhelming, but it does not have to be. With proper planning and guidance, engineers can get the most out of the data and minimize their workload. Let us dig deeper into what it takes to create a healthy dataset.
+
+‍
+
+### 1. Understand Your Problem
+
+‍
+
+Data collection is brutal and even more so if you take the wrong direction. Without understanding the problem, you may waste time gathering images useless to your ML model. It is always helpful to take a step back and reiterate your requirements to know what you need.
+
+Most computer vision tasks require clear images with the subject in complete view. Using such images, CV engineers can increase the size of the dataset by creating variations via [augmentation techniques](https://www.picsellia.com/post/image-data-augmentation).
+
+Knowing what you need saves time and effort and prevents inaccuracies from plaguing the dataset.
+
+‍
+
+### 2. Data Annotation Guides
+
+‍
+
+Assigning data labeling tasks to inexperienced and non-technical resources is a regular practice in the industry to reduce annotation costs. Although it takes the load off the data engineers, it raises questions about the quality of data annotation.
+
+‍
+
+![](/images/blog/how-to-ensure-data-quality-best-practices-632877951ded79ab120a978a_data-20annotation-20guide.png)
+
+‍
+
+Machine learning models use ground truth labels to train themselves. Any error within these labels results in a loss of model performance, so annotators must take extra care to ensure all data is labeled appropriately. Annotation guides can help resources understand how to label data according to the given class.
+
+‍
+
+### 3. Embeddings and Self-Supervised Data Annotation
+
+‍
+
+Self-supervised data annotation is a relatively new concept, but organizations have already started using it to speed up data labeling. Various open-source computer vision models are available online, specializing in image classification or object detection. Self-supervised data annotation uses these models to generate labels and sort images into categories. Annotators can manually verify these images to remove any inconsistencies, a much quicker process with a shallow margin of error.
+
+‍
+
+![](/images/blog/how-to-ensure-data-quality-best-practices-632877a27f32ef6bc5985fa1_self-supervised-201.png)
+
+‍
+
+Furthermore, embeddings or feature maps can be generated from images using convolutional neural networks (CNNs). Using clustering algorithms, computer vision engineers can use these embeddings to group similar images.
+
+### 4. Eliminating Data Silos
+
+‍
+
+Data silos occur when the organization's departments (like sales, marketing, and operations) only manage its data. Enterprise organizations cannot afford these data silos because it hinders the organization from observing a 360° view of their customers or business data, resulting in incomplete analytics and inefficient business decision-making. Moreover, data silos minimize cross-team collaboration, which is counterproductive for modern organizations.
+
+To eliminate these data silos, businesses can set up a centralized storage pipeline like a data warehouse or data lake to curate data from disparate sources. Hence, eliminating any data silos and promoting data democratization across the organization.
+
+‍
+
+## Ensure Data Quality with Picsellia
+
+‍
+
+Picsellia offers a wide variety of tools that [automate the data curation](https://www.picsellia.com/dataset-management) process. Our end-to-end data management solution allows for easy storage and access to data. 
+
+Picsellia's CVOps platform offers version control features for datasets, so you would never have to worry about losing relevant data. Other than data storage, Picsellia's AI-assisted labeling tools enhance the speed and accuracy of annotations by offering a pre-annotation feature to automate labeling. 
+
+Moreover, our [experiment tracking](https://www.picsellia.com/experiment-tracking) feature allows you to keep track of the multiple experiments executed on your various datasets. You can use these track records to fine-tune your dataset and bring the best out of your model.
+
+To experience our exceptional data management solutions, [book your demo](https://www.picsellia.com/experiment-tracking) today.
+
+‍

@@ -16,3 +16,27 @@ In this second part we will go through the lvl 1 and 2 of MLOps, what this means
 ## **MLOps Flow**
 
 ![](/images/blog/road-to-mlops-part-2-66ed3f7e8e22efeae245793b_616ea7466857947b62acf6b3_Untitled.png)
+
+## **MLOps Lvl 1**
+
+Now that we have evolved a little bit and reached level 1 of MLOps, let's see what characterizes our architecture that makes it different from level 0.
+
+First, a significant improvement is that our whole experiment pipeline has been automated. No more resources are handled manually, experiments can be trained with an API call, everything is standardized, and all the artifacts created from runs are stored automatically. If you pushed this further, you can even manage to automate hyperparameter tuning, which can make a huge difference in the exhaustiveness of your scientific studies.
+
+The second substantial upgrade, is that models are automatically trained with new data as it arrives from the real world (extracted from sensors,  your clients, API, or whatever collect method you set up). This means that you can always be sure that your models are up-to-date.
+
+But, this also means that data scientists and engineers must closely watch the models that are deployed and the data these are trained on so the models don't shift in an unwanted way. To do this, and to be able to debug fast, you must have some similarities between your experiments environment and your production environment, which leads us to the next point: you have to use or create standardized and reusable components (often Docker containers).
+
+Your models are now Continuously Delivered, they have to be validated, but there is no more manual copy/paste or download to deploy new models. So now, instead of only maintaining the model, you also have to maintain the whole pipeline, write tests and monitor, which is a complex process and explains why only a few people manage to get all those steps straight.
+
+The good thing is that now, our system can adapt to real-world, continuous data, letting us maintain a one-model pipeline properly. However, working with a lot of pipelines for different clients, for example, would demand a lot of effort since the pipelines are operated manually.
+
+## **MLOps Lvl 2**
+
+Level 2 goes a step further in terms of what we can do and the kind of system we are now able to operate. By that, I mean large-scale, high-frequency systems.
+
+Data scientists can now focus on analyzing data and [becoming data-centric](https://www.picsellia.com/post/data-centric-ai-vs-model). They can also spend more time testing new techniques, algorithms, and analyses. You have developed tools to package and containerize their code, so when they are done, the whole pipeline is automatically tested and deployed. This means that we have achieved a fully automated Continuous Integration and Delivery.
+
+The triggers of the pipeline renewal are multiple, as we monitor everything in several ways at different stages. Every metric monitored can trigger the pipeline. Or, everything can be scheduled, it's up to you. The few manual steps that remain mandatory are the data and error analysis to ensure that training data and models meet our high standards.
+
+Now that you understand better each level of MLOps maturity, we can get things done! This will be the topic of the last (but not least) article of our series. You can read it [right here.](https://www.picsellia.com/post/road-to-mlops-part-3)

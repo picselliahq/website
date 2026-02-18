@@ -261,6 +261,9 @@ function htmlToMarkdown(html: string): string {
   // Decode HTML entities
   md = decodeHtmlEntities(md);
 
+  // Escape bare `<` followed by digits/symbols that MDX would misparse as JSX tags
+  md = md.replace(/<(\d)/g, '\\<$1');
+
   // Clean up whitespace
   md = md.replace(/\n{3,}/g, '\n\n');
   md = md.trim();
@@ -356,6 +359,53 @@ async function discoverPostUrls(): Promise<string[]> {
 }
 
 // ---------------------------------------------------------------------------
+// Nested-div-safe content extraction
+// ---------------------------------------------------------------------------
+
+/**
+ * Extract the inner HTML of a <div> whose opening tag matches `attrPattern`,
+ * correctly handling arbitrarily nested <div> elements by tracking depth.
+ *
+ * Returns the inner HTML string, or null if no matching div is found.
+ */
+function extractDivContent(html: string, attrPattern: RegExp): string | null {
+  // Build a regex that finds the opening <div ...> whose attributes match
+  const openTagRe = new RegExp(`<div[^>]*${attrPattern.source}[^>]*>`, 'i');
+  const openMatch = openTagRe.exec(html);
+  if (!openMatch) return null;
+
+  const startIdx = openMatch.index + openMatch[0].length;
+  let depth = 1;
+  let i = startIdx;
+
+  while (i < html.length && depth > 0) {
+    // Find the next <div or </div>
+    const nextOpen = html.indexOf('<div', i);
+    const nextClose = html.indexOf('</div>', i);
+
+    if (nextClose === -1) break; // malformed HTML, bail
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      // Make sure it's actually an opening tag (not e.g. "<divider")
+      const charAfter = html[nextOpen + 4];
+      if (charAfter === '>' || charAfter === ' ' || charAfter === '\t' || charAfter === '\n' || charAfter === '/') {
+        depth++;
+      }
+      i = nextOpen + 4;
+    } else {
+      depth--;
+      if (depth === 0) {
+        return html.slice(startIdx, nextClose);
+      }
+      i = nextClose + 6; // length of '</div>'
+    }
+  }
+
+  // If we never balanced, return everything we found (best-effort)
+  return html.slice(startIdx);
+}
+
+// ---------------------------------------------------------------------------
 // Post migration
 // ---------------------------------------------------------------------------
 
@@ -430,12 +480,13 @@ async function migratePost(url: string, dryRun: boolean, downloadImages: boolean
     || html.match(/<meta\s+content="([^"]*)"\s+property="og:image:alt"/i);
   const imageAlt = ogImageAltMatch?.[1] || undefined;
 
-  // Extract main content — look for common Webflow article content selectors
-  const contentMatch = html.match(/<div[^>]*class="[^"]*rich-text[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i)
-    || html.match(/<div[^>]*class="[^"]*blog-content[^"]*"[^>]*>([\s\S]*?)<\/div>\s*<\/div>/i)
-    || html.match(/<div[^>]*class="[^"]*w-richtext[^"]*"[^>]*>([\s\S]*?)<\/div>/i);
-
-  const rawContent = contentMatch?.[1] || '';
+  // Extract main content — look for common Webflow article content selectors.
+  // We use a depth-counting approach instead of regex to handle nested <div>s
+  // correctly (regex with lazy quantifiers truncates at the first inner </div>).
+  const rawContent = extractDivContent(html, /class="[^"]*rich-text[^"]*"/)
+    || extractDivContent(html, /class="[^"]*blog-content[^"]*"/)
+    || extractDivContent(html, /class="[^"]*w-richtext[^"]*"/)
+    || '';
   const content = htmlToMarkdown(rawContent);
 
   if (!content) {
