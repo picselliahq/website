@@ -38,3 +38,70 @@ Probably the most popular trend of 2022 is text-to-image Diffusion models. Model
                    
 
 ![](/images/blog/6-computer-vision-trends-in-2022-img-0.png)
+
+![](/images/blog/6-computer-vision-trends-in-2022-img-1.png)
+
+AI generated images from human phrase prompts.
+
+On a high level, these models have 2 key parts. 
+
+- A powerful semantic text-encoder.  This can either be a multimodal text-encoder trained on image-text pairs, such as CLIP, or a large language model such as BERT. The text-encoder is responsible for capturing the complexity and semantic meaning of an arbitrary input sentence. It captures these features by projecting the text sequence in a high dimensional embedding space.
+
+- A diffusion model that generates images from gaussian noise. Through a denoising procedure, diffusion models are able to generate novel images from pure noise! The denoising procedure is modeled as a Markov Chain whose parameters can be manipulated through a prior.
+
+Since we want the diffusion model to create images inspired by a prompt phrase, the   output of the text encoder is fed as an input, together with gaussian noise, into the diffusion model in order to guide the denoising process. The results speak for themselves!
+
+These models are the deepest AI has penetrated into art, up to now. Many are afraid that such models will replace digital illustrators, painters and eventually other artists as well. However, they are probably going to serve as excellent support tools to such professionals and democratize the field more, rather than completely replace them.*‍*
+
+## *‍*
+3D Scene Perception
+
+Perception in 3D space is a prerequisite in creating autonomous robotic systems that operate in real world conditions, such as autonomous driving, but also augmented reality applications. Relevant methods include 3D object detection, 3D panoptic segmentation , 3D depth estimation and [many more](https://paperswithcode.com/area/computer-vision/3d).
+
+The goal of 3D object detection is to recognize objects by drawing an oriented 3d bounding box (cube) around it and assigning a classification label to it.  By detecting objects in 3D we get information about their size, their distance and orientation. This information can be then exploited by a navigation model in order to predict motion of objects in the scene, facilitate path planning and ultimately avoid collisions.
+
+![](/images/blog/6-computer-vision-trends-in-2022-img-2.png)
+
+A labeled 3D object detection example from the [objectron dataset](https://google.github.io/mediapipe/solutions/objectron). [Source](https://github.com/google-research-datasets/Objectron/blob/master/docs/images/objectron_samples.gif)
+
+Deep learning methods,[ such as CNN networks and in some cases ViTs](https://www.picsellia.com/post/are-transformers-replacing-cnns-in-object-detection), are extensively being used in solving this task. Currently the most popular training methods include using only images, using LiDAr sensor data or fusing both sources to create multi-modal datasets. 
+
+Although a lot of research is allocated towards reliable 3D perception systems and there is a lot of interest from the automotive industry for this technology, 3D object detection is still in an early stage. However, results in benchmarking datasets (eg. [Kitti cars](https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d), [sun-rgbd](https://rgbd.cs.princeton.edu/challenge.html), [objectron dataset](https://github.com/google-research-datasets/Objectron)) are very promising.
+
+## 3D Scene Representations with Neural Radiance Fields (NeRF)
+
+During 2020 a paper called “NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis” was published. Since then, it inspired a high number of research papers to follow in the same direction for 3D scene view synthesis and research is still ongoing. It’s a technology with very promising applications in computer graphics, augmented reality and possibly medical applications.
+
+The goal of this task is to synthesize novel views of an object given a 5D input. The inputs given are the spatial coordinates *x=(x, y, z)* of the viewer (camera)  and the viewing angle *(θ,φ)*. NeRF maps this 5D space to a single volume density *σ* and a view-dependent RGB color *c*.  It achieves that by using an optimized deep fully connected neural network. Training follows a supervised paradigm, hence multiple views of the object are needed for training purposes.
+
+![](/images/blog/6-computer-vision-trends-in-2022-img-3.png)
+
+ [Source						](https://arxiv.org/pdf/2003.08934v2.pdf)
+
+NeRF managed to achieve excellent results compared to its predeceasing techniques sparking a small revolution in its field.
+
+![](/images/blog/6-computer-vision-trends-in-2022-img-4.png)
+
+  
+
+Synthesizing a novel view of an input  2D image with NeRF and other predeceasing methods.  [Source](https://arxiv.org/pdf/2003.08934v2.pdf)
+
+## Explainable AI and uncertainty quantification in CV
+
+Finally, a trend that is becoming prevalent in not just computer vision but all of the AI field. 
+
+All these amazing deep learning techniques that we use today have managed to move the needle of computer vision state of the art by a huge margin. However, as models get increasingly more complex and large it becomes progressively more difficult to interpret why and how they make predictions.
+
+Deep learning has always been considered a black box technology, however, as DL models make their way into our everyday life, often governing important decisions such as medical diagnosis, it’s of paramount importance to know WHY these models have made a decision. It’s also extremely important to know how confident a model is of its prediction and how much trust we can have in it. These motivation has given rise to the field of Explainable Artificial Intelligence (XAI)
+
+A lot of funding is being allocated towards explainable AI and computer vision claims a large share of it. Some popular methods into creating more transparent models include CAM, Grad CAM ++[5], RISE [6], SHAP Gradient Explainer. Related software tools and libraries include [ELI5](https://eli5.readthedocs.io/en/latest/overview.html), [interpretML](https://interpret.ml/), [tootorch](https://pypi.org/project/tootorch/#description), [tfexplain](https://github.com/sicara/tf-explain)**, **[shap](https://shap-lrjball.readthedocs.io/en/latest/generated/shap.GradientExplainer.html)**.**
+
+![](/images/blog/6-computer-vision-trends-in-2022-img-5.png)
+
+Grad CAM++ algorithm applied to a CNN. Colors represent filter activations. A hotter color means more emphasis was given on those pixels by the model.
+
+Explainable AI techniques will make it possible to confirm existing knowledge, challenge existing knowledge but also generate new assumptions.
+
+## **Final Thoughts**
+
+There is a lot going on in computer vision and it’s easy to lose track of every research trend. In 2022 we saw that very **large vision models**, especially those based on vision transformers, have been dominating. These models rely on self-supervised learning for training so we can assume that **self-supervision** is here to stay.  Furthermore, we can observe that the latest research lies in the intersection of computer vision and NLP. **Multimodality** is still in its infancy, yet, it has already produced extraordinary results. It’s difficult to doubt that it will not prevail and we won’t see different deep learning fields unite. All of the above emphasize the need for more transparent models. Since AI has already penetrated deep into society,** Explainable AI** is more important than ever before.

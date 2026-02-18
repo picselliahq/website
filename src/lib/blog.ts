@@ -86,6 +86,18 @@ export function getCategories(): string[] {
   return Array.from(categories).sort();
 }
 
+/** Strip inline markdown formatting (bold, italic, links, inline code) to get plain text. */
+function stripMarkdownInline(text: string): string {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '$1')   // bold
+    .replace(/__(.+?)__/g, '$1')        // bold alt
+    .replace(/\*(.+?)\*/g, '$1')        // italic
+    .replace(/_(.+?)_/g, '$1')          // italic alt
+    .replace(/`(.+?)`/g, '$1')          // inline code
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // links
+    .trim();
+}
+
 export function extractTableOfContents(content: string): TableOfContentsItem[] {
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   const items: TableOfContentsItem[] = [];
@@ -93,7 +105,8 @@ export function extractTableOfContents(content: string): TableOfContentsItem[] {
 
   while ((match = headingRegex.exec(content)) !== null) {
     const level = match[1].length;
-    const text = match[2].trim();
+    const rawText = match[2].trim();
+    const text = stripMarkdownInline(rawText);
     const id = text
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, '-')

@@ -48,3 +48,82 @@ Here is a diagram of what we consider the bare minimum of configuration and pack
 ‍
 
 ![](/images/blog/road-to-mlops-part-3-61deec127f04aea44af7918b_bVn9U7jo2reV0wWSiC6a17KQzZXO2EZllEZJa6fdXDnDY5lQP7ILml64Bi0yzBxmIpFqaq-5TpKdXHPfyQdBhHFQRGp8JSroe4ZM04KlAZEOb11KBhkplRI5xpsItW5CElsdJXE.png)
+
+‍
+
+But we are still going to see the different ways that allow you to deploy models and see how they compare to each other.
+
+### **Deployment Options**
+
+Here are (in short) our options for deploying Machine learning models today. If you can make predictions using a web-connected system there are a few options at your disposal.
+
+- The first one that you may have done is deploy a Simple Web server to handle the requests and make the predictions.
+- The second one, more advanced, is to use some complete and powerful engines such as Tensorflow Serving, and then in the Other part, we'll see some Cloud provider services.
+- The last one is to deploy a model on edge. I will not cover it as the logic to integrate those options into a pipeline is not different from the first ones.
+
+### **Simple Web Server Deployment**
+
+Flask Deployment shows you how easy it is to ‘deploy’ a machine learning model on an API endpoint and here is a short working example of a model deployed on a Flask server.
+
+‍
+
+![](/images/blog/road-to-mlops-part-3-61deec12719222228e7addbb_AuRdWFaLiLvWvCHDV7eCkO-i_LY0ewa05i35A88OmgovUqnO01ohYDq_Wp16pGf94na65vRcPVI_omCoZicoKHSmjZyyEBjMdms0d1qUwpWew-12T4-TZd-oVsSZ35YaAZmvXWg.png)
+*Flask endpoint example*
+
+The key issue with this method is that it mixes the logic of the model and predictions with the API logic, which leads to more complicated stack traces and less clean code. API can be inconsistent. For example, you might have to change a route, you can’t create dynamic routing to new model versions as you add it to the servers. And finally, it’s inefficient and dangerous to manage your compute resources.
+
+What if your model has to scale but the web server does not, how can you decorrelate the needs for performance of both sides? How do you mitigate the costs of such a solution?
+
+> It can only scale with pain.
+
+### **Tensorflow Serving — Pros & Cons**
+
+Let’s move to a more robust approach of serving: Tensorflow serving.
+
+First, it solves our earlier problem of mixed logic. Even if it is more complicated than a Flask server, it is still quite easy, and spending time on is worth it. You can do batch predictions now, which means parallelizing your predictions.
+
+You have an API that doesn’t change, as it is devoted to model management and predictions. In addition, it's quite standardized, and you can use either the REST API or the gRPC API (for example at Picsellia we use gRPC as it improves performance and robustness of the APIs — but it comes with a bigger learning curve so choose what is best for you).
+
+It natively supports different versions for the same model, standardizing the way API routes are written.
+
+**But, does TensorFlow serving can only run TensorFlow?**
+
+It does only run TensorFlow and Keras models for now but some improvements are on the way and as we will see later, there are some workarounds. We can recommend[ this medium article](https://analyticsindiamag.com/converting-a-model-from-pytorch-to-tensorflow-guide-to-onnx/) made by Analytics India on converting Pytorch models to Tensorflow Serving.
+
+#### **Tensorflow Serving - Run**
+
+Just for you to see how easy it is to run TensorFlow serving and deploy a model, we took those screenshots.
+
+‍
+
+![](/images/blog/road-to-mlops-part-3-61deec12ce937b30decfb48c_jqlbaj_mkq4e-UJUp0Zj2taj09_yj4HVDxiHbPUkYpNsTNcff1SLXkgncZfIJ4uTPW0LZ7CMiY2vogBO6zaLWiYHSVrTe_FgfvHkhTocB8qMMmy8snwrAJMZenotRtvMCv43bWw.png)
+*TFX Docker example*
+
+‍
+
+The first one shows you the minimal command to launch the serving engine and the other so you can see what it looks like when correctly launched. Beautiful, isn’t it?
+
+#### **Tensorflow Serving - gRPC Example**
+
+Here we wrote a minimal example on how to request the Tensorflow serving server, using gRPC protocol.
+
+‍
+
+![](/images/blog/road-to-mlops-part-3-61deec12e1d4d53c211cad4c_ItRVEm9l5DZmRpAW8Tt0H4cAEKX4bW-5bOssbCtxIwOGh1LWI16etL7Xxvl-7DheNBF6icntcei0kTd7uX-jvQ3vjSd7KhJCUGOah-JRdyAS9EHotZo1cTU8EKrcwmZqJ43b3zs.png)
+*gRPC requet example in Python 3+*
+
+‍
+
+We can tell that it’s less intuitive than the Flask example, but It’s not even that long and I can guarantee you that this will give you a lot more confidence in your serving engine.
+
+### **Other Options**
+
+- [Graphpipe](https://github.com/oracle/graphpipe) solves the multi-framework model problem. You can deploy Tensorflow models, and MXnet and Pytorch models can be converted to ONNX format, that can then be deployed to the same serving. It also comes with a lot of clients for different programming languages so it can be included in nearly any stack.
+
+- [Kubeflow](https://github.com/kubeflow/kubeflow) is a heavyweight solution, based on Kubernetes, that allows you to orchestrate experiments, serving and supporting pipelines at scale on any architecture in a good way. Even if it is very powerful, it can be complicated to take control of the solution and maintain it properly.
+
+- [Simple Tensorflow serving](https://github.com/tobegit3hub/simple_tensorflow_serving) supports nearly all existing frameworks including Pytorch and MXnet and still seems quite easy to implement.
+
+- Finally, we have Cloud deployment solutions like the Cloud providers platform (AWS, GCP, Azure…) and solutions like ours; Picsellia. The great thing about these solutions is that everything is managed, maintained, and monitored for you, working as powerful tools for your ML projects. But they have to be compatible with your existing workflows, policies and they come with a price.
+
+If you'd like to learn more about our MLOps solution, Picsellia, feel free to[ book a quick intro call](https://www.picsellia.com/demo) and we'll get you started in no time!

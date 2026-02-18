@@ -83,3 +83,371 @@ Sometimes, these mistakes are accidental, whereas other times human experts are 
                         
 
 ![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-0.png)
+*Fig. 1: Examples of incorrect labels in various image datasets[ found and corrected](https://l7.curtisnorthcutt.com/label-errors) using [cleanlab](https://github.com/cleanlab/cleanlab). *
+
+‍
+
+‍
+
+Things get increasingly complicated for more advanced computer vision applications such as object detection and image segmentation. Not only do we find classification errors, but bounding box and pixel annotations can be inaccurate, inconsistent, or noisy. Setting up systematic ways for data annotation is essential for ensuring high-quality computer vision datasets.
+
+‍
+
+This combination of inexact, incomplete, and inaccurate labeling diminishes the quality of the supervisory signal in labeled datasets. Uncertainty forms inside the dataset, which naturally propagates into the model’s predictions.
+
+‍
+
+           
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-1.png)
+*Fig.2: Mistakes and imperfections in the training dataset create uncertainty which inevitably propagates into the model and its predictions.*
+
+‍
+
+‍
+
+### **Real World Datasets are imperfect**
+
+Training datasets are incomplete and finite. Our datasets are finite but real-world scenarios are not. There is only so much you can capture with a single training dataset. 
+
+‍
+
+To add to the complexity, data shifts and domain shifts are also big issues. A self-driving car is trained on a US city with a warm climate. The algorithm may behave very well inside the domain it was trained on. However, snowy weather conditions may severely degrade its performance, this is a form of data shift. Moreover, the same algorithm is undoubtedly not going to make it very far in [overpopulated Asian cities during rush hours](https://www.youtube.com/watch?v=Y8bfNplEmfo).
+
+‍
+
+## **Why do I need a Data-Centric approach?**
+
+Nowadays, there is a vast availability of pre-trained machine learning and deep learning models. Both the two major deep learning frameworks - [TensorFlow](https://www.tensorflow.org/hub) and [PyTorch](https://pytorch.org/hub/) - offer off-the-shelve pre-trained models through their model hubs, which you can use for inference in just a few lines of code. Not to mention the sheer number of Transformer models readily available through [Hugging Face](https://huggingface.co/models).
+
+‍
+
+Moreover, an increasing number of researchers open source their models on GitHub. A quick look at [papers with code](https://paperswithcode.com/) will help you discover the right repository for multiple computer vision fields be it 3D object detection, self-supervised semantic segmentation, or generative image models.
+
+‍
+
+**With such a vast availability of pre-trained models, not every organization needs to develop computer vision models from scratch.** We should aim at leveraging what has already been developed by the community, then[ tune and refine models](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models) to make them serve the use case of our business. 
+
+‍
+
+Data-centric AI puts the focus on improving the fuel deep learning models run on: the data.
+
+### **Data-centric AI advantages **
+
+- Minimal time is allocated developing & training new models. Such development is often a reinvention of the wheel.
+- Every model eventually becomes outdated. Improving the training data is a model-agnostic method, though.
+- Less technical debt accumulation is created and less maintenance is required when working with readily available models.
+- Methodologies that improve data quality can be transferable across models, projects, and organizations.
+- Model bias, data privacy, and AI ethics are usually only solved through the ‘data highway’ and not by refining the model itself.
+- Curating and correcting test datasets (benchmarks) allow for a more realistic performance evaluation after deployment.
+
+‍
+
+## **How to improve data quality in computer vision**
+
+Here is a non-exhaustive list of tips to improve data quality: 
+
+- Visualize, explore, and always be vigilant about mistakes on your training and testing datasets.
+- Explore data-centric tools to improve your datasets.
+- Set up robust data pipelines.
+- Implement pipeline testing to catch errors during data processing.
+- Define labeling and strict annotation rules to be followed and reduce inconsistency.
+- Often inspect your models for possible biases. This will guide your dataset updates.
+
+‍
+
+When you suspect your evaluation datasets contain noisy labels consider the following:
+
+- **Correct your test labels. Techniques like confident learning [**[**2**](https://arxiv.org/pdf/1911.00068.pdf)**] (**[**cleanlab**](https://github.com/cleanlab/cleanlab)** tool) can help you discover mistakes. This helps because:**
+
+- you evaluate the validity of your benchmarks; 
+- performance on corrected test sets is more representative of reality, so you avoid unpleasant surprises during deployment [[1](https://arxiv.org/abs/2103.14749)].
+
+- **Be extra careful about overfitting. It’s possible to “increase” test set performance just by overfitting on a test set’s noise rather than the actual signal.**
+
+- Consider using smaller models. [[1](https://arxiv.org/abs/2103.14749), [2](https://arxiv.org/pdf/1911.00068.pdf)] found that ResNet18 outperforms ResNet50 if 6% noise is added to the ImageNet test set. This is not surprising considering that larger models overfit noisy features more.
+- Your datasets may be much noisier than these highly curated benchmark datasets.
+
+‍
+
+## **Code Experiments **
+
+We’ve run some data-centric experiments for you. Theory is good but machine learning is a highly practical field so let’s get our hands dirty!
+
+‍
+
+For our experiments, we will use the common CIFAR-10 dataset. It’s a very popular dataset with thousands of citations. I also explored its curated test-set version published [here](https://github.com/cleanlab/label-errors/#corrected-test-sets). 
+
+A meta-annotation with [Mechanical Turk](https://www.mturk.com/) annotators found only 7 mistakes. So we can consider it a very well-curated dataset. 
+
+‍
+
+**Model-wise,** I use a typical MobileNetV2 pre-trained on ImageNet with a 10-class classification layer on top. The model has about 2.2M trainable parameters. MovileNetV2 is considered a lightweight model that achieves medium to high accuracy on most typical computer vision benchmark datasets. 
+
+**The model remains static throughout the experiments.** The training parameters also remain frozen. I train for a maximum of 100 epochs using early stopping monitored on val_loss (patience=5), with adam optimizer, typical 1e-4 learning rate with decay (patience=2), and a batch size of 180. An overall pretty standard setup.
+
+‍
+
+**The only changes I am allowed to make are data-related,** e.g. include more data, delete data, infuse label noise, include augmentation techniques, etc. 
+
+### **Baseline Performance**
+
+**In my first experiment I set the baseline performance using only 50% of the available data**. 
+
+Following on, you will see the effects of increasing the training data!
+
+The baseline training dataset is very well-balanced. Class frequency lies around 10% for each of the 10 classes.
+
+‍
+
+         
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-2.png)
+*Fig. 3:  Loading the baseline dataset, using only 50% of the available CIFAR-10 training samples.*
+
+‍
+
+‍
+
+     
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-3.png)
+*Fig. 4:  Class frequency distribution of our baseline training dataset with 20K samples. *
+
+‍
+
+‍
+
+**1.** We train the model on the above dataset. The training curves don’t show any serious abnormalities, except for a rather large gap between train-val sets.
+
+   
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-4.png)
+
+  
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-5.png)
+*Fig. 5:  Learning curves of the baseline model.*
+
+‍
+
+‍
+
+**2.** We evaluate the model’s performance on the validation dataset. Overall we get a medium-to-high performance, with open room for improvement.
+
+The network seems to mostly **struggle with classifying correctly classes  2, 3, 4, and 5**, namely  ‘birds’, ‘cats’, ‘deers’, and our best friends ‘dogs’. 
+
+‍
+
+               
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-6.png)
+*Fig. 6:  Baseline model’s results on the validation dataset.*
+
+‍
+
+‍
+
+3. Plotting the confusion matrix gives us more information about potential biases and common mistakes.
+
+- We observe a **bias towards class 4**, the lovely `deers`. Many misclassifications target class 4. Similar problems arise for classes 2,3 and 7.
+- There is high confusion between classes 3 and 5, the eternal ‘cats’ vs ‘dogs’ war. A similar pattern also arises for classes 0 (‘airplane’) and 1 (‘automobile’).
+
+‍
+
+    
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-7.png)
+*Fig. 7:  Baseline model’s confusion matrix on the baseline validation dataset.*
+
+‍
+
+### **The Effects of Quality Data - Training with Noisy Labels **
+
+We all know the quote, *“Garbage in, garbage out”.*  Let’s see if it really holds!
+
+**I deliberately infest the training labels in our baseline dataset with noise**, randomly changing the label of a sample.
+
+‍
+
+‍
+
+Bear in mind we change nothing in the validation and test sets. The figures below show how many mistakes we introduced to each class. 
+
+‍
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-8.png)
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-9.png)
+*Fig. 8: Frequency of errors deliberately infused in the training dataset. The left figure applies to 1% error noise while the right figure applies to 10% error noise. The x-axis denotes the class id while the y-axis denotes the error frequency.*
+
+‍
+
+‍
+
+Despite the changes, the overall class distribution still remains balanced. Since errors are introduced randomly with homogeneous probability, we don’t expect any strong imbalance.**	**
+
+**                        **
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-10.png)
+*Fig. 9: Class distribution of the noisy training dataset (10% label noise).*
+
+‍
+
+‍
+
+**Noise in the training dataset’s labels severely disrupts a machine learning model’s performance. **From our experiments, we observe that introducing just 1% noise in the training labels degrades validation performance by almost 2%. The validation performance decrease ranges from 2% to 10%. It’s interesting to note that the slope of the curve is not constant. 
+
+‍
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-11.png)
+
+      Fig. 10: Performance on the **validation **set when training labels contain noise.
+
+‍
+
+We can see a similar effect present in the test-set performance. The effects of label noise are more than obvious with performance dropping from 1% to almost 10%. Notice how drastic test-set performance degradation is when label noise increases from 1% to 2%!
+
+‍
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-12.png)
+*Fig. 11: Performance on the **test **set when training labels contain noise.*
+
+‍
+
+### **Improvement Idea 1 - Data Augmentation **
+
+The first data-centric improvement that comes to mind is to use data augmentation methods. Keeping the model and training params frozen, I include some augmentation layers before feeding the inputs. Mind that training and validation sets remain exactly the same.
+
+‍
+
+The network definitely has trouble overfitting the training data now. No visible improvement, however, despite the extra training costs due to the augmentation overhead. *To avoid the augmentation overhead you may want to create augmented datasets and store them on disk instead of doing augmentation on the fly.*
+
+‍
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-13.png)
+
+          
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-14.png)
+
+‍
+
+                            
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-15.png)
+*Fig. 12: Performance after using  augmentation methods.*
+
+‍
+
+‍
+
+In our case, the augmentations we applied did not provide any benefits. It’s possible that different augmentation parameters may provide more favorable results. However, finding an optimal combination requires fine-tuning the augmentation parameters.
+
+**Adjusting augmentations to your deployment scenario is essential for success!**
+
+‍
+
+       
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-16.png)
+*Fig. 13: Confusion matrix for the augmentation model. No benefit was achieved.*
+
+‍
+
+‍
+
+            
+
+### **Improvement Idea 2 - Gather more specific data**
+
+From the baseline model, we saw that the model often confused ‘cats’ and ‘dogs’. My thought was that providing more samples from these two confusing classes could possibly help the network draw better boundaries. 
+
+So I decided to create an artificially biased dataset and enhance it by including 1000 more specific examples from each of the two classes.
+
+‍
+
+           
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-17.png)
+* 	Fig. 14: An artificially “biased” dataset created by sampling more ‘cats’ and ‘dogs’ examples. *
+
+‍
+
+‍
+
+The network’s performance has not shown any particular improvements, probably the opposite. **To my surprise, the two classes were actually negatively affected!**
+
+‍
+
+Not only the confusion didn’t improve but the overall performance dropped. 
+
+**To my huge surprise, the two classes were actually negatively affected!**
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-18.png)
+*      Fig. 15: Performance on the “biased” dataset.*
+
+The confusion between cats and dogs hasn’t been corrected and misclassification targeting ‘deers’ worsened. **Unbalancing the dataset created more problems than it solved**. I would call it ‘back to square one’.
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-19.png)
+*Fig. 16: Confusion matrix of the “biased” dataset.*
+
+‍
+
+### **The Effects of Big Data - Training with more Data**
+
+Can we increase our model’s performance just by using more data? I would expect so, but as with many other things in deep learning, you can’t really know it until you test it. 
+
+‍
+
+I trained the same exact setup while incrementally increasing my training dataset’s size. The results are summarized in the graph below. As we expected, the more data we use, the higher the performance, reaching about 81% F1 score and 80% accuracy when using the full clean dataset. 
+
+‍
+
+Overall, we got **about a 13% increase in our metrics by doubling the training dataset’s size**.
+
+![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-20.png)
+*Fig. 17:  Performance improvements gained by increasing the training dataset size.*
+
+‍
+
+‍
+
+### **Conclusions**
+
+From the above experiments we saw that boosting a dataset’s size can greatly increase performance. However, gathering more data is often expensive, time-consuming, and even impossible in some real-world scenarios!
+
+‍
+
+Instead, you can make sure your existing dataset is clean of label errors and follows consistent annotation principles. Increasing the quality of data can massively improve performance, especially if a dataset is already of low quality. 
+
+‍
+
+## **Final thoughts on Data-Centric AI**
+
+Data-centric machine learning is a promising new avenue for organizations. Focusing on improving data quality, dataset size, and relevancy can greatly impact your models’ performance. Data-centric approaches can possibly help you combat data biases and data drifts more effectively, making your production models more robust. 
+
+‍
+
+“Data-Centric AI vs Model Centric AI” is a common debate. However, the two paradigms are not  mutually exclusive and can coexist. Nowadays, we are lucky to have easy access to some of the most amazing machine learning models ever created. This gives us more time to devote to improving our data pipelines and operations. **Once you spend enough time curating your datasets** then it makes sense to actually focus on [fine-tuning your deep learning model](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models). 
+
+‍
+
+Paraphrasing the words of Andrew Ng, the pioneer of data-centric AI, 
+
+‍
+
+*“Instead of ****only ****focusing on the code, companies should focus on developing systematic engineering practices for improving data in ways that are reliable, efficient, and systematic.”*
+
+‍
+
+## **References**
+
+- [Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks](https://arxiv.org/abs/2103.14749)
+- [Confident Learning: Estimating Uncertainty in Datase Labels ](https://arxiv.org/pdf/1911.00068.pdf)
+- [Learning with Confident Examples: Rank Pruning for Robust Classification with Noisy Labels ](https://arxiv.org/pdf/1705.01936.pdf)
+- [https://datacentricai.org/](https://datacentricai.org/)
+- [https://datacentricai.community/](https://datacentricai.community/)
+- [A large collection of data-centric AI resources ](https://github.com/Data-Centric-AI-Community/awesome-data-centric-ai)
+
+‍

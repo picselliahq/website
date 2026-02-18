@@ -46,3 +46,81 @@ In a nutshell, this step implements a compression technique on the image that en
 Since pixel (image density) values generally range from 0 to 255 and define the image's resolution, binarizing them to pixel values of 0s and 1s renders the scanned image in high contrast to form a bitmap. A bitmap is typically a lower-dimensional representation of the original 2D image. At this point, the depth (color) of the image is gone, leaving you only with black and white pixels. It's just like a shadow of the original image. White areas denoted by 1s denote the background, whereas black regions denoted by 0s denote characters.  
 
 ![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-0.png)
+*source: How does OCR work? by Aryaman Sharda*
+
+Binarization also cleans and filters areas of the image with noticeable noise, leaving complex regions untouched. Coupling a noise reduction technique with binarization gives better results. 
+
+The last step is to segment the black bitmap pixels that form single-connected components to be analyzed and processed separately. These pixels tend to be the characters.
+
+![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-1.png)
+*source: optical character recognition by computerphile*
+
+#### Classification 
+
+This step passes the single-connected pixels into a classifier that uses either a pattern recognition or feature extraction algorithm for character identification. The level of efficiency in character recognition comes as a tradeoff for the algorithm the system employs.
+
+Pattern recognition identifies characters by analyzing a single connected black pixel at once. It relies on many examples of a character in various fonts and formats to identify characters accurately. It’s most likely to miss characters that don’t have an exact example to match in its database.
+
+![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-2.png)
+
+‍
+
+Feature extraction identifies characters by analyzing the lines, edges, curves, loops, and strokes formed by a single connected black pixel. This algorithm develops a deeper understanding of the characters, enabling it to handle new examples of a character without needing an exact example.
+
+![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-3.png)
+
+#### Post-processing
+
+Downstream, the computer matches the identified character to its respective ASCII code (American Standard Code for Information Interchange). This code produces a digital text of the character as output, which a person or another computer can edit or search digitally.
+
+Early OCR used heuristic algorithms for pattern recognition and feature extraction, which required manual guidance and correction. Sometimes, they could only perform marginally faster than human typing. Advanced recognition, such as multilingual or handwriting style recognition, is now possible with sophisticated algorithms that leverage computer vision (CV) and natural language processing (NLP). They can use grammatical standards to refine recognition by analyzing broader verbal patterns and contextual clues. This type of artificial intelligence (AI) powered OCR is called intelligent character recognition (ICR).
+
+## The History of OCR
+
+Edmund Fournier d'Albe created the optophone, one of the earliest electric OCR devices, in 1914. As it scanned the words on a page, the optophone distinguished between the dark ink of text and lighter blank spaces, generating tones corresponding to different letters, allowing blind people to read with some practice.
+
+A few years later, around the late 1920s and early 1930s, Goldberg developed a machine that could convert printed text to telegraph code. It was one of the first technologies to convert printed characters to electrical impulses rather than sounds. He patented it in 1931.
+
+However, it wasn't until 1974 that OCR began to take on a more modern form, starting with Ray Kurzweil, who founded Kurzweil Computer Products, Inc. He created an omni-font OCR that could read text in virtually any font.
+
+Kurzweil later decided that his technology's best use was enabling computers to read text aloud for the visually impaired. The product made use of a text-to-speech synthesizer and a CCD flatbed scanner. Kurzweil displayed the finished product during a January 13, 1976, news conference. Kurzweil Computer Products created the first commercially available OCR software released to the public in 1978. Kurzweil later sold his company to Xerox in 1980. 
+
+However, OCR technology gained widespread popularity during the early 1990s. By the 2000s, OCR had become accessible via the web, the cloud, and mobile devices. Today, OCR has more versatile capabilities, from automated data entry from text images to language translation. 
+
+## OCR use cases across Industries
+
+OCR [powers various domains](https://www.picsellia.com/use-cases) of well-known technologies you come in contact with daily. Some use cases of industries applying OCR include:
+
+#### Forensics
+
+Handwriting forensics analysis is a field in forensics that examines handwriting to determine its authenticity or trace its authorship. Handwriting analysts gain an advantage from optical character recognition (OCR) since it converts handwritten text into machine-readable text that the machine can automatically examine. Handwriting analysts can use OCR to compare handwriting samples and spot writing patterns quickly and reliably. Analyzing ransom notes, signatures, falsified papers, identifying handwriting, authenticating documents, and studying medical records are some of the many uses for optical character recognition (OCR) in handwriting forensics.
+
+#### Healthcare & Biotech
+
+Accuracy and patient care are delicate and fundamental in the health industry. OCR enables effective management and analysis of patient information to provide the best possible care. With OCR, digitizing patient records such as medical charts, lab reports, and imaging results is accurate, efficient, and safe. OCR also helps accelerate research and development in the health industry. To better understand diseases and conditions—and to produce new or improved medications, vaccines, and treatments— researchers can easily retrieve quality data from a specific set of patients or scientific and technical journals.  
+
+#### Logistics
+
+OCR is used in the logistics industry to automate the processing of documents like bills of lading, shipping labels, and customs declarations. It enables the processing of documents in a short amount of time, thereby increasing precision and productivity and reducing costs for businesses. Other extensive applications of OCR in logistics include warehouse management, transportation management, and customer service.
+
+#### Utilities and infrastructures:
+
+OCR reads meter data in the utility industry to automate invoicing and keep tabs on energy and water usage. It can also decipher construction drawings like blueprints. Other applications of OCRs in the infrastructure and utility industries are automating customer care and data collection for analytics.
+
+#### Manufacturing
+
+Automating critical monotonous tasks with OCR makes manufacturing businesses more efficient, profitable, and sustainable. Quality control is a vital manufacturing task for inspecting product compliance and quality standards. OCR runs automated inspections on manufactured products for information like serial numbers, labels, barcodes, VINs, etc. Other tasks OCR manages in manufacturing include inventory management, predictive maintenance, shipping, and receiving.
+
+#### Defense & Aerospace
+
+Many operations in the defense and aerospace industries rely on security/cybersecurity. For safety and data protection, OCR enables the automatic processing of visas, passports, and travel applications. It eliminates manual authentication errors, enhances information processing, and reduces fraud at border security and military sites. The defense industry can also extract text from intelligence sources, such as satellite photos and aerial photography, to track enemy movement, identify potential dangers, and organize military operations. Other aerospace applications include automating the processing of logistical documents like shipping manifests and inventory data.
+
+#### Automotive
+
+OCR is crucial for autonomous vehicles because it enhances their ability to perceive and understand their environment as humans do. It is essential for their optimal navigation. One primary application of OCR in self-driving cars is the recognition of traffic signs like stop signs, yield signs, speed limit signs, etc.. Part of identifying different types of traffic signs includes reading the information displayed on them, such as the speed limit or the direction to turn. OCR can also recognize lane markers and other road elements.
+
+## Conclusion
+
+OCR has advanced from its humble beginnings to becoming a critical tool in the digital landscape. It has revolutionized how we interact with data, enabling us to unlock the immense value of physical and digital data efficiently.
+
+OCR systems are becoming more accurate and adaptable as AI/ML algorithms improve and quality data becomes more widely available. We expect more advancements in numerous areas as OCR technology evolves.

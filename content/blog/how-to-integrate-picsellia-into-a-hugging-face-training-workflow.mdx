@@ -54,3 +54,183 @@ To get started, you will create an experiment on Picsellia to manage your traini
 ‍
 
 ![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-0.png)
+
+## **Pull the datasets associated with the experiment from Picsellia**
+
+In your local environment, initialize a connection to Picsellia from the training script using the Picsellia SDK and get the Picsellia experiment you created.
+
+The dataset versions (training and evaluation datasets) you attached earlier to the experiment are part of sample datasets on Picsellia. Since they are object detection datasets, they are well suited for the task. Download the training dataset versions attached to your experiment.
+
+‍
+
+‍
+
+Get the label names for the training dataset version from its label objects.
+
+‍
+
+‍
+
+[
+](https://gist.github.com/Tob-iee/0a3e8ed8b41ea53d9fa5591f389b415f)
+
+Then, you will also need to get the annotations for the training dataset version (images) from Picsellia. For object detection datasets, Picsellia provides the option of downloading dataset annotations in the three most generally used annotation formats: [COCO ](https://cocodataset.org/#home), [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/), and [YOLO](https://medium.com/nerd-for-tech/yolo-you-only-look-once-65ea86104c51)
+
+With the function below, build the annotations for the training images in COCO format using the training dataset version object and extracted label names. Write the built annotations to a json file in your local directory, and read the json file as a COCO file using the COCO library.
+
+[
+](https://gist.github.com/Tob-iee/2a31b6e6d0ab243ac55e2b8359dc37f1)
+
+Create a label map of the labels and their respective “*ids*” from the COCO annotation categories. 
+
+‍
+
+Log the label maps to your Picsellia experiment.
+
+[
+](https://gist.github.com/Tob-iee/6c441fcd0269b838b5c8d54c3b097f21)
+
+‍
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-1.png)
+
+## **Train the model and log the results to Picsellia.**
+
+Since you now have all the images, labels, and annotations you need for training in your local environment, you can then train the model on your infrastructure and log the training results to Picsellia for traceability.
+
+DETR's image processor expects the dataset annotations to be in this format: `{'image_id': int, 'annotations': List[Dict]}`, where each dictionary is a COCO object annotation. Therefore, reformat annotations for each image before passing it to the image processor to enable successful training.
+
+Load DETR’s image processor, then encode the images and reformat the annotations with the image processor.
+
+[
+](https://gist.github.com/Tob-iee/b003c9ba26046e0c4bdbdb7ebdde64de)
+
+Load DETR's object detection model and specify your hyperparameters for the model's training. 
+
+[
+](https://gist.github.com/Tob-iee/6ade51ce140f743a14ebc110ffc358d2)
+
+Log the training hyperparameters to your Picsellia experiment.
+
+[
+](https://gist.github.com/Tob-iee/03038720f7295a24598242bba781f005)
+
+‍
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-2.png)
+
+Create a custom training callback for logging training activities to your Picsellia experiment from the Trainer API class. The API class gives access to all the activities happening during training. Within the callback, the loss and learning rate decay logs occurring during training are logged directly to your experiment in Picsellia at the end of the training. 
+
+[
+](https://gist.github.com/Tob-iee/20755d6693a0ee6a067b6cf40d8f1e8b)
+
+Initialize the training callback and train the model. 
+
+[
+](https://gist.github.com/Tob-iee/fdd542546ad6b4307960ddc3d5cd302c)
+
+After the training, save the model to your local directory. 
+
+[
+](https://gist.github.com/Tob-iee/c801788ac08a0c4eb3c0c09d67409361)
+
+Store all the model files in your Picsellia experiment artifact.
+
+[
+](https://gist.github.com/Tob-iee/7cb0f1a9355647c1c7e629cb3b653a74)
+
+‍
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-3.png)
+
+ 
+
+## **Send evaluations to the Picsellia evaluation platform.**
+
+Before making predictions with the fine-tuned model, you must load its image processor (encoder) and object detector (decoder).
+
+[
+](https://gist.github.com/Tob-iee/8c5fe643d5b2d8bce8cfb8802e559acc)
+
+Then, fetch images and labels for the evaluation dataset version from your Picsellia experiment.
+
+[
+](https://gist.github.com/Tob-iee/1cd8933b98ccef042d2f7dc67305c408)
+
+*Note: Fetching the evaluation dataset version doesn't download the images again; it is only a Picsellia object that acts as a placeholder to enable you to match the exact images you have locally to the ones in Picsellia.*
+
+ 
+
+To evaluate the model, make predictions on all the evaluation images that you downloaded to your local directory from your Picsellia experiment when you pulled the dataset versions initially. Match the local copy of the images to the ones in Picsellia and push the predictions of the corresponding images to your experiment evaluation dashboard.
+
+[
+](https://gist.github.com/Tob-iee/5a12b6783d3043924b78880585c41bfa)
+
+Being able to see the progressive performance of your fine-tuned model over time is essential. So, each time you make predictions after training and send the evaluations to Picsellia, you get a visual and empirical evaluation of your model.
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-4.png)
+
+The annotations in red are predictions, and the ones in green are ground truths. Finally, spin up a job on Picsellia to compute the evaluation metrics for all the predictions you just added.
+
+[
+](https://gist.github.com/Tob-iee/750ea26835e39091993a3068b07d1287)
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-5.png)
+
+## **Store the retrained model in the Picsellia model registry.**
+
+To complete the integration pipeline for traceability, you must stash all fine-tuned model versions from your experiment in the Picsellia model registry and package your code in a Docker container.
+
+ 
+
+Create a custom model folder for the different versions of your model in the Picsellia model registry. It will enable you to store the version of the fine-tuned model from our experiment run.
+
+‍
+
+[
+](https://gist.github.com/Tob-iee/ce42a655887afea8b8fed62364454e16)
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-6.png)
+
+Create a model version in the custom model folder to store the fine-tuned model from your training experiments in the model registry.
+
+[
+](https://gist.github.com/Tob-iee/1c091485a2b64e9d3e415b9fa4938d63)
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-7.png)
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-8.png)
+
+## **Dockerize the code**
+
+Package the workflow to enable you to scale training with seamless repeatability when running your experiments with the model. Make a custom Docker image structure with a Dockerfile.
+
+[
+](https://gist.github.com/Tob-iee/3504b19daaa70430145384e82db7f275)
+
+Build the image, and your mission is complete..
+
+‍
+
+> docker build . -f Dockerfile -t picsellia-hf-train_image:1.0
+
+You can deploy this Docker container image on your infrastructure and have a CVOps integrated training pipeline with Picsellia. Think of each Docker container you run as a training pipeline to spin up an experiment with the DETR model.
+
+ 
+
+To spin an experiment run, specify your environment variables for the Docker container with each run's experiment name and retrained model output directory.
+
+![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-65392518c6fd8914267eb7be_carbon.png)
+
+---------------------------------------------------------------------------------------------------------------------
+
+## **Conclusion**
+
+In this article, you learned about training with a CVOps workflow at scale and how to integrate Picsellia into training a HuggingFace object detection transformer to implement a robust CVOps training workflow. There is so much more to learn about Picsellia, HuggingFace, and scaling training; check out the following resources:
+
+- [Picsellia documentation](https://documentation.picsellia.com/docs/integrate-picsellia-into-your-training-scripts)
+- [Object detection with Huggingface transformers](https://huggingface.co/docs/transformers/tasks/object_detection)
+- [How to apply MLOps to computer vision? Introducing CVOps](https://huggingface.co/docs/transformers/tasks/object_detection)
+- [How do you create computer vision workflows?](https://www.linkedin.com/advice/1/how-do-you-create-computer-vision-workflows)
+
+‍

@@ -16,3 +16,47 @@ Practically speaking, piSAM allows you to select or highlight objects in an imag
 ‍
 
 ![](https://cdn.prod.website-files.com/60d1a7f6aeb33c5c595468b4/668eab14ab572e9c3fa1fcd3_Enregistrementdelecran2024-06-25a16.13.25-ezgif.com-optimize%20(1).gif)
+
+### What is piSAM?
+
+#### **Understanding Foundation Models**
+
+Foundation models in natural language processing have set a new standard by learning from extensive datasets and then fine-tuning for specific tasks. piSAM is based on SAM, a foundation model developed by Meta that was trained on a massive dataset of 11 million images and 1.1 billion segmentation masks. The technology marks a leap forward in unsupervised learning for image segmentation.
+
+#### **The Innovation Behind SAM**
+
+Meta used several data collection strategies when creating SAM. Their multi-phase data engine produced a dataset 400 times larger than previous segmentation datasets, incorporating:
+
+**Human-in-the-loop Segmentation:** Initial training on public datasets followed by professional annotators using SAM as an interactive tool, significantly reducing annotation time.
+
+**Semi-automatic Annotation:** Automatic detection of confident masks with annotator verification expanded the dataset further.
+
+**Fully Unsupervised Annotation:** Advanced models generated high-quality masks for all images, leveraging an ambiguity-aware approach for precision.
+
+#### **piSAM's Architecture**
+
+piSAM's architecture includes three main components:
+
+- **Image Encoder:** A Vision Transformer (ViT) pre-trained with Masked AutoEncoders (MAE) for feature extraction.
+- **Prompt Encoder:** Handles sparse prompts like points, boxes, and text, and dense prompts like masks, using positional encodings and learned embeddings.
+- **Mask Decoder:** A modified Transformer maps images and prompt embeddings to masks efficiently, utilizing self-attention and cross-attention techniques.
+
+#### **Implementing piSAM in Picsellia**
+
+Integrating piSAM into Picsellia enhances our platform's capabilities in more than one way:
+
+**Improved Accuracy:** piSAM's architecture and extensive training dataset ensure high segmentation accuracy with a single click.**‍**
+
+**Efficiency:** piSAM automates segmentation processes, reducing the time and effort required for manual annotations.**‍**
+
+**Versatility:** piSAM adapts to various segmentation challenges, making it suitable for tons of different computer vision applications.
+
+#### **Addressing Limitations**
+
+While piSAM excels in many areas, it still has some limitations. The model may struggle with images featuring complex textures or very small objects. For such cases, traditional supervised segmentation approaches with tailored datasets may still be the best option.
+
+#### **Conclusion**
+
+With piSAM now integrated into Picsellia, we're thrilled to offer you enhanced capabilities in computer vision. We're always committed to deliver solutions that are not only more accurate and efficient, but also adaptable to a wide range of challenges in image segmentation. 
+
+To learn more about how Picsellia and piSAM can elevate your computer vision projects, don't hesitate to[** request a demo today**](https://www.picsellia.com/demo)**.**

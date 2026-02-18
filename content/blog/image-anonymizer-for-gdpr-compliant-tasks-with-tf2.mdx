@@ -16,3 +16,102 @@ It would be a shame to limit AI applications due to GDPR right? At Picsellia, we
 ### What Does a GDPR-Compliant Image Look Like?
 
 ![dataset to anonymize.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d948_60db0fc97927192b55098318_CkNGIHvWRQfOPxeV.jpeg)
+
+Well, let’s meet Tom (don’t worry, I found Tom on [Pexels](https://www.pexels.com), so he won’t mind).
+
+As you can see, 100% of his face is visible, which is not quite GDPR compliant.
+
+In fact, to be compliant, +50% of his face should not be visible, preferably the top 50% of his face to hide his eyes.
+
+![dataset hide eyes.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50da97_60db0fe1792719a1370983a7_JwjKlnoBMJcTTjbS.jpeg)
+
+Like this!
+
+### How To Build a Robust Face-Detector?
+
+By now, you should have an idea on how we developed our anonymizer :
+
+- Building a face-detector
+- Identifying the top 60% of the face
+- Blurring it
+- Re-writing the picture
+
+### Why Build Your Own Face Detector?
+
+I’m sure you saw a bunch of tutorials on how to train a face detector with openCV or something. These algorithms work well for close-shot pictures, but have you tried them in the wild? Well... it’s not quite good. And most importantly, now that’s the world is living with Covid-19, face detector algorithms need to adapt to the new reality of everyone wearing masks.
+
+Speaking of masks, to build our dataset, we used a face mask dataset annotated by **humans in the loop** at the beginning of the pandemic. It’s composed of 6000+ pictures of people wearing masks or not; you can find it in our Dataset Hub.
+
+![datalake faces.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d98a_60db101e01d9e8ec1fb6469b_ZFEjNsNScbAIrhTa.png)
+
+With Picsellia, you can quickly access this dataset and see the labels repartition, here we have a total of 10000+ annotated faces in the wild.
+
+![dataset repartition faces.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d931_60db1028d65cc857bc4f02e1_kYXcRfqCEIMESbps.png)
+
+But we don’t want to build an other face mask detector.
+
+We will need to tweak this dataset a bit in order to create a dataset suited for face detection, to do so we can simply create a new version of this dataset and merge all the labels in one -> FACE
+
+![merge datasets.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d92d_60db10406c4569b85d9400c9_bwodzaoappHpDWau.png)
+
+We let the platform work a bit, and voilà, we have a dataset of 10,000 + annotated faces
+
+![datasets details.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d934_60db1050fbccbf6d1c653986_NdwPnZcPYcPjnIkf.png)
+
+The pictures are really diverse but here is one example:
+
+![dataset face example.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d987_60db105ef0f255207f458da9_tVvdfUmedHxBNwdm.png)
+
+### Now, Let’s Train Our Model
+
+Before training, we must think of what we want to achieve. We wanted a model to perform anonymization at high speed, but also at high confidence score, because we can't afford to manually play with the confidence threshold all the time.
+
+We will also aim for a high precision score, since it'd make no sense to anonymize only one person in the picture.
+
+Let’s take a look at Picsellia’s Model hub, where you can find ready to train Tensorflow-based computer vision architectures:
+
+![picsellia model hub.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d93a_60db10752d0dfe3e0723652f_aKFUEPLWrcoDdMvB.png)
+
+To understand how to launch multiple training with different architectures with Picsellia, I invite you to read our last article.
+
+For this anonymizer, we chose to use an EfficientDet-d2 for its convergence speed and accuracy.
+
+Here are the results logged in [**Picsellia**](https://www.picsellia.com).
+
+![training graphs for our EfficientDet.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d93d_60db109d651d4b3a92051438_JQGxhoZiuNghTkhT.png)
+
+![training metrics for our EfficientDet.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d943_60db10c3f0f25528cf458e0f_gNzzzxvFJNLJsHbG.png)
+
+Our training is kind of noisy but we managed to obtain a quite good maP so we’ll use this as base for our anonymizer.
+
+Let’s download our saved model in order to build our anonymizer.
+
+Now that our model is trained and exported, we can download it to use it locally, to do so, you just need to go to the artifact of your experiment and download the saved_model.zip file.
+
+![experiments artifacts.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d929_60db10d28fceba3ebf3463ed_PPYtCRvKYXzKvKGR.png)
+
+Ok, now that we have a robust face detector, we'll be able to build an anonymizer really quickly.
+
+![anonymizer (part 1).png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d937_60db10df01d9e8bf70b64974_HbVkHmBZAyzhWmHC.png)
+
+[Available here](https://gist.github.com/ThibautLucas/335d61459809c1d1e14a7940b439cd3d)
+
+First, let’s import some packages and disable all the warnings from Tensorflow—who wants to see warnings really?
+
+You should place your *saved_model *directory at the root of your project (don’t worry, code will be given below).
+
+Let’s load the *saved_model* and declare a* pre_process* function.
+
+Now you are just few lines away of getting an anonymizer, we only need to extract the bbox with a high confidence score, let’s say 0.5 and above, and blur the top 70% of the detected faces.
+
+![anonymizer (part 2).png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d940_60db110a9e35bc41f019e30d_hPOVkQjZddtAWqKH.png)
+
+[Available here](https://gist.github.com/ThibautLucas/33cf9f1b06735b36d32ed3f35b43abdf)
+
+![dataset anonymized.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50da9a_60db1125792719283309866c_qAlBwZorRgVIhNnw.jpeg)
+
+And there you go!
+
+You can find the code [here](https://github.com/ThibautLucas/rgpdize).
+
+If you'd like to try out Picsellia yourself, book a quick call and request a [trial here](https://www.picsellia.com/trial)!

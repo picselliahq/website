@@ -56,3 +56,94 @@ At Picsellia, we developed a platform that covers the whole MLOps stack, includi
 ‍
 
 ![](/images/blog/mlops-platform-build-vs-buy-what-you-must-know-img-0.png)
+
+*Source: Introducing MLOps. How to Scale Machine Learning in the Enterprise. Pg. 85 (Treveil M., the Daitaku Team, 2020)*
+
+‍
+
+To accelerate your time to production, your platform should be able to operate multiple tasks in parallel on different resources. This is why you’ll have to deploy your custom MLOps platform to the cloud or run your own organization’s compute cluster.
+
+Additionally, you’ll need a multidisciplinary team at least experienced in software engineering, data science, data architecture and DevOps.
+
+In order to make a decision that best fits your organization needs, you should set clear objectives. What value do you want the platform to bring? How much time and money are you willing to spend on it, considering the opportunity cost? Do you need to build the whole MLOps stack or just a part of it? 
+
+On the technical side, you’ll have to know which infrastructure you have available (cloud or on-premise), language required, deep learning framework used or even exotic annotation needs. It’s also very important to have a clear understanding of your objectives and performance’s metrics, since it will drive your dash-boarding and analytics needs.
+
+## How long does it take to build an MLOps platform?
+
+Not only must you consider the time it takes to build an ML platform in-house per se, but also the total cost of ownership. This is, you should plan ahead some time for fixing, maintaining, and monitoring your solution, once it’s built.
+
+At TWIMLCon in San Francisco, [an informal poll was carried out during an unconference session](https://blog.verta.ai/ml-infrastructure-build-vs-buy-vs-open-source), on the time it took teams to build their own ML platform in-house. The answers varied depending on the maturity of the platform and went from a few ML engineers working **for a couple of months to a dozen engineers working up to two years. **
+
+Given that this whole process could take up to a couple of years to complete, and maintenance is needed, you might want to carefully identify your priorities and budget. Bear in mind that, if you decide to build, you won’t be able to run experiments and focus on data science. 
+
+While, with an existing platform, you can iterate from the start as your platform matures on different stages of the life cycle.
+
+## What’s the cost of building an MLOps platform?
+
+#### Headcount
+
+On top of the time it takes to build a robust MLOps platform, you need to consider other more direct economical factors. 
+
+Not only will you need to invest in data scientists, but you’ll also want to have a team of software engineers to build the platform and fix all bugs that might come up. It’s also important to form teams experienced in all parts of the MLOps stack such as Cloud infrastructure, compute resource management, configuration, model tracking, deployment, and monitoring (the list goes on). 
+
+Some of the positions you’ll need to cover are backend developer(s), data engineer(s), data scientist(s), DevOps, and likely a project manager.
+
+The headcount costs will vary from year to year, and depends on the city. As of the beginning of 2022, we made an estimate using Glassdoor for an ML team in the Paris (France) market. Just for a multidisciplinary team of 6 members working for a year, it might cost you about **400 k€**.
+
+- Backend developer: 65k € /year
+- Data engineer: 63k € /year
+- Data scientist: 60k € /year
+- DevOps: 72k € /year
+- Project manager: 61k € /year
+- Machine Learning Architect: 81k € /year
+
+‍
+
+Data scientists’ tasks usually take place in the model building side and involve dealing with siloed data, ML processes and tools. As suggested in *“Introducing MLOps. How to Scale Machine Learning in the Enterprise”* (O’Reilly, 2020), data scientists should go beyond these strictly ML tasks and help Subject Matter Experts (also recommended to include as part of the team for ensuring success) address business problems.
+
+Data engineers are mostly in charge of storing, ordering, processing and transformation of the Data needed for your ML model lifes training set cycle. And above all, they need to ensure that everything is going well from a data ingestion (ETL) and infrastructure point of view.
+
+Software engineers should work along with data scientists to make sure the ML code, learning, testing and deployment fit into the CI/CD pipelines that the rest of the software is using. 
+
+DevOps teams are in charge of CI/CD pipeline management, and are usually involved in the conduction and building of operational systems and tests. This is essential for optimizing the performance of your ML models. DevOps are a bridge between software engineers and deployed production servers, ensuring the products’ scalability. However, as the main cloud platforms have greatly simplified server management, in small teams DevOps roles are more and more left out since software engineers can take this job. 
+
+Machine Learning architects need to make sure that the company architecture meets all the data requirements. They will suggest new technologies needed for optimizing the ML models performance. For this reason, they need to constantly collaborate across all teams to accurately allocate resources.
+
+![](/images/blog/mlops-platform-build-vs-buy-what-you-must-know-img-1.png)
+
+*Source: Introducing MLOps. How to Scale Machine Learning in the Enterprise. (Treveil M., the Daitaku Team, 2020)* 
+
+‍
+
+#### Cloud Computing
+
+In addition, you should consider resource costs such as having your own compute cluster or paying a cloud provider for a server(s). A cloud computing platform for ML can cost around [$400/month for one server without GPU, and $15,000 for a whole back-office infrastructure.](https://n6host.com/blog/cloud-computing-costs-for-2021/)
+
+If you want to estimate your personalized cloud computing platforms costs, some of the most popular platforms provide online calculators, like the following.
+
+•[ Amazon AWS Cloud calculator](https://calculator.aws/#/) 
+
+•[ Google GCP Cloud calculator](https://cloud.google.com/products/calculator) 
+
+•[‍](https://azure.microsoft.com/en-us/pricing/calculator/) [Microsoft Azure Cloud calculator](https://azure.microsoft.com/en-us/pricing/calculator/) 
+
+To learn more about these three cloud platforms compared, we suggest reading [this article](https://vnt-software.com/cloud-computing-costs-and-pricing-comparison/).
+
+On the contrary, if you decide to purchase an ML platform, you’ll leverage various resources concurrently, including model parallel training to perform and hyperparameter tuning. If you decided to do this process yourself, you’d have to manage all communications between your cluster and your code. What is more, ML tools usually include cluster management to clean up your experiments after their completion, avoiding occupying your resources’ storage.
+
+ML tools often integrate with various cloud platforms so you can choose the one that best suits your needs. In fact, Picsellia has a partnership with OVH Cloud, Europe’s leading cloud provider, that offers robust storage and resources for all your data, experiments and models, dramatically increasing iteration speed.
+
+ 
+
+## Conclusion
+
+Building a full stack ML platform from zero is a demanding task that will cost you a lot of money and time that you could use to research, run experiments and develop your product. If you have a small team, you might consider using your resources for product development rather than investing your resources in reinventing the wheel.
+
+Start off by identifying what your product’s needs are, and what you’re looking to achieve with an ML platform. Make sure to determine your project’s scope, such as functionality, required configuration and scalability needs. Once you have this in mind, we advise thoroughly researching the MLOps platforms available, since it’s likely you’ll find one that aligns with your needs. 
+
+We’d only suggest building your own tools when you’ve already done your due-diligence and still haven’t found any tool that adapts to your use case. Even then, you could still build only one part of the MLOps life cycle -say, a specific labeling tool-, and purchase a platform you can integrate to, that covers the rest of the ML stack. 
+
+In case you’ve decided to either purchase an entire ML platform, or just build a portion of it, at Picsellia we developed a robust platform that covers the entire MLOps life cycle for computer vision projects. All the way from dataset management and experiment tracking, to model deployment, monitoring and automated pipelines. 
+
+If you want to start iterating and training your models right from the start, we suggest giving Picsellia a go. To learn more about our solution and how it can fit your needs, feel free to book a demo with us!

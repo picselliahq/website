@@ -78,3 +78,106 @@ I know, computational budgets can be a limiting factor. Just keep in mind that t
 Let’s lay out the following scenario. You are an engineer in a startup operating in the **biotechnology sector**. You are asked to deploy a deep learning model for the following computer vision task; detect Malaria-contaminated cells in microscopy images. 
 
 ![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-0.png)
+*Fig.1: Data set examples *
+
+For several reasons the model needs to be lightweight and run on an edge device embedded in  microscopes. You turn to [TensorFlow Hub](https://www.tensorflow.org/hub), an online repository of pre-trained deep learning models, searching for a model that fits the bill. You come across [MobileNet V3](https://arxiv.org/abs/1905.02244)[3].
+
+MobileNet V3 is a deep neural network architecture designed specifically for edge applications. It is known for its lightweight, high accuracy, and fast inference speed, making it an ideal choice for [computer vision at the edge](https://www.picsellia.com/post/optimize-computer-vision-models-on-the-edge). With your cleaned dataset in hand, you can now fine-tune the MobileNet V3 model to better suit your specific use case.
+
+For our case, I stacked a linear layer with 100 neurons and a classification layer with softmax activation function on top of the pre-trained feature extractor. Moreover, I’ve already set up a simple data pipeline and have my training code in place. 
+
+This qualifies me for the next round!
+
+### Gaining Insights
+
+My system supports a batch size of up to 248 for this dataset. It is large enough to provide quick iterations so I stick with it.
+
+Starting with my first experiment, I try 2 different optimizers and observe the effects on convergence. Do they influence validation loss a lot? *Optimizer* is the experimental parameter during this round. However, the* learning rate* is a nuisance parameter, hence I may need to try at least two different values. The number of optimizers and learning rates you choose to test will depend on your computing budget and project goals.
+
+As we mentioned it’s important to observe the learning graphs and not just the success metric.
+
+I start with Adam optimizer, a standard lr=0.003, and train for 10 epochs using early stopping and a simple learning rate reduction scheduler with a factor of 0.3 and patience of 2.
+
+Evaluating on the validation set:
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-1.png)
+
+Not a bad start… 
+
+However, the graphs will reveal more info.  Firstly, we observe how the validation loss begins incrementing after epoch 5, indicating overfitting is present. **However**, since the validation accuracy performs well, I would be tempted to increase the number of epochs and the patience for early stopping, instead. Since the increase in accuracy suggests convergence is still ongoing. Bear in mind that during epoch 8 the scheduler reduced the learning rate.
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-2.png)
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-3.png)
+*Fig 2: Learning graphs. Overfitting or just increase training epochs and reduce early stopping patience?*
+
+A quick look at weight histograms, reveals that the early layers of the network don’t change much (fig 3). We can see how they remain mostly stable across epochs. This can reveal a vanishing gradient problem. However,  in our case we expect the learning to be concentrated in the last layers. 
+
+Indeed, figure 4 shows that MobileNet’s last layers do undergo slight changes, while the classifier (figure 5) is where most of the learning is concentrated on, especially on biases.
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-4.png)
+*Fig 3: MobileNet’s first layers remain almost entirely unaffected. We can suppose that there is no need for them to change too much anyway.*
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-5.png)
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-6.png)
+*Fig 4: MobileNet’s latest layers are fine-tuned and sharper changes in weight values are observed*
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-7.png)
+*Fig 5: The classifier layer undergoes heavier changes. The learning is mostly focused here.*
+
+**I hope it now becomes clear why inspecting many training graphs is important for deep learning training. They are a very rich source of information.**
+
+I then proceed to test whether a bigger learning rate can provide faster convergence without affecting performance. It turns out that lr=0.03 was not a good nuisance parameter value for the Adam optimizer, resulting in suboptimal performance and explosive behavior. **It’s interesting how the weights of early layers were severely affected, something we usually do not intend when fine-tuning pre-trained models.**
+
+             
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-8.png)
+*Fig 6: Severely affected weights of an early layer in the feature extractor.*
+
+‍
+
+Following a similar procedure for my other experiments I gained enough insights into the problem to design a tight search space for the exploitation phase, where Keras-Tuner will find the most optimal values using [Bayesian Optimization](https://www.picsellia.com/post/is-automl-replacing-data-scientists).
+
+### **Automatic Tuning of Pre-trained Models**
+
+I will now let the tuning software find the best parameter combination. I define the model and the search space inside the `MobileNetHyperModel` class and then execute the search with Bayesian Optimization. In my case Keras-Tuner was used, but there are many similar tools available.
+
+I set my computational budget to 10 and let each model train for 10 epochs with early stopping enabled. Now you just have to wait for the algorithm to finish searching. I*f you are constrained by computational budget, you may opt to execute the search on a fraction of the dataset, say 50%, and once you have an optimal model you can train it again on the full dataset. *
+
+                             
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-9.png)
+*Fig 7: Example output of Keras Tuner during searching. An optimal model has already been found by trial 3!*
+
+‍
+
+Finally, I extract the best parameter combination and train the optimal model for 10 epochs. First I evaluate on my validation dataset. Since I am very satisfied with the model’s performance on the validation dataset, and the training graphs look good without any obvious problems, I decide to stop the tuning here and use this model for production. 
+
+‍
+
+Before I deploy it, I evaluate it on the test dataset to get an unbiased evaluation. This performance should act as an indication of what to expect while in production.                     
+
+                         
+
+![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-10.png)
+* Fig 8: Evaluation of the final model on the test dataset.*
+
+After the model is deployed you will most probably experience performance degradation due to [data drifts](https://www.picsellia.com/post/what-is-data-drift-and-how-to-detect-it-with-mlops), so having a baseline is important. Using [feedback loops](https://www.picsellia.com/post/feedback-loops-and-versioning-in-computer-vision) is an effective way to combat the performance degradation of deployed machine learning models. 
+
+## Final Thoughts
+
+Fine-tuning deep learning models can become pretty tedious and time-consuming. However, results can come faster if you have a pre-defined strategy, a visualization tool, a tuning tool, and of course expertise with deep learning and your underlying field!
+
+In this blog post, we explored a typical case in computer vision. The post was meant to provide some valuable information and act as an inspiration rather than a detailed coding walkthrough.
+
+We worked with a pre-trained deep learning model and fined-tuned it on a custom dataset. We explored some best practices for fine-tuning deep learning models and applied them to fine-tune a lightweight MobileNet computer vision model on an image biology dataset. 
+
+**REFERENCES**
+
+- [Deep Learning Tuning Playbook](https://github.com/google-research/tuning_playbook) by Google
+- [Measuring the Effects of Data Parallelism on Neural Network Training. Shallue et al. 2018](https://arxiv.org/abs/1811.03600)
+- [Searching for MobileNet V3. Howard et al. 2019](https://arxiv.org/abs/1905.02244)
+- [Weight Histograms explanation ](https://stackoverflow.com/questions/42315202/understanding-tensorboard-weight-histograms)
+- [Transfer Learning with TensorFlow Hub](https://www.tensorflow.org/tutorials/images/transfer_learning_with_hub#train_the_model)
+- [Practical Tutorial on Keras Tuner (Blog post by the author)](https://medium.com/towards-artificial-intelligence/keras-tuner-tutorial-hyperparameter-optimization-tensorflow-keras-computer-vision-example-c9abbdad9887)

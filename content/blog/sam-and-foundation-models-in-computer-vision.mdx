@@ -12,3 +12,159 @@ published: true
 **SAM and Foundation Models in Computer Vision **
 
 ![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894af_6447edce68ca198d6cc6de69_people-recognition.jpeg)
+
+‍
+
+If you are interested in Computer Vision and deep learning, you must have seen that the research space is booming at the moment. OpenAI’s GPT-4 model opened the way for a lot of huge companies to release their latest research. After the publication of GPT-4 in March, we quickly saw META’s AI lab release their first foundation model in computer vision called [SAM (Segment Anything Model)](https://github.com/facebookresearch/segment-anything). This is seen as one of the biggest leaps of foundation model’s into the computer vision space. 
+
+‍
+
+Today we are going to talk about the implications of such breakthroughs for the industry. At Picsellia, we aim to help companies build robust computer vision pipelines. So, it’s crucial for us to take the time to investigate this. 
+
+‍
+
+## What are Foundation Models:
+
+A foundation modeI is a large pre-trained model which is designed to learn general patterns and features from vast amounts of data. These models are typically trained on massive amounts of data by using unsupervised learning methods. They can then be fine-tuned on specific tasks with much smaller amounts of data. 
+
+‍
+
+Examples of foundation models in AI include BERT, GPT-3, and T5 in the field of natural language processing, and CLIP or DALL-E in computer vision. These models have shown significant improvements in performance on a wide range of tasks and have become important building blocks for many state-of-the-art AI applications.
+
+‍
+
+Foundation models have made significant strides in natural language processing, particularly since the release of BERT in 2018, and the more recent release of GPT-4. In computer vision, however, there has been a lack of semantically rich unsupervised pre-training tasks comparable to the next token masking in text. Although masked pixels have been used, they have not been as effective. Multi-model pre-training routines, like CLIP, have been the most effective ones in computer vision.
+
+‍
+
+To address this challenge, the Segment Anything research team aimed to create a foundation model for computer vision by developing a task, a model, and a dataset. This led to the creation of the Segment Anything Model (SAM), an instance segmentation model developed by Meta Research and released in April 2023. SAM was trained on 11 million images and 1.1 billion segmentation masks.
+
+‍
+
+## How did META build SAM?
+
+To build the Segment Anything Model (SAM) META’s team had to come up with quite an innovative way to build a Dataset as there are not so many mask annotations available out there. In my opinion, this process is by far the most important milestone they have managed to achieve. 
+
+‍
+
+The modeling part is a little bit less innovative as it translates approaches used in foundation text models into the computer vision space. 
+
+‍
+
+### **Dataset**
+
+They trained the model using a dataset of over 1 billion segmentation masks, collected using a data engine with three gears. It resulted in a dataset 400 times larger than any previous segmentation dataset and was sourced from multiple countries across diverse geographic regions and income levels. This is a major breakthrough in terms of Segmentation dataset size and building strategy. Let’s take a look at these 3 steps.
+
+![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894a8_6447eef6678c32214e6f2705_400-chart.jpeg)
+
+#### Step 1: Human in the loop Segmentation
+
+A first version of SAM was trained on publicly available segmentation dataset to provide a baseline that professional annotators can use as an interactive segmentation tool powered to label masks by identifying foreground and background object points. 
+
+‍
+
+The annotations were made without semantic constraints and they prioritized prominent objects. SAM was initially trained on public segmentation datasets and underwent six retraining iterations using newly annotated masks. 
+
+The model-assisted annotation ran in real-time, resulting in an average annotation time per mask decrease from 34 to 14 seconds, and an increase in the average number of masks per image from 20 to 44. This stage yielded 4.3 million masks from 120,000 images. 
+
+‍
+
+#### Step 2: Pre-annotation Edition and fixing
+
+In the semi-automatic stage, confident masks were automatically detected and presented to annotators with pre-filled images. Annotators then added annotations for unannotated objects. A bounding box detector was trained on first-stage masks using a generic "object" category. This stage collected an additional 5.9 million masks from 180,000 images, bringing the total to 10.2 million masks. The model was retrained five times on newly collected data. Annotation time increased to 34 seconds for more challenging objects, and the average number of masks per image increased from 44 to 72, including automatic masks.
+
+‍
+
+#### Step 3: Fully unsupervised annotation
+
+In the fully automatic stage, annotation became entirely automatic due to the development of the ambiguity-aware model and a larger number of collected masks. The model predicted a set of masks for valid objects using a 32x32 grid of points. The IoU prediction module was used to select confident masks, and only stable masks were chosen. Non-maximal suppression (NMS) was applied to filter duplicates, and overlapping zoomed-in image crops were processed to improve smaller mask quality. This stage resulted in 1.1 billion high-quality masks generated for all 11 million images.
+
+‍
+
+### **Model Architecture**
+
+![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894ac_6447ef29e9b33d81125a2d7b_universal-segmentation-model.jpeg)
+**SAM model structure**
+
+‍
+
+Considering the research paper released by META,
+
+> SAM has three components: 
+     - an image encoder (MAE pre-trained (ViT))
+     - a flexible prompt encoder
+     - a fast mask decoder. 
+
+The authors consider two sets of prompts for segmentation: sparse (points, boxes, text) and dense (masks). Points and boxes are represented using positional encodings combined with learned embeddings for each prompt type, while free-form text uses a text encoder from CLIP. Dense prompts, such as masks, are embedded using convolutions and summed element-wise with the image embedding.
+
+‍
+
+One could argue that it is quite hard to understand what that means, so let’s try and dissect it. 
+
+‍
+
+In the context of that text, "prompts" refer to cues or guidance given to the model during the segmentation process. Here they considered two types of prompts: "sparse" prompts and "dense" prompts. 
+
+‍
+
+#### Prompts encoder
+
+**Sparse prompts** include points, boxes, and text, which serve as rough guidance for where objects are located in the image. For example, annotators might mark the top-left corner of an object with a point or draw a box around the entire object. Points and boxes are represented using "positional encodings," which encode the location information of the prompt, combined with learned embeddings that represent the type of prompt.
+
+‍
+
+Free-form text is another type of sparse prompt, and it is handled differently from points and boxes. The authors use a text encoder from CLIP, which is a pre-trained neural network that can understand natural language. The text encoder is used to encode free-form text prompts into a feature vector that can be used by the model.
+
+‍
+
+On the other hand, **dense prompts** rely on more detailed guidance for segmentation, such as masks. Masks are pixel-level annotations indicating which parts of the image belong to the foreground and which ones belong to the background. The authors use convolutions to embed the dense prompts (e.g., masks) and they add them element-wise to the image embedding (e.g., a high-level representation of the image learned by the model). This allows the model to better understand the relationship between the dense prompts and the image, which in turn improves segmentation accuracy.
+
+‍
+
+#### Mask Decoder
+
+The mask decoder takes the image and the prompt embeddings along with an output token as input and efficiently maps them to a mask. The decoder block is based on a modified Transformer architecture, which is a type of neural network used in natural language processing tasks. The decoder block has both prompt self-attention and cross-attention in both directions. This allows it to update all the embeddings. 
+
+‍
+
+After two blocks, the image embedding is upsampled, and a multilayer perceptron (MLP) maps the output token to a dynamic linear classifier. This classifier calculates the mask foreground probability at each image location. The model is designed to predict multiple output masks for a single ambiguous prompt, with three masks found to be sufficient for most cases. During training, the model uses the minimum loss over the masks, and a confidence score is predicted for each mask.
+
+‍
+
+The mask prediction is supervised using a linear combination of focal loss and dice loss, which are loss functions commonly used in computer vision tasks. Finally, the promptable segmentation task is trained using a mixture of geometric prompts and an interactive setup with 11 rounds per mask. This allows for seamless integration into the data engine.
+
+‍
+
+## Limitations & Conclusion 
+
+![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894b3_6447ef022f20209f26e03be0_textures-1.jpeg)
+
+‍
+
+While the approach described in the article has shown impressive results for a wide range of image segmentation tasks, there are still some limitations to this approach.
+
+‍
+
+![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894bb_6447ef0c805f6a52096cca92_textures-2.jpeg)
+
+‍
+
+One limitation is that it may not perform well on images with **complex textures or patterns.** 
+
+This is because the model relies on identifying and distinguishing objects based on the patterns and colors in the image, rather than on more detailed texture information. 
+
+In addition, the model may not be able to accurately segment objects that are very small or have low contrast with the background.
+
+‍
+
+![](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894b7_6447ef4591185c36a0c6d763_textures-3.jpeg)
+
+‍
+
+A classical supervised segmentation approach, on the other hand, can be more effective for certain specific use cases. For example, if the task at hand involves segmenting a specific type of object that is not present in a pre-trained model, it may be more efficient to use classical supervised segmentation with a smaller dataset of annotated images which are specific to the target object. Additionally, if the dataset has a large number of images with complex textures or patterns, a classical supervised segmentation approach may be more effective in identifying and segmenting these objects.
+
+‍
+
+**In summary,** while SAM is a powerful tool for a wide range of image segmentation tasks, it may not be the best choice for very specific use cases or images with complex textures or patterns. In some cases, a classical supervised segmentation approach may be more effective.
+
+‍

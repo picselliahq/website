@@ -14,3 +14,69 @@ published: true
 This article discusses the ins and outs of the powerful TIFF format and the tradeoffs involved in using it for computer vision.
 
 ![](/images/blog/tiff-tag-image-file-format-img-0.jpeg)
+
+## What are TIFF images?
+
+TIFF is a raster graphic file format for storing images. Raster graphic files store images as a grid of pixels known as a bitmap, resulting in the edges of the pixels becoming jagged and blurry as you zoom into the image. Its file is saved with a ".tiff" or ".tif" extension. The TIFF format is often used as a larger container to store multiple images together before transport. Unlike other file formats that can only hold one image per file, the TIFF format can store multiple images in one file, which is its primary ability. It allows users to keep many images together.
+
+It supports 8 and 16 bits per channel, with a 3-channel RGB (red, blue, green) color space that delivers up to 48 bits per channel image. This trait provides greater flexibility in image manipulation, resulting in compatibility with varying transparency. By default, TIFF is typically left uncompressed to maintain image quality. However, to further extend functionality, it enables file size reduction by allowing you to use one of two lossless compressions, lempel-ziv-welch (LZW) or ZIP. Lossless compression reduces file size while retaining all the information in an image (i.e., the pixel quality of a lossless file doesn't drop).
+
+For example, LZW uses a greedy lossless compression algorithm that optimizes data redundancy by detecting spots with recurring pixels and replacing those identical values with a single code in a dictionary. Imagine a GIF of a bouncing ball: instead of storing "red pixel, red pixel, red pixel," it replaces these "pixel triplets" with a single code in a dictionary built on the fly. Whenever it sees "red, red, red" again, it just uses the same code, shrinking the file. This greedy approach keeps building the dictionary, replacing more extended patterns with shorter codes until the picture is packed efficiently without losing pixel details. 
+
+## What is the difference between TIFF and other image file formats?
+
+JPEGs (Joint Photographic Experts Group) and PNGs (Portable Network Graphics) are more commonly known file formats. However, compared to them, TIFF presents some valuable properties.
+
+JPEG is the generally accepted format for working (i.e., viewing and sharing) with image data due to its highly compressed image files that still maintain acceptable visual quality. Plus, most operating systems and web browsers support its decoding natively. You can view and share JPEG-encoded photos without additional plugins or specialist applications. It is ideal for almost any task, such as online image sharing, web browsing, and email attachments. Their lossy compression formats make JPEGs lightweight, faster, and easier to handle, but they discard potentially crucial information. As a lossy format, it presents some advantages where speed is paramount, and some information loss is tolerable.
+
+Unlike JPEGs, PNGs use a lossless compression technique on images that significantly reduces their size, making them manageable for many high-image-quality applications. Compared to TIFFs, PNGs offer smaller file sizes due to efficient compression, making them more manageable for large datasets. Additionally, web browsers and platforms support it universally, making online sharing and integration possible. However, PNG's transparency ability, one of its strongest suits, makes it a good option only for specific applications, such as overlaying data on images.
+
+TIFF can handle both lossless and lossy compression, allowing you to preserve image quality while achieving some file size reduction. This flexibility is precious for scenarios where maintaining original detail is crucial. However, the large file sizes, even when compressed, pose challenges for storage and processing. TIFF can be a container for storing multiple images, like smaller-sized JPEGs. This multi-data storage ability makes it useful for archiving, searching, and managing image collections. It also incorporates the storage of rich metadata, encompassing details such as camera settings, creation date, copyright information, timestamps, etc., within the file, which helps track data provenance and analysis. 
+
+As a lossless format, it excels at tasks requiring high precision. However, it is only sometimes natively decodable by web browsers, platforms, etc., which presents some drawbacks, restricting the seamless sharing and visualization of data in TIFF format.
+
+## TIFF For Computer Vision
+
+TIFF is commonly used in the printing and publishing industries because of its ability to maintain color information and detail when compressed. You can also use TIFF to build robust computer vision models for CV tasks that require high-quality image resolution. It plays a crucial role in computer vision for its compression flexibility and ability to retain high-fidelity data. TIFF's uncompromised accuracy in preserving every detail in an image is vital for tasks where even slight pixel variations can throw off a model's analysis, like medical image analysis, geospatial analysis, etc.
+
+Although it is an efficient and compact format to store, transfer, or archive [vision data across pipelines or databases](https://www.picsellia.com/datalake), it also has the potential to slow down training and inference due to its large file sizes, even when compressed. Some CV system architectures explore storing their data in TIFF format and passing it through a pipeline to convert it to JPEG or PNG for faster training. Storage, file decoding formats, processing efficiency, dataset size limits, etc., are critical factors when using TIFF to build a CV system. 
+
+## Using TIFF Images for Training
+
+The common processes involved in CV-based training are still the same with TIFF images, from the reading to training. You can employ the progressive strategy of using image libraries like Pillow, OpenCV, rasterio, etc., to read, visualize, and preprocess the TIFF images and augment them. Then, convert to tensors and train them with a machine learning framework.
+
+For simplicity, the example below uses Keras ImageDataGenerator to directly read, preprocess, augment, and convert TIFF images to tensors to enable tensorflow to use them for training. 
+
+#### **Download a breast cancer dataset from Kaggle.**
+
+Install the Kaggle API
+
+```pip install kaggle
+
+```
+
+Download Kaggle API key and move api key to the “.kaggle folder”
+
+```
+
+cp download_path/kaggle.json .kaggle
+
+export KAGGLE_CONFIG_DIR=~/.kaggle/ 
+
+```
+
+```kaggle kernels output truthisneverlinear/bach-baseline -p download_path/to/save/bach_data
+
+```
+
+#### **Prepare paths for training and validation data **
+
+#### ‍**Create Keras data generators**
+
+#### **Create model**
+
+#### **Train the model**
+
+## Conclusion
+
+In conclusion, the TIFF format emerges as a powerful tool in computer vision, with strong support for extensive metadata necessary for data organization and analysis. Nevertheless, despite compression, it still tends to produce relatively large files, which can be problematic for storage and processing efficiency. Despite these limitations, the format is an attractive option for specific computer vision applications because of its strengths, particularly in storing detailed information and extensive metadata. For academics and practitioners to fully utilize TIFF while considering resource implications, it is essential to analyze these tradeoffs carefully.

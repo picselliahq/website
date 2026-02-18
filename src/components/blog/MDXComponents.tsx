@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
+import { Children, isValidElement, type ReactNode } from 'react';
 import Image from 'next/image';
 
 function slugify(text: string): string {
@@ -8,10 +9,24 @@ function slugify(text: string): string {
     .replace(/(^-|-$)/g, '');
 }
 
+/** Recursively extract plain text from React children (handles bold, italic, links, etc.) */
+function extractText(node: ReactNode): string {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (!node) return '';
+  if (isValidElement(node)) {
+    return extractText((node.props as { children?: ReactNode }).children);
+  }
+  if (Array.isArray(node)) {
+    return node.map(extractText).join('');
+  }
+  return Children.toArray(node).map(extractText).join('');
+}
+
 function createHeading(level: 2 | 3 | 4) {
   const Tag = `h${level}` as const;
   return function Heading({ children }: { children?: React.ReactNode }) {
-    const text = typeof children === 'string' ? children : '';
+    const text = extractText(children);
     const id = slugify(text);
     return (
       <Tag id={id} style={{ scrollMarginTop: '6rem' }}>
@@ -46,7 +61,7 @@ export const mdxComponents: MDXComponents = {
   img: ({ src, alt }) => {
     if (!src) return null;
     return (
-      <figure style={{ margin: '2rem 0' }}>
+      <span style={{ display: 'block', margin: '2rem 0' }} role="figure">
         <Image
           src={src}
           alt={alt || ''}
@@ -55,11 +70,11 @@ export const mdxComponents: MDXComponents = {
           style={{ width: '100%', height: 'auto', borderRadius: '12px', border: '1px solid var(--border)' }}
         />
         {alt && (
-          <figcaption style={{ marginTop: '0.5rem', fontSize: '0.875rem', color: 'var(--secondary-label)', textAlign: 'center' }}>
+          <span style={{ display: 'block', marginTop: '0.5rem', fontSize: '0.875rem', color: 'var(--secondary-label)', textAlign: 'center' }}>
             {alt}
-          </figcaption>
+          </span>
         )}
-      </figure>
+      </span>
     );
   },
 
@@ -181,13 +196,13 @@ export const mdxComponents: MDXComponents = {
   ),
 
   li: ({ children }) => (
-    <li style={{ marginBottom: '0.5rem', color: 'var(--secondary-label)' }}>
+    <li style={{ marginBottom: '0.5rem', color: 'var(--prose-body)' }}>
       {children}
     </li>
   ),
 
   p: ({ children }) => (
-    <p style={{ margin: '1.25rem 0', lineHeight: '1.8', color: 'var(--secondary-label)' }}>
+    <p style={{ margin: '1.25rem 0', lineHeight: '1.8', color: 'var(--prose-body)' }}>
       {children}
     </p>
   ),

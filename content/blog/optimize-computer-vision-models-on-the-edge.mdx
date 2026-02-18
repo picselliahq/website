@@ -46,3 +46,85 @@ The following step is not an optimization technique, but it’s the most relevan
 ‍
 
 ![Source : www.tensorflow.org/lite](/images/blog/optimize-computer-vision-models-on-the-edge-img-0.png)
+*Model Size- Accuracy - Latency Tradeoff Source - www.tensorflow.org/lite*
+
+## **2. Post-Training Weight Quantization **
+
+Quantization is the technique of constraining a large set of (continuous) values to a smaller set of (discrete) values. In neural networks, post-training quantization is a technique that reduces the number of necessary bits to represent a network’s weights, biases, and activation functions [1]. Post-training quantization involves taking a trained model, quantizing its weights, and then optionally re-optimizing the model. 
+
+The standard process is to represent a network's parameter as 32-bit floating-point values, which allows for high numerical precision and, ultimately, accuracy for the neural network. By converting 32-bit floating-point representations to reduced precision numerical types, we can effectively reduce a parameter’s size by 2x to 4x, depending on the quantization type. This would translate to a model with an initial size of 128 MB reduced to approximately 64MB or even 32MB! 
+
+The most common quantization techniques convert the numerical type to 16-bit floating-point (half-quantization) or 8-bit integer (full-quantization) numbers. Quantization to 8-bit integers has two options, *Full Integer Quantization*, and *Dynamic Range Quantization*. The former will quantize weights, biases, activations, inputs and outputs (given a representative dataset), while the latter only quantizes weights. Depending on your hardware, some techniques work better than others, but we will dive deep into this in the next section.
+
+![](/images/blog/optimize-computer-vision-models-on-the-edge-img-1.png)
+
+However, in computer science a free launch rarely exists. By reducing the numerical precision, you can degrade your model’s overall accuracy. Depending on the severity of quantization, we usually perceive an accuracy drop of approximately 0-2%. Though for a 2% accuracy drop we may achieve up to 84% energy saving [2] and 3x or more speedup. In most cases, accuracy degradation lies below 1%, while in some rare cases we might even experience a slight accuracy increase, usually an overfitted and complex model regularized as a result of quantization.
+
+## **3. Model Pruning**
+
+Pruning removes redundant parameters or entire neurons that do not significantly contribute to the accuracy of the results. This condition may arise when the weight coefficients are zero, close to zero, or replicated. As a result, you can reduce computational complexity while maintaining inference speed increases and accuracy at stable levels. Pruned networks can also be retrained afterward, providing a possibility of escaping previous local minima and further improving accuracy [3].
+
+## **4. Weight Clustering **
+
+Clustering, or weight sharing, reduces the number of unique weight values in a model, leading to benefits for deployment. It first groups the weights of each layer into *N* clusters, then shares the cluster's centroid value for all the weights belonging to this cluster. You can cluster layers selectively. The smaller the number of clusters, the bigger the level of compression, and vice-versa.
+
+In table 1, we see that almost 3.5x compression can be achieved with a minimal 1.6% loss of accuracy when clustering all Convolutional layers with 32 clusters. A 2x compression can be achieved by clustering just 3 Conv layers with an accuracy reduction below 0.3%.
+
+‍
+
+![](/images/blog/optimize-computer-vision-models-on-the-edge-img-2.png)
+*Table 1. Effects of weight clustering on models trained for  image classification on ImageNet. Source [4] https://www.tensorflow.org/model_optimization/guide/clustering*
+
+## **Open Source Tools for Inference Optimization**
+
+We discussed the techniques, so now we will discuss tools that apply them. In table 2, you can see a comprehensive but not exhaustive list of open source tools for neural network inference optimization. 
+
+Among them,[ TensorFlow Lite](https://www.tensorflow.org/lite) is probably the most well-rounded and flexible. It offers many different quantization techniques, pruning, weight clustering, and an experimental feature for Quantization Aware Training. It supports a wide range of hardware devices during inference and is easy to use. However, it only supports TensorFlow models directly. But you can optimize models written in other frameworks by leveraging a global neural network format called[ ONNX](https://onnx.ai/).
+
+Another important SDK, tied to NVidia GPUs, is the[ TensorRT](https://developer.nvidia.com/tensorrt) library. It is a library created by NVidia specifically for their hardware. It offers system-specific optimizations that result in very-high performance inference. Moreover, it supports both TensorFlow and PyTorch models. If very low latency and high throughput is the goal, TensorRT is the optimal tool to work with. However, it is limited to NVidia hardware and it can be a little frustrating to work with it on their embedded devices ([jetson series](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)).
+
+‍
+
+![](/images/blog/optimize-computer-vision-models-on-the-edge-img-3.png)
+* Table 2. Source: [1][ https://arxiv.org/pdf/2101.09671.pdf](https://arxiv.org/pdf/2101.09671.pdf)*
+
+                            
+
+## **How to Find the Right Optimization Technique for Your Hardware**
+
+Now that we have explained the key optimization techniques and tools, we will dive into the details of picking the most suitable optimization for your hardware. Sometimes, choices are limited because of hardware architecture, but sometimes you can get to choose.
+
+**Deploying on low-power CPUs**: This could be a microcomputer’s (e.g. Raspberry Pi) CPU, a mobile phone's CPU, or even a commercial laptop CPU. Float-16 bit quantization is possible, but in this scenario you should prefer quantization to int-8 bits. The reasons are: 
+
+- CPUs are very fast when working with integers
+- By default, a float16 quantized model will "dequantize" the values of the weights to float32 when run on the CPU[ [4]](https://www.tensorflow.org/lite/performance/post_training_quantization#float16_quantization).
+
+With TF-Lite you can opt for a dynamic range, or a full integer quantization. You can effectively reduce a model’s size 4x and get 2-3x speedup, usually with a low accuracy loss. But, make sure to verify that the optimized model’s accuracy still lies inside the desired range. 
+
+**Deploying on an android GPU: **For android GPUs, TF-Lite supports the same quantization techniques as listed above. We suggest following the same guidelines.
+
+**Deploying on integer-only hardware: **Many microcontrollers and many edge TPUs only support integer operations. If your hardware falls under this category, then your only option is to use[ full integer](https://www.tensorflow.org/lite/performance/post_training_quantization#full_integer_quantization) quantization. The speedup will be huge, especially for TPUs, but make sure you evaluate the quantized model to verify that accuracy still lies inside the desired range. 
+
+‍**Deploying on NVidia GPUs: **This category includes commercial high-end computing GPUs and embedded GPUs like the NVidia Jetson series. In this scenario, you have the option to work with Tensor RT. TensorRT will handle the optimizing details and can help you achieve real-time FPS (20-60 fps).
+
+A GPU’s architecture is optimized for operations with floating point numbers. Quantization down to 16-bit floating-point numbers is usually a great starting point. If the 2x size reduction is still not enough to achieve the optimal inference speed, then a conservative pruning or weight clustering may also be applied. TF-Lite only supports quantization to 16-bit float for these GPUs. However, TensorRT also provides full quantization to 8-bits.
+
+## **Can I Use Optimized Models in the Cloud to Achieve Real-Time? **
+
+**Deploying on the cloud: **When [deploying](https://www.picsellia.com/model-deployment) your solution on the cloud, you have access to powerful hardware, which lets you opt for a bigger and more complex model to start with. However, you may still find it necessary to decrease the delay from input to prediction, to achieve real-time. 
+
+In this case, your biggest enemy is the network’s speed and bandwidth. Since you need to transfer data back and forth, a big part of the overall delay is data transfer costs. If your data transfer delay exceeds the application’s real-time constraints, then you shouldn’t bother optimizing inference speed in the first place. Instead, go for an edge device. 
+
+On the other hand, if data transfer delays are not a bottleneck, we advise to optimize your model for inference speed. Assuming that inference is executed on a high-end GPU, then a lightweight compression to 16-bit floats, weight clustering of specific hidden layers, or a combination of some sort should provide you with enough speedup to meet your real-time restrictions without sacrificing a lot of accuracy.
+
+## **References**
+
+[1][ Pruning and Quantization for Deep Neural Network Acceleration: A Survey](https://arxiv.org/pdf/2101.09671.pdf).Tailin Liang, John Glossner, Lei Wang, Shaobo Shi, and Xiaotong Zhang
+
+[2][ Understanding the Impact of Precision Quantization on the Accuracy and Energy of Neural Networks.](https://arxiv.org/pdf/1612.03940.pdf) Soheil Hashemi, Nicholas Anthony, Hokchhay Tann, R. Iris Bahar, Sherief Reda
+
+[3][ What is the state of Neural Network pruning?](https://arxiv.org/pdf/2003.03033.pdf). Davis Blalock, Jose Javier Gonzalez Ortiz, Jonathan Frankle, John Guttag
+
+[4][ https://www.tensorflow.org/lite/performance/model_optimization](https://www.tensorflow.org/lite/performance/model_optimization)
+
+[5][ https://developer.nvidia.com/tensorrt](https://developer.nvidia.com/tensorrt)
