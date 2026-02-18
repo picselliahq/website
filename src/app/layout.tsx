@@ -27,26 +27,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://picsellia.com",
+    url: "https://www.picsellia.com",
     siteName: "Picsellia",
     title: "Picsellia - MLOps Platform for Computer Vision",
     description:
       "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Picsellia - MLOps Platform for Computer Vision",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Picsellia - MLOps Platform for Computer Vision",
-    description:
-      "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
-    images: ["/og-image.png"],
     creator: "@picsellia",
   },
   robots: {
