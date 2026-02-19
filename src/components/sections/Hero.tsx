@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef, useEffect } from "react";
 
 /**
  * Customer logos for the social proof section.
@@ -31,6 +32,14 @@ const customerLogos: { name: string; src: string }[] = [
 ];
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
+
   return (
     <section className="pt-32 pb-20 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6">
@@ -77,22 +86,16 @@ export default function Hero() {
           </Link>
         </div>
 
-        {/* Hero Image */}
-        <div
-          className="mb-16 rounded-2xl overflow-hidden"
-          style={{
-            border: "1px solid var(--border)",
-            boxShadow:
-              "0 8px 32px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.2)",
-          }}
-        >
-          <Image
-            src="/images/hero homepage.png"
-            alt="Picsellia platform - Complete MLOps for computer vision"
-            width={1920}
-            height={1080}
+        {/* Hero Video */}
+        <div className="mb-16">
+          <video
+            ref={videoRef}
+            src="/videos/homepage.webm"
+            autoPlay
+            loop
+            muted
+            playsInline
             className="w-full h-auto block"
-            priority
           />
         </div>
 

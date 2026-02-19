@@ -376,7 +376,7 @@ export default function ExperimentTrackingPage() {
 
             {/* Right - Video Demo */}
             <div className="relative hidden lg:block">
-              <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+              <div>
                 <video
                   autoPlay
                   muted
@@ -1265,7 +1265,7 @@ export default function ExperimentTrackingPage() {
           </div>
 
           {/* Video demo */}
-          <div className="max-w-4xl mx-auto mb-12 rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+          <div className="max-w-4xl mx-auto mb-12">
             <video
               autoPlay
               muted

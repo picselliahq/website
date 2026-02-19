@@ -60,7 +60,7 @@ export default function HeroSection() {
 
         {/* Video Demo */}
         <div className="mb-16 relative">
-          <div className="rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)]">
+          <div>
             <video autoPlay muted loop playsInline className="w-full h-auto" src="/videos/dataset-management.mov" />
           </div>
 

@@ -63,7 +63,7 @@ export default function HeroSection() {
 
           {/* Right - Video Demo */}
           <div className="relative hidden lg:block">
-            <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+            <div>
               <video
                 autoPlay
                 muted

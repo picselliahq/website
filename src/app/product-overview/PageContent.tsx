@@ -72,7 +72,7 @@ export default function ProductOverviewPage() {
 
           {/* Video */}
           <div className="mb-16">
-            <div className="relative rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--secondary-system-background)]">
+            <div>
               <video autoPlay muted loop playsInline className="w-full h-auto" src="/videos/data layer view.mov" />
             </div>
           </div>

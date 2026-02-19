@@ -107,7 +107,7 @@ export default function DatalakeHero() {
 
         {/* Full-width Video Demo */}
         <div className="relative">
-          <div className="rounded-2xl overflow-hidden border border-[var(--border)] shadow-2xl">
+          <div>
             <video
               autoPlay
               muted

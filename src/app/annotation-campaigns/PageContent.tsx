@@ -198,7 +198,7 @@ export default function AnnotationCampaignsPage() {
 
           {/* Video Demo */}
           <div className="max-w-4xl mx-auto">
-            <div className="rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+            <div>
               <video
                 autoPlay
                 muted
@@ -414,7 +414,7 @@ export default function AnnotationCampaignsPage() {
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Team collaboration video */}
-            <div className="order-2 lg:order-1 rounded-xl border border-[var(--border)] overflow-hidden shadow-2xl">
+            <div className="order-2 lg:order-1">
               <video
                 autoPlay
                 muted
