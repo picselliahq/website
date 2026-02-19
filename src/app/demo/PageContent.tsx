@@ -187,7 +187,12 @@ export default function DemoPage() {
       });
 
       if (response.ok) {
-        router.push('/thank-you-demo');
+        const params = new URLSearchParams({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+        });
+        router.push(`/thank-you-demo?${params.toString()}`);
       } else {
         setSubmitError(true);
       }

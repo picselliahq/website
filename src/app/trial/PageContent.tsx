@@ -169,7 +169,12 @@ export default function TrialPage() {
       });
 
       if (response.ok) {
-        router.push('/thank-you-trial');
+        const params = new URLSearchParams({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+        });
+        router.push(`/thank-you-trial?${params.toString()}`);
       } else {
         setSubmitError(true);
       }
