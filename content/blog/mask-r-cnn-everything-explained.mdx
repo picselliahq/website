@@ -1,4 +1,5 @@
 ---
+
 title: "Mask R-CNN - Everything explained"
 description: "Explore Mask R-CNN: a groundbreaking tool in computer vision for object detection & instance segmentation. Dive deep into its architecture & applications."
 date: "2023-08-13"
@@ -6,10 +7,12 @@ author:
   name: "Picsellia Team"
 category: "Data Science"
 image: "/images/blog/mask-r-cnn-everything-explained-hero.png"
+imageAlt: "Mask R-CNN - Everything explained"
 published: true
+tags: ["classification", "computer-vision", "deep-learning", "model-training", "object-detection", "segmentation", "versioning"]
 ---
 
-In computer vision, different tasks exists as introduced in our previous blogpost [Segmentation vs Detection vs Classification in Computer Vision: A Comparative Analysis](https://www.picsellia.com/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis). As explained in the article, there are two types of segmentation, semantic segmentation and instance segmentation. In this article we will discover one of the most powerful archtecture for instance segmentation, which is Mask R-CNN.
+In computer vision, different tasks exists as introduced in our previous blogpost [Segmentation vs Detection vs Classification in Computer Vision: A Comparative Analysis](/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis). As explained in the article, there are two types of segmentation, semantic segmentation and instance segmentation. In this article we will discover one of the most powerful archtecture for instance segmentation, which is Mask R-CNN.
 
 ## Understanding Instance Segmentation
 
@@ -23,7 +26,7 @@ Instance segmentation is actually a combination of  two sub problems: object de
 
 This level of granularity opens up a wide range of applications, from object counting and tracking to understanding object shapes and interactions.
 
-![](/images/blog/mask-r-cnn-everything-explained-img-0.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-0.png)
 *Example of instance segmentation : [https://blog.paperspace.com/](https://blog.paperspace.com/)*
 
 ‍
@@ -60,7 +63,7 @@ Since the introduction of Mask R-CNN, many improvements and variants have been p
 
 ## Step-by-Step Process of Mask R-CNN for Instance Segmentation
 
-![](/images/blog/mask-r-cnn-everything-explained-img-1.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-1.png)
 *[https://ars.els-cdn.com](https://ars.els-cdn.com)*
 
 ‍
@@ -81,7 +84,7 @@ The RPN assigns a score to each region proposals indicating its resemblance to a
 
 ‍
 
-![](/images/blog/mask-r-cnn-everything-explained-img-2.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-2.png)
 *First Regions proposals,* https://github.com/matterport/Mask_RCNN**
 
 ‍
@@ -98,7 +101,7 @@ Once the feature pyramid ic created by the FPN, the region proposals generated b
 
 Once the region proposals are generated and aligned using RoI Align, Mask R-CNN performs classification and bounding box regression. It passes the RoI-aligned features through a shared fully connected network, which predicts the class probabilities for each proposed region. The network also regresses the coordinates of the bounding boxes to refine their positions and sizes. This step ensures accurate object classification and precise localization.
 
-![](/images/blog/mask-r-cnn-everything-explained-img-3.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-3.png)
 *[https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)*
 
 ‍
@@ -109,7 +112,7 @@ The mask head network is responsible for generating pixel-level masks for each d
 
 ‍
 
-![](/images/blog/mask-r-cnn-everything-explained-img-4.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-4.png)
 *[https://www.shuffleai.blog](https://www.shuffleai.blog)*
 
 ‍
@@ -126,11 +129,11 @@ To train Mask R-CNN, a large annotated dataset is required, with pixel-level mas
 
 ‍
 
-During inference, Mask R-CNN applies the [trained model ](https://www.picsellia.com/experiment-tracking)to unseen images, performing region proposals, classification, bounding box regression, and mask prediction in a unified manner. The result is accurate instance segmentation, with objects distinctly outlined and labeled within the image.
+During inference, Mask R-CNN applies the [trained model ](/experiment-tracking)to unseen images, performing region proposals, classification, bounding box regression, and mask prediction in a unified manner. The result is accurate instance segmentation, with objects distinctly outlined and labeled within the image.
 
 ‍
 
-![](/images/blog/mask-r-cnn-everything-explained-img-5.png)
+![Mask r cnn everything explained](/images/blog/mask-r-cnn-everything-explained-img-5.png)
 *[https://github.com/matterport/Mask_RCNN](https://github.com/matterport/Mask_RCNN)*
 
 ‍

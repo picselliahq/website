@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const footerLinks = {
   Product: [
@@ -38,10 +39,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="col-span-2">
             <Link href="/" className="flex items-center mb-4">
-              <img
+              <Image
                 src="/images/Full_logo_white.svg"
                 alt="Picsellia"
-                className="h-6"
+                width={103}
+                height={24}
+                className="h-6 w-auto"
               />
             </Link>
             <p className="text-sm text-[var(--secondary-label)] max-w-xs mb-6">
@@ -51,6 +54,8 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="https://github.com/picselliahq"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--system-gray)] hover:text-[var(--label)] transition-colors"
               >
                 <svg
@@ -63,6 +68,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://linkedin.com/company/picsellia"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--system-gray)] hover:text-[var(--label)] transition-colors"
               >
                 <svg
@@ -75,6 +82,8 @@ export default function Footer() {
               </a>
               <a
                 href="https://x.com/picsellia"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-[var(--system-gray)] hover:text-[var(--label)] transition-colors"
               >
                 <svg
@@ -99,6 +108,8 @@ export default function Footer() {
                   <li key={link.label}>
                     <Link
                       href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors"
                     >
                       {link.label}

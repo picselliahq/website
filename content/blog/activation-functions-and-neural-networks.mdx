@@ -1,4 +1,5 @@
 ---
+
 title: "Activation Functions and Neural Networks"
 description: "Explore the key roles of activation functions in neural networks for computer vision tasks. Learn about Sigmoid, ReLU, and more for better deep learning."
 date: "2023-08-31"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Data Science"
 image: "/images/blog/activation-functions-and-neural-networks-hero.png"
+imageAlt: "Activation Functions and Neural Networks"
 published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deep-learning", "model-training"]
 ---
 
 ## Introduction
@@ -23,7 +26,7 @@ This article aims to explore various activation functions commonly employed in c
 
 Before we dive into the intricacies of activation functions, let's briefly recap the concept of neural networks in computer vision. Neural networks, inspired by the complexity of the human brain, consist of interconnected layers of artificial neurons. There is an input and output layer, linked by hidden layers as shown on the figure.  Each hidden layer is made with neurons connected to one or several neurons from the previous and following layer. Neurons are actually function. 
 
-![](/images/blog/activation-functions-and-neural-networks-img-0.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-0.png)
 *[https://www.tibco.com/](https://www.tibco.com/)*
 
 To simplify: if we look at the input data as a starting point and the output data as an end point, we can see the neural network as a combination of the paths that the input data takes to arrive at the result.
@@ -49,7 +52,7 @@ By repeatedly adjusting the weights based on the computed gradients, the CNN lea
 
 Bias, on the other hand, is a fixed value that is added to the product of inputs and weights. It serves as the opposite of the threshold, determining when to activate the activation function. In essence, the bias value governs the decision-making process of the activation function.
 
-![](/images/blog/activation-functions-and-neural-networks-img-1.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-1.png)
 
 Activation functions play a pivotal role in this process, acting as nonlinear transformations applied to the outputs of these neurons, enabling them to model complex relationships between inputs and outputs. 
 
@@ -57,7 +60,7 @@ Activation functions play a pivotal role in this process, acting as nonlinear tr
 
 Neural networks without activation functions would be limited to representing linear transformations, rendering them inadequate for solving complex problems. Activation functions introduce nonlinearity, enabling neural networks to capture intricate patterns and make more accurate predictions. By applying a suitable activation function, the network's expressive power increases exponentially, allowing it to learn and generalize from complex datasets.
 
-![](/images/blog/activation-functions-and-neural-networks-img-2.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-2.png)
 *[https://studymachinelearning.com](https://studymachinelearning.com)*
 
 ## Popular Activation Functions
@@ -68,7 +71,7 @@ In this section, we will explore several popular activation functions used exten
 
 The sigmoid activation function, also known as the logistic function, is a classic choice in neural networks.
 
-![](/images/blog/activation-functions-and-neural-networks-img-3.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-3.png)
 *[https://insideaiml.com](https://insideaiml.com)*
 
 - Definition and properties : 
@@ -82,12 +85,12 @@ The sigmoid function maps the input to a range between 0 and 1.
 
 ReLU has gained significant popularity in recent years, particularly for its simplicity and effectiveness in deep neural networks.
 
-![](/images/blog/activation-functions-and-neural-networks-img-4.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-4.png)
 *[https://www.nomidl.com](https://www.nomidl.com)*
 
 - Definition and Properties: 
 
-![](/images/blog/activation-functions-and-neural-networks-img-5.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-5.png)
 
 The ReLU activation function returns the input as is if positive, and zero otherwise. It introduces sparsity and computational efficiency by zeroing out negative values.
 
@@ -98,12 +101,12 @@ The ReLU activation function returns the input as is if positive, and zero other
 
 Leaky ReLU addresses the "dying ReLU" problem encountered with regular ReLU, where some neurons become inactive.
 
-![](/images/blog/activation-functions-and-neural-networks-img-6.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-6.png)
 *[https://www.i2tutorials.com](https://www.nomidl.com)*
 
 - Definition and Properties: Leaky ReLU introduces a small slope for negative inputs, allowing a small gradient to flow even for negative values, thus preventing neurons from dying.
 
-![](/images/blog/activation-functions-and-neural-networks-img-7.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-7.png)
 
 - Addressing the "Dying ReLU" Problem: By mitigating the problem of dead neurons, Leaky ReLU ensures that the network retains its capacity to learn and generalize effectively.
 - Use Cases and Benefits in Computer Vision: Leaky ReLU finds applications in various computer vision tasks, such as image classification, where the prevention of dead neurons contributes to the network's overall performance.
@@ -112,12 +115,12 @@ Leaky ReLU addresses the "dying ReLU" problem encountered with regular ReLU, whe
 
 The hyperbolic tangent function shares similarities with the sigmoid function but offers a slightly different range of output values.
 
-![](/images/blog/activation-functions-and-neural-networks-img-8.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-8.png)
 *[https://www.ml-science.com](https://www.ml-science.com)*
 
 -  Definition and Properties: 
 
-![](/images/blog/activation-functions-and-neural-networks-img-9.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-9.png)
 
 Tanh maps the input to a range between -1 and 1, exhibiting similar properties to the sigmoid function but with a steeper gradient around zero.
 
@@ -130,7 +133,7 @@ Softmax is particularly useful in multi-class classification problems, providing
 
 - Definition and Properties:
 
-![](/images/blog/activation-functions-and-neural-networks-img-10.png)
+![Activation functions and neural networks](/images/blog/activation-functions-and-neural-networks-img-10.png)
 
 Softmax normalizes the outputs of a neural network layer, ensuring they sum up to one, allowing interpretation as class probabilities.
 
@@ -159,4 +162,4 @@ Different computer vision tasks have varying requirements, and choosing the righ
 
 # Conclusion
 
-Activation functions are fundamental components of neural networks, especially in computer vision tasks. We explored various popular activation functions, their properties, advantages, and limitations. The appropriate choice of activation function can significantly impact the [performance](https://www.picsellia.com/experiment-tracking), convergence speed, and generalization capabilities of the network. Moreover, advanced activation functions and techniques offer exciting possibilities for further improving the effectiveness of neural networks in computer vision.
+Activation functions are fundamental components of neural networks, especially in computer vision tasks. We explored various popular activation functions, their properties, advantages, and limitations. The appropriate choice of activation function can significantly impact the [performance](/experiment-tracking), convergence speed, and generalization capabilities of the network. Moreover, advanced activation functions and techniques offer exciting possibilities for further improving the effectiveness of neural networks in computer vision.

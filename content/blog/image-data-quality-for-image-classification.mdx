@@ -1,4 +1,5 @@
 ---
+
 title: "How to Ensure Image Dataset Quality In Image Classification"
 description: "Learn how to tackle the dataset quality main issues, and how to optimize the overall quality of your AI models for image classification use-cases."
 date: "2022-01-04"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Data Management"
 image: "/images/blog/image-data-quality-for-image-classification-hero.png"
+imageAlt: "How to Ensure Image Dataset Quality In Image Classification"
 published: true
+tags: ["annotation", "classification", "computer-vision", "dataset-management", "healthcare", "model-training", "tools-comparison", "transfer-learning"]
 ---
 
 Every project in Computer Vision starts with a data collection strategy and dataset creation. For the past years, people have been focusing on model development without investing in training data creation as much as needed. In fact, creating an image dataset was truly complicated and time-consuming, and was often done by engineers or interns in a rather inefficient way. This pain led the way for a generation of labeling tools startups and open-source tools such as:
@@ -67,7 +70,7 @@ Now, you should have 5 lists of accuracies corresponding to 5 different training
 
 Next, you just have to calculate the average accuracy and standard deviation of each list, and fit an exponential curve over these data points. You should get a curve looking like this.
 
-![](/images/blog/image-data-quality-for-image-classification-img-0.png)
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-0.png)
 
 By looking at the extrapolation of the exponential curve, you should be able to determine if you have enough images in your training set to obtain your accuracy target.
 
@@ -121,7 +124,7 @@ The magic behind this implementation is quite intuitive and can be summarized in
 
 Here is a little benchmark of the detection performances the researchers achieved on multiple datasets.
 
-![](/images/blog/image-data-quality-for-image-classification-img-1.png)
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-1.png)
 
 You can find the research paper [here.](https://arxiv.org/pdf/1912.05283.pdf) And the Github repo [here.](https://github.com/mueller91/labelfix)
 
@@ -145,13 +148,13 @@ An embedding is obtained through processing an image through deep models to prod
 
 You should choose a pre-trained model which is lightweight but still accurate (that’s why mobileNet could be a good choice) so you can extract the embedding of all your images relatively easily.
 
-![](/images/blog/image-data-quality-for-image-classification-img-2.png)
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-2.png)
 
 **2. Compute the cosine similarity between all the embeddings**
 
 Here is the formula of the cosine similarity calculus:
 
-![](/images/blog/image-data-quality-for-image-classification-img-3.png)
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-3.png)
 
 It’s a more robust way to compute similarity between two vectors than a simple distance.
 

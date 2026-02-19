@@ -1,4 +1,5 @@
 ---
+
 title: "How to Integrate Picsellia into a Hugging Face Training Workflow"
 description: "Effortlessly scale computer vision model training with Picsellia's CVOps platform and HuggingFace."
 date: "2023-10-24"
@@ -6,10 +7,12 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-hero.webp"
+imageAlt: "How to Integrate Picsellia into a Hugging Face Training Workflow"
 published: true
+tags: ["computer-vision", "dataset-management", "deep-learning", "docker", "document-processing", "experiment-tracking", "mlops", "model-training"]
 ---
 
-Implementing computer vision model training at scale requires a robust [computer vision operations ](https://www.picsellia.com/post/how-to-apply-mlops-to-computer-vision-cvops)workflow. Scaling training with a custom workflow can bottleneck at the point of traceability and repeatability. Tailoring this into your custom training workflow can be costly in terms of time and resources.
+Implementing computer vision model training at scale requires a robust [computer vision operations ](/post/how-to-apply-mlops-to-computer-vision-cvops)workflow. Scaling training with a custom workflow can bottleneck at the point of traceability and repeatability. Tailoring this into your custom training workflow can be costly in terms of time and resources.
 
 A CVOps platform like Picsellia has robust architectural workflows that provide enough features to handle large-scale computer vision-based model development (training). It has the necessary tools to manage the entire CV development lifecycle. You have two options when leveraging Picsellia for training. You can re-develop your entire training workflow to use Picsellia's workflows and infrastructure. Or integrate Picsellia into your existing training workflow and still use your infrastructure. The integration option gives you the best of both worlds without a platform lock or the compulsory mandate of migrating your existing training workflows to the platform. It also creates two points of failure for the training workflows and multiple data locations since the training information generated in your local training environment (on the infrastructure) also exists on Picsellia's platform.
 
@@ -53,7 +56,7 @@ To get started, you will create an experiment on Picsellia to manage your traini
 
 ‍
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-0.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-0.png)
 
 ## **Pull the datasets associated with the experiment from Picsellia**
 
@@ -92,7 +95,7 @@ Log the label maps to your Picsellia experiment.
 
 ‍
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-1.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-1.png)
 
 ## **Train the model and log the results to Picsellia.**
 
@@ -117,7 +120,7 @@ Log the training hyperparameters to your Picsellia experiment.
 
 ‍
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-2.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-2.png)
 
 Create a custom training callback for logging training activities to your Picsellia experiment from the Trainer API class. The API class gives access to all the activities happening during training. Within the callback, the loss and learning rate decay logs occurring during training are logged directly to your experiment in Picsellia at the end of the training. 
 
@@ -141,7 +144,7 @@ Store all the model files in your Picsellia experiment artifact.
 
 ‍
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-3.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-3.png)
 
  
 
@@ -168,14 +171,14 @@ To evaluate the model, make predictions on all the evaluation images that you do
 
 Being able to see the progressive performance of your fine-tuned model over time is essential. So, each time you make predictions after training and send the evaluations to Picsellia, you get a visual and empirical evaluation of your model.
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-4.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-4.png)
 
 The annotations in red are predictions, and the ones in green are ground truths. Finally, spin up a job on Picsellia to compute the evaluation metrics for all the predictions you just added.
 
 [
 ](https://gist.github.com/Tob-iee/750ea26835e39091993a3068b07d1287)
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-5.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-5.png)
 
 ## **Store the retrained model in the Picsellia model registry.**
 
@@ -190,16 +193,16 @@ Create a custom model folder for the different versions of your model in the Pic
 [
 ](https://gist.github.com/Tob-iee/ce42a655887afea8b8fed62364454e16)
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-6.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-6.png)
 
 Create a model version in the custom model folder to store the fine-tuned model from your training experiments in the model registry.
 
 [
 ](https://gist.github.com/Tob-iee/1c091485a2b64e9d3e415b9fa4938d63)
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-7.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-7.png)
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-8.png)
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-8.png)
 
 ## **Dockerize the code**
 
@@ -220,7 +223,7 @@ You can deploy this Docker container image on your infrastructure and have a CVO
 
 To spin an experiment run, specify your environment variables for the Docker container with each run's experiment name and retrained model output directory.
 
-![](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-65392518c6fd8914267eb7be_carbon.png)
+![How to integrate picsellia into a hugging face training workflow 65392518c6fd8914267eb7be carbon](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-65392518c6fd8914267eb7be_carbon.png)
 
 ---------------------------------------------------------------------------------------------------------------------
 

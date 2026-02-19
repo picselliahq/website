@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ProductOverviewPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd, softwareApplicationJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Product Overview - Complete MLOps Platform",
@@ -17,5 +18,11 @@ export const metadata: Metadata = {
 };
 
 export default function ProductOverviewPage() {
-  return <ProductOverviewPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }])} />
+      <JsonLd data={softwareApplicationJsonLd()} />
+      <ProductOverviewPageContent />
+    </>
+  );
 }

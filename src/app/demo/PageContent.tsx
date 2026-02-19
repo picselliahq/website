@@ -89,38 +89,6 @@ const annotationChallenges = [
   },
 ];
 
-// Industry options
-const industries = [
-  'Manufacturing',
-  'Energy & Utilities',
-  'Agriculture',
-  'Healthcare & Life Sciences',
-  'Retail & E-commerce',
-  'Transportation & Logistics',
-  'Financial Services',
-  'Media & Entertainment',
-  'Other',
-];
-
-// Company size options
-const companySizes = [
-  '1-10 employees',
-  '11-50 employees',
-  '51-200 employees',
-  '201-1000 employees',
-  '1000+ employees',
-];
-
-// Use case options
-const useCases = [
-  'Defect Detection & Quality Control',
-  'Document Processing & OCR',
-  'Object Detection & Tracking',
-  'Image Classification',
-  'Semantic Segmentation',
-  'Video Analytics',
-  'Other',
-];
 
 // Benefits
 const benefits = [
@@ -166,11 +134,13 @@ export default function DemoPage() {
     company: '',
     jobTitle: '',
     phone: '',
-    industry: '',
-    companySize: '',
-    useCase: '',
     message: '',
   });
+
+  // Show more fields toggle
+  const [showMore, setShowMore] = useState(false);
+
+  const [submitError, setSubmitError] = useState(false);
 
   // Bot prevention state
   const [challenge, setChallenge] = useState(annotationChallenges[0]);
@@ -195,7 +165,6 @@ export default function DemoPage() {
     if (selectedAnswer !== challenge.correct) {
       setChallengeError(true);
       setChallengePassed(false);
-      // Randomize to a new challenge on failure
       const newIndex = Math.floor(Math.random() * annotationChallenges.length);
       setChallenge(annotationChallenges[newIndex]);
       setSelectedAnswer(null);
@@ -205,51 +174,25 @@ export default function DemoPage() {
     setChallengeError(false);
     setChallengePassed(true);
     setIsSubmitting(true);
-
-    // HubSpot Form API submission
-    const HUBSPOT_PORTAL_ID = 'YOUR_PORTAL_ID'; // Replace with your HubSpot Portal ID
-    const HUBSPOT_FORM_GUID = 'YOUR_FORM_GUID'; // Replace with your HubSpot Form GUID
-
-    const hubspotData = {
-      fields: [
-        { name: 'firstname', value: formData.firstName },
-        { name: 'lastname', value: formData.lastName },
-        { name: 'email', value: formData.email },
-        { name: 'company', value: formData.company },
-        { name: 'jobtitle', value: formData.jobTitle },
-        { name: 'phone', value: formData.phone },
-        { name: 'industry', value: formData.industry },
-        { name: 'company_size', value: formData.companySize },
-        { name: 'use_case', value: formData.useCase },
-        { name: 'message', value: formData.message },
-      ],
-      context: {
-        pageUri: typeof window !== 'undefined' ? window.location.href : '',
-        pageName: 'Book a Demo',
-      },
-    };
+    setSubmitError(false);
 
     try {
-      const response = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(hubspotData),
-        }
-      );
+      const response = await fetch('/api/demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          pageUri: window.location.href,
+        }),
+      });
 
       if (response.ok) {
         router.push('/thank-you-demo');
       } else {
-        console.error('HubSpot submission failed:', await response.text());
-        // Still redirect on error for now - you may want to show an error message instead
-        router.push('/thank-you-demo');
+        setSubmitError(true);
       }
-    } catch (error) {
-      console.error('Form submission error:', error);
-      // Still redirect on error for now - you may want to show an error message instead
-      router.push('/thank-you-demo');
+    } catch {
+      setSubmitError(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -316,7 +259,7 @@ export default function DemoPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name fields */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-[var(--label)] mb-2">
                         First name <span className="text-[var(--system-red)]">*</span>
@@ -366,131 +309,92 @@ export default function DemoPage() {
                     />
                   </div>
 
-                  {/* Company & Job Title */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-[var(--label)] mb-2">
-                        Company <span className="text-[var(--system-red)]">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        required
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors"
-                        placeholder="Acme Inc."
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="jobTitle" className="block text-sm font-medium text-[var(--label)] mb-2">
-                        Job title
-                      </label>
-                      <input
-                        type="text"
-                        id="jobTitle"
-                        name="jobTitle"
-                        value={formData.jobTitle}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors"
-                        placeholder="ML Engineer"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Phone */}
+                  {/* Company */}
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-[var(--label)] mb-2">
-                      Phone number
+                    <label htmlFor="company" className="block text-sm font-medium text-[var(--label)] mb-2">
+                      Company <span className="text-[var(--system-red)]">*</span>
                     </label>
                     <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
+                      type="text"
+                      id="company"
+                      name="company"
+                      required
+                      value={formData.company}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors"
-                      placeholder="+33 6 12 34 56 78"
+                      placeholder="Acme Inc."
                     />
                   </div>
 
-                  {/* Industry & Company Size */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="industry" className="block text-sm font-medium text-[var(--label)] mb-2">
-                        Industry <span className="text-[var(--system-red)]">*</span>
-                      </label>
-                      <select
-                        id="industry"
-                        name="industry"
-                        required
-                        value={formData.industry}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors appearance-none cursor-pointer"
-                        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
-                      >
-                        <option value="">Select industry</option>
-                        {industries.map((industry) => (
-                          <option key={industry} value={industry}>{industry}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="companySize" className="block text-sm font-medium text-[var(--label)] mb-2">
-                        Company size <span className="text-[var(--system-red)]">*</span>
-                      </label>
-                      <select
-                        id="companySize"
-                        name="companySize"
-                        required
-                        value={formData.companySize}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors appearance-none cursor-pointer"
-                        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
-                      >
-                        <option value="">Select size</option>
-                        {companySizes.map((size) => (
-                          <option key={size} value={size}>{size}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Use Case */}
+                  {/* Tell us more - expandable section */}
                   <div>
-                    <label htmlFor="useCase" className="block text-sm font-medium text-[var(--label)] mb-2">
-                      Primary use case
-                    </label>
-                    <select
-                      id="useCase"
-                      name="useCase"
-                      value={formData.useCase}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors appearance-none cursor-pointer"
-                      style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px' }}
+                    <button
+                      type="button"
+                      onClick={() => setShowMore(!showMore)}
+                      className="flex items-center gap-2 text-sm font-medium text-[var(--picsellia-green)] hover:underline transition-colors"
                     >
-                      <option value="">Select use case</option>
-                      {useCases.map((useCase) => (
-                        <option key={useCase} value={useCase}>{useCase}</option>
-                      ))}
-                    </select>
-                  </div>
+                      <svg
+                        className={`w-4 h-4 transition-transform ${showMore ? 'rotate-180' : ''}`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                      {showMore ? 'Less details' : 'Add more details (optional)'}
+                    </button>
 
-                  {/* Message */}
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-[var(--label)] mb-2">
-                      Anything else you&apos;d like us to know?
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={3}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors resize-none"
-                      placeholder="Tell us about your project, timeline, or any specific requirements..."
-                    />
+                    {showMore && (
+                      <div className="space-y-5 mt-5 pt-5 border-t border-[var(--border)]">
+                        {/* Job Title & Phone */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label htmlFor="jobTitle" className="block text-sm font-medium text-[var(--label)] mb-2">
+                              Job title
+                            </label>
+                            <input
+                              type="text"
+                              id="jobTitle"
+                              name="jobTitle"
+                              value={formData.jobTitle}
+                              onChange={handleChange}
+                              className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors"
+                              placeholder="ML Engineer"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-[var(--label)] mb-2">
+                              Phone number
+                            </label>
+                            <input
+                              type="tel"
+                              id="phone"
+                              name="phone"
+                              value={formData.phone}
+                              onChange={handleChange}
+                              className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors"
+                              placeholder="+33 6 12 34 56 78"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Message */}
+                        <div>
+                          <label htmlFor="message" className="block text-sm font-medium text-[var(--label)] mb-2">
+                            Anything else you&apos;d like us to know?
+                          </label>
+                          <textarea
+                            id="message"
+                            name="message"
+                            rows={3}
+                            value={formData.message}
+                            onChange={handleChange}
+                            className="w-full px-4 py-3 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)] text-[var(--label)] text-sm focus:outline-none focus:border-[var(--picsellia-green)] focus:ring-1 focus:ring-[var(--picsellia-green)] transition-colors resize-none"
+                            placeholder="Tell us about your project, timeline, or any specific requirements..."
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
                   {/* Bot Prevention: Annotation Challenge */}
@@ -536,6 +440,16 @@ export default function DemoPage() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Error message */}
+                  {submitError && (
+                    <div className="p-3 rounded-lg bg-[var(--system-red)]/10 border border-[var(--system-red)]/20">
+                      <p className="text-sm text-[var(--system-red)]">
+                        Something went wrong. Please try again or contact us at{' '}
+                        <a href="mailto:contact@picsellia.com" className="underline">contact@picsellia.com</a>.
+                      </p>
+                    </div>
+                  )}
 
                   {/* Submit */}
                   <button
@@ -589,7 +503,7 @@ export default function DemoPage() {
               },
               {
                 q: 'Can I see features specific to my use case?',
-                a: 'Yes! We tailor each demo to your industry and specific computer vision challenges. Let us know your use case in the form.',
+                a: 'Yes! We tailor each demo to your industry and specific computer vision challenges. Feel free to mention your use case in the message field.',
               },
               {
                 q: 'Is the demo free?',

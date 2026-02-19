@@ -6,6 +6,7 @@ import DatalakeVisualSearch from '@/components/datalake/DatalakeVisualSearch';
 import DatalakeTagsMetadata from '@/components/datalake/DatalakeTagsMetadata';
 import DatalakeCTA from '@/components/datalake/DatalakeCTA';
 
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 export const metadata: Metadata = {
   title: 'Datalake - Centralized Data Management',
   description:
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function DatalakePage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Datalake', url: '/datalake' }])} />
       <DatalakeHero />
       <DatalakeCapabilities />
       <DatalakeQueryLanguage />

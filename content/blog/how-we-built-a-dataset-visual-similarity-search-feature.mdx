@@ -1,4 +1,5 @@
 ---
+
 title: "How We Built A Dataset Visual Similarity Search Feature"
 description: "Learn how we built a dataset visual similarity search feature with embeddings and Qdrant."
 date: "2022-05-17"
@@ -6,10 +7,12 @@ author:
   name: "Picsellia Team"
 category: "Product"
 image: "/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-hero.png"
+imageAlt: "How We Built A Dataset Visual Similarity Search Feature"
 published: true
+tags: ["annotation", "classification", "dataset-management", "deep-learning", "object-detection"]
 ---
 
-As we examined in our last [article](https://www.picsellia.com/post/data-management-in-ai-key-success-factor)** **some of the key features of an efficient data management system are data exploration and filtering. We have defended this for a long time now, but we never had the time to add this feature to our platform. These times are gone! 
+As we examined in our last [article](/post/data-management-in-ai-key-success-factor)** **some of the key features of an efficient data management system are data exploration and filtering. We have defended this for a long time now, but we never had the time to add this feature to our platform. These times are gone! 
 
 In this article, we’ll walk you through the general concept of image embedding, and how we implemented our scalable visual search feature to find similar images across millions of images for multiple clients at the same time.
 
@@ -29,7 +32,7 @@ Here, our goal is to leverage embeddings to quickly identify similarities in ima
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-0.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-0.png)
 
 ‍
 
@@ -49,7 +52,7 @@ That's why convolutional neural networks are so powerful. In the past ten years,
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-1.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-1.png)
 
 ‍
 
@@ -59,7 +62,7 @@ There are so many ConvNet models out there that it has become a complex task to 
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-2.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-2.png)
 *Source: AI Google Blog *
 
 ‍
@@ -68,7 +71,7 @@ The latest EfficientNet architectures released by the Google team are a great ch
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-3.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-3.png)
 
 ‍
 
@@ -80,7 +83,7 @@ Once we have embeddings for all our images, we need to create an index for each 
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-4.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-4.png)
 
 Next, we want to find, given an index, the N most similar pictures.
 
@@ -88,7 +91,7 @@ Next, we want to find, given an index, the N most similar pictures.
 
 A simple way to implement a similarity search is to compute the distance of a given feature vector between all the other vectors and then select the N closest neighbors. For this approach, you only need to consider the distance that you want to compute, vector similarity is often computed through cosine distance.
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-5.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-5.png)
 
 ‍
 
@@ -114,7 +117,7 @@ This approach is considered brute force since the complexity of the search is li
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-6.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-6.png)
 
 ‍
 
@@ -132,7 +135,7 @@ The objective is to create an approximation of the search to reduce the number o
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-7.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-7.png)
 
 ‍
 
@@ -144,8 +147,8 @@ At Picsellia, we provide a Data Management platform to supercharge cloud object 
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-8.gif)
-*[Picsellia's Data Lake](https://www.picsellia.com/product-overview)*
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-8.gif)
+*[Picsellia's Data Lake](/product-overview)*
 
  
 
@@ -168,7 +171,7 @@ These are essential needs, but if we want to develop everything in-house, we wou
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-9.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-9.png)
 *Qdrant*
 
 ‍
@@ -187,7 +190,7 @@ The key phase is embeddings' creation, and how to do it at scale without impacti
 
 ‍
 
-![](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-10.png)
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-10.png)
 
  
 
@@ -197,4 +200,4 @@ This new implementation allows us to generate embeddings for millions of images 
 
 Once the embeddings are indexed and linked to our unique image ID, it gets really easy to find similar images in your dataset in no time! This makes dataset exploration as easy as ABC for you!
 
-If you want to benefit from an entire Data Management suite packaged inside an end-to-end Computer Vision platform, just [claim your trial](https://www.picsellia.com/trial)!
+If you want to benefit from an entire Data Management suite packaged inside an end-to-end Computer Vision platform, just [claim your trial](/trial)!

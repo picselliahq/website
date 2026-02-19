@@ -1,4 +1,5 @@
 ---
+
 title: "Road to MLOps — Level 2: Part 3"
 description: "MLOps level 2 goes a step further in terms of the kind of system that we are now able to operate. By that we mean large-scale, high-frequency systems."
 date: "2021-11-01"
@@ -6,14 +7,16 @@ author:
   name: "Picsellia Team"
 category: "MLOps"
 image: "/images/blog/road-to-mlops-part-3-hero.png"
+imageAlt: "Road to MLOps — Level 2: Part 3"
 published: true
+tags: ["cloud", "deployment", "mlops", "model-training", "monitoring", "pipelines"]
 ---
 
 This is the last article of our series about MLOps, in the lasts articles we went from MLOps lvl 0 and 1, if you want to catch up, here are the links of the previous articles:
 
-Introducing MLOps lvl 0:[ https://www.picsellia.com/post/what-is-mlops-and-why-its-important](https://www.picsellia.com/post/what-is-mlops-and-why-its-important)
+Introducing MLOps lvl 0:[ /post/what-is-mlops-and-why-its-important](/post/what-is-mlops-and-why-its-important)
 
-Introducing MLOps lvl 1:[ https://www.picsellia.com/post/road-to-mlops-part-2](https://www.picsellia.com/post/road-to-mlops-part-2)
+Introducing MLOps lvl 1:[ /post/road-to-mlops-part-2](/post/road-to-mlops-part-2)
 
 In this third part, we will cover the lvl 2 of MLOps and present some tools and techniques to achieve it.
 
@@ -41,13 +44,13 @@ The last points depend on the company or project requirements, organization, tea
 
 ## **Cloud Model Deployment**
 
-[Deployment](https://www.picsellia.com/model-deployment) is one of the most exciting stages of the project, where you can finally see your model in action, study its performance, but also pray that it never breaks!
+[Deployment](/model-deployment) is one of the most exciting stages of the project, where you can finally see your model in action, study its performance, but also pray that it never breaks!
 
 Here is a diagram of what we consider the bare minimum of configuration and packaging for deploying a model into ‘production’. Everything less complete than this can’t be considered MLOps ready.
 
 ‍
 
-![](/images/blog/road-to-mlops-part-3-61deec127f04aea44af7918b_bVn9U7jo2reV0wWSiC6a17KQzZXO2EZllEZJa6fdXDnDY5lQP7ILml64Bi0yzBxmIpFqaq-5TpKdXHPfyQdBhHFQRGp8JSroe4ZM04KlAZEOb11KBhkplRI5xpsItW5CElsdJXE.png)
+![Road to mlops part 3 61deec127f04aea44af7918b bvn9u7jo2rev0wwsic6a17kqzzxo2ezllezja6fdxdndy5lqp7ilml64bi0yzbxmipfqaq 5tpkdxhpfyqdbhhfqrgp8jsroe4zm04klazeob11kbhkplri5xpsitw5celsdjxe](/images/blog/road-to-mlops-part-3-61deec127f04aea44af7918b_bVn9U7jo2reV0wWSiC6a17KQzZXO2EZllEZJa6fdXDnDY5lQP7ILml64Bi0yzBxmIpFqaq-5TpKdXHPfyQdBhHFQRGp8JSroe4ZM04KlAZEOb11KBhkplRI5xpsItW5CElsdJXE.png)
 
 ‍
 
@@ -67,7 +70,7 @@ Flask Deployment shows you how easy it is to ‘deploy’ a machine learning mod
 
 ‍
 
-![](/images/blog/road-to-mlops-part-3-61deec12719222228e7addbb_AuRdWFaLiLvWvCHDV7eCkO-i_LY0ewa05i35A88OmgovUqnO01ohYDq_Wp16pGf94na65vRcPVI_omCoZicoKHSmjZyyEBjMdms0d1qUwpWew-12T4-TZd-oVsSZ35YaAZmvXWg.png)
+![Road to mlops part 3 61deec12719222228e7addbb aurdwfalilvwvchdv7ecko i ly0ewa05i35a88omgovuqno01ohydq wp16pgf94na65vrcpvi omcozicokhsmjzyyebjmdms0d1quwpwew 12t4 tzd ovssz35yaazmvxwg](/images/blog/road-to-mlops-part-3-61deec12719222228e7addbb_AuRdWFaLiLvWvCHDV7eCkO-i_LY0ewa05i35A88OmgovUqnO01ohYDq_Wp16pGf94na65vRcPVI_omCoZicoKHSmjZyyEBjMdms0d1qUwpWew-12T4-TZd-oVsSZ35YaAZmvXWg.png)
 *Flask endpoint example*
 
 The key issue with this method is that it mixes the logic of the model and predictions with the API logic, which leads to more complicated stack traces and less clean code. API can be inconsistent. For example, you might have to change a route, you can’t create dynamic routing to new model versions as you add it to the servers. And finally, it’s inefficient and dangerous to manage your compute resources.
@@ -96,7 +99,7 @@ Just for you to see how easy it is to run TensorFlow serving and deploy a model,
 
 ‍
 
-![](/images/blog/road-to-mlops-part-3-61deec12ce937b30decfb48c_jqlbaj_mkq4e-UJUp0Zj2taj09_yj4HVDxiHbPUkYpNsTNcff1SLXkgncZfIJ4uTPW0LZ7CMiY2vogBO6zaLWiYHSVrTe_FgfvHkhTocB8qMMmy8snwrAJMZenotRtvMCv43bWw.png)
+![Road to mlops part 3 61deec12ce937b30decfb48c jqlbaj mkq4e ujup0zj2taj09 yj4hvdxihbpukypnstncff1slxkgnczfij4utpw0lz7cmiy2vogbo6zalwiyhsvrte fgfvhkhtocb8qmmmy8snwrajmzenotrtvmcv43bww](/images/blog/road-to-mlops-part-3-61deec12ce937b30decfb48c_jqlbaj_mkq4e-UJUp0Zj2taj09_yj4HVDxiHbPUkYpNsTNcff1SLXkgncZfIJ4uTPW0LZ7CMiY2vogBO6zaLWiYHSVrTe_FgfvHkhTocB8qMMmy8snwrAJMZenotRtvMCv43bWw.png)
 *TFX Docker example*
 
 ‍
@@ -109,7 +112,7 @@ Here we wrote a minimal example on how to request the Tensorflow serving server,
 
 ‍
 
-![](/images/blog/road-to-mlops-part-3-61deec12e1d4d53c211cad4c_ItRVEm9l5DZmRpAW8Tt0H4cAEKX4bW-5bOssbCtxIwOGh1LWI16etL7Xxvl-7DheNBF6icntcei0kTd7uX-jvQ3vjSd7KhJCUGOah-JRdyAS9EHotZo1cTU8EKrcwmZqJ43b3zs.png)
+![Road to mlops part 3 61deec12e1d4d53c211cad4c itrvem9l5dzmrpaw8tt0h4caekx4bw 5bossbctxiwogh1lwi16etl7xxvl 7dhenbf6icntcei0ktd7ux jvq3vjsd7khjcugoah jrdyas9ehotzo1ctu8ekrcwmzqj43b3zs](/images/blog/road-to-mlops-part-3-61deec12e1d4d53c211cad4c_ItRVEm9l5DZmRpAW8Tt0H4cAEKX4bW-5bOssbCtxIwOGh1LWI16etL7Xxvl-7DheNBF6icntcei0kTd7uX-jvQ3vjSd7KhJCUGOah-JRdyAS9EHotZo1cTU8EKrcwmZqJ43b3zs.png)
 *gRPC requet example in Python 3+*
 
 ‍
@@ -126,4 +129,4 @@ We can tell that it’s less intuitive than the Flask example, but It’s not ev
 
 - Finally, we have Cloud deployment solutions like the Cloud providers platform (AWS, GCP, Azure…) and solutions like ours; Picsellia. The great thing about these solutions is that everything is managed, maintained, and monitored for you, working as powerful tools for your ML projects. But they have to be compatible with your existing workflows, policies and they come with a price.
 
-If you'd like to learn more about our MLOps solution, Picsellia, feel free to[ book a quick intro call](https://www.picsellia.com/demo) and we'll get you started in no time!
+If you'd like to learn more about our MLOps solution, Picsellia, feel free to[ book a quick intro call](/demo) and we'll get you started in no time!

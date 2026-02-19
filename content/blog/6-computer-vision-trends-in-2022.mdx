@@ -1,4 +1,5 @@
 ---
+
 title: "6 Computer Vision Trends in 2022"
 description: "Explore the upcoming AI trends for 2022."
 date: "2022-09-27"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "News"
 image: "/images/blog/6-computer-vision-trends-in-2022-hero.jpeg"
+imageAlt: "6 Computer Vision Trends in 2022"
 published: true
+tags: ["annotation", "computer-vision", "foundation-models", "model-training"]
 ---
 
 AI has immensely contributed to computer vision’s advances over the past years. It’s the field where most AI research is being conducted. But what is going on during 2022, what are the most important present research trends?
@@ -29,7 +32,7 @@ A lot of research has focused on Multi-Modal Learning during the last couple of 
 
 Self-Supervised Learning (SSL) is a learning paradigm where pseudo labels are generated automatically from unlabelled data. These labels are not assigned based on the target task but rather on a general pre-training task that aims to teach and give the model “a general intuition about the world”. By training on this task with orders of magnitude more data compared to supervised learning, models are able to capture features that are otherwise difficult to discover. It offers an intelligent way of exploiting the unprecedented amounts of unlabeled data that is available today.
 
-All the contemporary huge NLP models like GPT-3, BERT and the more recent [BLOOM](https://huggingface.co/blog/bloom), make use of self-supervision in order to successfully be trained. SSL revolutionized NLP and is now revolutionizing the way we train vision models. But, it’s not just huge models that benefit, read our article to learn [how you can reduce your training data needs by exploiting self-supervised learning.](https://www.picsellia.com/post/reduce-training-data-with-self-supervised-learning)
+All the contemporary huge NLP models like GPT-3, BERT and the more recent [BLOOM](https://huggingface.co/blog/bloom), make use of self-supervision in order to successfully be trained. SSL revolutionized NLP and is now revolutionizing the way we train vision models. But, it’s not just huge models that benefit, read our article to learn [how you can reduce your training data needs by exploiting self-supervised learning.](/post/reduce-training-data-with-self-supervised-learning)
 
 ## Text-to-Image with Diffusion Models
 
@@ -37,9 +40,9 @@ Probably the most popular trend of 2022 is text-to-image Diffusion models. Model
 
                    
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-0.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-0.png)
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-1.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-1.png)
 
 AI generated images from human phrase prompts.
 
@@ -60,11 +63,11 @@ Perception in 3D space is a prerequisite in creating autonomous robotic systems 
 
 The goal of 3D object detection is to recognize objects by drawing an oriented 3d bounding box (cube) around it and assigning a classification label to it.  By detecting objects in 3D we get information about their size, their distance and orientation. This information can be then exploited by a navigation model in order to predict motion of objects in the scene, facilitate path planning and ultimately avoid collisions.
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-2.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-2.png)
 
 A labeled 3D object detection example from the [objectron dataset](https://google.github.io/mediapipe/solutions/objectron). [Source](https://github.com/google-research-datasets/Objectron/blob/master/docs/images/objectron_samples.gif)
 
-Deep learning methods,[ such as CNN networks and in some cases ViTs](https://www.picsellia.com/post/are-transformers-replacing-cnns-in-object-detection), are extensively being used in solving this task. Currently the most popular training methods include using only images, using LiDAr sensor data or fusing both sources to create multi-modal datasets. 
+Deep learning methods,[ such as CNN networks and in some cases ViTs](/post/are-transformers-replacing-cnns-in-object-detection), are extensively being used in solving this task. Currently the most popular training methods include using only images, using LiDAr sensor data or fusing both sources to create multi-modal datasets. 
 
 Although a lot of research is allocated towards reliable 3D perception systems and there is a lot of interest from the automotive industry for this technology, 3D object detection is still in an early stage. However, results in benchmarking datasets (eg. [Kitti cars](https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d), [sun-rgbd](https://rgbd.cs.princeton.edu/challenge.html), [objectron dataset](https://github.com/google-research-datasets/Objectron)) are very promising.
 
@@ -74,13 +77,13 @@ During 2020 a paper called “NeRF: Representing Scenes as Neural Radiance Field
 
 The goal of this task is to synthesize novel views of an object given a 5D input. The inputs given are the spatial coordinates *x=(x, y, z)* of the viewer (camera)  and the viewing angle *(θ,φ)*. NeRF maps this 5D space to a single volume density *σ* and a view-dependent RGB color *c*.  It achieves that by using an optimized deep fully connected neural network. Training follows a supervised paradigm, hence multiple views of the object are needed for training purposes.
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-3.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-3.png)
 
  [Source						](https://arxiv.org/pdf/2003.08934v2.pdf)
 
 NeRF managed to achieve excellent results compared to its predeceasing techniques sparking a small revolution in its field.
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-4.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-4.png)
 
   
 
@@ -96,7 +99,7 @@ Deep learning has always been considered a black box technology, however, as DL 
 
 A lot of funding is being allocated towards explainable AI and computer vision claims a large share of it. Some popular methods into creating more transparent models include CAM, Grad CAM ++[5], RISE [6], SHAP Gradient Explainer. Related software tools and libraries include [ELI5](https://eli5.readthedocs.io/en/latest/overview.html), [interpretML](https://interpret.ml/), [tootorch](https://pypi.org/project/tootorch/#description), [tfexplain](https://github.com/sicara/tf-explain)**, **[shap](https://shap-lrjball.readthedocs.io/en/latest/generated/shap.GradientExplainer.html)**.**
 
-![](/images/blog/6-computer-vision-trends-in-2022-img-5.png)
+![6 computer vision trends in 2022](/images/blog/6-computer-vision-trends-in-2022-img-5.png)
 
 Grad CAM++ algorithm applied to a CNN. Colors represent filter activations. A hotter color means more emphasis was given on those pixels by the model.
 

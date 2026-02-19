@@ -56,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map((page) => ({
     url: `${baseUrl}${page.path}`,
-    lastModified: new Date(),
+    lastModified: new Date('2026-02-01'),
     changeFrequency: page.changeFrequency,
     priority: page.priority,
   }));

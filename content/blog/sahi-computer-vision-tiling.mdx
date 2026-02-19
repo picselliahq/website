@@ -1,4 +1,5 @@
 ---
+
 title: "SAHI Revisioned"
 description: "Picsellia's new tiling model improves object detection by preserving resolution, especially for smaller objects, while offering flexible tiling modes."
 date: "2024-09-26"
@@ -6,12 +7,14 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/sahi-computer-vision-tiling-hero.png"
+imageAlt: "SAHI Revisioned"
 published: true
+tags: ["api", "computer-vision", "deep-learning", "experiment-tracking", "model-training", "object-detection"]
 ---
 
 As most of you reading this blog know, SAHI stands for[ Slicing Aided Hyper Inference](https://github.com/obss/sahi). It has made it easier for developers to detect smaller objects on the screen without having to retrain their models. 
 
-![](/images/blog/sahi-computer-vision-tiling-img-0.gif)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-0.gif)
 
 [*Source*](https://github.com/obss/sahi?tab=readme-ov-file)
 
@@ -25,7 +28,7 @@ Before an image arrives into the neural network for prediction and further proce
 
 In simple terms, tiling adjusts the image content according to the size of the objects. Larger objects typically don't require tiling, while smaller objects need greater focus to ensure accurate detection, making the model's training process more efficient.
 
-![](/images/blog/sahi-computer-vision-tiling-66f6a684cfaf64373c73fd23_66f6a677ce0d587b4bdca0dc_Presentation1-25203.gif)
+![Sahi computer vision tiling 66f6a684cfaf64373c73fd23 66f6a677ce0d587b4bdca0dc presentation1 25203](/images/blog/sahi-computer-vision-tiling-66f6a684cfaf64373c73fd23_66f6a677ce0d587b4bdca0dc_Presentation1-25203.gif)
 
 [Tiling is a crucial technique in image analysis for computer vision, enabling a closer examination of specific image regions while maintaining high resolution. This method is often applied to detect small objects within large, high-resolution images.](https://plainsight.ai/blog/tiling-and-small-object-detection/) In simple words, tiling is adjusting the image content to the object sizes. The bigger the object you need to annotate, the less likely you need to tile. The smaller the object, the more refocusing is required around it to make the model's training process easier.
 
@@ -45,23 +48,23 @@ Some of the tiling modes include -
 
 ### Constant: this is a classic use case, enabled by default.
 
-![](/images/blog/sahi-computer-vision-tiling-img-2.png)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-2.png)
 
 ### Drop: this is what SAHI did.
 
-![](/images/blog/sahi-computer-vision-tiling-img-3.png)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-3.png)
 
 ### Reflect: apply a reflection of the tile until the tile is complete. Similar to a mirror.
 
-![](/images/blog/sahi-computer-vision-tiling-img-4.png)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-4.png)
 
 ### Edge: Taks the last row or column of the pixel and repeat it until the tile is complete.
 
-![](/images/blog/sahi-computer-vision-tiling-img-5.png)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-5.png)
 
 ### Wrap: Repeat the tile until the tile is complete.
 
-![](/images/blog/sahi-computer-vision-tiling-img-6.png)
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-6.png)
 
 ## NMS or NMM
 
@@ -73,4 +76,4 @@ SAHI has been a valuable tool for improving object detection, especially for sma
 
 The flexibility of various tiling modes and the ability to treat tile size as a hyperparameter gives developers greater control over the training process, making it easier to tailor solutions for specific use cases. 
 
-Picsellia’s approach to tiling empowers developers to achieve better performance in their computer vision models, leading to more precise and efficient model training. [Book your demo](http://picsellia.com/demo) now!
+Picsellia’s approach to tiling empowers developers to achieve better performance in their computer vision models, leading to more precise and efficient model training. [Book your demo](/demo) now!

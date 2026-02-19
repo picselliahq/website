@@ -1,4 +1,5 @@
 ---
+
 title: "How to Reduce Training Data with Self-Supervised Learning"
 description: "Self-Supervised Learning (SSL) aims to leverage large unlabeled datasets to train capable feature extractors such as CNN or ViT encoders. But what is SSL?"
 date: "2022-07-25"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Data Management"
 image: "/images/blog/reduce-training-data-with-self-supervised-learning-hero.jpeg"
+imageAlt: "How to Reduce Training Data with Self-Supervised Learning"
 published: true
+tags: ["annotation", "dataset-management", "deep-learning", "edge-deployment", "healthcare", "model-training", "video-analysis"]
 ---
 
 ## **Introduction and Motivation**
@@ -39,14 +42,14 @@ Now that we have introduced the core concepts, let's combine them to understand 
 
 ‍
 
-![](/images/blog/reduce-training-data-with-self-supervised-learning-img-0.png)
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-0.png)
 *Fig. 1: Self-Supervised Learning workflow. Source [[3]](https://arxiv.org/pdf/2011.00362.pdf)*
 
 Assume an Encoder model (CNN, ViT) has already been designed. Also, let's assume that we have a large image dataset at our disposal, with only a small percentage of it annotated. We begin by choosing a pretext task, such as recreating occluded parts, solving a Jigsaw puzzle, and rotation classification. Once we pick a pretext task, data augmentation takes place. This data augmentation serves a different purpose than supervised learning tasks. Here, augmentation aims to map an image into different views via stochastic transformations to create the pretext task. For example, for the pretext task of image recreation (inpainting), augmentation will randomly mask other parts of the image, and the Encoder aims to recreate these occluded parts. Pseudo-labels are created through this augmentation automatically. 
 
 ‍
 
-![](/images/blog/reduce-training-data-with-self-supervised-learning-img-1.png)
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-1.png)
 *Fig. 2: Common pretext tasks. Source [[4]](https://www.mdpi.com/1099-4300/24/4/551/htm)*
 
 This data augmentation process encourages the network to learn hidden representations through solving the pretext task. Augmentations of the same input have more similar latent representations compared to other inputs, helping the Encoder discover the dominant features. 
@@ -61,14 +64,14 @@ Essentially, we transfer the knowledge acquired during the pretext task training
 
 In figure 3, source [5], we observe a graph depicting the test-set accuracy on the CIFAR-10 dataset vs. the number of training examples used. The plot compares a traditional supervised training method against a self-supervised method that uses rotation classification as the pretext task. The comparison begins from as low as 20 training examples and moves up to 5000 training examples. It is clear that for a low number of training examples, e.g., fewer than 1000, Self-Supervised Learning significantly outperforms Supervised learning. The lower the number of training data, the bigger the gain is. However, around 2000 training examples, we see a crossover; afterward, supervised learning achieves superior performance. These numbers are a rough guideline and will vary depending on the application. Still, the general rule of thumb is that SSL will outperform Supervised Learning by a large margin when training data is scarce.
 
-![](/images/blog/reduce-training-data-with-self-supervised-learning-img-2.jpeg)
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-2.jpeg)
 *Fig.3: The impact of training examples on accuracy for Supervised and Self-Supervised Learning. The X axis is in Log scale. Graph inspired by Source [[5]](https://arxiv.org/pdf/1803.07728.pdf) *
 
 Let's recreate a similar real-world case study. You, as an ML engineer, have been asked to create a semantic segmentation computer vision model to identify certain microorganisms in microscopy images. The scientists have provided you with 3000 images of unlabeled data. You explain that to solve the problem efficiently, you need annotated data. They argue that this is a quite time-consuming and expensive activity, since domain experts must spend time on the task. They suggest that annotating 500 images will require around one month.
 
 So, to speed up the deployment of the model, you accept to move on with 500 images at first. You suspect that 500 images will not be enough for supervised training. You try it, and indeed, the model achieved a low performance with visible signs of overfitting that are not solved with regularization methods. Then, you search for pre-trained models on a similar dataset but fail to find something relatable to the architectures that you plan to test, so Transfer Learning is not a good option. This way, everything naturally leads to Self-Supervised Learning. Now, you can leverage the 500 annotated images (except the test set, of course)** and the remaining 2500 unlabeled images. **
 
-Not only can you design a more accurate model with much less training data, but you can later deploy this model as an annotation assistant to the scientists to speed up the labeling process of the remaining images. If your annotated dataset becomes quite large, at some point, you can retrain the model with Supervised Learning to further increase accuracy. [Feedback loops](https://www.picsellia.com/post/feedback-loops-and-versioning-in-computer-vision) will also provide another means of increasing accuracy even more.
+Not only can you design a more accurate model with much less training data, but you can later deploy this model as an annotation assistant to the scientists to speed up the labeling process of the remaining images. If your annotated dataset becomes quite large, at some point, you can retrain the model with Supervised Learning to further increase accuracy. [Feedback loops](/post/feedback-loops-and-versioning-in-computer-vision) will also provide another means of increasing accuracy even more.
 
 ## **Self-Supervised Learning (SSL) vs. Transfer Learning (TL)**
 

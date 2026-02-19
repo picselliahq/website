@@ -1,4 +1,5 @@
 ---
+
 title: "Data-Centric AI: A Guide to Improving ML Performance Through Data"
 description: "Learn how the benefits of Data-Centric AI, a new paradigm focusing on improving data quality applies to computer vision."
 date: "2023-03-21"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Data Management"
 image: "/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-hero.png"
+imageAlt: "Data-Centric AI: A Guide to Improving ML Performance Through Data"
 published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deep-learning", "edge-deployment", "model-training", "object-detection", "versioning"]
 ---
 
 Data is the new oil, and how we refine this oil is the new science!
@@ -37,7 +40,7 @@ Usually, training datasets are treated as something stationary. Once a training 
 
 ‍
 
-The data-centric approach challenges this paradigm by bringing data to the focus of attention and handling datasets as a first-class citizen in ML. Datasets gain a place in the [machine learning feedback loop](https://www.picsellia.com/post/feedback-loops-and-versioning-in-computer-vision) and methodologies that increase the performance and generalizability of a model through data are considered more important than fine-tuning a model’s parameters.
+The data-centric approach challenges this paradigm by bringing data to the focus of attention and handling datasets as a first-class citizen in ML. Datasets gain a place in the [machine learning feedback loop](/post/feedback-loops-and-versioning-in-computer-vision) and methodologies that increase the performance and generalizability of a model through data are considered more important than fine-tuning a model’s parameters.
 
 ‍
 
@@ -50,9 +53,9 @@ Cleaning, curating, and augmenting data to make datasets more representative of 
 Model-Centric AI focuses on:
 
 - Model selection: which algorithm to use
-- Model architecture: how many layers in a CNN, how many attention heads in a [Visual Transformer](https://www.picsellia.com/post/are-transformers-replacing-cnns-in-object-detection) 
+- Model architecture: how many layers in a CNN, how many attention heads in a [Visual Transformer](/post/are-transformers-replacing-cnns-in-object-detection) 
 - Feature engineering: creating/selecting features
-- [Hyperparameter tuning](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models): Finding the optimal set of hyperparameters for a model.
+- [Hyperparameter tuning](/post/best-practices-for-fine-tuning-computer-vision-models): Finding the optimal set of hyperparameters for a model.
 
 ‍
 
@@ -63,7 +66,7 @@ Data-Centric AI focuses on:
 - Fixing bias: including more examples of underrepresented cases, deleting “unethical” examples.
 - Augmenting training datasets: using synthetic data, mimicking the deployment scenario (e.g. adding snow on images).
 - Fix labeling mistakes.
-- [Defining a systematic approach to data annotation](https://www.picsellia.com/post/how-to-ensure-data-quality-best-practices#10-2-Data-Annotation-Guides).
+- [Defining a systematic approach to data annotation](/post/how-to-ensure-data-quality-best-practices#10-2-Data-Annotation-Guides).
 - Curating data for test datasets: creating benchmarks representative of the deployment environment.
 
 ‍
@@ -82,7 +85,7 @@ Sometimes, these mistakes are accidental, whereas other times human experts are 
 
                         
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-0.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-0.png)
 *Fig. 1: Examples of incorrect labels in various image datasets[ found and corrected](https://l7.curtisnorthcutt.com/label-errors) using [cleanlab](https://github.com/cleanlab/cleanlab). *
 
 ‍
@@ -99,7 +102,7 @@ This combination of inexact, incomplete, and inaccurate labeling diminishes the 
 
            
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-1.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-1.png)
 *Fig.2: Mistakes and imperfections in the training dataset create uncertainty which inevitably propagates into the model and its predictions.*
 
 ‍
@@ -126,7 +129,7 @@ Moreover, an increasing number of researchers open source their models on GitHub
 
 ‍
 
-**With such a vast availability of pre-trained models, not every organization needs to develop computer vision models from scratch.** We should aim at leveraging what has already been developed by the community, then[ tune and refine models](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models) to make them serve the use case of our business. 
+**With such a vast availability of pre-trained models, not every organization needs to develop computer vision models from scratch.** We should aim at leveraging what has already been developed by the community, then[ tune and refine models](/post/best-practices-for-fine-tuning-computer-vision-models) to make them serve the use case of our business. 
 
 ‍
 
@@ -202,7 +205,7 @@ The baseline training dataset is very well-balanced. Class frequency lies around
 
          
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-2.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-2.png)
 *Fig. 3:  Loading the baseline dataset, using only 50% of the available CIFAR-10 training samples.*
 
 ‍
@@ -211,7 +214,7 @@ The baseline training dataset is very well-balanced. Class frequency lies around
 
      
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-3.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-3.png)
 *Fig. 4:  Class frequency distribution of our baseline training dataset with 20K samples. *
 
 ‍
@@ -222,11 +225,11 @@ The baseline training dataset is very well-balanced. Class frequency lies around
 
    
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-4.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-4.png)
 
   
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-5.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-5.png)
 *Fig. 5:  Learning curves of the baseline model.*
 
 ‍
@@ -241,7 +244,7 @@ The network seems to mostly **struggle with classifying correctly classes  2, 3
 
                
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-6.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-6.png)
 *Fig. 6:  Baseline model’s results on the validation dataset.*
 
 ‍
@@ -257,7 +260,7 @@ The network seems to mostly **struggle with classifying correctly classes  2, 3
 
     
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-7.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-7.png)
 *Fig. 7:  Baseline model’s confusion matrix on the baseline validation dataset.*
 
 ‍
@@ -276,9 +279,9 @@ Bear in mind we change nothing in the validation and test sets. The figures belo
 
 ‍
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-8.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-8.png)
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-9.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-9.png)
 *Fig. 8: Frequency of errors deliberately infused in the training dataset. The left figure applies to 1% error noise while the right figure applies to 10% error noise. The x-axis denotes the class id while the y-axis denotes the error frequency.*
 
 ‍
@@ -289,7 +292,7 @@ Despite the changes, the overall class distribution still remains balanced. Sinc
 
 **                        **
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-10.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-10.png)
 *Fig. 9: Class distribution of the noisy training dataset (10% label noise).*
 
 ‍
@@ -300,7 +303,7 @@ Despite the changes, the overall class distribution still remains balanced. Sinc
 
 ‍
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-11.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-11.png)
 
       Fig. 10: Performance on the **validation **set when training labels contain noise.
 
@@ -310,7 +313,7 @@ We can see a similar effect present in the test-set performance. The effects of 
 
 ‍
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-12.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-12.png)
 *Fig. 11: Performance on the **test **set when training labels contain noise.*
 
 ‍
@@ -325,17 +328,17 @@ The network definitely has trouble overfitting the training data now. No visible
 
 ‍
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-13.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-13.png)
 
           
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-14.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-14.png)
 
 ‍
 
                             
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-15.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-15.png)
 *Fig. 12: Performance after using  augmentation methods.*
 
 ‍
@@ -350,7 +353,7 @@ In our case, the augmentations we applied did not provide any benefits. It’s p
 
        
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-16.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-16.png)
 *Fig. 13: Confusion matrix for the augmentation model. No benefit was achieved.*
 
 ‍
@@ -369,7 +372,7 @@ So I decided to create an artificially biased dataset and enhance it by includin
 
            
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-17.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-17.png)
 * 	Fig. 14: An artificially “biased” dataset created by sampling more ‘cats’ and ‘dogs’ examples. *
 
 ‍
@@ -384,12 +387,12 @@ Not only the confusion didn’t improve but the overall performance dropped. 
 
 **To my huge surprise, the two classes were actually negatively affected!**
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-18.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-18.png)
 *      Fig. 15: Performance on the “biased” dataset.*
 
 The confusion between cats and dogs hasn’t been corrected and misclassification targeting ‘deers’ worsened. **Unbalancing the dataset created more problems than it solved**. I would call it ‘back to square one’.
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-19.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-19.png)
 *Fig. 16: Confusion matrix of the “biased” dataset.*
 
 ‍
@@ -406,7 +409,7 @@ I trained the same exact setup while incrementally increasing my training datase
 
 Overall, we got **about a 13% increase in our metrics by doubling the training dataset’s size**.
 
-![](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-20.png)
+![Data centric ai a guide to improving ml performance through data](/images/blog/data-centric-ai-a-guide-to-improving-ml-performance-through-data-img-20.png)
 *Fig. 17:  Performance improvements gained by increasing the training dataset size.*
 
 ‍
@@ -429,7 +432,7 @@ Data-centric machine learning is a promising new avenue for organizations. Focus
 
 ‍
 
-“Data-Centric AI vs Model Centric AI” is a common debate. However, the two paradigms are not  mutually exclusive and can coexist. Nowadays, we are lucky to have easy access to some of the most amazing machine learning models ever created. This gives us more time to devote to improving our data pipelines and operations. **Once you spend enough time curating your datasets** then it makes sense to actually focus on [fine-tuning your deep learning model](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models). 
+“Data-Centric AI vs Model Centric AI” is a common debate. However, the two paradigms are not  mutually exclusive and can coexist. Nowadays, we are lucky to have easy access to some of the most amazing machine learning models ever created. This gives us more time to devote to improving our data pipelines and operations. **Once you spend enough time curating your datasets** then it makes sense to actually focus on [fine-tuning your deep learning model](/post/best-practices-for-fine-tuning-computer-vision-models). 
 
 ‍
 

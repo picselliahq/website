@@ -1,4 +1,5 @@
 ---
+
 title: "Understanding Overfitting in Machine Learning"
 description: "Learn to tackle overfitting in machine learning with effective strategies and Picsellia's MLops platform. Avoid model memorization."
 date: "2023-07-25"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Data Science"
 image: "/images/blog/understanding-overfitting-in-machine-learning-hero.png"
+imageAlt: "Understanding Overfitting in Machine Learning"
 published: true
+tags: ["dataset-management", "edge-deployment", "experiment-tracking", "model-training"]
 ---
 
 Overfitting is a common phenomenon in machine learning where a model performs exceptionally well on the training data but fails to generalize effectively to new, unseen data. In essence, the model becomes too specialized in capturing the quirks and noise present in the training set, losing its ability to discern the underlying patterns that should generalize well.
@@ -31,7 +34,7 @@ Overfitting typically happens when the model becomes excessively complex, having
 
 Additionally, overfitting can occur when the training data is unrepresentative of the target population or lacks diversity. If the training set is biased or does not adequately cover the range of potential scenarios, the model may develop biases or blind spots that hinder its generalization capability.
 
-![](/images/blog/understanding-overfitting-in-machine-learning-img-0.png)
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-0.png)
 *https://medium.com*
 
 ## How can you detect Overfitting?
@@ -40,7 +43,7 @@ There is always noise and imprecision in data. Overfitting happens when the mode
 
 That’s why, to detect overfitting, you have to compare the loss between the train data and the validation data. When overfitting happens, the loss increases, and the validation data’s loss is way more important than the train data loss. 
 
-![](/images/blog/understanding-overfitting-in-machine-learning-img-1.png)
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-1.png)
 *[https://larevueia.fr](https://larevueia.fr/)*
 
 ## How to prevent Overfitting from happening?
@@ -48,13 +51,13 @@ That’s why, to detect overfitting, you have to compare the loss between the tr
 - **Cross-Validation and Data Splitting**: Splitting the available data into separate training and validation sets is crucial. The training set is used to train the model, while the validation set helps assess its performance on unseen data. By evaluating the model's performance on the validation set, it is possible to detect overfitting and make adjustments accordingly.
 - **Regularization Techniques:** Regularization methods, such as L1 and L2 regularization, add penalty terms to the model's objective function, discouraging excessive parameter values. This helps prevent the model from becoming overly sensitive to individual data points and encourages it to focus on the most relevant features.
 
-![](/images/blog/understanding-overfitting-in-machine-learning-img-2.png)
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-2.png)
 
 - **Feature Selection and Dimensionality Reduction**: Careful feature selection or dimensionality reduction techniques, such as principal component analysis (PCA) or feature importance ranking, can help reduce the complexity of the model and focus on the most informative features. By removing irrelevant or redundant features, the risk of overfitting decreases. However, this method doesn’t really make sense in deep learning due to the use of Convolutional Neural Networks (CNN).
 - **Data Augmentation:** Data augmentation involves artificially increasing the size of the training set by applying transformations, such as rotations, translations, and scaling, to the existing data. This technique introduces additional variations, making the model more robust and less prone to overfitting. 
 - **Early Stopping**: Monitoring the model's performance on the validation set during training allows for early stopping when overfitting is detected. Training can be halted when the model's performance on the validation set starts to deteriorate, preventing it from memorizing the training data excessively.
 
-![](/images/blog/understanding-overfitting-in-machine-learning-img-3.png)
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-3.png)
 *[https://paperswithcode.com](https://paperswithcode.com)*
 
 - **Ensemble Methods**: Ensemble methods combine multiple but simple models to make predictions. By training several less-complex models with different initial conditions or algorithms and combining their predictions, the ensemble can generalize better than any individual model, and models are less prone to overfitting. 
@@ -65,10 +68,10 @@ That’s why, to detect overfitting, you have to compare the loss between the tr
 
 This technique consists in dividing the dataset into k equal-sized subsets or “folds”. The model is trained and evaluated k times, each time using a different fold as the validation set and the remaining folds for training. The performance metrics obtained from each iteration are averaged to estimate the model’s overall performance.
 
-![](/images/blog/understanding-overfitting-in-machine-learning-img-4.png)
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-4.png)
 *Example of 5-Cross-Validation, [https://towardsdatascience.com](https://towardsdatascience.com)*
 
-To help you fight overfitting learning, Picsellia provides ready-to-use, customizable, data augmentation processings. But there is more, the platform has an [experiment tracking system](https://www.picsellia.com/experiment-tracking) that tells the user when to stop to have the best balance between complexity and generalization, saving time and resources in the process.
+To help you fight overfitting learning, Picsellia provides ready-to-use, customizable, data augmentation processings. But there is more, the platform has an [experiment tracking system](/experiment-tracking) that tells the user when to stop to have the best balance between complexity and generalization, saving time and resources in the process.
 
 ## Conclusion
 

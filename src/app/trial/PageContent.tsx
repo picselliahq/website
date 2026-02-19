@@ -118,6 +118,8 @@ export default function TrialPage() {
     acceptTerms: false,
   });
 
+  const [submitError, setSubmitError] = useState(false);
+
   // Bot prevention state
   const [challenge, setChallenge] = useState(annotationChallenges[0]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -151,37 +153,28 @@ export default function TrialPage() {
     setChallengeError(false);
     setChallengePassed(true);
     setIsSubmitting(true);
-
-    // HubSpot Form API submission
-    const HUBSPOT_PORTAL_ID = 'YOUR_PORTAL_ID';
-    const HUBSPOT_FORM_GUID = 'YOUR_TRIAL_FORM_GUID';
-
-    const hubspotData = {
-      fields: [
-        { name: 'firstname', value: formData.firstName },
-        { name: 'lastname', value: formData.lastName },
-        { name: 'email', value: formData.email },
-        { name: 'company', value: formData.company },
-      ],
-      context: {
-        pageUri: typeof window !== 'undefined' ? window.location.href : '',
-        pageName: 'Start Free Trial',
-      },
-    };
+    setSubmitError(false);
 
     try {
-      await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${HUBSPOT_PORTAL_ID}/${HUBSPOT_FORM_GUID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(hubspotData),
-        }
-      );
-      router.push('/thank-you-trial');
-    } catch (error) {
-      console.error('Form submission error:', error);
-      router.push('/thank-you-trial');
+      const response = await fetch('/api/trial', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          company: formData.company,
+          pageUri: window.location.href,
+        }),
+      });
+
+      if (response.ok) {
+        router.push('/thank-you-trial');
+      } else {
+        setSubmitError(true);
+      }
+    } catch {
+      setSubmitError(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -216,7 +209,7 @@ export default function TrialPage() {
               </p>
 
               {/* Trial benefits */}
-              <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                 {trialBenefits.map((benefit) => (
                   <div key={benefit.title} className="p-4 rounded-lg bg-[var(--tertiary-system-background)] border border-[var(--border)]">
                     <div className="text-lg font-semibold text-[var(--picsellia-green)] mb-1">{benefit.title}</div>
@@ -228,7 +221,7 @@ export default function TrialPage() {
               {/* What's included */}
               <div className="pt-8 border-t border-[var(--border)]">
                 <h3 className="text-sm font-semibold text-[var(--label)] mb-4">What&apos;s included</h3>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {includedFeatures.map((feature) => (
                     <div key={feature} className="flex items-center gap-2">
                       <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -248,7 +241,7 @@ export default function TrialPage() {
 
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Name fields */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-[var(--label)] mb-2">
                         First name <span className="text-[var(--system-red)]">*</span>
@@ -375,6 +368,16 @@ export default function TrialPage() {
                     </label>
                   </div>
 
+                  {/* Error message */}
+                  {submitError && (
+                    <div className="p-3 rounded-lg bg-[var(--system-red)]/10 border border-[var(--system-red)]/20">
+                      <p className="text-sm text-[var(--system-red)]">
+                        Something went wrong. Please try again or contact us at{' '}
+                        <a href="mailto:contact@picsellia.com" className="underline">contact@picsellia.com</a>.
+                      </p>
+                    </div>
+                  )}
+
                   {/* Submit */}
                   <button
                     type="submit"
@@ -397,7 +400,7 @@ export default function TrialPage() {
                   {/* Existing user link */}
                   <p className="text-sm text-[var(--tertiary-label)] text-center">
                     Already a Picsellia user?{' '}
-                    <a href="https://app.picsellia.com" className="text-[var(--picsellia-green)] hover:underline">Sign in to your account</a>
+                    <a href="https://app.picsellia.com" target="_blank" rel="noopener noreferrer" className="text-[var(--picsellia-green)] hover:underline">Sign in to your account</a>
                   </p>
                 </form>
               </div>

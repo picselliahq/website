@@ -1,4 +1,5 @@
 ---
+
 title: "How to train YOLOv8 on a custom Dataset"
 description: "YOLOv8 is the most recent edition in the highly renowned collection of models that implement the YOLO (You Only Look Once) architecture."
 date: "2023-01-29"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Tutorial"
 image: "/images/blog/how-to-train-yolov8-on-a-custom-dataset-hero.jpg"
+imageAlt: "How to train YOLOv8 on a custom Dataset"
 published: true
+tags: ["annotation", "api", "classification", "dataset-management", "document-processing", "infrastructure", "model-training", "monitoring"]
 ---
 
 YOLOv8 is the most recent edition in the highly renowned collection of models that implement the YOLO (You Only Look Once) architecture. This development was done by Ultralytics, a squad renowned for their work on YOLOv3 (pytorch fork) and YOLOv5.
@@ -38,7 +41,7 @@ You can also find some **relevant snippets** in our documentation: [https://docu
 
 ### Create your Dataset
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-0.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-0.png)
 
 For this article we will use a retail dataset, kindly shared by our friends at [Neurolabs](https://www.neurolabs.ai/) (looking for a shelves monitoring solution? Go check them out!) 
 
@@ -48,7 +51,7 @@ Then we can annotate straight away, Picsellia Labeling interface is designed to 
 
 Now that we have our dataset annotated, (yes let’s imagine I annotated everything now), we have 14k+ objects annotated over 230 images. 
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-1.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-1.png)
 
 Let’s export the dataset in order to train your YOLOv8 model. Exports are made in COCO format on Picsellia.
 
@@ -62,17 +65,17 @@ This format is one of the most common ones ( ;) ). **COCO stands for Common Obje
 - **images**: it stores images, file names, height width, time is taken, etc
 - **annotations**: for the id’s we have for images it contains bounding box, segmentation coordinates area here bounding box is the x1,y1,x2,y2 coordinates of the object detected while the segmentation is the object outline iscrowd it's the binary parameter that tells if there are multiple objects on the scale we can't really segment each one of them we can convert them into one large box and indicate that with iscrowd parameter
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-2.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-2.png)
 
 ### The YOLO format
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-3.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-3.png)
 
 Unfortunately, YOLOvX algorithms do not read COCO format. Why? I don’t know. 
 
 They want a different way of reading the labels... based of .txt files
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-4.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-4.png)
 
 **Every image in your dataset needs to have a corresponding .txt file with all the objects of the picture with a [*class_id x0 y0 x1 y1*] normalized. **
 
@@ -80,7 +83,7 @@ They want a different way of reading the labels... based of .txt files
 
 You will find in the repository a class called YOLOFormatter() that will do the trick for you :) 
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-5.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-5.png)
 
 We won’t be showcasing the actual code as it’s fairly simple, but you will be able to find it here:
 
@@ -92,7 +95,7 @@ Please note that in the repo, you will be able to convert your BBOX, polygons an
 
 ### The YOLOv8 python package
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-6.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-6.png)
 
 For YOLOv8, the developers strayed from the traditional design of distinct train.py, detect.py, val.py, and export.py scripts.
 
@@ -106,7 +109,7 @@ You will be able to find more information about the API directly on [Ultralytics
 
 Now let’s see how easy it is to **launch a training** :) 
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-7.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-7.png)
 
 ### Interpreting the results
 
@@ -132,7 +135,7 @@ A precision-recall curve is a **plot** that shows the trade-off between precisio
 
 It’s really easy to run your models once it is trained, Ultralytics made a simple CLI to do it.  
 
-![](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-8.png)
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-8.png)
 
 The only thing that you need to specify is the path to your weights file. You can either use **.pt **or **.onnx. ** 
 

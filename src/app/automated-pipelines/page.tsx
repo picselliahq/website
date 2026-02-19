@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AutomatedPipelinesPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Automated Pipelines - CI/CD for Computer Vision",
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function AutomatedPipelinesPage() {
-  return <AutomatedPipelinesPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Automated Pipelines', url: '/automated-pipelines' }])} />
+      <AutomatedPipelinesPageContent />
+    </>
+  );
 }
