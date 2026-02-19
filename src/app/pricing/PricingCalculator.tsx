@@ -482,7 +482,7 @@ export default function PricingCalculator({
                     GPU Compute Hours
                   </label>
                   <span className="text-xs text-[var(--tertiary-label)]">
-                    {formatCurrency(3.5)}/hour
+                    3.5€/hour
                   </span>
                 </div>
                 <div className="flex items-center gap-2">

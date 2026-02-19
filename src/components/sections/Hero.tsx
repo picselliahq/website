@@ -53,7 +53,7 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-center max-w-4xl mx-auto mb-6 tracking-tight">
-          Everything you need to ship{" "}
+          Everything you need to develop{" "}
           <span className="text-[var(--picsellia-green)]">Vision AI</span>
         </h1>
 
