@@ -14,9 +14,6 @@ const PipelineFlow = () => {
 
   return (
     <div className="relative">
-      {/* Connection line */}
-      <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[var(--border)] -translate-y-1/2 hidden md:block" />
-
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 relative">
         {stages.map((stage, index) => (
           <div key={stage.id} className="flex flex-col items-center text-center relative z-10">
