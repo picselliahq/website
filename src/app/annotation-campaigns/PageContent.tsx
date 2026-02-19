@@ -163,48 +163,49 @@ export default function AnnotationCampaignsPage() {
         </div>
 
         <div className="max-w-6xl mx-auto px-6 relative">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
-              <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-              <span className="text-sm font-medium text-[var(--picsellia-blue)]">Workflow</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
-              Human-In-The-Loop<br />
-              <span className="text-[var(--picsellia-blue)]">At Scale</span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
-              Orchestrate annotation workflows with multi-step pipelines, team management,
-              and quality control. Add annotators, set sample rates, and track progress.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/demo" className="btn-primary px-8 py-4 text-base">
-                See It In Action
-                <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </Link>
-              <Link href="https://documentation.picsellia.com/docs/campaign" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
-                Documentation
-              </Link>
-            </div>
-          </div>
-
-          {/* Video Demo */}
-          <div className="max-w-4xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left - Content */}
             <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--picsellia-blue)]/10 border border-[var(--picsellia-blue)]/20 mb-8">
+                <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span className="text-sm font-medium text-[var(--picsellia-blue)]">Workflow</span>
+              </div>
+
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
+                Human-In-The-Loop<br />
+                <span className="text-[var(--picsellia-blue)]">At Scale</span>
+              </h1>
+
+              <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-lg">
+                Orchestrate annotation workflows with multi-step pipelines, team management,
+                and quality control. Add annotators, set sample rates, and track progress.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+                  See It In Action
+                  <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </Link>
+                <Link href="https://documentation.picsellia.com/docs/campaign" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
+                  Documentation
+                </Link>
+              </div>
+            </div>
+
+            {/* Right - Video Demo */}
+            <div className="relative hidden lg:block lg:col-span-1 lg:-mr-16 xl:-mr-24">
               <video
                 autoPlay
                 muted
                 loop
                 playsInline
-                className="w-full h-auto"
+                className="w-full h-auto rounded-2xl"
                 src="/videos/annotation campaign management.webm"
               />
             </div>

@@ -7,7 +7,7 @@ export default function DeploymentHero() {
     <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-[var(--system-indigo)]/10 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 right-1/3 w-[500px] h-[500px] bg-[var(--system-red)]/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-[var(--system-blue)]/10 rounded-full blur-[100px]" />
       </div>
 
@@ -15,16 +15,16 @@ export default function DeploymentHero() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Content */}
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-indigo)]/10 border border-[var(--system-indigo)]/20 mb-8">
-              <svg className="w-4 h-4 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--system-red)]/10 border border-[var(--system-red)]/20 mb-8">
+              <svg className="w-4 h-4 text-[var(--system-red)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
               </svg>
-              <span className="text-sm font-medium text-[var(--system-indigo)]">Deployment</span>
+              <span className="text-sm font-medium text-[var(--system-red)]">Deployment</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
               Deploy Models<br />
-              <span className="text-[var(--system-indigo)]">To Production</span>
+              <span className="text-[var(--system-red)]">To Production</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-lg">
@@ -40,7 +40,7 @@ export default function DeploymentHero() {
               </div>
               <div className="w-px h-10 bg-[var(--border)]" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-[var(--system-indigo)] font-mono">&lt;100ms</div>
+                <div className="text-2xl font-bold text-[var(--system-red)] font-mono">&lt;100ms</div>
                 <div className="text-xs text-[var(--tertiary-label)]">Latency P95</div>
               </div>
               <div className="w-px h-10 bg-[var(--border)]" />
@@ -96,7 +96,7 @@ export default function DeploymentHero() {
                   <div className="text-[10px] text-[var(--tertiary-label)]">req/min</div>
                 </div>
                 <div className="p-3 rounded-lg bg-[var(--black)] text-center">
-                  <div className="text-lg font-bold font-mono text-[var(--system-indigo)]">47ms</div>
+                  <div className="text-lg font-bold font-mono text-[var(--system-red)]">47ms</div>
                   <div className="text-[10px] text-[var(--tertiary-label)]">latency</div>
                 </div>
                 <div className="p-3 rounded-lg bg-[var(--black)] text-center">
@@ -118,7 +118,7 @@ export default function DeploymentHero() {
                       className="flex-1 rounded-t transition-all"
                       style={{
                         height: `${v}%`,
-                        backgroundColor: 'var(--system-indigo)',
+                        backgroundColor: 'var(--system-red)',
                         opacity: 0.4 + (i / 20) * 0.6,
                       }}
                     />
@@ -145,11 +145,11 @@ export default function DeploymentHero() {
             {/* Floating scaling card */}
             <div className="absolute -top-4 -right-4 card px-3 py-2 shadow-xl">
               <div className="flex items-center gap-2 text-xs">
-                <svg className="w-4 h-4 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-4 h-4 text-[var(--system-red)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                 </svg>
                 <span className="text-[var(--tertiary-label)]">Scaling:</span>
-                <span className="text-[var(--system-indigo)] font-mono">3 → 5</span>
+                <span className="text-[var(--system-red)] font-mono">3 → 5</span>
               </div>
             </div>
           </div>

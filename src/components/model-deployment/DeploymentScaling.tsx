@@ -3,10 +3,10 @@
 const ScalingTimeline = () => {
   const events = [
     { time: '06:00', replicas: 1, load: 'Low', color: 'var(--picsellia-green)' },
-    { time: '09:00', replicas: 3, load: 'Medium', color: 'var(--system-blue)' },
+    { time: '09:00', replicas: 3, load: 'Medium', color: 'var(--system-orange)' },
     { time: '12:00', replicas: 6, load: 'Peak', color: 'var(--system-orange)' },
-    { time: '15:00', replicas: 4, load: 'High', color: 'var(--system-blue)' },
-    { time: '18:00', replicas: 2, load: 'Medium', color: 'var(--system-blue)' },
+    { time: '15:00', replicas: 4, load: 'High', color: 'var(--system-orange)' },
+    { time: '18:00', replicas: 2, load: 'Medium', color: 'var(--system-orange)' },
     { time: '22:00', replicas: 1, load: 'Low', color: 'var(--picsellia-green)' },
   ];
 
@@ -18,7 +18,7 @@ const ScalingTimeline = () => {
         <span className="text-[var(--tertiary-label)]">Replica count over 24h</span>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
-            <div className="w-2 h-2 rounded-full bg-[var(--system-indigo)]" />
+            <div className="w-2 h-2 rounded-full bg-[var(--system-red)]" />
             <span className="text-[var(--tertiary-label)]">Replicas</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -36,7 +36,7 @@ const ScalingTimeline = () => {
               className="w-full rounded-t transition-all"
               style={{
                 height: `${(event.replicas / maxReplicas) * 100}%`,
-                backgroundColor: 'var(--system-indigo)',
+                backgroundColor: 'var(--system-red)',
                 opacity: 0.3 + (event.replicas / maxReplicas) * 0.7,
               }}
             />
@@ -59,7 +59,7 @@ export default function DeploymentScaling() {
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]">
         <div className="w-full h-full" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, var(--system-indigo) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, var(--system-red) 1px, transparent 0)`,
           backgroundSize: '32px 32px',
         }} />
       </div>
@@ -69,7 +69,7 @@ export default function DeploymentScaling() {
           {/* Scaling visualization */}
           <div className="card p-6 order-2 lg:order-1">
             <div className="flex items-center justify-between mb-6">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">AUTO-SCALING</span>
+              <span className="text-xs font-medium text-[var(--system-red)]">AUTO-SCALING</span>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[var(--picsellia-green)] animate-pulse" />
                 <span className="text-xs text-[var(--picsellia-green)]">Active</span>
@@ -84,7 +84,7 @@ export default function DeploymentScaling() {
                 <div className="text-[10px] text-[var(--tertiary-label)]">Replica range</div>
               </div>
               <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)] text-center">
-                <div className="text-sm font-bold font-mono text-[var(--system-indigo)]">&lt;30s</div>
+                <div className="text-sm font-bold font-mono text-[var(--system-red)]">&lt;30s</div>
                 <div className="text-[10px] text-[var(--tertiary-label)]">Scale-up time</div>
               </div>
               <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)] text-center">
@@ -95,7 +95,7 @@ export default function DeploymentScaling() {
           </div>
 
           <div className="order-1 lg:order-2">
-            <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
+            <span className="text-[var(--system-red)] text-sm font-medium uppercase tracking-wider mb-3 block">
               Auto-Scaling
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">

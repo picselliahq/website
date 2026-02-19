@@ -3,11 +3,11 @@
 export default function DeploymentSDK() {
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[var(--system-blue)]/5 rounded-full blur-[100px]" />
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[var(--system-orange)]/5 rounded-full blur-[100px]" />
 
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
-          <span className="text-[var(--system-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
+          <span className="text-[var(--system-orange)] text-sm font-medium uppercase tracking-wider mb-3 block">
             Developer Experience
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
@@ -23,7 +23,7 @@ export default function DeploymentSDK() {
         <div className="grid lg:grid-cols-2 gap-6 mb-12">
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">
+              <span className="text-xs font-medium text-[var(--system-red)]">
                 DEPLOY A MODEL
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
@@ -36,13 +36,13 @@ export default function DeploymentSDK() {
                   # Connect and get deployment
                 </span>
                 {"\n"}
-                <span className="text-[var(--system-indigo)]">from</span>{" "}
+                <span className="text-[var(--system-red)]">from</span>{" "}
                 <span className="text-[var(--label)]">picsellia</span>{" "}
-                <span className="text-[var(--system-indigo)]">import</span>{" "}
+                <span className="text-[var(--system-red)]">import</span>{" "}
                 <span className="text-[var(--label)]">Client</span>
                 {"\n\n"}
                 <span className="text-[var(--label)]">client</span>{" "}
-                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--system-red)]">=</span>{" "}
                 <span className="text-[var(--label)]">Client()</span>
                 {"\n\n"}
                 <span className="text-[var(--tertiary-label)]">
@@ -50,14 +50,14 @@ export default function DeploymentSDK() {
                 </span>
                 {"\n"}
                 <span className="text-[var(--label)]">deployment</span>{" "}
-                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--system-red)]">=</span>{" "}
                 <span className="text-[var(--label)]">
                   client.create_deployment(
                 </span>
                 {"\n"}
                 {"  "}
                 <span className="text-[var(--label)]">name</span>
-                <span className="text-[var(--system-indigo)]">=</span>
+                <span className="text-[var(--system-red)]">=</span>
                 <span className="text-[var(--picsellia-green)]">
                   &quot;prod-v3&quot;
                 </span>
@@ -73,7 +73,7 @@ export default function DeploymentSDK() {
 
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">
+              <span className="text-xs font-medium text-[var(--system-red)]">
                 RUN INFERENCE
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
@@ -87,7 +87,7 @@ export default function DeploymentSDK() {
                 </span>
                 {"\n"}
                 <span className="text-[var(--label)]">result</span>{" "}
-                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--system-red)]">=</span>{" "}
                 <span className="text-[var(--label)]">deployment.predict(</span>
                 {"\n"}
                 {"  "}
@@ -102,7 +102,7 @@ export default function DeploymentSDK() {
                 </span>
                 {"\n"}
                 <span className="text-[var(--label)]">result</span>{" "}
-                <span className="text-[var(--system-indigo)]">=</span>{" "}
+                <span className="text-[var(--system-red)]">=</span>{" "}
                 <span className="text-[var(--label)]">
                   deployment.predict_bytes(
                 </span>
@@ -146,7 +146,7 @@ export default function DeploymentSDK() {
                 # Direct API call
               </span>
               {"\n"}
-              <span className="text-[var(--system-indigo)]">curl</span>{" "}
+              <span className="text-[var(--system-red)]">curl</span>{" "}
               <span className="text-[var(--label)]">-X POST</span>{" "}
               <span className="text-[var(--picsellia-green)]">
                 &quot;https://serving.picsellia.com/v1/predict&quot;

@@ -62,40 +62,15 @@ export default function HeroSection() {
           </div>
 
           {/* Right - Video Demo */}
-          <div className="relative hidden lg:block">
-            <div>
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full h-auto"
-                src="/videos/labeling tool animation.webm"
-              />
-            </div>
-
-            {/* Floating AI assist badge */}
-            <div className="absolute -top-4 -right-4 card px-4 py-3 shadow-xl">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--system-indigo)] to-[var(--system-pink)] flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-xs font-medium text-[var(--label)]">SAM + DINOv2</div>
-                  <div className="text-[10px] text-[var(--tertiary-label)]">AI-assisted labeling</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Floating shortcut hint */}
-            <div className="absolute -bottom-4 -left-4 card px-3 py-2 shadow-xl">
-              <div className="flex items-center gap-3 text-xs">
-                <kbd className="px-1.5 py-0.5 rounded bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] font-mono text-[10px]">D</kbd>
-                <span className="text-[var(--tertiary-label)]">Draw mode</span>
-              </div>
-            </div>
+          <div className="relative hidden lg:block lg:col-span-1 lg:-mr-16 xl:-mr-24">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-auto rounded-2xl"
+              src="/videos/labeling tool animation.webm"
+            />
           </div>
         </div>
       </div>

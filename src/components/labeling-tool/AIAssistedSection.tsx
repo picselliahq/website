@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function AIAssistedSection() {
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
@@ -26,8 +28,8 @@ export default function AIAssistedSection() {
         <div className="grid md:grid-cols-2 gap-6 mb-12">
           <div className="card p-6">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--system-indigo)] to-[var(--system-pink)] flex items-center justify-center">
-                <span className="text-white font-bold text-lg">SAM</span>
+              <div className="w-14 h-14 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center">
+                <Image src="/images/community/partners/meta.svg" alt="Meta AI" width={28} height={28} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-[var(--label)]">Segment Anything Model</h3>
@@ -47,8 +49,8 @@ export default function AIAssistedSection() {
 
           <div className="card p-6">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[var(--picsellia-blue)] to-[var(--system-teal)] flex items-center justify-center">
-                <span className="text-white font-bold text-sm">DINOv2</span>
+              <div className="w-14 h-14 rounded-xl bg-[var(--tertiary-system-background)] border border-[var(--border)] flex items-center justify-center">
+                <Image src="/images/community/partners/meta.svg" alt="Meta AI" width={28} height={28} />
               </div>
               <div>
                 <h3 className="text-lg font-semibold text-[var(--label)]">DINOv2</h3>

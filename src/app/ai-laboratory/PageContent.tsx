@@ -207,7 +207,7 @@ export default function AILaboratoryPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
             {[
               { value: "1-click", label: "GPU allocation" },
-              { value: "4+", label: "Pre-built pipelines" },
+              { value: "20+", label: "Pre-built pipelines" },
               { value: "∞", label: "Custom flexibility" },
               { value: "0", label: "Infrastructure to manage" },
             ].map((stat) => (
@@ -709,75 +709,80 @@ export default function AILaboratoryPage() {
       <section className="py-24 border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="order-2 lg:order-1 space-y-4">
+              {/* Managed GPUs card */}
               <div className="card p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-[var(--label)]">
-                    GPU Selection
-                  </h3>
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[var(--picsellia-green)]/10 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-sm font-semibold text-[var(--label)]">Managed GPUs</h3>
+                  </div>
                   <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">
                     Available now
                   </span>
                 </div>
 
-                <div className="space-y-3">
-                  {[
-                    {
-                      name: "NVIDIA T4",
-                      vram: "16GB",
-                      price: "$0.50/hr",
-                      recommended: false,
-                    },
-                    {
-                      name: "NVIDIA A10G",
-                      vram: "24GB",
-                      price: "$1.00/hr",
-                      recommended: true,
-                    },
-                    {
-                      name: "NVIDIA A100",
-                      vram: "40GB",
-                      price: "$3.00/hr",
-                      recommended: false,
-                    },
-                  ].map((gpu) => (
-                    <div
-                      key={gpu.name}
-                      className={`p-4 rounded-lg border ${gpu.recommended ? "border-[var(--picsellia-green)] bg-[var(--picsellia-green)]/5" : "border-[var(--border)]"}`}
-                    >
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`w-3 h-3 rounded-full ${gpu.recommended ? "bg-[var(--picsellia-green)]" : "bg-[var(--tertiary-label)]"}`}
-                          />
-                          <div>
-                            <div className="text-sm font-medium text-[var(--label)]">
-                              {gpu.name}
-                            </div>
-                            <div className="text-xs text-[var(--tertiary-label)]">
-                              {gpu.vram} VRAM
-                            </div>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-sm font-mono text-[var(--label)]">
-                            {gpu.price}
-                          </div>
-                          {gpu.recommended && (
-                            <div className="text-[10px] text-[var(--picsellia-green)]">
-                              Recommended
-                            </div>
-                          )}
-                        </div>
+                <div className="p-3 rounded-lg border border-[var(--picsellia-green)] bg-[var(--picsellia-green)]/5">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-3 h-3 rounded-full bg-[var(--picsellia-green)]" />
+                      <div>
+                        <div className="text-sm font-medium text-[var(--label)]">NVIDIA A100</div>
+                        <div className="text-xs text-[var(--tertiary-label)]">80GB VRAM</div>
                       </div>
                     </div>
-                  ))}
+                    <div className="text-sm font-mono text-[var(--label)]">$3.50/hr</div>
+                  </div>
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-[var(--border)]">
+                <div className="mt-4 pt-4 border-t border-[var(--border)]">
                   <div className="flex items-center justify-between text-xs text-[var(--tertiary-label)]">
                     <span>Pay only for what you use</span>
                     <span>Auto-shutdown on completion</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bring your own compute card */}
+              <div className="card p-6">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[var(--system-orange)]/10 flex items-center justify-center">
+                      <Image src="/images/community/partners/sagemaker.svg" alt="SageMaker" width={18} height={18} />
+                    </div>
+                    <h3 className="text-sm font-semibold text-[var(--label)]">Bring Your Own Compute</h3>
+                  </div>
+                  <span className="px-2 py-1 rounded text-xs bg-[var(--system-orange)]/10 text-[var(--system-orange)]">
+                    SageMaker
+                  </span>
+                </div>
+
+                <p className="text-sm text-[var(--secondary-label)] mb-4">
+                  Connect your AWS SageMaker account to train on your own infrastructure while keeping full orchestration through Picsellia.
+                </p>
+
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
+                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Your AWS billing
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
+                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Your GPU instances
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
+                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Our orchestration
                   </div>
                 </div>
               </div>
@@ -791,14 +796,15 @@ export default function AILaboratoryPage() {
                 Zero infrastructure to manage
               </h2>
               <p className="text-[var(--secondary-label)] mb-8">
-                Focus on your models, not your servers. Picsellia handles GPU
-                provisioning, environment setup, and job orchestration. Just
-                click train.
+                Focus on your models, not your servers. Train on our managed A100 GPUs
+                at $3.50/hr, or connect your own SageMaker account for full flexibility.
+                Picsellia handles environment setup and job orchestration.
               </p>
 
               <div className="space-y-4">
                 {[
-                  "On-demand GPU allocation",
+                  "NVIDIA A100 GPUs at $3.50/hr",
+                  "Bring your own SageMaker account",
                   "Pre-configured CUDA environments",
                   "Automatic job queuing",
                   "Real-time training logs",

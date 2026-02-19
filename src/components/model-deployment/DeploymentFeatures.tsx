@@ -10,7 +10,7 @@ export default function DeploymentFeatures() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       ),
-      color: 'var(--system-indigo)',
+      color: 'var(--system-red)',
       items: ['Version management', 'Artifact tracking', 'Rollback support'],
     },
     {
@@ -32,7 +32,7 @@ export default function DeploymentFeatures() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      color: 'var(--system-blue)',
+      color: 'var(--system-orange)',
       items: ['Real-time dashboards', 'Anomaly detection', 'Drift tracking'],
     },
   ];
@@ -41,7 +41,7 @@ export default function DeploymentFeatures() {
     <section className="py-24 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
-          <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
+          <span className="text-[var(--system-red)] text-sm font-medium uppercase tracking-wider mb-3 block">
             Built for Production
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">

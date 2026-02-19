@@ -102,7 +102,7 @@ export default function Hero() {
         {/* Stats */}
         <div className="flex flex-wrap justify-center gap-8 md:gap-16 mb-16 pb-16 border-b border-[var(--border)]">
           {[
-            { value: "50M+", label: "Images Indexed" },
+            { value: "500M+", label: "Images Indexed" },
             { value: "On-prem", label: "Deployment possible" },
             { value: "5k+", label: "Models Trained" },
             { value: "1b+", label: "Predictions Monitored" },
