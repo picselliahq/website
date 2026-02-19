@@ -365,6 +365,8 @@ export default function ExperimentTrackingPage() {
                 </Link>
                 <Link
                   href="https://documentation.picsellia.com/docs/experiment"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-secondary px-8 py-4 text-base"
                 >
                   Documentation
@@ -1053,6 +1055,8 @@ export default function ExperimentTrackingPage() {
                 </span>
                 <Link
                   href="https://picselliahq.github.io/picsellia-cv-engine/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-[var(--system-pink)] hover:underline"
                 >
                   View Documentation →

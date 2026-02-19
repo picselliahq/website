@@ -80,7 +80,7 @@ export default function DatalakeHero() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </Link>
-            <Link href="https://documentation.picsellia.com/docs/datalake-3" className="btn-secondary px-8 py-4 text-base">
+            <Link href="https://documentation.picsellia.com/docs/datalake-3" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
               Documentation
             </Link>
           </div>

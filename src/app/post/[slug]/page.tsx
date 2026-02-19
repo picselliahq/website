@@ -10,6 +10,7 @@ import NewsletterSignup from '@/components/blog/NewsletterSignup';
 import BlogCard from '@/components/blog/BlogCard';
 import BlogCTA from '@/components/blog/BlogCTA';
 import { getFeatureCTAs } from '@/lib/blog-cta';
+import { JsonLd, articleJsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
 import rehypeShiki from './rehype-shiki';
 
 type Props = {
@@ -77,6 +78,12 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <article className="py-24 px-6">
+      <JsonLd data={articleJsonLd(post, slug)} />
+      <JsonLd data={breadcrumbJsonLd([
+        { name: 'Blog', url: '/blog' },
+        { name: post.frontmatter.category, url: '/blog' },
+        { name: post.frontmatter.title, url: `/post/${slug}` },
+      ])} />
       <div className="max-w-6xl mx-auto">
         {/* Breadcrumb */}
         <nav className="mb-8 text-sm text-secondary">

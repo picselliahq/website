@@ -1,4 +1,5 @@
 ---
+
 title: "Best Practices for Fine-Tuning Computer Vision Models"
 description: "This article will introduce you to the best practices for hyperparameter tuning, explored through a typical CV task with TensorFlow and Keras-Tuner."
 date: "2023-02-22"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/best-practices-for-fine-tuning-computer-vision-models-hero.jpg"
+imageAlt: "Best Practices for Fine-Tuning Computer Vision Models"
 published: true
+tags: ["api", "computer-vision", "dataset-management", "deep-learning", "document-processing", "edge-deployment", "experiment-tracking", "foundation-models"]
 ---
 
 Are you struggling to find resources that guide you through the hyperparameter tuning process?
@@ -25,8 +28,8 @@ In this article, we will tackle a typical computer vision scenario. We will star
 
 Before you embark on the process of fine-tuning, it is important to ensure that you have properly prepared for the task at hand. This includes
 
-- Formulating your problem clearly, defining and implementing the[ necessary success metrics](https://www.picsellia.com/post/key-metrics-to-monitor-computer-vision-solutions).
-- [Preparing and cleaning your dataset](https://www.picsellia.com/post/how-to-ensure-data-quality-best-practices) up to point that spending time on model architecture actually makes sense.
+- Formulating your problem clearly, defining and implementing the[ necessary success metrics](/post/key-metrics-to-monitor-computer-vision-solutions).
+- [Preparing and cleaning your dataset](/post/how-to-ensure-data-quality-best-practices) up to point that spending time on model architecture actually makes sense.
 - Setting up a training & evaluation pipeline. This facilitates rapid experimentation!
 
 Once these criteria are met you can start the fun!
@@ -65,7 +68,7 @@ In general, the largest batch size you can use will be the best. Don’t use a l
 
 - **Automate the generation of important plots** (Yes, it’s plotting again). Try to plot as much information as possible. The more training curves, weight histograms, scatter plots, or [parallel line plots](https://en.wikipedia.org/wiki/Parallel_coordinates) you have the more information you can derive from your experiments. 
 
-If you need to spend effort to create them you are less likely to study them. Tools like Tensorboard and [**Picsellia’s experiment tracking**](https://www.picsellia.com/experiment-tracking) provide a better alternative to manual plotting so make sure to use one.
+If you need to spend effort to create them you are less likely to study them. Tools like Tensorboard and [**Picsellia’s experiment tracking**](/experiment-tracking) provide a better alternative to manual plotting so make sure to use one.
 
 - **Run multiple identical experiments** and calculate the mean and standard deviation values. It's not uncommon to have "lucky models" that perform well due to a favorable initialization, but rerunning the same experiment can reveal much lower performance.
 
@@ -77,12 +80,12 @@ I know, computational budgets can be a limiting factor. Just keep in mind that t
 
 Let’s lay out the following scenario. You are an engineer in a startup operating in the **biotechnology sector**. You are asked to deploy a deep learning model for the following computer vision task; detect Malaria-contaminated cells in microscopy images. 
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-0.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-0.png)
 *Fig.1: Data set examples *
 
 For several reasons the model needs to be lightweight and run on an edge device embedded in  microscopes. You turn to [TensorFlow Hub](https://www.tensorflow.org/hub), an online repository of pre-trained deep learning models, searching for a model that fits the bill. You come across [MobileNet V3](https://arxiv.org/abs/1905.02244)[3].
 
-MobileNet V3 is a deep neural network architecture designed specifically for edge applications. It is known for its lightweight, high accuracy, and fast inference speed, making it an ideal choice for [computer vision at the edge](https://www.picsellia.com/post/optimize-computer-vision-models-on-the-edge). With your cleaned dataset in hand, you can now fine-tune the MobileNet V3 model to better suit your specific use case.
+MobileNet V3 is a deep neural network architecture designed specifically for edge applications. It is known for its lightweight, high accuracy, and fast inference speed, making it an ideal choice for [computer vision at the edge](/post/optimize-computer-vision-models-on-the-edge). With your cleaned dataset in hand, you can now fine-tune the MobileNet V3 model to better suit your specific use case.
 
 For our case, I stacked a linear layer with 100 neurons and a classification layer with softmax activation function on top of the pre-trained feature extractor. Moreover, I’ve already set up a simple data pipeline and have my training code in place. 
 
@@ -100,30 +103,30 @@ I start with Adam optimizer, a standard lr=0.003, and train for 10 epochs using 
 
 Evaluating on the validation set:
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-1.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-1.png)
 
 Not a bad start… 
 
 However, the graphs will reveal more info.  Firstly, we observe how the validation loss begins incrementing after epoch 5, indicating overfitting is present. **However**, since the validation accuracy performs well, I would be tempted to increase the number of epochs and the patience for early stopping, instead. Since the increase in accuracy suggests convergence is still ongoing. Bear in mind that during epoch 8 the scheduler reduced the learning rate.
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-2.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-2.png)
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-3.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-3.png)
 *Fig 2: Learning graphs. Overfitting or just increase training epochs and reduce early stopping patience?*
 
 A quick look at weight histograms, reveals that the early layers of the network don’t change much (fig 3). We can see how they remain mostly stable across epochs. This can reveal a vanishing gradient problem. However,  in our case we expect the learning to be concentrated in the last layers. 
 
 Indeed, figure 4 shows that MobileNet’s last layers do undergo slight changes, while the classifier (figure 5) is where most of the learning is concentrated on, especially on biases.
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-4.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-4.png)
 *Fig 3: MobileNet’s first layers remain almost entirely unaffected. We can suppose that there is no need for them to change too much anyway.*
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-5.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-5.png)
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-6.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-6.png)
 *Fig 4: MobileNet’s latest layers are fine-tuned and sharper changes in weight values are observed*
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-7.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-7.png)
 *Fig 5: The classifier layer undergoes heavier changes. The learning is mostly focused here.*
 
 **I hope it now becomes clear why inspecting many training graphs is important for deep learning training. They are a very rich source of information.**
@@ -132,12 +135,12 @@ I then proceed to test whether a bigger learning rate can provide faster converg
 
              
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-8.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-8.png)
 *Fig 6: Severely affected weights of an early layer in the feature extractor.*
 
 ‍
 
-Following a similar procedure for my other experiments I gained enough insights into the problem to design a tight search space for the exploitation phase, where Keras-Tuner will find the most optimal values using [Bayesian Optimization](https://www.picsellia.com/post/is-automl-replacing-data-scientists).
+Following a similar procedure for my other experiments I gained enough insights into the problem to design a tight search space for the exploitation phase, where Keras-Tuner will find the most optimal values using [Bayesian Optimization](/post/is-automl-replacing-data-scientists).
 
 ### **Automatic Tuning of Pre-trained Models**
 
@@ -147,7 +150,7 @@ I set my computational budget to 10 and let each model train for 10 epochs with 
 
                              
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-9.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-9.png)
 *Fig 7: Example output of Keras Tuner during searching. An optimal model has already been found by trial 3!*
 
 ‍
@@ -160,10 +163,10 @@ Before I deploy it, I evaluate it on the test dataset to get an unbiased evaluat
 
                          
 
-![](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-10.png)
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-10.png)
 * Fig 8: Evaluation of the final model on the test dataset.*
 
-After the model is deployed you will most probably experience performance degradation due to [data drifts](https://www.picsellia.com/post/what-is-data-drift-and-how-to-detect-it-with-mlops), so having a baseline is important. Using [feedback loops](https://www.picsellia.com/post/feedback-loops-and-versioning-in-computer-vision) is an effective way to combat the performance degradation of deployed machine learning models. 
+After the model is deployed you will most probably experience performance degradation due to [data drifts](/post/what-is-data-drift-and-how-to-detect-it-with-mlops), so having a baseline is important. Using [feedback loops](/post/feedback-loops-and-versioning-in-computer-vision) is an effective way to combat the performance degradation of deployed machine learning models. 
 
 ## Final Thoughts
 

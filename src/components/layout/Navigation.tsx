@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Product menu organized by workflow stages
 const productMenu = {
@@ -421,10 +422,13 @@ export default function Navigation() {
         <nav className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img
+            <Image
               src="/images/Full_logo_white.svg"
               alt="Picsellia"
-              className="h-7"
+              width={120}
+              height={28}
+              className="h-7 w-auto"
+              priority
             />
           </Link>
 
@@ -853,6 +857,7 @@ export default function Navigation() {
                   key={item.label}
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
+                  rel={item.external ? "noopener noreferrer" : undefined}
                   className="block py-2 px-4 text-sm text-[var(--label)]"
                   onClick={() => setMobileOpen(false)}
                 >

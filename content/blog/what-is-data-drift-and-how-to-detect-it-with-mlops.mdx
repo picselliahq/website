@@ -1,4 +1,5 @@
 ---
+
 title: "What is Data Drift and How to Detect it in Computer Vision?"
 description: "Data-drift happens when the dataset that used to train your model doesn't mimic the data you receive in production, causing your model to underperform."
 date: "2022-01-18"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "MLOps"
 image: "/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-hero.png"
+imageAlt: "What is Data Drift and How to Detect it in Computer Vision?"
 published: true
+tags: ["computer-vision", "dataset-management", "deployment", "mlops", "model-training", "monitoring", "object-detection", "real-time"]
 ---
 
 Data-drift occurs when the dataset used to train your model does not mimic the data that you receive in production. This is when your model starts to act strange and underperform. 
@@ -25,13 +28,13 @@ Now you have all the data needed to compare the initial predictions versus the e
 
  
 
-![](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-0.gif)
+![What is data drift and how to detect it with mlops](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-0.gif)
 
  
 
 Well… Although this is the ideal approach, it means that you have to give access to a lot of people in order to validate all your predictions in real-time. In other words, you'll need the sufficient workforce to review all the predictions.
 
-This suggests that we should consider some heuristic methods to detect data-drift in an unsupervised way. To do so, we’ll introduce a metric that comes out-of-the box if you use **Picsellia **[**deployment**](https://www.picsellia.com/model-deployment)** and **[**monitoring**](https://www.picsellia.com/model-monitoring)** solutions.**
+This suggests that we should consider some heuristic methods to detect data-drift in an unsupervised way. To do so, we’ll introduce a metric that comes out-of-the box if you use **Picsellia **[**deployment**](/model-deployment)** and **[**monitoring**](/model-monitoring)** solutions.**
 
 ‍
 
@@ -51,12 +54,12 @@ Basically, you will get a list of p-values for your training set and your real-w
 
  
 
-![](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-1.png)
+![What is data drift and how to detect it with mlops](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-1.png)
 *Here, there is no drift.*
 
 *            *
 
-![](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-2.png)
+![What is data drift and how to detect it with mlops](/images/blog/what-is-data-drift-and-how-to-detect-it-with-mlops-img-2.png)
 *Here, there is a data-drift.*
 
   

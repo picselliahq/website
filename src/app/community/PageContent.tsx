@@ -160,6 +160,8 @@ export default function CommunityPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-10">
                 <Link
                   href="https://app.picsellia.com/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary px-8 py-4 text-base"
                 >
                   Start Building Free
@@ -619,6 +621,8 @@ export default function CommunityPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href="https://documentation.picsellia.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative"
             >
               <div className="card p-8 h-full overflow-hidden">
@@ -698,6 +702,8 @@ export default function CommunityPage() {
 
             <Link
               href="https://github.com/picselliahq"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative"
             >
               <div className="card p-8 h-full overflow-hidden">
@@ -804,6 +810,8 @@ export default function CommunityPage() {
               </p>
               <Link
                 href="https://app.picsellia.com/signup"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary px-10 py-4 text-base inline-flex items-center gap-2"
               >
                 Create Free Account

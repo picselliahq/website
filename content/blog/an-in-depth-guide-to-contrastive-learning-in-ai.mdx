@@ -1,4 +1,5 @@
 ---
+
 title: "An In-Depth Guide to Contrastive Learning in AI"
 description: "Contrastive learning is a machine learning technique that teaches models to distinguish between similar and dissimilar samples."
 date: "2023-06-25"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-hero.webp"
+imageAlt: "An In-Depth Guide to Contrastive Learning in AI"
 published: true
+tags: ["annotation", "classification", "computer-vision", "dataset-management", "model-training", "object-detection", "segmentation"]
 ---
 
 # **An In-Depth Guide to Contrastive Learning in AI**
@@ -15,7 +18,7 @@ When a child is learning to recognize animals, he may struggle in the beginning,
 
 It perfectly illustrates the concept behind contrastive learning, which aims to learn the general features of a dataset by teaching the model which data points are similar or different.
 
-![](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-0.png)
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-0.png)
 *Illustration of contrastive learning’s concept
 https://towardsdatascience.com/understanding-contrastive-learning-d5b19fd96607*
 
@@ -27,13 +30,13 @@ Contrastive learning is a machine learning technique that teaches models to dist
 
 In supervised learning, models are trained on labeled data, but contrastive learning doesn’t need labeled data, as it leverages the similarities and differences between data points to learn representations. This makes it highly scalable and useful for pre-training models in scenarios where labeled data is limited or unavailable. 
 
-This enables models to learn high-level features about the data before performing specific computer vision tasks such as image classification, object detection, and image segmentation. To learn more about these tasks, read this article: [Segmentation vs Detection vs Classification in Computer Vision: A Comparative Analysis](https://www.picsellia.com/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis)
+This enables models to learn high-level features about the data before performing specific computer vision tasks such as image classification, object detection, and image segmentation. To learn more about these tasks, read this article: [Segmentation vs Detection vs Classification in Computer Vision: A Comparative Analysis](/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis)
 
 ## Terminology in Contrastive Learning
 
 To understand contrastive learning, it is important to be familiar with some key terminology. Contrastive learning aims to learn **low-dimensional representations of data **by maximizing the similarity between **similar samples **and minimizing it between **dissimilar samples**. This is typically done by using the **Euclidean distance** as a measure of dissimilarity in the representation space.
 
-![](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-1.png)
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-1.png)
 
 The goal is to bring similar samples closer together in the representation space, making them easier to distinguish, while pushing dissimilar samples farther apart. By learning such representations, models can effectively capture the underlying structure of the data and generalize well to unseen samples.
 
@@ -47,7 +50,7 @@ In practice, contrastive learning involves the selection of:
 
 The anchor sample serves as a reference point. The goal is to bring the positive sample closer to the anchor while pushing the negative samples farther away. In computer vision, this is typically achieved by learning an encoder, which maps images to embeddings in a low-dimensional space.
 
-![](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-2.png)
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-2.png)
 **Illustration of how contrastive learning works in practice 
 (Image source: *[*Schroff et al. 2015*](https://arxiv.org/abs/1503.03832)*)**
 

@@ -2,8 +2,17 @@ import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Thank You",
+  title: "Thank You - Request Confirmed",
   description: "Thank you for your interest in Picsellia. We'll be in touch soon.",
+  alternates: {
+    canonical: "/thank-you",
+  },
+  openGraph: {
+    title: "Thank You - Request Confirmed",
+    description: "Thank you for your interest in Picsellia. We'll be in touch soon.",
+    url: "/thank-you",
+  },
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouPage() {

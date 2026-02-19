@@ -1,4 +1,5 @@
 ---
+
 title: "Train and integrate YOLOv8 with Picsellia in just a few minutes"
 description: "In this tutorial, we will provide you with a detailed guide on how to train the YOLOv8 object detection model using Picsellia."
 date: "2023-02-09"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Tutorial"
 image: "/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-hero.png"
+imageAlt: "Train and integrate YOLOv8 with Picsellia in just a few minutes"
 published: true
+tags: ["annotation", "api", "classification", "dataset-management", "document-processing", "infrastructure", "model-training", "monitoring"]
 ---
 
 YOLOv8 is the most recent edition in the highly renowned collection of models that implement the YOLO (You Only Look Once) architecture. This development was done by Ultralytics, a squad renowned for their work on YOLOv3 (PyTorch fork) and YOLOv5.
@@ -36,7 +39,7 @@ You can also find some **relevant snippets** in our documentation: [https://docu
 
 ## Convert Picsellia COCO Dataset to YOLO Forat
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-0.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-0.png)
 
 For this article we will use a retail dataset, kindly shared by our friends at [Neurolabs](https://www.neurolabs.ai/) (looking for a shelves monitoring solution? Go check them out! ) 
 
@@ -52,17 +55,17 @@ This format is one of the most common ones ( ;) ). **COCO stands for Common Obje
 - **images**: it stores images, file names, height width, time is taken, etc
 - **annotations**: for the id’s we have for images it contains bounding box, segmentation coordinates area here bounding box is the x1,y1,x2,y2 coordinates of the object detected while the segmentation is the object outline iscrowd it's the binary parameter that tells if there are multiple objects on the scale we can't really segment each one of them we can convert them into one large box and indicate that with iscrowd parameter
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-1.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-1.png)
 
 ### The YOLO format
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-2.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-2.png)
 
 Unfortunately, YOLOvX algorithms do not read COCO format. Why? I don’t know. 
 
 They want a different way of reading the labels... based of .txt files 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-3.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-3.png)
 
 **Every image in your dataset needs to have a corresponding .txt file with all the objects of the picture with a [*class_id x0 y0 x1 y1*] normalized. **
 
@@ -70,7 +73,7 @@ They want a different way of reading the labels... based of .txt files 
 
 You will find in the repository a class called YOLOFormatter() that will do the trick for you :) 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-4.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-4.png)
 
 We won’t be showcasing the actual code as it’s fairly simple, but you will be able to find it here:
 
@@ -80,21 +83,21 @@ Please note that in the repo, you will be able to convert your BBOX, polygons an
 
 ## How to train on custom dataset and log everything on Picsellia
 
-Picsellia allows you to keep track of your experiments (training) on given datasets in order to ensure reproducibility of your work. To do so, you need a project on [Picsellia](https://www.picsellia.com). 
+Picsellia allows you to keep track of your experiments (training) on given datasets in order to ensure reproducibility of your work. To do so, you need a project on [Picsellia](/). 
 
 ### Create a project on Picsellia platform 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-5.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-5.png)
 
 You can either do it with the UI in the projects section, or use our python SDK! 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-6.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-6.png)
 
 Let’s not take too much time on this part as it’s not key to this article, and dive directly into **how to train YOLOv8 on your custom dataset.** 
 
 ### The YOLOv8 python package
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-7.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-7.png)
 
 For YOLOv8, the developers strayed from the traditional design of distinct train.py, detect.py, val.py, and export.py scripts.
 
@@ -108,7 +111,7 @@ You will be able to find more information about the API directly on [Ultralytics
 
 Now let’s see how easy it is to **launch a training** :) 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-8.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-8.png)
 
 ### Interpreting the results
 
@@ -136,17 +139,17 @@ The YOLOv8 python package generates curves for the above metric in a … .jpg fo
 
 Hopefully, it also generates a **results.csv** file where all the tabular values are stored. This is where we will be getting the actual metrics to log into Picsellia.
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-9.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-9.png)
 
 This snippet is basically looping through all the columns in the results file and sending the results to Picsellia. At the end, you will get the same graphs as the picture generated by the YOLOv8 package, but **with legends and the ability to compare multiple runs** :) 
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-10.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-10.png)
 
 ## Exporting the YOLO model for inference and Transfer Learning
 
 ### Creating a Picsellia Model
 
-Now that you have trained the first version of your model, you might want to deploy it either at the edge or in the cloud, to do so you can leverage our [Picsellia Serverless Deployment solution](https://www.picsellia.com/model-deployment). The only thing that will need to be done is **creating a model** on Picsellia, which will be exported from the experiment (i.e., the training you have just performed ;)). 
+Now that you have trained the first version of your model, you might want to deploy it either at the edge or in the cloud, to do so you can leverage our [Picsellia Serverless Deployment solution](/model-deployment). The only thing that will need to be done is **creating a model** on Picsellia, which will be exported from the experiment (i.e., the training you have just performed ;)). 
 
 You can choose to encapsulate as many artifacts as you want, but **2 of them are important**: the exported ONNX model, and the trained weights (.pt) file. 
 
@@ -166,13 +169,13 @@ To do so you can follow our tutorial here:
 
 In a nutshell, you have 2 ways to package your models into a docker image, one straightforward way that won’t give you any real-time logs and another version that will allow you to access real-time logging.
 
-If you struggle with this part, do not hesitate to [reach out to us](https://www.picsellia.com/contact) 🙂
+If you struggle with this part, do not hesitate to [reach out to us](/contact) 🙂
 
 ## Running your trained model 
 
 It’s really easy to run your models once it is trained, Ultralytics made a simple CLI to do it.  
 
-![](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-11.png)
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-11.png)
 
 The only thing that you need to specify is the path to your weights file. You can either use **.pt **or **.onnx. ** 
 

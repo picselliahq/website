@@ -1,4 +1,5 @@
 ---
+
 title: "VLMs vs. CNNs: Is a New Era Dawning in Computer Vision Performance?"
 description: "Discover if Vision Language Models (VLMs) outperform Convolutional Neural Networks (CNNs) in computer vision."
 date: "2024-06-26"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-hero.jpg"
+imageAlt: "VLMs vs. CNNs: Is a New Era Dawning in Computer Vision Performance?"
 published: true
+tags: ["classification", "computer-vision", "deep-learning", "object-detection"]
 ---
 
 The meteoric rise of large language models (LLMs) like ChatGPT and GPT-4 captured our imagination with their powerful abilities for understanding and generating human-like text in areas of the natural language process (NLP). This remarkable advancement led to a surge of excitement and speculation [about the potential of their visual counterpart—vision language models (VLMs)—](https://medium.com/voxel51/why-2023-was-the-most-exciting-year-in-computer-vision-history-so-far-8a812aa7a11f)to revolutionize computer vision with their multifaceted ability to process textual and visual information seamlessly. Considering this ability, it's plausible to suggest that VLMs are better than conventional CNNs for computer vision tasks.
@@ -143,7 +146,7 @@ The results obtained after training the YOLOv8 model on the "Wine Grape" dataset
 
 These results indicate that the model has good learning potential, even with fewer epochs. Maintaining consistency in predictions and the rarity of missed boxes demonstrate YOLOv8's advanced capabilities for object detection in natural environments.
 
-![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-0.png)
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-0.png)
 
 ### VLM
 
@@ -155,7 +158,7 @@ Before fine-tuning, LLAVA v1.5 was inconsistent in detecting grape clusters, wit
 
 The results after fine-tuning LLAVA v1.5 show that, despite improvement, the model still struggles to achieve a high level of accuracy in detecting grape clusters. Even after extensive training, the model still fails to consistently detect and identify relevant regions, suggesting that it has certain limitations.
 
-![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-1.png)
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-1.png)
 
 The fact that the model performs better on the training set but not on the test set raises concerns about its generalization capability. This suggests that the model might be overfitting or memorizing specific details of the training data instead of understanding the general characteristics needed to perform well on new, unseen data.
 
@@ -165,11 +168,11 @@ These observations indicate that LLAVA v1.5, although an advanced visual languag
 
 For MiniGPT-v2, when applied to the same "Wine Grape" dataset, the results also show significant room for improvement. Before fine-tuning, the model managed to make some accurate detections, but there are also inconsistencies in the dimensions of the bounding boxes and some difficulty in consistently identifying the region of interest.
 
-![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-2.png)
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-2.png)
 
 After fine-tuning, the localization of grape clusters improves, indicating a better understanding of relevant visual characteristics. However, we observed disparities in the size of detections, which could lead to quantification errors in practical applications. Additionally, the inference time varies significantly, which poses a problem for real-time applications.
 
-![](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-3.png)
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-3.png)
 
 The presence of variations in inference time, even after fine-tuning, may indicate the model's volatility in the face of intrinsic variations in the test images. This raises questions about MiniGPT-v2's robustness and reliability for use in real-world conditions, where consistency and predictability are essential.
 
@@ -179,4 +182,4 @@ The presence of variations in inference time, even after fine-tuning, may indica
 - LLAVA v1.5, a VLM model, improved post fine-tuning but struggled with accuracy and generalization. This suggests the model could benefit from more diverse training data and special attention to avoiding overfitting. The notable difference between performance on the training and test sets indicates a limitation in the model's ability to generalize beyond the training data.
 - Mini GPT-v2 also improved after fine-tuning, especially in locating grape clusters. However, there remains variability in the size of detections and inference time that could impact its real-time application, raising concerns about its reliability for practical applications in precision agriculture
 
-During the practical implementation of VLMs or CNNs, factors such as compute, scalability, etc., contribute to determining if they are the best option for your use case. The performance examination of our case study's classification and object detection tasks shows their varying strengths and weaknesses based on these factors. Therefore, you must remember that the choice between CNNs and VLMs depends on the specific task, available resources, and desired trade-offs. We hope this comprehensive analysis offers you valuable insights into computer vision and guides your decisions when choosing between VLMs and CNNs. Try [Picsellia](https://www.picsellia.com/) for your computer vision solutions.
+During the practical implementation of VLMs or CNNs, factors such as compute, scalability, etc., contribute to determining if they are the best option for your use case. The performance examination of our case study's classification and object detection tasks shows their varying strengths and weaknesses based on these factors. Therefore, you must remember that the choice between CNNs and VLMs depends on the specific task, available resources, and desired trade-offs. We hope this comprehensive analysis offers you valuable insights into computer vision and guides your decisions when choosing between VLMs and CNNs. Try [Picsellia](/) for your computer vision solutions.

@@ -58,7 +58,7 @@ export default function DeploymentHero() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
-              <Link href="https://documentation.picsellia.com/reference/deployment" className="btn-secondary px-8 py-4 text-base">
+              <Link href="https://documentation.picsellia.com/reference/deployment" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
                 Documentation
               </Link>
             </div>

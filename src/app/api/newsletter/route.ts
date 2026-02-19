@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     // HubSpot Forms API integration
     // Set HUBSPOT_PORTAL_ID and HUBSPOT_FORM_ID environment variables
     const portalId = process.env.HUBSPOT_PORTAL_ID;
-    const formId = process.env.HUBSPOT_FORM_ID;
+    const formId = process.env.HUBSPOT_NEWSLETTER_FORM_ID || process.env.HUBSPOT_FORM_ID;
 
     if (portalId && formId) {
       const hubspotRes = await fetch(

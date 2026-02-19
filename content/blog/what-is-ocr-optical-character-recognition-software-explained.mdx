@@ -1,4 +1,5 @@
 ---
+
 title: "What is OCR? Optical Character Recognition Software Explained"
 description: "In-depth dive into OCR, from its definition and history to its underlying technologies and the most common (and valuable) applications."
 date: "2023-10-31"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/what-is-ocr-optical-character-recognition-software-explained-hero.png"
+imageAlt: "What is OCR? Optical Character Recognition Software Explained"
 published: true
+tags: ["computer-vision", "document-processing", "ocr"]
 ---
 
 ## What is OCR? Optical Character Recognition (OCR) Software Explained
@@ -41,18 +44,18 @@ The technology for translating text in images into electronic signals that machi
 
 #### Preprocessing Layer
 
-In a nutshell, this step implements a compression technique on the image that enhances the image's quality for the machine to make sense of and recognize text (characters). OCR software takes 2D image files as input. Irrespective of the stack of [preprocessing](https://www.picsellia.com/dataset-management) techniques used, it starts by scanning and copying the image content. The image processing component readjusts the scanned image's orientation and alignment to fit the dimensions and resolution of the scan with a deskewing method.
+In a nutshell, this step implements a compression technique on the image that enhances the image's quality for the machine to make sense of and recognize text (characters). OCR software takes 2D image files as input. Irrespective of the stack of [preprocessing](/dataset-management) techniques used, it starts by scanning and copying the image content. The image processing component readjusts the scanned image's orientation and alignment to fit the dimensions and resolution of the scan with a deskewing method.
 
 Since pixel (image density) values generally range from 0 to 255 and define the image's resolution, binarizing them to pixel values of 0s and 1s renders the scanned image in high contrast to form a bitmap. A bitmap is typically a lower-dimensional representation of the original 2D image. At this point, the depth (color) of the image is gone, leaving you only with black and white pixels. It's just like a shadow of the original image. White areas denoted by 1s denote the background, whereas black regions denoted by 0s denote characters.  
 
-![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-0.png)
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-0.png)
 *source: How does OCR work? by Aryaman Sharda*
 
 Binarization also cleans and filters areas of the image with noticeable noise, leaving complex regions untouched. Coupling a noise reduction technique with binarization gives better results. 
 
 The last step is to segment the black bitmap pixels that form single-connected components to be analyzed and processed separately. These pixels tend to be the characters.
 
-![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-1.png)
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-1.png)
 *source: optical character recognition by computerphile*
 
 #### Classification 
@@ -61,13 +64,13 @@ This step passes the single-connected pixels into a classifier that uses either 
 
 Pattern recognition identifies characters by analyzing a single connected black pixel at once. It relies on many examples of a character in various fonts and formats to identify characters accurately. It’s most likely to miss characters that don’t have an exact example to match in its database.
 
-![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-2.png)
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-2.png)
 
 ‍
 
 Feature extraction identifies characters by analyzing the lines, edges, curves, loops, and strokes formed by a single connected black pixel. This algorithm develops a deeper understanding of the characters, enabling it to handle new examples of a character without needing an exact example.
 
-![](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-3.png)
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-3.png)
 
 #### Post-processing
 
@@ -89,7 +92,7 @@ However, OCR technology gained widespread popularity during the early 1990s. By 
 
 ## OCR use cases across Industries
 
-OCR [powers various domains](https://www.picsellia.com/use-cases) of well-known technologies you come in contact with daily. Some use cases of industries applying OCR include:
+OCR [powers various domains](/use-cases) of well-known technologies you come in contact with daily. Some use cases of industries applying OCR include:
 
 #### Forensics
 

@@ -6,6 +6,7 @@ import AIAssistedSection from '@/components/labeling-tool/AIAssistedSection';
 import QualityControlSection from '@/components/labeling-tool/QualityControlSection';
 import CTASection from '@/components/labeling-tool/CTASection';
 
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 export const metadata: Metadata = {
   title: 'Labeling Tool - Image & Video Annotation',
   description:
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function LabelingToolPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Labeling Tool', url: '/labeling-tool' }])} />
       <HeroSection />
       <AnnotationTypesSection />
       <ToolsAndFeaturesSection />

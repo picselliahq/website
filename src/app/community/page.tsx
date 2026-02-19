@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CommunityPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Community - Open Source & Partnerships",
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function CommunityPage() {
-  return <CommunityPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Community', url: '/community' }])} />
+      <CommunityPageContent />
+    </>
+  );
 }

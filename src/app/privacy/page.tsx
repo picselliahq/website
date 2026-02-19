@@ -1,9 +1,20 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { JsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Picsellia',
-  description: 'Learn how Picsellia collects, uses, and protects your personal data. Our commitment to privacy, security, and GDPR compliance.',
+  title: 'Privacy Policy - Data Protection & GDPR Compliance',
+  description:
+    'Learn how Picsellia collects, uses, and protects your personal data. Our commitment to privacy, security, and GDPR compliance.',
+  alternates: {
+    canonical: '/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy - Data Protection & GDPR Compliance',
+    description:
+      'Learn how Picsellia collects, uses, and protects your personal data. Our commitment to privacy, security, and GDPR compliance.',
+    url: '/privacy',
+  },
 };
 
 const sections = [
@@ -233,6 +244,7 @@ We aim to respond to all inquiries within 30 days.`,
 export default function PrivacyPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Privacy Policy', url: '/privacy' }])} />
       {/* Hero Section */}
       <section className="pt-32 pb-16 border-b border-[var(--border)]">
         <div className="max-w-4xl mx-auto px-6">

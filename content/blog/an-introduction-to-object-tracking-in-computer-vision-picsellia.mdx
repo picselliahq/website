@@ -1,4 +1,5 @@
 ---
+
 title: "An Introduction to Object Tracking in Computer Vision"
 description: "Learn how object tracking builds on object detection by tracking objects over time. Explore key differences, challenges, and effective techniques."
 date: "2024-07-23"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-hero.png"
+imageAlt: "An Introduction to Object Tracking in Computer Vision"
 published: true
+tags: ["annotation", "computer-vision", "deep-learning", "object-detection", "video-analysis", "yolo"]
 ---
 
 ***Images are to object detection, just as videos are to...***
@@ -25,7 +28,7 @@ Object tracking involves using computer vision algorithms to monitor the motion 
 ‍
 
 [
-![](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-0.png)
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-0.png)
 ](https://www.researchgate.net/figure/Overview-of-the-Kalman-Filter-based-object-tracking-algorithms-used-in-this-work_fig1_358134782)
 
 Becoming familiar with the object tracking workflow is critical to comprehending object tracking and how it may be used to address common problems. While workflows may vary between models and use situations, an object-tracking model's technical workflow is as follows:
@@ -83,7 +86,7 @@ Object tracking shows great promise in automating many manual tasks across vario
 To overcome this challenge, modern tracking algorithms incorporate scale-adaptive mechanisms. For example, the CAMShift algorithm adjusts the size of the search window based on the object's size in each frame. Similarly, deep learning-based approaches like SiamRPN (Siamese Region Proposal Network) integrate region proposal networks that dynamically adjust to the object's scale. These methods employ multi-scale feature extraction and learning adaptive scaling parameters to improve tracking when there are size variations.
 
 [
-![](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-1.png)
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-1.png)
 ](https://augmentedstartups.medium.com/object-size-unveiling-its-impact-on-image-recognition-accuracy-cf0cb0c8681c)
 
 ‍**Object occlusion**: When the tracked object is partially or fully obscured by other objects or entities, the tracking process is interrupted. This is known as occlusion. It is particularly challenging in crowded scenes or dynamic environments where multiple objects interact. During occlusion, the tracker might lose sight of the object, resulting in identity switches or the loss of the object entirely.
@@ -91,7 +94,7 @@ To overcome this challenge, modern tracking algorithms incorporate scale-adaptiv
 To address occlusion, you can utilize advanced tracker techniques like motion prediction and re-identification. Kalman and particle filters can predict the object's position during temporary occlusions, allowing the tracker to re-acquire the object once it reappears. Deep learning-based approaches, such as DeepSORT, incorporate appearance models that use visual features to re-identify objects after occlusion. Additionally, incorporating contextual information from surrounding objects and leveraging temporal consistency can enhance the tracker's ability to handle occlusions effectively.
 
 [
-![](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-2.png)
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-2.png)
 ](https://www.researchgate.net/figure/Object-Tracking-during-and-after-Occlusion_fig5_220166473)
 
 ‍**Object Class Imbalance**: Object class imbalance occurs when the frequency of different object classes varies significantly in the training data. This imbalance can lead to biased models that perform well in frequent classes but poorly in rare ones. In object tracking, this challenge manifests when particular objects are tracked accurately while others are consistently misidentified or lost.
@@ -99,7 +102,7 @@ To address occlusion, you can utilize advanced tracker techniques like motion pr
 Addressing object class imbalance involves strategies such as data augmentation and re-sampling. Augmenting the dataset with synthetic examples of underrepresented classes can help balance the training data. You can also apply techniques like oversampling the minority class or undersampling the majority class. Additionally, using loss functions that penalize misclassifications of rare classes more heavily, or employing ensemble methods that combine multiple models, can improve performance across all object classes.
 
 [
-![](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-3.png)
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-3.png)
 ](https://medium.com/analytics-vidhya/how-focal-loss-fixes-the-class-imbalance-problem-in-object-detection-3d2e1c4da8d7)
 
 ‍**Low Frame Resolution**: Low frame resolution presents a challenge by reducing the temporal granularity of the video, making it harder to track fast-moving objects. With fewer frames per second, less information is available to accurately estimate the object's trajectory, leading to potential gaps in the tracking sequence and higher chances of losing the object.
@@ -107,7 +110,7 @@ Addressing object class imbalance involves strategies such as data augmentation 
 Interpolation techniques can generate intermediate frames, providing a higher temporal resolution for tracking. Predictive models, such as those using Kalman filters or recurrent neural networks (RNNs), can estimate the object's position between frames, maintaining continuity in the tracking process. Combining spatial and temporal information from higher-level features can also enhance the robustness of trackers, even in scenarios with low frame rates.
 
 [
-![](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-4.png)
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-4.png)
 ](https://www.mdpi.com/2072-4292/13/13/2620)
 
 Object tracking in computer vision is a transformative technology that goes beyond object detection by continuously monitoring and predicting the movement of objects across video frames. Despite challenges like object occlusion and varying resolutions, advancements in adaptive algorithms and feature extraction techniques ensure robust and accurate tracking. This technology significantly enhances efficiency, safety, and operational effectiveness across multiple domains, underscoring its critical role in modern applications.

@@ -1,4 +1,5 @@
 ---
+
 title: "A dive into YOLO object detection"
 description: "We will explore the family of YOLO object detection models, from the original YOLO network up to the latest YOLOv8 and NAS networks."
 date: "2022-11-29"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "YOLO"
 image: "/images/blog/a-dive-into-yolo-object-detection-hero.png"
+imageAlt: "A dive into YOLO object detection"
 published: true
+tags: ["classification", "computer-vision", "deep-learning", "model-training", "object-detection", "pipelines", "real-time", "versioning"]
 ---
 
 ## **What is YOLO ?**
@@ -49,7 +52,7 @@ to account for the cases where no object exists in the box, since the probabilit
 
 All in all, the model will output an S S (B*5 + len(Class)) tensor, meaning that for each cell we have 5 outputs per bounding box (related to its position and fitness) and len(Class) outputs, one for each class in the dataset. 
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-0.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-0.png)
 * Fig 1 :  Workflow of the YOLO architecture. A test image is divided into a grid. Several bounding boxes are predicted together with a confidence score. For each grid cell a class specific probability is calculated. By calculating confidence values the model decides on a few unique detections.  Image Source [[1](https://arxiv.org/pdf/1506.02640.pdf)].*
 
 - **Note : A limitation for YOLO is that it can only predict one class per grid cell. 
@@ -58,7 +61,7 @@ The image below presents the original YOLO architecture, which consists of a sin
 
 The architecture follows the typical paradigm of reducing image and kernel dimensions while increasing the number of filters in each conv layer along the way. A fully connected layer is also used in the end.
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-1.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-1.png)
 *Fig 2 : Original Yolo architecture. Image Source [[1](https://arxiv.org/pdf/1506.02640.pdf)].*
 
 ## **A history of YOLOs ( yolo9000, yolov3, yolov4, yolov5, yolov6, yolov7, yolov8, yolo nas)**
@@ -77,7 +80,7 @@ The most notable improvements are 
 - Good anchor box priors were discovered by clustering the bounding box coordinates of the training set, instead of hand picking them. 
 - Applied a multiscale training technique, where the network gets trained on various resolutions to create more general representations.
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-2.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-2.png)
 
 **                 **Fig 3 : Yolo 9000 became state-of-the-art. It was faster and more accurate than its competitors. Image Source [2]
 
@@ -104,7 +107,7 @@ However, they also used “Bag of Specials”, i.e. plug-in blocks or post-proce
 - Using Multi-input Weighted Residual Connections (MiWRC)
 - Spatial Pyramid Pooling [7]
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-3.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-3.png)
 
            Fig 4 : Performance comparison of YOLOv4, YOLOv3 and competitor networks in COCO object detection dataset. Image Source [[5]](https://arxiv.org/pdf/2004.10934.pdf)
 
@@ -124,7 +127,7 @@ Yolov6 was released almost in parallel with Yolov7 (summer 2022), from the Chine
 - [TAL](https://arxiv.org/abs/2108.07755) : Task Alignment Learning 
 - VariFocal classification loss and SIoU/GIoU regression loss.
 - [Self-Distillation](https://arxiv.org/pdf/1905.08094.pdf) 
-- Quantization - Aware Training, for [improved performance via weight quantization.](https://www.picsellia.com/post/optimize-computer-vision-models-on-the-edge)
+- Quantization - Aware Training, for [improved performance via weight quantization.](/post/optimize-computer-vision-models-on-the-edge)
 
 According to the benchmarks published in their paper, Yolov6 **achieves up to AP=52.5% **at 98 FPS with their largest model. 
 
@@ -132,7 +135,7 @@ According to the benchmarks published in their paper, Yolov6 **achieves up to AP
 
 YOLOv7, whose paper was published earlier than yolov6 paper (The versioning is getting messy…), managed to push the barriers of real-time object detection even further. According to their published paper *“ YOLOv7 surpasses all known object detectors in both speed and accuracy in the range from 5 FPS to 160 FPS and has the highest accuracy ****56.8% AP**** among all known real-time object detectors with 30 FPS or higher on GPU V100 “. *
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-4.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-4.png)
 
 *  	    *Fig. 5 : Comparison of yolov7 to other competitors. Yolov7 is currently SOTA in real time object detection. Image Source [[10](https://arxiv.org/abs/2207.02696)]
 
@@ -144,7 +147,7 @@ Yolov8’s or the “Real-Time Flying Object Detection” was released in 2023. 
 
 It uses a more advanced backbone network, which is a variant of the CPSDarkNetBackbone architecture. It uses both Feature Pyramid Network (FPN) and Path Aggregation Network (PAN), and it introduced improvements and new features to enhance performance as we can see on the following figures.
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-5.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-5.png)
 
 Faster, and more accurate than YOLOv7 and all their predecessors thanks to its multi-scale prediction, YOLOv8 constitute a powerful deep learning for real-time object detection. Its anchor free architecture also make it easier to use.
 
@@ -154,7 +157,7 @@ YOLOv8 also runs on CPUs and GPUs, and is highly efficient and flexible, support
 
 According to DeciAI, YOLO-NAS is around 0.5 mAP points more accurate and 10% to 20% faster than equivalent variants of YOLOv8 and YOLOv7. 
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-6.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-6.png)
 
 This version, developed by DeciAI aims to address the limitations of the previous models version in object detection. NAS, meaning Neural Architecture Search, is a technique for automating the design of artificial neural networks.
 
@@ -176,13 +179,13 @@ Working with them should be easy but you need to make sure your datasets’ anno
 
 come in .txt format and every image should be accompanied by a .txt annotation file. Each row in the .txt file represents 1 object. In each row 5 identifiers are included that refer to the [class id, bbox center x, bbox center y , bbox width, bbox height] as presented in figure 6 below. It’s important to note that Class ID begins from number 0 and that coordinates are normalized in the [0,1] range. If your boxes are in pixels, divide center_x and bbox_width by image width, and center_y and bbox_height by image height.
 
-You can annotate your datasets and export them in various formats using simple tools like [LabelMe](https://github.com/wkentaro/labelme) or use [Picselia’s AI-assisted labeling tools](https://www.picsellia.com/dataset-management) and significantly decrease annotation costs. 
+You can annotate your datasets and export them in various formats using simple tools like [LabelMe](https://github.com/wkentaro/labelme) or use [Picselia’s AI-assisted labeling tools](/dataset-management) and significantly decrease annotation costs. 
 
 ‍
 
                                              
 
-![](/images/blog/a-dive-into-yolo-object-detection-img-7.png)
+![A dive into yolo object detection](/images/blog/a-dive-into-yolo-object-detection-img-7.png)
 
   				                Fig 6 : Example of yolo annotation file
 

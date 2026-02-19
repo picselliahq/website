@@ -1,4 +1,5 @@
 ---
+
 title: "How To Optimize Computer Vision Models For Edge Devices"
 description: "Learn the best optimization techniques to decrease model size and increase inference speed in computer vision."
 date: "2022-06-29"
@@ -6,7 +7,9 @@ author:
   name: "Picsellia Team"
 category: "Edge AI"
 image: "/images/blog/optimize-computer-vision-models-on-the-edge-hero.jpg"
+imageAlt: "How To Optimize Computer Vision Models For Edge Devices"
 published: true
+tags: ["autonomous-vehicles", "cloud", "computer-vision", "deep-learning", "deployment", "edge-deployment", "model-training", "real-time"]
 ---
 
 This article will introduce you to ***“Inference at the Edge”*** and ***“Inference Optimization Techniques”*** in Machine Learning. By the end of this article, you will know about the most relevant optimization techniques for decreasing model size and increasing its inference speed in computer vision. You will also learn about the open-source tools* *you can use to achieve these optimizations. Last but not least, we will advise you on the deployment optimization techniques you should use in your computer vision projects, depending on your* *deployment hardware*. *
@@ -56,7 +59,7 @@ The standard process is to represent a network's parameter as 32-bit floating-po
 
 The most common quantization techniques convert the numerical type to 16-bit floating-point (half-quantization) or 8-bit integer (full-quantization) numbers. Quantization to 8-bit integers has two options, *Full Integer Quantization*, and *Dynamic Range Quantization*. The former will quantize weights, biases, activations, inputs and outputs (given a representative dataset), while the latter only quantizes weights. Depending on your hardware, some techniques work better than others, but we will dive deep into this in the next section.
 
-![](/images/blog/optimize-computer-vision-models-on-the-edge-img-1.png)
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-1.png)
 
 However, in computer science a free launch rarely exists. By reducing the numerical precision, you can degrade your model’s overall accuracy. Depending on the severity of quantization, we usually perceive an accuracy drop of approximately 0-2%. Though for a 2% accuracy drop we may achieve up to 84% energy saving [2] and 3x or more speedup. In most cases, accuracy degradation lies below 1%, while in some rare cases we might even experience a slight accuracy increase, usually an overfitted and complex model regularized as a result of quantization.
 
@@ -72,7 +75,7 @@ In table 1, we see that almost 3.5x compression can be achieved with a minimal 1
 
 ‍
 
-![](/images/blog/optimize-computer-vision-models-on-the-edge-img-2.png)
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-2.png)
 *Table 1. Effects of weight clustering on models trained for  image classification on ImageNet. Source [4] https://www.tensorflow.org/model_optimization/guide/clustering*
 
 ## **Open Source Tools for Inference Optimization**
@@ -85,7 +88,7 @@ Another important SDK, tied to NVidia GPUs, is the[ TensorRT](https://developer.
 
 ‍
 
-![](/images/blog/optimize-computer-vision-models-on-the-edge-img-3.png)
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-3.png)
 * Table 2. Source: [1][ https://arxiv.org/pdf/2101.09671.pdf](https://arxiv.org/pdf/2101.09671.pdf)*
 
                             
@@ -111,7 +114,7 @@ A GPU’s architecture is optimized for operations with floating point numbers. 
 
 ## **Can I Use Optimized Models in the Cloud to Achieve Real-Time? **
 
-**Deploying on the cloud: **When [deploying](https://www.picsellia.com/model-deployment) your solution on the cloud, you have access to powerful hardware, which lets you opt for a bigger and more complex model to start with. However, you may still find it necessary to decrease the delay from input to prediction, to achieve real-time. 
+**Deploying on the cloud: **When [deploying](/model-deployment) your solution on the cloud, you have access to powerful hardware, which lets you opt for a bigger and more complex model to start with. However, you may still find it necessary to decrease the delay from input to prediction, to achieve real-time. 
 
 In this case, your biggest enemy is the network’s speed and bandwidth. Since you need to transfer data back and forth, a big part of the overall delay is data transfer costs. If your data transfer delay exceeds the application’s real-time constraints, then you shouldn’t bother optimizing inference speed in the first place. Instead, go for an edge device. 
 

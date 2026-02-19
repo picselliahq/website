@@ -1,4 +1,5 @@
 ---
+
 title: "COCO Evaluation metrics explained"
 description: "Dive into COCO Evaluation Metrics for computer vision, exploring precision, recall, IoU & their meaning. Master object detection with Picsellia."
 date: "2023-08-15"
@@ -6,10 +7,12 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/coco-evaluation-metrics-explained-hero.png"
+imageAlt: "COCO Evaluation metrics explained"
 published: true
+tags: ["annotation", "computer-vision", "experiment-tracking", "object-detection", "segmentation"]
 ---
 
-As we saw in a previous article about [Confusion Matrixes](https://www.picsellia.com/post/the-confusion-matrix-in-computer-vision), evaluation metrics are essential for assessing the performance of computer vision models. In this article, we will take a closer look at the COCO Evaluation Metrics and in particular those that can be found on the [Picsellia platform](https://www.picsellia.com/experiment-tracking). 
+As we saw in a previous article about [Confusion Matrixes](/post/the-confusion-matrix-in-computer-vision), evaluation metrics are essential for assessing the performance of computer vision models. In this article, we will take a closer look at the COCO Evaluation Metrics and in particular those that can be found on the [Picsellia platform](/experiment-tracking). 
 
 In order to better understand the following sections, let’s have a quick reminder of some evaluations metrics: 
 
@@ -26,7 +29,7 @@ In order to better understand the following sections, let’s have a quick remin
 
 Precision indicates how many of the predicted positive cases are correct. It quantifies the ratio of true positives to the total number of positive predictions and is computed as follows:
 
-![](/images/blog/coco-evaluation-metrics-explained-img-0.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-0.png)
 
 Precision reveals the model's ability to make accurate positive predictions. A high precision value indicates that when the model predicts a positive outcome, it is often correct.
 
@@ -34,7 +37,7 @@ Precision reveals the model's ability to make accurate positive predictions. A h
 
 Recall, also known as sensitivity or true positive rate, measures the ratio of true positives to the total number of actual positive samples and is calculated as follows:
 
-![](/images/blog/coco-evaluation-metrics-explained-img-1.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-1.png)
 
 Recall focuses on the model's ability to correctly identify positive samples from the entire pool of positive instances.
 
@@ -49,7 +52,7 @@ IoU is a number between 0 and 1.
 - If IoU = 0, it means that there is no overlap between the boxes.
 - If IoU = 1, it means that they overlap completely.
 
-![](/images/blog/coco-evaluation-metrics-explained-img-2.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-2.png)
 
 You can still read our article on the Confusion Matrix to learn more about precision, recall, true positives and negatives, and false positives and negatives.
 
@@ -59,7 +62,7 @@ Now, that we are clear on these metrics, let's go deeper and look at Average Pre
 
 1) Predictions and Annotations:  Imagine an image, with predictions made by your object detection model, which includes bounding boxes around objects along with confidence scores. You also have ground truth annotations that specify the actual object positions and classes.
 
-![](/images/blog/coco-evaluation-metrics-explained-img-3.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-3.png)
 
 Here is an evaluation of an experiment on Picsellia’s platform, the green boxes are the ground truth and the red ones are the model’s predictions.
 
@@ -69,16 +72,16 @@ Here is an evaluation of an experiment on Picsellia’s platform, the green boxe
 
 4) Precision Calculation: For each IoU threshold, sort the predictions using true positives, false positives, and false negatives. 
 
-![](/images/blog/coco-evaluation-metrics-explained-img-4.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-4.png)
 *Example of sorting for IoU=0,5, [https://learnopencv.com/](https://learnopencv.com/)*
 
 Let’s evaluate our car example :
 
-![](/images/blog/coco-evaluation-metrics-explained-img-5.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-5.png)
 
-![](/images/blog/coco-evaluation-metrics-explained-img-6.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-6.png)
 
-![](/images/blog/coco-evaluation-metrics-explained-img-7.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-7.png)
 
 ‍
 
@@ -106,7 +109,7 @@ Recall = 2/2+1=0.66
 
 You can visualize all these data and more on Picsellia!
 
-![](/images/blog/coco-evaluation-metrics-explained-img-8.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-8.png)
 
 5) Precision-Recall Curve: Create a precision-recall curve by plotting precision on the y-axis and recall on the x-axis for each IoU threshold. Each point on the curve corresponds to a specific IoU threshold.
 
@@ -120,7 +123,7 @@ You can visualize all these data and more on Picsellia!
 
 On Picsellia, you have access to a table that summarises your evaluation data, let’s have a closer look. 
 
-![](/images/blog/coco-evaluation-metrics-explained-img-9.png)
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-9.png)
 
 Here's what each component means:
 

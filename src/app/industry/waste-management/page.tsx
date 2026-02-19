@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WasteManagementPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "Waste Management - Sorting & Recycling Automation",
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function WasteManagementPage() {
-  return <WasteManagementPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Waste Management', url: '/industry/waste-management' }])} />
+      <WasteManagementPageContent />
+    </>
+  );
 }

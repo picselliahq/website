@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AILaboratoryPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
   title: "AI Laboratory - Model Training & Experimentation",
@@ -17,5 +18,10 @@ export const metadata: Metadata = {
 };
 
 export default function AILaboratoryPage() {
-  return <AILaboratoryPageContent />;
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'AI Laboratory', url: '/ai-laboratory' }])} />
+      <AILaboratoryPageContent />
+    </>
+  );
 }

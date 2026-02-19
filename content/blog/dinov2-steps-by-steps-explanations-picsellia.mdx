@@ -1,4 +1,5 @@
 ---
+
 title: "DINOv2 - Steps by steps explanations - Picsellia"
 description: "Discover DINOv2, an upgrade of DINO. Try using a self-supervised method applied to Vision Transformers. This method enables all-purpose visual features."
 date: "2023-11-21"
@@ -6,14 +7,16 @@ author:
   name: "Picsellia Team"
 category: "Computer Vision"
 image: "/images/blog/dinov2-steps-by-steps-explanations-picsellia-hero.png"
+imageAlt: "DINOv2 - Steps by steps explanations - Picsellia"
 published: true
+tags: ["annotation", "classification", "computer-vision", "deep-learning", "model-training", "pipelines", "segmentation"]
 ---
 
 The advent of [foundational models](https://crfm.stanford.edu/report.html) ushered in a new era of task-agnostic and cognitive models that adopted [self-supervised learning](https://ai.meta.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/) rather than supervised learning. It has changed the process of developing models. Models have moved from being task-specific to general purpose-based. The initial adoption of foundational models gained a lot of attention around natural language processing (NLP) due to large language models (LLMs) compared to their computer vision (CV) counterparts. However, until DINOv2 models, existing computer vision (CV) foundational models weren't sophisticated enough to be task-agnostic out-of-the-box like LLMs.
 
 This article profoundly examines the underlying techniques and design of DINOv2.
 
-![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-0.gif)
+![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-0.gif)
 *Demo of DINOv2 by ai.facebook.com*
 
 ## What is DINOv2?
@@ -22,7 +25,7 @@ This article profoundly examines the underlying techniques and design of DINOv2.
 
 DINOv2 can learn adaptable, high-quality, all-purpose visual features, enabling it to perform various CV tasks, such as classification, estimating depth, semantic segmentation, instance retrieval, and more, without fine-tuning specific tasks. This visual ability enables it to outperform existing state-of-the-art semi-supervised learning ([SSL](https://arxiv.org/abs/2301.05712)) and weakly-supervised learning ([WSL](https://arxiv.org/abs/2305.17442)) models.
 
-![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-1.png)
+![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-1.png)
 *[Source](https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/)*
 
 ## Explanation of DINOv2 
@@ -35,14 +38,14 @@ Like any model you train, data is an essential training component; embeddings ar
 
 Meta AI researchers set up an automatic data pipeline that assembles the DINOv2 training data, called LVD-142M. It has a self-supervised structure to collect, clean, and process the images. The main processing components of the data pipeline consist of the data source, deduplication, and retrieval stages. The deduplication and retrieval stages of the pipeline are similarity search computations. They implemented these computations with [Faiss](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/).
 
-![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-2.png)
+![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-2.png)
 *[Source](https://arxiv.org/abs/2304.07193)*
 
 ### Data Source
 
 The pipeline's data source is a database containing uncurated and curated images. The uncurated images were gathered by web crawling for image tags, which consisted of raw data. After filtering and post-processing, the uncurated images amounted to 1.2 billion unique images. The curated dataset comprises images from  [ImageNet-22k](https://arxiv.org/abs/2104.10972), the train split of [ImageNet-1k](https://www.image-net.org/download.php), [Google Landmarks](https://paperswithcode.com/dataset/google-landmarks-dataset-v2), and several fine-grained datasets.
 
-![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-3.png)
+![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-3.png)
 
 ### Deduplication
 
@@ -64,7 +67,7 @@ In DINOv2, the researchers executed a [principal component analysis (PCA)](https
 
 ‍
 
-![](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-4.png)
+![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-4.png)
 *[Source](https://arxiv.org/pdf/2304.07193v1.pdf)*
 
 The added computation makes it possible for DINOv2 to learn transferable frozen features that can handle complex pixel-level information without supervision from text or caption.  

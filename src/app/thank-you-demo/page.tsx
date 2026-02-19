@@ -1,17 +1,22 @@
-import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { Metadata } from "next";
+import { Suspense } from "react";
+import ThankYouDemoContent from "./PageContent";
 
 export const metadata: Metadata = {
-  title: "Demo Scheduled",
-  description: "Your demo has been scheduled. We look forward to showing you Picsellia.",
+  title: "Book Your Demo - Picsellia",
+  description:
+    "Pick a time that works for you. We look forward to showing you Picsellia.",
+  alternates: {
+    canonical: "/thank-you-demo",
+  },
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouDemoPage() {
+  const meetingsUrl = process.env.HUBSPOT_MEETINGS_URL || "";
   return (
-    <PlaceholderPage
-      title="Demo Scheduled!"
-      description="Thank you for booking a demo. You'll receive a calendar invite shortly with all the details."
-      badge="Success"
-    />
+    <Suspense>
+      <ThankYouDemoContent meetingsUrl={meetingsUrl} />
+    </Suspense>
   );
 }
