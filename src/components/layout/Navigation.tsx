@@ -762,7 +762,10 @@ export default function Navigation() {
             >
               Contact Sales
             </Link>
-            <Link href="/trial" className="btn-primary text-sm py-2.5 px-5">
+            <Link
+              href="https://app.picsellia.com/signup"
+              className="btn-primary text-sm py-2.5 px-5"
+            >
               Start Free
             </Link>
           </div>
