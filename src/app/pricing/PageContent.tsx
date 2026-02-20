@@ -107,20 +107,20 @@ const dpuTiers = [
 // MU pricing tiers
 const muTiers = [
   { range: "0 - 1M", mu: "0 - 1,000", discount: "0%", price: "€1.00" },
-  { range: "1M - 2.5M", mu: "1,001 - 2,500", discount: "10%", price: "€0.72" },
-  { range: "2.5M - 5M", mu: "2,501 - 5,000", discount: "18%", price: "€0.656" },
-  { range: "5M - 10M", mu: "5,001 - 10,000", discount: "29%", price: "€0.568" },
+  { range: "1M - 2.5M", mu: "1,001 - 2,500", discount: "10%", price: "€0.90" },
+  { range: "2.5M - 5M", mu: "2,501 - 5,000", discount: "18%", price: "€0.82" },
+  { range: "5M - 10M", mu: "5,001 - 10,000", discount: "29%", price: "€0.71" },
   {
     range: "10M - 20M",
     mu: "10,001 - 20,000",
     discount: "40%",
-    price: "€0.48",
+    price: "€0.60",
   },
   {
     range: "20M - 100M",
     mu: "20,001 - 100,000",
     discount: "50%",
-    price: "€0.40",
+    price: "€0.50",
   },
 ];
 
