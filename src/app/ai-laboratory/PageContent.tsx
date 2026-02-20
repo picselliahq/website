@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { codeToHtml } from "shiki";
 
 // Supported frameworks
 const frameworks = [
@@ -105,6 +107,32 @@ pipeline.run()`,
     color: "var(--system-orange)",
   },
 ];
+
+function HighlightedCode({ code }: { code: string }) {
+  const [html, setHtml] = useState("");
+
+  useEffect(() => {
+    codeToHtml(code, {
+      lang: "python",
+      theme: "github-dark",
+    }).then(setHtml);
+  }, [code]);
+
+  if (!html) {
+    return (
+      <pre className="p-4 text-[10px] overflow-x-auto bg-[var(--black)] font-mono leading-relaxed h-full">
+        <code className="text-[var(--secondary-label)]">{code}</code>
+      </pre>
+    );
+  }
+
+  return (
+    <div
+      className="h-full [&_pre]:!p-4 [&_pre]:!text-[10px] [&_pre]:!leading-relaxed [&_pre]:!h-full [&_pre]:!m-0 [&_pre]:!rounded-none [&_pre]:overflow-x-auto"
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
+}
 
 export default function AILaboratoryPage() {
   return (
@@ -251,7 +279,7 @@ export default function AILaboratoryPage() {
                 className="card p-0 overflow-hidden flex flex-col"
               >
                 {/* Header */}
-                <div className="p-6 border-b border-[var(--border)]">
+                <div className="p-6 border-b border-[var(--border)] min-h-[200px] flex flex-col">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                     style={{
@@ -316,13 +344,9 @@ export default function AILaboratoryPage() {
                 </div>
 
                 {/* Code or Features */}
-                <div className="flex-1">
+                <div className="h-[240px] overflow-y-auto">
                   {mode.codeExample ? (
-                    <pre className="p-4 text-[10px] overflow-x-auto bg-[var(--black)] font-mono leading-relaxed h-full">
-                      <code className="text-[var(--secondary-label)]">
-                        {mode.codeExample}
-                      </code>
-                    </pre>
+                    <HighlightedCode code={mode.codeExample} />
                   ) : (
                     <div className="p-6 bg-[var(--black)] h-full flex flex-col justify-center">
                       <div className="space-y-4">
@@ -715,11 +739,23 @@ export default function AILaboratoryPage() {
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-[var(--picsellia-green)]/10 flex items-center justify-center">
-                      <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      <svg
+                        className="w-4 h-4 text-[var(--picsellia-green)]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
                       </svg>
                     </div>
-                    <h3 className="text-sm font-semibold text-[var(--label)]">Managed GPUs</h3>
+                    <h3 className="text-sm font-semibold text-[var(--label)]">
+                      Managed GPUs
+                    </h3>
                   </div>
                   <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">
                     Available now
@@ -731,11 +767,17 @@ export default function AILaboratoryPage() {
                     <div className="flex items-center gap-3">
                       <div className="w-3 h-3 rounded-full bg-[var(--picsellia-green)]" />
                       <div>
-                        <div className="text-sm font-medium text-[var(--label)]">NVIDIA A100</div>
-                        <div className="text-xs text-[var(--tertiary-label)]">80GB VRAM</div>
+                        <div className="text-sm font-medium text-[var(--label)]">
+                          NVIDIA A100
+                        </div>
+                        <div className="text-xs text-[var(--tertiary-label)]">
+                          80GB VRAM
+                        </div>
                       </div>
                     </div>
-                    <div className="text-sm font-mono text-[var(--label)]">$3.50/hr</div>
+                    <div className="text-sm font-mono text-[var(--label)]">
+                      $3.50/hr
+                    </div>
                   </div>
                 </div>
 
@@ -752,9 +794,16 @@ export default function AILaboratoryPage() {
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-[var(--system-orange)]/10 flex items-center justify-center">
-                      <Image src="/images/community/partners/sagemaker.svg" alt="SageMaker" width={18} height={18} />
+                      <Image
+                        src="/images/community/partners/sagemaker.svg"
+                        alt="SageMaker"
+                        width={18}
+                        height={18}
+                      />
                     </div>
-                    <h3 className="text-sm font-semibold text-[var(--label)]">Bring Your Own Compute</h3>
+                    <h3 className="text-sm font-semibold text-[var(--label)]">
+                      Bring Your Own Compute
+                    </h3>
                   </div>
                   <span className="px-2 py-1 rounded text-xs bg-[var(--system-orange)]/10 text-[var(--system-orange)]">
                     SageMaker
@@ -762,25 +811,57 @@ export default function AILaboratoryPage() {
                 </div>
 
                 <p className="text-sm text-[var(--secondary-label)] mb-4">
-                  Connect your AWS SageMaker account to train on your own infrastructure while keeping full orchestration through Picsellia.
+                  Connect your AWS SageMaker account to train on your own
+                  infrastructure while keeping full orchestration through
+                  Picsellia.
                 </p>
 
                 <div className="flex items-center gap-4">
                   <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
-                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-4 h-4 text-[var(--picsellia-green)]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                     Your AWS billing
                   </div>
                   <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
-                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-4 h-4 text-[var(--picsellia-green)]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                     Your GPU instances
                   </div>
                   <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
-                    <svg className="w-4 h-4 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    <svg
+                      className="w-4 h-4 text-[var(--picsellia-green)]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                     Our orchestration
                   </div>
@@ -796,9 +877,10 @@ export default function AILaboratoryPage() {
                 Zero infrastructure to manage
               </h2>
               <p className="text-[var(--secondary-label)] mb-8">
-                Focus on your models, not your servers. Train on our managed A100 GPUs
-                at $3.50/hr, or connect your own SageMaker account for full flexibility.
-                Picsellia handles environment setup and job orchestration.
+                Focus on your models, not your servers. Train on our managed
+                A100 GPUs at $3.50/hr, or connect your own SageMaker account for
+                full flexibility. Picsellia handles environment setup and job
+                orchestration.
               </p>
 
               <div className="space-y-4">
