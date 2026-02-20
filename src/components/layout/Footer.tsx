@@ -16,6 +16,8 @@ const footerLinks = {
     { label: "Energy", href: "/industry/energy" },
     { label: "Agriculture", href: "/industry/agriculture" },
     { label: "Waste Management", href: "/industry/waste-management" },
+    { label: "Aerospace", href: "/industry/aerospace" },
+    { label: "Defense", href: "/industry/defense" },
   ],
   Resources: [
     { label: "Blog", href: "/blog" },
