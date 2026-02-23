@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export const viewport: Viewport = {
   themeColor: "#0F1117",
@@ -69,6 +70,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
