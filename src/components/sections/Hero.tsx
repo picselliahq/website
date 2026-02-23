@@ -46,8 +46,8 @@ export default function Hero() {
         {/* Badge */}
         <div className="flex justify-center mb-8">
           <span className="badge">
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--picsellia-green)]"></span>
-            ISO 27001 Certified
+            <span className="text-sm">🇪🇺</span>
+            EU-Based Company
           </span>
         </div>
 

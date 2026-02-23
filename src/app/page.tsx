@@ -4,6 +4,7 @@ import PlatformLifecycle from "@/components/sections/PlatformLifecycle";
 import UseCases from "@/components/sections/UseCases";
 import Integrations from "@/components/sections/Integrations";
 import CTA from "@/components/sections/CTA";
+import EnterpriseReady from "@/components/sections/EnterpriseReady";
 import { JsonLd, organizationJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function Home() {
     <>
       <JsonLd data={organizationJsonLd()} />
       <Hero />
+      <EnterpriseReady />
       <PlatformLifecycle />
       <UseCases />
       <Integrations />
