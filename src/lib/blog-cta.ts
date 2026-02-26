@@ -9,102 +9,102 @@ export interface FeatureCTA {
 
 const CTA = {
   labelingTool: {
-    title: 'Annotate faster with AI assistance',
+    title: "Annotate faster with AI assistance",
     description:
-      'Picsellia\'s labeling tool supports bounding boxes, polygons, and segmentation masks with built-in AI assistance to speed up annotation.',
-    href: '/labeling-tool',
-    label: 'Explore the Labeling Tool',
+      "Picsellia's labeling tool supports bounding boxes, polygons, and segmentation masks with built-in AI assistance to speed up annotation.",
+    href: "/labeling-tool",
+    label: "Explore the Labeling Tool",
   },
   annotationCampaigns: {
-    title: 'Orchestrate annotation at scale',
+    title: "Orchestrate annotation at scale",
     description:
-      'Run multi-step annotation campaigns with built-in quality control, team management, and progress tracking.',
-    href: '/annotation-campaigns',
-    label: 'Discover Annotation Campaigns',
+      "Run multi-step annotation campaigns with built-in quality control, team management, and progress tracking.",
+    href: "/annotation-campaigns",
+    label: "Discover Annotation Campaigns",
   },
   aiLab: {
-    title: 'Train models your way',
+    title: "Train models your way",
     description:
-      'Use pre-built pipelines for YOLO, SAM2, and more — or bring your own code with PyTorch, TensorFlow, or Hugging Face.',
-    href: '/ai-laboratory',
-    label: 'Explore the AI Laboratory',
+      "Use pre-built pipelines for YOLO, SAM2, and more — or bring your own code with PyTorch, TensorFlow, or Hugging Face.",
+    href: "/ai-laboratory",
+    label: "Explore the AI Laboratory",
   },
   experimentTracking: {
-    title: 'Track every experiment',
+    title: "Track every experiment",
     description:
-      'Log metrics, parameters, and artifacts automatically. Compare runs side by side and ship better models faster.',
-    href: '/experiment-tracking',
-    label: 'See Experiment Tracking',
+      "Log metrics, parameters, and artifacts automatically. Compare runs side by side and ship better models faster.",
+    href: "/experiment-tracking",
+    label: "See Experiment Tracking",
   },
   datasetManagement: {
-    title: 'Organize and version your datasets',
+    title: "Organize and version your datasets",
     description:
-      'Version, slice, and manage datasets with full traceability — from raw images to production-ready splits.',
-    href: '/dataset-management',
-    label: 'Explore Dataset Management',
+      "Version, slice, and manage datasets with full traceability — from raw images to production-ready splits.",
+    href: "/dataset-management",
+    label: "Explore Dataset Management",
   },
   datalake: {
-    title: 'Centralize your visual data',
+    title: "Centralize your visual data",
     description:
-      'Store, search, and organize millions of images in a single place with tags, metadata, and visual similarity search.',
-    href: '/datalake',
-    label: 'Explore the Datalake',
+      "Store, search, and organize millions of images in a single place with tags, metadata, and visual similarity search.",
+    href: "/datalake",
+    label: "Explore the Datalake",
   },
   modelDeployment: {
-    title: 'Deploy models to cloud or edge',
+    title: "Deploy models to cloud or edge",
     description:
-      'Ship computer vision models with auto-scaling serverless infrastructure and 99.9% uptime.',
-    href: '/model-deployment',
-    label: 'Explore Model Deployment',
+      "Ship computer vision models with auto-scaling serverless infrastructure and 99.9% uptime.",
+    href: "/model-deployment",
+    label: "Explore Model Deployment",
   },
   modelMonitoring: {
-    title: 'Monitor models in production',
+    title: "Monitor models in production",
     description:
-      'Detect data drift and anomalies in real time. Close the feedback loop and keep your models accurate.',
-    href: '/model-monitoring',
-    label: 'Explore Model Monitoring',
+      "Detect data drift and anomalies in real time. Close the feedback loop and keep your models accurate.",
+    href: "/model-monitoring",
+    label: "Explore Model Monitoring",
   },
   automatedPipelines: {
-    title: 'Automate your ML pipelines',
+    title: "Automate your ML pipelines",
     description:
-      'Set up continuous training and deployment with automated triggers, shadow deployments, and feedback loops.',
-    href: '/automated-pipelines',
-    label: 'Explore Automated Pipelines',
+      "Set up continuous training and deployment with automated triggers, shadow deployments, and feedback loops.",
+    href: "/automated-pipelines",
+    label: "Explore Automated Pipelines",
   },
   productOverview: {
-    title: 'Ship vision AI 10x faster',
+    title: "Ship vision AI 10x faster",
     description:
-      'Picsellia is the end-to-end MLOps platform for computer vision — from data management to production deployment.',
-    href: '/product-overview',
-    label: 'See the Platform',
+      "Picsellia is the end-to-end MLOps platform for computer vision — from data management to production deployment.",
+    href: "/product-overview",
+    label: "See the Platform",
   },
   manufacturing: {
-    title: 'Computer vision for manufacturing',
+    title: "Computer vision for manufacturing",
     description:
-      'See how Picsellia powers defect detection and quality control on production lines.',
-    href: '/industry/manufacturing',
-    label: 'See Manufacturing Solutions',
+      "See how Picsellia powers defect detection and quality control on production lines.",
+    href: "/industry/manufacturing",
+    label: "See Manufacturing Solutions",
   },
   agriculture: {
-    title: 'Computer vision for agriculture',
+    title: "Computer vision for agriculture",
     description:
-      'Monitor crop health, optimize yields, and improve animal welfare with AI-powered visual analysis.',
-    href: '/industry/agriculture',
-    label: 'See Agriculture Solutions',
+      "Monitor crop health, optimize yields, and improve animal welfare with AI-powered visual analysis.",
+    href: "/industry/agriculture",
+    label: "See Agriculture Solutions",
   },
   energy: {
-    title: 'Computer vision for energy',
+    title: "Computer vision for energy",
     description:
-      'Automate infrastructure inspection and predictive maintenance across your energy assets.',
-    href: '/industry/energy',
-    label: 'See Energy Solutions',
+      "Automate infrastructure inspection and predictive maintenance across your energy assets.",
+    href: "/industry/energy",
+    label: "See Energy Solutions",
   },
   wasteManagement: {
-    title: 'Computer vision for waste management',
+    title: "Computer vision for waste management",
     description:
-      'Automate waste sorting and boost recycling rates with real-time visual recognition.',
-    href: '/industry/waste-management',
-    label: 'See Waste Management Solutions',
+      "Automate waste sorting and boost recycling rates with real-time visual recognition.",
+    href: "/industry/waste-management",
+    label: "See Waste Management Solutions",
   },
 } as const satisfies Record<string, FeatureCTA>;
 
@@ -112,18 +112,18 @@ const CTA = {
 // Strong signal: the blog category directly indicates the best feature CTA.
 
 const CATEGORY_PRIMARY: Record<string, FeatureCTA> = {
-  'YOLO':              CTA.aiLab,
-  'Tutorial':          CTA.aiLab,
-  'Data Management':   CTA.datasetManagement,
-  'Data Science':      CTA.experimentTracking,
-  'MLOps':             CTA.automatedPipelines,
-  'Manufacturing':     CTA.manufacturing,
-  'Model Monitoring':  CTA.modelMonitoring,
-  'Edge AI':           CTA.modelDeployment,
-  'Onboarding':        CTA.productOverview,
-  'Product':           CTA.productOverview,
-  'News':              CTA.productOverview,
-  'Customer Story':    CTA.productOverview,
+  YOLO: CTA.aiLab,
+  Tutorial: CTA.aiLab,
+  "Data Management": CTA.datasetManagement,
+  "Data Science": CTA.experimentTracking,
+  MLOps: CTA.automatedPipelines,
+  Manufacturing: CTA.manufacturing,
+  "Model Monitoring": CTA.modelMonitoring,
+  "Edge AI": CTA.modelDeployment,
+  Onboarding: CTA.productOverview,
+  Product: CTA.productOverview,
+  News: CTA.productOverview,
+  "Customer Story": CTA.productOverview,
 };
 
 // ── Keyword rules for secondary CTA ─────────────────────────────────
@@ -133,7 +133,8 @@ const CATEGORY_PRIMARY: Record<string, FeatureCTA> = {
 // many CV posts mention industries in passing.
 const INDUSTRY_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
   {
-    keywords: /manufactur|defect.detect|quality.control|visual.inspect|production.line|\bPCB\b/i,
+    keywords:
+      /manufactur|defect.detect|quality.control|visual.inspect|production.line|\bPCB\b/i,
     cta: CTA.manufacturing,
   },
   {
@@ -141,7 +142,8 @@ const INDUSTRY_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
     cta: CTA.agriculture,
   },
   {
-    keywords: /energy.sector|pipeline.inspect|infrastructure.inspect|power.grid|solar.panel/i,
+    keywords:
+      /energy.sector|pipeline.inspect|infrastructure.inspect|power.grid|solar.panel/i,
     cta: CTA.energy,
   },
   {
@@ -222,6 +224,70 @@ const KEYWORD_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
   },
 ];
 
+// ── Conversion copy (category → headline + subtext) ─────────────────
+
+export interface ConversionCopy {
+  headline: string;
+  subtext: string;
+}
+
+const CATEGORY_CONVERSION: Record<string, ConversionCopy> = {
+  Tutorial: {
+    headline: "Ready to try this yourself?",
+    subtext:
+      "Get hands-on with Picsellia. Train, deploy, and monitor CV models from one platform.",
+  },
+  YOLO: {
+    headline: "Train YOLO models in minutes",
+    subtext:
+      "Picsellia comes with built-in Ultralytics pipelines. Upload your data and start training.",
+  },
+  MLOps: {
+    headline: "Put your MLOps into practice",
+    subtext:
+      "Stop stitching tools together. Get an end-to-end CV platform with built-in automation.",
+  },
+  "Data Management": {
+    headline: "Organize your visual data today",
+    subtext:
+      "Version datasets, manage annotations, and track lineage from one place.",
+  },
+  "Data Science": {
+    headline: "Ship models faster",
+    subtext:
+      "Track experiments, compare runs, and iterate faster with built-in tooling.",
+  },
+  Manufacturing: {
+    headline: "Automate visual inspection",
+    subtext:
+      "See how teams deploy defect detection models to production lines with Picsellia.",
+  },
+  "Model Monitoring": {
+    headline: "Keep your models accurate",
+    subtext: "Detect drift, close feedback loops, and retrain automatically.",
+  },
+  "Edge AI": {
+    headline: "Deploy to edge in minutes",
+    subtext:
+      "Optimize and ship models to edge devices with auto-scaling infrastructure.",
+  },
+  "Customer Story": {
+    headline: "Join teams already shipping CV",
+    subtext:
+      "See how companies like yours accelerate computer vision with Picsellia.",
+  },
+};
+
+const DEFAULT_CONVERSION: ConversionCopy = {
+  headline: "Ready to build computer vision?",
+  subtext:
+    "Go from raw images to production models. Free trial, no credit card, cancel anytime.",
+};
+
+export function getConversionCopy(category: string): ConversionCopy {
+  return CATEGORY_CONVERSION[category] ?? DEFAULT_CONVERSION;
+}
+
 /**
  * Given a blog post's metadata and content, return up to `limit` relevant
  * feature CTAs.
@@ -233,7 +299,12 @@ const KEYWORD_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
  * 3. Fallback to product overview if nothing matches.
  */
 export function getFeatureCTAs(
-  post: { title: string; description: string; category: string; content: string },
+  post: {
+    title: string;
+    description: string;
+    category: string;
+    content: string;
+  },
   limit = 2,
 ): FeatureCTA[] {
   const results: FeatureCTA[] = [];
