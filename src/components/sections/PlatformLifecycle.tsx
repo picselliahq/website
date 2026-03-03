@@ -13,7 +13,7 @@ const platformStages = [
     solution:
       "One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.",
     color: "var(--picsellia-blue)",
-    video: "/videos/data ingestion.webm",
+    video: "/videos/data curation.webm",
     features: [
       { name: "Datalake", href: "/datalake" },
       { name: "Dataset Management", href: "/dataset-management" },
