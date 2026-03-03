@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { track } from "@vercel/analytics";
+import { captureEvent } from "@/lib/posthog";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -24,6 +25,7 @@ export default function NewsletterSignup() {
 
       if (res.ok) {
         track("newsletter_subscribed");
+        captureEvent("newsletter_subscribed");
         setStatus("success");
         setEmail("");
       } else {

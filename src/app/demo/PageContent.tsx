@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { track } from "@vercel/analytics";
+import { captureEvent } from "@/lib/posthog";
 
 // Bot prevention: Mini annotation challenge with SVG illustrations
 const annotationChallenges = [
@@ -331,6 +332,9 @@ export default function DemoPage() {
 
       if (response.ok) {
         track("demo_form_submitted", {
+          company: formData.company,
+        });
+        captureEvent("demo_form_submitted", {
           company: formData.company,
         });
         const params = new URLSearchParams({
