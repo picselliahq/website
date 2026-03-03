@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { track } from "@vercel/analytics";
+import { captureEvent } from "@/lib/posthog";
 import type { ConversionCopy } from "@/lib/blog-cta";
 
 export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
@@ -22,14 +23,20 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
       <div className="flex flex-col sm:flex-row items-start gap-3 mb-4">
         <Link
           href="/trial"
-          onClick={() => track("blog_cta_trial_clicked")}
+          onClick={() => {
+            track("blog_cta_trial_clicked");
+            captureEvent("blog_cta_trial_clicked");
+          }}
           className="btn-primary px-5 py-2.5 text-sm"
         >
           Start Free Trial
         </Link>
         <Link
           href="/demo"
-          onClick={() => track("blog_cta_demo_clicked")}
+          onClick={() => {
+            track("blog_cta_demo_clicked");
+            captureEvent("blog_cta_demo_clicked");
+          }}
           className="btn-secondary px-5 py-2.5 text-sm"
         >
           Schedule Demo

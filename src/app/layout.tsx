@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import PostHogProvider from "@/components/providers/PostHogProvider";
 
 export const viewport: Viewport = {
   themeColor: "#0F1117",
@@ -67,9 +68,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Navigation />
-        <main>{children}</main>
-        <Footer />
+        <PostHogProvider>
+          <Navigation />
+          <main>{children}</main>
+          <Footer />
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>
