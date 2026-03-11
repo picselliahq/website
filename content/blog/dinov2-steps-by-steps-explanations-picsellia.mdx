@@ -59,7 +59,16 @@ For the sample-based search, they sample a number (K) of uncurated images neares
 
 After doing these steps, by the end of the retrieval process, the resulting dataset had 142 million curated images that the researchers named LVD-142M.
 
-## DINOv2 Network Architecture 
+<BlogInlineCTA
+  headline="Train and deploy DINOv2 models with Picsellia"
+  description="Go from dataset to deployment. Picsellia handles your training experiments, versioning, and model monitoring in one place."
+  ctaText="Start Training →"
+  ctaLink="/ai-laboratory"
+  blogSlug="dinov2-steps-by-steps-explanations-picsellia"
+  position="mid"
+/>
+
+## DINOv2 Network Architecture
 
 The DINOv2 model uses a discriminative, self-supervised method with a series of improvements to the initial [DINO](https://arxiv.org/abs/2104.14294) model. Its network architecture combines DINO and [iBOT](https://arxiv.org/abs/2111.07832) losses with the centering of SwAV. The researchers introduced a bag of tricks on this connected network that focused on accelerating and stabilizing the training at scale. It also enables the learning of features about the image at the image and patch levels. DINO and iBOT are both self-distilation models that use student-teacher architecture. However, their objectives differ. DINO provides an image-level objective since it uses the image features for training, while iBOT provides a patch-level objective since it uses the patch features of images for training. 
 
@@ -91,6 +100,15 @@ When presented with data that deviates significantly from its training distribut
 
 As a result, DINOv2 will occasionally still require performance enhancements to take on unfamiliar tasks successfully. It must be retrained using high-quality and diverse training data rather than fine-tuned with just a small amount of data to increase its vision intelligence and operate better across various scenarios. This process is time-consuming, computationally expensive, and may also require additional data or expertise.
 
-## Conclusion 
+<BlogInlineCTA
+  headline="Train and deploy DINOv2 models with Picsellia"
+  description="Go from dataset to deployment. Picsellia handles your training experiments, versioning, and model monitoring in one place."
+  ctaText="Start Training →"
+  ctaLink="/ai-laboratory"
+  blogSlug="dinov2-steps-by-steps-explanations-picsellia"
+  position="end"
+/>
+
+## Conclusion
 
 DINOv2 is currently the most advanced self-taught vision model. Its potential to change the field of computer vision will only expand as it evolves. It is an exciting time to work in computer vision, as it is one of the most promising new technologies in the field.

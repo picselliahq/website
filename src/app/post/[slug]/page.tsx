@@ -15,6 +15,7 @@ import NewsletterSignup from "@/components/blog/NewsletterSignup";
 import BlogCard from "@/components/blog/BlogCard";
 import BlogCTA from "@/components/blog/BlogCTA";
 import BlogConversionCTA from "@/components/blog/BlogConversionCTA";
+import BlogStickyBanner from "@/components/blog/BlogStickyBanner";
 import { getFeatureCTAs, getConversionCopy } from "@/lib/blog-cta";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import rehypeShiki from "./rehype-shiki";
@@ -242,6 +243,7 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         )}
       </div>
+      <BlogStickyBanner blogSlug={slug} />
     </article>
   );
 }
