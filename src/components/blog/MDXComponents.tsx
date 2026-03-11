@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import { Children, isValidElement, type ReactNode } from 'react';
 import Image from 'next/image';
+import BlogInlineCTA from './BlogInlineCTA';
 
 function slugify(text: string): string {
   return text
@@ -39,6 +40,7 @@ function createHeading(level: 2 | 3 | 4) {
 }
 
 export const mdxComponents: MDXComponents = {
+  BlogInlineCTA: BlogInlineCTA as unknown as React.ComponentType,
   h2: createHeading(2),
   h3: createHeading(3),
   h4: createHeading(4),
