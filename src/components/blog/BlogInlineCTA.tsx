@@ -8,19 +8,25 @@ import { track } from "@vercel/analytics";
 interface BlogInlineCTAProps {
   headline: string;
   description: string;
-  ctaText: string;
-  ctaLink: string;
+  socialProof?: string;
+  primaryButtonText: string;
+  primaryButtonUrl: string;
+  secondaryLinkText?: string;
+  secondaryLinkUrl?: string;
   blogSlug: string;
-  position: "mid" | "end";
+  ctaPosition: "mid" | "end";
 }
 
 export default function BlogInlineCTA({
   headline,
   description,
-  ctaText,
-  ctaLink,
+  socialProof = "Join hundreds of CV engineers who ship models faster with Picsellia",
+  primaryButtonText,
+  primaryButtonUrl,
+  secondaryLinkText = "or book a 15-min demo",
+  secondaryLinkUrl = "/demo",
   blogSlug,
-  position,
+  ctaPosition,
 }: BlogInlineCTAProps) {
   const ref = useRef<HTMLDivElement>(null);
   const hasFiredImpression = useRef(false);
@@ -35,8 +41,9 @@ export default function BlogInlineCTA({
           hasFiredImpression.current = true;
           captureEvent("blog_cta_viewed", {
             blog_slug: blogSlug,
-            cta_position: position,
+            cta_position: ctaPosition,
             cta_variant: headline,
+            cta_version: "v2",
             page_url: window.location.href,
           });
           observer.disconnect();
@@ -47,14 +54,15 @@ export default function BlogInlineCTA({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [blogSlug, position, headline]);
+  }, [blogSlug, ctaPosition, headline]);
 
   const handlePrimaryClick = () => {
     const props = {
       blog_slug: blogSlug,
-      cta_position: position,
+      cta_position: ctaPosition,
       cta_variant: headline,
-      destination_url: ctaLink,
+      destination_url: primaryButtonUrl,
+      cta_version: "v2",
       page_url: window.location.href,
     };
     captureEvent("blog_cta_demo_clicked", props);
@@ -64,10 +72,11 @@ export default function BlogInlineCTA({
   const handleSecondaryClick = () => {
     const props = {
       blog_slug: blogSlug,
-      cta_position: position,
+      cta_position: ctaPosition,
       cta_variant: headline,
       cta_type: "secondary",
-      destination_url: "/demo",
+      destination_url: secondaryLinkUrl,
+      cta_version: "v2",
       page_url: window.location.href,
     };
     captureEvent("blog_cta_demo_clicked", props);
@@ -77,57 +86,67 @@ export default function BlogInlineCTA({
   return (
     <div
       ref={ref}
-      className="not-prose rounded-2xl p-6 sm:p-8 my-10"
+      className="not-prose rounded-2xl p-6 sm:p-8 my-10 sm:my-12"
       style={{
-        backgroundColor: "var(--tertiary-system-background)",
-        borderLeft: "4px solid var(--picsellia-green)",
-        borderTop: "1px solid var(--border)",
-        borderRight: "1px solid var(--border)",
-        borderBottom: "1px solid var(--border)",
+        backgroundColor: "rgba(81, 86, 214, 0.06)",
+        borderLeft: "4px solid var(--system-indigo)",
+        borderTop: "1px solid rgba(81, 86, 214, 0.15)",
+        borderRight: "1px solid rgba(81, 86, 214, 0.15)",
+        borderBottom: "1px solid rgba(81, 86, 214, 0.15)",
       }}
     >
-      <p
-        className="text-xs font-semibold uppercase tracking-wider mb-3"
-        style={{ color: "var(--picsellia-green)" }}
-      >
-        From Picsellia
-      </p>
-      <h4 className="text-lg font-semibold text-label mb-2">{headline}</h4>
-      <p className="text-sm text-secondary mb-5 leading-relaxed">
+      <h4 className="text-xl sm:text-2xl font-bold text-label mb-2 leading-tight">
+        {headline}
+      </h4>
+      <p className="text-sm sm:text-base text-secondary mb-3 leading-relaxed">
         {description}
       </p>
+      {socialProof && (
+        <p
+          className="text-xs font-medium mb-5 tracking-wide"
+          style={{ color: "var(--system-gray)" }}
+        >
+          {socialProof}
+        </p>
+      )}
 
-      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3">
+      <div className="flex flex-col gap-3">
         <Link
-          href={ctaLink}
+          href={primaryButtonUrl}
           onClick={handlePrimaryClick}
-          className="btn-primary px-5 py-2.5 text-sm"
+          className="btn-primary w-full sm:w-auto sm:inline-flex px-8 text-center"
+          style={{
+            paddingTop: "14px",
+            paddingBottom: "14px",
+            fontSize: "0.9375rem",
+            fontWeight: 600,
+          }}
         >
-          {ctaText}
-        </Link>
-        <Link
-          href="/demo"
-          onClick={handleSecondaryClick}
-          className="inline-flex items-center gap-1 text-sm font-medium transition-opacity hover:opacity-80"
-          style={{ color: "var(--picsellia-green)" }}
-        >
-          Book a Demo
+          {primaryButtonText}
           <svg
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"
           >
             <path
-              d="M6 3L11 8L6 13"
+              d="M5 12H19M19 12L13 6M19 12L13 18"
               stroke="currentColor"
-              strokeWidth="1.5"
+              strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
+        </Link>
+        <Link
+          href={secondaryLinkUrl}
+          onClick={handleSecondaryClick}
+          className="text-sm underline underline-offset-2 transition-opacity hover:opacity-80 w-fit"
+          style={{ color: "var(--system-gray)" }}
+        >
+          {secondaryLinkText}
         </Link>
       </div>
     </div>
