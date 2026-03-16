@@ -15,7 +15,7 @@ const stages = [
       "One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.",
     pain: "Images scattered across cloud buckets, hard drives, and legacy systems.",
     color: "#43a3ff",
-    video: "/videos/data curation.webm",
+    video: "/videos/datalake-home.webm",
     features: [
       { name: "Datalake", href: "/datalake" },
       { name: "Dataset Management", href: "/dataset-management" },
@@ -32,7 +32,7 @@ const stages = [
       "AI-assisted labeling cuts annotation time by 10x. Built-in quality control ensures consistent, high-quality training data.",
     pain: "Manual annotation is slow, expensive, and error-prone.",
     color: "#ff9f0a",
-    video: "/videos/labeling tool animation.webm",
+    video: "/videos/labeling-home.webm",
     features: [
       { name: "Labeling Tool", href: "/labeling-tool" },
       { name: "Annotation Campaigns", href: "/annotation-campaigns" },
@@ -49,7 +49,7 @@ const stages = [
       "Every experiment tracked, every model versioned, every result reproducible. Compare runs side-by-side and never lose work again.",
     pain: "Hundreds of experiments but you can't reproduce your best results.",
     color: "#33ab68",
-    video: "/videos/experiment tracking animation.webm",
+    video: "/videos/experiment-home.webm",
     features: [
       { name: "AI Laboratory", href: "/ai-laboratory" },
       { name: "Experiment Tracking", href: "/experiment-tracking" },
@@ -67,7 +67,7 @@ const stages = [
       "Deploy with confidence. Real-time monitoring catches drift before it impacts users. One click from lab to production.",
     pain: "Your model works in the lab but fails in production.",
     color: "#ff453a",
-    video: "/videos/deployment monitoring .webm",
+    video: "/videos/deployment-home.webm",
     features: [
       { name: "Model Deployment", href: "/model-deployment" },
       { name: "Model Monitoring", href: "/model-monitoring" },
@@ -94,7 +94,9 @@ export default function PlatformV2() {
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
             One platform.
             <br />
-            <span className="text-[var(--secondary-label)]">Zero friction.</span>
+            <span className="text-[var(--secondary-label)]">
+              Zero friction.
+            </span>
           </h2>
           <Link
             href="/product-overview"
@@ -154,7 +156,9 @@ export default function PlatformV2() {
                     className="text-sm font-medium transition-colors"
                     style={{
                       color:
-                        active === i ? "var(--label)" : "var(--secondary-label)",
+                        active === i
+                          ? "var(--label)"
+                          : "var(--secondary-label)",
                     }}
                   >
                     {s.label}

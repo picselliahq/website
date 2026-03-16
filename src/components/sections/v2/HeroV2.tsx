@@ -21,10 +21,10 @@ const customerLogos: { name: string; src: string }[] = [
 ];
 
 const metrics = [
-  { value: "500M+", label: "Images indexed", mono: true },
-  { value: "5,247", label: "Models trained", mono: true },
-  { value: "1.2B", label: "Predictions monitored", mono: true },
-  { value: "99.97%", label: "Uptime (90d)", mono: true },
+  { value: "2.4B+", label: "Images indexed", mono: true },
+  { value: "48,000+", label: "Models trained", mono: true },
+  { value: "12B+", label: "Predictions monitored", mono: true },
+  { value: "150+", label: "Vision AI teams", mono: true },
 ];
 
 export default function HeroV2() {
