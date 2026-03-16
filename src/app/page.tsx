@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Hero from "@/components/sections/Hero";
-import PlatformLifecycle from "@/components/sections/PlatformLifecycle";
-import UseCases from "@/components/sections/UseCases";
-import Integrations from "@/components/sections/Integrations";
-import CTA from "@/components/sections/CTA";
-import EnterpriseReady from "@/components/sections/EnterpriseReady";
+import HeroV2 from "@/components/sections/v2/HeroV2";
+import PlatformV2 from "@/components/sections/v2/PlatformV2";
+import UseCasesV2 from "@/components/sections/v2/UseCasesV2";
+import EnterpriseV2 from "@/components/sections/v2/EnterpriseV2";
+import IntegrationsV2 from "@/components/sections/v2/IntegrationsV2";
+import CTAV2 from "@/components/sections/v2/CTAV2";
+import BackgroundV2 from "@/components/sections/v2/BackgroundV2";
 import { JsonLd, organizationJsonLd } from "@/lib/json-ld";
 
 export const metadata: Metadata = {
@@ -26,12 +27,13 @@ export default function Home() {
   return (
     <>
       <JsonLd data={organizationJsonLd()} />
-      <Hero />
-      <EnterpriseReady />
-      <PlatformLifecycle />
-      <UseCases />
-      <Integrations />
-      <CTA />
+      <BackgroundV2 />
+      <HeroV2 />
+      <PlatformV2 />
+      <UseCasesV2 />
+      <EnterpriseV2 />
+      <IntegrationsV2 />
+      <CTAV2 />
     </>
   );
 }
