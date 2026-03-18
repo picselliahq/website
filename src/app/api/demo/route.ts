@@ -10,7 +10,11 @@ const DemoSchema = z.object({
   phone: z.string().max(50).optional().default(''),
   message: z.string().max(2000).optional().default(''),
   pageUri: z.string().max(500).optional().default(''),
+  website: z.string().optional().default(''),
+  formLoadedAt: z.number().optional(),
 });
+
+const MIN_SUBMIT_TIME_MS = 3000;
 
 export async function POST(req: NextRequest) {
   try {
@@ -25,6 +29,14 @@ export async function POST(req: NextRequest) {
     }
 
     const data = result.data;
+
+    // Bot prevention: reject if honeypot filled or form submitted too fast
+    if (data.website) {
+      return NextResponse.json({ success: true });
+    }
+    if (data.formLoadedAt && Date.now() - data.formLoadedAt < MIN_SUBMIT_TIME_MS) {
+      return NextResponse.json({ success: true });
+    }
 
     const portalId = process.env.HUBSPOT_PORTAL_ID;
     const formId = process.env.HUBSPOT_DEMO_FORM_ID;
