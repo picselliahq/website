@@ -26,6 +26,7 @@ const footerLinks = {
     { label: "FAQ", href: "/faq" },
     { label: "Picsellia vs Roboflow", href: "/compare/roboflow" },
     { label: "Picsellia vs Labelbox", href: "/compare/labelbox" },
+    { label: "Picsellia vs Encord", href: "/compare/encord" },
   ],
   Company: [
     { label: "About", href: "/about-us" },

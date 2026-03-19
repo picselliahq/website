@@ -366,6 +366,11 @@ const compareMenu = [
     href: "/compare/labelbox",
     description: "Full platform vs annotation-only",
   },
+  {
+    label: "Picsellia vs Encord",
+    href: "/compare/encord",
+    description: "Full CVOps vs data-centric annotation",
+  },
 ];
 
 // Resources menu
