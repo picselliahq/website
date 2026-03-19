@@ -1,0 +1,14 @@
+<svg width="600" height="600" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="600" rx="120" fill="#ffffff"/>
+  <!--
+    Labelbox isometric cube logo (black cube, white L cutout on left face)
+    Hex vertices: Top(300,75) TR(510,195) BR(510,405) Bot(300,525) BL(90,405) TL(90,195)
+    Center: (300,300)
+  -->
+  <!-- Full black hexagonal cube -->
+  <polygon points="300,75 510,195 510,405 300,525 90,405 90,195" fill="#0a0a0a"/>
+  <!-- White L-shaped cutout on the left face -->
+  <!-- Left face corners: TL(90,195) Center(300,300) Bot(300,525) BL(90,405) -->
+  <!-- L polygon mapped onto the isometric parallelogram -->
+  <polygon points="90,216 164,253 164,358 233,392 233,439 90,367" fill="#ffffff"/>
+</svg>
