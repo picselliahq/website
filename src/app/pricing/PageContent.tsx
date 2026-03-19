@@ -201,29 +201,6 @@ export default function PricingPage() {
               to production with volume discounts that grow with you.
             </p>
 
-            {/* Billing toggle */}
-            <div className="inline-flex items-center gap-3 p-1.5 rounded-full bg-[var(--tertiary-system-background)] border border-[var(--border)]">
-              <button
-                onClick={() => setBillingCycle("monthly")}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  billingCycle === "monthly"
-                    ? "bg-[var(--picsellia-green)] text-white"
-                    : "text-[var(--secondary-label)] hover:text-[var(--label)]"
-                }`}
-              >
-                Monthly
-              </button>
-              <button
-                onClick={() => setBillingCycle("annual")}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  billingCycle === "annual"
-                    ? "bg-[var(--picsellia-green)] text-white"
-                    : "text-[var(--secondary-label)] hover:text-[var(--label)]"
-                }`}
-              >
-                Annual
-              </button>
-            </div>
           </div>
         </div>
       </section>
@@ -238,11 +215,37 @@ export default function PricingPage() {
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
               Choose your modules
             </h2>
-            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto mb-8">
               Start with Data Engine, then add VisionAI Factory and Reliability
               Engine as needed. Each module includes 3 user seats with the
               option to add more.
             </p>
+
+            {/* Billing toggle */}
+            <div className="inline-flex items-center gap-3 p-1.5 rounded-full bg-[var(--tertiary-system-background)] border border-[var(--border)]">
+              <button
+                onClick={() => billingCycle !== "monthly" && setBillingCycle("monthly")}
+                aria-pressed={billingCycle === "monthly"}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  billingCycle === "monthly"
+                    ? "bg-[var(--picsellia-green)] text-white shadow-sm cursor-default"
+                    : "text-[var(--secondary-label)] hover:text-[var(--label)] cursor-pointer"
+                }`}
+              >
+                Monthly
+              </button>
+              <button
+                onClick={() => billingCycle !== "annual" && setBillingCycle("annual")}
+                aria-pressed={billingCycle === "annual"}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  billingCycle === "annual"
+                    ? "bg-[var(--picsellia-green)] text-white shadow-sm cursor-default"
+                    : "text-[var(--secondary-label)] hover:text-[var(--label)] cursor-pointer"
+                }`}
+              >
+                Annual
+              </button>
+            </div>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-6 mb-12">

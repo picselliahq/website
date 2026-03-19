@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import { captureEvent } from "@/lib/posthog";
+import { track } from "@vercel/analytics";
 
 const customerLogos: { name: string; src: string }[] = [
   { name: "SGS", src: "/images/customers/sgs.svg" },
@@ -102,6 +104,15 @@ export default function HeroV2() {
             <Link
               href="/trial"
               className="btn-primary px-7 py-3.5 text-[15px] group"
+              onClick={() => {
+                captureEvent("homepage_cta_trial_clicked", {
+                  cta_position: "hero",
+                  destination_url: "/trial",
+                });
+                track("homepage_cta_trial_clicked", {
+                  cta_position: "hero",
+                });
+              }}
             >
               Start Free Trial
               <svg
@@ -121,6 +132,15 @@ export default function HeroV2() {
             <Link
               href="/demo"
               className="btn-secondary px-7 py-3.5 text-[15px]"
+              onClick={() => {
+                captureEvent("homepage_cta_demo_clicked", {
+                  cta_position: "hero",
+                  destination_url: "/demo",
+                });
+                track("homepage_cta_demo_clicked", {
+                  cta_position: "hero",
+                });
+              }}
             >
               Request Demo
             </Link>
