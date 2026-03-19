@@ -44,6 +44,15 @@ TIFF is commonly used in the printing and publishing industries because of its a
 
 Although it is an efficient and compact format to store, transfer, or archive [vision data across pipelines or databases](/datalake), it also has the potential to slow down training and inference due to its large file sizes, even when compressed. Some CV system architectures explore storing their data in TIFF format and passing it through a pipeline to convert it to JPEG or PNG for faster training. Storage, file decoding formats, processing efficiency, dataset size limits, etc., are critical factors when using TIFF to build a CV system. 
 
+<BlogInlineCTA
+  headline="Handle TIFF and any image format at scale"
+  description="Picsellia supports TIFF, JPEG, PNG, and more — with automatic format handling, metadata preservation, and visual search across millions of images."
+  primaryButtonText="Try Free — Import Your TIFF Data →"
+  primaryButtonUrl="/trial"
+  blogSlug="tiff-tag-image-file-format"
+  ctaPosition="mid"
+/>
+
 ## Using TIFF Images for Training
 
 The common processes involved in CV-based training are still the same with TIFF images, from the reading to training. You can employ the progressive strategy of using image libraries like Pillow, OpenCV, rasterio, etc., to read, visualize, and preprocess the TIFF images and augment them. Then, convert to tensors and train them with a machine learning framework.
@@ -83,3 +92,12 @@ export KAGGLE_CONFIG_DIR=~/.kaggle/ 
 ## Conclusion
 
 In conclusion, the TIFF format emerges as a powerful tool in computer vision, with strong support for extensive metadata necessary for data organization and analysis. Nevertheless, despite compression, it still tends to produce relatively large files, which can be problematic for storage and processing efficiency. Despite these limitations, the format is an attractive option for specific computer vision applications because of its strengths, particularly in storing detailed information and extensive metadata. For academics and practitioners to fully utilize TIFF while considering resource implications, it is essential to analyze these tradeoffs carefully.
+
+<BlogInlineCTA
+  headline="Build CV pipelines that handle any format"
+  description="From TIFF to JPEG to DICOM — Picsellia manages your image data end-to-end with versioning, annotation, and training pipelines. No format headaches."
+  primaryButtonText="Try Free — Start Your CV Pipeline →"
+  primaryButtonUrl="/trial"
+  blogSlug="tiff-tag-image-file-format"
+  ctaPosition="end"
+/>
