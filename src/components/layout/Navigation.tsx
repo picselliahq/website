@@ -354,6 +354,25 @@ const solutionsMenu = {
   ],
 };
 
+// Compare pages
+const compareMenu = [
+  {
+    label: "Picsellia vs Roboflow",
+    href: "/compare/roboflow",
+    description: "End-to-end CVOps vs developer toolkit",
+  },
+  {
+    label: "Picsellia vs Labelbox",
+    href: "/compare/labelbox",
+    description: "Full platform vs annotation-only",
+  },
+  {
+    label: "Picsellia vs Encord",
+    href: "/compare/encord",
+    description: "Full CVOps vs data-centric annotation",
+  },
+];
+
 // Resources menu
 const resourcesMenu = [
   {
@@ -768,6 +787,43 @@ export default function Navigation() {
                         </Link>
                       ))}
                     </div>
+                    {/* Compare section */}
+                    <div className="px-5 pb-5 pt-2 border-t border-[var(--border)]">
+                      <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-2 px-2.5">
+                        Compare
+                      </div>
+                      {compareMenu.map((item) => (
+                        <Link
+                          key={item.label}
+                          href={item.href}
+                          className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-[var(--tertiary-system-background)] transition-colors group"
+                        >
+                          <div className="text-[var(--tertiary-label)] group-hover:text-[var(--label)] transition-colors mt-0.5">
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                              />
+                            </svg>
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-sm font-medium text-[var(--label)] group-hover:text-[var(--picsellia-green)] transition-colors">
+                              {item.label}
+                            </div>
+                            <div className="text-[11px] text-[var(--tertiary-label)] leading-tight mt-0.5">
+                              {item.description}
+                            </div>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
@@ -901,6 +957,23 @@ export default function Navigation() {
                   href={item.href}
                   target={item.external ? "_blank" : undefined}
                   rel={item.external ? "noopener noreferrer" : undefined}
+                  className="block py-2 px-4 text-sm text-[var(--label)]"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Compare */}
+            <div className="py-3 border-t border-[var(--border)]">
+              <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3 px-2">
+                Compare
+              </div>
+              {compareMenu.map((item) => (
+                <Link
+                  key={item.label}
+                  href={item.href}
                   className="block py-2 px-4 text-sm text-[var(--label)]"
                   onClick={() => setMobileOpen(false)}
                 >

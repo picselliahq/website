@@ -24,6 +24,9 @@ const footerLinks = {
     { label: "Use Cases", href: "/use-cases" },
     { label: "Documentation", href: "https://documentation.picsellia.com" },
     { label: "FAQ", href: "/faq" },
+    { label: "Picsellia vs Roboflow", href: "/compare/roboflow" },
+    { label: "Picsellia vs Labelbox", href: "/compare/labelbox" },
+    { label: "Picsellia vs Encord", href: "/compare/encord" },
   ],
   Company: [
     { label: "About", href: "/about-us" },
