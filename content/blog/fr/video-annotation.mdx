@@ -1,0 +1,87 @@
+---
+
+title: "Qu'est-ce que l'annotation video pour la vision par ordinateur ?"
+description: "Vous recherchez des services d'annotation video et de vision par ordinateur ? Ameliorez vos modeles d'algorithmes IA avec des donnees precises et completes."
+date: "2024-01-22"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/video-annotation-hero.png"
+imageAlt: "What is video annotation for computer vision?"
+published: true
+tags: ["annotation", "computer-vision", "data-quality", "dataset-management", "edge-deployment", "model-training", "object-detection", "video-analysis"]
+---
+
+L'etiquetage video, ou annotations video, est le composant essentiel du [dataset video pour l'entrainement des modeles de vision par ordinateur](/dataset-management). Les annotations video contiennent des informations sur les zones de pixels provenant d'un flux continu de pixels pertinents pour une tache de vision par ordinateur. Les processus et methodes d'annotation video sont differents en raison de la nature complexe des donnees video ; ils peuvent presenter une couche supplementaire d'informations complexes qui ameliore la qualite des donnees et la robustesse, augmentant les performances des modeles de vision par ordinateur pour diverses taches.
+
+Cet article se concentre sur les particularites uniques de l'annotation video pour les taches de vision par ordinateur necessitant le suivi d'objets.
+
+![Video annotation 65afd208f5a96b7b71ce940d zxiwuuqui3bidzbwm63t3sad0oq4qryge6kkm9mxespa 7fnvfjhtqks xfa pxjdwljg3jruic9j0fufdx4vwqazram35jrpbpp0cjh6zw5glxwahpsleet4h9n9mhort4wyovkaldsdzl06w jexu](/images/blog/video-annotation-65afd208f5a96b7b71ce940d_ZxIwuUqui3BIDZbwm63T3SAD0oq4qrYge6kKM9mXeSpa-7FnvFjHtQKs_xfa_pxJdWlJG3jruIc9j0fufdx4VWQAzRAM35jrpbpP0CJh6Zw5gLXwaHPSleET4h9n9MHoRT4WYoVkAlDsDzL06w-JEXU.png)
+*annotation video de rue*
+
+## Quel est l'objectif de l'annotation video ?
+
+L'annotation video en vision par ordinateur implique d'inserer soigneusement un large eventail d'etiquettes dans les trames video en annotant ou en masquant les pixels pertinents pour tout, de la simple detection d'objets aux taches complexes de suivi d'objets. Vous pouvez ameliorer la creation et l'efficacite des systemes de vision par ordinateur en utilisant des annotations video detaillees.
+
+Les annotations video identifient les objets et fournissent plus d'informations sur l'action et le contexte d'un objet, comme le comportement probable et la trajectoire de l'objet en fonction de l'environnement dans lequel il evolue. Considerons un scenario ou un seul instantane d'un athlete lancant un javelot. Il omet les informations sur la trajectoire et la vitesse du javelot lance. En revanche, si vous avez un enregistrement video de l'evenement, un modele de vision par ordinateur pourrait evaluer la sequence de trames, fournissant des informations sur la direction precise de la trajectoire du javelot et facilitant l'estimation de sa vitesse par rapport aux autres elements du footage. Cette capacite complexe souligne l'avantage d'utiliser des donnees video plutot que des photos statiques lors de l'annotation pour des taches specifiques de vision par ordinateur necessitant la comprehension des caracteristiques dynamiques du mouvement.
+
+‍
+
+### Annotations video pour le suivi d'objets
+
+L'annotation video peut ameliorer significativement la capacite des modeles de vision par ordinateur pour des taches comme le suivi d'objets, la detection d'evenements et la reconnaissance d'actions. Ces taches de vision par ordinateur necessitent une identification coherente des memes objets dans plusieurs trames. Puisque les donnees d'entrainement devraient deja avoir cette propriete ou capacite complexe, le suivi d'objets compense le besoin de methodes robustes de detection d'objets avec l'annotation video.
+
+Les taches de detection d'objets se concentrent sur l'identification et la localisation de multiples objets au sein d'une image ou d'une trame video. Elles se preoccupent principalement de l'analyse des trames individuelles de maniere isolee. Chaque trame est traitee independamment, et l'objectif est d'identifier les objets au sein de cette trame. Cela est a la fois gourmand en calcul et en temps pour les methodes robustes de detection d'objets. D'une part, la frequence d'images disponible pourrait ne pas etre en temps reel, ou vous pourriez manquer des trames. Par consequent, la technique manque de capacite a gerer les objets qui se chevauchent, les echelles d'objets variables et les occlusions.
+
+Les taches de suivi d'objets etendent ce concept en maintenant l'identite des objets a travers de multiples trames dans une sequence video. Le suivi d'objets est souvent applique comme une etape subsequente a la detection d'objets. Une fois les objets detectes dans la premiere trame, il initialise leur suivi a travers les trames successives.
+
+Tout en maintenant l'identite d'un objet d'une trame a la suivante, il gere les defis comme les changements d'apparence des objets et les occlusions. Le suivi d'objets prend en compte la continuite temporelle des objets. Il est crucial dans les scenarios ou l'objectif est de surveiller le mouvement ou le comportement d'objets specifiques au fil du temps, comme dans la surveillance, les systemes de vehicules autonomes, etc.
+
+En vision par ordinateur, le type d'annotation et le format de donnees utilises influencent l'efficacite et la precision des modeles lors de l'execution de taches specifiques. Un suivi d'objets robuste repose sur les annotations video. Leurs donnees aident vos modeles a gerer le contexte, la mobilite et meme la visibilite partielle, de sorte que vos performances de suivi seront precises, robustes et fiables.
+
+‍
+
+### Quelle est la difference entre l'annotation d'images et l'annotation video ?
+
+Les modeles de vision par ordinateur sont generalement entraines avec des annotations obtenues a partir d'images ou de videos. Bien que vous puissiez utiliser les annotations d'images et de videos pour developper des modeles pour la meme tache de vision par ordinateur, comme la detection d'objets et la segmentation d'objets, elles ont des approches, des processus, des avantages et des defis distincts.
+
+L'annotation d'images contient des informations sur une classe d'objet specifique, mais les informations d'annotation pour chaque objet proviennent de trames statiques de differents exemples dans differents contextes. Les modeles de vision par ordinateur ne peuvent pas pleinement developper une comprehension de l'action de l'objet car les autres parties de la trame ne sont pas fournies. Integrer ce niveau de connaissance dans les modeles de vision par ordinateur avec l'annotation d'images necessiterait de collecter des trames du meme contenu et de les annoter en serie dans l'ordre des occurrences, ce qui est un processus tres fastidieux.
+
+Habituellement, l'annotation video necessite generalement plus d'efforts en raison de la complexite du flux optique (mouvement de l'image) et de l'occlusion pour tirer des informations significatives sur l'action et le contexte de l'objet dans les donnees video. Les annotations video exploitent la technique d'interpolation pour extraire des informations et une comprehension sequentielles. Elle suit les objets se deplacant et changeant a travers de multiples trames, accelerant le processus d'annotation. Techniquement, l'annotation des objets recoit des identifiants lors de leur premiere apparition dans toute sequence de trames. L'identifiant d'un objet des trames precedentes est utilise pour suivre et predire son emplacement dans la trame suivante. C'est ce qu'on appelle l'identification et la re-identification d'objets.
+
+> *"Le flux optique et le contexte temporel sont des aspects critiques de l'annotation video qui la distinguent de l'annotation d'images."*
+
+‍
+
+## Comment annoter une video pour la vision par ordinateur ?
+
+Les annotations video sont extraites manuellement ou automatiquement a l'aide d'outils d'annotation. Les annotateurs doivent considerer plus d'informations et faire des inferences basees sur le contexte temporel en analysant le flux optique et les changements d'apparence des objets a travers les trames. Cela commence par l'echantillonnage de la video en trames d'images, ce qui implique generalement de prendre un instantane de la video a differents moments. Cet echantillonnage se fait en prenant des instantanes a la frequence d'images par seconde de la video, et choisir un taux d'extraction optimal des trames par seconde est crucial pour la qualite des donnees. Parcourir les instantanes est similaire a regarder une image en mouvement.
+
+Supposons que vous ayez une video de 16 secondes et que vous soyez configure pour prendre des instantanes a 30 trames par seconde. Vous obtiendriez 480 images d'une tache specifique, avec des positions et des instances dynamiques. Il est recommande d'utiliser un FPS plus faible, comme deux trames par seconde, pour les activites de reconnaissance d'objets afin de produire de la rarete et une faible repetition ; neanmoins, pour les taches de suivi video, il est conseille d'explorer l'utilisation d'un nombre plus eleve de trames par seconde pour aider a integrer le flux optique. En utilisant un masque ou le type d'annotation requis (c'est-a-dire des cadres englobants, des ellipses, des polygones, des points cles, des cuboides 3D, etc.) pour la tache de vision par ordinateur, vous pouvez ensuite annoter les objets et interpoler l'annotation a travers les trames cles.
+
+Les annotateurs ou les outils d'annotation aident a resoudre les problemes d'occlusion dans les taches de vision par ordinateur en examinant le flux optique et les alterations de l'apparence des objets a travers les trames consecutives. Cela inclut la detection d'objets obstrues et l'inference de leur presence et de leur mouvement, meme ceux partiellement caches. De plus, les annotateurs peuvent classifier les zones occlusees en mettant en evidence les emplacements ou les objets sont susceptibles d'etre trouves, en utilisant des informations contextuelles et des signaux de mouvement. La capacite a suivre les objets occlus permet la preservation de l'identite de l'objet, garantissant la coherence dans la reconnaissance meme lorsque les objets sont partiellement ou temporairement caches de la vue. Ces fonctions ameliorent la robustesse des systemes de vision par ordinateur.
+
+‍
+
+### Fonctionnalites des outils d'annotation video
+
+Il existe de nombreux criteres importants a considerer lors du choix d'un outil d'annotation pour votre projet. L'efficacite et les facteurs operationnels sont deux piliers majeurs de preoccupation. Tout depend de la complexite de votre mission d'annotation video. Etant donne que les outils d'annotation video ont des fonctionnalites differentes, il y a des compromis d'efficacite selon les cas d'usage. Voici quelques fonctionnalites que certains outils populaires d'annotation video fournissent :
+
+- Support de tout format d'annotation
+- Support de tous les types d'annotation : boites, polygones, polylignes, points cles et primitives.
+- Pipelines de revision humaine simplifies pour augmenter l'efficacite des donnees d'entrainement et de la gestion de projet
+- Support de l'interpolation de formes entre les trames cles
+- Rendu et annotation de videos et de sequences d'images de toute longueur
+- Fourniture d'un moyen facile d'annoter des videos rapidement tout en maintenant une frequence d'images elevee, une bonne resolution et en supportant de nombreuses sequences
+- Support de sous-classifications d'etiquettes complexes grace a la fourniture de fonctionnalites d'ontologie robustes
+- Mise en evidence automatisee des erreurs pour faciliter le processus de debogage et de correction des problemes.
+
+Sur le plan operationnel, certaines solutions sont plus adaptees aux annotateurs individuels. En revanche, d'autres offrent des fonctionnalites de collaboration en equipe comme les mises a jour en temps reel et le controle d'acces, donc tout depend de la taille de l'equipe et des besoins de collaboration. Les contraintes financieres doivent egalement etre soigneusement prises en compte. Bien que les solutions open-source puissent etre peu couteuses, elles peuvent necessiter des connaissances techniques. D'autre part, les produits premium offrent plus de fonctionnalites et de support, mais ils sont accompagnes d'un prix de licence. Enfin, choisissez une solution qui fonctionne bien avec les frameworks de machine learning et les systemes de gestion de donnees que vous utilisez deja ; cela fournira une transition fluide d'un systeme a l'autre.
+
+## Conclusion
+
+Contrairement aux portraits statiques des images, les videos presentent un monde dynamique ou les occlusions, le flou de mouvement et les complexites temporelles dansent dans l'ombre. Cet article a mis en lumiere les particularites uniques de l'annotation video pour les taches necessitant le suivi d'objets. Nous avons explore l'interaction complexe entre les informations temporelles, les indices de mouvement et les interactions entre objets, soulignant en quoi ils different de la simplicite instantanee de l'etiquetage d'images. Nous avons constate comment meme des nuances subtiles dans une annotation peuvent profondement impacter la comprehension du parcours d'un objet au sein d'une video.
+
+Dans la prochaine partie de cet article, nous traverserons le paysage diversifie des plateformes d'annotation video. Embarquez pour une expedition de benchmarking rigoureuse, cartographiant les forces et les faiblesses des differents outils d'annotation video. Nous opposerons l'automatisation a la precision, la collaboration a l'efficacite, et le cout a la capacite, devoilant les compromis au coeur de chaque outil. Plongez plus profondement dans les meilleurs outils d'annotation video.
+
+‍

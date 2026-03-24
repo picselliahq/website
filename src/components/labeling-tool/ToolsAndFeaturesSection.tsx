@@ -1,6 +1,17 @@
-import { shortcuts } from './data';
+import { useTranslations } from 'next-intl';
 
 export default function ToolsAndFeaturesSection() {
+  const t = useTranslations('labelingTool.tools');
+
+  const shortcuts = [
+    { keys: ['D'], actionKey: 'drawMode' },
+    { keys: ['Esc'], actionKey: 'selectionMode' },
+    { keys: ['R'], actionKey: 'resetZoom' },
+    { keys: ['O', 'P'], actionKey: 'navigateAssets' },
+    { keys: ['\u2318', 'S'], actionKey: 'saveAnnotations' },
+    { keys: ['Del'], actionKey: 'deleteShape' },
+  ] as const;
+
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--picsellia-green)]/5 rounded-full blur-[100px]" />
@@ -8,14 +19,13 @@ export default function ToolsAndFeaturesSection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Tooling
+            {t('badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Built for speed and precision
+            {t('title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Keyboard shortcuts, smart selection, and intuitive controls
-            designed to maximize annotation throughput.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -23,15 +33,15 @@ export default function ToolsAndFeaturesSection() {
           {/* Keyboard Shortcuts */}
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--picsellia-green)]">KEYBOARD SHORTCUTS</span>
+              <span className="text-xs font-medium text-[var(--picsellia-green)]">{t('keyboardShortcuts')}</span>
               <svg className="w-4 h-4 text-[var(--tertiary-label)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
               </svg>
             </div>
             <div className="p-4 space-y-2">
               {shortcuts.map((shortcut) => (
-                <div key={shortcut.action} className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[var(--quaternary-system-fill)] transition-colors">
-                  <span className="text-sm text-[var(--label)]">{shortcut.action}</span>
+                <div key={shortcut.actionKey} className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-[var(--quaternary-system-fill)] transition-colors">
+                  <span className="text-sm text-[var(--label)]">{t(shortcut.actionKey)}</span>
                   <div className="flex items-center gap-1">
                     {shortcut.keys.map((key, i) => (
                       <span key={i}>
@@ -50,7 +60,7 @@ export default function ToolsAndFeaturesSection() {
           {/* Navigation & Controls */}
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-              <span className="text-xs font-medium text-[var(--system-indigo)]">NAVIGATION</span>
+              <span className="text-xs font-medium text-[var(--system-indigo)]">{t('navigation')}</span>
             </div>
             <div className="p-6 space-y-6">
               <div className="flex items-start gap-4">
@@ -60,8 +70,8 @@ export default function ToolsAndFeaturesSection() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">Scroll to Zoom</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">Use scroll wheel to zoom in/out. Press spacebar to drag and pan around the canvas.</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('scrollToZoomTitle')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('scrollToZoomDesc')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -71,8 +81,8 @@ export default function ToolsAndFeaturesSection() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">Asset Gallery</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">Browse your dataset queue at the bottom. Navigate with O/P keys or click thumbnails.</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('assetGalleryTitle')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('assetGalleryDesc')}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -82,8 +92,8 @@ export default function ToolsAndFeaturesSection() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">Group Selection</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">Draw rectangle to select multiple shapes. Select by label for batch operations.</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('groupSelectionTitle')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('groupSelectionDesc')}</p>
                 </div>
               </div>
             </div>

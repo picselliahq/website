@@ -1,0 +1,65 @@
+---
+
+title: "Découvrez piSAM : le dernier ajout à la boîte à outils de vision par ordinateur de Picsellia"
+description: "Découvrez piSAM, le Picsellia Segment Anything Model. piSAM offre une segmentation d'images rapide et précise en un seul clic. Améliorez vos projets de Vision AI."
+date: "2024-07-07"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/pisam-picsellia-segment-anything-model-hero.png"
+imageAlt: "Meet piSAM: The Newest Addition to Picsellia"
+published: true
+tags: ["annotation", "computer-vision", "data-management", "dataset-management", "deep-learning", "foundation-models", "model-training", "object-detection"]
+---
+
+Découvrez piSAM, le dernier ajout à Picsellia, ici pour transformer la façon dont vous interagissez avec les images. piSAM, ou le Picsellia Segment Anything Model, offre une approche de la segmentation d'images qui permet aux utilisateurs de sélectionner ou de mettre en surbrillance des objets dans une image en un seul clic. piSAM simplifie le processus d'identification et d'isolation des objets, le rendant efficace, rapide et fiable.
+
+Concrètement, piSAM vous permet de sélectionner ou de mettre en surbrillance des objets dans une image plus facilement que jamais. Que vous ayez affaire à des scènes complexes ou à de multiples objets, piSAM assure une segmentation précise et rapide, transformant la façon dont vous gérez vos images.
+
+‍
+
+![piSAM segment anything model demo in Picsellia](https://cdn.prod.website-files.com/60d1a7f6aeb33c5c595468b4/668eab14ab572e9c3fa1fcd3_Enregistrementdelecran2024-06-25a16.13.25-ezgif.com-optimize%20(1).gif)
+
+### Qu'est-ce que piSAM ?
+
+#### **Comprendre les foundation models**
+
+Les foundation models en traitement du langage naturel ont établi une nouvelle norme en apprenant à partir de vastes datasets puis en se fine-tunant pour des tâches spécifiques. piSAM est basé sur SAM, un foundation model développé par Meta qui a été entraîné sur un dataset massif de 11 millions d'images et 1,1 milliard de masques de segmentation. Cette technologie marque un bond en avant dans l'apprentissage non supervisé pour la segmentation d'images.
+
+#### **L'innovation derrière SAM**
+
+Meta a utilisé plusieurs stratégies de collecte de données lors de la création de SAM. Son moteur de données multi-phases a produit un dataset 400 fois plus grand que les datasets de segmentation précédents, incorporant :
+
+**Segmentation avec humain dans la boucle :** Un entraînement initial sur des datasets publics suivi d'annotateurs professionnels utilisant SAM comme outil interactif, réduisant considérablement le temps d'annotation.
+
+**Annotation semi-automatique :** La détection automatique de masques fiables avec vérification par un annotateur a permis d'étendre davantage le dataset.
+
+**Annotation entièrement non supervisée :** Des modèles avancés ont généré des masques de haute qualité pour toutes les images, en utilisant une approche sensible à l'ambiguïté pour la précision.
+
+#### **Architecture de piSAM**
+
+L'architecture de piSAM comprend trois composants principaux :
+
+- **Encodeur d'images :** Un Vision Transformer (ViT) pré-entraîné avec les Masked AutoEncoders (MAE) pour l'extraction de caractéristiques.
+- **Encodeur de prompts :** Gère les prompts épars comme les points, les boîtes et le texte, ainsi que les prompts denses comme les masques, en utilisant des encodages positionnels et des embeddings appris.
+- **Décodeur de masques :** Un Transformer modifié mappe les embeddings d'images et de prompts en masques de manière efficace, en utilisant des techniques d'auto-attention et d'attention croisée.
+
+#### **Implémentation de piSAM dans Picsellia**
+
+L'intégration de piSAM dans Picsellia améliore les capacités de notre plateforme de plus d'une manière :
+
+**Précision améliorée :** L'architecture de piSAM et son vaste dataset d'entraînement assurent une haute précision de segmentation en un seul clic.
+
+**Efficacité :** piSAM automatise les processus de segmentation, réduisant le temps et l'effort requis pour les annotations manuelles.
+
+**Polyvalence :** piSAM s'adapte à divers défis de segmentation, le rendant adapté à un grand nombre d'applications de vision par ordinateur différentes.
+
+#### **Limites identifiées**
+
+Bien que piSAM excelle dans de nombreux domaines, il présente encore certaines limitations. Le modèle peut avoir des difficultés avec les images présentant des textures complexes ou de très petits objets. Pour de tels cas, les approches traditionnelles de segmentation supervisée avec des datasets sur mesure restent la meilleure option.
+
+#### **Conclusion**
+
+Avec piSAM désormais intégré à Picsellia, nous sommes ravis de vous offrir des capacités améliorées en vision par ordinateur. Nous sommes toujours engagés à fournir des solutions qui sont non seulement plus précises et efficaces, mais aussi adaptables à un large éventail de défis en segmentation d'images.
+
+Pour en savoir plus sur comment Picsellia et piSAM peuvent élever vos projets de vision par ordinateur, n'hésitez pas à [**demander une démo dès aujourd'hui**](/demo).

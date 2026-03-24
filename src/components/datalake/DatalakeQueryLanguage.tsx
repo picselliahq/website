@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 export default function DatalakeQueryLanguage() {
+  const t = useTranslations('datalake');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       {/* Background decoration */}
@@ -17,14 +19,13 @@ export default function DatalakeQueryLanguage() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Python SDK
+            {t('queryLanguage.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Powerful Data Querying
+            {t('queryLanguage.title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Query your datalake programmatically with the Python SDK. Filter by
-            tags, metadata, and more with full type hints and auto-completion.
+            {t('queryLanguage.subtitle')}
           </p>
         </div>
 
@@ -34,7 +35,7 @@ export default function DatalakeQueryLanguage() {
           <div className="card p-0 overflow-hidden">
             <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--system-indigo)]">
-                list_data() PARAMS
+                {t('queryLanguage.listDataParams')}
               </span>
             </div>
             <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
@@ -67,32 +68,32 @@ export default function DatalakeQueryLanguage() {
           <div className="card p-0 overflow-hidden">
             <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--system-orange)]">
-                TAG OPERATIONS
+                {t('queryLanguage.tagOperations')}
               </span>
             </div>
             <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">add_tags()</span>
                 <span className="text-[var(--tertiary-label)]">
-                  add to data
+                  {t('queryLanguage.addToData')}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">remove_tags()</span>
                 <span className="text-[var(--tertiary-label)]">
-                  remove from data
+                  {t('queryLanguage.removeFromData')}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">list_tags()</span>
                 <span className="text-[var(--tertiary-label)]">
-                  get all tags
+                  {t('queryLanguage.getAllTags')}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">create_tag()</span>
                 <span className="text-[var(--tertiary-label)]">
-                  create new tag
+                  {t('queryLanguage.createNewTag')}
                 </span>
               </div>
             </div>
@@ -102,7 +103,7 @@ export default function DatalakeQueryLanguage() {
           <div className="card p-0 overflow-hidden">
             <div className="px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--picsellia-green)]">
-                FILTERABLE
+                {t('queryLanguage.filterable')}
               </span>
             </div>
             <div className="p-4 bg-[var(--black)] font-mono text-xs space-y-2">
@@ -113,21 +114,21 @@ export default function DatalakeQueryLanguage() {
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">custom_metadata</span>
                 <span className="text-[var(--tertiary-label)]">
-                  custom fields
+                  {t('queryLanguage.customFields')}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">filename</span>
-                <span className="text-[var(--tertiary-label)]">asset name</span>
+                <span className="text-[var(--tertiary-label)]">{t('queryLanguage.assetName')}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">created_at</span>
-                <span className="text-[var(--tertiary-label)]">timestamps</span>
+                <span className="text-[var(--tertiary-label)]">{t('queryLanguage.timestamps')}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[var(--label)]">type</span>
                 <span className="text-[var(--tertiary-label)]">
-                  image/video
+                  {t('queryLanguage.imageVideo')}
                 </span>
               </div>
             </div>
@@ -147,10 +148,10 @@ export default function DatalakeQueryLanguage() {
             </div>
             <div className="flex items-center gap-2">
               <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">
-                auto-complete
+                {t('queryLanguage.autoComplete')}
               </span>
               <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">
-                type hints
+                {t('queryLanguage.typeHints')}
               </span>
             </div>
           </div>
@@ -238,7 +239,7 @@ export default function DatalakeQueryLanguage() {
             <div className="p-6 bg-[var(--tertiary-system-background)]">
               <div className="mb-4">
                 <div className="text-xs text-[var(--tertiary-label)] mb-2">
-                  EXECUTION
+                  {t('queryLanguage.execution')}
                 </div>
                 <div className="flex items-center gap-6 text-sm">
                   <div>
@@ -246,7 +247,7 @@ export default function DatalakeQueryLanguage() {
                       2,847
                     </span>
                     <span className="text-[var(--tertiary-label)] ml-1">
-                      results
+                      {t('queryLanguage.results')}
                     </span>
                   </div>
                   <div>
@@ -254,7 +255,7 @@ export default function DatalakeQueryLanguage() {
                       23ms
                     </span>
                     <span className="text-[var(--tertiary-label)] ml-1">
-                      query time
+                      {t('queryLanguage.queryTime')}
                     </span>
                   </div>
                   <div>
@@ -262,14 +263,14 @@ export default function DatalakeQueryLanguage() {
                       847MB
                     </span>
                     <span className="text-[var(--tertiary-label)] ml-1">
-                      scanned
+                      {t('queryLanguage.scanned')}
                     </span>
                   </div>
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="text-xs text-[var(--tertiary-label)]">
-                  MATCHED TAGS
+                  {t('queryLanguage.matchedTags')}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">
@@ -289,10 +290,10 @@ export default function DatalakeQueryLanguage() {
               <div className="mt-4 pt-4 border-t border-[var(--border)]">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-[var(--tertiary-label)]">
-                    Ready to create dataset
+                    {t('queryLanguage.readyToCreate')}
                   </span>
                   <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--system-indigo)] text-white">
-                    Create Dataset →
+                    {t('queryLanguage.createDataset')}
                   </button>
                 </div>
               </div>

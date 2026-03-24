@@ -4,67 +4,65 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const useCases = [
-  {
-    id: "defect",
-    title: "Defect Detection",
-    industry: "Manufacturing",
-    description:
-      "Spot surface defects and assembly errors on the production line. Cameras check every part, every time.",
-    href: "/industry/manufacturing",
-    stat: "99.5%",
-    statLabel: "Detection accuracy",
-    image: "/images/use-cases/manufacturing/anomaly-detection.jpg",
-  },
-  {
-    id: "crop",
-    title: "Crop Monitoring",
-    industry: "Agriculture",
-    description:
-      "Fly a drone over your fields, feed the images to a model, and know which plots need attention before it is visible to the eye.",
-    href: "/industry/agriculture",
-    stat: "30%",
-    statLabel: "Yield increase",
-    image: "/images/use-cases/agriculture/crop-monitoring.jpg",
-  },
-  {
-    id: "infra",
-    title: "Infrastructure Inspection",
-    industry: "Energy",
-    description:
-      "Inspect pipelines, power lines, and solar panels from drone footage instead of sending people out.",
-    href: "/industry/energy",
-    stat: "80%",
-    statLabel: "Cost reduction",
-    image: "/images/use-cases/energy/infrastructure-inspection.jpg",
-  },
-  {
-    id: "assembly",
-    title: "Assembly Verification",
-    industry: "Manufacturing",
-    description:
-      "Check that every component is in the right place, in real time, on the line.",
-    href: "/industry/manufacturing",
-    stat: "60fps",
-    statLabel: "Real-time tracking",
-    image: "/images/use-cases/manufacturing/assembly-verification.jpg",
-  },
-  {
-    id: "waste",
-    title: "Waste Sorting",
-    industry: "Sustainability",
-    description:
-      "Tell plastic from cardboard on a conveyor belt. Sorting facilities use this to automate what used to be manual.",
-    href: "/industry/waste-management",
-    stat: "95%",
-    statLabel: "Sorting accuracy",
-    image: "/images/use-cases/waste-management/automated-segregation.jpg",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function UseCasesV2() {
+  const t = useTranslations("home.useCases");
   const [active, setActive] = useState(0);
+
+  const useCases = [
+    {
+      id: "defect",
+      title: t("caseDefectTitle"),
+      industry: t("caseDefectIndustry"),
+      description: t("caseDefectDescription"),
+      href: "/industry/manufacturing",
+      stat: t("caseDefectStatValue"),
+      statLabel: t("caseDefectStatLabel"),
+      image: "/images/use-cases/manufacturing/anomaly-detection.jpg",
+    },
+    {
+      id: "crop",
+      title: t("caseCropTitle"),
+      industry: t("caseCropIndustry"),
+      description: t("caseCropDescription"),
+      href: "/industry/agriculture",
+      stat: t("caseCropStatValue"),
+      statLabel: t("caseCropStatLabel"),
+      image: "/images/use-cases/agriculture/crop-monitoring.jpg",
+    },
+    {
+      id: "infra",
+      title: t("caseInfraTitle"),
+      industry: t("caseInfraIndustry"),
+      description: t("caseInfraDescription"),
+      href: "/industry/energy",
+      stat: t("caseInfraStatValue"),
+      statLabel: t("caseInfraStatLabel"),
+      image: "/images/use-cases/energy/infrastructure-inspection.jpg",
+    },
+    {
+      id: "assembly",
+      title: t("caseAssemblyTitle"),
+      industry: t("caseAssemblyIndustry"),
+      description: t("caseAssemblyDescription"),
+      href: "/industry/manufacturing",
+      stat: t("caseAssemblyStatValue"),
+      statLabel: t("caseAssemblyStatLabel"),
+      image: "/images/use-cases/manufacturing/assembly-verification.jpg",
+    },
+    {
+      id: "waste",
+      title: t("caseWasteTitle"),
+      industry: t("caseWasteIndustry"),
+      description: t("caseWasteDescription"),
+      href: "/industry/waste-management",
+      stat: t("caseWasteStatValue"),
+      statLabel: t("caseWasteStatLabel"),
+      image: "/images/use-cases/waste-management/automated-segregation.jpg",
+    },
+  ];
+
   const current = useCases[active];
 
   return (
@@ -73,21 +71,21 @@ export default function UseCasesV2() {
         {/* Header */}
         <div className="flex items-center gap-8 mb-4">
           <span className="text-[10px] font-mono text-[var(--picsellia-green)] uppercase tracking-wider">
-            Use Cases
+            {t("sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
-            What people build
+            {t("headlinePart1")}
             <br />
-            <span className="text-[var(--secondary-label)]">with it</span>
+            <span className="text-[var(--secondary-label)]">{t("headlinePart2")}</span>
           </h2>
           <Link
             href="/use-cases"
             className="btn-secondary text-sm group self-start md:self-auto"
           >
-            All use cases
+            {t("allUseCases")}
             <svg
               className="w-4 h-4 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -108,11 +106,11 @@ export default function UseCasesV2() {
         <div className="border border-[var(--border)] rounded-xl overflow-hidden mb-8">
           {/* Header row */}
           <div className="grid grid-cols-12 px-5 py-2.5 border-b border-[var(--border)] bg-[var(--secondary-system-background)] text-[10px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider">
-            <div className="col-span-1">#</div>
-            <div className="col-span-3">Industry</div>
-            <div className="col-span-4">Application</div>
-            <div className="col-span-2 text-right">Metric</div>
-            <div className="col-span-2 text-right">Value</div>
+            <div className="col-span-1">{t("tableHeaderNumber")}</div>
+            <div className="col-span-3">{t("tableHeaderIndustry")}</div>
+            <div className="col-span-4">{t("tableHeaderApplication")}</div>
+            <div className="col-span-2 text-right">{t("tableHeaderMetric")}</div>
+            <div className="col-span-2 text-right">{t("tableHeaderValue")}</div>
           </div>
 
           {useCases.map((uc, i) => (
@@ -220,7 +218,7 @@ export default function UseCasesV2() {
                   </p>
 
                   <span className="inline-flex items-center text-sm text-[var(--secondary-label)] group-hover:text-[var(--picsellia-green)] transition-colors font-medium">
-                    Read case study
+                    {t("readCaseStudy")}
                     <svg
                       className="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform"
                       fill="none"

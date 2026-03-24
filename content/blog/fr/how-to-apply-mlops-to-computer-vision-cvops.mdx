@@ -1,0 +1,111 @@
+---
+
+title: "Comment appliquer le MLOps à la vision par ordinateur ? Introduction au CVOps"
+description: "Le CVOps fait référence aux étapes et processus du MLOps exclusifs à la vision par ordinateur, pour réaliser le développement et le déploiement de cas d'usage CV."
+date: "2021-11-30"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/how-to-apply-mlops-to-computer-vision-cvops-hero.jpg"
+imageAlt: "How to apply MLOps to Computer Vision? Introducing CVOps"
+published: true
+tags: ["computer-vision", "data-management", "deployment", "mlops", "model-training", "pipelines"]
+---
+
+Nous connaissons tous le cycle de développement logiciel, dans lequel les équipes de développement et d'exploitation collaborent pour créer des logiciels et des applications. Elles développent et testent ces applications en utilisant des pipelines d'intégration continue et de livraison continue, garantissant que le logiciel dispose des fonctionnalités et mises à jour les plus récentes pour résoudre les problèmes des utilisateurs ou de l'entreprise.
+
+## Qu'est-ce que le machine learning ?
+
+Le processus d'apprentissage à partir de données pour obtenir des informations précieuses s'appelle le machine learning. C'est un terme technique qui désigne les outils et techniques permettant de créer des algorithmes d'intelligence artificielle.
+
+Avec la transformation numérique des 50 dernières années, les données se sont répandues dans le monde entier, poussant les professionnels de tous les secteurs à développer un vif intérêt pour l'apprentissage à partir de cette mer de données afin de trouver des informations et des prédictions ou d'éviter de répéter les erreurs.
+
+Avant, les développeurs écrivaient des algorithmes en utilisant un langage de programmation qui définissait les tâches à effectuer. Maintenant, le paradigme a changé dans le sens où l'algorithme n'est qu'un canevas qui définit comment la machine est censée apprendre elle-même à partir de données d'entrée, pour une tâche donnée.
+
+## Qu'est-ce que le MLOps ? Et pourquoi c'est important
+
+Nous connaissons tous le DevOps — un processus de développement devenu populaire au début des années 2000 avec les méthodologies de développement de projets agiles en toile de fond, qui a bien fonctionné jusqu'à présent.
+
+À ce stade, chaque organisation a voulu ajouter des capacités de machine learning à son produit. Puisque le cycle de vie ML est similaire au cycle de développement logiciel, un nouveau domaine appelé MLOps a été développé, incluant des étapes dédiées aux systèmes de machine learning.
+
+Le MLOps fait référence à un ensemble d'étapes et de processus que les data scientists, les équipes informatiques et de production utilisent pour livrer des produits de machine learning efficaces.
+
+Le MLOps implique les étapes suivantes :
+
+- Définir les objectifs métier
+
+- Rechercher les données pertinentes
+
+- Préparer et traiter les données (Data Engineering)
+
+- Développer et entraîner le modèle de machine learning
+
+- Construire et automatiser un pipeline de machine learning
+
+- Déployer le modèle via un déploiement statique ou dynamique
+
+En MLOps, les équipes de développement/production utilisent la méthode CI/CD/CT pour livrer des systèmes de machine learning performants.
+
+**- L'intégration continue (CI)** ne concerne pas seulement le test et la validation du code et des composants, mais aussi le test et la validation des données, des schémas de données et des modèles.
+
+**- La livraison continue (CD)** ne concerne pas seulement la livraison d'un logiciel unique ou d'une application web, mais plutôt d'un système de machine learning (un pipeline d'entraînement ML).
+
+**- L'entraînement continu (CT)** est une étape exclusive aux systèmes de machine learning où les modèles déployés sont réentraînés avec des données changeantes pour éviter qu'ils ne se dégradent.
+
+Récemment, nous avons constaté un intérêt croissant pour le MLOps puisque chaque organisation cherche à déployer des systèmes ML plus rapidement, à grande échelle et de manière fiable. En mars 2021, un rapport de recherche sur [ce que les data scientists cherchent à accomplir avec le MLOps](https://arxiv.org/abs/2103.08942) a indiqué que selon **40 % des répondants**, la majorité du travail tourne autour de la résolution de problèmes dans les catégories de la vision par ordinateur, l'analyse prédictive et les données temporelles. De nombreux data scientists ont estimé que les problèmes les plus significatifs étaient liés à la gestion des données, lorsque les données étaient désordonnées, inaccessibles ou tout simplement non identifiables.
+
+## Comment le MLOps peut-il aider à atteindre les objectifs de vision par ordinateur ?
+
+La vision par ordinateur est un domaine de l'intelligence artificielle où des algorithmes d'apprentissage sont appliqués sur des types d'entrées d'images comme les vidéos, les photos et les images hyperspectrales. Elle diffère vraiment des autres types de données comme les données tabulaires ou le texte en raison de la taille des fichiers (et donc des datasets) où le téraoctet est un ordre de grandeur courant.
+
+En bref, la vision par ordinateur permet aux machines de voir, d'observer et de donner du sens aux images qui leur sont présentées, tout comme les humains le font.
+
+![How to apply mlops to computer vision cvops 61a9fcf80488efad1090ef22 0 p1u nktjw80vm68x](/images/blog/how-to-apply-mlops-to-computer-vision-cvops-61a9fcf80488efad1090ef22_0-P1u_NKTjW80vM68x.png)
+
+Les modèles de vision par ordinateur aident les applications à comprendre les indices visuels et à leur donner un sens. Lorsque suffisamment de données leur sont fournies, les algorithmes s'entraînent à différencier une image d'une autre ou, par exemple, à détecter et segmenter des objets.
+
+D'après l'explication ci-dessus, il est clair que la vision par ordinateur implique :
+
+- La gestion des données
+- La création de modèles algorithmiques
+- Le déploiement
+- L'analyse et la revue des erreurs
+- D'autres fonctionnalités MLOps discutées ci-dessus
+
+Il est donc évident que le MLOps est essentiel lorsqu'on cherche à tirer parti des algorithmes de vision par ordinateur.
+
+Aujourd'hui, prototyper des modèles de vision par ordinateur est une tâche simple, mais construire un système ML intégré qui s'améliore continuellement est extrêmement difficile. Car le code ML ne représente qu'une petite portion de l'ensemble du système.
+
+Pour faire fonctionner un projet, de nombreux systèmes complexes travaillent autour du code, comme le montre l'image ci-dessous.
+
+![How to apply mlops to computer vision cvops 61a9fcf8ff3fdc05f21e2d8d 0 3fs6qjwvch kjezv](/images/blog/how-to-apply-mlops-to-computer-vision-cvops-61a9fcf8ff3fdc05f21e2d8d_0-3fS6qjwVch_kJEZv.png)
+
+Le rapport de recherche mentionné précédemment montre les types de données avec lesquels les chercheurs, ingénieurs et développeurs d'applications travaillent. D'après la figure suivante, nous pouvons déduire que les données d'images et de vidéos forment une part considérable des données utilisées. Par conséquent, la progression naturelle serait de développer une fusion de **la vision par ordinateur et du MLOps pour créer le CVOps**. Ce nouveau concept aide à créer un ensemble d'étapes et de processus dédiés exclusivement aux projets de vision par ordinateur (car ils ont leurs propres défis).
+
+![How to apply mlops to computer vision cvops 61a9fcf88daaebc881574d02 0 oyslcucsukxclrnl](/images/blog/how-to-apply-mlops-to-computer-vision-cvops-61a9fcf88daaebc881574d02_0-oyslCUCsukxClRNL.png)
+
+## Introduction au CVOps : la fusion du CV et du MLOps
+
+Le CVOps n'est rien d'autre que l'utilisation des étapes et processus du MLOps exclusifs à la vision par ordinateur pour réaliser le développement et le déploiement de projets de vision par ordinateur.
+
+Examinons les étapes du CVOps.
+
+**1 — Gestion des données et des features** qui implique la collecte de données, la création de données, la gestion, la vérification, le traitement et la gestion des features de données.
+
+**2 — Développement de modèles,** où les modèles ML sont entraînés, les métadonnées sont gérées, ainsi que le réglage des hyperparamètres et la maintenance du registre de modèles.
+
+**3 — L'opérationnalisation implique :**
+
+- Le déploiement du modèle ML sur un serveur adapté
+
+- L'implémentation du CI/CD/CT dans votre pipeline ML
+
+- Le monitoring continu de votre modèle CV en production
+
+Pour atteindre les différentes étapes et même **automatiser le pipeline** (c'est tout l'intérêt après tout), on utilise couramment des plateformes ML, qui peuvent être de bout en bout, associées à des composants AutoML personnalisés.
+
+En utilisant le MLOps, les projets de vision par ordinateur peuvent atteindre l'étape de déploiement en suivant un pipeline CI/CD/CT. Employer le MLOps pour la vision par ordinateur crée un pipeline ML automatisé rendant les améliorations de modèles plus rapides et plus fiables. En conséquence, le CVOps aide les organisations à mettre rapidement en production des systèmes de vision par ordinateur fiables.
+
+[Chez Picsellia, nous avons développé une plateforme CVOps de bout en bout](/post/creating-a-cvops-platform) — nous offrons une boîte à outils complète qui simplifie l'expérience Data Science. Nos derniers outils vous permettent de couvrir tout, de la gestion des données ML, au suivi des expérimentations et à la construction de modèles, jusqu'au déploiement, au monitoring et aux pipelines pour automatiser votre workflow CV.
+
+Si vous souhaitez essayer notre plateforme CVOps gratuitement, planifiez un appel rapide avec notre équipe commerciale pour que nous puissions vous configurer.

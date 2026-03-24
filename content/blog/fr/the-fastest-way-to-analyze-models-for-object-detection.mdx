@@ -1,0 +1,177 @@
+---
+
+title: "La methode la plus rapide pour analyser des modeles de detection d'objets"
+description: "Apprenez a choisir, ajuster et entrainer n'importe quelle architecture de deep learning pour entrainer vos modeles de detection d'objets, en utilisant une solution MLOps pour la vision par ordinateur."
+date: "2020-08-30"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/the-fastest-way-to-analyze-models-for-object-detection-hero.png"
+imageAlt: "The Fastest Way to Analyze Models for Object Detection"
+published: true
+tags: ["api", "dataset-management", "deep-learning", "drone", "model-training", "object-detection", "yolo"]
+---
+
+Aujourd'hui, entrainer un modele de detection d'objets devrait etre une tache facile, mais certains peuvent encore rencontrer des difficultes. Dans cet article, nous allons apprendre a choisir, ajuster et entrainer n'importe quelle architecture de deep learning de maniere fluide pour resoudre ce probleme.
+
+Avez-vous deja eu l'impression de ne pas pouvoir suivre tous les nouveaux modeles tendance qui sortent des laboratoires chaque jour ?
+
+Pour ma part, il me semble voir des graphiques comme celui-ci tous les jours.
+
+![model benchmark.jfif](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376d4_60db12e60c26f401f4171dfc_mTeQYltmolwyGoqr.jpeg)
+
+Comme j'avais l'habitude d'entrainer YOLOv3 il y a quelques annees et que c'etait super, j'ai pense que ce serait une bonne idee de tester ces toutes nouvelles architectures et de creer des modeles encore meilleurs !
+
+J'ai donc commence a chercher des tutoriels, des repos Github, ou meme des poids pre-entraines pour pouvoir commencer a utiliser ces nouvelles architectures sur mes propres donnees et voir si je pouvais produire de meilleurs modeles d'IA pour les taches de mon entreprise.
+
+Mais la verite, c'est que meme si je trouvais les ressources pour entrainer ces architectures, je finissais generalement par avoir l'impression que les resultats n'etaient pas bien meilleurs que ceux que j'avais obtenus quelques annees plus tot.
+
+Est-ce de ma faute ? Ai-je fait une erreur dans mon code ? Peut-etre que mon dataset n'est pas si bon ? Comment puis-je savoir rapidement si c'est mieux que d'autres modeles ?
+
+Comment pouvez-vous etre vraiment sur de votre capacite a entrainer et reproduire des resultats ? Comment vous assurer d'avoir toujours la meilleure architecture a portee de main ? Et comment pouvez-vous finalement choisir les meilleurs algorithmes pour vos problemes metier ?
+
+C'est ce que nous allons aborder dans cet article. Nous diviserons ce contenu en parties suivantes :
+
+- Choisir un dataset adapte a la detection d'objets
+- Selectionner plusieurs modeles et creer des scenarios d'entrainement
+- Comparer les logs et metriques d'entrainement
+- Comparer les performances en direct sur des images
+
+Allons-y !
+
+**Par souci de simplicite, nous utiliserons la plateforme Picsellia car elle nous offre un excellent panel d'outils pour realiser toutes les taches ci-dessus de maniere fluide.** Pour en savoir plus sur les fonctionnalites de Picsellia, cliquez [ici](/).
+
+## Choisir un dataset
+
+Comme nous allons entrainer des modeles pour une tache de detection d'objets, nous devons choisir un dataset pour... vous l'avez compris ! **La detection d'objets !**
+
+Afin d'obtenir des resultats significatifs, nous entrainerons nos modeles sur environ 6500 images annotees avec 144 000 voitures et 106 000 pietons, et voici a quoi cela ressemble.
+
+![ground truth example.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e8337747_60db132bdde413bad35bf3da_qNHqILmJLCKDkRgF.png)
+
+Le dataset s'appelle VizDrone et peut etre trouve entierement annote avec 11 classes differentes sur Picsellia.
+
+## Selectionner les modeles
+
+Picsellia propose des architectures SOTA pretes a l'emploi, y compris les plus recentes (par exemple EfficientDet-dx).
+
+![some available architectures.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376c9_60db133e6c45690c34940d69_bAQOpRnFDaVddIJW.png)
+
+Pour notre test, nous comparerons les architectures suivantes (les plus recentes contre les plus anciennes) :
+
+- efficientDet-d0 (EfficientDet de base)
+- efficientDet-d2 (EfficientDet plus lourd)
+- faster-rcnn-resnet50 (modele plus ancien)
+- ssd-mobilenet-640 (modele plus ancien et plus leger)
+
+Tout d'abord, creons un projet ou nous pouvons planifier l'entrainement pour chacun de ces modeles.
+
+![project dashboard.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc2dfd656b6e8337774_60db13656c45690c3f940e81_jKRjkzAjsrRrCamP.png)
+
+## Ensuite, creez vos experiences
+
+Une fois notre dataset bien attache, nous devons creer differentes experiences.
+
+Nous allons creer des experiences "basiques", c'est-a-dire que nous n'essaierons pas d'optimiser les hyperparametres dans cet article (ne vous inquietez pas, nous couvrirons ce sujet dans un autre article).
+
+Cela dit, je garderai les parametres par defaut proposes par Picsellia et utiliserai exactement les memes parametres pour chaque experience afin de ne comparer que les architectures.
+
+Creez un scenario d'entrainement.
+
+![experiment setup panel.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376d1_60db138174140e659a578de4_ZAGPvxVFUBNJPuMB.png)
+
+Nous initialiserons nos differents tests avec cette interface dediee ou nous pouvons selectionner un modele de base parmi ceux vus precedemment, qui ont deja des parametres optimaux configures.
+
+Apres avoir repete l'operation pour tous les modeles, nous pouvons verifier que tout est en place.
+
+![list of experiment.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376de_60db139901d9e878a5b654b5_DtmjyKKQdENEVJQB.png)
+
+Ca a l'air bien ! Si nous allons dans l'une des experiences et verifions les fichiers, nous pouvons voir que nous avons clone avec succes tous les fichiers necessaires a l'entrainement a partir des modeles pre-entraines.
+
+![experiment files.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376ce_60db13a341b8b994c3becc72_WpOPlGKilyzIqRty.png)
+
+Maintenant, il nous suffit de lancer l'entrainement et de sauvegarder chaque metrique et log sur la plateforme, rendu possible par le **SDK Python de Picsellia**.
+
+Une facon de le faire est de verifier l'onglet 'lancement' dans l'une des experiences et de copier la commande pour lancer l'image Docker pre-packagee prete pour l'entrainement.
+
+(Pour des raisons evidentes, nous avons floute notre compte et notre token de projet, mais vous pouvez les remplacer par les votres)
+
+![docker snippet for training.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376d8_60db13b5bb5876e6d2079049_ZZpYFDPqYBTFuvSV.png)
+
+Maintenant, je vais simplement copier-coller cette commande sur notre serveur equipe de GPUs NVIDIA et voir la magie operer !
+
+Faisons cela avec les 4 experiences que nous venons de creer, puis attendons quelques heures pour l'entrainement complet.
+
+## Comparer les resultats
+
+Si vos entrainements sont tous termines, vous pouvez maintenant retourner sur Picsellia, et dans votre liste d'experiences, les selectionner toutes puis cliquer sur '**Comparer**'.
+
+Vous devriez maintenant voir un tableau de bord avec tous les differents logs d'entrainement, metriques d'evaluation, etc.
+
+![the experiment dashboard.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376e4_60db13cce9ae6844f465c473_JEBKnEgAqWFqUQvA.png)
+
+Que pouvons-nous conclure de nos modeles entraines ?
+
+Pour effectuer une premiere analyse vraiment simpliste, nous ne regarderons que quelques metriques d'evaluation :
+
+- le mAP (precision moyenne)
+- l'AR (rappel moyen)
+
+Et certains logs d'entrainement :
+
+- la Total-Loss
+
+Si vous n'etes pas familier avec ces metriques et souhaitez les apprendre en detail, je vous encourage a consulter [cet article de blog](https://blog.zenggyu.com/en/post/2018-12-16/an-introduction-to-evaluation-metrics-for-object-detection/) qui explique tout en profondeur.
+
+![learning rate for all exps.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376e1_60db14145412534efe4549d0_LvfkCYuKgfHNKnhC.png)
+
+Ici, nous pouvons voir que nos modeles apprennent quelque chose car la courbe de perte diminue lentement. Mais c'est assez bruite...
+
+Pour resoudre cela, comme nous avons beaucoup d'images d'entrainement, nous pourrions essayer d'augmenter la taille du batch pendant l'entrainement, configurer le taux d'apprentissage pour decroitre plus rapidement qu'il ne le fait actuellement (voir la figure suivante) ou utiliser d'autres techniques plus avancees.
+
+Ce que nous pouvons apprendre de ce graphique est que les modeles **EfficientDet** semblent converger plus rapidement que les autres et que la variance de **Faster-RCNN** ne semble pas diminuer avec le temps.
+
+Ce que vous devez comprendre, c'est que **notre analyse n'est EN AUCUN CAS exhaustive** et que chaque architecture necessiterait des parametres differents pour optimiser le processus d'entrainement. Mais cela nous donne une **bonne intuition** sur leur comportement les uns par rapport aux autres, en tres peu de temps.
+
+![Learning rate for all experiments.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e83376db_60db1420d65cc8a2a14f120f_dqQAoKqtsGeGxZre.png)
+
+Si nous trions nos experiences en fonction du score **AR@10** (plus c'est eleve, mieux c'est), nous pouvons voir que notre modele **Faster-RCNN** semble mieux performer que les autres architectures. Cela signifie que ce modele sera celui qui fera **le moins probablement** de fausses predictions.
+
+![metrics table (part 1).png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc2dfd656b6e8337777_60db142c84de7be112602cd5_AKyVycopjSTUhHyy.png)
+
+Comme je l'ai dit, ce n'est pas une analyse complete et votre travail en tant que data scientist est d'explorer les modeles en profondeur afin de les comparer une fois que vous avez trouve les meilleurs parametres pour chacun.
+
+Maintenant que nous avons effectue une petite analyse "quantitative", nous allons essayer notre modele sur quelques images pour voir comment ils performent sur des donnees reelles.
+
+## Comparer les performances
+
+Dans Picsellia, vous pouvez trouver ce qu'on appelle un "Playground". C'est un endroit ou vous pouvez tester des modeles en direct juste apres les avoir entraines et stocke les poids et checkpoints.
+
+Pour le test, nous utiliserons l'image suivante ou nous pouvons voir la verite terrain superposee. Cette image a ete utilisee pour l'evaluation, elle ne fait donc pas partie de l'ensemble d'entrainement.
+
+![picsellia playground.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e833774a_60db144860121ade31e23034_SUxazNSKmMXjTmuS.png)
+
+Maintenant, nous allons tester nos modeles, ajuster le seuil et voir comment ils performent.
+
+Voici les etapes que nous observons dans l'animation ci-dessus :
+
+- Tester le modele efficientDet-d2 et definir un seuil raisonnable
+- Tester tous les autres modeles avec le meme seuil
+- Ajuster le seuil jusqu'a ce que nous puissions voir des pietons
+- Tester tous les modeles avec ce seuil
+
+Comme nous pouvons le voir, c'est **Faster-RCNN** qui semble le mieux performer sur notre image, ce qui signifie que notre petite analyse precedente n'etait pas si loin de la verite !
+
+![results with faster-rcnn.png](/images/blog/the-fastest-way-to-analyze-models-for-object-detection-66ed3dc1dfd656b6e833774d_60db148c0d45a0732ff6fab3_tUxqKGrmeMdsTIuL.png)
+
+## Conclusion
+
+L'objectif de cet article etait de prouver si nous pouvions rapidement identifier, utiliser et comparer certaines architectures de modeles (plus ou moins recentes) et effectuer une analyse rapide qui guiderait nos futures experiences exploratoires completes.
+
+Comme nous avons pu l'observer, ce ne sont pas les architectures les plus recentes et sophistiquees qui performent le mieux avec notre premiere approche, ce qui ne signifie pas qu'elles ne peuvent pas augmenter en performance avec un entrainement reel et exhaustif.
+
+L'ensemble de l'operation m'a pris une demi-journee, entrainement compris, ce qui est une bonne chose car cela signifie que vous n'avez pas a passer des jours ou des semaines (voire des mois) a explorer votre projet pour savoir avec certitude s'il a une chance de reussir ou non.
+
+J'espere que vous avez apprecie cet article. Si vous pensez que [**Picsellia**](/) offre un moyen tres optimal de mener des experiences et que vous souhaitez nous rejoindre, demandez un essai [ici](/trial) ! Nous reviendrons vers vous rapidement et vous aiderons a demarrer en un rien de temps.
+
+A bientot !

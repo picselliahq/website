@@ -1,6 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 const ScalingTimeline = () => {
+  const t = useTranslations('modelDeployment.scaling');
   const events = [
     { time: '06:00', replicas: 1, load: 'Low', color: 'var(--picsellia-green)' },
     { time: '09:00', replicas: 3, load: 'Medium', color: 'var(--system-orange)' },
@@ -15,15 +18,15 @@ const ScalingTimeline = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between text-xs">
-        <span className="text-[var(--tertiary-label)]">Replica count over 24h</span>
+        <span className="text-[var(--tertiary-label)]">{t('replicaCount')}</span>
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-[var(--system-red)]" />
-            <span className="text-[var(--tertiary-label)]">Replicas</span>
+            <span className="text-[var(--tertiary-label)]">{t('replicas')}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-[var(--system-orange)]" />
-            <span className="text-[var(--tertiary-label)]">Traffic</span>
+            <span className="text-[var(--tertiary-label)]">{t('traffic')}</span>
           </div>
         </div>
       </div>
@@ -46,15 +49,16 @@ const ScalingTimeline = () => {
       </div>
 
       <div className="flex items-center justify-between text-xs pt-2 border-t border-[var(--border)]">
-        <span className="text-[var(--tertiary-label)]">Min: 1 replica</span>
-        <span className="text-[var(--tertiary-label)]">Max: 6 replicas</span>
-        <span className="text-[var(--picsellia-green)]">Cost optimized</span>
+        <span className="text-[var(--tertiary-label)]">{t('minReplica')}</span>
+        <span className="text-[var(--tertiary-label)]">{t('maxReplica')}</span>
+        <span className="text-[var(--picsellia-green)]">{t('costOptimized')}</span>
       </div>
     </div>
   );
 };
 
 export default function DeploymentScaling() {
+  const t = useTranslations('modelDeployment.scaling');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]">
@@ -69,10 +73,10 @@ export default function DeploymentScaling() {
           {/* Scaling visualization */}
           <div className="card p-6 order-2 lg:order-1">
             <div className="flex items-center justify-between mb-6">
-              <span className="text-xs font-medium text-[var(--system-red)]">AUTO-SCALING</span>
+              <span className="text-xs font-medium text-[var(--system-red)]">{t('badge')}</span>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[var(--picsellia-green)] animate-pulse" />
-                <span className="text-xs text-[var(--picsellia-green)]">Active</span>
+                <span className="text-xs text-[var(--picsellia-green)]">{t('active')}</span>
               </div>
             </div>
 
@@ -81,29 +85,28 @@ export default function DeploymentScaling() {
             <div className="mt-6 grid grid-cols-3 gap-3">
               <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)] text-center">
                 <div className="text-sm font-bold font-mono text-[var(--label)]">1-10</div>
-                <div className="text-[10px] text-[var(--tertiary-label)]">Replica range</div>
+                <div className="text-[10px] text-[var(--tertiary-label)]">{t('replicaRange')}</div>
               </div>
               <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)] text-center">
                 <div className="text-sm font-bold font-mono text-[var(--system-red)]">&lt;30s</div>
-                <div className="text-[10px] text-[var(--tertiary-label)]">Scale-up time</div>
+                <div className="text-[10px] text-[var(--tertiary-label)]">{t('scaleUpTime')}</div>
               </div>
               <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)] text-center">
                 <div className="text-sm font-bold font-mono text-[var(--picsellia-green)]">70%</div>
-                <div className="text-[10px] text-[var(--tertiary-label)]">CPU threshold</div>
+                <div className="text-[10px] text-[var(--tertiary-label)]">{t('cpuThreshold')}</div>
               </div>
             </div>
           </div>
 
           <div className="order-1 lg:order-2">
             <span className="text-[var(--system-red)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Auto-Scaling
+              {t('badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-              Scale to match demand
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] mb-8">
-              Automatically scale from zero to thousands of requests per second.
-              Pay only for the compute you use, with intelligent scaling policies.
+              {t('subtitle')}
             </p>
 
             <div className="space-y-4">
@@ -111,31 +114,31 @@ export default function DeploymentScaling() {
                 <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm text-[var(--label)]">Scale-to-zero for cost efficiency</span>
+                <span className="text-sm text-[var(--label)]">{t('scaleToZero')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm text-[var(--label)]">CPU and request-based scaling policies</span>
+                <span className="text-sm text-[var(--label)]">{t('cpuRequestScaling')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm text-[var(--label)]">Configurable min/max replica bounds</span>
+                <span className="text-sm text-[var(--label)]">{t('configurableReplica')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm text-[var(--label)]">Cold-start optimization with warm pools</span>
+                <span className="text-sm text-[var(--label)]">{t('coldStartOptimization')}</span>
               </div>
               <div className="flex items-center gap-3">
                 <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                <span className="text-sm text-[var(--label)]">Multi-region deployment support</span>
+                <span className="text-sm text-[var(--label)]">{t('multiRegion')}</span>
               </div>
             </div>
           </div>

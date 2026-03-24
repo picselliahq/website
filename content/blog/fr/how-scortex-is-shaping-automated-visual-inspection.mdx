@@ -1,0 +1,62 @@
+---
+
+title: "De la vision par ordinateur à l'Industrie 4.0 : comment Scortex façonne l'inspection visuelle automatisée"
+description: "Découvrez comment Scortex exploite l'IA et la vision par ordinateur pour l'inspection visuelle automatisée, de la détection de défauts à la détection d'anomalies et aux informations en temps réel."
+date: "2025-03-30"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/how-scortex-is-shaping-automated-visual-inspection-hero.png"
+imageAlt: "From Computer Vision to Industry 4.0: How Scortex Is Shaping Automated Visual Inspection"
+published: true
+tags: ["api", "cloud", "computer-vision", "deep-learning", "experiment-tracking", "manufacturing", "model-training", "object-detection"]
+---
+
+Dans un récent épisode de **Pixel Perfect**, notre CTO Pierre-Nicolas Tiffreau s'est entretenu avec **Hugues Poiget, CEO de Scortex**, pour discuter de l'évolution de la vision par ordinateur dans l'automatisation industrielle. Des premiers défis de la détection de défauts à la transition vers la détection d'anomalies et les informations en temps réel sur les données, cette conversation met en lumière **ce qu'il faut réellement pour faire passer l'IA du concept à la production.**
+
+Cet article de blog reprend les points clés de cette discussion, mais si vous souhaitez aller plus loin, vous pouvez **écouter l'épisode complet** [**ici**](https://open.spotify.com/episode/3tipG086R55j4CPrPaBETz?si=3a80cbfbea0a48f6)**.** Note : le podcast est en français.
+‍
+
+### **1. L'ambition initiale et la réalité industrielle**‍
+
+Lorsqu'on parle de vision par ordinateur appliquée à l'industrie, on pense naturellement à la détection de défauts au coeur des lignes de production. C'est précisément le sujet de Scortex, une entreprise qui, dès le départ, a exploité la vision par ordinateur pour développer un produit industriel complet capable d'inspecter et de classifier automatiquement des pièces à très haut débit. Dans un contexte où la concurrence pousse continuellement les usines à produire plus vite et plus précisément, les défauts ne disparaissent pas comme par magie : plus la complexité et la vitesse de production sont grandes, plus la probabilité de défauts est élevée. À l'origine, l'objectif de Scortex était simplement d'identifier chaque pièce non conforme et de la retirer en bout de ligne. Cette promesse semble simple, presque intuitive : il suffit d'entraîner un modèle, d'y attacher une caméra et de séparer automatiquement les bonnes pièces des défectueuses. Pourtant, les conditions réelles ont rapidement révélé leur complexité : le réglage fin des caméras et des configurations d'éclairage, la cadence imprévisible ou parfois déroutante d'une ligne de production, les protocoles de communication spécialisés, ou encore la rareté de certains types de défauts ont tous montré que la vision par ordinateur seule ne suffirait pas. Un écosystème matériel et logiciel complet était nécessaire, ainsi que de puissantes fonctionnalités de reporting de données pour aider les ingénieurs et les opérateurs à comprendre précisément pourquoi les défauts apparaissaient. **Au-delà des performances algorithmiques, la véritable exigence industrielle réside dans la manière dont les personnes travaillant sur la ligne, jour après jour, adoptent le système et interprètent les alertes qu'il génère.**
+
+Au fil des années, Scortex s'est concentré sur la réussite de ses clients et a donné à ses ingénieurs la liberté d'expérimenter et de travailler en étroite collaboration avec les clients. Cela explique comment un stagiaire embauché pour mettre en place des réseaux de neurones est finalement devenu le directeur général de l'entreprise. Plutôt qu'un simple exemple isolé, cette histoire montre comment, dans une startup, il faut toucher un peu à tout — de la R&D à l'installation de caméras chez les clients, tout en repensant constamment les décisions techniques.
+
+### **2. Un produit construit sur l'intégration : du matériel au cloud**
+
+![How scortex is shaping automated visual inspection](/images/blog/how-scortex-is-shaping-automated-visual-inspection-img-0.png)
+*Le système Spark (depuis scortex.io)*
+
+Afin de répondre aux contraintes industrielles, l'entreprise a décidé de se concentrer sur un système appelé « Spark » dont les différents composants forment une solution matérielle IA de bout en bout. Au coeur de Spark se trouve un « boîtier » reliant la caméra, l'éclairage et les commandes automatisées de la ligne de production. Ce boîtier contient suffisamment de puissance de calcul pour exécuter l'inférence en temps réel et, dans certains cas, réentraîner rapidement le modèle directement sur site. Il est également conçu pour la connectivité cloud car l'idée est de superviser chaque station à distance, d'analyser les métriques agrégées et de potentiellement déployer de nouvelles versions du modèle d'inspection.
+
+> *Historiquement, les industriels hésitaient à connecter leurs usines à un service cloud, mais les avantages du monitoring en temps réel et de l'entraînement machine learning à distance ont largement contribué à surmonter ces réserves.*
+
+Une intégration efficace repose sur l'adaptation à la cadence de la ligne, aux protocoles préexistants et au facteur humain présent dans chaque installation. Dans de nombreux scénarios, les opérateurs doivent pouvoir prendre le contrôle et décider si une pièce signalée comme suspecte est réellement défectueuse ou acceptable. L'interface, affichée sur un écran situé à côté de la ligne de production, a donc été conçue pour être aussi lisible et simple que possible. L'opérateur inspecte la pièce en question, confirme ou rejette la décision du modèle, et cette étiquette est ensuite réinjectée dans la base de données pour améliorer le système.
+
+**À une échelle de milliers de pièces produites quotidiennement, ces boucles de rétroaction améliorent continuellement la précision du modèle à mesure que de nouvelles annotations validées deviennent disponibles pour le réentraînement.**
+
+Essentiellement, le produit final est un amalgame d'éléments : du matériel calibré, une intégration transparente avec des systèmes industriels robustes, et une couche logicielle qui exploite l'IA dans un but clair — trier les pièces mais aussi identifier la cause première des défauts.
+
+### **3. Passer de l'apprentissage entièrement supervisé à la détection d'anomalies**
+
+![How scortex is shaping automated visual inspection](/images/blog/how-scortex-is-shaping-automated-visual-inspection-img-1.png)
+*Détection d'anomalies (depuis scortex.io)*
+
+Initialement, comme beaucoup de projets de vision par ordinateur, Scortex s'appuyait fortement sur l'apprentissage supervisé. Le principe était de rassembler autant de pièces défectueuses que possible pour que le modèle les reconnaisse, soutenu par un large ensemble d'images soigneusement annotées. Cependant, les retours du terrain ont mis en évidence une limitation bien connue : certaines catégories de défauts apparaissent rarement dans les données disponibles, bien que les fabricants les considèrent comme critiques. Collecter de grands volumes de ces échantillons négatifs devenait impraticable, surtout lorsque les clients n'étaient pas disposés (et qui le serait ?) à générer des pièces défectueuses exprès pour enrichir le dataset.
+
+La solution est venue du passage à la détection d'anomalies dite « non supervisée ». Au lieu d'essayer de tout prédire à l'avance, le modèle apprend à quoi ressemble une pièce normale, signalant toute déviation par rapport à cette « référence » comme suspecte. En pratique, cette approche abaisse considérablement la barrière à l'entrée, puisque rassembler des exemples de pièces normales est bien plus facile que de traquer de grandes quantités de pièces défectueuses et de les étiqueter. Par la suite, un opérateur ou un ingénieur qualité clarifie la nature du problème, affinant davantage la pertinence du modèle. Ce changement redéfinit le rôle de l'IA : elle repère les déviations et alerte l'opérateur humain, plutôt que de proclamer une vérité absolue sur chaque défaut.
+
+Dans un environnement industriel, cette approche change la façon dont les gens interagissent avec le système « Spark ». **Au lieu d'avoir besoin d'un algorithme parfait, le système signale simplement les éléments qui semblent véritablement suspects, laissant aux humains le soin de décider.**
+
+En conséquence, la productivité augmente sans renoncer au dernier mot des opérateurs humains.
+
+### **4. Vers une usine pilotée par les données grâce à l'intelligence artificielle**‍
+
+Le véritable objectif n'est pas seulement de réduire les efforts manuels ou de diminuer les taux de rebut ; il s'agit également de transformer chaque détection de défaut en informations exploitables qui préviennent la récurrence. La vision par ordinateur devient un capteur vital dans un système d'amélioration continue. Le retour de données vers un tableau de bord ou une plateforme centrale s'avère indispensable, fournissant une vue d'ensemble statistique aux décideurs et permettant d'identifier les problèmes latents avant qu'ils n'évoluent en goulots d'étranglement de production massifs.
+
+Au fil du temps, Scortex a envisagé de pousser cette logique plus loin vers une approche en boucle fermée, où la température, la vitesse ou d'autres paramètres de production pourraient être automatiquement ajustés en fonction de la qualité mesurée en sortie. Pourtant, cette ambition se heurte aux réalités industrielles : de nombreuses usines reposent encore sur des équipements construits il y a des décennies, utilisent des protocoles non uniformes et imposent des exigences de sécurité strictes. Néanmoins, la dynamique est en place : les améliorations du traitement d'images, la miniaturisation du matériel et la poussée croissante vers une traçabilité complète de la production soutiennent toutes le concept d'intégrer de manière transparente l'inspection visuelle dans le contrôle des machines. Que l'objectif soit de réduire les déchets, d'accélérer les diagnostics ou de fournir des informations en temps réel aux opérateurs, tout tend vers des systèmes de plus en plus automatisés et pilotés par les données.
+
+> *Ce parcours démontre que le succès dépend moins d'un algorithme unique que de la capacité d'une entreprise à adapter sa technologie aux réalités de la ligne de production.*
+
+En combinant la précision de la vision par ordinateur et les exigences concrètes des équipes sur site, Scortex offre un aperçu d'une voie possible pour ceux qui souhaitent moderniser l'industrie pour l'ère 4.0. Au final, le produit résulte d'une approche holistique : du matériel calibré, un environnement logiciel convivial, une collaboration étroite avec les équipes d'usine et une gestion intelligente des données. Cette synergie intègre l'intelligence artificielle dans les conditions réelles d'ateliers qui, pour la plupart, reposent encore sur des inspections manuelles. Il reste encore beaucoup de travail pour affiner davantage la flexibilité et l'interaction homme-machine, mais les progrès réalisés ces dernières années montrent que l'IA est déjà un puissant catalyseur de changement. L'histoire de Scortex souligne également que le déploiement réussi nécessite à la fois des individus talentueux qui comprennent les contraintes métier et une technologie de pointe. L'adoption industrielle de la vision par ordinateur ne fait que commencer, et les usines — devenant plus ouvertes à l'automatisation et aux outils prédictifs — offrent un vaste terrain de jeu pour quiconque est prêt à s'attaquer aux problèmes pratiques, étape par étape.

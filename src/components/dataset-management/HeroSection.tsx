@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 const customerLogos = [
   { name: 'SGS', src: '/images/customers/sgs.svg' },
@@ -8,14 +9,18 @@ const customerLogos = [
   { name: 'Skillcorner', src: '/images/customers/skillcorner.svg' },
 ];
 
-const heroStats = [
-  { value: '100%', label: 'Reproducibility' },
-  { value: '0', label: 'Data loss' },
-  { value: '5x', label: 'Faster iterations' },
-  { value: '∞', label: 'Version history' },
-];
+// heroStats labels are translated inside the component
 
 export default function HeroSection() {
+  const t = useTranslations('datasetManagement');
+
+  const heroStats = [
+    { value: '100%', label: t('hero.reproducibility') },
+    { value: '0', label: t('hero.dataLoss') },
+    { value: '5x', label: t('hero.fasterIterations') },
+    { value: '∞', label: t('hero.versionHistory') },
+  ];
+
   return (
     <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
       {/* Background effects */}
@@ -31,30 +36,30 @@ export default function HeroSection() {
             <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
             </svg>
-            <span className="text-sm font-medium text-[var(--picsellia-blue)]">Dataset Management</span>
+            <span className="text-sm font-medium text-[var(--picsellia-blue)]">{t('hero.badge')}</span>
           </span>
         </div>
 
         {/* Headline */}
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-center max-w-4xl mx-auto mb-6 tracking-tight">
-          Your datasets deserve <span className="text-[var(--picsellia-blue)]">version control</span>
+          {t('hero.titleStart')} <span className="text-[var(--picsellia-blue)]">{t('hero.titleHighlight')}</span>
         </h1>
 
         {/* Subheadline */}
         <p className="text-lg md:text-xl text-[var(--secondary-label)] text-center max-w-2xl mx-auto mb-10">
-          Git for your computer vision data. Track changes, compare versions, and ensure every experiment is reproducible.
+          {t('hero.subtitle')}
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <Link href="/trial" className="btn-primary px-6 py-3">
-            Start Free Trial
+            {t('hero.cta')}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>
           <Link href="https://documentation.picsellia.com/docs/datasets" target="_blank" rel="noopener noreferrer" className="btn-secondary px-6 py-3">
-            Read Documentation
+            {t('hero.docs')}
           </Link>
         </div>
 
@@ -71,7 +76,7 @@ export default function HeroSection() {
                 <span className="text-sm font-mono text-[var(--picsellia-blue)] font-bold">v3</span>
               </div>
               <div>
-                <div className="text-xs text-[var(--tertiary-label)]">Current Version</div>
+                <div className="text-xs text-[var(--tertiary-label)]">{t('hero.currentVersion')}</div>
                 <div className="text-sm font-medium text-[var(--label)]">+2,340 images</div>
               </div>
             </div>
@@ -79,9 +84,9 @@ export default function HeroSection() {
 
           {/* Floating stats card */}
           <div className="absolute -top-4 -right-4 card px-4 py-3 shadow-xl hidden lg:block">
-            <div className="text-xs text-[var(--tertiary-label)]">Datasets</div>
+            <div className="text-xs text-[var(--tertiary-label)]">{t('hero.datasets')}</div>
             <div className="text-2xl font-bold text-[var(--label)] font-mono">24</div>
-            <div className="text-[10px] text-[var(--picsellia-green)]">All versioned</div>
+            <div className="text-[10px] text-[var(--picsellia-green)]">{t('hero.allVersioned')}</div>
           </div>
         </div>
 
@@ -98,7 +103,7 @@ export default function HeroSection() {
         {/* Logos */}
         <div className="text-center">
           <p className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-8">
-            Used by teams at
+            {t('hero.usedBy')}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-x-10 gap-y-6">
             {customerLogos.map((logo) => (

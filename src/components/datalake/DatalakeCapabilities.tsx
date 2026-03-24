@@ -1,6 +1,8 @@
 import Image from "next/image";
+import { useTranslations } from 'next-intl';
 
 export default function DatalakeCapabilities() {
+  const t = useTranslations('datalake');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       {/* Background grid */}
@@ -16,14 +18,13 @@ export default function DatalakeCapabilities() {
         {/* Header */}
         <div className="text-center mb-20">
           <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Architecture
+            {t('capabilities.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            How it works under the hood
+            {t('capabilities.title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Connects to S3, GCP, or Azure. Ingests any image or video format.
-            Indexes everything so you can query it later.
+            {t('capabilities.subtitle')}
           </p>
         </div>
 
@@ -98,7 +99,7 @@ export default function DatalakeCapabilities() {
               {/* Sources */}
               <div className="space-y-3">
                 <div className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">
-                  Sources
+                  {t('capabilities.sources')}
                 </div>
                 {[
                   {
@@ -168,7 +169,7 @@ export default function DatalakeCapabilities() {
                       2.4M
                     </div>
                     <div className="text-xs text-[var(--tertiary-label)]">
-                      assets indexed
+                      {t('capabilities.assetsIndexed')}
                     </div>
                     <div className="mt-4 grid grid-cols-2 gap-2 text-[10px]">
                       <div className="p-2 rounded bg-[var(--black)]/50">
@@ -176,7 +177,7 @@ export default function DatalakeCapabilities() {
                           847GB
                         </div>
                         <div className="text-[var(--tertiary-label)]">
-                          storage
+                          {t('capabilities.storage')}
                         </div>
                       </div>
                       <div className="p-2 rounded bg-[var(--black)]/50">
@@ -184,7 +185,7 @@ export default function DatalakeCapabilities() {
                           12ms
                         </div>
                         <div className="text-[var(--tertiary-label)]">
-                          latency
+                          {t('capabilities.latency')}
                         </div>
                       </div>
                     </div>
@@ -215,21 +216,21 @@ export default function DatalakeCapabilities() {
               {/* Outputs */}
               <div className="space-y-3">
                 <div className="text-xs text-[var(--tertiary-label)] uppercase tracking-wider mb-4">
-                  Outputs
+                  {t('capabilities.outputs')}
                 </div>
                 {[
                   {
-                    name: "Datasets",
+                    name: t('capabilities.datasets'),
                     count: "24",
                     color: "var(--picsellia-green)",
                   },
                   {
-                    name: "Experiments",
+                    name: t('capabilities.experiments'),
                     count: "156",
                     color: "var(--system-orange)",
                   },
                   {
-                    name: "Deployments",
+                    name: t('capabilities.deployments'),
                     count: "8",
                     color: "var(--system-indigo)",
                   },
@@ -364,10 +365,10 @@ export default function DatalakeCapabilities() {
                 </span>
                 <div className="flex items-center gap-4">
                   <span className="text-[10px] text-[var(--picsellia-green)]">
-                    Auto EXIF extraction
+                    {t('capabilities.autoExif')}
                   </span>
                   <span className="text-[10px] text-[var(--picsellia-blue)]">
-                    Batch upload
+                    {t('capabilities.batchUpload')}
                   </span>
                 </div>
               </div>
@@ -490,23 +491,23 @@ export default function DatalakeCapabilities() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-semibold text-[var(--label)]">
-                  Image & Video Format Support
+                  {t('capabilities.formatSupportTitle')}
                 </h3>
                 <p className="text-sm text-[var(--tertiary-label)]">
-                  Ingest standard visual data formats
+                  {t('capabilities.formatSupportSubtitle')}
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-4 gap-3">
               {[
-                { ext: "JPG", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "PNG", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "TIFF", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "WebP", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "BMP", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "GIF", type: "image", color: "var(--picsellia-blue)" },
-                { ext: "MP4", type: "video", color: "var(--system-orange)" },
-                { ext: "MOV", type: "video", color: "var(--system-orange)" },
+                { ext: "JPG", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "PNG", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "TIFF", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "WebP", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "BMP", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "GIF", type: t('capabilities.image'), color: "var(--picsellia-blue)" },
+                { ext: "MP4", type: t('capabilities.video'), color: "var(--system-orange)" },
+                { ext: "MOV", type: t('capabilities.video'), color: "var(--system-orange)" },
               ].map((format) => (
                 <div
                   key={format.ext}
@@ -531,44 +532,44 @@ export default function DatalakeCapabilities() {
             <div className="flex items-center justify-between mb-6">
               <div>
                 <h3 className="text-lg font-semibold text-[var(--label)]">
-                  Processing Pipeline
+                  {t('capabilities.processingTitle')}
                 </h3>
                 <p className="text-sm text-[var(--tertiary-label)]">
-                  Embeddings generation & database indexing
+                  {t('capabilities.processingSubtitle')}
                 </p>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[var(--picsellia-green)] animate-pulse" />
                 <span className="text-xs text-[var(--picsellia-green)]">
-                  Live
+                  {t('capabilities.live')}
                 </span>
               </div>
             </div>
             <div className="space-y-4">
               {[
                 {
-                  label: "Embedding Generation",
+                  label: t('capabilities.embeddingGeneration'),
                   value: "156",
                   unit: "vec/sec",
                   percent: 72,
                   color: "var(--system-indigo)",
                 },
                 {
-                  label: "DB Indexing",
+                  label: t('capabilities.dbIndexing'),
                   value: "12",
                   unit: "ms/img",
                   percent: 95,
                   color: "var(--picsellia-green)",
                 },
                 {
-                  label: "Ingestion Rate",
+                  label: t('capabilities.ingestionRate'),
                   value: "2,847",
                   unit: "img/min",
                   percent: 85,
                   color: "var(--picsellia-blue)",
                 },
                 {
-                  label: "Storage Sync",
+                  label: t('capabilities.storageSync'),
                   value: "99.9",
                   unit: "%",
                   percent: 99,

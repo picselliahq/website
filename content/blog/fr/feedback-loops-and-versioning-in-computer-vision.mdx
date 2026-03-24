@@ -1,0 +1,68 @@
+---
+
+title: "Bonnes pratiques pour le versioning des données et les boucles de rétroaction"
+description: "Le versioning des données est une méthodologie efficace utilisée lors de l'exécution de nombreuses expérimentations impliquant différentes techniques de traitement des données. Découvrez nos bonnes pratiques !"
+date: "2022-05-29"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/feedback-loops-and-versioning-in-computer-vision-hero.png"
+imageAlt: "Data Versioning & Feedback Loop Best Practices"
+published: true
+tags: ["computer-vision", "dataset-management", "docker", "document-processing", "experiment-tracking", "manufacturing", "object-detection", "pipelines"]
+---
+
+Le versioning du code logiciel est depuis longtemps une pratique standard dans l'industrie informatique, utilisant des outils comme git. Le versioning des environnements gagne également en popularité, avec des outils comme Docker. Cependant, le versioning des données n'est toujours pas aussi répandu dans l'industrie du machine learning, bien que son adoption offre des avantages précieux. Vous vous demandez peut-être alors pourquoi le versioning est si important ?
+
+Tout comme pour le code logiciel, versionner les datasets à différents moments vous permet de revenir facilement à des versions précédentes. C'est vital pour la reproductibilité des expérimentations, car tout changement dans les données orientera les résultats d'un modèle dans des directions différentes. De plus, cela offre une solution adéquate pour documenter la lignée et l'origine des données, **particulièrement crucial lorsque des boucles de rétroaction sont intégrées dans un système**. Le versioning est également un moyen indirect de sauvegarder les données,** **bien qu'il ne doive pas remplacer les sauvegardes formelles.
+
+Par ailleurs, le versioning des données est une méthodologie efficace que vous devriez suivre lorsque vous exécutez de nombreuses expérimentations impliquant différentes techniques de traitement des données. Chaque expérimentation devrait être versionnée, offrant un accès facile à une étape spécifique et évitant les modifications involontaires. Enfin, l'importance du versioning se révèle pleinement lorsque de grandes équipes d'ingénieurs travaillent sur les mêmes données. Nous développerons la gouvernance des données plus loin.
+
+Mais d'abord, présentons quelques bonnes pratiques de versioning des données que vous devez considérer dans vos projets de vision par ordinateur.
+
+## **5 bonnes pratiques pour le versioning des données en vision par ordinateur**
+
+- Versionner aux étapes clés du pipeline. Les versions de données sont les plus pertinentes lorsqu'elles sont utilisées au début et/ou à la fin des tâches du pipeline de données. Un script ETL vient de finir de s'exécuter ? Créez une version. Avez-vous exécuté un script de détection de corruption et supprimé les images corrompues ? Créez une version. Idéalement, vous voulez une version après chaque tâche du pipeline, des données brutes jusqu'à la version finale.
+- Les noms de version doivent refléter le statut des données et leur position dans le pipeline. Le nom d'une version doit être descriptif. Vous ne devriez pas avoir besoin de revenir à une version pour vérifier l'étape du dataset. Quelques exemples de noms de version auto-descriptifs pourraient être « defects_dataset-cleaned-normalized-feedback_loop », « non_defects_dataset-raw ». Cependant, une convention standard de [numéro de version sémantique à trois parties](https://devopedia.org/semantic-versioning) peut être utilisée pour encoder efficacement les étapes d'un pipeline. Dans les deux cas, le nom doit transmettre des informations pertinentes.
+- Créer des métadonnées pour chaque version. Cela pourrait même être un simple fichier .txt documentant les informations importantes sur le dataset jusqu'à ce point. Vous devriez inclure les informations qui ne tiennent pas dans le titre mais qui sont importantes à documenter. Un fichier de métadonnées devrait indiquer quelles données en particulier ont été affectées par les changements, le nombre de nouvelles images et le total d'images incluses dans le dataset, l'origine des nouvelles données, le traitement effectué en détail, et tout autre fait pertinent décidé par votre équipe Data. Cette nécessité est renforcée lorsque des boucles de rétroaction sont introduites, mais nous y reviendrons plus tard.
+- Automatiser le versioning. Dans la plupart des cas, le versioning des données est une tâche répétitive et fastidieuse. De telles tâches prennent du temps aux data scientists qui devraient consacrer leur temps à créer et déployer des modèles de valeur. Visez à versionner automatiquement un dataset après chaque étape clé du pipeline. La [plateforme unique de gestion des données](/dataset-management) de Picsellia peut vous faire gagner un temps précieux et vous soulager de ce fardeau. Vérifiez par vous-même [comment utiliser des solutions code et no-code pour versionner rapidement des datasets](https://documentation.picsellia.com/docs/create-a-new-dataset-version) sans aucune difficulté, en utilisant Picsellia.
+- Exploiter le versioning pour la coopération intra-équipe. Lorsque plusieurs personnes travaillent sur la même version d'un dataset, il y a toujours une possibilité de faire par inadvertance des changements qui affectent le travail des autres. Habituellement, chaque collaborateur devrait travailler sur sa propre version pendant les expérimentations, tout en maintenant une version principale (« master »), que tout le monde peut lire mais sur laquelle personne ne peut écrire. C'est une politique de gouvernance des données que les chefs d'équipe devraient mettre en place.
+
+## **L'importance de la gouvernance des données**
+
+Avec l'adoption massive de l'analytique prédictive et du machine learning, les données sont le carburant de la croissance. L'afflux de données augmente mois après mois dans la plupart des entreprises. Les données sont une ressource et doivent être gérées en conséquence. Cependant, lorsqu'on travaille au sein de grandes équipes d'ingénieurs, la gestion efficace des données devient une opération complexe, mais néanmoins cruciale. Il est indispensable de mettre en place un système de gouvernance des données. Par gouvernance des données, nous entendons un ensemble de règles, de politiques et de normes à suivre.
+
+Voici quelques politiques et normes importantes que vous devriez définir :
+
+- Comment les données sont collectées.
+- Quelles métadonnées doivent être documentées.
+- Quelle qualité de données est acceptable, et ce qu'il advient des données qui ne répondent pas aux critères. Par exemple, les images floues, corrompues et/ou à fort contraste doivent être supprimées et ne pas progresser dans le pipeline.
+- Mettre en place des conventions de nommage pour les fichiers, les datasets et les versions.
+- Quand les datasets doivent être versionnés. Les différents membres de l'équipe travailleront-ils sur leurs propres versions ? Qui est autorisé à écrire sur la version principale ?
+- Quel type d'architecture de stockage de données convient le mieux aux besoins de votre organisation. Devriez-vous stocker dans un data lake ou un data warehouse ? Vaut-il la peine de créer un feature store ?
+
+Définir, mettre en place et respecter ces règles et directives aide à mettre de l'ordre dans le flux croissant de données et à éviter le chaos qui l'accompagne. La plupart du temps, utiliser une plateforme MLOps pour faciliter la gestion des données [vaut l'investissement](/post/mlops-platform-build-vs-buy-what-you-must-know), car les data scientists et les ingénieurs ML peuvent concentrer leur énergie sur la création de valeur avec leurs modèles.
+
+Ce besoin devient plus prévalent lorsque l'on passe des cycles de vie de données traditionnels aux cycles modernes comme les boucles de rétroaction.
+
+## **Le scénario de déploiement avec boucle de rétroaction**
+
+Le déploiement d'un modèle de machine learning est un **processus** continu plutôt qu'une tâche ponctuelle. Il est dynamique car il implique une [surveillance](/model-monitoring) constante des performances d'un modèle. Les modèles en production ont des dates d'expiration. La dérive des données et des concepts dégrade rapidement les performances d'un modèle, nuisant finalement aux métriques commerciales et aux profits. Mais même sans dérive, une fois déployé, les performances d'un modèle peuvent simplement ne pas répondre aux attentes fixées lors de la phase d'évaluation. C'est là que les boucles de rétroaction et l'apprentissage en ligne deviennent vitaux. Ils permettent des mises à jour rapides du modèle, ajustées aux nouvelles distributions de données et aux variables environnementales.
+
+Pensez à un modèle de détection de défauts dans un environnement industriel ; un système de détection visuelle pour les écrans de téléphone cassés ou rayés. Après avoir collecté des données, entraîné et déployé un modèle, des changements surviennent dans l'environnement industriel, hors du contrôle des ingénieurs en machine learning. L'intensité lumineuse est modifiée, la couleur du tapis roulant en arrière-plan change. Même ces petits changements environnementaux peuvent produire une sous-performance involontaire du système visuel. D'où la nécessité d'un réentraînement.
+
+Dans cet exemple, en supposant que le modèle n'est pas devenu complètement inutile et que repartir de zéro n'est pas rentable et demande beaucoup de temps. Vous avez besoin d'un système capable de réentraîner dynamiquement un modèle en ligne, en utilisant des données **moins nombreuses mais pertinentes**. Le réentraînement peut être déclenché par des seuils de performance, la détection de dérive des données ou des intervalles de temps fixes. Lorsque le modèle produit un résultat incorrect, celui-ci doit être capturé, documenté et inclus dans une **version mise à jour** du dataset. Les fonctionnalités de [monitoring](/model-monitoring) de Picsellia offrent ces capacités. La détection des mauvaises prédictions nécessite toujours qu'un humain entre dans la boucle. Par conséquent, une combinaison d'anciennes et de nouvelles données acquises est utilisée pour réentraîner le modèle. Ce dataset mis à jour fournit une meilleure représentation de la « nouvelle » réalité.
+
+## Avantages des boucles de rétroaction
+
+Avec des boucles de rétroaction en place :
+
+- Les modèles ne deviennent pas obsolètes et les performances sont maintenues à des niveaux élevés tout au long de la phase de déploiement. Selon le cas d'usage du modèle, cela se traduit par des services de qualité supérieure ou des profits plus élevés.
+- Vous réduisez le temps d'arrêt du modèle. Moins de temps passé à reconcevoir, réentraîner et évaluer un modèle se traduit par plus de temps de service.
+- Les ressources de calcul sont économisées. Puisque le réentraînement est généralement effectué avec moins d'époques et de données, vous réduisez les besoins en calcul. C'est crucial lorsque vous utilisez des solutions cloud et êtes facturé à l'usage.
+
+## Inconvénients des boucles de rétroaction
+
+Cependant, les boucles de rétroaction ont des inconvénients cachés. Premièrement, puisque les versions de dataset créées pendant une boucle de rétroaction sont principalement échantillonnées à partir des erreurs d'un modèle, la version peut être intrinsèquement couplée au modèle utilisé lors de sa génération. Elle peut donc ne pas bien se transférer à un autre modèle. Deuxièmement, l'équipe d'ingénierie peut se retrouver piégée dans une boucle sans fin de réentraînement, pour ressusciter un modèle « mort ». Parfois, les dérives de concept et de données sont si importantes que la seule option viable est de recommencer l'entraînement à zéro.
+
+De plus, les boucles de rétroaction ajoutent de la complexité à l'architecture d'un système. L'architecture typique entraîner-évaluer-déployer ne peut pas gérer efficacement les boucles de rétroaction. Vous avez besoin d'une architecture qui intègre le monitoring des performances, des concepts et de la dérive des données. De tels systèmes sont plus difficiles à concevoir et à maintenir. Heureusement, [la plateforme CVOps de Picsellia](/) offre ces services via une interface facile à utiliser et collaborative, vous aidant à préserver des ressources pertinentes.

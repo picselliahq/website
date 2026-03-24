@@ -1,0 +1,189 @@
+---
+
+title: "C'est la fin de l'annee !"
+description: "Notre CEO Thibaut revient sur l'annee ecoulee et partage avec nous ce qu'il a appris en matiere de vision par ordinateur, d'entrepreneuriat et d'agrandissement de la famille avo !"
+date: "2022-12-22"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/thats-a-wrap-2022-hero.png"
+imageAlt: "That's a wrap!"
+published: true
+tags: ["classification", "computer-vision", "manufacturing", "object-detection"]
+---
+
+2022 a ete l'annee ou Picsellia est passee d'une equipe de 4 personnes a une equipe de 12.
+
+Quelle aventure !
+
+J'ai travaille dans la vision par ordinateur toute l'annee, echangeant avec de nombreuses entreprises sur leurs strategies IA. J'ai le sentiment d'avoir appris tellement de choses sur le recrutement, le management et la construction de nouvelles equipes, ainsi que d'autres enseignements business que je vais resumer ici.
+
+‍
+
+## Top 5 des enseignements de 2022 sur le marche de la vision par ordinateur
+
+### 1. Les applications de vision par ordinateur les plus importantes ne sont pas sexy DU TOUT !
+
+‍
+
+![Thats a wrap 2022](/images/blog/thats-a-wrap-2022-img-0.png)
+
+‍
+
+Nous avons echange avec tellement d'entreprises au cours de l'annee ecoulee, souhaitant soit demarrer leur parcours en vision par ordinateur, soit ameliorer leurs workflows existants. Apres avoir decouvert leurs cas d'usage, je peux vous garantir que le scenario reel est assez eloigne de ces situations fantaisistes que l'on lit sur LinkedIn ou Reddit. Les personnes serieuses en matiere de vision par ordinateur cherchent a generer du ROI le plus rapidement possible, mais comment y parvenir efficacement ? Par exemple, si vous prenez une tache simple et que vous l'accelerez de X %, vous etes sur d'economiser du temps (et de l'argent !).
+
+‍
+
+La plupart du temps, la vision par ordinateur ne cree pas de nouveaux cas d'usage, mais elle augmente ou optimise principalement ceux qui existent deja.
+
+‍
+
+Je m'explique.
+
+‍
+
+- **La classification d'images regne toujours**
+
+Etre capable de classer rapidement des millions d'images - une tache qui necessitait auparavant beaucoup de travail humain chronophage - reste le cas d'usage numero un de la vision par ordinateur. Ceux d'entre vous qui me suivent depuis un moment pourraient penser que c'est un probleme facile a resoudre et deja depasse. Spoiler : ce n'est pas le cas.
+
+‍
+
+‍
+
+- **La detection d'objets est peut-etre une realite, mais dans la plupart des cas c'est un processus en 2 etapes**
+
+Dans les scenarios industriels ou reels, vous ne voulez pas faire d'erreurs a l'etape de classification. Et si vous ne detectez pas certains defauts ? C'est embetant, non ? Mais si le cadre englobant autour de ces defauts n'est pas parfait ? Eh bien... on pourrait dire qu'au moins vous les avez localises. C'est embetant... mais moins.
+
+‍
+
+Cette reflexion simple mais legitime pousse les entreprises a mettre en place 2 projets separes : un pour la localisation et un pour la classification. Cela donne 2 modeles, donc 2 etapes. Alors que cela pourrait n'en etre qu'une !
+
+‍
+
+‍
+
+- **Les metriques de qualite a surveiller ne sont pas les memes**
+
+Dans les applications reelles, les metriques de qualite les plus importantes a prendre en compte peuvent etre assez differentes de celles auxquelles nous sommes habitues dans un cadre academique.
+
+‍
+
+Les systemes IA en entreprise sont, en fait, integres avec bien plus d'aspects d'ingenierie. Par exemple, si vous voulez integrer un modele dans quelque chose qui se deplace a 3 m/s, vous aurez besoin d'une vitesse d'inference bien au-dessus de la norme. Meme si c'est possible dans la plupart des cas, c'est la qu'on commence a penser a des strategies alternatives. Un autre element a prendre en compte est la confiance moyenne des predictions du modele. Avoir une coherence dans le seuil de confiance est crucial si vous voulez l'integrer dans un logiciel.
+
+‍
+
+Enfin, parfois le pragmatisme vaut mieux que la rigueur scientifique. Pour ainsi dire, on pourrait affirmer que **"Chaque modele de vision par ordinateur en ligne de production est surajuste"**, mais qui s'en soucie si ca marche ? :)
+
+‍
+
+![Thats a wrap 2022](/images/blog/thats-a-wrap-2022-img-1.png)
+
+### 2. Le probleme le plus courant est le desequilibre des donnees
+
+‍
+
+Eh bien, on pourrait voir ca comme une bonne nouvelle ;)
+
+Quelque chose a garder en tete : les datasets sont censes etre une representation du monde : les evenements a forte valeur ajoutee ne se produisent pas tout le temps, contrairement a la norme.
+
+‍
+
+Il y a plusieurs raisons pour lesquelles construire un dataset equilibre pour les taches de vision par ordinateur n'est pas toujours simple :
+
+‍
+
+- Disponibilite des donnees : Il peut etre difficile de trouver une quantite suffisante de donnees pour les classes minoritaires d'un dataset, surtout si la tache est tres specialisee ou si les donnees sont difficiles a collecter.
+- Qualite des donnees : Les donnees des classes minoritaires peuvent etre de moindre qualite, ce qui rend difficile la construction d'un dataset equilibre. Par exemple, les images des classes minoritaires peuvent etre mal etiquetees ou avoir une faible resolution.
+- Annotation des donnees : Construire un dataset equilibre peut necessiter l'annotation manuelle d'un grand nombre d'images, ce qui peut etre chronophage et couteux.
+- Distribution des donnees : La distribution des donnees dans le monde reel peut etre inheremment desequilibree. Par exemple, il peut y avoir significativement plus d'images d'objets courants comme les voitures ou les chiens par rapport a des objets plus rares comme les avions ou les animaux exotiques.
+
+‍
+
+Globalement, construire un dataset equilibre peut etre un defi car cela peut necessiter un effort considerable pour collecter et annoter des donnees de haute qualite pour les classes minoritaires, et la distribution des donnees dans le monde reel peut ne pas etre equilibree de maniere egale entre toutes les classes.
+
+‍
+
+### 3. Tout comme nous n'avons pas besoin de plus de services de livraison, nous n'avons pas besoin de plus d'outils d'annotation
+
+‍
+
+![Thats a wrap 2022](/images/blog/thats-a-wrap-2022-img-2.png)
+
+**Il y en a tellement, je ne peux meme pas tous les mettre dans mon graphique, genre... s'il vous plait aha.**
+
+‍
+
+Il peut etre difficile de determiner lequel est le mieux adapte a un projet particulier. Quelques facteurs a considerer lors de la selection d'un outil d'annotation d'images :
+
+‍
+
+- Le type de donnees a annoter : Differents outils peuvent etre mieux adaptes a differents types de donnees, comme les images, la video ou le texte.
+- Les taches d'annotation a effectuer : Certains outils peuvent etre mieux adaptes a certains types de taches d'annotation, comme l'annotation par cadre englobant, l'annotation par polygone ou l'annotation par points cles.
+- La taille et la complexite du dataset : Certains outils peuvent etre mieux adaptes aux grands datasets avec de nombreuses images, tandis que d'autres peuvent etre plus adaptes aux datasets plus petits.
+- Le budget et les ressources disponibles : Certains outils peuvent etre plus couteux ou necessiter plus d'expertise technique, ce qui peut ne pas etre pratique pour tous les projets.
+
+‍
+
+En fin de compte, le meilleur outil d'annotation d'images dependra des besoins et contraintes specifiques du projet. Il peut etre utile d'evaluer plusieurs outils differents et de comparer leurs fonctionnalites et capacites avant de prendre une decision.
+
+‍
+
+**Mais s'il vous plait, jeunes fondateurs, arretez de creer de nouvelles startups d'annotation, ca suffit aha.**
+
+‍
+
+### 4. Les gens ont compris que le deep learning doit etre specifique pour obtenir de bons resultats
+
+‍
+
+En general, les modeles de deep learning specialises tendent a etre plus performants sur des taches specifiques que les modeles plus generalistes. C'est parce que les modeles specialises ont moins de parametres et sont donc moins sujets au surapprentissage, qui se produit lorsqu'un modele est trop complexe et apprend des patterns dans les donnees d'entrainement qui ne se generalisent pas aux nouvelles donnees non vues.
+
+Les modeles specialises sont egalement **plus faciles a entrainer et necessitent moins de calcul**, ce qui peut etre particulierement important pour les taches necessitant des performances en temps reel ou lorsqu'il y a des contraintes de ressources, comme sur les appareils mobiles ou les systemes embarques.
+
+Cependant, il est important de noter que le meilleur modele pour une tache particuliere dependra des caracteristiques specifiques des donnees et de la tache en question. Dans certains cas, un modele plus generaliste peut etre plus adapte, surtout si la tache necessite un modele polyvalent capable de gerer une large gamme d'entrees. Il est egalement possible d'utiliser le transfer learning, ou un modele entraine sur une tache est affine pour une autre tache, pour tirer parti des connaissances acquises par un modele plus large tout en obtenant de bonnes performances sur une tache specifique.
+
+‍
+
+### 5. Le MLOps doit s'orienter vers le deploiement edge RAPIDEMENT
+
+‍
+
+Il est difficile d'estimer la proportion de modeles de vision par ordinateur fonctionnant en production en edge, car cela depend du secteur et de l'application specifiques. Cependant, il est de plus en plus courant de deployer des modeles de vision par ordinateur en edge, en particulier dans des secteurs tels que la fabrication, le commerce de detail et les transports, ou il est important de traiter les donnees rapidement et efficacement sans necessiter de connexion reseau.
+
+Dans certains cas, les modeles de vision par ordinateur peuvent etre deployes sur des appareils edge tels que les smartphones, les drones ou les cameras de surveillance, ou ils peuvent analyser des images et des videos en temps reel.
+
+‍
+
+Il convient de mentionner que tous les modeles de vision par ordinateur ne sont pas adaptes au deploiement en edge, car certaines taches peuvent necessiter plus de calcul ou de memoire que ce qu'un petit appareil peut fournir. Dans ces cas, il peut etre plus adapte d'envoyer les donnees a un serveur central ou au cloud pour le traitement.
+
+‍
+
+Les plateformes MLOps peuvent certainement se concentrer sur la facilitation du deploiement edge des modeles de vision par ordinateur, car c'est un domaine important et en croissance dans le champ du machine learning. Les plateformes MLOps sont concues pour rationaliser le processus de construction, de deploiement et de gestion des modeles de machine learning en production, et cela inclut le deploiement des modeles en edge.
+
+‍
+
+Il y a un certain nombre de defis a prendre en compte lors du deploiement de modeles de machine learning en edge, comme les ressources limitees et la puissance de calcul des appareils edge, le besoin de performances en temps reel et le potentiel de conditions reseau variables et peu fiables.
+
+‍
+
+Les plateformes MLOps peuvent aider a relever ces defis en fournissant des outils et des frameworks pour optimiser et deployer des modeles en edge, ainsi que pour surveiller et gerer leurs performances en production.
+
+‍
+
+Cela dit, il n'est pas necessairement le cas que toutes les plateformes MLOps doivent se concentrer exclusivement sur le deploiement edge pour la vision par ordinateur. **L'orientation specifique d'une plateforme MLOps dependra des besoins de l'organisation et des types de taches de machine learning qu'elle cherche a resoudre.** Certaines organisations peuvent avoir un plus grand besoin de deploiement edge, tandis que d'autres peuvent etre plus orientees vers le deploiement de modeles dans le cloud ou sur site.
+
+
+
+‍
+
+## Conclusion
+
+‍
+
+Je crois sincerement que 2022 a ete un tournant pour la vision par ordinateur dans l'industrie. J'ai 26 ans... mais aux premiers jours - c'est-a-dire en 2018/19 - nous avions du mal a attirer l'attention des decideurs sur la vision par ordinateur et l'IA. Ces jours sont revolus, maintenant on entend parler de gens qui veulent mettre en place un cycle MLOps complet dans une usine hors ligne tout en surveillant la derive et les anomalies sur un raspberry pi. :) Cela signifie que les choses evoluent : les gens se familiarisent davantage avec l'IA et sont conscients que la vision par ordinateur peut ameliorer leurs strategies business. Neanmoins, il reste encore un long chemin a parcourir ! Tant mieux pour nous :P
+
+‍
+
+Si vous envisagez d'entrer dans ce domaine, n'hesitez pas, il y a tellement de choses passionnantes a explorer et de cas d'usage a construire, c'est encore le debut de l'IA pour l'industrie :)
+
+‍

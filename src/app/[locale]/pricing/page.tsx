@@ -1,0 +1,32 @@
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import type { Metadata } from "next";
+import PricingPageContent from "./PageContent";
+import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'pricing.metadata' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: "/pricing",
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      url: "/pricing",
+    },
+  };
+}
+
+export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  return (
+    <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'Pricing', url: '/pricing' }], locale)} />
+      <PricingPageContent />
+    </>
+  );
+}

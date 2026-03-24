@@ -1,0 +1,203 @@
+---
+
+title: "Comment nous avons construit une fonctionnalité de recherche de similarité visuelle dans les datasets"
+description: "Découvrez comment nous avons construit une fonctionnalité de recherche de similarité visuelle dans les datasets avec des embeddings et Qdrant."
+date: "2022-05-17"
+author:
+  name: "Picsellia Team"
+category: "Product"
+image: "/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-hero.png"
+imageAlt: "How We Built A Dataset Visual Similarity Search Feature"
+published: true
+tags: ["annotation", "classification", "dataset-management", "deep-learning", "object-detection"]
+---
+
+Comme nous l'avons examiné dans notre dernier [article](/post/data-management-in-ai-key-success-factor), certaines des fonctionnalités clés d'un système de gestion de données efficace sont l'exploration et le filtrage des données. Nous avons défendu cela depuis longtemps maintenant, mais nous n'avions jamais eu le temps d'ajouter cette fonctionnalité à notre plateforme. Ces temps sont révolus !
+
+Dans cet article, nous allons vous guider à travers le concept général d'embedding d'images, et comment nous avons implémenté notre fonctionnalité de recherche visuelle évolutive pour trouver des images similaires parmi des millions d'images pour plusieurs clients simultanément.
+
+## **Qu'est-ce qu'un embedding ?**
+
+Les embeddings sont une manière de mapper des variables discrètes vers des nombres continus. Dans le contexte des réseaux de neurones, les embeddings sont des représentations vectorielles de basse dimension de variables catégorielles.
+
+Les embeddings de réseaux de neurones permettent d'avoir des voisins proches dans l'espace et peuvent être utilisés pour faire des recommandations basées sur les intérêts des utilisateurs, regrouper des catégories, ou servir d'entrée à des modèles de machine learning pour des tâches supervisées nécessitant des vecteurs en entrée, comme les tâches de classification qui utilisent des étiquettes apprises à partir de données étiquetées (comme la détection de spam).
+
+La visualisation des embeddings est utile car elle permet aux gens de voir les concepts et les relations entre différentes catégories au sein d'un dataset donné, plus clairement que les méthodes traditionnelles, en réduisant la dimensionnalité sans perdre d'information sur ce qui est représenté.
+
+Ici, notre objectif est d'exploiter les embeddings pour identifier rapidement les similarités dans les images (sans information a priori sur les caractéristiques de similarité).
+
+## Comment générer des embeddings d'images ?
+
+**Descripteurs basés sur les transformations**
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-0.png)
+
+‍
+
+Vous avez plusieurs stratégies pour générer vos embeddings d'images. L'essentiel est de sélectionner un ensemble de caractéristiques qui représenteront vos images de la meilleure façon possible. Pour ce faire, vous pouvez utiliser des descripteurs classiques comme SIFT (Scale-Invariant Feature Transform) ou SURF (Speeded Up Robust Features). Ces approches se concentrent sur l'identification et la correspondance de points d'intérêt, ce qui est une excellente façon de trouver des objets similaires dans une image qui sont à des positions différentes.
+
+[Ici](https://medium.com/data-breach/introduction-to-surf-speeded-up-robust-features-c7396d6e7c4e) se trouve une bonne introduction à SURF !
+
+Pour les générer, vous pouvez utiliser OpenCV. [Ici](https://docs.opencv.org/3.4/df/dd2/tutorial_py_surf_intro.html) se trouve un lien vers un tutoriel OpenCV sur le calcul SURF.
+
+Veuillez noter que les algorithmes SURF et SIFT sont brevetés et ne peuvent pas être utilisés commercialement, une excellente alternative peut être ORB (Oriented FAST and Rotated BRIEF).
+
+## **Descripteurs basés sur les réseaux convolutifs**
+
+Comme nous l'avons vu, les descripteurs classiques sont excellents pour identifier tout type de transformation et faire correspondre deux images qui se ressemblent beaucoup. Mais, si vous voulez créer une recherche de similarité plus symbolique, vous aurez besoin d'une autre méthode.
+
+C'est pourquoi les réseaux de neurones convolutifs sont si puissants. Au cours des dix dernières années, les modèles de deep learning ont atteint des niveaux de précision très élevés pour classifier des images. Ces ConvNets de deep learning peuvent être utilisés pour extraire des caractéristiques d'images qui sont invariantes ; non seulement en ce qui concerne les transformations géométriques, mais aussi dans l'instance elle-même ! Qu'est-ce que cela signifie ? Deux images de la même catégorie auront la même représentation.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-1.png)
+
+‍
+
+L'objectif est d'utiliser le vecteur de caractéristiques généré par l'extracteur de caractéristiques ConvNet, pour construire un espace vectoriel correspondant à toutes les images de votre ensemble.
+
+Il existe tellement de modèles ConvNet qu'il est devenu une tâche complexe de décider lequel utiliser. Lors de la construction d'une fonctionnalité de recherche visuelle évolutive, vous devrez générer divers embeddings au fil du temps pour l'ensemble de votre data lake. Ainsi, c'est une bonne idée de trouver un excellent compromis entre la taille du modèle, le temps d'inférence et la précision.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-2.png)
+*Source : AI Google Blog*
+
+‍
+
+Les dernières architectures EfficientNet publiées par l'équipe de Google sont un excellent choix puisque le nombre de paramètres (et donc, la taille et le temps d'inférence) du modèle est significativement inférieur à ceux de ResNet, par exemple. Donc un EfficientNet-b0 peut être un bon choix pour notre cas d'usage. Pour générer les embeddings, nous utilisons le [package Python img2vec](https://github.com/christiansafka/img2vec).
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-3.png)
+
+‍
+
+Maintenant que nous avons tout ce qu'il faut pour générer nos embeddings, nous pouvons réfléchir à la stratégie de recherche de similarité.
+
+## Comment implémenter la recherche visuelle ?
+
+Une fois que nous avons des embeddings pour toutes nos images, nous devons créer un index pour chaque donnée. Ici, comme nous construisons une fonctionnalité pour interagir avec les images stockées dans le data lake de Picsellia, nous allons utiliser l'UUID de nos données comme index.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-4.png)
+
+Ensuite, nous voulons trouver, étant donné un index, les N images les plus similaires.
+
+## Recherche par force brute (euclidienne, cosinus, etc.)
+
+Une façon simple d'implémenter une recherche de similarité est de calculer la distance d'un vecteur de caractéristiques donné entre tous les autres vecteurs puis de sélectionner les N voisins les plus proches. Pour cette approche, vous n'avez qu'à considérer la distance que vous souhaitez calculer, la similarité vectorielle est souvent calculée par la distance cosinus.
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-5.png)
+
+‍
+
+Le pseudo-code associé à cette recherche serait :
+
+‍
+
+***x = target_vector***
+
+***‍***
+
+***for all indexes:***
+
+***	compute cosine_distance between x and the index***
+
+***‍***
+
+***extract the K nearest neighbors***
+
+‍
+
+Cette approche est considérée comme de la force brute puisque la complexité de la recherche est linéaire (comme montré dans le graphique ci-dessous). Pour nous, il est complètement impossible d'utiliser de telles approches car nous gérons des millions d'images pour de multiples clients.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-6.png)
+
+‍
+
+## HNSW (Hierarchical Navigable Small World Graphs) - une approche plus intelligente
+
+‍
+
+Cet algorithme a été introduit dans l'article de recherche "*Efficient and robust approximate nearest neighbor search using Hierarchical Navigable Small World graphs*" par **Yu. A. Malkov, D. A. Yashunin.**
+
+Vous pouvez trouver les bindings Python vers l'implémentation C++ [ici.](https://github.com/nmslib/hnswlib)
+
+L'algorithme génère un graphe où chaque noeud est un vecteur de caractéristiques lié à son voisin le plus proche. Lors de la recherche des K voisins les plus proches, il suffit de naviguer dans le graphe et d'extraire les K points les plus proches.
+
+L'objectif est de créer une approximation de la recherche pour réduire le nombre de calculs effectués et réduire la complexité computationnelle de la recherche. En termes simples, cela nous permet de rechercher dans une base de données d'un million d'index en quelques millisecondes !
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-7.png)
+
+‍
+
+> Maintenant, finalisons le tout en utilisant Picsellia !
+
+## Les coulisses de l'implémentation de la recherche visuelle de Picsellia
+
+Chez Picsellia, nous fournissons une plateforme de gestion de données pour dynamiser le stockage d'objets cloud avec l'indexation, le filtrage, la recherche, la visualisation, et plus encore. C'est pourquoi il est logique pour nous de construire des fonctionnalités de recherche visuelle.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-8.gif)
+*[Data Lake de Picsellia](/product-overview)*
+
+
+
+Plutôt impressionnant comme vitesse, non ? Eh bien, voyons comment nous avons construit cela.
+
+## Nos exigences
+
+Pour répondre à nos standards de développement, notre fonctionnalité de recherche visuelle doit avoir ces caractéristiques :
+
+- Être autonome dans un microservice web
+- Fonctionner sur de multiples collections d'index cloisonnées pour chaque client
+- Parcourir des millions de lignes en millisecondes
+- Avoir une complexité non linéaire
+
+Ce sont des besoins essentiels, mais si nous voulons tout développer en interne, nous devrions mettre des efforts pour construire une solution évolutive répondant à ces exigences. Heureusement, comme le domaine de la recherche neuronale est en plein essor, il existe de nombreuses solutions sur le marché pour répondre à ces exigences.
+
+‍
+
+## Présentation de Qdrant
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-9.png)
+*Qdrant*
+
+‍
+
+"Qdrant (prononcé : quadrant) est un moteur de recherche de similarité vectorielle. Il fournit un service prêt pour la production avec une API pratique pour stocker, rechercher et gérer des points — des vecteurs avec un payload additionnel. Qdrant est conçu pour un support étendu du filtrage. Cela le rend utile pour toutes sortes de réseaux de neurones ou de correspondance basée sur la sémantique, la recherche à facettes, et d'autres applications.
+
+Qdrant est publié sous la licence open-source Apache License 2.0. Son code source est disponible sur [GitHub](https://github.com/qdrant/qdrant)." *Source :* [*Documentation de Qdrant*](https://qdrant.tech/documentation/)*. *Il implémente une implémentation personnalisée de l'algorithme HNSW nous permettant d'ajouter des filtres supplémentaires à notre requête, et nous donnant une modularité complète sur notre recherche, ce qui est parfait pour nous !
+
+Leur solution open-source est empaquetée dans une seule image Docker exposant un serveur web pour communiquer. Pour notre équipe technique, c'est parfait car nous pouvons l'envelopper dans un service personnalisé qui générera les embeddings et les stockera facilement dans la collection Qdrant.
+
+De plus, ils fournissent un ensemble d'API pour enregistrer un nouvel index et un id correspondant, pour ensuite récupérer les éléments. Nous utilisons l'id unique de l'image stockée sur nos buckets, assurant une communication fluide entre nos services.
+
+## Implémentation
+
+La phase clé est la création des embeddings, et comment le faire à grande échelle sans impacter les performances globales du moteur de recherche et de la plateforme. Pour ce faire, nous utilisons des tâches asynchrones avec Celery pour mettre en file d'attente tout le travail et garder la création des embeddings sur CPU.
+
+‍
+
+![How we built a dataset visual similarity search feature](/images/blog/how-we-built-a-dataset-visual-similarity-search-feature-img-10.png)
+
+
+
+## Pour conclure
+
+Cette nouvelle implémentation nous permet de générer des embeddings pour des millions d'images de manière asynchrone sans aucun impact sur les performances globales des produits Picsellia.
+
+Une fois que les embeddings sont indexés et liés à notre identifiant unique d'image, il devient vraiment facile de trouver des images similaires dans votre dataset en un rien de temps ! Cela rend l'exploration de datasets aussi simple que bonjour pour vous !
+
+Si vous voulez bénéficier d'une suite complète de gestion de données empaquetée dans une plateforme de vision par ordinateur de bout en bout, [demandez votre essai](/trial) !

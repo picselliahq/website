@@ -1,0 +1,192 @@
+---
+
+title: "L'art de l'annotation : leçons tirées d'une campagne d'annotation Picsellia"
+description: "Découvrez des enseignements précieux du marathon d'annotation de Picsellia en Espagne. Apprenez comment Picsellia a révolutionné les campagnes d'annotation pour des résultats optimaux."
+date: "2024-03-17"
+author:
+  name: "Picsellia Team"
+category: "Product"
+image: "/images/blog/picsellia-annotation-campaign-hero.jpg"
+imageAlt: "The Art of Annotation: Lessons Learned From a Picsellia Annotation Campaign"
+published: true
+tags: ["annotation", "computer-vision", "dataset-management", "document-processing", "video-analysis"]
+---
+
+Récemment, une partie de l'équipe Picsellia s'est réunie en Espagne pour notre séminaire d'hiver (voir photo ci-dessous), et j'ai décidé de leur gâcher la journée en organisant un marathon d'annotation de 10 heures.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-0.jpeg)
+*Une équipe formidable sur le point de s'élever dans les cieux en montgolfière*
+
+‍
+
+Si vous avez suivi nos actualités, vous êtes probablement au courant que nous avons récemment lancé une nouvelle fonctionnalité sur la plateforme Picsellia : [**les campagnes d'annotation d'images et de vidéos**](/post/picsellia-v3-0). Dans cet article, je vais essayer d'expliquer pourquoi nous avons réalisé cette campagne d'annotation, ce que nous avons appris, et comment vous pouvez exploiter ces informations dans votre prochain projet.
+
+‍
+
+## Pourquoi organiser une campagne d'annotation chez Picsellia ?
+
+‍
+
+### Être le principal utilisateur de son produit
+
+S'il y a une chose en laquelle nous croyons chez Picsellia, c'est le **marketing sans baratin**. Et y a-t-il une meilleure façon de s'assurer que nous construisons les meilleurs outils du secteur qu'en les utilisant pour des cas d'usage réels, en identifiant les améliorations et en livrant ces fonctionnalités à nos clients ? Nous ne pensons pas, c'est donc exactement ce que nous avons fait.
+
+‍
+
+### Évaluer les bénéfices
+
+La façon dont les entreprises gèrent leurs projets d'annotation en ce moment est sous-optimale ; en effet, le processus d'annotation est fastidieux, chronophage et chaotique. Malgré le fait que chaque entreprise d'outils affirme que l'annotation va bientôt disparaître, **nous sommes fermement convaincus du contraire**. La frustration ressentie par les grandes entreprises autour de l'annotation est en partie causée par le manque d'outils efficaces pour gérer le processus correctement, ce qui engendre beaucoup de frustration et les pousse à chercher des solutions d'auto-annotation. Nous sommes convaincus que **Picsellia peut améliorer** l'efficacité du processus d'annotation de votre entreprise **de 50 %**. L'efficacité signifie ici le temps nécessaire pour obtenir des datasets de qualité à 100 %.
+
+‍
+
+## Préparer le terrain pour notre marathon d'annotation
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-1.jpeg)
+
+Par où commencer ? Heureusement, nous avions un prospect qui souhaitait une démo personnalisée sur un cas d'usage réel. Et quel est le problème le plus courant pour les problèmes réels de vision par ordinateur ? **Pas de datasets ouverts.** ​​
+
+Rassurez-vous, nous n'annotons pas de datasets pour chaque démo que nous faisons. Cette démo, cependant, avait un grand potentiel, nous avons donc **trouvé 170 images** représentant les scènes que nous cherchions à analyser.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-2.png)
+
+‍
+
+Les instructions pour le processus d'annotation étaient basées sur un document que notre prospect nous avait envoyé, spécifiant le besoin de détecter deux classes et de compter des objets spécifiques sur des centrales électriques. **C'était la seule directive que nous avons donnée à l'équipe** (gardez cela en tête pour la suite).
+
+Pour réaliser l'annotation, nous étions une équipe de **10 personnes**, réparties en 3 groupes. 7 annotateurs, 2 réviseurs et 1 chef de projet (bien sûr, ils m'ont assigné un rôle d'annotateur...). Une grande équipe d'annotateurs peut, comme je le montrerai plus tard, créer des défis d'efficacité.
+
+Nous avons commencé par créer un workflow simple Annotation → Révision → Terminé dans [Picsellia](/) et téléchargé un PDF avec des instructions simples pour l'équipe.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-3.png)
+
+‍
+
+Et puis l'annotation a commencé... !
+
+‍
+
+## Identifier les défis d'annotation et les principaux goulots d'étranglement
+
+Assez drôlement, même l'équipe Picsellia est tombée dans les mêmes pièges que nos clients. Vous vous souvenez de notre équipe d'annotation de 7 personnes que j'ai mentionnée plus tôt, pouvant potentiellement résulter en un processus inefficace ? Eh bien, nous avons foncé à travers le premier tour d'annotation et terminé assez rapidement — ou pas ? Non, pas vraiment.
+
+Certes, nous avons réussi à placer des annotations sur toutes les images, mais construire un dataset de qualité ne consiste pas simplement à cocher des cases. Il s'agit d'avoir des objets annotés de manière serrée, précise, bien classifiée et **cohérente**.
+
+La première itération de l'annotation a pris 2 heures — mais l'ensemble du processus d'annotation a pris 10 heures. Pourquoi était-ce si inefficace ? Analysons ce qui s'est mal passé.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-4.jpeg)
+
+‍
+
+### Facteur 1 : Instructions peu claires
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-5.png)
+
+Personne ne savait quoi faire — c'est la façon la plus directe de le dire.
+
+Le principal goulot d'étranglement était le manque d'instructions claires. La communication efficace des directives est cruciale pour des annotations cohérentes et précises. Notre expérience a souligné l'importance d'**instructions détaillées et accessibles pour tous les membres de l'équipe**.
+
+Définir des instructions semble assez simple, cependant, il est quasi impossible d'anticiper tous les cas limites que l'on pourrait rencontrer en annotant un dataset entier.
+
+Les instructions doivent évoluer et être accessibles à tout moment pour assurer la cohérence. De plus, la communication en temps réel avec les annotateurs est vitale pour minimiser les frictions.
+
+‍
+
+### Facteur 2 : Gestion de l'information
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-6.png)
+
+‍
+
+La gestion de l'information et la garantie de la qualité des données se sont révélées être des défis significatifs. La première itération a révélé des incohérences dans les annotations, incitant à une réévaluation de notre approche pour atteindre la précision souhaitée du dataset.
+
+Notre équipe de révision soulevait les mêmes problèmes avec chaque annotateur, ce qui a souligné le besoin d'un référentiel central d'instructions.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-7.png)
+
+Afficher un fichier PDF d'instructions accessible à tout moment est un excellent moyen de garantir la qualité.
+
+‍
+
+### Facteur 3 : Gestion de projet
+
+Nous avons constaté beaucoup de variabilité parmi les membres de l'équipe. Certains étaient moins efficaces que d'autres, certains étaient plus précis, et certains étaient meilleurs pour annoter de petits objets, donc nous avions des optimisations à faire.
+
+Sonia excellait en termes de vitesse, mais avec des degrés de qualité variables, ne lui laissant aucune tâche tandis que Henrik avait du mal à maintenir le rythme, tout en produisant constamment des annotations de haute qualité. La gestion des tâches est devenue un véritable défi, et cela a résulté en des membres d'équipe inactifs et du temps perdu.
+
+Les campagnes d'annotation sont une question d'optimisation du budget et du temps. Vous payez très probablement le temps passé, donc évidemment vous voulez que ce temps soit efficace !
+
+Heureusement, la nouvelle fonctionnalité de [campagne d'annotation](/annotation-campaigns) de Picsellia nous a permis de rationaliser le processus ! Découvrons comment elle fonctionne.
+
+‍
+
+## Comment Picsellia a rationalisé le processus d'annotation
+
+### Suivi des problèmes
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-8.png)
+
+‍
+
+Notre équipe de révision a pu indiquer aux annotateurs ce qui n'allait pas en temps réel, ce qui nous a donné un processus fluide et efficace avec l'itération des annotations. Le suivi des problèmes aide à identifier où se situe le problème, économisant un temps précieux dans le processus de révision.
+
+‍
+
+### Attribution des tâches
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-9.png)
+
+‍
+
+Lors de la mise en place d'un workflow d'annotation, vous disposez de différentes façons de donner des tâches d'étiquetage aux membres de l'équipe, et Picsellia gère la répartition pour vous de manière simple. Il suffit d'ajouter tous vos annotateurs et la plateforme se charge de créer une distribution égale des tâches.
+
+‍
+
+### Gestion de projet
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-10.gif)
+
+‍
+
+La campagne d'annotation est un sport d'équipe, vous devez donc vous assurer que chaque partie prenante joue sur le même terrain. La centralisation est la clé d'un processus sans friction, et c'est exactement ce que Picsellia fournit en matière d'étiquetage.
+
+Avoir une vue d'ensemble en temps réel du temps passé sur les tâches, de qui crée le plus de problèmes et de qui surperforme aide à créer une culture de succès et une excellente dynamique d'annotation.
+
+‍
+
+## Chiffres clés
+
+Le panneau d'analytique de Picsellia vous donne une vue d'ensemble business de vos performances d'annotation en agrégeant les métriques de débit, d'efficacité et de qualité en un seul endroit.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-11.png)
+
+‍
+
+En conclusion, l'équipe Picsellia a passé plus de 9 heures cumulées pour annoter 136 images et 2 919 objets. Ce qui porte notre temps moyen passé par tâche d'annotation à 1 min 34 s.
+
+‍
+
+![Picsellia annotation campaign](/images/blog/picsellia-annotation-campaign-img-12.png)
+
+‍

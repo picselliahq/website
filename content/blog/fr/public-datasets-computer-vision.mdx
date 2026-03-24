@@ -1,0 +1,107 @@
+---
+
+title: "Les meilleurs datasets pour la vision par ordinateur"
+description: "Guide complet des meilleurs datasets utiles pour la vision par ordinateur."
+date: "2024-09-23"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/public-datasets-computer-vision-hero.png"
+imageAlt: "Top Datasets for Computer Vision"
+published: true
+tags: ["annotation", "api", "computer-vision", "dataset-management", "healthcare", "segmentation"]
+---
+
+Les datasets de haute qualite sont le fondement des systemes de vision par ordinateur performants. Sans bonnes donnees, les algorithmes auraient du mal a interpreter et a donner du sens aux informations visuelles. Plus le dataset est bon, plus un modele peut apprendre a reconnaitre des objets, comprendre des motifs et faire des predictions a partir d'images.
+
+Pourquoi sont-ils si importants ? Premierement, la **diversite** est essentielle. Plus le dataset est varie -- couvrant differentes scenes, objets et contextes -- meilleures seront les performances de votre modele dans des scenarios reels. Deuxiemement, des **annotations precises** sont cruciales. Si les donnees sont mal etiquetees ou manquent de details, les modeles n'apprendront pas a detecter ou localiser correctement les objets. Enfin, de bons datasets sont essentiels pour le **benchmarking** -- ils vous permettent de comparer vos modeles aux standards de l'industrie et de suivre les progres.
+
+Donc, que vous construisiez une IA pour la navigation automobile ou l'interpretation de scanners medicaux, les datasets de haute qualite sont ce qui rend tout cela possible. Vous trouverez ci-dessous un guide complet ou vous decouvrirez certains des meilleurs datasets et sources de datasets les plus frequemment utilises pour votre projet de vision par ordinateur.
+
+## **Dataset Ninja**
+
+[Dataset Ninja](https://datasetninja.com/) est un outil puissant concu pour simplifier le processus de recherche et d'exploration de datasets de vision par ordinateur. Il offre une interface pour visualiser et analyser les datasets, permettant aux utilisateurs de previsualiser les images, d'explorer la distribution des classes et de consulter des statistiques detaillees. Ce qui distingue Dataset Ninja, c'est son format d'annotation unifie, convertissant tous les datasets en un seul format JSON pour une utilisation facile avec la plateforme Supervisely. Les utilisateurs peuvent rechercher par industrie, classe ou licence, et acceder a des informations structurees sur les datasets sans parcourir des listes non structurees.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-0.png)
+
+## **Academic Torrents**
+
+[Academic Torrents](https://academictorrents.com/) est une plateforme construite pour aider les chercheurs a partager et acceder efficacement a de grands datasets en utilisant la technologie BitTorrent. Ce systeme distribue repartit la charge d'hebergement entre plusieurs utilisateurs, reduisant le risque de perte de donnees et diminuant les couts generalement associes aux services d'hebergement commerciaux. Les chercheurs peuvent repliquer, partager et ensemencer des datasets en toute securite, tandis que les bibliotheques et les particuliers peuvent aider a heberger les donnees, garantissant un acces plus large meme si un systeme tombe en panne. La plateforme soutient egalement les revues en acces libre en offrant un moyen economique de stocker et distribuer des articles evalues par les pairs et des donnees de recherche.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-1.png)
+
+## **Open Images**
+
+Le dataset [Open Images](https://storage.googleapis.com/openimages/web/index.html) contient environ 9 millions d'images annotees avec divers elements tels que des labels au niveau de l'image, des boites englobantes d'objets, des masques de segmentation, des relations visuelles et des descriptions localisees. Il comporte 16 millions de boites englobantes reparties sur 600 classes pour 1,9 million d'images, principalement annotees par des professionnels pour garantir la precision. Le dataset inclut 3,3 millions d'annotations de relations visuelles detaillant les paires d'objets et leurs interactions, avec 1 466 triplets de relations uniques. Dans la version 7, 66,4 millions de labels au niveau des points ont ete ajoutes sur 1,4 million d'images pour une localisation au niveau du pixel, prenant en charge des taches de segmentation avancees. Le dataset contient egalement 61,4 millions de labels au niveau de l'image couvrant 20 638 classes. Il est divise en un ensemble d'entrainement (plus de 9 millions d'images), un ensemble de validation (41 620 images) et un ensemble de test (125 436 images), visant a faciliter l'etude conjointe de la classification d'images, de la detection d'objets et de la comprehension de scenes, tout en offrant un ensemble riche et diversifie d'annotations comparable aux datasets COCO et PASCAL.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-2.png)
+
+## **ImageNet**
+
+[ImageNet](https://www.image-net.org/) est une grande base de donnees visuelle utilisee pour l'entrainement et le benchmarking de logiciels de reconnaissance visuelle. Elle contient plus de 14 millions d'images etiquetees, avec des annotations fournies pour plus de 20 000 categories d'objets. Un sous-ensemble de ces images comprend egalement des boites englobantes, ce qui en fait une ressource cruciale pour des taches comme la detection et la classification d'objets. Le concours annuel ImageNet Large Scale Visual Recognition Challenge (ILSVRC) a ete essentiel dans l'avancement des modeles de deep learning, en particulier les reseaux de neurones convolutifs (CNN). Notamment, en 2012, le modele CNN AlexNet a considerablement reduit les erreurs de classification, revolutionnant la recherche en IA. Le succes d'ImageNet provient de son riche dataset, construit a l'aide de techniques de crowdsourcing et tirant parti de la base de donnees lexicale WordNet pour classifier les objets.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-3.png)
+
+## **PASCAL VISUAL OBJECT CLASSES (VOC)**
+
+Le [dataset PASCAL VOC 2012](http://host.robots.ox.ac.uk/pascal/VOC/) est un benchmark standard pour les taches de segmentation, de detection et de localisation d'images. Il requiert des predictions au niveau du pixel pour la segmentation et specifie les classes presentes dans les images pour la detection d'objets, utilisant souvent des boites englobantes. Le dataset comprend deux repertoires principaux : un pour l'ensemble d'entrainement et de validation, et un autre pour l'ensemble de test. Le repertoire d'entrainement et de validation contient des images accompagnees d'un fichier texte detaillant les labels de classes et d'objets avec des annotations, fournissant des labels de classe au niveau du pixel pour chaque image. De meme, l'ensemble de test contient des labels predits dans les repertoires de segmentation par classe ou par objet, selon l'application. Le dataset comporte 20 categories d'objets, incluant des vehicules, des objets menagers et des animaux, tels que des avions, des velos, des bouteilles et divers animaux. Chaque image est annotee avec une segmentation au niveau du pixel, des annotations de boites englobantes et des labels de classe d'objets. Il comprend 1 464 images d'entrainement, 1 449 images de validation et un ensemble de test prive, ce qui en fait un benchmark largement utilise pour evaluer les taches de detection d'objets, de segmentation semantique et de classification.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-4.png)
+
+<BlogInlineCTA
+  headline="Manage your CV datasets in one place"
+  description="Picsellia lets you version, curate, and explore datasets with visual similarity search and CLIP embeddings — so you spend less time wrangling data and more time training models."
+  primaryButtonText="Try Free — Organize Your Datasets →"
+  primaryButtonUrl="/trial"
+  blogSlug="public-datasets-computer-vision"
+  ctaPosition="mid"
+/>
+
+## **Labeled Faces in the Wild - LFW**
+
+Le [dataset Labeled Faces in the Wild (LFW)](https://www.kaggle.com/datasets/jessicali9530/lfw-dataset) est concu pour la reconnaissance faciale non contrainte, avec 13 233 images de 5 749 personnes collectees sur le web. Il est largement utilise pour les taches de verification faciale en machine learning. Le dataset comprend des images traitees par le detecteur de visages Viola-Jones, et la version **deep-funneled** offre le meilleur alignement pour la verification faciale. Avec des images de 250x250 pixels, ce dataset est ideal pour entrainer des modeles pour des taches comme la correspondance faciale ou la reconnaissance d'identite.
+
+Le dataset comprend plusieurs fichiers de support pour aider a creer des ensembles d'entrainement et de test, incluant des metadonnees comme *lfwallnames.csv* (noms et nombres d'images), *pairs.csv* (pour la validation croisee avec des paires correspondantes/non correspondantes) et *people.csv* (pour la validation individuelle de visages). Il fournit deux configurations principales -- *pairs* (correspondance faciale) et *people* (reconnaissance faciale individuelle) -- permettant un developpement et une evaluation flexibles des modeles.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-5.png)
+
+## **Flickr8K & Flickr30K**
+
+Le [dataset Flickr](https://www.kaggle.com/datasets/hsankesara/flickr-image-dataset/data) est un nouveau benchmark pour la description et la recherche d'images basees sur des phrases, comprenant 8 000 images, chacune associee a cinq legendes distinctes qui decrivent clairement les entites et les evenements prominents dans les images. Les images ont ete selectionnees a partir de six groupes Flickr differents et ont ete curees manuellement pour presenter une gamme diversifiee de scenes et de situations, en evitant les personnes ou lieux celebres. Cette collection sert non seulement de ressource pour comprendre le contenu des images a travers des legendes descriptives, mais fournit egalement des informations sur le processus d'acquisition des donnees et la periode representee dans les images.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-6.png)
+
+## **Kaggle Datasets**
+
+Les [datasets Kaggle](https://www.kaggle.com/), egalement connus sous le nom de Kaggle Kernels, sont des collections de donnees fournies par des entreprises, des etudiants et des chercheurs. Ces datasets sont largement utilises pour resoudre des problemes reels ou pour pratiquer de nouvelles competences en machine learning. Ils sont particulierement benefiques pour les etudiants qui apprennent la programmation, le machine learning ou qui travaillent avec de nouveaux outils. Ces datasets sont gratuits, open source et regulierement mis a jour, ce qui en fait une ressource inestimable pour l'education.
+
+Kaggle est renomme pour sa vaste bibliotheque, offrant plus de 50 000 datasets publics et 400 000 notebooks publics. Les datasets de classification populaires sur Kaggle incluent les datasets Traffic Signs Preprocessed, YouTube Videos, Twitter Tweets Sentiment et Email Spam Classification, ce qui en fait d'excellents points de depart pour de nombreux projets. Rejoindre Kaggle est gratuit et permet aux utilisateurs de pratiquer avec ces datasets du monde reel, ameliorant les performances de leurs projets dans diverses industries.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-7.png)
+
+## **COCO**
+
+Le dataset [COCO](https://cocodataset.org/#home) (Common Objects in Context) est un dataset a grande echelle concu pour diverses taches de vision par ordinateur telles que la detection d'objets, la segmentation, la detection de points cles et le sous-titrage d'images. Il contient 328 000 images annotees avec des boites englobantes, des masques de segmentation, des points cles et des legendes en langage naturel reparties sur 80 categories d'objets.
+
+Le dataset est divise en differents sous-ensembles : la version originale de 2014 contenait 164 000 images reparties entre les ensembles d'entrainement (83 000), de validation (41 000) et de test (41 000). En 2015, l'ensemble de test a ete elargi avec 40 000 images supplementaires. En 2017, la repartition entrainement/validation a ete mise a jour a 118 000/5 000, et un ensemble non annote de 123 000 images a egalement ete ajoute. Les annotations couvrent des taches comme la detection d'objets, la detection de points cles (17 points cles par personne), la segmentation "stuff" (91 categories) et la cartographie de pose dense pour les instances de corps humains. Cette diversite fait de COCO un outil inestimable pour l'entrainement et l'evaluation de modeles de deep learning a travers de multiples taches de vision par ordinateur.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-8.png)
+
+## **Roboflow Universe Dataset**
+
+[Roboflow Universe](https://roboflow.com/universe) fournit un acces a une vaste collection de datasets publics de vision par ordinateur et de modeles pre-entraines, ce qui en fait l'une des plus grandes ressources open source au monde pour les projets d'IA et de machine learning. Offrant plus de 350 millions d'images et 500 000 datasets, Roboflow prend en charge divers formats comme CreateML JSON, COCO JSON, Pascal VOC XML, YOLO v3 et Tensorflow TFRecords, garantissant la compatibilite avec la plupart des frameworks.
+
+Ces datasets couvrent un large eventail de taches telles que la detection d'objets, la classification, la detection de points cles, la segmentation d'instances et la segmentation semantique, permettant aux utilisateurs de developper et d'affiner des modeles adaptes a leurs besoins specifiques. Avec plus de 100 000 modeles affines et API, la plateforme permet aux developpeurs de construire et de deployer rapidement des applications de vision par ordinateur robustes.
+
+La plateforme offre egalement une interface facile a naviguer ou les utilisateurs peuvent explorer les datasets, acceder aux modeles pre-entraines et utiliser des API pour une integration transparente dans les workflows de machine learning. Cela fait de Roboflow un outil essentiel pour les chercheurs, les developpeurs et les data scientists cherchant a exploiter la puissance de la vision par ordinateur a grande echelle.
+
+![Public datasets computer vision](/images/blog/public-datasets-computer-vision-img-9.png)
+
+<BlogInlineCTA
+  headline="Stop juggling datasets across platforms"
+  description="Import from any source, version every change, and search visually across millions of images. Picsellia is the dataset management layer your CV pipeline is missing."
+  primaryButtonText="Try Free — Import Your First Dataset →"
+  primaryButtonUrl="/trial"
+  blogSlug="public-datasets-computer-vision"
+  ctaPosition="end"
+/>

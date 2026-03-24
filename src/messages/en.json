@@ -1,0 +1,3800 @@
+{
+  "metadata": {
+    "title": "Picsellia - MLOps Platform for Computer Vision",
+    "titleTemplate": "{title} | Picsellia",
+    "description": "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia."
+  },
+  "nav": {
+    "platform": "Platform",
+    "solutions": "Solutions",
+    "resources": "Resources",
+    "pricing": "Pricing",
+    "enterprise": "Enterprise",
+    "about": "About",
+    "contactSales": "Contact Sales",
+    "startFree": "Start Free",
+    "startFreeTrial": "Start Free Trial",
+    "platformOverview": "Platform Overview",
+    "seeCompletePlatform": "See the complete MLOps platform",
+    "byIndustry": "By Industry",
+    "customerStories": "Customer Stories",
+    "viewAllCustomerStories": "View all customer stories",
+    "compare": "Compare",
+    "product": {
+      "data": {
+        "title": "Data",
+        "description": "Collect & organize"
+      },
+      "annotate": {
+        "title": "Annotate",
+        "description": "Label & review"
+      },
+      "train": {
+        "title": "Train",
+        "description": "Build & experiment"
+      },
+      "deploy": {
+        "title": "Deploy",
+        "description": "Ship & monitor"
+      },
+      "datalake": {
+        "label": "Datalake",
+        "description": "Centralized visual data repository"
+      },
+      "datasetManagement": {
+        "label": "Dataset Management",
+        "description": "Version and organize datasets"
+      },
+      "labelingTool": {
+        "label": "Labeling Tool",
+        "description": "AI-assisted annotation interface"
+      },
+      "annotationCampaigns": {
+        "label": "Annotation Campaigns",
+        "description": "Team workflows & quality control"
+      },
+      "aiLaboratory": {
+        "label": "AI Laboratory",
+        "description": "Build and train models"
+      },
+      "experimentTracking": {
+        "label": "Experiment Tracking",
+        "description": "Track metrics & compare runs"
+      },
+      "automatedPipelines": {
+        "label": "Automated Pipelines",
+        "description": "CI/CD for machine learning"
+      },
+      "modelDeployment": {
+        "label": "Model Deployment",
+        "description": "Deploy models at scale"
+      },
+      "modelMonitoring": {
+        "label": "Model Monitoring",
+        "description": "Track production performance"
+      }
+    },
+    "industries": {
+      "manufacturing": {
+        "label": "Manufacturing",
+        "description": "Quality control & defect detection"
+      },
+      "energy": {
+        "label": "Energy",
+        "description": "Infrastructure inspection & maintenance"
+      },
+      "agriculture": {
+        "label": "Agriculture",
+        "description": "Crop monitoring & yield optimization"
+      },
+      "wasteManagement": {
+        "label": "Waste Management",
+        "description": "Sorting automation & recycling"
+      },
+      "aerospace": {
+        "label": "Aerospace",
+        "description": "Aircraft inspection & maintenance"
+      },
+      "defense": {
+        "label": "Defense",
+        "description": "Surveillance & threat detection"
+      }
+    },
+    "resourceItems": {
+      "documentation": {
+        "label": "Documentation",
+        "description": "Guides, API reference & tutorials"
+      },
+      "blog": {
+        "label": "Blog",
+        "description": "Latest news & insights"
+      },
+      "community": {
+        "label": "Community",
+        "description": "Join our Slack & GitHub"
+      },
+      "whitePapers": {
+        "label": "White Papers",
+        "description": "In-depth technical resources"
+      }
+    },
+    "compareItems": {
+      "roboflow": {
+        "label": "Picsellia vs Roboflow",
+        "description": "End-to-end CVOps vs developer toolkit"
+      },
+      "labelbox": {
+        "label": "Picsellia vs Labelbox",
+        "description": "Full platform vs annotation-only"
+      },
+      "encord": {
+        "label": "Picsellia vs Encord",
+        "description": "Full CVOps vs data-centric annotation"
+      }
+    }
+  },
+  "footer": {
+    "tagline": "The MLOps platform for computer vision. Build, deploy, and monitor AI at scale.",
+    "copyright": "All rights reserved.",
+    "isoCertified": "ISO 27001 Certified",
+    "sections": {
+      "product": "Product",
+      "solutions": "Solutions",
+      "resources": "Resources",
+      "company": "Company"
+    },
+    "links": {
+      "overview": "Overview",
+      "datalake": "Datalake",
+      "datasetManagement": "Dataset Management",
+      "labelingTool": "Labeling Tool",
+      "aiLaboratory": "AI Laboratory",
+      "modelDeployment": "Model Deployment",
+      "modelMonitoring": "Model Monitoring",
+      "manufacturing": "Manufacturing",
+      "energy": "Energy",
+      "agriculture": "Agriculture",
+      "wasteManagement": "Waste Management",
+      "aerospace": "Aerospace",
+      "defense": "Defense",
+      "blog": "Blog",
+      "useCases": "Use Cases",
+      "documentation": "Documentation",
+      "faq": "FAQ",
+      "vsRoboflow": "Picsellia vs Roboflow",
+      "vsLabelbox": "Picsellia vs Labelbox",
+      "vsEncord": "Picsellia vs Encord",
+      "about": "About",
+      "contact": "Contact",
+      "pricing": "Pricing",
+      "privacy": "Privacy"
+    }
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "goHome": "Go home",
+    "readBlog": "Read the blog"
+  },
+  "languageSwitcher": {
+    "en": "English",
+    "fr": "Français"
+  },
+  "home": {
+    "metadata": {
+      "title": "Picsellia - MLOps Platform for Computer Vision",
+      "description": "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia.",
+      "ogTitle": "Picsellia - MLOps Platform for Computer Vision",
+      "ogDescription": "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale."
+    },
+    "hero": {
+      "headlinePart1": "Everything you need to build",
+      "headlinePart2": "and scale",
+      "headlineHighlight": "Vision AI",
+      "headlinePart3": "apps",
+      "subheadline": "Picsellia is the end-to-end MLOps platform for computer vision. Manage data, annotate, train, deploy, and monitor — all in one place.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo",
+      "metricImagesValue": "50M+",
+      "metricImagesLabel": "Images processed",
+      "metricModelsValue": "10K+",
+      "metricModelsLabel": "Models trained",
+      "metricPredictionsValue": "1B+",
+      "metricPredictionsLabel": "Predictions served",
+      "metricTeamsValue": "200+",
+      "metricTeamsLabel": "Teams worldwide",
+      "figLabel": "fig.01 — Platform overview",
+      "deployedAt": "Deployed at"
+    },
+    "platform": {
+      "sectionLabel": "Platform",
+      "headlinePart1": "One platform,",
+      "headlinePart2": "every step covered.",
+      "explorePlatform": "Explore Platform",
+      "problemLabel": "Problem",
+      "solutionLabel": "Solution",
+      "stageDataLabel": "Data",
+      "stageDataTagline": "Collect & organize",
+      "stageDataHeadline": "Centralize all your visual data",
+      "stageDataDescription": "Connect your cloud storage, ingest images and videos, and explore your data with visual similarity search and smart tagging.",
+      "stageDataPain": "Visual data is scattered across teams, buckets, and hard drives with no structure or discoverability.",
+      "stageDataFeatureDatalake": "Datalake",
+      "stageDataFeatureDatasetManagement": "Dataset Management",
+      "stageDataStatValue": "50M+",
+      "stageDataStatLabel": "Assets managed",
+      "stageAnnotateLabel": "Annotate",
+      "stageAnnotateTagline": "Label & review",
+      "stageAnnotateHeadline": "Label with precision and speed",
+      "stageAnnotateDescription": "AI-assisted annotation with SAM, DINOv2, and Grounding DINO. Multi-step review workflows and quality control built in.",
+      "stageAnnotatePain": "Labeling is slow, error-prone, and disconnected from the rest of your ML pipeline.",
+      "stageAnnotateFeatureLabelingTool": "Labeling Tool",
+      "stageAnnotateFeatureAnnotationCampaigns": "Annotation Campaigns",
+      "stageAnnotateStatValue": "10x",
+      "stageAnnotateStatLabel": "Faster labeling",
+      "stageTrainLabel": "Train",
+      "stageTrainTagline": "Build & experiment",
+      "stageTrainHeadline": "Train models your way",
+      "stageTrainDescription": "From no-code to custom PyTorch pipelines. One-click GPU provisioning, experiment tracking, and model registry included.",
+      "stageTrainPain": "Training infrastructure is complex to set up, experiments are hard to track, and results are not reproducible.",
+      "stageTrainFeatureAILaboratory": "AI Laboratory",
+      "stageTrainFeatureExperimentTracking": "Experiment Tracking",
+      "stageTrainFeatureAutomatedPipelines": "Automated Pipelines",
+      "stageTrainStatValue": "100+",
+      "stageTrainStatLabel": "Pre-built pipelines",
+      "stageDeployLabel": "Deploy",
+      "stageDeployTagline": "Ship & monitor",
+      "stageDeployHeadline": "Deploy and monitor in production",
+      "stageDeployDescription": "Serverless inference with auto-scaling. Shadow deployment for safe rollouts. Real-time monitoring and feedback loop.",
+      "stageDeployPain": "Deploying models to production requires custom infrastructure, and there is no visibility once models are live.",
+      "stageDeployFeatureModelDeployment": "Model Deployment",
+      "stageDeployFeatureModelMonitoring": "Model Monitoring",
+      "stageDeployStatValue": "99.9%",
+      "stageDeployStatLabel": "Uptime SLA"
+    },
+    "useCases": {
+      "sectionLabel": "Use Cases",
+      "headlinePart1": "Built for real-world",
+      "headlinePart2": "computer vision.",
+      "allUseCases": "All Use Cases",
+      "tableHeaderNumber": "#",
+      "tableHeaderIndustry": "Industry",
+      "tableHeaderApplication": "Application",
+      "tableHeaderMetric": "Metric",
+      "tableHeaderValue": "Value",
+      "readCaseStudy": "Read case study",
+      "caseDefectTitle": "Automated Defect Detection",
+      "caseDefectIndustry": "Manufacturing",
+      "caseDefectDescription": "Detect surface defects, cracks, and anomalies on production lines in real-time using computer vision. Reduce manual inspection costs and improve quality consistency.",
+      "caseDefectStatValue": "99.2%",
+      "caseDefectStatLabel": "Detection accuracy",
+      "caseCropTitle": "Crop Health Monitoring",
+      "caseCropIndustry": "Agriculture",
+      "caseCropDescription": "Monitor crop health with drone and satellite imagery. Detect diseases, nutrient deficiencies, and pest damage early to optimize yield and reduce losses.",
+      "caseCropStatValue": "30%",
+      "caseCropStatLabel": "Yield improvement",
+      "caseInfraTitle": "Infrastructure Inspection",
+      "caseInfraIndustry": "Energy",
+      "caseInfraDescription": "Inspect power lines, wind turbines, and solar panels with drone-based computer vision. Detect faults before they cause outages.",
+      "caseInfraStatValue": "60%",
+      "caseInfraStatLabel": "Cost reduction",
+      "caseAssemblyTitle": "Assembly Verification",
+      "caseAssemblyIndustry": "Manufacturing",
+      "caseAssemblyDescription": "Verify correct assembly of components on production lines. Catch missing parts, wrong orientations, and assembly errors in real-time.",
+      "caseAssemblyStatValue": "95%",
+      "caseAssemblyStatLabel": "Error reduction",
+      "caseWasteTitle": "Automated Waste Sorting",
+      "caseWasteIndustry": "Waste Management",
+      "caseWasteDescription": "Classify and sort waste materials automatically using computer vision. Improve recycling rates and reduce contamination in waste streams.",
+      "caseWasteStatValue": "40%",
+      "caseWasteStatLabel": "Recycling rate increase"
+    },
+    "enterprise": {
+      "sectionLabel": "Enterprise",
+      "headlinePart1": "Enterprise-grade",
+      "headlinePart2": "from day one.",
+      "description": "Security, compliance, and scalability built into every layer. Trusted by teams who need production-ready AI infrastructure.",
+      "talkToSales": "Talk to Sales",
+      "featureIsoTitle": "ISO 27001 Certified",
+      "featureIsoDescription": "Audited and certified information security management system. Your data is protected by industry-standard controls.",
+      "featureIsoTag": "Security",
+      "featureDeployTitle": "Cloud, On-Prem, or Hybrid",
+      "featureDeployDescription": "Deploy Picsellia wherever your data lives. Fully managed SaaS, on-premise installation, or hybrid configurations.",
+      "featureDeployTag": "Deployment",
+      "featureRbacTitle": "Role-Based Access Control",
+      "featureRbacDescription": "Granular permissions for every resource. Control who can see, edit, and deploy across projects and teams.",
+      "featureRbacTag": "Access",
+      "featureUptimeTitle": "99.9% Uptime SLA",
+      "featureUptimeDescription": "Enterprise SLA with guaranteed availability. Redundant infrastructure and automated failover across regions.",
+      "featureUptimeTag": "Reliability",
+      "featureApiTitle": "Full API & SDK Access",
+      "featureApiDescription": "Everything you can do in the UI, you can do via API. Python SDK with type hints, auto-completion, and comprehensive documentation.",
+      "featureApiTag": "Developer",
+      "featureScaleTitle": "Scale Without Limits",
+      "featureScaleDescription": "From proof-of-concept to millions of predictions per day. Auto-scaling infrastructure that grows with your needs.",
+      "featureScaleTag": "Scale"
+    },
+    "integrations": {
+      "sectionLabel": "Integrations",
+      "headlinePart1": "Works with your",
+      "headlinePart2": "existing stack.",
+      "integrationsCount": "50+",
+      "integrationsLabel": "Integrations",
+      "apiFirst": "100%",
+      "apiFirstLabel": "API-first",
+      "categoryTrain": "Training Frameworks",
+      "categoryDeploy": "Cloud & Infrastructure",
+      "categoryConnect": "Data & MLOps Ecosystem",
+      "sdkTitle": "Python SDK — Built for developers",
+      "sdkDescription": "Full programmatic access to every Picsellia feature. Type-safe, async-ready, and designed for production ML workflows.",
+      "sdkTypeSafety": "Type Safety",
+      "sdkTypeSafetyDetail": "Full type hints",
+      "sdkAsync": "Async Support",
+      "sdkAsyncDetail": "Native async/await",
+      "sdkJupyter": "Jupyter Ready",
+      "sdkJupyterDetail": "Rich display"
+    },
+    "cta": {
+      "statusReady": "Ready to deploy",
+      "headlinePart1": "Start building",
+      "headlinePart2": "Vision AI today.",
+      "description": "Join hundreds of teams using Picsellia to build, deploy, and monitor computer vision applications at scale.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo",
+      "noCreditCard": "No credit card required",
+      "trialDuration": "14-day free trial",
+      "isoCertified": "ISO 27001 certified",
+      "statLatencyValue": "<50ms",
+      "statLatencyLabel": "API Latency",
+      "statUptimeValue": "99.9%",
+      "statUptimeLabel": "Uptime SLA",
+      "statIntegrationsValue": "50+",
+      "statIntegrationsLabel": "Integrations",
+      "statSupportValue": "24/7",
+      "statSupportLabel": "Support"
+    }
+  },
+  "datalake": {
+    "metadata": {
+      "title": "Datalake - Centralized Data Management",
+      "description": "Centralize and manage all your computer vision data. Visual similarity search, smart curation, CLIP embeddings, and multi-format support.",
+      "ogTitle": "Datalake - Centralized Data Management",
+      "ogDescription": "Centralize and manage all your computer vision data with visual similarity search and smart curation."
+    },
+    "hero": {
+      "badge": "Data Management",
+      "titleStart": "All Your Visual Data.",
+      "titleHighlight": "One Place.",
+      "subtitle": "Aggregate, organize, and explore billions of images and videos from any source. One unified repository for all your computer vision data.",
+      "cta": "See It In Action",
+      "docs": "Documentation",
+      "connect": "Connect:",
+      "dataTags": "DataTags",
+      "storageLabel": "Storage",
+      "awsS3Connected": "AWS S3 connected"
+    },
+    "capabilities": {
+      "badge": "Architecture",
+      "title": "How it works under the hood",
+      "subtitle": "Connects to S3, GCP, or Azure. Ingests any image or video format. Indexes everything so you can query it later.",
+      "sources": "Sources",
+      "outputs": "Outputs",
+      "assetsIndexed": "assets indexed",
+      "storage": "storage",
+      "latency": "latency",
+      "formatSupportTitle": "Image & Video Format Support",
+      "formatSupportSubtitle": "Ingest standard visual data formats",
+      "processingTitle": "Processing Pipeline",
+      "processingSubtitle": "Embeddings generation & database indexing",
+      "live": "Live",
+      "embeddingGeneration": "Embedding Generation",
+      "dbIndexing": "DB Indexing",
+      "ingestionRate": "Ingestion Rate",
+      "storageSync": "Storage Sync",
+      "autoExif": "Auto EXIF extraction",
+      "batchUpload": "Batch upload",
+      "connected": "connected",
+      "idle": "idle",
+      "datasets": "Datasets",
+      "experiments": "Experiments",
+      "deployments": "Deployments",
+      "image": "image",
+      "video": "video"
+    },
+    "queryLanguage": {
+      "badge": "Python SDK",
+      "title": "Powerful Data Querying",
+      "subtitle": "Query your datalake programmatically with the Python SDK. Filter by tags, metadata, and more with full type hints and auto-completion.",
+      "execution": "EXECUTION",
+      "results": "results",
+      "queryTime": "query time",
+      "scanned": "scanned",
+      "matchedTags": "MATCHED TAGS",
+      "readyToCreate": "Ready to create dataset",
+      "createDataset": "Create Dataset →",
+      "listDataParams": "list_data() PARAMS",
+      "tagOperations": "TAG OPERATIONS",
+      "addToData": "add to data",
+      "removeFromData": "remove from data",
+      "getAllTags": "get all tags",
+      "createNewTag": "create new tag",
+      "filterable": "FILTERABLE",
+      "customFields": "custom fields",
+      "assetName": "asset name",
+      "timestamps": "timestamps",
+      "imageVideo": "image/video",
+      "autoComplete": "auto-complete",
+      "typeHints": "type hints"
+    },
+    "visualSearch": {
+      "badge": "Visual Search",
+      "title": "Find similar images instantly",
+      "subtitle": "OpenCLIP embeddings turn your images into vectors. Search by similarity, cluster by content, and spot outliers without writing a single query.",
+      "defaultModel": "Default Model",
+      "vectorSize": "Vector Size",
+      "vectorDb": "Vector DB",
+      "searchLatency": "Search Latency",
+      "embeddingsViewer": "Embeddings Viewer",
+      "similaritySearch": "Similarity Search",
+      "textToImage": "Text-to-Image Search",
+      "anomalyDetection": "Anomaly Detection",
+      "matches": "matches",
+      "corrupted": "corrupted",
+      "outliers": "outliers",
+      "fineTuneTitle": "Fine-tune Your Own CLIP Model",
+      "fineTuneDesc": "Generic embeddings not cutting it? Fine-tune a CLIP model on your own data. Search and clustering get much better when the model knows your domain.",
+      "betterAccuracy": "Better accuracy",
+      "learnMore": "Learn more"
+    },
+    "tagsMetadata": {
+      "badge": "Organization",
+      "title": "DataTags & Metadata Schema",
+      "subtitle": "Multi-dimensional organization with flexible tagging and comprehensive metadata support. Structure your data without moving files.",
+      "availableTags": "AVAILABLE TAGS",
+      "autoExtracted": "Auto-extracted from EXIF with fill_metadata=True",
+      "datatagsSystem": "DATATAGS SYSTEM",
+      "organizationTags": "organization tags",
+      "metadataFields": "METADATA FIELDS"
+    },
+    "cta": {
+      "title": "Ready to centralize your data?",
+      "subtitle": "Connect your storage, upload your data, and start querying. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "datasetManagement": {
+    "metadata": {
+      "title": "Dataset Management - Version & Organize Data",
+      "description": "Version, organize, and manage datasets for computer vision. Full dataset lineage, smart splitting, SDK integration, and collaborative workflows.",
+      "ogTitle": "Dataset Management - Version & Organize Data",
+      "ogDescription": "Version, organize, and manage datasets for computer vision with full lineage and collaborative workflows."
+    },
+    "hero": {
+      "badge": "Dataset Management",
+      "titleStart": "Your datasets deserve",
+      "titleHighlight": "version control",
+      "subtitle": "Git for your computer vision data. Track changes, compare versions, and ensure every experiment is reproducible.",
+      "cta": "Start Free Trial",
+      "docs": "Read Documentation",
+      "currentVersion": "Current Version",
+      "datasets": "Datasets",
+      "allVersioned": "All versioned",
+      "usedBy": "Used by teams at",
+      "reproducibility": "Reproducibility",
+      "dataLoss": "Data loss",
+      "fasterIterations": "Faster iterations",
+      "versionHistory": "Version history"
+    },
+    "versionControl": {
+      "badge": "Version Control",
+      "title": "Track every change, reproduce any result",
+      "subtitle": "Your datasets evolve constantly—new images, corrected labels, filtered samples. Without version control, you're flying blind.",
+      "immutableTitle": "Immutable snapshots",
+      "immutableDesc": "Every dataset version is a permanent snapshot. Reference exact data states in experiments.",
+      "labelTitle": "Label management",
+      "labelDesc": "Create, rename, and merge labels across your dataset. Keep your taxonomy clean and consistent.",
+      "forkTitle": "Fork for experiments",
+      "forkDesc": "Fork dataset versions to test hypotheses without affecting production data.",
+      "auditTitle": "Audit-ready history",
+      "auditDesc": "Complete changelog with who changed what, when, and why. Perfect for compliance.",
+      "versionTimeline": "Version Timeline",
+      "interactive": "Interactive"
+    },
+    "capabilities": {
+      "badge": "Capabilities",
+      "title": "Everything you need to manage datasets",
+      "subtitle": "Version, organize, and share your datasets. Everything connects to your experiments.",
+      "versioningTitle": "Git-like Version Control",
+      "versioningTagline": "Never lose your data again",
+      "versioningDesc": "Track every change to your datasets. Compare versions, rollback mistakes, and branch for experiments. Full lineage from raw data to trained models.",
+      "organizationTitle": "Smart Data Organization",
+      "organizationTagline": "Structure without chaos",
+      "organizationDesc": "Tag, filter, and slice your data in seconds. Create custom views, save queries, and share collections. No more hunting through folders.",
+      "collaborationTitle": "Team Collaboration",
+      "collaborationTagline": "Work together, not in silos",
+      "collaborationDesc": "Share datasets across teams with fine-grained permissions. Track who changed what, when, and why. Comments and reviews built-in.",
+      "traceabilityTitle": "Full Data Lineage",
+      "traceabilityTagline": "Know where your data comes from",
+      "traceabilityDesc": "Trace any prediction back to its training data. Audit-ready lineage for compliance. Understand model behavior through data.",
+      "fullAuditTrail": "Full audit trail included",
+      "reproducibility": "Reproducibility",
+      "fasterDiscovery": "Faster discovery",
+      "lessCoordination": "Less coordination",
+      "auditCompliance": "Audit compliance"
+    },
+    "sdk": {
+      "badge": "Developer Experience",
+      "title": "Programmatic dataset management",
+      "subtitle": "Full Python SDK with type hints, auto-completion, and comprehensive documentation. Integrate datasets directly into your ML pipelines.",
+      "cocoDesc": "Object detection & segmentation",
+      "yoloDesc": "YOLOv5/v8 format",
+      "vocDesc": "XML annotations",
+      "customDesc": "JSON/CSV exports",
+      "supportsCoco": "Supports COCO, YOLO, Pascal VOC"
+    },
+    "organization": {
+      "badge": "Data Organization",
+      "title": "Structure your data the right way",
+      "subtitle": "Proper data splits are crucial for model performance. Create reproducible train/val/test splits, stratify by class, and ensure no data leakage.",
+      "datasetBrowser": "Dataset Browser",
+      "smartSplitting": "Smart Data Splitting",
+      "smartSplittingDesc": "Automatically split datasets into train, validation, and test sets with stratified sampling. Reproducible seeds ensure consistency.",
+      "grid": "Grid",
+      "split": "Split",
+      "totalImages": "Total images",
+      "annotations": "Annotations",
+      "balanced": "Balanced",
+      "classDist": "Class dist.",
+      "feature1": "Automatic stratified splits by class distribution",
+      "feature2": "Custom split ratios with reproducible seeds",
+      "feature3": "No overlap guarantee between splits",
+      "feature4": "Re-split without losing annotations"
+    },
+    "workflow": {
+      "badge": "Workflow Integration",
+      "title": "Fits into your existing workflow",
+      "subtitle": "Datasets connect directly to annotations, experiments, and deployments. No manual handoffs.",
+      "datalake": "Datalake",
+      "dataset": "Dataset",
+      "experiment": "Experiment",
+      "autoSync": "Auto-sync",
+      "fromDatalake": "From datalake",
+      "version": "Version",
+      "everyChange": "Every change",
+      "reference": "Reference",
+      "inExperiments": "In experiments"
+    },
+    "cta": {
+      "title": "Ready to version your datasets?",
+      "subtitle": "Free trial, no credit card. Start versioning your datasets today.",
+      "startTrial": "Start Free Trial",
+      "scheduleDemo": "Schedule Demo",
+      "noCreditCard": "No credit card required",
+      "freeTrial": "14-day free trial",
+      "unlimitedVersions": "Unlimited versions",
+      "imagesVersioned": "Images versioned",
+      "versionHistory": "Version history",
+      "reproducibility": "Reproducibility",
+      "dataLoss": "Data loss"
+    },
+    "versionTimeline": {
+      "dataset": "Dataset",
+      "lastModified": "Last modified",
+      "compare": "Compare",
+      "checkout": "Checkout",
+      "images": "Images",
+      "annotations": "Annotations",
+      "change": "Change"
+    }
+  },
+  "labelingTool": {
+    "metadata": {
+      "title": "Labeling Tool - Image & Video Annotation",
+      "description": "Professional image and video annotation tool for computer vision. Support for bounding boxes, polygons, segmentation, keypoints, and AI-assisted labeling.",
+      "ogTitle": "Labeling Tool - Image & Video Annotation",
+      "ogDescription": "Professional image and video annotation tool for computer vision with AI-assisted labeling."
+    },
+    "hero": {
+      "badge": "Annotation",
+      "titleLine1": "Precision Labeling",
+      "titleHighlight": "AI-Assisted",
+      "subtitle": "Turn your data into annotated datasets with precision and speed. Support for bounding boxes, polygons, segmentation, keypoints, and more.",
+      "cta": "See It In Action",
+      "docs": "Documentation",
+      "moreTypes": "+{count} more"
+    },
+    "annotationTypes": {
+      "badge": "Annotation Types",
+      "title": "Every shape you need",
+      "subtitle": "From simple bounding boxes to complex polygon masks, annotate any type of visual data with precision tools built for computer vision.",
+      "dataFormats": "Supports diverse data formats",
+      "objectDetection": "Object Detection",
+      "objectDetectionDesc": "Bounding boxes with two clicks",
+      "segmentation": "Segmentation",
+      "segmentationDesc": "Precise polygon masks",
+      "classification": "Classification",
+      "classificationDesc": "Whole-image labels",
+      "keypoints": "Keypoints",
+      "keypointsDesc": "Point-based annotations",
+      "polyline": "Polyline",
+      "polylineDesc": "Connected line segments",
+      "formatImages": "Images",
+      "formatVideos": "Videos",
+      "formatSatellite": "Satellite Imagery",
+      "formatMedical": "Medical Scans",
+      "formatMultispectral": "Multispectral",
+      "moreTypes": "+{count} more"
+    },
+    "tools": {
+      "badge": "Tooling",
+      "title": "Built for speed and precision",
+      "subtitle": "Keyboard shortcuts, smart selection, and intuitive controls designed to maximize annotation throughput.",
+      "keyboardShortcuts": "KEYBOARD SHORTCUTS",
+      "navigation": "NAVIGATION",
+      "scrollToZoomTitle": "Scroll to Zoom",
+      "scrollToZoomDesc": "Use scroll wheel to zoom in/out. Press spacebar to drag and pan around the canvas.",
+      "assetGalleryTitle": "Asset Gallery",
+      "assetGalleryDesc": "Browse your dataset queue at the bottom. Navigate with O/P keys or click thumbnails.",
+      "groupSelectionTitle": "Group Selection",
+      "groupSelectionDesc": "Draw rectangle to select multiple shapes. Select by label for batch operations.",
+      "drawMode": "Draw mode",
+      "selectionMode": "Selection mode",
+      "resetZoom": "Reset zoom",
+      "navigateAssets": "Navigate assets",
+      "saveAnnotations": "Save annotations",
+      "deleteShape": "Delete shape"
+    },
+    "aiAssisted": {
+      "badge": "AI-Assisted & Processings",
+      "title": "10x your labeling with AI",
+      "subtitle": "Use SAM, DINOv2, and Grounding DINO for pre-labeling. Run automated processings to speed up annotation.",
+      "samTitle": "Segment Anything Model",
+      "samProvider": "Meta AI",
+      "samDesc": "One-click segmentation for any object. Point, box, or text prompts generate precise masks instantly.",
+      "samTagSegmentation": "Segmentation",
+      "samTagInteractive": "Interactive",
+      "samTagZeroShot": "Zero-shot",
+      "dinoTitle": "DINOv2",
+      "dinoProvider": "Meta AI",
+      "dinoDesc": "Self-supervised visual features for similarity search, clustering, and transfer learning without labels.",
+      "dinoTagEmbeddings": "Embeddings",
+      "dinoTagClustering": "Clustering",
+      "dinoTagSelfSupervised": "Self-supervised",
+      "automatedProcessings": "Automated Processings",
+      "preAnnotationTitle": "Pre-Annotation",
+      "preAnnotationDesc": "Auto-generate initial labels using your trained models",
+      "autoAnnotationTitle": "Auto-Annotation",
+      "autoAnnotationDesc": "Fully automated annotation with confidence thresholds",
+      "dataAugmentationTitle": "Data Augmentation",
+      "dataAugmentationDesc": "Expand datasets with transforms and variations",
+      "autoTaggingTitle": "Auto-Tagging",
+      "autoTaggingDesc": "Automatically tag data in your datalake",
+      "speedMultiplier": "10x",
+      "speedDesc": "Faster annotation with AI assistance",
+      "manualLabeling": "Manual labeling",
+      "manualSpeed": "~2 min/image",
+      "aiAssisted": "AI-assisted",
+      "aiSpeed": "~12 sec/image",
+      "humanValidation": "Human validation for accuracy",
+      "processingPipeline": "PROCESSING PIPELINE",
+      "dockerBased": "Docker-based",
+      "step1": "Select processing type",
+      "step2": "Configure inputs & model",
+      "step3": "Run & review results",
+      "gpuCpuConfigurable": "GPU/CPU configurable",
+      "scalableInfrastructure": "Scalable infrastructure"
+    },
+    "qualityControl": {
+      "badge": "Quality Control",
+      "title": "Built-in review workflow",
+      "subtitle": "Every annotation goes through a structured review process. Accept, reject, or send back for revision with full traceability.",
+      "autoLockTitle": "Auto-lock on review",
+      "autoLockDesc": "Reviewed annotations are automatically locked to prevent accidental modifications.",
+      "toReview": "To Review",
+      "accepted": "Accepted",
+      "or": "or",
+      "rejected": "Rejected",
+      "returnToEditTitle": "Return to edit mode",
+      "returnToEditDesc": "Clear review status to unlock and continue editing when needed.",
+      "fullTraceabilityTitle": "Full traceability",
+      "fullTraceabilityDesc": "Track who annotated what and when with complete audit history."
+    },
+    "cta": {
+      "title": "Ready to accelerate labeling?",
+      "subtitle": "Start annotating with AI-assisted tools and built-in review workflows. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    },
+    "canvas": {
+      "shapes": "Shapes",
+      "toReview": "To Review"
+    }
+  },
+  "annotationCampaigns": {
+    "metadata": {
+      "title": "Annotation Campaigns - Labeling at Scale",
+      "description": "Manage annotation projects at scale with structured labeling campaigns, quality control, reviewer workflows, and team collaboration tools.",
+      "ogTitle": "Annotation Campaigns - Labeling at Scale",
+      "ogDescription": "Manage annotation projects at scale with structured labeling campaigns, quality control, and team collaboration."
+    },
+    "hero": {
+      "badge": "Workflow",
+      "titleLine1": "Human-In-The-Loop",
+      "titleHighlight": "At Scale",
+      "subtitle": "Orchestrate annotation workflows with multi-step pipelines, team management, and quality control. Add annotators, set sample rates, and track progress.",
+      "cta": "See It In Action",
+      "docs": "Documentation"
+    },
+    "workflows": {
+      "badge": "Workflows",
+      "title": "Custom multi-step pipelines",
+      "subtitle": "Design annotation workflows that match your quality requirements. Chain annotation and review steps with configurable sample rates.",
+      "annotationSteps": "Annotation Steps",
+      "annotationStepsDesc": "Workers create initial annotations on assigned assets",
+      "reviewSteps": "Review Steps",
+      "reviewStepsDesc": "Team members validate and accept/reject previous work",
+      "sampleRates": "Sample Rates",
+      "sampleRatesDesc": "Control what percentage of assets proceed to each step",
+      "examplePipeline": "Example Pipeline",
+      "initialAnnotation": "Initial Annotation",
+      "firstReview": "First Review",
+      "finalValidation": "Final Validation"
+    },
+    "taskManagement": {
+      "badge": "Task Management",
+      "title": "Full visibility on progress",
+      "subtitle": "Track every task through its lifecycle. Reassign work, manage priorities, and ensure nothing falls through the cracks.",
+      "taskLifecycle": "Task Lifecycle"
+    },
+    "teamManagement": {
+      "badge": "Team Management",
+      "title": "Scale with external teams",
+      "subtitle": "Onboard external annotators quickly with clear guidelines. Control access, distribute work evenly, and maintain quality standards.",
+      "equalDistribution": "Equal or weighted task distribution",
+      "instructionPDFs": "Instruction PDFs for annotators",
+      "roleBasedAccess": "Role-based access controls",
+      "bulkReassignment": "Bulk task reassignment"
+    },
+    "qualityControl": {
+      "badge": "Quality Control",
+      "title": "Collaborative issue tracking",
+      "subtitle": "Flag problems, discuss solutions, and ensure quality before assets leave the pipeline. No asset can be marked done with open issues.",
+      "zoneIssues": "Zone Issues",
+      "zoneIssuesDesc": "Flag specific areas with rectangular markers. Perfect for pointing out boundary errors, missing annotations, or unclear regions.",
+      "imageIssues": "Image Issues",
+      "imageIssuesDesc": "Flag concerns about the entire asset. Use for classification errors, image quality problems, or incorrect labeling approach.",
+      "blockingRule": "Assets cannot be marked Done with open issues"
+    },
+    "analytics": {
+      "badge": "Analytics",
+      "title": "Real-time performance insights",
+      "subtitle": "Track time spent, monitor productivity, and identify bottlenecks. See where work slows down and fix it.",
+      "avgTimePerAsset": "Avg. Time per Asset",
+      "avgTimePerAssetDesc": "Detailed time tracking for each task",
+      "teamThroughput": "Team Throughput",
+      "teamThroughputDesc": "Assets completed by all workers",
+      "acceptanceRate": "Acceptance Rate",
+      "acceptanceRateDesc": "First-pass review approval"
+    },
+    "cta": {
+      "title": "Ready to scale your annotation?",
+      "subtitle": "Set up multi-step annotation workflows with built-in review and quality control. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "aiLaboratory": {
+    "metadata": {
+      "title": "AI Laboratory - Model Training & Experimentation",
+      "description": "Train and experiment with computer vision models. Support for PyTorch, TensorFlow, Ultralytics, and custom frameworks with one-click GPU compute.",
+      "ogTitle": "AI Laboratory - Model Training & Experimentation",
+      "ogDescription": "Train and experiment with computer vision models with one-click GPU compute and full framework support."
+    },
+    "hero": {
+      "badge": "Model Training",
+      "titleStart": "Train Models",
+      "titleHighlight": "Your Way",
+      "subtitle": "From no-code training to custom PyTorch pipelines. Choose your level of control and let Picsellia handle the infrastructure.",
+      "cta": "See It In Action",
+      "docs": "Documentation",
+      "worksWith": "Works with:"
+    },
+    "stats": {
+      "gpuAllocation": "GPU allocation",
+      "preBuiltPipelines": "Pre-built pipelines",
+      "customFlexibility": "Custom flexibility",
+      "infrastructureToManage": "Infrastructure to manage"
+    },
+    "trainingModes": {
+      "badge": "Flexibility",
+      "title": "Choose your level of control",
+      "subtitle": "Start with no-code for quick iterations, use the SDK for automation, or build fully custom pipelines when you need complete control.",
+      "noCodeTitle": "No-Code Training",
+      "noCodeDesc": "Launch training jobs directly from the UI. Select a pre-built pipeline, configure parameters, and start training.",
+      "sdkTitle": "Python SDK",
+      "sdkDesc": "Full programmatic control with our Python SDK. Integrate into your existing workflows and CI/CD pipelines.",
+      "customTitle": "Custom Pipelines",
+      "customDesc": "Build custom training pipelines with CV Engine. Modular steps, any framework, full flexibility.",
+      "configureInUI": "Configure in UI",
+      "selectGPU": "Select GPU",
+      "launchTraining": "Launch training"
+    },
+    "pipelines": {
+      "badge": "Pre-built Pipelines",
+      "title": "Production-grade models, ready to train",
+      "subtitle": "Start training in minutes with our pre-built pipelines. Ultralytics for YOLO, SAM2 for segmentation, Grounding DINO for zero-shot detection, and more.",
+      "oneClickGpu": "One-click deployment to GPU",
+      "preConfigured": "Pre-configured hyperparameters",
+      "autoMetricLogging": "Automatic metric logging",
+      "modelExport": "Model export to registry"
+    },
+    "cvEngine": {
+      "badge": "CV Engine",
+      "title": "Build custom pipelines with ease",
+      "subtitle": "Picsellia CV Engine is a modular toolkit for building computer vision workflows. Composable steps, framework extensions, and CLI automation.",
+      "modularSteps": "Modular Steps",
+      "modularStepsDesc": "Build pipelines from reusable, composable steps with @step decorators",
+      "frameworkExtensions": "Framework Extensions",
+      "frameworkExtensionsDesc": "Pre-built integrations for Ultralytics, SAM2, CLIP, and more",
+      "localRemote": "Local & Remote",
+      "localRemoteDesc": "Test locally, deploy to Picsellia cloud with one command",
+      "autoLogging": "Auto Logging",
+      "autoLoggingDesc": "Metrics, artifacts, and parameters logged automatically",
+      "viewDocs": "View Docs →"
+    },
+    "cta": {
+      "title": "Ready to train your models?",
+      "subtitle": "Start training with pre-built pipelines or build your own. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "experimentTracking": {
+    "metadata": {
+      "title": "Experiment Tracking - Compare & Reproduce ML Runs",
+      "description": "Track, compare, and reproduce machine learning experiments. Log metrics, parameters, and artifacts for complete experiment lineage and reproducibility.",
+      "ogTitle": "Experiment Tracking - Compare & Reproduce ML Runs",
+      "ogDescription": "Track, compare, and reproduce machine learning experiments with complete experiment lineage and reproducibility."
+    },
+    "hero": {
+      "badge": "MLOps",
+      "titleLine1": "Track Experiments",
+      "titleHighlight": "Ship Better Models",
+      "subtitle": "Full reproducibility with metrics, parameters, and artifacts. Compare runs, collaborate with your team, and version models automatically.",
+      "cta": "See It In Action",
+      "docs": "Documentation",
+      "worksWith": "Works with:",
+      "bestModel": "Best Model",
+      "trainingOnGpu": "Training on GPU"
+    },
+    "logging": {
+      "badge": "Logging",
+      "title": "Log everything, miss nothing",
+      "subtitle": "Capture metrics, parameters, artifacts, and evaluations with a simple API. Full lineage tracking with minimal integration code.",
+      "artifactStorage": "Artifact Storage",
+      "artifactStorageDesc": "Store checkpoints, configs, and outputs",
+      "datasetAttachment": "Dataset Attachment",
+      "datasetAttachmentDesc": "Link training data for reproducibility",
+      "modelExport": "Model Export",
+      "modelExportDesc": "Push to model registry with one call"
+    },
+    "comparison": {
+      "badge": "Compare",
+      "title": "Compare trainings instantly",
+      "subtitle": "See the exact training distribution, hyperparameters, and augmentations behind every performance change. Find your best model faster.",
+      "sideByMetrics": "Side-by-side metric comparison",
+      "datasetDiff": "Dataset version diff",
+      "parameterComparison": "Hyperparameter comparison",
+      "visualEval": "Visual evaluation overlay"
+    },
+    "cta": {
+      "title": "Ready to track your experiments?",
+      "subtitle": "Start logging metrics, comparing runs, and shipping better models. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "automatedPipelines": {
+    "metadata": {
+      "title": "Automated Pipelines - CI/CD for Computer Vision",
+      "description": "Automate your computer vision workflow with continuous training and deployment pipelines. Pre-built and custom pipeline support with full orchestration.",
+      "ogTitle": "Automated Pipelines - CI/CD for Computer Vision",
+      "ogDescription": "Automate your computer vision workflow with continuous training and deployment pipelines."
+    },
+    "hero": {
+      "badge": "CT/CD Automation",
+      "titleStart": "Models That",
+      "titleHighlight": "Improve Themselves",
+      "subtitle": "Continuous Training and Continuous Deployment. Close the feedback loop, automate retraining, and deploy with confidence using shadow models.",
+      "cta": "See It In Action",
+      "docs": "Documentation"
+    },
+    "stats": {
+      "manualIntervention": "Manual intervention",
+      "automatedLoop": "Automated loop",
+      "safeDeployments": "Safe deployments",
+      "modelIterations": "Model iterations"
+    },
+    "feedbackLoop": {
+      "badge": "Feedback Loop",
+      "title": "Production data becomes training data",
+      "subtitle": "Connect your deployment to your training pipeline. Reviewed predictions automatically flow into your training datasets, creating a continuous improvement cycle.",
+      "capturePredictions": "Capture predictions",
+      "capturePredictionsDesc": "Every inference logged automatically",
+      "reviewAnomalies": "Review anomalies",
+      "reviewAnomaliesDesc": "Flag and correct mispredictions",
+      "enrichDatasets": "Enrich datasets",
+      "enrichDatasetsDesc": "Add reviewed data to training sets",
+      "triggerRetraining": "Trigger retraining",
+      "triggerRetrainingDesc": "Automated based on thresholds",
+      "feedbackPipeline": "Feedback Pipeline",
+      "active": "Active",
+      "predictionsLogged": "Predictions logged",
+      "reviewed": "Reviewed",
+      "addedToTrainingSet": "Added to training set",
+      "readyToTrigger": "Ready to trigger"
+    },
+    "orchestration": {
+      "badge": "Training Orchestration",
+      "title": "Automated retraining on your terms",
+      "subtitle": "Define triggers based on review thresholds, drift detection, or schedules. When conditions are met, Picsellia automatically provisions GPUs and launches training.",
+      "retrainingTriggers": "Retraining Triggers",
+      "reviewThreshold": "Review Threshold",
+      "driftAlert": "Drift Alert",
+      "scheduled": "Scheduled"
+    },
+    "shadowDeployment": {
+      "badge": "Shadow Deployment",
+      "title": "Deploy with confidence",
+      "subtitle": "Test new models in production without risk. Shadow models run alongside your primary model, comparing performance on real traffic before you promote.",
+      "howItWorks": "How Shadow Deployment Works",
+      "step1Title": "Deploy shadow model",
+      "step1Desc": "New model version runs in parallel, processing the same inputs as production",
+      "step2Title": "Compare predictions",
+      "step2Desc": "Both models make predictions, but only primary results are returned to users",
+      "step3Title": "Promote when ready",
+      "step3Desc": "Once shadow outperforms primary, promote it with a single command",
+      "liveComparison": "Live Comparison",
+      "shadowOutperforming": "Shadow outperforming on 3/4 metrics",
+      "promote": "Promote →"
+    },
+    "endToEnd": {
+      "badge": "End-to-End",
+      "title": "The complete automation stack",
+      "subtitle": "From data collection to model deployment, every step is connected and automated. Full lineage, full visibility.",
+      "continuousTraining": "Continuous Training",
+      "continuousTrainingDesc": "Automatic retraining triggered by review thresholds or drift detection",
+      "continuousDeployment": "Continuous Deployment",
+      "continuousDeploymentDesc": "Safe model promotion with shadow deployment and automated policies",
+      "fullObservability": "Full Observability",
+      "fullObservabilityDesc": "Monitor every prediction, track every metric, trace every decision"
+    },
+    "cta": {
+      "title": "Ready to automate your ML lifecycle?",
+      "subtitle": "Set up continuous training and deployment in minutes. Let your models improve themselves.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "modelDeployment": {
+    "metadata": {
+      "title": "Model Deployment - Cloud & Edge Inference",
+      "description": "Deploy computer vision models to cloud or edge with Picsellia. Auto-scaling serverless infrastructure, one-click deployment, and 99.9% uptime guarantee.",
+      "ogTitle": "Model Deployment - Cloud & Edge Inference",
+      "ogDescription": "Deploy computer vision models to cloud or edge with Picsellia. Auto-scaling serverless infrastructure, one-click deployment, and 99.9% uptime guarantee."
+    },
+    "hero": {
+      "badge": "Deployment",
+      "titleLine1": "Deploy Models",
+      "titleHighlight": "To Production",
+      "subtitle": "Ship computer vision models to serverless infrastructure. Auto-scaling, zero cold starts, and full observability out of the box.",
+      "cta": "Deploy Your First Model",
+      "docs": "Documentation",
+      "uptimeSla": "Uptime SLA",
+      "latencyP95": "Latency P95",
+      "autoScaling": "Auto-scaling",
+      "live": "Live",
+      "serving": "Serving",
+      "reqPerMin": "req/min",
+      "latency": "latency",
+      "replicas": "replicas",
+      "throughput": "Throughput",
+      "last60s": "Last 60s",
+      "uptime": "99.97% Uptime",
+      "last30days": "Last 30 days",
+      "scaling": "Scaling:"
+    },
+    "architecture": {
+      "badge": "Infrastructure",
+      "title": "Serverless model serving",
+      "subtitle": "Deploy models without managing servers. Picsellia handles container orchestration, GPU allocation, load balancing, and auto-scaling automatically.",
+      "gpuCpu": "GPU & CPU Inference",
+      "gpuCpuDesc": "Choose the right compute for your model — from T4 GPUs to cost-efficient CPU instances",
+      "containerOrchestration": "Container Orchestration",
+      "containerOrchestrationDesc": "Automatic containerization with optimized runtimes for ONNX, TensorRT, and PyTorch",
+      "secureEndpointsTitle": "Secure Endpoints",
+      "secureEndpointsDesc": "API key authentication, rate limiting, and encrypted traffic by default",
+      "deploymentArchitecture": "DEPLOYMENT ARCHITECTURE",
+      "managedInfrastructure": "Managed infrastructure",
+      "apiGateway": "API Gateway",
+      "loadBalancerAuth": "Load balancer + Auth",
+      "inferenceServers": "Inference Servers",
+      "autoScaledReplicas": "Auto-scaled replicas",
+      "modelRegistry": "Model Registry",
+      "versionedArtifacts": "Versioned artifacts",
+      "monitoring": "Monitoring",
+      "predictionsLogged": "Predictions logged"
+    },
+    "sdk": {
+      "badge": "Developer Experience",
+      "title": "Deploy in a few lines of code",
+      "subtitle": "Use the Python SDK to deploy, update, and manage models programmatically. Full API access for CI/CD integration.",
+      "deployModel": "DEPLOY A MODEL",
+      "pythonSdk": "Python SDK",
+      "runInference": "RUN INFERENCE",
+      "restApi": "REST API"
+    },
+    "scaling": {
+      "badge": "Auto-Scaling",
+      "title": "Scale to match demand",
+      "subtitle": "Automatically scale from zero to thousands of requests per second. Pay only for the compute you use, with intelligent scaling policies.",
+      "scaleToZero": "Scale-to-zero for cost efficiency",
+      "cpuRequestScaling": "CPU and request-based scaling policies",
+      "configurableReplica": "Configurable min/max replica bounds",
+      "coldStartOptimization": "Cold-start optimization with warm pools",
+      "multiRegion": "Multi-region deployment support",
+      "replicaCount": "Replica count over 24h",
+      "replicas": "Replicas",
+      "traffic": "Traffic",
+      "active": "Active",
+      "replicaRange": "Replica range",
+      "scaleUpTime": "Scale-up time",
+      "cpuThreshold": "CPU threshold",
+      "minReplica": "Min: 1 replica",
+      "maxReplica": "Max: 6 replicas",
+      "costOptimized": "Cost optimized"
+    },
+    "features": {
+      "badge": "Built for Production",
+      "title": "Everything you need to serve models",
+      "subtitle": "From model registry to production endpoint, Picsellia handles the entire deployment lifecycle with enterprise-grade reliability.",
+      "registryTitle": "Model Registry Integration",
+      "registryDesc": "Deploy any model version from your registry. Full lineage from experiment to production endpoint.",
+      "runtimeTitle": "Runtime Optimization",
+      "runtimeDesc": "Automatic model optimization with ONNX Runtime, TensorRT, or custom serving containers.",
+      "monitoringTitle": "Monitoring Built-In",
+      "monitoringDesc": "Every prediction is logged. Track latency, throughput, and anomalies from day one.",
+      "registryItem1": "Version management",
+      "registryItem2": "Artifact tracking",
+      "registryItem3": "Rollback support",
+      "runtimeItem1": "ONNX Runtime",
+      "runtimeItem2": "TensorRT acceleration",
+      "runtimeItem3": "Custom containers",
+      "monitoringItem1": "Real-time dashboards",
+      "monitoringItem2": "Anomaly detection",
+      "monitoringItem3": "Drift tracking"
+    },
+    "cta": {
+      "title": "Ready to deploy your models?",
+      "subtitle": "Go from trained model to production endpoint in minutes. Serverless, scalable, and fully managed.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "modelMonitoring": {
+    "metadata": {
+      "title": "Model Monitoring - Track ML in Production",
+      "description": "Monitor computer vision models in production. Detect data drift, performance degradation, and anomalies with real-time dashboards and automated alerts.",
+      "ogTitle": "Model Monitoring - Track ML in Production",
+      "ogDescription": "Monitor computer vision models in production. Detect data drift, performance degradation, and anomalies in real-time."
+    },
+    "hero": {
+      "badge": "Observability",
+      "titleLine1": "Monitor Models",
+      "titleHighlight": "In Production",
+      "subtitle": "Real-time observability for computer vision models. Detect anomalies, track drift, and close the feedback loop automatically.",
+      "monitoring": "Monitoring",
+      "anomalyRate": "Anomaly Rate",
+      "latencyP99": "Latency P99",
+      "cta": "See It In Action",
+      "docs": "Documentation",
+      "anomalyDetected": "Anomaly Detected",
+      "lowConfidenceSpike": "Low confidence spike at 12:34",
+      "avgLatency": "Avg latency:"
+    },
+    "anomalyDetection": {
+      "badge": "Anomaly Detection",
+      "title": "Catch failures before users do",
+      "subtitle": "Automatic 24/7 monitoring flags anomalous inputs and low-confidence predictions. Reveal blindspots and discover edge cases in production data.",
+      "lowConfidenceAlerts": "Low Confidence Alerts",
+      "lowConfidenceAlertsDesc": "Flag predictions below confidence thresholds automatically",
+      "distributionShift": "Distribution Shift",
+      "distributionShiftDesc": "Detect when production data drifts from training data",
+      "novelPatterns": "Novel Patterns",
+      "novelPatternsDesc": "Discover previously unseen data patterns and edge cases",
+      "flaggedPredictions": "FLAGGED PREDICTIONS",
+      "lastHour": "Last hour",
+      "anomaliesDetected": "6 anomalies detected",
+      "reviewAll": "Review all →"
+    },
+    "liveDashboard": {
+      "badge": "Live Dashboard",
+      "title": "Real-time prediction insights",
+      "subtitle": "Filter millions of inferences to identify the top anomalies. From edge case detection to training dataset integration in seconds.",
+      "totalInferences": "Total Inferences",
+      "last24Hours": "Last 24 hours",
+      "avgLatency": "Avg Latency",
+      "p50ResponseTime": "P50 response time",
+      "accuracy": "Accuracy",
+      "basedOnReviewed": "Based on reviewed predictions"
+    },
+    "driftDetection": {
+      "badge": "Data Drift",
+      "title": "Track distribution changes",
+      "subtitle": "Compare production data against your training baseline. Get alerted when distributions shift beyond acceptable thresholds.",
+      "imageStats": "Image statistics (brightness, contrast, blur)",
+      "classDistribution": "Class distribution changes",
+      "confidenceDegradation": "Confidence score degradation",
+      "customAlerts": "Custom threshold alerts",
+      "metricsDrifting": "3 metrics drifting",
+      "last7Days": "Last 7 days"
+    },
+    "feedbackLoop": {
+      "badge": "Continuous Improvement",
+      "title": "Close the feedback loop",
+      "subtitle": "Convert production failures into training data. Review predictions, attach to datasets, and trigger retraining automatically."
+    },
+    "cta": {
+      "title": "Ready to monitor your models?",
+      "subtitle": "Start tracking predictions, detecting anomalies, and closing the feedback loop. Free trial, no credit card.",
+      "startTrial": "Start Free Trial",
+      "requestDemo": "Request Demo"
+    }
+  },
+  "industry": {
+    "manufacturing": {
+      "metadata": {
+        "title": "Manufacturing - Visual Inspection & Quality Control",
+        "description": "Deploy computer vision for manufacturing quality control, defect detection, and visual inspection. Automate production line monitoring with Picsellia.",
+        "ogTitle": "Manufacturing - Visual Inspection & Quality Control",
+        "ogDescription": "Deploy computer vision for manufacturing quality control, defect detection, and visual inspection."
+      },
+      "hero": {
+        "badge": "Manufacturing",
+        "title": "Visual inspection at <highlight>human-level precision</highlight>",
+        "subtitle": "Quality AI that matches your best inspectors. Built on high-quality labels, rigorous evaluation, and secure on-premise deployment.",
+        "requestDemo": "Request Demo",
+        "seeUseCases": "See Use Cases"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "What you can inspect",
+        "subtitle": "From surface defects to safety compliance — Picsellia handles the full spectrum of manufacturing visual inspection.",
+        "surfaceDefectTitle": "Surface Defect Detection",
+        "surfaceDefectDesc": "Detect scratches, dents, discoloration, and surface anomalies with sub-millimeter precision. Trained on your exact defect taxonomy.",
+        "surfaceDefectStat": "99.5%",
+        "surfaceDefectStatLabel": "Detection accuracy",
+        "assemblyTitle": "Assembly Verification",
+        "assemblyDesc": "Verify component presence, orientation, and positioning. Catch assembly errors before they reach the next station.",
+        "assemblyStat": "0.1%",
+        "assemblyStatLabel": "Escape rate",
+        "packagingTitle": "Packaging Inspection",
+        "packagingDesc": "Validate labels, seals, barcodes, and packaging integrity. Ensure every product ships correctly.",
+        "packagingStat": "100%",
+        "packagingStatLabel": "Traceability",
+        "safetyTitle": "Safety Compliance",
+        "safetyDesc": "Monitor PPE usage, restricted zones, and safety protocols. Protect workers with automated visual checks.",
+        "safetyStat": "24/7",
+        "safetyStatLabel": "Monitoring"
+      },
+      "quality": {
+        "badge": "Quality First",
+        "title": "Why manufacturing teams choose Picsellia",
+        "subtitle": "Quality inspection demands more than just a model. It demands rigor at every step.",
+        "multiReviewerTitle": "Multi-reviewer workflows",
+        "multiReviewerDesc": "Every label is validated by multiple experts. Consensus ensures accuracy.",
+        "goldenTestTitle": "Golden test datasets",
+        "goldenTestDesc": "Benchmark every model version against curated edge cases before deployment.",
+        "perDefectTitle": "Per-defect metrics",
+        "perDefectDesc": "Track precision and recall for each defect type. No blind spots.",
+        "humanLevelTitle": "Human-level benchmarks",
+        "humanLevelDesc": "Compare model performance against your best inspectors. Prove ROI."
+      },
+      "deployment": {
+        "badge": "Deployment",
+        "title": "Runs where your production line does",
+        "subtitle": "Deploy on-premise, on edge devices, or in a private cloud. Picsellia meets your infrastructure where it is.",
+        "onPremiseTitle": "On-premise ready",
+        "onPremiseDesc": "Full deployment to your infrastructure via Kubernetes or Docker. Air-gapped environments supported.",
+        "edgeTitle": "Edge deployment",
+        "edgeDesc": "Deploy to NVIDIA Jetson, Intel NCS, or custom edge hardware with optimized inference.",
+        "latencyTitle": "Low latency",
+        "latencyDesc": "Sub-50ms inference for real-time production line speeds.",
+        "monitoringTitle": "Production monitoring",
+        "monitoringDesc": "Track accuracy, drift, and anomalies in real-time. Get alerted when quality degrades."
+      },
+      "cta": {
+        "title": "Ready to automate visual inspection?",
+        "subtitle": "See how Picsellia can help your manufacturing team ship quality AI faster.",
+        "requestDemo": "Request Demo",
+        "startTrial": "Start Free Trial"
+      }
+    },
+    "agriculture": {
+      "metadata": {
+        "title": "Agriculture - Precision Farming & Crop Analysis",
+        "description": "Apply computer vision to agriculture for crop monitoring, disease detection, and precision farming. Build and deploy agricultural AI with Picsellia.",
+        "ogTitle": "Agriculture - Precision Farming & Crop Analysis",
+        "ogDescription": "Apply computer vision to agriculture for crop monitoring, disease detection, and precision farming."
+      },
+      "hero": {
+        "badge": "Agriculture",
+        "title": "Precision agriculture built on <highlight>geo-referenced data</highlight>",
+        "subtitle": "Manage massive drone datasets with GPS metadata intact. Train models on multi-spectral imagery. Validate with agronomist expertise.",
+        "requestDemo": "Request Demo",
+        "seeUseCases": "See Use Cases"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "Precision agriculture applications",
+        "subtitle": "From crop health monitoring to yield estimation — Picsellia powers the full spectrum of agricultural computer vision."
+      },
+      "platform": {
+        "badge": "Platform",
+        "title": "Built for agricultural data",
+        "subtitle": "Handle geo-referenced imagery, multi-spectral data, and massive drone datasets with ease."
+      },
+      "cta": {
+        "title": "Ready to build precision agriculture AI?",
+        "subtitle": "See how Picsellia can help your team manage agricultural data and deploy models faster.",
+        "requestDemo": "Request Demo",
+        "startTrial": "Start Free Trial"
+      }
+    },
+    "energy": {
+      "metadata": {
+        "title": "Energy - Infrastructure Inspection & Monitoring",
+        "description": "Deploy computer vision for energy infrastructure inspection, predictive maintenance, and asset monitoring. Automate visual inspections with Picsellia.",
+        "ogTitle": "Energy - Infrastructure Inspection & Monitoring",
+        "ogDescription": "Deploy computer vision for energy infrastructure inspection, predictive maintenance, and asset monitoring."
+      },
+      "hero": {
+        "badge": "Energy & Utilities",
+        "title": "AI-powered inspection for <highlight>critical infrastructure</highlight>",
+        "subtitle": "From drone imagery to actionable insights. Build, deploy, and monitor computer vision models that keep your grid running.",
+        "requestDemo": "Request Demo",
+        "seeUseCases": "See Use Cases"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "Infrastructure inspection applications",
+        "subtitle": "From power line inspection to predictive maintenance — automate visual inspections across your energy infrastructure."
+      },
+      "platform": {
+        "badge": "Platform",
+        "title": "Built for inspection workflows",
+        "subtitle": "Handle drone imagery, thermal scans, and high-resolution inspection photos at scale."
+      },
+      "cta": {
+        "title": "Ready to automate infrastructure inspection?",
+        "subtitle": "See how Picsellia can help your energy team deploy inspection AI faster.",
+        "requestDemo": "Request Demo",
+        "startTrial": "Start Free Trial"
+      }
+    },
+    "wasteManagement": {
+      "metadata": {
+        "title": "Waste Management - Sorting & Recycling Automation",
+        "description": "Automate waste sorting and recycling with computer vision. Deploy AI-powered waste classification and material recognition with Picsellia's MLOps platform.",
+        "ogTitle": "Waste Management - Sorting & Recycling Automation",
+        "ogDescription": "Automate waste sorting and recycling with computer vision. Deploy AI-powered waste classification and material recognition."
+      },
+      "hero": {
+        "badge": "Waste Management",
+        "title": "AI that keeps up with <highlight>changing waste streams</highlight>",
+        "subtitle": "Packaging changes. Materials evolve. Your AI should too. Build waste sorting models that continuously learn and adapt.",
+        "requestDemo": "Request Demo",
+        "seeUseCases": "See Use Cases"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "Waste sorting applications",
+        "subtitle": "From material classification to contamination detection — AI that keeps up with changing waste streams."
+      },
+      "platform": {
+        "badge": "Platform",
+        "title": "Built for continuous learning",
+        "subtitle": "Packaging changes. Materials evolve. Your models adapt automatically with Picsellia's feedback loop."
+      },
+      "cta": {
+        "title": "Ready to automate waste sorting?",
+        "subtitle": "See how Picsellia can help your team build and maintain waste classification AI.",
+        "requestDemo": "Request Demo",
+        "startTrial": "Start Free Trial"
+      }
+    },
+    "aerospace": {
+      "metadata": {
+        "title": "Aerospace - Aircraft Inspection & Maintenance AI",
+        "description": "Deploy computer vision for aircraft inspection, component wear analysis, and FOD detection. Accelerate MRO workflows with Picsellia's MLOps platform.",
+        "ogTitle": "Aerospace - Aircraft Inspection & Maintenance AI",
+        "ogDescription": "Deploy computer vision for aircraft inspection, component wear analysis, and FOD detection."
+      },
+      "hero": {
+        "badge": "Aerospace",
+        "title": "Computer vision for <highlight>aircraft inspection & navigation</highlight>",
+        "subtitle": "From surface defect detection to assembly verification. Build, deploy, and monitor vision AI models that meet aerospace-grade requirements.",
+        "requestDemo": "Request Demo",
+        "seeUseCases": "See Use Cases"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "Aerospace inspection applications",
+        "subtitle": "From surface defect detection to FOD identification — computer vision for the most demanding inspection requirements."
+      },
+      "platform": {
+        "badge": "Platform",
+        "title": "Built for aerospace-grade requirements",
+        "subtitle": "Full traceability, audit-ready compliance, and on-premise deployment for sensitive environments."
+      },
+      "cta": {
+        "title": "Ready to deploy aerospace-grade AI?",
+        "subtitle": "See how Picsellia can help your aerospace team meet the most demanding inspection requirements.",
+        "requestDemo": "Request Demo",
+        "seeEnterprise": "See Enterprise Deployment"
+      }
+    },
+    "defense": {
+      "metadata": {
+        "title": "Defense - Surveillance & Threat Detection AI",
+        "description": "Deploy computer vision for defense surveillance, threat detection, and situational awareness. Secure, on-premise AI with Picsellia's MLOps platform.",
+        "ogTitle": "Defense - Surveillance & Threat Detection AI",
+        "ogDescription": "Deploy computer vision for defense surveillance, threat detection, and situational awareness."
+      },
+      "hero": {
+        "badge": "Defense & Security",
+        "title": "Vision AI for <highlight>defense & situational awareness</highlight>",
+        "subtitle": "From surveillance feeds to satellite imagery. Build, deploy, and monitor computer vision models in air-gapped, on-premise environments.",
+        "requestDemo": "Request Demo",
+        "seeEnterprise": "See Enterprise Deployment"
+      },
+      "useCases": {
+        "badge": "Use Cases",
+        "title": "Defense & security applications",
+        "subtitle": "From surveillance analysis to satellite imagery — vision AI for situational awareness and threat detection."
+      },
+      "platform": {
+        "badge": "Platform",
+        "title": "Built for secure environments",
+        "subtitle": "Air-gapped deployment, full data sovereignty, and defense-grade security for the most sensitive operations."
+      },
+      "cta": {
+        "title": "Ready to deploy secure Vision AI?",
+        "subtitle": "See how Picsellia can help your defense team build and deploy computer vision in secure environments.",
+        "requestDemo": "Request Demo",
+        "seeEnterprise": "See Enterprise Deployment"
+      }
+    }
+  },
+  "useCases": {
+    "index": {
+      "metadata": {
+        "title": "Customer Stories - MLOps Success in Production",
+        "description": "See how companies use Picsellia's MLOps platform for computer vision across manufacturing, agriculture, energy, and waste management.",
+        "ogTitle": "Customer Stories - MLOps Success in Production",
+        "ogDescription": "See how companies use Picsellia's MLOps platform for computer vision across manufacturing, agriculture, energy, and waste management."
+      },
+      "hero": {
+        "badge": "Customer Success Stories",
+        "title": "See how teams ship <highlight>AI faster</highlight> with Picsellia",
+        "subtitle": "From startups to industry leaders, discover how companies across industries use Picsellia to accelerate computer vision development.",
+        "stats": {
+          "timeReduction": "Average time reduction",
+          "industries": "Industries served",
+          "models": "Models in production"
+        }
+      },
+      "readCaseStudy": "Read case study",
+      "cta": {
+        "title": "Ready to accelerate your CV development?",
+        "subtitle": "Join industry leaders who have reduced their time-to-production by up to 90% with Picsellia.",
+        "requestDemo": "Request Demo",
+        "startTrial": "Start Free Trial"
+      },
+      "caseStudies": {
+        "sgsIndustry": "Testing & Certification",
+        "sgsHeadline": "How SGS Slashed Development Time by 66%",
+        "sgsDescription": "SGS reduced model development from 3 days to 1 day using Picsellia for industrial inspection automation.",
+        "pellencstIndustry": "Waste Sorting Technology",
+        "pellencstHeadline": "How PellencST Cut Time-to-Model by 90%",
+        "pellencstDescription": "PellencST reduced model development from 6-9 months to 1 month using Picsellia for waste sorting machines.",
+        "altaroadIndustry": "Construction & Waste Monitoring",
+        "altaroadHeadline": "How Altaroad Saved 50% Time Operating Models",
+        "altaroadDescription": "Altaroad reduced data scientist time on model maintenance from 50% to 10% using Picsellia.",
+        "fichaIndustry": "Waste Management",
+        "fichaHeadline": "How Ficha Accelerated Innovation in WasteTech",
+        "fichaDescription": "Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia for waste classification.",
+        "abelioIndustry": "Agriculture",
+        "abelioHeadline": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+        "abelioDescription": "Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery using Picsellia."
+      },
+      "statLabels": {
+        "timeSaved": "Time Saved",
+        "daysPerModel": "Days per Model",
+        "aiApps": "AI Apps",
+        "faster": "Faster",
+        "machines": "Machines",
+        "deployment": "Deployment",
+        "dataPoints": "Data Points",
+        "fasterAnnotation": "Faster Annotation",
+        "shorterCycles": "Shorter Cycles",
+        "retraining": "Retraining",
+        "scaling": "Scaling",
+        "data": "Data"
+      }
+    },
+    "abelio": {
+      "metadata": {
+        "title": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+        "description": "Learn how Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery for precision agriculture using Picsellia's MLOps platform.",
+        "ogTitle": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+        "ogDescription": "Learn how Abelio achieved 48-hour retraining cycles and managed terabytes of drone imagery for precision agriculture using Picsellia's MLOps platform."
+      },
+      "data": {
+        "industry": "Agriculture",
+        "description": "Abelio is a digital farming solutions provider that uses computer vision to process aerial imagery from drones and satellites. They deliver insights that help farmers optimize yields, reduce costs, and minimize environmental impact across large-scale agricultural operations.",
+        "headline": "How Abelio Reduced Time-to-Model for Precision Agriculture",
+        "subheadline": "From fragmented AWS infrastructure to unified MLOps: Abelio now delivers farmer insights within 48 hours of image acquisition.",
+        "metrics": [
+          {
+            "value": "48h",
+            "label": "Retraining Cycle",
+            "description": "Image to insights"
+          },
+          {
+            "value": "4x",
+            "label": "Seasonal Scaling",
+            "description": "Peak processing increase"
+          },
+          {
+            "value": "TBs",
+            "label": "Data Managed",
+            "description": "Dozens of terabytes"
+          }
+        ],
+        "beforeItems": [
+          "Fragmented AWS infrastructure (S3, EC2, SageMaker)",
+          "No integrated tools for image visualization",
+          "Time-consuming model retraining processes",
+          "Lack of traceability across environments",
+          "Difficult to reproduce experiments"
+        ],
+        "afterItems": [
+          "Centralized data management platform",
+          "Efficient retraining workflows",
+          "Full experiment reproducibility",
+          "Streamlined annotation campaigns",
+          "48-hour delivery to farmers"
+        ],
+        "challengeIntro": "Abelio needed to process massive volumes of aerial imagery during peak farming seasons while meeting strict 48-hour delivery timelines.",
+        "challenges": [
+          {
+            "title": "Massive Data Volumes",
+            "description": "During peak farming seasons, image processing increased fourfold. Managing terabytes of drone and satellite imagery required robust infrastructure."
+          },
+          {
+            "title": "Tight Delivery Timelines",
+            "description": "Farmers needed insights within 48 hours of image acquisition. Time-consuming model retraining threatened these critical deadlines."
+          },
+          {
+            "title": "Fragmented Infrastructure",
+            "description": "AWS services (S3, EC2, SageMaker) lacked integrated tools for image visualization and dataset management, creating workflow gaps."
+          },
+          {
+            "title": "No Reproducibility",
+            "description": "Lack of traceability across diverse environments made it impossible to reproduce experiments or track what worked."
+          }
+        ],
+        "workflow": [
+          {
+            "title": "Ingest Aerial Imagery",
+            "description": "Centralize drone and satellite images with metadata into searchable datalake",
+            "feature": "Datalake"
+          },
+          {
+            "title": "Run Annotation Campaigns",
+            "description": "Structured campaigns with progress tracking and quality control for crop analysis",
+            "feature": "Annotation Campaigns"
+          },
+          {
+            "title": "Rapid Model Retraining",
+            "description": "Fast iteration cycles with versioned datasets and tracked parameters",
+            "feature": "Experiment Tracking"
+          },
+          {
+            "title": "Monitor Model Performance",
+            "description": "Track accuracy across different crop types and seasonal conditions",
+            "feature": "Model Monitoring"
+          }
+        ],
+        "solutionIntro": "Picsellia provided Abelio with a unified platform to manage their entire agricultural imaging pipeline at scale.",
+        "solutions": [
+          {
+            "title": "Centralized Data Management",
+            "description": "Simplified image storage and organization for terabytes of aerial imagery. Powerful querying and visualization capabilities.",
+            "feature": "Datalake",
+            "metricsValue": "TBs",
+            "metricsLabel": "Images managed"
+          },
+          {
+            "title": "Efficient Retraining Workflows",
+            "description": "Streamlined processes to meet 48-hour delivery timelines. From image acquisition to farmer insights in record time.",
+            "feature": "Experiment Tracking",
+            "metricsValue": "48h",
+            "metricsLabel": "Delivery time"
+          },
+          {
+            "title": "Annotation Quality Control",
+            "description": "Campaign tools enabling progress tracking and quality control. Improved annotation efficiency and consistency.",
+            "feature": "Annotation Campaigns"
+          },
+          {
+            "title": "Full Reproducibility",
+            "description": "Dataset versioning and parameter recording ensures every experiment can be reproduced and compared.",
+            "feature": "Dataset Management",
+            "metricsValue": "100%",
+            "metricsLabel": "Reproducibility"
+          }
+        ],
+        "quote": "With Picsellia, we can now deliver insights to farmers within 48 hours of image acquisition. The platform handles our seasonal data spikes without issues while maintaining full traceability.",
+        "quoteAuthor": "Abelio Team",
+        "quoteRole": "Data Science",
+        "resultsIntro": "Abelio transformed their agricultural imaging pipeline to deliver faster, more reliable insights to farmers.",
+        "results": [
+          {
+            "title": "48-Hour Delivery",
+            "description": "Reduced retraining cycles to meet strict farmer delivery timelines, from image acquisition to actionable insights."
+          },
+          {
+            "title": "Improved Model Accuracy",
+            "description": "Better dataset reliability stabilized models, increasing precision and recall across crop analysis tasks."
+          },
+          {
+            "title": "Seasonal Scalability",
+            "description": "Effectively managed fourfold increases in data volume during peak farming seasons."
+          },
+          {
+            "title": "Enhanced Reproducibility",
+            "description": "Full experiment tracking through dataset versioning and parameter recording."
+          }
+        ],
+        "featuresUsed": [
+          {
+            "name": "Datalake",
+            "description": "Large-scale image storage"
+          },
+          {
+            "name": "Annotation Campaigns",
+            "description": "Quality-controlled labeling"
+          },
+          {
+            "name": "Experiment Tracking",
+            "description": "Reproducible training"
+          },
+          {
+            "name": "Model Monitoring",
+            "description": "Performance tracking"
+          }
+        ],
+        "relatedStudies": [
+          {
+            "title": "How Ficha Accelerated Innovation in WasteTech",
+            "company": "Ficha",
+            "industry": "Waste Management"
+          },
+          {
+            "title": "How SGS Slashed Development Time by 66%",
+            "company": "SGS",
+            "industry": "Testing & Certification"
+          },
+          {
+            "title": "How PellencST Cut Time-to-Model by 90%",
+            "company": "PellencST",
+            "industry": "Waste Management"
+          }
+        ]
+      }
+    },
+    "altaroad": {
+      "metadata": {
+        "title": "How Altaroad Saved 50% Time Operating Models in Production",
+        "description": "Learn how Altaroad reduced model maintenance time from 50% to 10% using Picsellia's MLOps platform for construction site monitoring and waste traceability.",
+        "ogTitle": "How Altaroad Saved 50% Time Operating Models in Production",
+        "ogDescription": "Learn how Altaroad reduced model maintenance time from 50% to 10% using Picsellia's MLOps platform for construction site monitoring and waste traceability."
+      }
+    },
+    "pellencst": {
+      "metadata": {
+        "title": "How PellencST Cut Time-to-Model by 90%",
+        "description": "Learn how PellencST reduced model development from 6-9 months to 1 month using Picsellia's MLOps platform for AI-powered waste sorting machines.",
+        "ogTitle": "How PellencST Cut Time-to-Model by 90%",
+        "ogDescription": "Learn how PellencST reduced model development from 6-9 months to 1 month using Picsellia's MLOps platform for AI-powered waste sorting machines."
+      }
+    },
+    "sgs": {
+      "metadata": {
+        "title": "How SGS Slashed Model Development Time by 66%",
+        "description": "Learn how SGS reduced model development time from 3 days to 1 day using Picsellia's MLOps platform for automated testing, inspection, and certification workflows.",
+        "ogTitle": "How SGS Slashed Model Development Time by 66%",
+        "ogDescription": "Learn how SGS reduced model development time from 3 days to 1 day using Picsellia's MLOps platform for automated testing, inspection, and certification workflows."
+      }
+    },
+    "ficha": {
+      "metadata": {
+        "title": "How Ficha Accelerated Iteration and Innovation in WasteTech",
+        "description": "Learn how Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia's MLOps platform for waste classification and recycling AI.",
+        "ogTitle": "How Ficha Accelerated Iteration and Innovation in WasteTech",
+        "ogDescription": "Learn how Ficha achieved 3x faster annotation and 20% weekly time savings using Picsellia's MLOps platform for waste classification and recycling AI."
+      }
+    },
+    "defectsDetection": {
+      "metadata": {
+        "title": "Defects Detection - Automated Visual Inspection",
+        "description": "Automated visual inspection for quality control. Detect micro-defects with 99.5% accuracy and reduce manual inspection time.",
+        "ogTitle": "Defects Detection - Automated Visual Inspection",
+        "ogDescription": "Automated visual inspection for quality control. Detect micro-defects with 99.5% accuracy and reduce manual inspection time."
+      },
+      "data": {
+        "title": "Defects Detection",
+        "description": "Automate quality control with AI-powered visual inspection. Detect micro-defects with 99.5% accuracy and reduce manual inspection time by 80%.",
+        "badge": "Use Case"
+      }
+    },
+    "documentProcessing": {
+      "metadata": {
+        "title": "Document Processing - Intelligent Data Extraction",
+        "description": "Intelligent document analysis and data extraction. Process thousands of documents automatically with computer vision.",
+        "ogTitle": "Document Processing - Intelligent Data Extraction",
+        "ogDescription": "Intelligent document analysis and data extraction. Process thousands of documents automatically with computer vision."
+      },
+      "data": {
+        "title": "Document Processing",
+        "description": "Intelligent document analysis and data extraction. Process thousands of documents automatically with computer vision.",
+        "badge": "Use Case"
+      }
+    },
+    "liveSportAnalysis": {
+      "metadata": {
+        "title": "Live Sport Analysis - Real-Time Player Tracking",
+        "description": "Real-time player tracking and game analytics. Transform raw footage into actionable insights for sports performance.",
+        "ogTitle": "Live Sport Analysis - Real-Time Player Tracking",
+        "ogDescription": "Real-time player tracking and game analytics. Transform raw footage into actionable insights for sports performance."
+      },
+      "data": {
+        "title": "Live Sport Analysis",
+        "description": "Real-time sports analytics with computer vision. Track players, analyze movements, and generate insights during live events.",
+        "badge": "Use Case"
+      }
+    },
+    "remoteVisualInspection": {
+      "metadata": {
+        "title": "Remote Visual Inspection - Infrastructure Analysis",
+        "description": "Drone and satellite imagery analysis for infrastructure inspection. Scale remote inspection with computer vision.",
+        "ogTitle": "Remote Visual Inspection - Infrastructure Analysis",
+        "ogDescription": "Drone and satellite imagery analysis for infrastructure inspection. Scale remote inspection with computer vision."
+      },
+      "data": {
+        "title": "Remote Visual Inspection",
+        "description": "AI-powered remote inspection for infrastructure and assets. Reduce on-site visits while improving detection accuracy.",
+        "badge": "Use Case"
+      }
+    },
+    "template": {
+      "caseStudies": "Case Studies",
+      "company": "Company",
+      "overview": "Overview",
+      "theChallenge": "01 — The Challenge",
+      "theTransformation": "02 — The Transformation",
+      "transformationTitle": "From challenges to solutions",
+      "beforePicsellia": "Before Picsellia",
+      "afterPicsellia": "After Picsellia",
+      "theWorkflow": "03 — The Workflow",
+      "howCompanyUsesPicsellia": "How {company} uses Picsellia",
+      "theSolution": "04 — The Solution",
+      "howPicselliaDelivered": "How Picsellia delivered",
+      "theResults": "05 — The Results",
+      "businessImpact": "Business impact",
+      "featuresUsed": "Picsellia Features Used",
+      "moreCaseStudies": "More Case Studies",
+      "viewAll": "View All →",
+      "ctaTitle": "Ready to achieve similar results?",
+      "ctaDescription": "See how Picsellia can help your team build and deploy computer vision models faster.",
+      "requestDemo": "Request Demo",
+      "startFreeTrial": "Start Free Trial",
+      "getSimilarResults": "Get Similar Results"
+    },
+    "placeholder": {
+      "requestDemo": "Request Demo",
+      "backToHome": "Back to Home"
+    }
+  },
+  "compare": {
+    "roboflow": {
+      "metadata": {
+        "title": "Picsellia vs Roboflow (2026) - Best Enterprise CV Platform Comparison",
+        "description": "Looking for a Roboflow alternative? Compare Picsellia vs Roboflow for enterprise computer vision: data management, annotation, model training, deployment, monitoring, ISO 27001 compliance, and on-premise options.",
+        "ogTitle": "Picsellia vs Roboflow (2026) - Enterprise CV Platform Comparison",
+        "ogDescription": "Compare Picsellia and Roboflow side by side. See which computer vision platform is best for enterprise MLOps, on-premise deployment, EU AI Act compliance, and production monitoring."
+      },
+      "badge": "Platform Comparison",
+      "picselliaTagline": "CVOps Platform",
+      "competitorTagline": "Developer Toolkit",
+      "heroTitle": "Picsellia vs Roboflow: ",
+      "heroHighlight": "which CV platform fits your team?",
+      "heroDescription": "Roboflow is great for prototyping and developer communities. Picsellia is built for enterprise teams that need end-to-end MLOps — from data curation to production monitoring — with ISO 27001 compliance and on-premise deployment.",
+      "bookDemo": "Book a Demo",
+      "startFreeTrial": "Start Free Trial",
+      "pipelineCoverageLabel": "Pipeline Coverage",
+      "pipelineCoverageTitle": "Computer vision pipeline coverage",
+      "pipelineCoverageDescription": "Picsellia covers the full CV lifecycle end to end. Roboflow focuses on data preparation and quick prototyping.",
+      "fullSupport": "Full support",
+      "partial": "Partial",
+      "notAvailable": "Not available",
+      "picselliaStages": "6/6 stages",
+      "competitorStages": "2/6 stages",
+      "stats": {
+        "stat1Value": "ISO 27001",
+        "stat1Label": "Security certified",
+        "stat1Sublabel": "vs SOC 2 only",
+        "stat2Value": "6/6",
+        "stat2Label": "Pipeline stages",
+        "stat2Sublabel": "End-to-end",
+        "stat3Value": "EU + US",
+        "stat3Label": "Data residency",
+        "stat3Sublabel": "Or your own infra",
+        "stat4Value": "Any GPU",
+        "stat4Label": "T4 to A100",
+        "stat4Sublabel": "Managed allocation"
+      },
+      "featureHeader": "Feature",
+      "recommendationLabel": "Recommendation",
+      "recommendationTitle": "Which platform is right for you?",
+      "choosePicsellia": "Choose Picsellia",
+      "choosePicselliaSub": "Best for enterprise & production",
+      "choosePicselliaItems": [
+        "End-to-end MLOps for production CV systems",
+        "ISO 27001 compliance and EU data residency",
+        "On-premise or hybrid deployment",
+        "Production monitoring with drift detection",
+        "Enterprise RBAC and audit trails",
+        "Custom training pipelines with any framework",
+        "Professional annotation services"
+      ],
+      "considerCompetitor": "Consider Roboflow",
+      "considerCompetitorSub": "Best for prototyping & learning",
+      "considerCompetitorItems": [
+        "Quick prototyping for individual projects",
+        "Access to a large public dataset hub",
+        "A generous free tier for hobby or learning",
+        "A strong developer community and tutorials",
+        "Simple AutoML training without pipeline setup"
+      ],
+      "faqTitle": "Common questions",
+      "faqs": [
+        {
+          "question": "What is the main difference between Picsellia and Roboflow?",
+          "answer": "Picsellia is an end-to-end CVOps platform built for enterprise teams that need full control over their computer vision pipeline — from data management and annotation to model training, deployment, and production monitoring. Roboflow focuses on developer experience with a product-led growth model, offering a large public dataset hub and quick prototyping tools. The key difference is scope: Picsellia covers 6 of 6 pipeline stages natively, while Roboflow covers data and basic training, requiring external tools for deployment and monitoring."
+        },
+        {
+          "question": "Is Picsellia a good Roboflow alternative for enterprise teams?",
+          "answer": "Yes. Picsellia is designed as an enterprise-grade Roboflow alternative for teams that have outgrown Roboflow's developer-focused tooling. Picsellia provides ISO 27001:2022 certification, EU AI Act compliance features, full on-premise deployment with Kubernetes or Docker, organization-level RBAC, data residency controls, and production monitoring with drift detection — all capabilities that Roboflow's enterprise tier doesn't fully address."
+        },
+        {
+          "question": "Can I migrate my datasets from Roboflow to Picsellia?",
+          "answer": "Yes. Picsellia supports importing datasets in all common computer vision formats including COCO, PASCAL VOC, YOLO, and custom formats. You can export your Roboflow projects and import them directly into Picsellia with all annotations, labels, and metadata preserved. The Picsellia team also provides migration assistance for large-scale dataset transfers."
+        },
+        {
+          "question": "How does Picsellia pricing compare to Roboflow?",
+          "answer": "Roboflow uses a tiered pricing model (free, starter, enterprise) based on image volume. Picsellia uses modular pricing where you pay only for the capabilities you need — Data Engine, Annotation, Training, or Deployment modules. This means you can start with just dataset management and add modules as your team grows, avoiding paying for unused features. Picsellia also offers a 14-day free trial and a Community Edition for individual developers."
+        },
+        {
+          "question": "Which platform is better for regulated industries like healthcare or defense?",
+          "answer": "Picsellia is purpose-built for regulated industries. With ISO 27001:2022 certification, built-in EU AI Act compliance features, full on-premise deployment options, air-gapped environments, EU and US data residency, and complete audit trails across the ML lifecycle, Picsellia is the preferred choice for healthcare, defense, energy, aerospace, and manufacturing teams that need to meet strict regulatory requirements."
+        },
+        {
+          "question": "Does Picsellia support on-premise deployment?",
+          "answer": "Yes. Picsellia offers full on-premise deployment via Kubernetes or Docker, including air-gapped environments with no internet connectivity required. This is a major differentiator compared to Roboflow, which is primarily cloud-hosted with limited self-hosted options available only on higher-tier enterprise plans."
+        },
+        {
+          "question": "Can Picsellia monitor models in production like MLflow or Weights & Biases?",
+          "answer": "Yes. Picsellia includes built-in production monitoring with drift detection, anomaly detection, and automated feedback loops — capabilities that Roboflow does not offer. Unlike MLflow or W&B, which focus on experiment tracking, Picsellia provides a unified platform covering the full lifecycle from data curation to production monitoring, eliminating the need to stitch together multiple tools."
+        }
+      ],
+      "ctaTitle": "Ready to see the difference?",
+      "ctaDescription": "See how Picsellia compares to Roboflow for your specific use case. Get a personalized demo from our team.",
+      "pipelineStages": {
+        "dataManagement": "Data\nManagement",
+        "annotation": "Annotation",
+        "training": "Training",
+        "deployment": "Deployment",
+        "monitoring": "Monitoring",
+        "compliance": "Compliance"
+      },
+      "categories": {
+        "dataManagement": "Data Management",
+        "annotationLabeling": "Annotation & Labeling",
+        "trainingExperimentation": "Training & Experimentation",
+        "deploymentMonitoring": "Deployment & Monitoring",
+        "enterpriseCompliance": "Enterprise & Compliance"
+      },
+      "comparison": {
+        "dataManagement": {
+          "features": [
+            {
+              "feature": "Dataset versioning",
+              "picselliaNote": "Git-like versioning with lineage",
+              "competitorNote": "Basic per-project versioning"
+            },
+            {
+              "feature": "Visual similarity search",
+              "picselliaNote": "CLIP-powered embedding search",
+              "competitorNote": "Metadata search only"
+            },
+            {
+              "feature": "Data curation",
+              "picselliaNote": "Outlier & duplicate detection",
+              "competitorNote": "Manual curation"
+            },
+            {
+              "feature": "Multi-format support",
+              "picselliaNote": "TIFF, DICOM, multi-spectral",
+              "competitorNote": "Images and video"
+            },
+            {
+              "feature": "Storage flexibility",
+              "picselliaNote": "BYO (S3, GCS, Azure) or managed",
+              "competitorNote": "Roboflow-hosted only"
+            }
+          ]
+        },
+        "annotationLabeling": {
+          "features": [
+            {
+              "feature": "Annotation types",
+              "picselliaNote": "Bbox, polygon, polyline, keypoint, mask",
+              "competitorNote": "Bbox, polygon, segmentation"
+            },
+            {
+              "feature": "Workforce management",
+              "picselliaNote": "Labeler roles, review, QA metrics",
+              "competitorNote": "Basic collaboration"
+            },
+            {
+              "feature": "Annotation services",
+              "picselliaNote": "Professional labeling available",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Smart annotation",
+              "picselliaNote": "Model-assisted pre-annotation",
+              "competitorNote": "Auto-labeling with hosted models"
+            }
+          ]
+        },
+        "trainingExperimentation": {
+          "features": [
+            {
+              "feature": "Experiment tracking",
+              "picselliaNote": "Metrics, artifacts, logs",
+              "competitorNote": "Basic training runs"
+            },
+            {
+              "feature": "Custom pipelines",
+              "picselliaNote": "Any framework, Docker pipelines",
+              "competitorNote": "AutoML or export externally"
+            },
+            {
+              "feature": "GPU compute",
+              "picselliaNote": "T4, A10G, A100 managed allocation",
+              "competitorNote": "Limited GPU options"
+            },
+            {
+              "feature": "Model registry",
+              "picselliaNote": "Centralized with versioning & lineage",
+              "competitorNote": "Project-level model versions"
+            }
+          ]
+        },
+        "deploymentMonitoring": {
+          "features": [
+            {
+              "feature": "Deployment targets",
+              "picselliaNote": "Cloud, edge, on-prem, air-gapped",
+              "competitorNote": "Cloud & edge via Inference"
+            },
+            {
+              "feature": "Production monitoring",
+              "picselliaNote": "Drift & anomaly detection",
+              "competitorNote": "Basic inference analytics"
+            },
+            {
+              "feature": "Continuous training",
+              "picselliaNote": "Auto-retrain on drift triggers",
+              "competitorNote": "Manual retraining"
+            },
+            {
+              "feature": "Shadow deployments",
+              "picselliaNote": "A/B testing & model comparison",
+              "competitorNote": "Not available"
+            }
+          ]
+        },
+        "enterpriseCompliance": {
+          "features": [
+            {
+              "feature": "Security certification",
+              "picselliaNote": "ISO 27001:2022",
+              "competitorNote": "SOC 2 Type II"
+            },
+            {
+              "feature": "EU AI Act readiness",
+              "picselliaNote": "Built-in compliance features",
+              "competitorNote": "No AI Act tooling"
+            },
+            {
+              "feature": "On-premise deployment",
+              "picselliaNote": "Kubernetes or Docker",
+              "competitorNote": "Enterprise plan only"
+            },
+            {
+              "feature": "RBAC",
+              "picselliaNote": "Org, project, dataset-level",
+              "competitorNote": "Workspace-level roles"
+            },
+            {
+              "feature": "Data residency",
+              "picselliaNote": "EU/US or your infrastructure",
+              "competitorNote": "US-hosted primarily"
+            }
+          ]
+        }
+      }
+    },
+    "labelbox": {
+      "metadata": {
+        "title": "Picsellia vs Labelbox (2026) - Full Platform vs Annotation Tool Comparison",
+        "description": "Looking for a Labelbox alternative? Compare Picsellia vs Labelbox for computer vision: annotation, training, deployment, monitoring, ISO 27001 compliance, and on-premise options. See why teams switch from annotation-only tools to full CVOps.",
+        "ogTitle": "Picsellia vs Labelbox (2026) - End-to-End CVOps vs Annotation Platform",
+        "ogDescription": "Compare Picsellia and Labelbox side by side. See which platform is best for enterprise computer vision — full MLOps lifecycle vs annotation-only tooling."
+      },
+      "badge": "Platform Comparison",
+      "picselliaTagline": "CVOps Platform",
+      "competitorTagline": "Annotation Platform",
+      "heroTitle": "Picsellia vs Labelbox: ",
+      "heroHighlight": "end-to-end CVOps vs annotation",
+      "heroDescription": "Labelbox is a leading data labeling platform. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+      "bookDemo": "Book a Demo",
+      "startFreeTrial": "Start Free Trial",
+      "keyDifferenceLabel": "The Key Difference",
+      "keyDifferenceTitle": "Annotation-only vs. full CV platform",
+      "keyDifferenceDescription": "Labelbox covers 2 of 6 pipeline stages. For training, deployment, and monitoring, you need to bring your own tools.",
+      "picselliaStages": "6/6 stages covered",
+      "competitorStages": "2/6 stages covered",
+      "needsExtraTool": "needs extra tool",
+      "toolSprawlTitle": "The hidden cost of tool sprawl",
+      "toolSprawlDescription": "Using Labelbox for annotation means you still need <strong>DVC</strong> or <strong>LakeFS</strong> for data versioning, <strong>W&B</strong> or <strong>MLflow</strong> for experiment tracking, <strong>SageMaker</strong> or <strong>Vertex AI</strong> for deployment, and <strong>custom tooling</strong> for monitoring. That's 5+ vendors, fragmented lineage, and no single pane of glass.",
+      "stats": {
+        "stat1Value": "1",
+        "stat1Label": "Platform",
+        "stat1Sublabel": "vs 5+ tools stitched together",
+        "stat2Value": "6/6",
+        "stat2Label": "Pipeline stages",
+        "stat2Sublabel": "End-to-end coverage",
+        "stat3Value": "100%",
+        "stat3Label": "Data lineage",
+        "stat3Sublabel": "From annotation to production",
+        "stat4Value": "ISO 27001",
+        "stat4Label": "Certified",
+        "stat4Sublabel": "Full lifecycle compliance"
+      },
+      "featureHeader": "Feature",
+      "recommendationLabel": "Recommendation",
+      "recommendationTitle": "Which platform is right for you?",
+      "choosePicsellia": "Choose Picsellia",
+      "choosePicselliaSub": "Best for end-to-end CV workflows",
+      "choosePicselliaItems": [
+        "An end-to-end platform from annotation to production",
+        "Built-in training pipelines and experiment tracking",
+        "Model deployment with monitoring and drift detection",
+        "ISO 27001 compliance and EU AI Act readiness",
+        "On-premise or air-gapped deployment",
+        "Full data lineage across the ML lifecycle",
+        "A single vendor for your entire CV stack"
+      ],
+      "considerCompetitor": "Consider Labelbox",
+      "considerCompetitorSub": "Best for annotation-only workflows",
+      "considerCompetitorItems": [
+        "Annotation-only tooling for a large labeling team",
+        "Multi-modal labeling (text, audio, not just vision)",
+        "You already have training & deployment infrastructure",
+        "Advanced consensus and review workflows at scale",
+        "Foundation model-assisted labeling across data types"
+      ],
+      "faqTitle": "Common questions",
+      "faqs": [
+        {
+          "question": "What is the main difference between Picsellia and Labelbox?",
+          "answer": "Labelbox is primarily a data labeling and annotation platform — it excels at managing annotation workflows at scale but stops at the data layer. Picsellia is an end-to-end CVOps platform that covers the entire computer vision lifecycle: data management, annotation, model training, deployment, and production monitoring. Labelbox covers 2 of 6 pipeline stages, while Picsellia covers all 6 natively — eliminating the need to stitch together multiple tools like W&B, MLflow, SageMaker, or custom monitoring."
+        },
+        {
+          "question": "Is Picsellia a good Labelbox alternative for computer vision?",
+          "answer": "Yes. Picsellia is a comprehensive Labelbox alternative for any team working on computer vision. It includes everything Labelbox offers for CV annotation — bounding boxes, polygons, segmentation masks, QA workflows, and workforce management — plus built-in training pipelines, experiment tracking, model deployment (cloud, edge, and on-premise), and production monitoring with drift detection. Teams switch to Picsellia to consolidate their toolchain into a single platform."
+        },
+        {
+          "question": "Can I migrate my annotations from Labelbox to Picsellia?",
+          "answer": "Yes. Picsellia supports importing datasets in all standard computer vision formats including COCO, PASCAL VOC, YOLO, and custom formats. You can export your Labelbox projects and import them into Picsellia with all annotations, labels, and metadata preserved. The Picsellia team also provides hands-on migration assistance for large-scale transfers with thousands of assets."
+        },
+        {
+          "question": "Does Picsellia replace Labelbox entirely?",
+          "answer": "For computer vision projects, yes. Picsellia includes a full annotation suite plus training, deployment, and monitoring — so you get everything Labelbox offers for CV annotation, plus the rest of the ML pipeline in one platform. The one area where Labelbox has broader coverage is multi-modal labeling for non-vision data types like text, audio, and documents. If your team works exclusively with images and video, Picsellia fully replaces Labelbox and more."
+        },
+        {
+          "question": "How does Picsellia pricing compare to Labelbox?",
+          "answer": "Labelbox prices primarily by annotation volume, data rows, and seats, which can scale quickly for large teams. Picsellia uses modular pricing — you pay only for the modules you need: Data Engine, Annotation, Training, or Deployment. This means you can start with just data management and annotation, then add training and deployment as your needs grow. Picsellia also offers a 14-day free trial and a Community Edition for individual developers."
+        },
+        {
+          "question": "Which platform is better for regulated industries like healthcare or manufacturing?",
+          "answer": "Picsellia is purpose-built for regulated industries. With ISO 27001:2022 certification, built-in EU AI Act compliance features, full on-premise deployment (Kubernetes or Docker, including air-gapped environments), EU and US data residency options, and complete audit trails across the entire ML lifecycle, Picsellia is the preferred choice for healthcare, defense, energy, aerospace, and manufacturing teams. Labelbox offers SOC 2 Type II certification and AWS VPC options, but lacks AI Act tooling and full on-premise flexibility."
+        },
+        {
+          "question": "What is the hidden cost of using Labelbox for computer vision projects?",
+          "answer": "Labelbox covers annotation but requires you to build or buy the rest of the pipeline separately. A typical Labelbox-based stack requires DVC or LakeFS for data versioning, W&B or MLflow for experiment tracking, custom scripts for training pipelines, SageMaker or Vertex AI for deployment, and Grafana or custom tooling for monitoring. That means 5 or more vendors, fragmented data lineage, and no single pane of glass for your ML operations. Picsellia consolidates all of this into one platform with unified traceability."
+        }
+      ],
+      "ctaTitle": "Go beyond annotation",
+      "ctaDescription": "See how Picsellia gives you annotation plus training, deployment, and monitoring — all in one platform.",
+      "pipelineStages": {
+        "dataManagement": "Data\nManagement",
+        "annotation": "Annotation",
+        "training": "Training",
+        "deployment": "Deployment",
+        "monitoring": "Monitoring",
+        "compliance": "Compliance"
+      },
+      "categories": {
+        "dataManagement": "Data Management",
+        "annotationLabeling": "Annotation & Labeling",
+        "trainingExperimentation": "Training & Experimentation",
+        "deploymentMonitoring": "Deployment & Monitoring",
+        "enterpriseCompliance": "Enterprise & Compliance"
+      },
+      "comparison": {
+        "dataManagement": {
+          "features": [
+            {
+              "feature": "Dataset versioning",
+              "picselliaNote": "Git-like versioning with lineage",
+              "competitorNote": "Basic catalog versioning"
+            },
+            {
+              "feature": "Visual similarity search",
+              "picselliaNote": "CLIP-powered embedding search",
+              "competitorNote": "Embedding-based search"
+            },
+            {
+              "feature": "Data curation",
+              "picselliaNote": "Outlier & duplicate detection",
+              "competitorNote": "Catalog filtering & slicing"
+            },
+            {
+              "feature": "Multi-format support",
+              "picselliaNote": "TIFF, DICOM, multi-spectral",
+              "competitorNote": "Images, video, text, audio, docs"
+            },
+            {
+              "feature": "Storage",
+              "picselliaNote": "BYO (S3, GCS, Azure) or managed",
+              "competitorNote": "Delegated cloud access"
+            }
+          ]
+        },
+        "annotationLabeling": {
+          "features": [
+            {
+              "feature": "Annotation types",
+              "picselliaNote": "Bbox, polygon, polyline, keypoint, mask",
+              "competitorNote": "Bbox, polygon, segmentation, NER"
+            },
+            {
+              "feature": "Workforce management",
+              "picselliaNote": "Labeler roles, review, QA metrics",
+              "competitorNote": "Advanced consensus & review"
+            },
+            {
+              "feature": "Annotation services",
+              "picselliaNote": "Professional labeling available",
+              "competitorNote": "Labelbox Boost services"
+            },
+            {
+              "feature": "Smart annotation",
+              "picselliaNote": "Model-assisted pre-annotation",
+              "competitorNote": "Foundation model-assisted"
+            },
+            {
+              "feature": "Multi-modal labeling",
+              "picselliaNote": "CV-focused (images, video)",
+              "competitorNote": "Text, audio, docs, DICOM"
+            }
+          ]
+        },
+        "trainingExperimentation": {
+          "features": [
+            {
+              "feature": "Experiment tracking",
+              "picselliaNote": "Metrics, artifacts, logs",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Custom pipelines",
+              "picselliaNote": "Any framework, Docker pipelines",
+              "competitorNote": "Export to external tools"
+            },
+            {
+              "feature": "GPU compute",
+              "picselliaNote": "T4, A10G, A100 managed",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Model registry",
+              "picselliaNote": "Centralized with versioning & lineage",
+              "competitorNote": "Model eval tools only"
+            },
+            {
+              "feature": "AutoML / training",
+              "picselliaNote": "Custom pipeline orchestration",
+              "competitorNote": "Annotation & data only"
+            }
+          ]
+        },
+        "deploymentMonitoring": {
+          "features": [
+            {
+              "feature": "Deployment targets",
+              "picselliaNote": "Cloud, edge, on-prem, air-gapped",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Production monitoring",
+              "picselliaNote": "Drift & anomaly detection",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Continuous training",
+              "picselliaNote": "Auto-retrain on drift triggers",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Shadow deployments",
+              "picselliaNote": "A/B testing & model comparison",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Model serving",
+              "picselliaNote": "Inference endpoints with autoscaling",
+              "competitorNote": "Requires external infra"
+            }
+          ]
+        },
+        "enterpriseCompliance": {
+          "features": [
+            {
+              "feature": "Security certification",
+              "picselliaNote": "ISO 27001:2022",
+              "competitorNote": "SOC 2 Type II"
+            },
+            {
+              "feature": "EU AI Act readiness",
+              "picselliaNote": "Built-in compliance features",
+              "competitorNote": "No AI Act tooling"
+            },
+            {
+              "feature": "On-premise deployment",
+              "picselliaNote": "Kubernetes or Docker",
+              "competitorNote": "AWS VPC only"
+            },
+            {
+              "feature": "RBAC",
+              "picselliaNote": "Org, project, dataset-level",
+              "competitorNote": "Org and project-level"
+            },
+            {
+              "feature": "Data residency",
+              "picselliaNote": "EU/US or your infrastructure",
+              "competitorNote": "US and EU regions"
+            }
+          ]
+        }
+      },
+      "fullSupport": "Full support",
+      "partial": "Partial",
+      "notAvailable": "Not available"
+    },
+    "encord": {
+      "metadata": {
+        "title": "Picsellia vs Encord (2026) - End-to-End CVOps vs Data-Centric Annotation",
+        "description": "Looking for an Encord alternative? Compare Picsellia vs Encord for computer vision: annotation, data curation, model training, deployment, monitoring, ISO 27001 compliance, and on-premise options. See why teams choose full CVOps over annotation-only platforms.",
+        "ogTitle": "Picsellia vs Encord (2026) - Full CV Platform vs Annotation & Curation Tool",
+        "ogDescription": "Compare Picsellia and Encord side by side. See which platform is best for enterprise computer vision — full MLOps lifecycle vs data-centric annotation tooling."
+      },
+      "badge": "Platform Comparison",
+      "picselliaTagline": "CVOps Platform",
+      "competitorTagline": "Data-Centric AI Platform",
+      "heroTitle": "Picsellia vs Encord: ",
+      "heroHighlight": "full CVOps vs data-centric annotation",
+      "heroDescription": "Encord excels at annotation and data curation for AI teams. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+      "bookDemo": "Book a Demo",
+      "startFreeTrial": "Start Free Trial",
+      "keyDifferenceLabel": "The Key Difference",
+      "keyDifferenceTitle": "Annotation & curation vs. full CV platform",
+      "keyDifferenceDescription": "Encord covers 2 of 6 pipeline stages. For training, deployment, and monitoring, you need to bring your own tools.",
+      "picselliaStages": "6/6 stages covered",
+      "competitorStages": "2/6 stages covered",
+      "needsExtraTool": "needs extra tool",
+      "toolSprawlTitle": "The hidden cost of tool sprawl",
+      "toolSprawlDescription": "Using Encord for annotation and curation means you still need <strong>DVC</strong> or <strong>LakeFS</strong> for data versioning, <strong>W&B</strong> or <strong>MLflow</strong> for experiment tracking, <strong>SageMaker</strong> or <strong>Vertex AI</strong> for deployment, and <strong>custom tooling</strong> for monitoring. That's 5+ vendors, fragmented lineage, and no single pane of glass.",
+      "stats": {
+        "stat1Value": "1",
+        "stat1Label": "Platform",
+        "stat1Sublabel": "vs 5+ tools stitched together",
+        "stat2Value": "6/6",
+        "stat2Label": "Pipeline stages",
+        "stat2Sublabel": "End-to-end coverage",
+        "stat3Value": "100%",
+        "stat3Label": "Data lineage",
+        "stat3Sublabel": "From curation to production",
+        "stat4Value": "ISO 27001",
+        "stat4Label": "Certified",
+        "stat4Sublabel": "Full lifecycle compliance"
+      },
+      "featureHeader": "Feature",
+      "recommendationLabel": "Recommendation",
+      "recommendationTitle": "Which platform is right for you?",
+      "choosePicsellia": "Choose Picsellia",
+      "choosePicselliaSub": "Best for end-to-end CV workflows",
+      "choosePicselliaItems": [
+        "An end-to-end platform from curation to production",
+        "Built-in training pipelines and experiment tracking",
+        "Model deployment with monitoring and drift detection",
+        "ISO 27001 compliance and EU AI Act readiness",
+        "On-premise or air-gapped deployment",
+        "Full data lineage across the ML lifecycle",
+        "A single vendor for your entire CV stack"
+      ],
+      "considerCompetitor": "Consider Encord",
+      "considerCompetitorSub": "Best for annotation & data curation",
+      "considerCompetitorItems": [
+        "Annotation-focused with strong data curation tools",
+        "Active learning for data selection and quality scoring",
+        "You already have training & deployment infrastructure",
+        "Embedding-based data exploration and search",
+        "Model evaluation and error analysis workflows"
+      ],
+      "faqTitle": "Common questions",
+      "faqs": [
+        {
+          "question": "What is the main difference between Picsellia and Encord?",
+          "answer": "Encord is a data-centric AI platform focused on annotation, data curation, and active learning — it helps teams label and curate training data efficiently but stops before model training. Picsellia is an end-to-end CVOps platform that covers the entire computer vision lifecycle: data management, annotation, model training, deployment, and production monitoring. Encord covers 2 of 6 pipeline stages natively, while Picsellia covers all 6 — eliminating the need to integrate separate tools like W&B, MLflow, SageMaker, or custom monitoring solutions."
+        },
+        {
+          "question": "Is Picsellia a good Encord alternative for computer vision teams?",
+          "answer": "Yes. Picsellia is a comprehensive Encord alternative for any team building production computer vision systems. It includes everything Encord offers for CV annotation — bounding boxes, polygons, segmentation masks, video annotation, and active learning — plus built-in training pipelines, experiment tracking, model deployment (cloud, edge, and on-premise), and production monitoring with drift detection. Teams switch from Encord to Picsellia to consolidate their entire ML toolchain into a single platform with unified data lineage."
+        },
+        {
+          "question": "Can I migrate my annotations from Encord to Picsellia?",
+          "answer": "Yes. Picsellia supports importing datasets in all standard computer vision formats including COCO, PASCAL VOC, YOLO, and custom formats. You can export your Encord projects and import them into Picsellia with all annotations, labels, and metadata preserved. The Picsellia team also provides hands-on migration assistance for large-scale transfers involving thousands of annotated assets."
+        },
+        {
+          "question": "How does Encord compare to Picsellia for active learning and data curation?",
+          "answer": "Both platforms offer strong data curation capabilities. Encord provides active learning workflows, quality metrics, and embedding-based data exploration. Picsellia offers CLIP-powered visual similarity search, automated outlier and duplicate detection, and dataset versioning with full lineage. The key difference is that Picsellia connects curation directly to your training pipelines and production monitoring — so when you curate better data, you can immediately retrain and redeploy without leaving the platform."
+        },
+        {
+          "question": "How does Picsellia pricing compare to Encord?",
+          "answer": "Encord prices by annotation volume and platform access, which can scale quickly for large teams with many data rows. Picsellia uses modular pricing — you pay only for the modules you need: Data Engine, Annotation, Training, or Deployment. This means you can start with just data management and annotation, then add training and deployment as your needs grow. Picsellia also offers a 14-day free trial and a Community Edition for individual developers."
+        },
+        {
+          "question": "Which platform is better for regulated industries like healthcare or defense?",
+          "answer": "Picsellia is purpose-built for regulated industries. With ISO 27001:2022 certification, built-in EU AI Act compliance features, full on-premise deployment (Kubernetes or Docker, including air-gapped environments), EU and US data residency options, and complete audit trails across the entire ML lifecycle, Picsellia is the preferred choice for healthcare, defense, energy, aerospace, and manufacturing teams. Encord offers SOC 2 Type II certification and VPC deployment options, but lacks AI Act tooling and full on-premise flexibility."
+        },
+        {
+          "question": "What is the hidden cost of using Encord for computer vision projects?",
+          "answer": "Encord covers annotation and data curation but requires you to build or buy the rest of the pipeline separately. A typical Encord-based stack needs DVC or LakeFS for advanced data versioning, W&B or MLflow for experiment tracking, custom scripts or managed services for training pipelines, SageMaker or Vertex AI for deployment, and Grafana or custom tooling for monitoring. That means 5 or more vendors, fragmented data lineage, and no single view of your entire ML operation. Picsellia consolidates all of this into one platform with unified traceability from data to production."
+        }
+      ],
+      "ctaTitle": "Go beyond annotation and curation",
+      "ctaDescription": "See how Picsellia gives you data curation plus training, deployment, and monitoring — all in one platform.",
+      "pipelineStages": {
+        "dataManagement": "Data\nManagement",
+        "annotation": "Annotation",
+        "training": "Training",
+        "deployment": "Deployment",
+        "monitoring": "Monitoring",
+        "compliance": "Compliance"
+      },
+      "categories": {
+        "dataManagement": "Data Management & Curation",
+        "annotationLabeling": "Annotation & Labeling",
+        "trainingExperimentation": "Training & Experimentation",
+        "deploymentMonitoring": "Deployment & Monitoring",
+        "enterpriseCompliance": "Enterprise & Compliance"
+      },
+      "comparison": {
+        "dataManagement": {
+          "features": [
+            {
+              "feature": "Dataset versioning",
+              "picselliaNote": "Git-like versioning with lineage",
+              "competitorNote": "Basic dataset snapshots"
+            },
+            {
+              "feature": "Visual similarity search",
+              "picselliaNote": "CLIP-powered embedding search",
+              "competitorNote": "Embedding-based natural language search"
+            },
+            {
+              "feature": "Data curation & quality",
+              "picselliaNote": "Outlier & duplicate detection",
+              "competitorNote": "Active learning & quality metrics"
+            },
+            {
+              "feature": "Multi-format support",
+              "picselliaNote": "TIFF, DICOM, multi-spectral",
+              "competitorNote": "Images, video, DICOM sequences"
+            },
+            {
+              "feature": "Storage flexibility",
+              "picselliaNote": "BYO (S3, GCS, Azure) or managed",
+              "competitorNote": "Cloud storage integration"
+            }
+          ]
+        },
+        "annotationLabeling": {
+          "features": [
+            {
+              "feature": "Annotation types",
+              "picselliaNote": "Bbox, polygon, polyline, keypoint, mask",
+              "competitorNote": "Bbox, polygon, polyline, keypoint, mask"
+            },
+            {
+              "feature": "Video annotation",
+              "picselliaNote": "Frame-level annotation with tracking",
+              "competitorNote": "Frame-by-frame with object tracking"
+            },
+            {
+              "feature": "Workforce management",
+              "picselliaNote": "Labeler roles, review, QA metrics",
+              "competitorNote": "Workflow stages & review routing"
+            },
+            {
+              "feature": "Annotation services",
+              "picselliaNote": "Professional labeling available",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Smart annotation",
+              "picselliaNote": "Model-assisted pre-annotation",
+              "competitorNote": "Auto-labeling with foundation models"
+            }
+          ]
+        },
+        "trainingExperimentation": {
+          "features": [
+            {
+              "feature": "Experiment tracking",
+              "picselliaNote": "Metrics, artifacts, logs",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Custom pipelines",
+              "picselliaNote": "Any framework, Docker pipelines",
+              "competitorNote": "Export to external tools"
+            },
+            {
+              "feature": "GPU compute",
+              "picselliaNote": "T4, A10G, A100 managed",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Model registry",
+              "picselliaNote": "Centralized with versioning & lineage",
+              "competitorNote": "Model evaluation only"
+            },
+            {
+              "feature": "Model evaluation",
+              "picselliaNote": "Built-in metrics, visual analysis",
+              "competitorNote": "Evaluation & error analysis tools"
+            }
+          ]
+        },
+        "deploymentMonitoring": {
+          "features": [
+            {
+              "feature": "Deployment targets",
+              "picselliaNote": "Cloud, edge, on-prem, air-gapped",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Production monitoring",
+              "picselliaNote": "Drift & anomaly detection",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Continuous training",
+              "picselliaNote": "Auto-retrain on drift triggers",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Shadow deployments",
+              "picselliaNote": "A/B testing & model comparison",
+              "competitorNote": "Not available"
+            },
+            {
+              "feature": "Model serving",
+              "picselliaNote": "Inference endpoints with autoscaling",
+              "competitorNote": "Requires external infra"
+            }
+          ]
+        },
+        "enterpriseCompliance": {
+          "features": [
+            {
+              "feature": "Security certification",
+              "picselliaNote": "ISO 27001:2022",
+              "competitorNote": "SOC 2 Type II"
+            },
+            {
+              "feature": "EU AI Act readiness",
+              "picselliaNote": "Built-in compliance features",
+              "competitorNote": "No AI Act tooling"
+            },
+            {
+              "feature": "On-premise deployment",
+              "picselliaNote": "Kubernetes or Docker",
+              "competitorNote": "VPC deployment option"
+            },
+            {
+              "feature": "RBAC",
+              "picselliaNote": "Org, project, dataset-level",
+              "competitorNote": "Org and project-level"
+            },
+            {
+              "feature": "Data residency",
+              "picselliaNote": "EU/US or your infrastructure",
+              "competitorNote": "US and EU regions"
+            }
+          ]
+        }
+      },
+      "fullSupport": "Full support",
+      "partial": "Partial",
+      "notAvailable": "Not available"
+    }
+  },
+  "pricing": {
+    "metadata": {
+      "title": "Pricing - Modular Usage-Based Plans",
+      "description": "Transparent, usage-based pricing for Picsellia's MLOps platform. Pay for what you use with Data Engine, VisionAI Factory, and Reliability Engine modules.",
+      "ogTitle": "Pricing - Modular Usage-Based Plans",
+      "ogDescription": "Transparent, usage-based pricing for Picsellia's MLOps platform. Pay for what you use with modular pricing and volume discounts."
+    },
+    "badge": "Transparent Pricing",
+    "heroTitle": "Pay for what you ",
+    "heroHighlight": "actually use",
+    "heroDescription": "Modular platform pricing plus usage-based costs. Scale from pilot to production with volume discounts that grow with you.",
+    "platformModulesLabel": "Platform Modules",
+    "platformModulesTitle": "Choose your modules",
+    "platformModulesDescription": "Start with Data Engine, then add VisionAI Factory and Reliability Engine as needed. Each module includes 3 user seats with the option to add more.",
+    "monthly": "Monthly",
+    "annual": "Annual",
+    "perMonth": "/month",
+    "perYear": "/year billed annually",
+    "mostPopular": "Most Popular",
+    "includedUsers": "Included users",
+    "seats": "seats",
+    "extraUser": "Extra user",
+    "requiresDataEngine": "Requires Data Engine",
+    "modules": {
+      "dataEngine": {
+        "name": "Data Engine",
+        "description": "Data management, versioning, and preparation"
+      },
+      "visionaiFactory": {
+        "name": "VisionAI Factory",
+        "description": "Model training, experimentation, and deployment"
+      },
+      "reliabilityEngine": {
+        "name": "Reliability Engine",
+        "description": "Model monitoring, performance tracking, drift detection"
+      }
+    },
+    "features": {
+      "unlimitedDataStorage": "Unlimited data storage",
+      "datasetVersioning": "Dataset versioning",
+      "smartDataCuration": "Smart data curation",
+      "visualSimilaritySearch": "Visual similarity search",
+      "clipEmbeddings": "CLIP embeddings",
+      "multiFormatSupport": "Multi-format support",
+      "experimentTracking": "Experiment tracking",
+      "modelRegistry": "Model registry",
+      "preBuiltPipelines": "Pre-built pipelines",
+      "customTrainingPipelines": "Custom training pipelines",
+      "oneClickGpu": "One-click GPU allocation",
+      "modelDeployment": "Model deployment",
+      "realTimeMonitoring": "Real-time monitoring",
+      "anomalyDetection": "Anomaly detection",
+      "driftDetection": "Drift detection",
+      "feedbackLoops": "Feedback loops",
+      "continuousTraining": "Continuous training",
+      "shadowDeployments": "Shadow deployments"
+    },
+    "labelerSeatsTitle": "Labeler Seats",
+    "labelerSeatsDescription": "Add annotation workforce access. Unlimited seats available.",
+    "perLabelerMonth": "per labeler/month",
+    "usagePricingLabel": "Usage-Based Pricing",
+    "usagePricingTitle": "Volume discounts that scale with you",
+    "usagePricingDescription": "Pay only for what you use. As your volume grows, your per-unit cost decreases automatically.",
+    "dpuTitle": "Data Processing Units (DPU)",
+    "dpuSubtitle": "For data ingestion & processing",
+    "basePriceDpu": "base price/DPU",
+    "conversionRates": "Conversion rates",
+    "conversionRate": "Conversion rate",
+    "annualImages": "Annual Images",
+    "discount": "Discount",
+    "priceDpu": "Price/DPU",
+    "muTitle": "Monitoring Units (MU)",
+    "muSubtitle": "For production inference monitoring",
+    "basePriceMu": "base price/MU",
+    "annualPredictions": "Annual Predictions",
+    "priceMu": "Price/MU",
+    "gpuComputeTitle": "GPU Compute",
+    "gpuComputeDescription": "Pay-per-use GPU allocation for training and inference. No commitment required.",
+    "perHour": "/hour",
+    "autoShutdown": "Auto-shutdown",
+    "annotationServicesTitle": "Annotation Services",
+    "annotationServicesDescription": "Professional labeling services with trained annotators for your projects.",
+    "qualityAssured": "Quality assured",
+    "allTaskTypes": "All task types",
+    "enterpriseLabel": "Enterprise",
+    "enterpriseTitle": "Custom pricing for large deployments",
+    "enterpriseDescription": "For organizations with high-volume needs, we offer custom pricing packages with negotiated rates, dedicated support, and enterprise SLAs.",
+    "enterpriseFeatures": [
+      "Custom volume commitments",
+      "Dedicated customer success manager",
+      "Priority support & SLAs",
+      "Enterprise deployment options",
+      "Custom integrations"
+    ],
+    "exploreDeployment": "Explore deployment options",
+    "contactSales": "Contact Sales",
+    "iso27001": "ISO 27001:2022",
+    "iso27001Desc": "Information security certified",
+    "privateCloud": "Private Cloud",
+    "privateCloudDesc": "Dedicated infrastructure options",
+    "support247": "24/7 Support",
+    "support247Desc": "Dedicated technical support",
+    "faqLabel": "FAQ",
+    "faqTitle": "Common questions",
+    "faqs": [
+      {
+        "question": "What is a Data Processing Unit (DPU)?",
+        "answer": "DPU is our unit for measuring data ingestion and processing. Standard images convert at 60 images = 1 DPU, videos at 1 video = 1 DPU, and multi-spectral images at 5 images = 1 DPU."
+      },
+      {
+        "question": "What is a Monitoring Unit (MU)?",
+        "answer": "MU measures production inference monitoring. Each MU covers 1,000 monitored predictions through the Reliability Engine for quality tracking and drift detection."
+      },
+      {
+        "question": "Can I use modules independently?",
+        "answer": "The Data Engine can be used standalone. VisionAI Factory and Reliability Engine both require the Data Engine as a foundation. Each module includes 3 user seats."
+      },
+      {
+        "question": "How does volume pricing work?",
+        "answer": "Volume discounts are applied based on your annual cumulative usage. As you process more data or monitor more predictions, you get better rates automatically."
+      },
+      {
+        "question": "What about enterprise pricing?",
+        "answer": "For large deployments, we offer custom pricing with negotiated volume commitments, dedicated support, and SLAs. Contact our sales team for details."
+      }
+    ],
+    "ctaTitle": "Ready to get started?",
+    "ctaDescription": "Start with a free trial or talk to our team to find the right plan for your needs.",
+    "startFreeTrial": "Start Free Trial",
+    "talkToSales": "Talk to Sales",
+    "predictionsMu": "1,000 predictions = 1 MU",
+    "predictionsMuDesc": "Each monitored inference counts as 1 prediction",
+    "calculator": {
+      "badge": "Cost Calculator",
+      "title": "Estimate your monthly cost",
+      "subtitle": "Configure your platform setup and usage to get an instant cost estimate.",
+      "selectModules": "Select Modules",
+      "dataEngineName": "Data Engine",
+      "dataEngineDesc": "Data management & versioning",
+      "visionaiFactoryName": "VisionAI Factory",
+      "visionaiFactoryDesc": "Model training & deployment",
+      "reliabilityEngineName": "Reliability Engine",
+      "reliabilityEngineDesc": "Monitoring & drift detection",
+      "perMonth": "/month",
+      "additionalUsers": "Additional Users",
+      "includedSeatsNote": "Each module includes 3 seats. Add more users below.",
+      "perUserMonth": "/user/mo",
+      "labelerSeats": "Labeler Seats",
+      "perSeatMonth": "/seat/mo",
+      "estimatedUsage": "Estimated Usage",
+      "dpuLabel": "Data Processing Units (DPU)",
+      "dpuConversion": "60 imgs = 1 DPU",
+      "dpusMonth": "DPUs/month",
+      "perDpu": "/DPU",
+      "dpuCorresponds": "Corresponds to {count} new images every month",
+      "muLabel": "Monitoring Units (MU)",
+      "muConversion": "1,000 predictions = 1 MU",
+      "musMonth": "MUs/month",
+      "muCorresponds": "Corresponds to {count} monitored predictions every month",
+      "gpuComputeHours": "GPU Compute Hours",
+      "gpuRate": "3.5\u20ac/hour",
+      "hoursMonth": "hours/month",
+      "monthlyEstimate": "Monthly Estimate",
+      "emptyState": "Select at least one module to see your estimate.",
+      "extraUsersLabel": "{name} extra users ({count})",
+      "labelerSeatsLabel": "Labeler seats ({count})",
+      "dpuUsageLabel": "DPU usage ({count}/mo)",
+      "muUsageLabel": "MU usage ({count}/mo)",
+      "gpuComputeLabel": "GPU compute ({hours}h)",
+      "estimatedTotal": "Estimated Total",
+      "perMonthSuffix": "per month",
+      "annualBilled": "{amount}/year billed annually",
+      "startFreeTrial": "Start Free Trial",
+      "contactSales": "Contact Sales",
+      "disclaimer": "Estimates are approximate. Final pricing may vary based on specific usage patterns."
+    }
+  },
+  "aboutUs": {
+    "metadata": {
+      "title": "About Us - The Team Behind Picsellia",
+      "description": "Learn about Picsellia, the team behind the MLOps platform for computer vision. Our mission to make vision AI accessible and reliable for every organization.",
+      "ogTitle": "About Us - The Team Behind Picsellia",
+      "ogDescription": "Learn about Picsellia, the team behind the MLOps platform for computer vision."
+    },
+    "hero": {
+      "badge": "Our Story",
+      "titleStart": "Building the future of",
+      "titleHighlight": "computer vision",
+      "subtitle": "We're a team of AI engineers on a mission to make computer vision accessible to every team. Born from frustration with fragmented tools, Picsellia is the platform we wished existed."
+    },
+    "metrics": {
+      "modelsTrainedValue": "5k+",
+      "modelsTrainedLabel": "Models Trained",
+      "imagesIndexedValue": "500M+",
+      "imagesIndexedLabel": "Images Indexed",
+      "predictionsValue": "1b+",
+      "predictionsLabel": "Predictions Monitored",
+      "foundedValue": "2020",
+      "foundedLabel": "Founded"
+    },
+    "mission": {
+      "badge": "Our Mission",
+      "title": "From experiments to production, without the chaos",
+      "paragraph1": "In 2020, as AI engineers building computer vision systems, we faced a common frustration: the tools we needed didn't exist. Data management was scattered across folders. Experiments were tracked in spreadsheets. Deployment was a nightmare of custom scripts.",
+      "paragraph2": "We built Picsellia to solve these problems—not as consultants or enterprise software veterans, but as practitioners who lived the pain every day. Our platform is shaped by real-world experience deploying CV models at scale.",
+      "paragraph3": "Today, Picsellia helps teams worldwide turn fragmented workflows into streamlined pipelines. From labeling to monitoring, every feature exists because we needed it ourselves.",
+      "quote": "Picsellia is the kind of tool we had wished existed during our early development work. We built it to close the operational gaps across the entire computer vision lifecycle.",
+      "quoteAuthor": "Thibaut Lucas",
+      "quoteRole": "CEO & Co-founder"
+    },
+    "values": {
+      "badge": "What Drives Us",
+      "title": "Our values",
+      "subtitle": "These principles guide everything we build and how we work with our customers.",
+      "engineerFirstTitle": "Engineer-First",
+      "engineerFirstDesc": "Built by ML engineers who understand the daily challenges of production AI. Every feature solves a real problem we faced ourselves.",
+      "transparencyTitle": "Transparency",
+      "transparencyDesc": "Full visibility into your ML pipeline. Reproducible experiments, complete data lineage, and no black boxes. You own your data.",
+      "flexibilityTitle": "Flexibility",
+      "flexibilityDesc": "Deploy anywhere—cloud, hybrid, or on-premise. Use your existing tools. Picsellia adapts to your infrastructure, not the other way around.",
+      "simplicityTitle": "Simplicity",
+      "simplicityDesc": "Powerful features without complexity. Our platform reduces cognitive load so teams can focus on building great AI, not managing tools."
+    },
+    "timeline": {
+      "badge": "Our Journey",
+      "title": "Key milestones",
+      "founded": "Founded",
+      "foundedDesc": "Picsellia founded in Toulouse, France by two AI engineers",
+      "firstFunding": "First Funding",
+      "firstFundingDesc": "Seed funding from Acequia Capital and early backers",
+      "seriesSeed": "Series Seed",
+      "seriesSeedDesc": "$1.94M raised led by Axeleo Capital to accelerate growth",
+      "iso27001": "ISO 27001",
+      "iso27001Desc": "Achieved ISO/IEC 27001:2022 certification",
+      "users1k": "1K+ Users",
+      "users1kDesc": "Crossed 5,000 models trained and 500M+ images indexed",
+      "atlasLaunch": "Atlas Launch",
+      "atlasLaunchDesc": "Launched Atlas, our open-source AI agent for VisionAI"
+    },
+    "leadership": {
+      "badge": "Leadership",
+      "title": "Meet the founders",
+      "thibautRole": "CEO & Co-founder",
+      "thibautBio": "Former AI engineer who experienced firsthand the challenges of deploying computer vision in production. Founded Picsellia to build the tools he wished existed.",
+      "pierreNicolasRole": "CTO & Co-founder",
+      "pierreNicolasBio": "Deep expertise in ML infrastructure and scalable systems. Leads the technical vision and architecture of the Picsellia platform."
+    },
+    "team": {
+      "badge": "The Team",
+      "title": "Built by a small, focused team",
+      "subtitle": "Based in Toulouse, France, with team members and clients around the world.",
+      "joinTeam": "Join Our Team"
+    },
+    "investors": {
+      "badge": "Backed By",
+      "title": "Our investors",
+      "subtitle": "We've raised $3.45M from leading European investors who share our vision for the future of MLOps.",
+      "leadInvestor": "Lead Investor",
+      "seedInvestor": "Seed Investor",
+      "strategicPartner": "Strategic Partner",
+      "startupProgram": "Startup Program"
+    },
+    "location": {
+      "badge": "Where We Are",
+      "title": "Headquartered in Toulouse",
+      "description": "Known as the European capital of aerospace, Toulouse is home to a thriving tech ecosystem and some of the world's most innovative engineering talent. Our team works from here, serving clients across Europe, North America, and beyond.",
+      "locationLabel": "Toulouse, France",
+      "servingClients": "Serving clients worldwide",
+      "euDataCenters": "EU data centers, GDPR compliant"
+    },
+    "cta": {
+      "title": "Ready to build with us?",
+      "subtitle": "See how Picsellia can transform your computer vision workflow. Start with a free trial or talk to our team.",
+      "startTrial": "Start Free Trial",
+      "bookDemo": "Book a Demo"
+    }
+  },
+  "community": {
+    "metadata": {
+      "title": "Community - Open Source & Partnerships",
+      "description": "Join the Picsellia community. Open-source tools, framework integrations, and partnerships for computer vision development.",
+      "ogTitle": "Community - Open Source & Partnerships",
+      "ogDescription": "Join the Picsellia community. Open-source tools, framework integrations, and partnerships for computer vision development."
+    },
+    "hero": {
+      "badge": "Free Forever",
+      "titleLine1": "Community",
+      "titleLine2": "Edition",
+      "subtitle": "Get started with data management and AutoML training. No credit card, no time limit.",
+      "startBuilding": "Start Building Free",
+      "comparePlans": "Compare Plans",
+      "noCreditCard": "No credit card",
+      "instantAccess": "Instant access",
+      "dpuFree": "150 DPU free"
+    },
+    "terminal": {
+      "modelTrained": "Model trained"
+    },
+    "stats": {
+      "dpuValue": "150",
+      "dpuUnit": "DPU",
+      "dpuLabel": "Data Processing Units / year",
+      "runsValue": "4",
+      "runsUnit": "Runs",
+      "runsLabel": "AutoML training runs",
+      "projectsValue": "3",
+      "projectsUnit": "Projects",
+      "projectsLabel": "Active projects included",
+      "accessValue": "24/7",
+      "accessUnit": "Access",
+      "accessLabel": "Platform availability"
+    },
+    "included": {
+      "badge": "What's Included",
+      "title": "Two core capabilities",
+      "subtitle": "The Community Edition gives you data management and AutoML training to get started with computer vision.",
+      "dataManagement": "Data Management",
+      "dataManagementDesc": "Organize, version, and manage all your visual data in one place.",
+      "dataManagementFeature1": "Datalake storage with smart search",
+      "dataManagementFeature2": "Dataset registry & versioning",
+      "dataManagementFeature3": "Data query language",
+      "dataManagementFeature4": "Metadata management",
+      "dataManagementFeature5": "Multi-format support (images, video)",
+      "autoMLTraining": "AutoML Training",
+      "autoMLTrainingDesc": "Train computer vision models with zero infrastructure setup.",
+      "autoMLFeature1": "4 AutoML training runs included",
+      "autoMLFeature2": "Pre-configured model architectures",
+      "autoMLFeature3": "Automatic hyperparameter tuning",
+      "autoMLFeature4": "Training metrics & logging",
+      "needMore": "Need more?",
+      "needMoreDesc": "Labeling tools, annotation campaigns, model deployment, monitoring, team collaboration, and unlimited training are available on",
+      "businessEnterprise": "Business and Enterprise plans"
+    },
+    "compare": {
+      "badge": "Compare Plans",
+      "title": "Scale when you're ready",
+      "subtitle": "Start free and upgrade as your needs grow. No pressure, no lock-in.",
+      "feature": "Feature",
+      "free": "Free",
+      "fromPrice": "From $499/mo",
+      "custom": "Custom"
+    },
+    "resources": {
+      "badge": "Resources",
+      "title": "Learn, build, connect",
+      "documentationTitle": "Documentation",
+      "documentationDesc": "Comprehensive guides, API references, and best practices.",
+      "readDocs": "Read docs",
+      "tutorialsTitle": "Tutorials",
+      "tutorialsDesc": "Step-by-step guides to build your first CV project.",
+      "startLearning": "Start learning",
+      "githubTitle": "GitHub",
+      "githubDesc": "Sample projects, SDKs, and open-source tools.",
+      "viewRepos": "View repos"
+    },
+    "integrations": {
+      "badge": "Integrations",
+      "title": "Works with your favorite tools"
+    },
+    "cta": {
+      "noCreditCard": "No credit card required",
+      "title": "Start building today",
+      "subtitle": "Get data management and AutoML training for free. Upgrade when you need the full platform.",
+      "createAccount": "Create Free Account"
+    },
+    "comparison": {
+      "dataProcessingUnits": "Data Processing Units",
+      "modelProcessingUnits": "Model Processing Units",
+      "autoMLTraining": "AutoML Training",
+      "labelingTool": "Labeling Tool",
+      "modelDeployment": "Model Deployment",
+      "modelMonitoring": "Model Monitoring",
+      "teamMembers": "Team members",
+      "projects": "Projects",
+      "support": "Support",
+      "ssoSaml": "SSO / SAML",
+      "onPremiseDeployment": "On-premise deployment"
+    }
+  },
+  "whitePapers": {
+    "metadata": {
+      "title": "White Papers - Computer Vision & MLOps Research",
+      "description": "In-depth research and technical guides on computer vision, MLOps best practices, and AI implementation strategies.",
+      "ogTitle": "White Papers - Computer Vision & MLOps Research",
+      "ogDescription": "In-depth research and technical guides on computer vision, MLOps best practices, and AI implementation strategies."
+    },
+    "title": "White Papers",
+    "description": "Deep-dive into computer vision best practices, MLOps strategies, and technical implementation guides from our experts.",
+    "badge": "Research"
+  },
+  "faq": {
+    "metadata": {
+      "title": "FAQ - Picsellia MLOps Platform Questions",
+      "description": "Find answers to common questions about Picsellia's MLOps platform, pricing, deployment options, and computer vision capabilities.",
+      "ogTitle": "FAQ - Picsellia MLOps Platform Questions",
+      "ogDescription": "Find answers to common questions about Picsellia's MLOps platform, pricing, deployment, and computer vision capabilities."
+    },
+    "hero": {
+      "badge": "Help Center",
+      "titleStart": "Frequently Asked",
+      "titleHighlight": "Questions",
+      "subtitle": "Everything you need to know about Picsellia. Can't find what you're looking for?",
+      "contactTeam": "Contact our team",
+      "searchPlaceholder": "Search questions..."
+    },
+    "categories": "Categories",
+    "quickLinks": "Quick Links",
+    "documentation": "Documentation",
+    "pricing": "Pricing",
+    "requestDemo": "Request Demo",
+    "resultsFor": "result(s) for",
+    "clearSearch": "Clear search",
+    "noResults": "No questions found",
+    "noResultsHint": "Try different keywords or",
+    "contactUs": "contact us",
+    "questionsInCategory": "questions in this category",
+    "stillHaveQuestions": {
+      "title": "Still have questions?",
+      "subtitle": "Our team is here to help. Reach out and we'll get back to you as soon as possible.",
+      "contactSales": "Contact Sales",
+      "readDocumentation": "Read Documentation"
+    }
+  },
+  "privacy": {
+    "metadata": {
+      "title": "Privacy Policy - Data Protection & GDPR Compliance",
+      "description": "Learn how Picsellia collects, uses, and protects your personal data. Our commitment to privacy, security, and GDPR compliance.",
+      "ogTitle": "Privacy Policy - Data Protection & GDPR Compliance",
+      "ogDescription": "Learn how Picsellia collects, uses, and protects your personal data. Our commitment to privacy, security, and GDPR compliance."
+    },
+    "legalLabel": "Legal",
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy matters to us. This policy explains how Picsellia collects, uses, and protects your personal information.",
+    "lastUpdated": "Last Updated: January 2025",
+    "gdprCompliant": "GDPR Compliant",
+    "tableOfContents": "Table of Contents",
+    "relatedPolicies": "Related Policies",
+    "cookiePolicy": "Cookie Policy",
+    "cookiePolicyDesc": "Learn about our cookie usage",
+    "securityLink": "Security",
+    "securityLinkDesc": "Our security practices",
+    "contactUs": "Contact Us",
+    "contactUsDesc": "Privacy questions?",
+    "sections": [
+      {
+        "id": "introduction",
+        "title": "Introduction",
+        "content": "Picsellia SAS (\"Picsellia\", \"we\", \"us\", or \"our\") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our MLOps platform for computer vision, visit our website, or interact with our services.\n\nWe process personal data in compliance with the General Data Protection Regulation (GDPR), the French Data Protection Act (Loi Informatique et Libertés), and other applicable data protection laws."
+      },
+      {
+        "id": "data-controller",
+        "title": "Data Controller",
+        "content": "Picsellia SAS is the data controller for the personal data collected through our services.\n\n**Contact Information:**\nPicsellia SAS\nToulouse, France\nEmail: privacy@picsellia.com\n\nFor any privacy-related inquiries, please contact our Data Protection Officer at dpo@picsellia.com."
+      },
+      {
+        "id": "data-collected",
+        "title": "Information We Collect",
+        "content": "**Account Information**\nWhen you create an account, we collect:\n- Name and email address\n- Organization name\n- Job title and role\n- Password (encrypted)\n- Profile preferences\n\n**Usage Data**\nWe automatically collect:\n- Log data (IP address, browser type, device information)\n- Platform usage analytics (features used, session duration)\n- Performance metrics\n\n**Platform Data**\nWhen using our services, you may upload:\n- Images and datasets for computer vision tasks\n- Model configurations and training parameters\n- Annotations and labels\n- API tokens and integration credentials\n\n**Communication Data**\nWhen you contact us, we collect:\n- Email correspondence\n- Support tickets\n- Feedback and survey responses\n\n**Payment Information**\nFor paid plans, we collect:\n- Billing address\n- Payment method (processed by our payment provider Stripe)\n- Invoice history"
+      },
+      {
+        "id": "legal-basis",
+        "title": "Legal Basis for Processing",
+        "content": "We process your personal data based on the following legal grounds:\n\n**Contract Performance**\nProcessing necessary to provide our services, manage your account, and fulfill our contractual obligations.\n\n**Legitimate Interests**\nProcessing for our legitimate business interests, such as improving our services, ensuring security, and conducting analytics—balanced against your rights and freedoms.\n\n**Consent**\nWhere required, we obtain your explicit consent for specific processing activities, such as marketing communications.\n\n**Legal Obligations**\nProcessing required to comply with applicable laws, regulations, and legal processes."
+      },
+      {
+        "id": "how-we-use",
+        "title": "How We Use Your Information",
+        "content": "We use collected information to:\n\n- **Provide Services:** Operate and maintain the Picsellia platform\n- **Improve Products:** Analyze usage patterns to enhance features and user experience\n- **Customer Support:** Respond to inquiries and provide technical assistance\n- **Security:** Detect, prevent, and address technical issues and security threats\n- **Communications:** Send important updates, newsletters (with consent), and service notifications\n- **Billing:** Process payments and manage subscriptions\n- **Compliance:** Meet legal obligations and enforce our terms of service"
+      },
+      {
+        "id": "data-sharing",
+        "title": "Data Sharing and Disclosure",
+        "content": "We do not sell your personal data. We may share information with:\n\n**Service Providers**\nTrusted third parties who assist in operating our platform:\n- Cloud infrastructure (OVHcloud, AWS)\n- Payment processing (Stripe)\n- Email services (HubSpot)\n- Analytics (privacy-focused tools)\n\n**Legal Requirements**\nWhen required by law, court order, or governmental authority.\n\n**Business Transfers**\nIn connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections.\n\n**With Your Consent**\nWhen you explicitly authorize sharing with specific third parties.\n\nAll service providers are bound by data processing agreements ensuring GDPR compliance and adequate data protection."
+      },
+      {
+        "id": "data-retention",
+        "title": "Data Retention",
+        "content": "We retain personal data only as long as necessary for the purposes described:\n\n| Data Type | Retention Period |\n|-----------|------------------|\n| Account data | Duration of account + 3 years |\n| Usage logs | 12 months |\n| Platform data | Duration of account + 30 days |\n| Support tickets | 5 years |\n| Invoices | 10 years (legal requirement) |\n\nWhen data is no longer needed, we securely delete or anonymize it in accordance with our data retention policies."
+      },
+      {
+        "id": "your-rights",
+        "title": "Your Rights",
+        "content": "Under GDPR and applicable laws, you have the right to:\n\n**Access**\nRequest a copy of your personal data we hold.\n\n**Rectification**\nRequest correction of inaccurate or incomplete data.\n\n**Erasure (\"Right to be Forgotten\")**\nRequest deletion of your personal data under certain circumstances.\n\n**Restriction**\nRequest limitation of processing in specific situations.\n\n**Data Portability**\nReceive your data in a structured, commonly used format.\n\n**Object**\nObject to processing based on legitimate interests or direct marketing.\n\n**Withdraw Consent**\nWithdraw consent at any time where processing is based on consent.\n\n**Lodge a Complaint**\nFile a complaint with your local data protection authority (in France: CNIL).\n\nTo exercise these rights, contact us at privacy@picsellia.com. We will respond within 30 days."
+      },
+      {
+        "id": "security",
+        "title": "Data Security",
+        "content": "We implement robust technical and organizational measures to protect your data:\n\n- **Encryption:** AES-256 encryption at rest, TLS 1.3 in transit\n- **Access Controls:** Role-based access with multi-factor authentication\n- **Infrastructure:** ISO 27001 certified data centers in the EU\n- **Monitoring:** 24/7 security monitoring and intrusion detection\n- **Audits:** Regular security assessments and penetration testing\n- **Certifications:** ISO/IEC 27001:2022 certified\n\nFor more details, see our [Security page](/security)."
+      },
+      {
+        "id": "international-transfers",
+        "title": "International Data Transfers",
+        "content": "Picsellia primarily stores data in European Union data centers. When we transfer data outside the EU/EEA, we ensure appropriate safeguards:\n\n- Standard Contractual Clauses (SCCs) approved by the European Commission\n- Adequacy decisions where applicable\n- Additional technical and organizational measures\n\nWe do not transfer data to countries without adequate protection unless appropriate safeguards are in place."
+      },
+      {
+        "id": "children",
+        "title": "Children's Privacy",
+        "content": "Picsellia services are not directed to individuals under 16 years of age. We do not knowingly collect personal data from children. If we become aware that we have collected data from a child without parental consent, we will take steps to delete that information."
+      },
+      {
+        "id": "changes",
+        "title": "Changes to This Policy",
+        "content": "We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will notify you of significant changes via email or a prominent notice on our platform.\n\nThe \"Last Updated\" date at the top of this policy indicates when it was last revised. Continued use of our services after changes constitutes acceptance of the updated policy."
+      },
+      {
+        "id": "contact",
+        "title": "Contact Us",
+        "content": "For questions about this Privacy Policy or our data practices:\n\n**Email:** privacy@picsellia.com\n**Data Protection Officer:** dpo@picsellia.com\n\n**Postal Address:**\nPicsellia SAS\nToulouse, France\n\nWe aim to respond to all inquiries within 30 days."
+      }
+    ]
+  },
+  "cookies": {
+    "metadata": {
+      "title": "Cookie Policy - How We Use Cookies",
+      "description": "Learn about how Picsellia uses cookies and similar technologies on our website.",
+      "ogTitle": "Cookie Policy - How We Use Cookies",
+      "ogDescription": "Learn about how Picsellia uses cookies and similar technologies on our website."
+    },
+    "hero": {
+      "badge": "Legal",
+      "title": "Cookie Policy",
+      "subtitle": "This policy explains how Picsellia uses cookies and similar technologies, and how you can control them.",
+      "lastUpdated": "Last Updated: January 2025",
+      "gdprCompliant": "GDPR & ePrivacy Compliant"
+    },
+    "quickSummary": "Quick Summary",
+    "required": "Required",
+    "optional": "Optional",
+    "cookiesWeUse": "Cookies We Use",
+    "managePreferences": {
+      "title": "Manage Your Cookie Preferences",
+      "subtitle": "You can update your cookie preferences at any time. Changes will take effect immediately.",
+      "openSettings": "Open Cookie Settings"
+    },
+    "relatedPolicies": "Related Policies",
+    "privacyPolicy": "Privacy Policy",
+    "privacyPolicyDesc": "How we collect and use your personal data",
+    "securityTitle": "Security",
+    "securityDesc": "Our security practices and certifications",
+    "tableHeaders": {
+      "cookieName": "Cookie Name",
+      "purpose": "Purpose",
+      "duration": "Duration",
+      "provider": "Provider"
+    },
+    "categories": {
+      "essential": "Essential Cookies",
+      "essentialDesc": "Required for the website to function properly. These cannot be disabled.",
+      "functional": "Functional Cookies",
+      "functionalDesc": "Enable personalized features and remember your preferences.",
+      "analytics": "Analytics Cookies",
+      "analyticsDesc": "Help us understand how visitors interact with our website to improve user experience.",
+      "marketing": "Marketing Cookies",
+      "marketingDesc": "Used to track visitors across websites for advertising purposes."
+    },
+    "sections": {
+      "whatAreCookies": "What Are Cookies?",
+      "howWeUse": "How We Use Cookies",
+      "legalBasis": "Legal Basis",
+      "yourChoices": "Your Choices",
+      "thirdParties": "Third-Party Cookies",
+      "retention": "Cookie Retention",
+      "updates": "Updates to This Policy",
+      "contact": "Contact Us"
+    }
+  },
+  "enterprise": {
+    "metadata": {
+      "title": "Enterprise - Secure Deployment & Compliance",
+      "description": "Enterprise-grade deployment options for Picsellia MLOps platform. SaaS, hybrid, and on-premise with ISO 27001 security, RBAC, and full compliance.",
+      "ogTitle": "Enterprise - Secure Deployment & Compliance",
+      "ogDescription": "Enterprise-grade deployment options for Picsellia MLOps platform. SaaS, hybrid, and on-premise with ISO 27001 security."
+    },
+    "badge": "Enterprise Deployment",
+    "heroTitle": "Enterprise Deployment & ",
+    "heroHighlight": "Security",
+    "heroDescription": "Enterprise-grade deployment from fully managed SaaS to air-gapped on-premise. Deploy Picsellia where your data lives, with ISO 27001 security and fine-grained access control.",
+    "talkToEnterprise": "Talk to Our Enterprise Team",
+    "documentation": "Documentation",
+    "deploymentOptionsLabel": "Deployment Options",
+    "deploymentOptionsTitle": "Deploy where your data lives",
+    "deploymentOptionsDescription": "Choose the deployment model that fits your security requirements and infrastructure.",
+    "bestFor": "Best for:",
+    "hybridArchitectureLabel": "Hybrid Architecture",
+    "hybridArchitectureTitle": "Connect your infrastructure",
+    "hybridArchitectureDescription": "Keep sensitive data in your environment while using Picsellia's managed control plane. Connect your storage, compute, and container registry directly.",
+    "architectureOverview": "Architecture Overview",
+    "yourInfrastructure": "Your Infrastructure",
+    "controlPlane": "Picsellia Control Plane",
+    "dataNeverLeaves": "Your data never leaves your infrastructure",
+    "enterpriseOnPremLabel": "Enterprise On-Premise",
+    "onPremTitle": "Complete On-Premise Solution",
+    "onPremDescription": "Run the entire Picsellia MLOps platform on your own infrastructure. Full data sovereignty, air-gapped capable, with enterprise-grade support included.",
+    "requestOnPremDemo": "Request On-Premise Demo",
+    "onPremDeploymentLabel": "On-Premise Deployment",
+    "onPremControlTitle": "Full control on your infrastructure",
+    "onPremControlDescription": "Deploy the complete Picsellia stack in your own data center or private cloud. Support for Kubernetes clusters or simple Docker Compose setups.",
+    "kubernetesTitle": "Kubernetes",
+    "kubernetesDesc": "Deploy with Helm charts on any Kubernetes cluster",
+    "dockerComposeTitle": "Docker Compose",
+    "dockerComposeDesc": "Simple deployment for smaller teams",
+    "airGappedTitle": "Air-gapped support",
+    "airGappedDesc": "Full offline installation available. Container images and charts can be transferred via secure media for isolated environments.",
+    "onPremFeatures": [
+      "Deploy on AWS, GCP, Azure, or bare metal",
+      "Full network isolation & firewall control",
+      "Custom SSL certificates",
+      "Integration with internal identity providers",
+      "Your backup & disaster recovery policies"
+    ],
+    "complianceLabel": "Compliance & Certifications",
+    "complianceTitle": "Enterprise-grade security standards",
+    "complianceDescription": "Picsellia meets rigorous security and compliance requirements for enterprise deployments.",
+    "accessControlLabel": "Access Control",
+    "accessControlTitle": "Role-based access control",
+    "accessControlDescription": "Fine-grained permissions at every level. Control who can access what, from organization-wide settings down to individual projects.",
+    "level": "Level",
+    "customRolesTitle": "Custom roles coming soon",
+    "customRolesDescription": "Create custom roles with granular permission sets tailored to your organization.",
+    "requestEarlyAccess": "Request early access",
+    "ctaTitle": "Ready to discuss your enterprise deployment?",
+    "ctaDescription": "Our enterprise team can help you choose the right deployment model, answer compliance questions, and design a custom solution.",
+    "talkToEnterpriseTeam": "Talk to Enterprise Team",
+    "viewPricing": "View Pricing",
+    "deploymentOptions": [
+      {
+        "name": "SaaS",
+        "description": "Fully managed cloud platform",
+        "tagline": "Get started in minutes",
+        "features": [
+          "Zero infrastructure management",
+          "Automatic updates & patches",
+          "Built-in redundancy & backups",
+          "ISO 27001:2022 certified",
+          "EU & US data centers",
+          "Instant provisioning"
+        ],
+        "bestFor": "Teams who want to focus on ML, not infrastructure"
+      },
+      {
+        "name": "Hybrid",
+        "description": "Your data, our platform",
+        "tagline": "Best of both worlds",
+        "features": [
+          "Connect your own storage (S3, GCS, Azure)",
+          "Use your GPU compute resources",
+          "Bring your Docker registry",
+          "Data never leaves your infrastructure",
+          "Picsellia manages the control plane",
+          "Seamless integration"
+        ],
+        "bestFor": "Organizations with existing cloud infrastructure & data residency requirements"
+      },
+      {
+        "name": "On-Premise",
+        "description": "Full control, your infrastructure",
+        "tagline": "Maximum security & compliance",
+        "features": [
+          "Kubernetes (Helm charts)",
+          "Docker Compose deployment",
+          "Air-gapped environments supported",
+          "Deploy on any cloud or bare metal",
+          "Full network isolation",
+          "Custom security policies"
+        ],
+        "bestFor": "Enterprises with strict compliance requirements or air-gapped environments"
+      }
+    ],
+    "hybridItems": [
+      {
+        "label": "Cloud Storage",
+        "desc": "AWS S3, Google Cloud Storage, Azure Blob"
+      },
+      {
+        "label": "GPU Compute",
+        "desc": "Your AWS, GCP, or Azure GPU instances"
+      },
+      {
+        "label": "Docker Registry",
+        "desc": "ECR, GCR, ACR, or private registries"
+      }
+    ],
+    "hybridArchLabel": "Hybrid Architecture",
+    "hybridArchTitle": "Connect your infrastructure",
+    "hybridArchDesc": "Keep sensitive data in your environment while using Picsellia's managed control plane. Connect your storage, compute, and container registry directly.",
+    "archOverview": "Architecture Overview",
+    "yourInfra": "Your Infrastructure",
+    "controlPlaneName": "Picsellia Control Plane",
+    "dataNeverLeavesMsg": "Your data never leaves your infrastructure",
+    "infraItems": [
+      "Storage",
+      "Compute",
+      "Registry"
+    ],
+    "controlPlaneItems": [
+      "UI & API",
+      "Orchestration",
+      "Monitoring",
+      "Metadata"
+    ],
+    "onPremBannerLabel": "Enterprise On-Premise",
+    "onPremBannerTitle": "Complete On-Premise Solution",
+    "onPremBannerDesc": "Run the entire Picsellia MLOps platform on your own infrastructure. Full data sovereignty, air-gapped capable, with enterprise-grade support included.",
+    "onPremTags": [
+      "Kubernetes & Docker",
+      "Air-Gapped",
+      "Bare Metal",
+      "Custom SLAs",
+      "SSO / SAML",
+      "Full Isolation"
+    ],
+    "requestOnPremDemoBtn": "Request On-Premise Demo",
+    "onPremDeployLabel": "On-Premise Deployment",
+    "onPremControlLabel": "Full control on your infrastructure",
+    "onPremControlDesc2": "Deploy the complete Picsellia stack in your own data center or private cloud. Support for Kubernetes clusters or simple Docker Compose setups.",
+    "k8sTitle": "Kubernetes",
+    "k8sDesc": "Deploy with Helm charts on any Kubernetes cluster",
+    "dockerTitle": "Docker Compose",
+    "dockerDesc": "Simple deployment for smaller teams",
+    "airGapTitle": "Air-gapped support",
+    "airGapDesc": "Full offline installation available. Container images and charts can be transferred via secure media for isolated environments.",
+    "onPremFeaturesList": [
+      "Deploy on AWS, GCP, Azure, or bare metal",
+      "Full network isolation & firewall control",
+      "Custom SSL certificates",
+      "Integration with internal identity providers",
+      "Your backup & disaster recovery policies"
+    ],
+    "certifications": [
+      {
+        "name": "ISO 27001:2022",
+        "description": "International standard for information security management"
+      },
+      {
+        "name": "GDPR Compliant",
+        "description": "EU data protection & privacy standards"
+      },
+      {
+        "name": "Data Encryption",
+        "description": "AES-256 at rest, TLS 1.3 in transit"
+      },
+      {
+        "name": "SSO / SAML",
+        "description": "Enterprise identity provider integration"
+      }
+    ],
+    "securityFeatures": [
+      {
+        "title": "Audit Logs",
+        "description": "Complete activity tracking for compliance and forensics"
+      },
+      {
+        "title": "API Key Management",
+        "description": "Scoped tokens with expiration and revocation"
+      },
+      {
+        "title": "IP Allowlisting",
+        "description": "Restrict access to trusted networks"
+      },
+      {
+        "title": "2FA / MFA",
+        "description": "Multi-factor authentication for all users"
+      },
+      {
+        "title": "Data Isolation",
+        "description": "Tenant separation at storage and compute level"
+      },
+      {
+        "title": "Backup & Recovery",
+        "description": "Automated backups with point-in-time recovery"
+      }
+    ],
+    "rbacRoles": [
+      {
+        "level": "Organization",
+        "roles": [
+          {
+            "name": "Owner",
+            "description": "Full administrative control, billing, user management"
+          },
+          {
+            "name": "Admin",
+            "description": "Manage users, workspaces, and organization settings"
+          },
+          {
+            "name": "Member",
+            "description": "Access assigned workspaces and projects"
+          }
+        ]
+      },
+      {
+        "level": "Workspace",
+        "roles": [
+          {
+            "name": "Manager",
+            "description": "Create projects, manage workspace members"
+          },
+          {
+            "name": "Contributor",
+            "description": "Edit projects, datasets, and experiments"
+          },
+          {
+            "name": "Viewer",
+            "description": "Read-only access to workspace resources"
+          }
+        ]
+      },
+      {
+        "level": "Project",
+        "roles": [
+          {
+            "name": "Lead",
+            "description": "Full project control, manage collaborators"
+          },
+          {
+            "name": "Editor",
+            "description": "Modify datasets, run experiments, deploy models"
+          },
+          {
+            "name": "Annotator",
+            "description": "Label data within assigned campaigns"
+          },
+          {
+            "name": "Reviewer",
+            "description": "Review and approve annotations"
+          }
+        ]
+      }
+    ],
+    "enterpriseValues": [
+      {
+        "title": "Dedicated Support",
+        "description": "Named customer success manager, priority SLAs, and direct engineering access"
+      },
+      {
+        "title": "Custom Integrations",
+        "description": "Connect with your existing CI/CD, identity providers, and monitoring stack"
+      },
+      {
+        "title": "Training & Onboarding",
+        "description": "White-glove onboarding, team training sessions, and ongoing enablement"
+      }
+    ],
+    "complianceSectionLabel": "Compliance & Certifications",
+    "complianceSectionTitle": "Enterprise-grade security standards",
+    "complianceSectionDesc": "Picsellia meets rigorous security and compliance requirements for enterprise deployments.",
+    "accessControlSectionLabel": "Access Control",
+    "accessControlSectionTitle": "Role-based access control",
+    "accessControlSectionDesc": "Fine-grained permissions at every level. Control who can access what, from organization-wide settings down to individual projects.",
+    "levelSuffix": "Level",
+    "customRolesLabel": "Custom roles coming soon",
+    "customRolesDesc": "Create custom roles with granular permission sets tailored to your organization.",
+    "requestEarlyAccessBtn": "Request early access"
+  },
+  "productOverview": {
+    "metadata": {
+      "title": "Product Overview - Complete MLOps Platform",
+      "description": "Explore Picsellia's end-to-end MLOps platform for computer vision. From data management and annotation to model training, deployment, and monitoring.",
+      "ogTitle": "Product Overview - Complete MLOps Platform",
+      "ogDescription": "Explore Picsellia's end-to-end MLOps platform for computer vision. From data management to model deployment and monitoring."
+    },
+    "platformLabel": "Platform",
+    "platformTitle": "One platform. Zero friction.",
+    "platformDescription": "One platform instead of five tools duct-taped together. Built for computer vision from day one.",
+    "explorePlatform": "Explore platform",
+    "withPicsellia": "With Picsellia:",
+    "stages": [
+      {
+        "category": "Data",
+        "tagline": "Collect & organize",
+        "headline": "Stop drowning in unorganized data",
+        "problem": "Your images are scattered across cloud buckets, hard drives, and legacy systems. Finding the right data for training takes days, not minutes.",
+        "solution": "One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.",
+        "features": [
+          "Datalake",
+          "Dataset Management"
+        ],
+        "statsValue": "10B+",
+        "statsLabel": "Images managed"
+      },
+      {
+        "category": "Annotate",
+        "tagline": "Label & review",
+        "headline": "Labeling shouldn't be your bottleneck",
+        "problem": "Manual annotation is slow, expensive, and error-prone. Your ML team is wasting time on labeling instead of building models.",
+        "solution": "AI-assisted labeling cuts annotation time by 10x. Built-in quality control ensures consistent, high-quality training data.",
+        "features": [
+          "Labeling Tool",
+          "Annotation Campaigns"
+        ],
+        "statsValue": "10x",
+        "statsLabel": "Faster labeling"
+      },
+      {
+        "category": "Train",
+        "tagline": "Build & experiment",
+        "headline": "Experiments shouldn't disappear",
+        "problem": "You've run hundreds of experiments but can't reproduce your best results. Model versions are scattered across notebooks.",
+        "solution": "Every experiment tracked, every model versioned, every result reproducible. Compare runs side-by-side.",
+        "features": [
+          "AI Laboratory",
+          "Experiment Tracking",
+          "Automated Pipelines"
+        ],
+        "statsValue": "100%",
+        "statsLabel": "Reproducibility"
+      },
+      {
+        "category": "Deploy",
+        "tagline": "Ship & monitor",
+        "headline": "Production shouldn't be a black box",
+        "problem": "Your model works in the lab but fails in production. You only find out when customers complain.",
+        "solution": "Deploy with confidence. Real-time monitoring catches drift before it impacts users.",
+        "features": [
+          "Model Deployment",
+          "Model Monitoring"
+        ],
+        "statsValue": "99.9%",
+        "statsLabel": "Uptime SLA"
+      }
+    ],
+    "hero": {
+      "badge": "The Complete Vision AI Platform",
+      "title": "Ship Vision AI",
+      "titleHighlight": "10x faster",
+      "subtitle": "The only platform where data scientists, ML engineers, and operations teams work together—from raw images to production models.",
+      "startTrial": "Start Free Trial",
+      "seeLiveDemo": "See Live Demo"
+    },
+    "outcomes": {
+      "fasterProduction": "Faster time to production",
+      "lowerCosts": "Lower operational costs",
+      "moreExperiments": "More experiments per week",
+      "noFailures": "Surprise production failures"
+    },
+    "usedBy": "Used by teams at",
+    "enterprise": {
+      "badge": "Enterprise Ready",
+      "title": "Built for teams that can't afford to fail",
+      "subtitle": "Security, compliance, and reliability that enterprise teams demand.",
+      "talkToSales": "Talk to Sales",
+      "iso27001": "ISO 27001:2022",
+      "iso27001Desc": "Certified information security management",
+      "deployAnywhere": "Deploy Anywhere",
+      "deployAnywhereDesc": "Cloud, on-premise, or hybrid deployment",
+      "rbac": "Role-Based Access",
+      "rbacDesc": "SSO/SAML with fine-grained permissions",
+      "uptime": "99.9% Uptime SLA",
+      "uptimeDesc": "Enterprise SLAs with 24/7 support",
+      "apiFirst": "API-First",
+      "apiFirstDesc": "Full REST API and Python SDK",
+      "infiniteScale": "Infinite Scale",
+      "infiniteScaleDesc": "Handle millions of images without breaking"
+    },
+    "cta": {
+      "badge": "READY_TO_SHIP",
+      "title": "Ready to ship Vision AI faster?",
+      "subtitle": "Free trial, no credit card. See how it works on your own data.",
+      "startTrial": "Start Free Trial",
+      "scheduleDemo": "Schedule Demo",
+      "noCreditCard": "No credit card required",
+      "trialDuration": "14-day free trial",
+      "isoCertified": "ISO 27001:2022 Certified",
+      "imagesProcessed": "Images processed",
+      "inferenceLatency": "Inference latency",
+      "uptimeSla": "Uptime SLA",
+      "support": "Support"
+    }
+  },
+  "demo": {
+    "metadata": {
+      "title": "Request a Demo - See Picsellia in Action",
+      "description": "See Picsellia's MLOps platform in action. Schedule a personalized demo to learn how to streamline your computer vision workflow.",
+      "ogTitle": "Request a Demo - See Picsellia in Action",
+      "ogDescription": "See Picsellia's MLOps platform in action. Schedule a personalized demo to learn how to streamline your computer vision workflow."
+    },
+    "hero": {
+      "badge": "Book a Demo",
+      "title": "See Picsellia in action",
+      "subtitle": "Get a personalized walkthrough of our MLOps platform. Our team will show you how Picsellia can accelerate your computer vision projects."
+    },
+    "benefits": {
+      "personalizedTitle": "Personalized Demo",
+      "personalizedDesc": "See Picsellia in action with examples relevant to your industry",
+      "technicalTitle": "Technical Deep Dive",
+      "technicalDesc": "Get answers to your specific technical questions from our engineers",
+      "pricingTitle": "Custom Pricing",
+      "pricingDesc": "Receive a tailored quote based on your specific requirements"
+    },
+    "usedBy": "Used by teams at",
+    "form": {
+      "title": "Request a demo",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "workEmail": "Work email",
+      "company": "Company",
+      "lessDetails": "Less details",
+      "addMoreDetails": "Add more details (optional)",
+      "jobTitle": "Job title",
+      "phoneNumber": "Phone number",
+      "anythingElse": "Anything else you'd like us to know?",
+      "messagePlaceholder": "Tell us about your project, timeline, or any specific requirements...",
+      "submitting": "Submitting...",
+      "requestDemo": "Request Demo",
+      "privacyNote": "By submitting this form, you agree to our",
+      "privacyPolicy": "Privacy Policy",
+      "privacyNoteSuffix": ". We'll never share your information with third parties.",
+      "errorMessage": "Something went wrong. Please try again or contact us at",
+      "firstNamePlaceholder": "John",
+      "lastNamePlaceholder": "Doe",
+      "companyPlaceholder": "Acme Inc.",
+      "jobTitlePlaceholder": "ML Engineer",
+      "messagePlaceholder": "Tell us about your project, timeline, or any specific requirements..."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Everything you need to know about booking a demo.",
+      "q1": "How long is the demo?",
+      "a1": "Typically 30-45 minutes, depending on your questions and the depth of discussion.",
+      "q2": "Who should attend the demo?",
+      "a2": "We recommend including technical stakeholders (ML engineers, data scientists) and decision-makers who will be involved in the evaluation.",
+      "q3": "Can I see features specific to my use case?",
+      "a3": "Yes! We tailor each demo to your industry and specific computer vision challenges. Feel free to mention your use case in the message field.",
+      "q4": "Is the demo free?",
+      "a4": "Absolutely. The demo is free with no obligation. We want to make sure Picsellia is the right fit for your needs."
+    }
+  },
+  "trial": {
+    "metadata": {
+      "title": "Start Free Trial - Try Picsellia for 14 Days",
+      "description": "Try Picsellia's MLOps platform free. Get started with computer vision data management, model training, and deployment in minutes.",
+      "ogTitle": "Start Free Trial - Try Picsellia for 14 Days",
+      "ogDescription": "Try Picsellia's MLOps platform free. Get started with computer vision data management, model training, and deployment in minutes."
+    },
+    "hero": {
+      "badge": "14-Day Free Trial",
+      "title": "Start building today",
+      "subtitle": "Get full access to Picsellia's MLOps platform. No credit card required, no commitment, cancel anytime."
+    },
+    "benefits": {
+      "daysTitle": "14 days free",
+      "daysDesc": "Full access to all platform features",
+      "noCreditCardTitle": "No credit card",
+      "noCreditCardDesc": "Start immediately, no payment info needed",
+      "imagesTitle": "10,000 images",
+      "imagesDesc": "Process up to 10K images during trial",
+      "gpuTitle": "100 GPU hours",
+      "gpuDesc": "Train models with included compute"
+    },
+    "included": {
+      "title": "What's included",
+      "datalake": "Datalake & Dataset Management",
+      "labeling": "Labeling Tool with AI-assist",
+      "experimentTracking": "Experiment Tracking",
+      "modelTraining": "Model Training (Ultralytics, SAM2)",
+      "modelDeployment": "Model Deployment",
+      "basicMonitoring": "Basic Monitoring"
+    },
+    "form": {
+      "title": "Request your free trial",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "workEmail": "Work email",
+      "company": "Company",
+      "companyPlaceholder": "Acme Inc. (optional)",
+      "agreeToTerms": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "submitting": "Submitting...",
+      "requestTrial": "Request Free Trial",
+      "alreadyUser": "Already a Picsellia user?",
+      "signIn": "Sign in to your account",
+      "errorMessage": "Something went wrong. Please try again or contact us at",
+      "firstNamePlaceholder": "John",
+      "lastNamePlaceholder": "Doe",
+      "companyPlaceholder": "Acme Inc. (optional)"
+    },
+    "socialProof": {
+      "trustedBy": "Trusted by teams at"
+    }
+  },
+  "thankYou": {
+    "metadata": {
+      "title": "Thank You - Request Confirmed",
+      "description": "Thank you for your interest in Picsellia. We'll be in touch soon.",
+      "ogTitle": "Thank You - Request Confirmed",
+      "ogDescription": "Thank you for your interest in Picsellia. We'll be in touch soon."
+    },
+    "title": "Thank You!",
+    "description": "We've received your request. Our team will be in touch shortly to help you get started with Picsellia.",
+    "badge": "Success"
+  },
+  "thankYouDemo": {
+    "metadata": {
+      "title": "Book Your Demo - Picsellia",
+      "description": "Pick a time that works for you. We look forward to showing you Picsellia."
+    },
+    "badge": "Request received",
+    "title": "Pick a time for your demo",
+    "subtitle": "Choose a slot that works for you and we'll walk you through the platform.",
+    "fallbackTitle": "We'll be in touch shortly",
+    "fallbackSubtitle": "Our team will reach out within 24 hours to schedule your personalized demo.",
+    "backToHome": "Back to Home",
+    "whatToExpect": "What to expect",
+    "duration": "30-45 minutes",
+    "durationDesc": "Tailored to your use case and technical questions",
+    "liveWalkthrough": "Live walkthrough",
+    "liveWalkthroughDesc": "See the full platform from data to deployment",
+    "nextSteps": "Next steps",
+    "nextStepsDesc": "Get a custom plan and trial setup for your team"
+  },
+  "thankYouTrial": {
+    "metadata": {
+      "title": "Trial Activated - Welcome to Picsellia",
+      "description": "Your free trial is active. Book an onboarding call to get started faster."
+    },
+    "badge": "Trial activated",
+    "title": "Your trial is ready!",
+    "titleWithName": "Welcome {firstName}!",
+    "subtitle": "Check your email for login instructions. Want a quick onboarding call? Pick a time below.",
+    "fallbackTitle": "You're all set",
+    "fallbackSubtitle": "Check your email for login credentials and start exploring the platform.",
+    "goToPicsellia": "Go to Picsellia",
+    "gettingStarted": "Getting started",
+    "step1": "1. Check your email",
+    "step1Desc": "Login credentials are on their way",
+    "step2": "2. Upload your data",
+    "step2Desc": "Try the Datalake with up to 10K images",
+    "step3": "3. Train a model",
+    "step3Desc": "Use your 100 GPU hours to experiment"
+  },
+  "thankYouPricing": {
+    "metadata": {
+      "title": "Request Received - Custom Quote Coming",
+      "description": "Your pricing request has been received. Our team will prepare a custom quote for you.",
+      "ogTitle": "Request Received - Custom Quote Coming",
+      "ogDescription": "Your pricing request has been received. Our team will prepare a custom quote for you."
+    },
+    "title": "Request Received!",
+    "description": "Thank you for your interest. Our team will prepare a custom quote and reach out within 24 hours.",
+    "badge": "Success"
+  },
+  "blog": {
+    "metadata": {
+      "title": "Computer Vision & MLOps Blog",
+      "description": "Practical guides, tutorials, and insights on computer vision, MLOps workflows, and building production AI systems from the Picsellia team.",
+      "ogTitle": "Computer Vision & MLOps Blog",
+      "ogDescription": "Practical guides, tutorials, and insights on computer vision, MLOps workflows, and building production AI systems from the Picsellia team."
+    },
+    "badge": "Blog",
+    "title": "Insights & Tutorials",
+    "subtitle": "Practical guides on computer vision, MLOps workflows, and building production AI — written by the Picsellia team and community.",
+    "allCategories": "All",
+    "searchPlaceholder": "Search articles...",
+    "noResults": "No articles found",
+    "noResultsHint": "Try adjusting your search or filters.",
+    "relatedFromPicsellia": "Related from Picsellia",
+    "startFreeTrial": "Start Free Trial",
+    "scheduleDemo": "Schedule Demo",
+    "noCreditCard": "No credit card required",
+    "freeTrial14Days": "14-day free trial",
+    "bannerTagline": "The MLOps platform for computer vision",
+    "bookDemo": "Book a Demo",
+    "dismissBanner": "Dismiss banner",
+    "onThisPage": "On this page",
+    "tableOfContents": "Table of contents",
+    "newsletter": {
+      "title": "Stay up to date",
+      "description": "Get the latest posts on computer vision, MLOps, and AI delivered to your inbox.",
+      "placeholder": "you@company.com",
+      "subscribe": "Subscribe",
+      "subscribing": "Subscribing...",
+      "success": "You're subscribed! Check your inbox.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "post": {
+    "breadcrumbBlog": "Blog",
+    "tryPicsellia": "Try Picsellia",
+    "trialCta": "14-day free trial. No credit card.",
+    "startFreeTrial": "Start Free Trial",
+    "relatedArticles": "Related articles",
+    "dateLocale": "en-US"
+  },
+  "blogCta": {
+    "featureCTAs": {
+      "labelingTool": {
+        "title": "Annotate faster with AI assistance",
+        "description": "Picsellia's labeling tool supports bounding boxes, polygons, and segmentation masks with built-in AI assistance to speed up annotation.",
+        "label": "Explore the Labeling Tool"
+      },
+      "annotationCampaigns": {
+        "title": "Orchestrate annotation at scale",
+        "description": "Run multi-step annotation campaigns with built-in quality control, team management, and progress tracking.",
+        "label": "Discover Annotation Campaigns"
+      },
+      "aiLab": {
+        "title": "Train models your way",
+        "description": "Use pre-built pipelines for YOLO, SAM2, and more — or bring your own code with PyTorch, TensorFlow, or Hugging Face.",
+        "label": "Explore the AI Laboratory"
+      },
+      "experimentTracking": {
+        "title": "Track every experiment",
+        "description": "Log metrics, parameters, and artifacts automatically. Compare runs side by side and ship better models faster.",
+        "label": "See Experiment Tracking"
+      },
+      "datasetManagement": {
+        "title": "Organize and version your datasets",
+        "description": "Version, slice, and manage datasets with full traceability — from raw images to production-ready splits.",
+        "label": "Explore Dataset Management"
+      },
+      "datalake": {
+        "title": "Centralize your visual data",
+        "description": "Store, search, and organize millions of images in a single place with tags, metadata, and visual similarity search.",
+        "label": "Explore the Datalake"
+      },
+      "modelDeployment": {
+        "title": "Deploy models to cloud or edge",
+        "description": "Ship computer vision models with auto-scaling serverless infrastructure and 99.9% uptime.",
+        "label": "Explore Model Deployment"
+      },
+      "modelMonitoring": {
+        "title": "Monitor models in production",
+        "description": "Detect data drift and anomalies in real time. Close the feedback loop and keep your models accurate.",
+        "label": "Explore Model Monitoring"
+      },
+      "automatedPipelines": {
+        "title": "Automate your ML pipelines",
+        "description": "Set up continuous training and deployment with automated triggers, shadow deployments, and feedback loops.",
+        "label": "Explore Automated Pipelines"
+      },
+      "productOverview": {
+        "title": "Ship vision AI 10x faster",
+        "description": "Picsellia is the end-to-end MLOps platform for computer vision — from data management to production deployment.",
+        "label": "See the Platform"
+      },
+      "manufacturing": {
+        "title": "Computer vision for manufacturing",
+        "description": "See how Picsellia powers defect detection and quality control on production lines.",
+        "label": "See Manufacturing Solutions"
+      },
+      "agriculture": {
+        "title": "Computer vision for agriculture",
+        "description": "Monitor crop health, optimize yields, and improve animal welfare with AI-powered visual analysis.",
+        "label": "See Agriculture Solutions"
+      },
+      "energy": {
+        "title": "Computer vision for energy",
+        "description": "Automate infrastructure inspection and predictive maintenance across your energy assets.",
+        "label": "See Energy Solutions"
+      },
+      "wasteManagement": {
+        "title": "Computer vision for waste management",
+        "description": "Automate waste sorting and boost recycling rates with real-time visual recognition.",
+        "label": "See Waste Management Solutions"
+      }
+    },
+    "conversionCopy": {
+      "Tutorial": {
+        "headline": "Ready to try this yourself?",
+        "subtext": "Get hands-on with Picsellia. Train, deploy, and monitor CV models from one platform."
+      },
+      "YOLO": {
+        "headline": "Train YOLO models in minutes",
+        "subtext": "Picsellia comes with built-in Ultralytics pipelines. Upload your data and start training."
+      },
+      "MLOps": {
+        "headline": "Put your MLOps into practice",
+        "subtext": "Stop stitching tools together. Get an end-to-end CV platform with built-in automation."
+      },
+      "DataManagement": {
+        "headline": "Organize your visual data today",
+        "subtext": "Version datasets, manage annotations, and track lineage from one place."
+      },
+      "DataScience": {
+        "headline": "Ship models faster",
+        "subtext": "Track experiments, compare runs, and iterate faster with built-in tooling."
+      },
+      "Manufacturing": {
+        "headline": "Automate visual inspection",
+        "subtext": "See how teams deploy defect detection models to production lines with Picsellia."
+      },
+      "ModelMonitoring": {
+        "headline": "Keep your models accurate",
+        "subtext": "Detect drift, close feedback loops, and retrain automatically."
+      },
+      "EdgeAI": {
+        "headline": "Deploy to edge in minutes",
+        "subtext": "Optimize and ship models to edge devices with auto-scaling infrastructure."
+      },
+      "CustomerStory": {
+        "headline": "Join teams already shipping CV",
+        "subtext": "See how companies like yours accelerate computer vision with Picsellia."
+      },
+      "default": {
+        "headline": "Ready to build computer vision?",
+        "subtext": "Go from raw images to production models. Free trial, no credit card, cancel anytime."
+      }
+    },
+    "inlineCTA": {
+      "socialProof": "Join hundreds of CV engineers who ship models faster with Picsellia",
+      "secondaryLinkText": "or book a 15-min demo"
+    }
+  },
+  "contact": {
+    "metadata": {
+      "title": "Contact Us - Picsellia",
+      "description": "Get in touch with the Picsellia team."
+    }
+  },
+  "security": {
+    "metadata": {
+      "title": "Security - Picsellia",
+      "description": "Learn about Picsellia's security practices."
+    }
+  }
+}

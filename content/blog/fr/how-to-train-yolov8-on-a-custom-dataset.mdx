@@ -1,0 +1,142 @@
+---
+
+title: "Comment entraîner YOLOv8 sur un dataset personnalisé"
+description: "YOLOv8 est l'édition la plus récente de la collection très renommée de modèles qui implémentent l'architecture YOLO (You Only Look Once)."
+date: "2023-01-29"
+author:
+  name: "Picsellia Team"
+category: "Tutorial"
+image: "/images/blog/how-to-train-yolov8-on-a-custom-dataset-hero.jpg"
+imageAlt: "How to train YOLOv8 on a custom Dataset"
+published: true
+tags: ["annotation", "api", "classification", "dataset-management", "document-processing", "infrastructure", "model-training", "monitoring"]
+---
+
+YOLOv8 est l'édition la plus récente de la collection très renommée de modèles qui implémentent l'architecture YOLO (You Only Look Once). Ce développement a été réalisé par Ultralytics, une équipe réputée pour son travail sur YOLOv3 (fork PyTorch) et YOLOv5.
+
+Poursuivant la tendance initiée par YOLOv5, YOLOv6 et YOLOv7, nous avons maintenant accès non seulement à la détection d'objets, mais aussi à la **segmentation d'instances** et à la **classification d'images**. Le modèle lui-même a été construit en PyTorch, et est **capable de fonctionner aussi bien sur CPU que sur GPU**. De manière similaire à YOLOv5, nous disposons également de plusieurs exports tels que ONNX et Tensorflow SavedModel (qui ne sont pas encore implémentés).
+
+Le fait que nous attendions toujours le benchmark Papers with Code pour distinguer YOLOv8 des autres modèles temps réel à l'état de l'art est un problème pour évaluer le "véritable SOTA revendiqué". Donc, la seule façon de savoir si YOLOv8 peut convenir à votre cas d'usage, c'est de l'essayer !
+
+**Dans ce tutoriel, nous vous fournirons un guide détaillé sur la façon d'entraîner le modèle de détection d'objets YOLOv8 sur un dataset personnalisé.** Vous apprendrez à utiliser la nouvelle API, comment préparer le dataset et, surtout, **comment entraîner et valider le modèle**.
+
+C'est parti !
+
+Dans cet article, nous allons essayer d'expliquer comment intégrer rapidement cette nouvelle architecture dans votre workflow Picsellia.
+
+Les principaux points que nous allons explorer seront :
+
+- Comment construire votre dataset de détection d'objets
+- Comment convertir un fichier d'annotations COCO au format YOLO
+- Lancer un entraînement et interpréter les résultats
+- Utiliser votre modèle sur de nouvelles données.
+
+Évidemment, **nous avons créé un dépôt GitHub pour vous aider avec le code**, vous pouvez le trouver ici :
+
+https://github.com/picselliahq/yolo-notebooks
+
+Vous pouvez également trouver des **extraits de code pertinents** dans notre documentation : [https://documentation.picsellia.com/recipes](https://documentation.picsellia.com/recipes)
+
+## Construire votre dataset avec l'outil d'étiquetage de Picsellia
+
+### Créer votre dataset
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-0.png)
+
+Pour cet article, nous utiliserons un dataset de commerce de détail, aimablement partagé par nos amis chez [Neurolabs](https://www.neurolabs.ai/) (vous cherchez une solution de surveillance de rayonnages ? Allez les voir !)
+
+La première étape à effectuer pour utiliser la plateforme d'étiquetage de Picsellia est de configurer vos étiquettes, ici nous allons construire un modèle de détection à classe unique, donc naviguons dans les paramètres et configurons cela. :)
+
+Ensuite, nous pouvons annoter directement, l'interface d'étiquetage de Picsellia est conçue pour être efficace et facile à utiliser, vous devriez pouvoir construire votre dataset très facilement.
+
+Maintenant que nous avons notre dataset annoté, (oui, imaginons que j'ai tout annoté maintenant), nous avons 14 000+ objets annotés sur 230 images.
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-1.png)
+
+Exportons le dataset afin d'entraîner votre modèle YOLOv8. Les exports se font au format COCO sur Picsellia.
+
+### Le format COCO
+
+Ce format est l'un des plus courants ( ;) ). **COCO signifie Common Object in Common Situations** ! C'est un fichier Json contenant 5 clés :
+
+- **info** : cette partie de la structure donne des informations sur le dataset, la version, l'heure, la date de création, l'auteur, etc.
+- **licenses** : cette partie donne des informations sur les licences dont nous disposons pour notre dataset
+- **category** : elle donne l'id pour les annotations et les objets détectés ainsi que le nom, nous pouvons également déterminer des sous-catégories
+- **images** : elle stocke les images, les noms de fichiers, la hauteur, la largeur, l'heure de prise, etc.
+- **annotations** : pour les ids des images, elle contient la boîte englobante, les coordonnées de segmentation, l'aire. Ici, la boîte englobante correspond aux coordonnées x1,y1,x2,y2 de l'objet détecté tandis que la segmentation est le contour de l'objet. iscrowd est le paramètre binaire qui indique s'il y a plusieurs objets à une échelle que nous ne pouvons pas vraiment segmenter individuellement, nous pouvons les convertir en une grande boîte et l'indiquer avec le paramètre iscrowd
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-2.png)
+
+### Le format YOLO
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-3.png)
+
+Malheureusement, les algorithmes YOLOvX ne lisent pas le format COCO. Pourquoi ? Je ne sais pas.
+
+Ils veulent une manière différente de lire les étiquettes... basée sur des fichiers .txt
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-4.png)
+
+**Chaque image de votre dataset doit avoir un fichier .txt correspondant avec tous les objets de l'image avec un [*class_id x0 y0 x1 y1*] normalisé.**
+
+### Conversion COCO vers YOLO
+
+Vous trouverez dans le dépôt une classe appelée YOLOFormatter() qui fera le travail pour vous :)
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-5.png)
+
+Nous ne montrerons pas le code réel car il est assez simple, mais vous pourrez le trouver ici :
+
+https://github.com/picselliahq/yolo-notebooks/blob/main/utils/yolo.py
+
+Veuillez noter que dans le dépôt, vous pourrez convertir vos annotations BBOX, polygones et classification au format YOLO.
+
+## Comment entraîner YOLOv8 sur votre dataset personnalisé
+
+### Le package Python YOLOv8
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-6.png)
+
+Pour YOLOv8, les développeurs se sont éloignés de la conception traditionnelle de scripts séparés train.py, detect.py, val.py et export.py.
+
+Fournissant une API unifiée pour tout faire :)
+
+**Avantages :** Plus facile de passer de 0 à un modèle entraîné et validé !
+
+**Inconvénients :** Beaucoup plus difficile de modifier le code pour ajouter des intégrations par exemple, comme des Custom Trainer Callbacks ou un algorithme NMS modifié.
+
+Vous pourrez trouver plus d'informations sur l'API directement sur la [documentation d'Ultralytics](https://docs.ultralytics.com/).
+
+Maintenant, voyons à quel point il est facile de **lancer un entraînement** :)
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-7.png)
+
+### Interpréter les résultats
+
+Lancer l'entraînement est assez simple avec les modèles YOLO, du moins pour les v5, 7 et 8. La seule chose qui peut être déroutante est la quantité de logs et de métriques générés.
+
+Les principales métriques calculées et stockées sont :
+
+#### F1-Score
+
+Le F1-score est une métrique couramment utilisée pour évaluer la performance d'un modèle de classification binaire. C'est **la moyenne harmonique de la précision et du rappel**, où la précision est le nombre de prédictions vrais positifs divisé par le nombre total de prédictions vrais positifs et faux positifs, et le rappel est le nombre de prédictions vrais positifs divisé par le nombre total de prédictions vrais positifs et faux négatifs. Le F1-score varie de 0 à 1, 1 étant le meilleur score possible. Il est particulièrement utile lorsque la distribution des classes est déséquilibrée, car il prend en compte à la fois la précision et le rappel du modèle.
+
+#### Rappel
+
+Le rappel fait référence à la capacité d'un modèle à **identifier correctement toutes les instances pertinentes dans un dataset**. Il est souvent utilisé comme métrique pour évaluer la performance d'un modèle dans les tâches de classification, en particulier dans les cas où le dataset est déséquilibré ou le coût des faux négatifs est élevé. Le rappel est calculé comme le nombre de prédictions vrais positifs divisé par la somme des prédictions vrais positifs et des prédictions faux négatifs. Une valeur de rappel élevée indique que le modèle a un faible taux de faux négatifs, ce qui signifie qu'il est capable d'identifier correctement la plupart des instances pertinentes dans le dataset.
+
+#### Précision-rappel
+
+La précision est la proportion de prédictions vrais positifs parmi toutes les prédictions positives faites par le modèle, tandis que le rappel est la proportion de prédictions vrais positifs parmi toutes les instances réellement positives dans le dataset.
+
+Une courbe précision-rappel est un **graphique** qui montre le compromis entre la précision et le rappel pour différents seuils. Dans une courbe précision-rappel, la précision est tracée sur l'axe des y et le rappel est tracé sur l'axe des x. En changeant le seuil, un point différent sur la courbe précision-rappel peut être obtenu.
+
+## Utiliser votre modèle entraîné
+
+C'est vraiment facile d'exécuter vos modèles une fois entraînés, Ultralytics a créé une CLI simple pour le faire.
+
+![How to train yolov8 on a custom dataset](/images/blog/how-to-train-yolov8-on-a-custom-dataset-img-8.png)
+
+La seule chose que vous devez spécifier est le chemin vers votre fichier de poids. Vous pouvez utiliser soit **.pt** soit **.onnx.**
+
+VOILA !

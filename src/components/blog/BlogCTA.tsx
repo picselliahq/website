@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import type { FeatureCTA } from '@/lib/blog-cta';
 
 export default function BlogCTA({ ctas }: { ctas: FeatureCTA[] }) {
+  const t = useTranslations('blog');
+
   if (ctas.length === 0) return null;
 
   return (
@@ -16,7 +21,7 @@ export default function BlogCTA({ ctas }: { ctas: FeatureCTA[] }) {
         className="text-xs font-semibold uppercase tracking-wider mb-6"
         style={{ color: 'var(--picsellia-green)' }}
       >
-        Related from Picsellia
+        {t('relatedFromPicsellia')}
       </p>
 
       <div className={`grid gap-6 ${ctas.length > 1 ? 'md:grid-cols-2' : ''}`}>

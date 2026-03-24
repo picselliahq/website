@@ -1,0 +1,194 @@
+---
+
+title: "Les métriques d'évaluation COCO expliquées"
+description: "Plongez dans les métriques d'évaluation COCO pour la vision par ordinateur, en explorant la précision, le rappel, l'IoU et leur signification. Maîtrisez la détection d'objets avec Picsellia."
+date: "2023-08-15"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/coco-evaluation-metrics-explained-hero.png"
+imageAlt: "COCO Evaluation metrics explained"
+published: true
+tags: ["annotation", "computer-vision", "experiment-tracking", "object-detection", "segmentation"]
+---
+
+Comme nous l'avons vu dans un article précédent sur les [matrices de confusion](/post/the-confusion-matrix-in-computer-vision), les métriques d'évaluation sont essentielles pour évaluer les performances des modèles de vision par ordinateur. Dans cet article, nous examinerons de plus près les métriques d'évaluation COCO et en particulier celles que l'on trouve sur la [plateforme Picsellia](/experiment-tracking).
+
+Afin de mieux comprendre les sections suivantes, faisons un bref rappel de quelques métriques d'évaluation :
+
+## Rappels et définitions
+
+### TP, FP, FN, TN
+
+- **TP (True Positive, vrai positif)** : survient lorsqu'un modèle prédit correctement un résultat positif.
+- **TN (True Negative, vrai négatif)** : survient lorsqu'un modèle prédit correctement un résultat négatif.
+- **FP (False Positive, faux positif)** : survient lorsqu'un modèle prédit un résultat positif alors qu'il aurait dû être négatif.
+- **FN (False Negative, faux négatif)** : survient lorsqu'un modèle prédit un résultat négatif alors qu'il aurait dû être positif.
+
+### Précision
+
+La précision indique combien de cas positifs prédits sont corrects. Elle quantifie le ratio de vrais positifs par rapport au nombre total de prédictions positives et est calculée comme suit :
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-0.png)
+
+La précision révèle la capacité du modèle à faire des prédictions positives exactes. Une valeur de précision élevée indique que lorsque le modèle prédit un résultat positif, il a souvent raison.
+
+### Rappel
+
+Le rappel, également connu sous le nom de sensibilité ou taux de vrais positifs, mesure le ratio de vrais positifs par rapport au nombre total d'échantillons réellement positifs et est calculé comme suit :
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-1.png)
+
+Le rappel se concentre sur la capacité du modèle à identifier correctement les échantillons positifs parmi l'ensemble des instances positives.
+
+### Intersection over Union
+
+Couramment utilisé en vision par ordinateur, pour des tâches comme la détection d'objets, la segmentation d'instances et la segmentation d'images, l'IoU est une métrique qui évalue le degré de chevauchement entre deux boîtes englobantes, fournissant une mesure de la qualité de l'alignement entre un objet prédit et son homologue de vérité terrain. L'IoU permet de quantifier la précision et le rappel des algorithmes de détection. Un score IoU plus élevé implique une prédiction plus précise.
+
+Mathématiquement, l'IoU est défini comme le ratio de l'aire d'intersection sur l'aire de l'union de la boîte englobante prédite et de la boîte englobante de vérité terrain :
+
+L'IoU est un nombre entre 0 et 1.
+
+- Si IoU = 0, cela signifie qu'il n'y a aucun chevauchement entre les boîtes.
+- Si IoU = 1, cela signifie qu'elles se chevauchent complètement.
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-2.png)
+
+Vous pouvez toujours lire notre article sur la matrice de confusion pour en savoir plus sur la précision, le rappel, les vrais positifs et négatifs, et les faux positifs et négatifs.
+
+Maintenant que ces métriques sont claires, allons plus loin et examinons la précision moyenne et le rappel moyen.
+
+<BlogInlineCTA
+  headline="Stop computing COCO metrics manually"
+  description="Picsellia automatically evaluates your models with mAP, precision, recall, and 10+ metrics — across every experiment. Used by 100+ computer vision teams."
+  primaryButtonText="Try Free — Evaluate Your Model in Minutes →"
+  primaryButtonUrl="/experiment-tracking"
+  blogSlug="coco-evaluation-metrics-explained"
+  ctaPosition="mid"
+/>
+
+## Précision moyenne (AP) et rappel moyen (AR) pour la détection d'objets
+
+1) Prédictions et annotations : imaginez une image, avec des prédictions faites par votre modèle de détection d'objets, qui incluent des boîtes englobantes autour des objets ainsi que des scores de confiance. Vous disposez également d'annotations de vérité terrain qui spécifient les positions et les classes réelles des objets.
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-3.png)
+
+Voici une évaluation d'une expérience sur la plateforme Picsellia, les boîtes vertes sont la vérité terrain et les rouges sont les prédictions du modèle.
+
+2) Calcul de l'IoU : calculez l'Intersection over Union pour chaque paire prédiction-annotation. L'IoU mesure le chevauchement entre la prédiction et l'annotation en prenant le ratio de l'aire d'intersection sur l'aire d'union comme expliqué dans le premier paragraphe.
+
+3) Sélection du seuil IoU : sur COCO, la précision moyenne est évaluée sur plusieurs valeurs d'IoU, les seuils de 0,50, la plage 0,50-0,95 et 0,75.
+
+4) Calcul de la précision : pour chaque seuil IoU, triez les prédictions en utilisant les vrais positifs, faux positifs et faux négatifs.
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-4.png)
+*Exemple de tri pour IoU=0,5, [https://learnopencv.com/](https://learnopencv.com/)*
+
+Évaluons notre exemple de voiture :
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-5.png)
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-6.png)
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-7.png)
+
+‍
+
+- Pour IoU=0,5
+
+4 vrais positifs
+
+0 faux positif
+
+1 faux négatif
+
+Précision = 4/4+0 = 1
+
+Rappel = 4/4+1 = 0,8
+
+- Pour IoU=0,75
+
+2 vrais positifs
+
+2 faux positifs
+
+Précision = 2/2+2 = 0,5
+
+Rappel = 2/2+1 = 0,66
+
+Vous pouvez visualiser toutes ces données et bien plus sur Picsellia !
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-8.png)
+
+5) Courbe précision-rappel : créez une courbe précision-rappel en traçant la précision sur l'axe des y et le rappel sur l'axe des x pour chaque seuil IoU. Chaque point de la courbe correspond à un seuil IoU spécifique.
+
+6) Calcul de l'aire sous la courbe (AUC) : calculez l'aire sous la courbe précision-rappel pour chaque seuil IoU. Cela donne la valeur de précision moyenne (AP) pour chaque seuil.
+
+- AP à IoU 0,50 : calculez la moyenne des valeurs AP obtenues à partir de la courbe précision-rappel pour le seuil de 0,50.
+- AP à IoU 0,50-0,95 : calculez la moyenne des valeurs AP obtenues à partir de la courbe précision-rappel sur la plage de seuils IoU (0,50 à 0,95).
+- AP à IoU 0,75 : calculez la moyenne des valeurs AP obtenues à partir de la courbe précision-rappel pour le seuil de 0,75.
+
+***Mean Average Precision (mAP)*** : si vous avez plusieurs catégories d'objets, calculez l'AP pour chaque catégorie puis prenez la moyenne pour obtenir le mAP.
+
+Sur Picsellia, vous avez accès à un tableau qui résume vos données d'évaluation. Examinons-le de plus près.
+
+![Coco evaluation metrics explained](/images/blog/coco-evaluation-metrics-explained-img-9.png)
+
+Voici ce que chaque composant signifie :
+
+- *GT Objects* est le nombre d'objets annotés par l'utilisateur et *Eval Objects* est le nombre d'objets prédits par le modèle.
+- Nous avons déjà vu ce que sont les précisions moyennes à 50, 50-95 et 75.
+- Données Small, Medium et Large : ces catégories représentent généralement différentes plages de tailles d'objets. Les objets sont catégorisés dans ces groupes en fonction des dimensions ou de l'aire de leur boîte englobante. Par exemple :
+
+- Small : objets avec une petite aire de boîte englobante (par ex. petits animaux, petits objets).
+- Medium : objets avec une aire de boîte englobante moyenne (par ex. véhicules de taille moyenne, personnes).
+- Large : objets avec une grande aire de boîte englobante (par ex. grands véhicules, grandes structures).
+
+- En rappel moyen, nous avons également les colonnes Det1, Det10, Det100 : celles-ci font référence aux différents seuils de confiance utilisés pour la détection d'objets. La notation « DetX » représente le seuil de confiance utilisé pour déterminer si une prédiction est considérée comme un vrai positif ou un faux positif.
+
+Par exemple :
+
+- Det1 : le modèle considère une prédiction comme un vrai positif si son score de confiance est supérieur au seuil de confiance le plus élevé (par ex. la prédiction top 1).
+- Det10 : le modèle considère une prédiction comme un vrai positif si son score de confiance est supérieur au seuil de confiance top 10.
+- Det100 : le modèle considère une prédiction comme un vrai positif si son score de confiance est supérieur au seuil de confiance top 100.
+
+En évaluant l'AP et l'AR 50-95 à travers les données small, medium et large, vous pouvez obtenir des informations sur les performances de votre modèle à travers différentes tailles d'objets et niveaux de chevauchement. Cette approche fournit une compréhension plus complète des forces et faiblesses de votre modèle dans différents scénarios.
+
+## Qu'en est-il de la segmentation d'instances et de la segmentation d'images ?
+
+Toutes ces métriques ne sont pas uniquement utilisées pour la détection d'objets mais aussi pour la segmentation d'instances et la segmentation d'images.
+
+### Segmentation d'instances :
+
+En segmentation d'instances, l'objectif est non seulement de détecter les objets mais aussi de segmenter chaque instance de l'objet séparément. Cela implique de prédire à la fois la boîte englobante et le masque au niveau des pixels pour chaque instance. Les métriques d'évaluation sont étendues pour prendre en compte les aspects de détection et de segmentation.
+
+- Précision moyenne (AP) : l'AP pour la segmentation d'instances considère à la fois la précision des prédictions de boîtes englobantes et la qualité des masques au niveau des pixels. Elle est calculée en comparant les masques prédits aux masques de vérité terrain en utilisant l'IoU. Une prédiction est considérée correcte si la boîte englobante et le masque chevauchent suffisamment la vérité terrain. L'AP est calculée sur une plage de seuils IoU et moyennée.
+
+- Rappel moyen (AR) : similaire à l'AP, l'AR pour la segmentation d'instances considère à la fois la détection et la segmentation. Il mesure la capacité du modèle à rappeler les instances d'objets à différents seuils IoU. Une prédiction est considérée comme un vrai positif si son IoU avec la vérité terrain dépasse un certain seuil. L'AR est également calculé sur une plage de seuils IoU et moyenné.
+
+### Segmentation d'images :
+
+L'objectif de la segmentation d'images est d'attribuer une étiquette de classe à chaque pixel d'une image. La métrique principale utilisée est l'IoU, qui quantifie également la similarité entre le masque de segmentation prédit et le masque de vérité terrain pour chaque classe.
+
+Pour la segmentation d'images, l'IoU est utilisé pour mesurer la qualité des prédictions pixel par pixel. Il calcule le ratio de l'intersection des régions prédites et de vérité terrain sur leur union. L'IoU est calculé séparément pour chaque classe, puis l'IoU moyen sur toutes les classes est souvent rapporté.
+
+Il est important de noter que les détails exacts du calcul de ces métriques peuvent varier légèrement selon la tâche de segmentation spécifique, le dataset et le protocole d'évaluation.
+
+Par exemple, en segmentation et en segmentation d'images, ces métriques aident à quantifier la précision et la qualité des prédictions du modèle, fournissant des informations précieuses sur ses performances.
+
+<BlogInlineCTA
+  headline="Stop computing COCO metrics manually"
+  description="Picsellia automatically evaluates your models with mAP, precision, recall, and 10+ metrics — across every experiment. Used by 100+ computer vision teams."
+  primaryButtonText="Try Free — Evaluate Your Model in Minutes →"
+  primaryButtonUrl="/experiment-tracking"
+  blogSlug="coco-evaluation-metrics-explained"
+  ctaPosition="end"
+/>
+
+## Pour aller plus loin sur l'IoU
+
+L'IoU sert de métrique fondamentale pour évaluer les performances des modèles de vision par ordinateur, aidant les chercheurs et les praticiens à affiner leurs algorithmes. Bien que l'IoU fournisse des informations précieuses, il est important de noter qu'il présente certaines limitations, comme sa sensibilité à l'échelle et au ratio d'aspect des objets. Cette sensibilité peut conduire à des résultats trompeurs, en particulier pour des objets de formes et de tailles différentes.
+
+Pour surmonter cette limitation, des variantes de l'IoU ont été proposées, comme le GIoU (Generalized Intersection over Union) et le DIoU (Distance Intersection over Union).
+
+Ces variantes intègrent des informations géométriques supplémentaires pour fournir une évaluation plus robuste du chevauchement des boîtes englobantes, atténuant l'effet de l'échelle et du ratio d'aspect.

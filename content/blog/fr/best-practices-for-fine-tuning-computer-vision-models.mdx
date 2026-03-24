@@ -1,0 +1,186 @@
+---
+
+title: "Bonnes pratiques pour le fine-tuning des modèles de vision par ordinateur"
+description: "Cet article vous présente les bonnes pratiques pour le réglage des hyperparamètres, explorées à travers une tâche typique de CV avec TensorFlow et Keras-Tuner."
+date: "2023-02-22"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/best-practices-for-fine-tuning-computer-vision-models-hero.jpg"
+imageAlt: "Best Practices for Fine-Tuning Computer Vision Models"
+published: true
+tags: ["api", "computer-vision", "dataset-management", "deep-learning", "document-processing", "edge-deployment", "experiment-tracking", "foundation-models"]
+---
+
+Vous avez du mal à trouver des ressources qui vous guident dans le processus de réglage des hyperparamètres ?
+
+Cet article vous présente les bonnes pratiques pour le réglage des hyperparamètres, explorées à travers une tâche typique de vision par ordinateur avec TensorFlow et Keras-Tuner.
+
+## Introduction
+
+Le réglage des hyperparamètres dans les modèles de deep learning pour les applications de vision par ordinateur peut souvent être un processus complexe. L'entraînement et le réglage des réseaux de neurones impliquent encore une quantité étonnante de tâtonnements ! Malgré les performances améliorées que les modèles de deep learning offrent, ils s'accompagnent d'une procédure de réglage par essais-erreurs intensive. Même les experts peuvent se retrouver piégés dans une spirale d'essais-erreurs pour faire fonctionner ces réseaux !
+
+Les articles scientifiques présentent généralement un ensemble d'hyperparamètres optimaux, mais le processus de découverte de cet ensemble est rarement détaillé. De plus, trouver des ressources fournissant un plan généralisé pour le réglage des hyperparamètres est difficile (en voici [un](https://github.com/google-research/tuning_playbook) cependant ! [1]).
+
+Dans cet article, nous aborderons un scénario typique de vision par ordinateur. Nous partirons d'un modèle pré-entraîné et explorerons comment effectuer efficacement le réglage des hyperparamètres. Nous suivrons quelques `bonnes pratiques` documentées et combinerons des outils logiciels et notre expertise en deep learning pour explorer l'espace des hyperparamètres de manière méthodique.
+
+### Prérequis
+
+Avant de vous lancer dans le processus de fine-tuning, il est important de vous assurer que vous êtes bien préparé pour la tâche. Cela inclut :
+
+- Formuler clairement votre problème, définir et implémenter les [métriques de succès nécessaires](/post/key-metrics-to-monitor-computer-vision-solutions).
+- [Préparer et nettoyer votre dataset](/post/how-to-ensure-data-quality-best-practices) au point où consacrer du temps à l'architecture du modèle ait vraiment du sens.
+- Mettre en place un pipeline d'entraînement et d'évaluation. Cela facilite l'expérimentation rapide !
+
+Une fois ces critères remplis, vous pouvez commencer la partie amusante !
+
+## Le compromis exploration-exploitation
+
+Lors des premières étapes, votre objectif est de développer une intuition sur le problème. C'est la **phase d'exploration** où vous essayez de comprendre le comportement de l'entraînement du modèle.
+
+Les expériences sont coûteuses. Chaque expérience d'entraînement que vous exécutez doit avoir un objectif clair. Vous devez poser clairement une question à laquelle vous souhaitez répondre. Voici des exemples de questions que vous pourriez poser :
+
+- Quels paramètres semblent avoir le plus grand impact sur la perte de validation ?
+- Quels paramètres sont fortement interdépendants et devraient être réglés ensemble ?
+- Quelles sont de bonnes limites pour l'hyperparamètre X ?
+- Des complexités peuvent-elles être supprimées sans affecter les performances ?
+- Y a-t-il du surapprentissage ? Peut-il être résolu en augmentant la régularisation ?
+- Y a-t-il des gradients explosifs ? Sont-ils lissés par un taux d'apprentissage plus faible ou devriez-vous essayer le gradient clipping ?
+- Quel ensemble de paramètres converge le plus rapidement ?
+
+Une fois que vous avez une compréhension solide du problème, vous pouvez traduire ces connaissances en un espace de recherche d'hyperparamètres plus restreint. Cela marque le début de la **phase d'exploitation**.
+
+Pendant la phase d'exploitation, votre seul objectif est d'augmenter les performances de validation de votre modèle. Vous pouvez utiliser des algorithmes de recherche, tels que l'optimisation bayésienne ou l'optimisation Hyperband, pour rechercher efficacement les valeurs d'hyperparamètres les plus optimales dans l'espace de recherche défini. Ces algorithmes peuvent fournir d'excellents résultats lorsqu'un expert définit un « bon » espace de recherche.
+
+## 5 bonnes pratiques pour le réglage des hyperparamètres
+
+- **Agissez comme un scientifique !** Lors de toute expérience d'entraînement, il y a 3 types de paramètres : scientifiques, de nuisance et fixes.
+
+- Paramètres scientifiques : ceux que vous explorez actuellement et dont vous tentez de comprendre les effets.
+- Paramètres de nuisance : paramètres fortement interdépendants avec les paramètres scientifiques. Ils doivent être réglés en relation les uns avec les autres. Par exemple, le taux d'apprentissage est un paramètre de nuisance lorsque le paramètre scientifique est le type d'optimiseur. Vous devez d'abord trouver un taux d'apprentissage correct pour chaque optimiseur avant de les comparer.
+- Paramètres fixes : si ce n'est pas scientifique ou de nuisance, gardez-le fixe. Vous ne voulez pas qu'il interagisse avec les performances. Si vous changez plusieurs paramètres à la fois, vous ne pourrez pas tirer de réponses significatives de vos expériences !
+
+- **Essayez d'itérer rapidement.** Sélectionnez une taille de batch qui maximise l'utilisation du GPU. Cela aidera votre entraînement à converger plus vite. [La recherche a montré](https://arxiv.org/abs/1811.03600) [2] que la taille du batch n'affecte pas significativement les performances finales **à condition que** d'autres paramètres (par ex. taux d'apprentissage, régularisation) soient ajustés en conséquence par rapport à la taille du batch.
+
+En général, la plus grande taille de batch que vous pouvez utiliser sera la meilleure. N'utilisez pas une taille de batch plus grande si elle ralentit l'entraînement et ne traitez pas la taille de batch comme un hyperparamètre. Choisissez une taille de batch et gardez-la.
+
+- **Inspectez toujours les courbes d'entraînement.** Parcourir des dizaines de graphiques juste pour régler un modèle peut être fastidieux. Nous sommes tous coupables de ne pas les inspecter de temps en temps. Cependant, une seule valeur de métrique peut vous dire tellement de choses... Étudier les courbes d'entraînement d'au moins les 2-3 meilleurs modèles de chaque expérience vous donnera beaucoup plus d'informations. Le surapprentissage, l'explosion des gradients, la stagnation des performances et bien plus peuvent être détectés à travers les graphiques.
+
+- **Automatisez la génération de graphiques importants** (oui, encore des graphiques). Essayez de tracer le plus d'informations possible. Plus vous avez de courbes d'entraînement, d'histogrammes de poids, de nuages de points ou de [graphiques en coordonnées parallèles](https://en.wikipedia.org/wiki/Parallel_coordinates), plus vous pouvez tirer d'informations de vos expériences.
+
+Si vous devez faire des efforts pour les créer, vous serez moins enclin à les étudier. Des outils comme Tensorboard et le [**suivi d'expériences de Picsellia**](/experiment-tracking) offrent une meilleure alternative au tracé manuel, alors assurez-vous d'en utiliser un.
+
+- **Exécutez plusieurs expériences identiques** et calculez les valeurs moyennes et d'écart-type. Il n'est pas rare d'avoir des « modèles chanceux » qui performent bien grâce à une initialisation favorable, mais relancer la même expérience peut révéler des performances bien inférieures.
+
+Je sais, les budgets de calcul peuvent être un facteur limitant. Gardez juste à l'esprit que plus vous avez d'exécutions, plus vous pouvez être confiant dans le résultat.
+
+## Fine-tuning des modèles de vision par ordinateur pré-entraînés
+
+### Un cas de vision par ordinateur en biologie
+
+Posons le scénario suivant. Vous êtes ingénieur dans une startup opérant dans le **secteur de la biotechnologie**. On vous demande de déployer un modèle de deep learning pour la tâche de vision par ordinateur suivante : détecter les cellules contaminées par le paludisme dans des images de microscopie.
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-0.png)
+*Fig.1 : Exemples du dataset*
+
+Pour plusieurs raisons, le modèle doit être léger et fonctionner sur un dispositif edge intégré dans des microscopes. Vous vous tournez vers [TensorFlow Hub](https://www.tensorflow.org/hub), un dépôt en ligne de modèles de deep learning pré-entraînés, à la recherche d'un modèle qui correspond. Vous tombez sur [MobileNet V3](https://arxiv.org/abs/1905.02244)[3].
+
+MobileNet V3 est une architecture de réseau de neurones profond conçue spécifiquement pour les applications edge. Elle est connue pour sa légèreté, sa haute précision et sa vitesse d'inférence rapide, en faisant un choix idéal pour la [vision par ordinateur en edge](/post/optimize-computer-vision-models-on-the-edge). Avec votre dataset nettoyé en main, vous pouvez maintenant affiner le modèle MobileNet V3 pour mieux s'adapter à votre cas d'usage spécifique.
+
+Pour notre cas, j'ai empilé une couche linéaire de 100 neurones et une couche de classification avec fonction d'activation softmax au-dessus de l'extracteur de caractéristiques pré-entraîné. De plus, j'ai déjà mis en place un pipeline de données simple et mon code d'entraînement est prêt.
+
+Cela me qualifie pour l'étape suivante !
+
+### Obtenir des informations
+
+Mon système supporte une taille de batch allant jusqu'à 248 pour ce dataset. C'est suffisamment grand pour fournir des itérations rapides, donc je m'y tiens.
+
+En commençant par ma première expérience, j'essaie 2 optimiseurs différents et observe les effets sur la convergence. Influencent-ils beaucoup la perte de validation ? L'*optimiseur* est le paramètre expérimental durant cette phase. Cependant, le *taux d'apprentissage* est un paramètre de nuisance, donc je peux avoir besoin d'essayer au moins deux valeurs différentes. Le nombre d'optimiseurs et de taux d'apprentissage que vous choisissez de tester dépendra de votre budget de calcul et des objectifs du projet.
+
+Comme nous l'avons mentionné, il est important d'observer les graphiques d'apprentissage et pas seulement la métrique de succès.
+
+Je commence avec l'optimiseur Adam, un lr=0.003 standard, et entraîne pendant 10 époques en utilisant un arrêt précoce et un planificateur simple de réduction du taux d'apprentissage avec un facteur de 0,3 et une patience de 2.
+
+Évaluation sur l'ensemble de validation :
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-1.png)
+
+Pas un mauvais début...
+
+Cependant, les graphiques révèlent plus d'informations. Premièrement, nous observons comment la perte de validation commence à augmenter après l'époque 5, indiquant la présence de surapprentissage. **Cependant**, puisque la précision de validation performe bien, je serais tenté d'augmenter le nombre d'époques et la patience de l'arrêt précoce à la place. Puisque l'augmentation de la précision suggère que la convergence est toujours en cours. Gardez à l'esprit qu'à l'époque 8, le planificateur a réduit le taux d'apprentissage.
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-2.png)
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-3.png)
+*Fig 2 : Graphiques d'apprentissage. Surapprentissage ou simplement augmenter les époques d'entraînement et réduire la patience de l'arrêt précoce ?*
+
+Un rapide coup d'œil aux histogrammes de poids révèle que les premières couches du réseau ne changent pas beaucoup (fig 3). Nous pouvons voir comment elles restent principalement stables à travers les époques. Cela peut révéler un problème de gradient qui s'estompe. Cependant, dans notre cas, nous nous attendons à ce que l'apprentissage soit concentré dans les dernières couches.
+
+En effet, la figure 4 montre que les dernières couches de MobileNet subissent de légers changements, tandis que le classificateur (figure 5) est l'endroit où la majeure partie de l'apprentissage se concentre, en particulier sur les biais.
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-4.png)
+*Fig 3 : Les premières couches de MobileNet restent presque entièrement inchangées. On peut supposer qu'il n'y a pas besoin qu'elles changent beaucoup de toute façon.*
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-5.png)
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-6.png)
+*Fig 4 : Les dernières couches de MobileNet sont affinées et des changements plus marqués dans les valeurs de poids sont observés*
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-7.png)
+*Fig 5 : La couche de classification subit des changements plus importants. L'apprentissage est principalement concentré ici.*
+
+**J'espère qu'il devient maintenant clair pourquoi inspecter de nombreux graphiques d'entraînement est important pour l'entraînement en deep learning. Ils sont une source d'information très riche.**
+
+Je procède ensuite au test pour savoir si un taux d'apprentissage plus élevé peut fournir une convergence plus rapide sans affecter les performances. Il s'avère que lr=0.03 n'était pas une bonne valeur de paramètre de nuisance pour l'optimiseur Adam, résultant en des performances sous-optimales et un comportement explosif. **Il est intéressant de noter comment les poids des premières couches ont été sévèrement affectés, ce qui n'est habituellement pas notre intention lors du fine-tuning de modèles pré-entraînés.**
+
+
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-8.png)
+*Fig 6 : Poids sévèrement affectés d'une couche précoce de l'extracteur de caractéristiques.*
+
+‍
+
+En suivant une procédure similaire pour mes autres expériences, j'ai acquis suffisamment d'informations sur le problème pour concevoir un espace de recherche restreint pour la phase d'exploitation, où Keras-Tuner trouvera les valeurs les plus optimales en utilisant l'[optimisation bayésienne](/post/is-automl-replacing-data-scientists).
+
+### **Réglage automatique des modèles pré-entraînés**
+
+Je vais maintenant laisser le logiciel de réglage trouver la meilleure combinaison de paramètres. Je définis le modèle et l'espace de recherche dans la classe `MobileNetHyperModel` puis j'exécute la recherche avec l'optimisation bayésienne. Dans mon cas, Keras-Tuner a été utilisé, mais de nombreux outils similaires sont disponibles.
+
+Je fixe mon budget computationnel à 10 et laisse chaque modèle s'entraîner pendant 10 époques avec l'arrêt précoce activé. Il ne reste plus qu'à attendre que l'algorithme finisse sa recherche. *Si vous êtes contraint par le budget computationnel, vous pouvez choisir d'exécuter la recherche sur une fraction du dataset, disons 50 %, et une fois que vous avez un modèle optimal, vous pouvez l'entraîner à nouveau sur le dataset complet.*
+
+
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-9.png)
+*Fig 7 : Exemple de sortie de Keras Tuner pendant la recherche. Un modèle optimal a déjà été trouvé à l'essai 3 !*
+
+‍
+
+Enfin, j'extrais la meilleure combinaison de paramètres et entraîne le modèle optimal pendant 10 époques. D'abord, j'évalue sur mon dataset de validation. Puisque je suis très satisfait des performances du modèle sur le dataset de validation, et que les graphiques d'entraînement semblent bons sans problèmes évidents, je décide d'arrêter le réglage ici et d'utiliser ce modèle pour la production.
+
+‍
+
+Avant de le déployer, je l'évalue sur le dataset de test pour obtenir une évaluation non biaisée. Cette performance devrait servir d'indication de ce à quoi s'attendre en production.
+
+
+
+![Best practices for fine tuning computer vision models](/images/blog/best-practices-for-fine-tuning-computer-vision-models-img-10.png)
+*Fig 8 : Évaluation du modèle final sur le dataset de test.*
+
+Après le déploiement du modèle, vous expérimenterez très probablement une dégradation des performances due aux [dérives de données](/post/what-is-data-drift-and-how-to-detect-it-with-mlops), donc avoir une référence de base est important. L'utilisation de [boucles de rétroaction](/post/feedback-loops-and-versioning-in-computer-vision) est un moyen efficace de combattre la dégradation des performances des modèles de machine learning déployés.
+
+## Réflexions finales
+
+Le fine-tuning des modèles de deep learning peut devenir assez fastidieux et chronophage. Cependant, les résultats peuvent venir plus vite si vous avez une stratégie prédéfinie, un outil de visualisation, un outil de réglage et, bien sûr, une expertise en deep learning et dans votre domaine sous-jacent !
+
+Dans cet article de blog, nous avons exploré un cas typique en vision par ordinateur. L'article visait à fournir des informations précieuses et à servir d'inspiration plutôt que de guide de programmation détaillé.
+
+Nous avons travaillé avec un modèle de deep learning pré-entraîné et l'avons affiné sur un dataset personnalisé. Nous avons exploré certaines bonnes pratiques pour le fine-tuning des modèles de deep learning et les avons appliquées pour affiner un modèle léger MobileNet de vision par ordinateur sur un dataset d'images biologiques.
+
+**RÉFÉRENCES**
+
+- [Deep Learning Tuning Playbook](https://github.com/google-research/tuning_playbook) par Google
+- [Measuring the Effects of Data Parallelism on Neural Network Training. Shallue et al. 2018](https://arxiv.org/abs/1811.03600)
+- [Searching for MobileNet V3. Howard et al. 2019](https://arxiv.org/abs/1905.02244)
+- [Weight Histograms explanation ](https://stackoverflow.com/questions/42315202/understanding-tensorboard-weight-histograms)
+- [Transfer Learning with TensorFlow Hub](https://www.tensorflow.org/tutorials/images/transfer_learning_with_hub#train_the_model)
+- [Practical Tutorial on Keras Tuner (Blog post by the author)](https://medium.com/towards-artificial-intelligence/keras-tuner-tutorial-hyperparameter-optimization-tensorflow-keras-computer-vision-example-c9abbdad9887)

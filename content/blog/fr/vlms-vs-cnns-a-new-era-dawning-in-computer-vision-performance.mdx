@@ -1,0 +1,185 @@
+---
+
+title: "VLMs vs. CNNs : une nouvelle ere s'annonce-t-elle pour les performances en vision par ordinateur ?"
+description: "Decouvrez si les Vision Language Models (VLMs) surpassent les reseaux de neurones convolutifs (CNNs) en vision par ordinateur."
+date: "2024-06-26"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-hero.jpg"
+imageAlt: "VLMs vs. CNNs: Is a New Era Dawning in Computer Vision Performance?"
+published: true
+tags: ["classification", "computer-vision", "deep-learning", "object-detection"]
+---
+
+L'ascension fulgurante des grands modeles de langage (LLMs) comme ChatGPT et GPT-4 a captive notre imagination par leurs puissantes capacites de comprehension et de generation de texte semblable a celui des humains dans le domaine du traitement du langage naturel (NLP). Cette avancee remarquable a entraine une vague d'enthousiasme et de speculation [concernant le potentiel de leur equivalent visuel — les vision language models (VLMs) —](https://medium.com/voxel51/why-2023-was-the-most-exciting-year-in-computer-vision-history-so-far-8a812aa7a11f) pour revolutionner la vision par ordinateur avec leur capacite multifacette a traiter de maniere fluide les informations textuelles et visuelles. Compte tenu de cette capacite, il est plausible de suggerer que les VLMs sont superieurs aux CNNs conventionnels pour les taches de vision par ordinateur.
+
+Malgre cette speculation croissante, des questions cruciales demeurent : Les VLMs sont-ils vraiment la solution miracle pour toutes les taches de vision par ordinateur, ou les speculations sur les VLMs sont-elles une surestimation potentielle de leurs capacites et avantages ?
+
+Dans cet article, nous explorons les differences fondamentales entre les CNNs et les VLMs. Nous menons ensuite une comparaison pratique et une analyse approfondie des performances de ces deux types de modeles sur deux taches de vision par ordinateur pour evaluer si les VLMs inaugurent une nouvelle ere en vision par ordinateur ou si les CNNs restent tres pertinents.
+
+## De la convolution aux VLMs : les VLMs ont-ils bouleverse le statu quo des CNNs dans les applications de vision par ordinateur ?
+
+**TL;DR :** Les fondamentaux du debat CNN vs. VLM commencent par l'examen des differences de conception architecturale. Les CNNs utilisent un fort biais inductif pour l'information spatiale afin de capturer les patterns locaux et de construire progressivement des representations plus abstraites. Cela excelle souvent dans les taches necessitant une localisation precise et des details fins. D'autre part, les VLMs integrent des vision transformers (ViTs), leur permettant de modeliser des relations complexes et d'exploiter des informations multimodales, les rendant mieux adaptes aux taches necessitant une comprehension plus profonde du contenu de l'image et de sa connexion avec le langage.
+
+Les CNNs s'appuient sur des couches convolutives pour extraire des caracteristiques hierarchiques des images. Ils utilisent des techniques de traitement par biais inductif pour apprendre les relations spatiales. Cette technique applique des filtres qui balaient l'image en grille a travers les couches de convolution, leur permettant de capturer les patterns locaux et de construire progressivement des representations plus abstraites. Cette approche par biais inductif s'est averee tres efficace pour des taches comme la classification d'images et la detection d'objets, ou la comprehension des relations spatiales est cle.
+
+Inversement, les VLMs integrent souvent des vision transformers (ViTs), qui etendent l'architecture transformer au traitement d'images en divisant les images en patches et en les traitant comme des sequences de tokens. Cela permet aux VLMs de modeliser des connexions complexes entre les donnees textuelles et visuelles, capturant potentiellement le contexte global plus efficacement que les CNNs. Cela les rend bien adaptes aux taches necessitant la comprehension de la signification semantique des images et leur connexion avec le langage, comme le sous-titrage d'images et la reponse visuelle aux questions.
+
+Le ViT est egalement tres utile pour echanger rapidement des informations entre ces pixels eloignes. Considerez une image ou vous avez besoin de plus d'un element d'information pour comprendre ce qui se passe, et ces elements sont disperses dans la scene.
+
+Les propositions de valeur des CNNs ou des VLMs basees sur leurs conceptions architecturales presentent des implications differentes en termes de :
+
+- Ressources de calcul
+- Scalabilite
+- Maturite et recherche approfondie
+
+‍
+
+## **Ressources de calcul**
+
+La principale facon d'ameliorer les VLMs est de les rendre plus grands. En raison de l'architecture ViT, ils necessitent beaucoup de donnees pour l'entrainement afin d'atteindre un bon niveau de performance initial. En consequence, les VLMs necessitent souvent plus d'efforts d'entrainement et de ressources computationnelles pour performer au meme niveau que les CNNs. Cela fait que les VLMs necessitent d'importantes ressources de calcul pour l'entrainement et le deploiement.
+
+### **Scalabilite**
+
+Les CNNs peuvent etre entraines et deployes plus efficacement que les VLMs, en particulier pour les datasets a grande echelle. Cela est du a leur architecture plus simple et a la capacite d'exploiter le materiel de traitement parallele pour des calculs plus rapides.
+
+### **Maturite et recherche approfondie**
+
+Les CNNs ont une longue histoire de recherche et de developpement, avec une vaste quantite de litterature, de modeles pre-entraines et de bonnes pratiques etablies disponibles. Cette maturite en fait un choix fiable pour de nombreuses taches de vision par ordinateur. Bien qu'en progression rapide, les VLMs sont encore un domaine relativement nouveau avec une recherche et un developpement en cours.
+
+Apres avoir examine les propositions de valeur et les implications de ces modeles a travers le prisme de leurs conceptions architecturales fondamentales, il n'est pas facile de conclure que les VLMs sont entierement une meilleure option que les CNNs. Cependant, leurs differences architecturales forment deja la base de leur performance potentielle en pratique sur differentes taches de vision par ordinateur. A l'aide d'une etude de cas pratique, analysons plus en detail leurs differences, avantages et implications.
+
+## **Etude de cas**
+
+Nous souhaitons integrer des modeles de classification et de detection d'objets dans notre plateforme de vision par ordinateur pour permettre l'etiquetage et l'annotation automatiques. Le systeme fonctionne sur un H100. Cependant, nous ne savons pas si un CNN ou un VLM est optimal pour notre cas d'usage et les specifications de notre systeme.
+
+L'objectif est de mener une analyse comparative complete et d'explorer les avantages et les limitations de chaque approche. Pour y parvenir, nous evaluons leurs capacites en fonction des criteres suivants : la precision (c'est-a-dire classification et detection), le temps d'inference, la capacite a generaliser sur des donnees non vues, et la praticite pour l'integration avec des plateformes de vision par ordinateur en expansion.
+
+### Tache de classification
+
+Nous utilisons un dataset de pneus defectueux ou en bon etat pour determiner l'efficacite des modeles a classifier avec precision l'etat des pneus pour la tache de classification.
+
+### CNN
+
+Nous entrainons un modele YOLOv8 sur le dataset. Apres avoir entraine ces modeles sur 100 epochs, les resultats montrent une amelioration significative dans la classification des pneus comme defectueux ou en bon etat. Le modele classifie correctement les bons pneus 80 % du temps et les pneus defectueux 82 % du temps.
+
+### Tableau de performance
+
+
+     Epochs
+     Precision de validation
+     Perte de test
+
+
+     100
+     0.8709677457809448
+     Suit une diminution jusqu'a stabilisation apres 80 epochs
+
+
+### VLM
+
+Nous avons affine plusieurs VLMs sur le dataset de pneus, dont LLAVA v1.5, LLAVA v1.5 LoRA, LLAVA v1.5 LoRA affine, MiniGPT v2 et MiniGPT v2 affine.
+
+### Tableau recapitulatif des metriques
+
+
+
+    Tableau de performance des modeles
+
+
+
+
+            Modele
+            Precision sur l'ensemble de test
+            Temps d'inference moyen (secondes)
+
+
+            LLAVA v1.5
+            0.704
+            0.3
+
+
+            LAVA v1.5 LoRA
+            0.615
+            0.2
+
+
+            LLAVA v1.5 LoRA affine
+            0.615
+            0.2
+
+
+            MiniGPT v2
+            0.577
+            0.1
+
+
+            MiniGPT v2 affine
+            0.959
+            0.1
+
+
+
+‍
+
+Le tableau montre que le modele MiniGPT v2 a significativement ameliore sa precision apres l'affinage, passant de 0.577 a 0.959 tout en maintenant un temps d'inference rapide. En revanche, le modele LLAVA v1.5 LoRA n'a pas ameliore sa precision apres l'affinage, bien que le temps d'inference ait ete legerement reduit.
+
+### Resume des resultats
+
+A la fin de l'experience, le VLM MiniGPT v2 affine etait le modele le plus performant, avec une precision de 0.959 tout en maintenant un temps d'inference rapide. Cependant, le modele YOLOv8 demontre egalement une grande efficacite, avec une precision de validation d'environ 0.87. Ce resultat suggere que les CNNs restent competitifs, surtout lorsqu'ils sont optimises pour des taches specifiques et entraines sur un nombre adequat d'epochs.
+
+Compte tenu de ces facteurs, les VLMs peuvent potentiellement ameliorer les resultats au-dela des CNNs standards, surtout apres un processus d'affinage cible. Neanmoins, le choix entre un CNN comme YOLOv8 et un VLM comme MiniGPT v2 pourrait dependre du contexte applicatif specifique, de la complexite du dataset et des ressources disponibles pour l'entrainement et l'affinage.
+
+## Detection d'objets
+
+Nous utilisons un dataset de vignoble "raisins de cuve" pour la tache de detection d'objets. L'objectif est de detecter les grappes de raisin dans chaque image. Nous mesurons la performance et la precision avec lesquelles ces modeles avances peuvent identifier et localiser les grappes de raisin dans un environnement naturel et varie, ce qui est crucial pour la gestion agricole et les applications de recolte automatisee.
+
+### CNN
+
+Les resultats obtenus apres l'entrainement du modele YOLOv8 sur le dataset "Wine Grape" pour seulement 4 epochs suggerent des performances prometteuses. Les scores de confiance pour la detection des grappes de raisin varient entre 0.3 et 0.9, avec une moyenne autour de 0.6, indiquant une precision relativement elevee pour un modele au debut de sa phase d'apprentissage. Cela demontre la capacite du modele a identifier correctement les grappes de raisin dans diverses conditions de vignoble.
+
+- La perte sur les boites de validation (val_box_loss) diminue regulierement, suggerant que le modele est plus precis dans la prediction des emplacements d'objets a mesure que l'entrainement progresse.
+- La precision moyenne sur l'intersection sur l'union (mAP50) montre une tendance a la hausse, ce qui signifie que le modele peut de plus en plus superposer ses predictions de detection avec les annotations reelles.
+- La metrique de rappel augmente egalement, suggerant que le modele manque moins d'objets pertinents dans l'image.
+- La precision reste relativement stable, indiquant que le nombre de faux positifs n'augmente pas significativement pendant les premieres etapes de l'entrainement.
+
+Ces resultats indiquent que le modele a un bon potentiel d'apprentissage, meme avec peu d'epochs. La coherence des predictions et la rarete des boites manquees demontrent les capacites avancees de YOLOv8 pour la detection d'objets dans des environnements naturels.
+
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-0.png)
+
+### VLM
+
+MiniGPT-v2 et LLAVA v1.5 montrent les resultats les plus prometteurs parmi tous les VLMs affines.
+
+### LLAVA
+
+Avant l'affinage, LLAVA v1.5 etait inconsistant dans la detection des grappes de raisin, avec des detections manquees et parfois une identification imprecise des zones d'interet. Ces erreurs peuvent etre attribuees a une generalisation insuffisante du modele ou a une difficulte a distinguer les grappes de raisin dans un environnement complexe comme un vignoble.
+
+Les resultats apres l'affinage de LLAVA v1.5 montrent que, malgre l'amelioration, le modele a toujours du mal a atteindre un niveau de precision eleve dans la detection des grappes de raisin. Meme apres un entrainement extensif, le modele echoue encore a detecter et identifier de maniere coherente les regions pertinentes, suggerant qu'il a certaines limitations.
+
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-1.png)
+
+Le fait que le modele performe mieux sur l'ensemble d'entrainement mais pas sur l'ensemble de test souleve des preoccupations concernant sa capacite de generalisation. Cela suggere que le modele pourrait etre en situation de surapprentissage ou memoriser des details specifiques des donnees d'entrainement au lieu de comprendre les caracteristiques generales necessaires pour bien performer sur de nouvelles donnees non vues.
+
+Ces observations indiquent que LLAVA v1.5, bien qu'etant un modele de langage visuel avance, peut ne pas etre adapte a la detection d'objets dans des scenarios tres variables sans ajustements supplementaires ou exploration de techniques d'entrainement alternatives.
+
+### MiniGPT-v2
+
+Pour MiniGPT-v2, lorsqu'il est applique au meme dataset "Wine Grape", les resultats montrent egalement une marge d'amelioration significative. Avant l'affinage, le modele a reussi a effectuer quelques detections precises, mais il y a aussi des inconsistances dans les dimensions des cadres englobants et une certaine difficulte a identifier de maniere coherente la region d'interet.
+
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-2.png)
+
+Apres l'affinage, la localisation des grappes de raisin s'ameliore, indiquant une meilleure comprehension des caracteristiques visuelles pertinentes. Cependant, nous avons observe des disparites dans la taille des detections, ce qui pourrait entrainer des erreurs de quantification dans les applications pratiques. De plus, le temps d'inference varie significativement, ce qui pose un probleme pour les applications en temps reel.
+
+![Vlms vs cnns a new era dawning in computer vision performance](/images/blog/vlms-vs-cnns-a-new-era-dawning-in-computer-vision-performance-img-3.png)
+
+La presence de variations dans le temps d'inference, meme apres l'affinage, peut indiquer la volatilite du modele face aux variations intrinseques des images de test. Cela souleve des questions sur la robustesse et la fiabilite de MiniGPT-v2 pour une utilisation dans des conditions reelles, ou la coherence et la previsibilite sont essentielles.
+
+### Resume des resultats
+
+- YOLOv8 s'avere prometteur, meme apres un entrainement de seulement 4 epochs, avec des metriques indiquant une capacite croissante a detecter les grappes de raisin. La perte de validation et la precision moyenne sur l'intersection sur l'union (mAP50) montrent que YOLOv8 pourrait devenir tres efficace pour la detection dans des environnements naturels complexes avec un entrainement prolonge.
+- LLAVA v1.5, un modele VLM, s'est ameliore apres l'affinage mais a eu du mal avec la precision et la generalisation. Cela suggere que le modele pourrait beneficier de donnees d'entrainement plus diversifiees et d'une attention particuliere pour eviter le surapprentissage. La difference notable entre les performances sur les ensembles d'entrainement et de test indique une limitation dans la capacite du modele a generaliser au-dela des donnees d'entrainement.
+- MiniGPT-v2 s'est egalement ameliore apres l'affinage, en particulier dans la localisation des grappes de raisin. Cependant, il reste une variabilite dans la taille des detections et le temps d'inference qui pourrait impacter son application en temps reel, soulevant des preoccupations quant a sa fiabilite pour des applications pratiques en agriculture de precision.
+
+Lors de la mise en oeuvre pratique des VLMs ou des CNNs, des facteurs tels que le calcul, la scalabilite, etc., contribuent a determiner s'ils sont la meilleure option pour votre cas d'usage. L'examen des performances de notre etude de cas sur les taches de classification et de detection d'objets montre leurs forces et faiblesses variees en fonction de ces facteurs. Par consequent, vous devez garder a l'esprit que le choix entre les CNNs et les VLMs depend de la tache specifique, des ressources disponibles et des compromis souhaites. Nous esperons que cette analyse complete vous offre des informations precieuses sur la vision par ordinateur et guide vos decisions lors du choix entre VLMs et CNNs. Essayez [Picsellia](/) pour vos solutions de vision par ordinateur.

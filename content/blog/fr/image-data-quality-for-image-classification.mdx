@@ -1,0 +1,179 @@
+---
+
+title: "Comment garantir la qualité d'un dataset d'images pour la classification d'images"
+description: "Apprenez à résoudre les principaux problèmes de qualité des datasets, et comment optimiser la qualité globale de vos modèles d'IA pour les cas d'usage de classification d'images."
+date: "2022-01-04"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/image-data-quality-for-image-classification-hero.png"
+imageAlt: "How to Ensure Image Dataset Quality In Image Classification"
+published: true
+tags: ["annotation", "classification", "computer-vision", "dataset-management", "healthcare", "model-training", "tools-comparison", "transfer-learning"]
+---
+
+Tout projet en vision par ordinateur commence par une stratégie de collecte de données et la création d'un dataset. Depuis plusieurs années, les gens se sont concentrés sur le développement de modèles sans investir autant que nécessaire dans la création de données d'entraînement. En fait, créer un dataset d'images était véritablement compliqué et chronophage, et était souvent fait par des ingénieurs ou des stagiaires de manière plutôt inefficace. Cette difficulté a ouvert la voie à une génération de startups d'outils d'étiquetage et d'outils open source tels que :
+
+[• Labelbox](https://labelbox.com)
+
+[• Supervise.ly](http://supervise.ly)
+
+[• CVAT](https://cvat.org/)[‍](https://www.v7labs.com/)
+
+[• V7 Labs](https://www.v7labs.com/)
+
+[• Rectlabel](https://rectlabel.com/)
+
+**Ces temps sont révolus**. Les outils d'étiquetage deviennent une commodité. Les entreprises d'IA peuvent maintenant exploiter une multitude d'outils et de services pour faire créer leurs datasets.
+
+**Malheureusement, de nombreuses entreprises rencontrent encore des problèmes avec la performance de leurs modèles d'IA.**
+
+La plupart de ces problèmes proviennent de la qualité du dataset lui-même. Et, par qualité nous entendons :
+
+1. La quantité de données dans le dataset
+
+2. La quantité de données mal étiquetées dans votre dataset
+
+3. La pertinence des images à l'intérieur du dataset
+
+Dans cet article de blog, nous allons passer en revue ces 3 points et comment les surveiller afin d'optimiser la qualité globale de votre dataset pour vos cas d'usage. Nous nous concentrerons sur la classification d'images comme exemple.
+
+## **Comment savoir si vous avez assez d'images dans votre dataset ?**
+
+### **1. Règles empiriques pour déterminer le nombre minimum d'images**
+
+Il peut être compliqué de déterminer le nombre d'images nécessaires dans votre dataset d'images pour une tâche de classification d'images. Cependant, il existe de bonnes règles empiriques que vous pouvez suivre. Selon l'une d'entre elles, environ 1000 exemples par classe sont une quantité décente pour commencer.
+
+Mais, ces types de règles ne sont pas strictement "data-science-ish". Prenons la règle des 1000 comme exemple (appelons-la ainsi). Elle peut être complètement fausse si vous considérez le transfer learning.
+
+Heureusement, il existe des moyens plus robustes de déterminer si vous avez la bonne quantité de données dans votre ensemble d'entraînement. Le premier serait la **méthodologie de détermination de la taille d'échantillon** (Sample-Size Determination Methodology) par Balki et al. [expliquée par Keras.io](https://keras.io/examples/keras_recipes/sample_size_estimate/).
+
+### **2. La méthodologie de détermination de la taille d'échantillon expliquée**
+
+*"Une revue systématique des* [*méthodologies de détermination de la taille d'échantillon*](https://www.researchgate.net/publication/335779941_Sample-Size_Determination_Methodologies_for_Machine_Learning_in_Medical_Imaging_Research_A_Systematic_Review) *(Balki et al.) fournit des exemples de plusieurs méthodes de détermination de la taille d'échantillon. Dans cet exemple, un schéma de sous-échantillonnage équilibré est utilisé pour déterminer la taille d'échantillon optimale pour notre modèle. Cela se fait en sélectionnant un sous-échantillon aléatoire composé de Y images et en entraînant le modèle à l'aide du sous-échantillon. Le modèle est ensuite évalué sur un ensemble de test indépendant. Ce processus est répété N fois pour chaque sous-échantillon avec remplacement pour permettre la construction d'une moyenne et d'un intervalle de confiance pour la performance observée."*
+
+**Cette méthode est simple à comprendre** mais réellement efficace. En résumé, elle consiste à entraîner plusieurs modèles N fois avec un sous-ensemble de plus en plus grand de vos datasets (disons 5%, 10%, 25% et 50%). Une fois cela fait, enregistrez la précision moyenne et l'écart-type pour ajuster une courbe exponentielle afin de prédire le nombre optimal d'images pour obtenir un certain objectif de précision.
+
+Pour rendre les choses plus claires, visualisons avec un exemple simple.
+
+**Disons que nous avons un ensemble d'entraînement de 1000 images réparties équitablement entre chats et chiens**.
+
+1. Entraînez 5 modèles sur 5% de l'ensemble → 50 images et enregistrez la précision pour chacun d'entre eux
+
+**Modèle 1 :** *[0.3 , 0.33, 0.28, 0.35, 0.26]* (Liste de précision pour chaque modèle)
+
+2. Faisons la même chose avec 10% de l'ensemble → 100 images et enregistrons la précision
+
+3. Répétez cela avec 20%, 35% et 50% de votre ensemble
+
+Maintenant, vous devriez avoir 5 listes de précisions correspondant à 5 entraînements différents pour 5 tailles différentes de sous-ensembles d'entraînement.
+
+Ensuite, il vous suffit de calculer la précision moyenne et l'écart-type de chaque liste, et d'ajuster une courbe exponentielle sur ces points de données. Vous devriez obtenir une courbe ressemblant à ceci.
+
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-0.png)
+
+En regardant l'extrapolation de la courbe exponentielle, vous devriez être en mesure de déterminer si vous avez assez d'images dans votre ensemble d'entraînement pour atteindre votre objectif de précision.
+
+Un lien vers la méthodologie complète et le code peut être trouvé [ici.](https://keras.io/examples/keras_recipes/sample_size_estimate/)
+
+## **Comment identifier les données mal étiquetées dans mon dataset ?**
+
+Il y a plusieurs façons de répondre à cette question :
+
+La première est purement **opérationnelle** → Quel était le workflow utilisé pour étiqueter mes images ?
+
+La seconde est plus **analytique** → Comment détecter automatiquement les données mal étiquetées ?
+
+### **1. Construire un workflow d'annotation conçu pour la meilleure qualité**
+
+Il y a quelques principes que vous devez établir avant de créer un dataset :
+
+**1. Face à l'ambiguïté, résistez à la tentation de deviner**
+
+*Ceci est inspiré du zen de Python. Cela signifie que vous devez établir des directives très claires pour vos annotateurs. Le pire scénario est que votre annotateur prenne une décision différente pour une classe ambiguë.*
+
+**2. Trois c'est toujours mieux qu'un**
+
+*Dans la mesure du possible, assurez-vous que plusieurs personnes annotent les mêmes images et extrayez chaque image qui a des étiquettes différentes créées, pour comprendre précisément pourquoi les annotateurs sont en désaccord sur ces images. Essayez toujours d'obtenir un score de consensus de 100%. Dans les cas où les humains sont en désaccord, il est très probable que votre CNN ne performera pas bien non plus.*
+
+**3. Avoir une troisième personne qui révise le dataset -** *Désolé, je n'ai pas de bonne explication pour celui-ci.*
+
+*Le biais humain est une réalité. C'est toujours une bonne idée d'avoir un acteur tiers dans votre workflow d'annotation pour s'occuper du processus de révision.*
+
+### **2. Identifier programmatiquement les images mal étiquetées dans votre dataset**
+
+L'anomalie d'étiquettes peut signifier plusieurs choses, mais les 2 principales raisons sont les données mal étiquetées et les classes ambiguës. Il existe différentes méthodes pour extraire les données mal étiquetées ou ambiguës, mais pour cet article de blog, nous n'approfondirons qu'une seule méthode.
+
+**Labelfix**, une implémentation de "*Identifying Mislabeled Instances in Classification Datasets*" par Nicolas M. Muller et Karla Markert.
+
+### **Labelfix expliqué**
+
+Dans cet article et cette implémentation, les auteurs présentent un pipeline non paramétrique de bout en bout pour trouver les instances mal étiquetées dans les datasets numériques, d'images et de langage naturel. Ils évaluent leur système quantitativement en ajoutant une petite quantité de bruit d'étiquettes à 29 datasets, et montrent qu'ils trouvent des instances mal étiquetées avec une précision moyenne de plus de 0.84 lors de la révision du top 1% des recommandations de leur système. Ensuite, ils appliquent leur système à des datasets publiquement disponibles et trouvent des instances mal étiquetées dans CIFAR-100, Fashion-MNIST, et d'autres.
+
+Pour le dire en termes simples, la méthode labelfix essaie de trouver un pourcentage donné (entrée utilisateur) d'images qui sont le plus probablement mal étiquetées. Cela signifie que vous devriez pouvoir spécifier le nombre d'images mal étiquetées que vous voulez trouver, et l'algorithme labelfix sera capable de vous donner les X% les plus susceptibles d'être mal étiquetées.
+
+La magie derrière cette implémentation est assez intuitive et peut être résumée en 4 étapes.
+
+1. Entraînez un classificateur sur votre **ensemble d'entraînement complet**, ne gardez aucune image pour votre ensemble de test
+
+2. Effectuez l'inférence sur l'ensemble de votre ensemble d'entraînement avec le modèle entraîné ci-dessus
+
+3. Effectuez les produits intérieurs < yn, yn"> , où yn est le vecteur de l'étiquette vraie encodée en one-hot, et yn" est le vecteur prédit de probabilité, pour chaque prédiction.
+
+4. Triez ces produits intérieurs et extrayez les X% premiers. Ce sont les images les plus susceptibles d'être mal étiquetées
+
+Voici un petit benchmark des performances de détection que les chercheurs ont obtenues sur plusieurs datasets.
+
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-1.png)
+
+Vous pouvez trouver l'article de recherche [ici.](https://arxiv.org/pdf/1912.05283.pdf) Et le dépôt GitHub [ici.](https://github.com/mueller91/labelfix)
+
+Maintenant que nous avons une méthode pour détecter les données mal étiquetées, il nous reste une dernière question à poser. **Mes images sont-elles pertinentes pour mon ensemble d'entraînement ?**
+
+## **Comment affirmer la pertinence des données dans mon ensemble d'entraînement ?**
+
+Avoir des données non pertinentes dans votre ensemble d'entraînement peut sérieusement endommager la précision globale de vos modèles. C'est-à-dire que s'il y a des doublons dans vos données d'entraînement, **ils causeront des biais**. Cela signifie que le modèle apprend à être moins efficace avec de nouveaux échantillons et aurait du mal à généraliser sur des données non vues. Les doublons pourraient aussi causer un comportement étrange pour votre ensemble de validation. Vous pourriez vous retrouver avec les mêmes images dans vos ensembles d'entraînement et de validation si une image est dans votre dataset plusieurs fois.
+
+### **Comment trouver les images en double dans votre ensemble d'entraînement**
+
+Nous appellerons cette astuce la "*méthode de similarité par embeddings*", vraiment efficace et facile à réaliser.
+
+La méthode a 2 étapes :
+
+**1. Calculer l'embedding pour chaque image**
+
+Les images stockent beaucoup d'informations dans leurs valeurs de pixels. Les comparer sera coûteux et pourrait ne pas nous fournir des résultats de haute qualité. Pour obtenir de meilleurs résultats, nous pouvons utiliser **un modèle de vision par ordinateur pré-entraîné** comme MobileNet pour générer des embeddings pour chaque image.
+
+Un embedding est obtenu en traitant une image à travers des modèles profonds pour produire un vecteur contenant seulement quelques milliers de valeurs qui distillent l'information stockée dans des millions de pixels à une échelle moyenne.
+
+Vous devriez choisir un modèle pré-entraîné qui est léger mais tout de même précis (c'est pourquoi MobileNet pourrait être un bon choix) pour pouvoir extraire l'embedding de toutes vos images relativement facilement.
+
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-2.png)
+
+**2. Calculer la similarité cosinus entre tous les embeddings**
+
+Voici la formule du calcul de similarité cosinus :
+
+![Image data quality for image classification](/images/blog/image-data-quality-for-image-classification-img-3.png)
+
+C'est une manière plus robuste de calculer la similarité entre deux vecteurs qu'une simple distance.
+
+Vous pouvez exploiter la bibliothèque scikit-learn qui empaquète une implémentation. Le résultat de cet algorithme sera une matrice NxN, où N est le nombre d'images dans votre ensemble d'entraînement, avec des valeurs allant de 0 à 1 où 1 est un score de similarité totale.
+
+Vous pourrez ensuite choisir le seuil à appliquer et déterminer les images trop similaires. Une bonne règle empirique est de filtrer les images qui ont un score de similarité de 0.9 et plus.
+
+## **Quelques points à retenir**
+
+De nos jours, les équipes ML n'ont plus besoin de passer des heures à créer des datasets d'images de qualité pour leurs projets de classification d'images. L'essor d'une multitude d'outils open source et d'étiquetage a facilité une grande partie des projets IA de vision par ordinateur à travers le monde.
+
+Cependant, de nombreuses entreprises d'IA luttent encore avec la performance de leurs modèles. C'est pourquoi dans cet article, nous avons couvert trois des problèmes les plus courants de qualité des datasets, en utilisant la classification d'images comme cas d'usage. Nous avons couvert les problèmes suivants :
+
+1. La quantité de données dans le dataset
+
+2. La quantité de données mal étiquetées dans votre dataset
+
+3. La pertinence des images à l'intérieur du dataset
+
+Et plus important encore, nous avons expliqué comment les surveiller pour optimiser la qualité de votre dataset dans vos projets.
+
+Si vous êtes intéressé par l'essai d'une solution pour garantir la qualité de vos datasets, chez Picsellia nous offrons un essai de 14 jours de notre plateforme MLOps. Elle couvre l'ensemble du cycle de vie MLOps, y compris le traitement avancé d'images et les fonctionnalités de détection d'objets. Essayez-la !

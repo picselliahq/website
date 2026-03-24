@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 interface CategoryFilterProps {
   categories: string[];
   selected: string | null;
@@ -7,6 +9,8 @@ interface CategoryFilterProps {
 }
 
 export default function CategoryFilter({ categories, selected, onChange }: CategoryFilterProps) {
+  const t = useTranslations('blog');
+
   return (
     <div className="flex flex-wrap gap-2">
       <button
@@ -18,7 +22,7 @@ export default function CategoryFilter({ categories, selected, onChange }: Categ
         }`}
         style={selected === null ? { backgroundColor: 'var(--picsellia-green)' } : {}}
       >
-        All
+        {t('allCategories')}
       </button>
       {categories.map((cat) => (
         <button

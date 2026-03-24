@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 const cloudProviders = [
   { name: "AWS S3", icon: "/images/community/partners/amazon-s3.svg" },
@@ -65,6 +66,7 @@ const FloatingElements = () => (
 );
 
 export default function DatalakeHero() {
+  const t = useTranslations('datalake');
   return (
     <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
       <FloatingElements />
@@ -87,25 +89,23 @@ export default function DatalakeHero() {
               />
             </svg>
             <span className="text-sm font-medium text-[var(--picsellia-blue)]">
-              Data Management
+              {t('hero.badge')}
             </span>
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight max-w-4xl mx-auto">
-            All Your Visual Data.{" "}
-            <span className="text-[var(--picsellia-blue)]">One Place.</span>
+            {t('hero.titleStart')}{" "}
+            <span className="text-[var(--picsellia-blue)]">{t('hero.titleHighlight')}</span>
           </h1>
 
           <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-2xl mx-auto">
-            Aggregate, organize, and explore billions of images and videos from
-            any source. One unified repository for all your computer vision
-            data.
+            {t('hero.subtitle')}
           </p>
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
             <Link href="/demo" className="btn-primary px-8 py-4 text-base">
-              See It In Action
+              {t('hero.cta')}
               <svg
                 className="w-5 h-5 ml-2"
                 fill="none"
@@ -132,14 +132,14 @@ export default function DatalakeHero() {
               rel="noopener noreferrer"
               className="btn-secondary px-8 py-4 text-base"
             >
-              Documentation
+              {t('hero.docs')}
             </Link>
           </div>
 
           {/* Cloud providers */}
           <div className="flex items-center justify-center gap-3">
             <span className="text-sm text-[var(--tertiary-label)]">
-              Connect:
+              {t('hero.connect')}
             </span>
             <div className="flex items-center gap-4">
               {cloudProviders.map((provider) => (
@@ -179,7 +179,7 @@ export default function DatalakeHero() {
           {/* Floating tag panel */}
           <div className="absolute -bottom-6 left-6 card p-4 shadow-xl max-w-[200px] hidden lg:block">
             <div className="text-xs text-[var(--tertiary-label)] mb-2">
-              DataTags
+              {t('hero.dataTags')}
             </div>
             <div className="flex flex-wrap gap-1.5">
               {sampleTags.slice(0, 4).map((tag) => (
@@ -195,12 +195,12 @@ export default function DatalakeHero() {
 
           {/* Floating stats */}
           <div className="absolute -top-4 right-6 card px-4 py-3 shadow-xl hidden lg:block">
-            <div className="text-xs text-[var(--tertiary-label)]">Storage</div>
+            <div className="text-xs text-[var(--tertiary-label)]">{t('hero.storageLabel')}</div>
             <div className="text-xl font-bold text-[var(--label)] font-mono">
               2.4 TB
             </div>
             <div className="text-[10px] text-[var(--picsellia-blue)]">
-              AWS S3 connected
+              {t('hero.awsS3Connected')}
             </div>
           </div>
         </div>

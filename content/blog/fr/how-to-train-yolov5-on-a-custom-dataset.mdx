@@ -1,0 +1,328 @@
+---
+
+title: "Comment entraîner YOLOv5 sur un dataset personnalisé, étape par étape"
+description: "Nous vous montrons étape par étape comment entraîner facilement un YOLOv5, en utilisant une plateforme MLOps complète de bout en bout pour les cas d'usage de vision par ordinateur."
+date: "2022-03-15"
+author:
+  name: "Picsellia Team"
+category: "Tutorial"
+image: "/images/blog/how-to-train-yolov5-on-a-custom-dataset-hero.png"
+imageAlt: "How to Train YOLOv5 on a Custom Dataset, Step by Step"
+published: true
+tags: ["computer-vision", "dataset-management", "deep-learning", "mlops", "model-training", "object-detection", "pytorch", "versioning"]
+---
+
+> Note : La vidéo suivante a été enregistrée sur la version précédente de Picsellia, tandis que cet article de blog a été mis à jour avec la dernière interface de Picsellia et les fonctionnalités MLOps les plus récentes pour la vision par ordinateur (Mis à jour : 17-Mars-2022)
+
+En guise d'introduction, nous allons brièvement passer en revue les algorithmes YOLO. Pour ceux qui ne savent pas ce qu'est YOLO, c'est l'un des algorithmes de détection d'objets les plus connus qui obtient des résultats à l'état de l'art depuis plusieurs années.
+
+L'objectif de ce tutoriel est de vous apprendre à entraîner facilement un YOLOv5, en utilisant notre plateforme MLOps de bout en bout pour la vision par ordinateur. Mais d'abord, nous allons rapidement couvrir la théorie. Cet article se présentera comme suit :
+
+- Évolution des détecteurs d'objets
+- Qu'est-ce que YOLO et en quoi il diffère des autres détecteurs d'objets
+- Comment il performe
+- YOLOv5 en profondeur
+- Comment entraîner YOLOv5 sur votre propre dataset personnalisé
+
+C'est parti !
+
+## Évolution des détecteurs d'objets
+
+Il existe quelques types de détecteurs d'objets : les R-CNN et les SSD.
+
+Les R-CNN sont des réseaux de neurones convolutifs basés sur les régions (Region-Based Convolutional Neural Networks). Ce sont des modèles plus anciens, et un exemple de détecteurs à deux étapes. Les deux étapes sont : une recherche sélective qui propose une région, c'est-à-dire des boîtes englobantes susceptibles de contenir des objets ; et un CNN utilisé pour classifier cette région. Comme vous pouvez le voir dans la figure suivante, les deux étapes sont effectuées séquentiellement, ce qui peut prendre beaucoup de temps.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-0.png)
+
+Le problème est que la première implémentation de R-CNN en 2013 était vraiment lente. Cela a laissé beaucoup de marge d'amélioration, et c'est ce qui a été réalisé en 2015 avec Fast R-CNN, puis Faster R-CNN. Ceux-ci ont remplacé l'étape sélective par un Region Proposal Network (RPN), faisant enfin de R-CNN un détecteur d'objets deep learning de bout en bout.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-1.png)
+
+Cette famille de détecteurs donne généralement des résultats assez précis, mais est plutôt lente. Pour cette raison, les chercheurs ont proposé une architecture différente appelée Single Shot Detectors (SSD), dont YOLO fait partie.
+
+### CHRONOLOGIE DES SSD
+
+- 2015 : YOLO (You Only Look Once)
+- 2016 : YOLO 9000
+- 2018 : YOLOv3
+- 2020 : YOLOv4
+- 2020 : YOLOv5
+
+## ‍**Qu'est-ce qui rend ces algorithmes rapides ?**
+
+Ils apprennent simultanément les coordonnées de l'objet et les classes correspondantes. Ils sont moins précis que R-CNN mais beaucoup plus rapides. C'est la philosophie derrière YOLO et les nombreuses itérations connues au fil des années.
+
+Aujourd'hui, nous allons nous concentrer sur la dernière en date, YOLOv5. Comme vous pouvez le voir dans le graphique suivant, il performe vraiment bien, même face à EfficientDet, qui est exponentiellement plus lent à mesure que vous choisissez une version supérieure.
+
+![YOLOv5 in PyTorch > ONNX > CoreML > iOS](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-2.png)
+
+### **À quoi ressemble la performance ?**
+
+**Avantages**
+
+- Beaucoup plus rapide que les détecteurs basés sur R-CNN
+- Performance à l'état de l'art aujourd'hui avec YOLOv5
+
+**Inconvénients**
+
+- Légèrement moins précis que R-CNN
+
+Comme nous pouvons le voir ensuite, il existe plusieurs versions de YOLOv5 lui-même. Elles vont de la petite à l'extra-large taille, avec des différences évidentes en termes de poids, de performance et de latence. C'est une bonne nouvelle car nous pouvons choisir une version qui est soit très rapide mais moins précise ; soit des versions qui sont de bons compromis entre latence et précision, et une version plus lourde qui performera mieux.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-3.png)
+*Tailles de YOLOv5*
+
+Maintenant que nous avons couvert un peu YOLO et les principales différences avec d'autres algorithmes, entraînons-le !
+
+## **Comment entraîner YOLOv5 sur un dataset personnalisé**
+
+Pour rappel, [Picsellia](/) est une plateforme de développement MLOps de bout en bout qui vous permet de créer et versionner des datasets, annoter vos données IA, suivre vos expériences et construire vos propres modèles. De plus, sa dernière version vous permet de déployer et surveiller vos modèles, et d'orchestrer des pipelines pour automatiser vos workflows IA — le tout au même endroit.
+
+Si vous souhaitez en savoir plus, n'hésitez pas à consulter notre [documentation](https://documentation.picsellia.com/docs), ou à planifier un appel rapide [ici](/demo) avec notre équipe.
+
+Sans plus tarder, commençons !
+
+## 1. Créer le dataset
+
+Voici à quoi ressemble l'interface d'annotation. Nous choisirons un dataset de raisins de vin pour notre projet de détection d'objets.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-4.png)
+*Interface dataset de Picsellia*
+
+Nous pouvons trier le dataset de cette manière pour voir plus de détails, comme montré ci-après.
+
+‍
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-5.png)
+
+Comme vous pouvez le voir, le dataset est déjà entièrement annoté avec 5 classes différentes, correspondant à différents types de raisins.
+
+Si vous cliquez sur l'onglet **"Analytics"**, vous pouvez obtenir un meilleur aperçu de la distribution des données et de la distribution des objets par image (parmi d'autres métriques).
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-6.png)
+
+Maintenant, regardons les annotations. Retour à l'onglet **"Images"**, nous pouvons sélectionner tout le dataset, ou juste un sous-ensemble des images que nous voulons étiqueter.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-7.png)
+
+Notre plateforme est fournie avec un [système de pré-annotation et une boîte à outils d'étiquetage IA robuste](/dataset-management) qui vous permettent d'automatiser entièrement vos annotations. De cette façon, vous ne gardez que les plus précises et optimisez votre ensemble d'entraînement.
+
+Comme nous pouvons le voir ci-après, le dataset est bien annoté avec chaque grappe de raisin à l'intérieur des boîtes englobantes.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-8.png)
+
+Vous pouvez sélectionner les images ou le sous-ensemble que vous souhaitez, pour annoter, accepter, rejeter ou interagir via des commentaires et des mentions avec vos collègues. De cette façon, vous vous assurez que tout le monde travaille sur les mêmes données. En aparté, Picsellia est également fourni avec un système de "Revue", où les collaborateurs assignés peuvent accepter ou rejeter les étiquettes.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-9.png)
+*Interface d'annotation*
+
+Maintenant, par souci de simplicité, nous ne créerons pas un modèle capable de détecter ces 5 classes, mais plutôt un détecteur d'objets capable de détecter les raisins en général. Pour cela, nous allons fusionner les 5 classes en une seule que nous appellerons "grape", et créer une nouvelle version du dataset avec.
+
+D'abord, je vais sélectionner toutes mes images et créer une nouvelle version du dataset sans étiquettes ("Create blank").
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-10.png)
+
+Une fois créée, je retourne à l'onglet **"Datasets"** dans le menu latéral, et je vois ma version la plus récente sans étiquettes. Je peux voir que j'ai plusieurs versions de mon dataset. Maintenant, choisissons notre version la plus récente — "grape-no-label", pour pouvoir configurer les étiquettes, et fusionner les différentes classes de raisins en une seule ("grape")
+
+![How to train yolov5 on a custom dataset 66ed3a44b4b4e5923687095c 62321ace76bdd41247ac733c versions 2520data](/images/blog/how-to-train-yolov5-on-a-custom-dataset-66ed3a44b4b4e5923687095c_62321ace76bdd41247ac733c_versions-2520data.png)
+*Versions du dataset*
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-12.png)
+*Interface dataset - Images non étiquetées*
+
+Maintenant, pour configurer vos étiquettes, allez dans l'onglet **"Settings"** en haut de l'écran, et sélectionnez **"New labels".**
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-13.png)
+*Settings - Configurer les étiquettes*
+
+Ensuite, choisissez votre classe d'annotation — dans ce cas, Object Detection —, nommez-la et ajoutez-la comme suit. Puis, cliquez simplement sur **"Create labels".**
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-14.png)
+
+> Il est maintenant temps de fusionner nos étiquettes !
+
+Nous allons importer les annotations de notre ancien dataset dans cette version, et fusionner les 5 étiquettes différentes en une seule.
+
+Pour cela, cliquez sur **"Annotations"**, où nous sélectionnerons la version du dataset à partir de laquelle nous souhaitons importer nos étiquettes. Dans ce cas, c'est le dataset appelé "first" qui contient les 5 raisins différents.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-15.png)
+
+Choisissez l'étiquette de sortie "grape" comme montré ci-dessous, et sélectionnez chacune des annotations à importer en tant que "grape" en cochant leurs cases. Ensuite, cliquez sur "Execute instructions".
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-16.png)
+
+Si nous allons dans l'onglet **"Settings"**, nous pouvons voir que notre étiquette est bien définie comme un seul "grape", et voir qu'elle a 3 920 objets.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-17.png)
+
+Retour à l'interface du dataset (onglet **"Images"**), nous pouvons voir **une seule** étiquette.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-18.png)
+
+Si nous regardons les annotations, nous pouvons observer que toutes nos boîtes englobantes contiennent tous les différents types de raisins, maintenant étiquetés simplement comme "grape".
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-19.png)
+
+Maintenant, passons aux choses sérieuses : entraîner un YOLOv5 sur ce dataset.
+
+## 2. Configurer l'entraînement
+
+Nous allons créer un nouveau projet nommé "yolo-grape-test", qui utilise ce dataset et organise mes entraînements.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-20.png)
+
+Chez Picsellia, vous avez également la possibilité d'inviter des membres d'équipe dans votre projet pour travailler sur les mêmes données (nous allons passer cette étape pour ce tutoriel).
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-21.png)
+*Invitez vos coéquipiers à collaborer*
+
+Juste pour info, dans l'onglet "All Projects", dans le menu latéral, vous verrez tous vos projets stockés en un seul endroit.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-22.png)
+*Hub de projets*
+
+Maintenant, vérifions notre projet. À ce stade, le projet est assez vide, donc nous allons attacher le dataset que nous venons de créer à ce projet, pour quoi nous cliquerons sur **"Open Datalake".**
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-23.png)
+
+Nous sélectionnons ensuite notre projet souhaité, "Embrapa-wine-grape".
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-24.png)
+
+Et nous voulons choisir la version "grape-one".
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-25.png)
+
+> Notre dataset est maintenant bien attaché !
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-26.png)
+
+Ensuite, avant de créer notre expérience, jetons un coup d'oeil à la section **Models** de Picsellia.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-27.png)
+*Modèles de Picsellia*
+
+Sur cette page, vous pouvez trouver chaque modèle que nous avons téléchargé, qui sont des architectures de base que vous pouvez utiliser pour démarrer votre expérience, comme montré ci-dessous.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-28.png)
+*Registre de modèles*
+
+Pour notre expérience, nous allons utiliser le modèle **YOLOv5-m**, pour la vitesse d'entraînement. Vous pouvez utiliser ce modèle directement, sans rien avoir à faire, il suffit de le sélectionner.
+
+> Il est maintenant temps de retourner à notre projet, et de **créer notre expérience en utilisant ce modèle YOLOv5-m pré-entraîné.**
+
+Une fois sur place, nous allons lancer notre expérience avec l'interface.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-29.png)
+
+Ce sera la première version de notre entraînement, nommée "v1".
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-30.png)
+
+Et, à la deuxième étape, nous allons choisir le modèle d'architecture de base de notre "Organization HUB". Dans ce cas, YOLOv5-m.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-31.png)
+
+Pour exécuter YOLOv5-m, nous devons simplement configurer **deux paramètres**. Le nombre d'étapes (ou "epochs") et la taille du batch.
+
+Pour ce tutoriel, et pour aller vite, nous configurons simplement 100 epochs. Comme nous l'exécuterons dans Colab, nous allons configurer une petite taille de batch, 1, juste pour le test ; et l'exécuter sur un matériel plus puissant plus tard.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-32.png)
+
+Enfin, nous sélectionnons notre dataset.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-33.png)
+
+Puis nous créons l'expérience, et nous verrons l'aperçu de l'expérience. Nous avons notre modèle de base, notre dataset attaché, et nos paramètres sont tous configurés.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-34.png)
+
+La beauté de Picsellia est que dans l'onglet **"Launch"**, nous pouvons choisir différentes façons de lancer nos expériences.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-35.png)
+
+Nous allons le lancer avec Google Colab, donc en cliquant là, nous accéderons à un notebook Jupyter préconfiguré avec tout ce qu'il faut pour entraîner un YOLOv5. Je vais vous montrer rapidement toutes les étapes nécessaires pour lancer l'entraînement.
+
+## 3. Lancement de l'entraînement
+
+D'abord, nous devons installer le package Picsellia, ainsi que le package Picsellia YOLOv5. Dans cette bibliothèque, nous avons empaqueté l'intégralité de l'implémentation PyTorch de YOLOv5.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-36.png)
+
+Nous devons importer les packages ainsi que PyTorch, os, subprocess, etc.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-37.png)
+
+Nous devons utiliser le système d'expériences de Picsellia pour obtenir tous les fichiers de notre travail pré-entraîné et les paramètres, donc avec le checkout nous pouvons tout récupérer sur l'instance.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-38.png)
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-39.png)
+
+Ensuite, nous devons télécharger les annotations et les images.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-40.png)
+
+Nous configurons un répertoire qui stockera nos images et annotations.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-41.png)
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-42.png)
+
+Nous devons ensuite générer un fichier .yaml qui contiendra la carte d'étiquettes ainsi que le répertoire, le chemin des images d'entraînement et de test.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-43.png)
+
+Ensuite, nous devons configurer les hyperparamètres qui seront utilisés pour l'entraînement, donc les seules choses que nous devons fournir sont les paramètres que nous avons configurés depuis Picsellia, la carte d'étiquettes et le nom de l'expérience.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-44.png)
+
+> Et ensuite, nous pouvons enfin lancer l'entraînement !
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-45.png)
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-46.png)
+
+Nous l'avons déjà lancé pour vous le montrer, car cela peut être assez lent sur un notebook Jupyter en CPU. Mais, comme vous pouvez le voir, l'entraînement se passe plutôt bien.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-47.png)
+
+> Et, tout est renvoyé à Picsellia, en temps réel !
+
+Comme vous pouvez le voir ci-après, j'ai déjà mes métriques d'entraînement en direct sur la plateforme. Si je rafraîchis la page, je devrais avoir plus de valeurs, avec les nouvelles epochs.
+
+## 4. Vérifier les résultats
+
+Maintenant, comme ce serait trop long d'attendre que l'entraînement se termine, et pour vous montrer de vrais résultats avec un entraînement plus long, j'ai configuré un autre entraînement que je vais vous montrer maintenant.
+
+‍
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-48.png)
+
+Cet entraînement a 1000 epochs et a été entraîné sur des GPU NVIDIA V100. Comme vous pouvez le voir, les métriques sont plutôt bonnes.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-49.png)
+
+Nous avons des problèmes avec notre loss ici — nous devrions investiguer plus tard —, mais comme vous pouvez le voir, ça converge un peu.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-50.png)
+
+Maintenant, voyons les résultats avec l'évaluation sur de vraies images de notre dataset. Pour cela, j'ai journalisé les images de mon évaluation sur différents lots d'images.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-51.png)
+
+J'ai téléchargé l'une de ces images. Nous avons déjà d'excellents résultats pour notre algorithme de détection de raisins !
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-52.png)
+
+Par exemple, si nous faisions seulement 1000 epochs (ou "étapes") d'entraînement, l'ensemble du processus d'entraînement pourrait prendre jusqu'à 4 heures. Tandis que, pour notre test original, où nous avions configuré seulement 100 epochs, cela ne pourrait prendre que quelques minutes.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-53.png)
+
+Si nous allons vérifier les fichiers de notre expérience, nous avons réussi à télécharger tous les fichiers nécessaires pour reprendre notre entraînement plus tard. Nous avons besoin du fichier de configuration, qui est le yaml ; d'un fichier de checkpoint pour les hyperparamètres ; et d'un autre fichier de checkpoint qui contient les poids PyTorch.
+
+![How to train yolov5 on a custom dataset](/images/blog/how-to-train-yolov5-on-a-custom-dataset-img-54.png)
+
+Maintenant, nous pouvons reprendre notre entraînement quand nous le souhaitons et itérer encore et encore sur nos expériences facilement en utilisant Picsellia !
+
+> Si vous souhaitez essayer Picsellia et profiter de nos dernières fonctionnalités MLOps (déploiement de modèles, monitoring, orchestration de pipelines automatisés, et plus), demandez votre essai [ici](/trial) !

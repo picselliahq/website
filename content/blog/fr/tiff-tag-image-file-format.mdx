@@ -1,0 +1,103 @@
+---
+
+title: "Guide du format Tag Image File Format (TIFF) : exploiter la haute qualite de pixels pour les applications de vision par ordinateur"
+description: "Les fichiers TIFF sont un format d'image raster couramment utilise pour stocker des images de haute qualite. Decouvrez comment ils fonctionnent ici."
+date: "2024-02-18"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/tiff-tag-image-file-format-hero.png"
+imageAlt: "A guide to Tag Image File Format (TIFF): Leveraging High-Pixel Quality for Computer Vision Applications"
+published: true
+tags: ["computer-vision", "edge-deployment", "sports"]
+---
+
+[La qualite des pixels et le format de fichier sont des proprietes cruciales des donnees image](https://arxiv.org/abs/1411.6228) auxquelles il faut preter attention pour toute tache. Le choix du format de fichier image peut avoir un impact significatif sur la qualite de vos pixels, dont dependent les performances et l'efficacite des modeles de vision par ordinateur. Differents formats de fichiers offrent une haute qualite de pixels. Par consequent, selectionner le format adapte depend de l'equilibre souhaite entre la fidelite de l'information, la taille du fichier et la vitesse de traitement. Comprendre l'interaction entre le format, la retention des donnees et les performances du modele est crucial pour des applications de vision par ordinateur reussies. Le Tag Image File Format (TIFF) est un format de fichier image a haute qualite de pixels pour le stockage d'images.
+
+Cet article traite des tenants et aboutissants du puissant format TIFF et des compromis lies a son utilisation en vision par ordinateur.
+
+![Tiff tag image file format](/images/blog/tiff-tag-image-file-format-img-0.jpeg)
+
+## Qu'est-ce que les images TIFF ?
+
+Le TIFF est un format de fichier graphique raster pour le stockage d'images. Les fichiers graphiques raster stockent les images sous forme de grille de pixels connue sous le nom de bitmap, ce qui fait que les bords des pixels deviennent irreguliers et flous lorsque vous zoomez sur l'image. Son fichier est enregistre avec une extension ".tiff" ou ".tif". Le format TIFF est souvent utilise comme conteneur plus large pour stocker plusieurs images ensemble avant le transport. Contrairement a d'autres formats de fichiers qui ne peuvent contenir qu'une seule image par fichier, le format TIFF peut stocker plusieurs images dans un seul fichier, ce qui est sa capacite principale. Il permet aux utilisateurs de conserver de nombreuses images ensemble.
+
+Il supporte 8 et 16 bits par canal, avec un espace colorimetrique RGB (rouge, bleu, vert) a 3 canaux qui offre jusqu'a 48 bits par image par canal. Cette caracteristique offre une plus grande flexibilite dans la manipulation d'images, resultant en une compatibilite avec des niveaux de transparence variables. Par defaut, le TIFF est generalement laisse non compresse pour maintenir la qualite de l'image. Cependant, pour etendre davantage la fonctionnalite, il permet la reduction de la taille du fichier en vous permettant d'utiliser l'une des deux compressions sans perte, Lempel-Ziv-Welch (LZW) ou ZIP. La compression sans perte reduit la taille du fichier tout en conservant toutes les informations d'une image (c'est-a-dire que la qualite des pixels d'un fichier compresse sans perte ne diminue pas).
+
+Par exemple, LZW utilise un algorithme de compression sans perte glouton qui optimise la redondance des donnees en detectant les zones avec des pixels recurrents et en remplacant ces valeurs identiques par un code unique dans un dictionnaire. Imaginez un GIF d'une balle rebondissante : au lieu de stocker "pixel rouge, pixel rouge, pixel rouge", il remplace ces "triplets de pixels" par un code unique dans un dictionnaire construit a la volee. Chaque fois qu'il voit "rouge, rouge, rouge" a nouveau, il utilise simplement le meme code, reduisant le fichier. Cette approche gloutonne continue de construire le dictionnaire, remplacant des motifs plus longs par des codes plus courts jusqu'a ce que l'image soit compressee efficacement sans perdre de details de pixels.
+
+## Quelle est la difference entre le TIFF et les autres formats de fichiers image ?
+
+Les JPEG (Joint Photographic Experts Group) et les PNG (Portable Network Graphics) sont des formats de fichiers plus communement connus. Cependant, par rapport a eux, le TIFF presente des proprietes precieuses.
+
+Le JPEG est le format generalement accepte pour travailler (c'est-a-dire visualiser et partager) avec des donnees images en raison de ses fichiers image hautement compresses qui maintiennent encore une qualite visuelle acceptable. De plus, la plupart des systemes d'exploitation et navigateurs web supportent son decodage nativement. Vous pouvez visualiser et partager des photos encodees en JPEG sans plugins supplementaires ni applications specialisees. Il est ideal pour presque toutes les taches, comme le partage d'images en ligne, la navigation web et les pieces jointes d'e-mails. Leur format de compression avec perte rend les JPEG legers, rapides et faciles a manipuler, mais ils suppriment des informations potentiellement cruciales. En tant que format avec perte, il presente des avantages lorsque la vitesse est primordiale et qu'une certaine perte d'information est tolerable.
+
+Contrairement aux JPEG, les PNG utilisent une technique de compression sans perte sur les images qui reduit significativement leur taille, les rendant gerable pour de nombreuses applications necessitant une haute qualite d'image. Par rapport aux TIFF, les PNG offrent des tailles de fichiers plus petites grace a une compression efficace, les rendant plus gerable pour de grands datasets. De plus, les navigateurs web et les plateformes le supportent universellement, rendant le partage et l'integration en ligne possibles. Cependant, la capacite de transparence du PNG, l'un de ses points forts, en fait une bonne option uniquement pour des applications specifiques, comme la superposition de donnees sur des images.
+
+Le TIFF peut gerer a la fois la compression sans perte et avec perte, vous permettant de preserver la qualite de l'image tout en atteignant une certaine reduction de la taille du fichier. Cette flexibilite est precieuse pour les scenarios ou le maintien du detail original est crucial. Cependant, les grandes tailles de fichiers, meme compresses, posent des defis pour le stockage et le traitement. Le TIFF peut etre un conteneur pour stocker plusieurs images, comme des JPEG de plus petite taille. Cette capacite de stockage multi-donnees le rend utile pour l'archivage, la recherche et la gestion de collections d'images. Il integre egalement le stockage de metadonnees riches, englobant des details tels que les reglages de l'appareil photo, la date de creation, les informations de copyright, les horodatages, etc., au sein du fichier, ce qui aide au suivi de la provenance des donnees et a l'analyse.
+
+En tant que format sans perte, il excelle dans les taches necessitant une haute precision. Cependant, il n'est pas toujours decodable nativement par les navigateurs web, les plateformes, etc., ce qui presente certains inconvenients, restreignant le partage et la visualisation fluides des donnees au format TIFF.
+
+## Le TIFF pour la vision par ordinateur
+
+Le TIFF est couramment utilise dans les industries de l'impression et de l'edition en raison de sa capacite a maintenir les informations de couleur et les details lors de la compression. Vous pouvez egalement utiliser le TIFF pour construire des modeles robustes de vision par ordinateur pour les taches necessitant une haute resolution d'image. Il joue un role crucial en vision par ordinateur pour sa flexibilite de compression et sa capacite a conserver des donnees de haute fidelite. La precision sans compromis du TIFF dans la preservation de chaque detail d'une image est vitale pour les taches ou meme de legeres variations de pixels peuvent fausser l'analyse d'un modele, comme l'analyse d'images medicales, l'analyse geospatiale, etc.
+
+Bien qu'il soit un format efficace et compact pour stocker, transferer ou archiver des [donnees visuelles a travers les pipelines ou les bases de donnees](/datalake), il a egalement le potentiel de ralentir l'entrainement et l'inference en raison de ses grandes tailles de fichiers, meme lorsqu'il est compresse. Certaines architectures de systemes de vision par ordinateur explorent le stockage de leurs donnees au format TIFF et leur passage par un pipeline pour les convertir en JPEG ou PNG pour un entrainement plus rapide. Le stockage, les formats de decodage de fichiers, l'efficacite du traitement, les limites de taille du dataset, etc., sont des facteurs critiques lors de l'utilisation du TIFF pour construire un systeme de vision par ordinateur.
+
+<BlogInlineCTA
+  headline="Handle TIFF and any image format at scale"
+  description="Picsellia supports TIFF, JPEG, PNG, and more — with automatic format handling, metadata preservation, and visual search across millions of images."
+  primaryButtonText="Try Free — Import Your TIFF Data →"
+  primaryButtonUrl="/trial"
+  blogSlug="tiff-tag-image-file-format"
+  ctaPosition="mid"
+/>
+
+## Utiliser les images TIFF pour l'entrainement
+
+Les processus courants impliques dans l'entrainement base sur la vision par ordinateur sont les memes avec les images TIFF, de la lecture a l'entrainement. Vous pouvez employer la strategie progressive d'utilisation de bibliotheques d'images comme Pillow, OpenCV, rasterio, etc., pour lire, visualiser et preprocesser les images TIFF et les augmenter. Ensuite, convertissez-les en tenseurs et entrainez-les avec un framework de machine learning.
+
+Pour simplifier, l'exemple ci-dessous utilise Keras ImageDataGenerator pour lire directement, preprocesser, augmenter et convertir les images TIFF en tenseurs afin de permettre a TensorFlow de les utiliser pour l'entrainement.
+
+#### **Telecharger un dataset de cancer du sein depuis Kaggle.**
+
+Installer l'API Kaggle
+
+```pip install kaggle
+
+```
+
+Telecharger la cle API Kaggle et deplacer la cle API dans le dossier ".kaggle"
+
+```
+
+cp download_path/kaggle.json .kaggle
+
+export KAGGLE_CONFIG_DIR=~/.kaggle/
+
+```
+
+```kaggle kernels output truthisneverlinear/bach-baseline -p download_path/to/save/bach_data
+
+```
+
+#### **Preparer les chemins pour les donnees d'entrainement et de validation**
+
+#### ‍**Creer les generateurs de donnees Keras**
+
+#### **Creer le modele**
+
+#### **Entrainer le modele**
+
+## Conclusion
+
+En conclusion, le format TIFF emerge comme un outil puissant en vision par ordinateur, avec un support solide pour les metadonnees etendues necessaires a l'organisation et a l'analyse des donnees. Neanmoins, malgre la compression, il tend encore a produire des fichiers relativement volumineux, ce qui peut etre problematique pour l'efficacite du stockage et du traitement. Malgre ces limitations, le format est une option attrayante pour des applications specifiques de vision par ordinateur en raison de ses points forts, en particulier dans le stockage d'informations detaillees et de metadonnees etendues. Pour que les chercheurs et les praticiens puissent pleinement utiliser le TIFF tout en tenant compte des implications en termes de ressources, il est essentiel d'analyser soigneusement ces compromis.
+
+<BlogInlineCTA
+  headline="Build CV pipelines that handle any format"
+  description="From TIFF to JPEG to DICOM — Picsellia manages your image data end-to-end with versioning, annotation, and training pipelines. No format headaches."
+  primaryButtonText="Try Free — Start Your CV Pipeline →"
+  primaryButtonUrl="/trial"
+  blogSlug="tiff-tag-image-file-format"
+  ctaPosition="end"
+/>

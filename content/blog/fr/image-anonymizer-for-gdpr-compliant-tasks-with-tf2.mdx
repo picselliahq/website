@@ -1,0 +1,120 @@
+---
+
+title: "Comment construire un anonymiseur d'images pour des tâches conformes au RGPD avec TF2"
+description: "Notre mission est d'aider les autres à construire de meilleurs modèles de vision par ordinateur, nous avons donc créé un anonymiseur pour vous aider à construire des datasets conformes au RGPD impliquant des personnes."
+date: "2020-08-30"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-hero.jpg"
+imageAlt: "How to Build an Image Anonymizer For GDPR Compliant Tasks With TF2"
+published: true
+tags: ["annotation", "computer-vision", "data-management", "dataset-management", "model-training", "object-detection", "versioning"]
+---
+
+Beaucoup de tâches en vision par ordinateur nécessitent des images prises dans la nature (c'est-à-dire en rue, lors d'événements, etc.), mais construire un dataset pour des tâches liées au comportement humain peut être délicat. Comme vous devez le savoir, le RGPD n'autorise pas le stockage de photos prises sans consentement.
+
+Ce serait dommage de limiter les applications d'IA à cause du RGPD, n'est-ce pas ? Chez Picsellia, nous sommes dédiés à aider les gens à construire de meilleurs modèles de vision par ordinateur, il était donc logique pour nous de construire un anonymiseur pour vous aider à créer des datasets conformes au RGPD impliquant des personnes.
+
+### À quoi ressemble une image conforme au RGPD ?
+
+![dataset to anonymize.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d948_60db0fc97927192b55098318_CkNGIHvWRQfOPxeV.jpeg)
+
+Eh bien, faisons connaissance avec Tom (ne vous inquiétez pas, j'ai trouvé Tom sur [Pexels](https://www.pexels.com), donc il ne sera pas dérangé).
+
+Comme vous pouvez le voir, 100 % de son visage est visible, ce qui n'est pas tout à fait conforme au RGPD.
+
+En fait, pour être conforme, +50 % de son visage ne devrait pas être visible, de préférence les 50 % supérieurs de son visage pour cacher ses yeux.
+
+![dataset hide eyes.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50da97_60db0fe1792719a1370983a7_JwjKlnoBMJcTTjbS.jpeg)
+
+Comme ça !
+
+### Comment construire un détecteur de visages robuste ?
+
+À ce stade, vous devriez avoir une idée de la façon dont nous avons développé notre anonymiseur :
+
+- Construire un détecteur de visages
+- Identifier les 60 % supérieurs du visage
+- Les flouter
+- Ré-écrire l'image
+
+### Pourquoi construire votre propre détecteur de visages ?
+
+Je suis sûr que vous avez vu un tas de tutoriels sur comment entraîner un détecteur de visages avec openCV ou autre chose. Ces algorithmes fonctionnent bien pour les photos en gros plan, mais les avez-vous essayés dans la nature ? Eh bien... ce n'est pas vraiment bon. Et surtout, maintenant que le monde vit avec le Covid-19, les algorithmes de détection de visages doivent s'adapter à la nouvelle réalité de tout le monde portant des masques.
+
+En parlant de masques, pour construire notre dataset, nous avons utilisé un dataset de masques faciaux annoté par **humans in the loop** au début de la pandémie. Il est composé de 6000+ images de personnes portant des masques ou non ; vous pouvez le trouver dans notre Dataset Hub.
+
+![datalake faces.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d98a_60db101e01d9e8ec1fb6469b_ZFEjNsNScbAIrhTa.png)
+
+Avec Picsellia, vous pouvez rapidement accéder à ce dataset et voir la répartition des étiquettes, ici nous avons un total de 10 000+ visages annotés dans la nature.
+
+![dataset repartition faces.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d931_60db1028d65cc857bc4f02e1_kYXcRfqCEIMESbps.png)
+
+Mais nous ne voulons pas construire un autre détecteur de masques faciaux.
+
+Nous devrons modifier ce dataset un peu afin de créer un dataset adapté à la détection de visages, pour ce faire nous pouvons simplement créer une nouvelle version de ce dataset et fusionner toutes les étiquettes en une seule -> FACE
+
+![merge datasets.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d92d_60db10406c4569b85d9400c9_bwodzaoappHpDWau.png)
+
+Nous laissons la plateforme travailler un peu, et voilà, nous avons un dataset de 10 000+ visages annotés
+
+![datasets details.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d934_60db1050fbccbf6d1c653986_NdwPnZcPYcPjnIkf.png)
+
+Les images sont vraiment diversifiées mais voici un exemple :
+
+![dataset face example.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50d987_60db105ef0f255207f458da9_tVvdfUmedHxBNwdm.png)
+
+### Maintenant, entraînons notre modèle
+
+Avant l'entraînement, nous devons réfléchir à ce que nous voulons accomplir. Nous voulions un modèle pour effectuer l'anonymisation à grande vitesse, mais aussi avec un score de confiance élevé, car nous ne pouvons pas nous permettre de jouer manuellement avec le seuil de confiance en permanence.
+
+Nous viserons également un score de précision élevé, puisqu'il ne serait pas logique d'anonymiser seulement une personne sur l'image.
+
+Jetons un coup d'oeil au Hub de modèles de Picsellia, où vous pouvez trouver des architectures de vision par ordinateur basées sur Tensorflow prêtes à entraîner :
+
+![picsellia model hub.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d93a_60db10752d0dfe3e0723652f_aKFUEPLWrcoDdMvB.png)
+
+Pour comprendre comment lancer plusieurs entraînements avec différentes architectures avec Picsellia, je vous invite à lire notre dernier article.
+
+Pour cet anonymiseur, nous avons choisi d'utiliser un EfficientDet-d2 pour sa vitesse de convergence et sa précision.
+
+Voici les résultats journalisés dans [**Picsellia**](/).
+
+![training graphs for our EfficientDet.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d93d_60db109d651d4b3a92051438_JQGxhoZiuNghTkhT.png)
+
+![training metrics for our EfficientDet.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d943_60db10c3f0f25528cf458e0f_gNzzzxvFJNLJsHbG.png)
+
+Notre entraînement est un peu bruité mais nous avons réussi à obtenir un maP assez bon donc nous utiliserons cela comme base pour notre anonymiseur.
+
+Téléchargeons notre modèle sauvegardé afin de construire notre anonymiseur.
+
+Maintenant que notre modèle est entraîné et exporté, nous pouvons le télécharger pour l'utiliser localement, pour ce faire, il suffit d'aller dans les artefacts de votre expérience et de télécharger le fichier saved_model.zip.
+
+![experiments artifacts.png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d929_60db10d28fceba3ebf3463ed_PPYtCRvKYXzKvKGR.png)
+
+OK, maintenant que nous avons un détecteur de visages robuste, nous serons en mesure de construire un anonymiseur très rapidement.
+
+![anonymizer (part 1).png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d937_60db10df01d9e8bf70b64974_HbVkHmBZAyzhWmHC.png)
+
+[Disponible ici](https://gist.github.com/ThibautLucas/335d61459809c1d1e14a7940b439cd3d)
+
+D'abord, importons quelques packages et désactivons tous les avertissements de Tensorflow — qui veut vraiment voir des avertissements ?
+
+Vous devriez placer votre répertoire *saved_model* à la racine de votre projet (ne vous inquiétez pas, le code sera fourni ci-dessous).
+
+Chargeons le *saved_model* et déclarons une fonction *pre_process*.
+
+Maintenant vous n'êtes qu'à quelques lignes de code d'avoir un anonymiseur, nous devons seulement extraire les bbox avec un score de confiance élevé, disons 0.5 et plus, et flouter les 70 % supérieurs des visages détectés.
+
+![anonymizer (part 2).png](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d933bfe036bed50d940_60db110a9e35bc41f019e30d_hPOVkQjZddtAWqKH.png)
+
+[Disponible ici](https://gist.github.com/ThibautLucas/33cf9f1b06735b36d32ed3f35b43abdf)
+
+![dataset anonymized.jpeg](/images/blog/image-anonymizer-for-gdpr-compliant-tasks-with-tf2-66ed3d943bfe036bed50da9a_60db1125792719283309866c_qAlBwZorRgVIhNnw.jpeg)
+
+Et voilà !
+
+Vous pouvez trouver le code [ici](https://github.com/ThibautLucas/rgpdize).
+
+Si vous souhaitez essayer Picsellia vous-même, réservez un appel rapide et demandez un [essai ici](/trial) !

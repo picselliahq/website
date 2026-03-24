@@ -1,25 +1,16 @@
+import { useTranslations } from 'next-intl';
 import VersionTimeline from './VersionTimeline';
 
-const features = [
-  {
-    title: 'Immutable snapshots',
-    description: 'Every dataset version is a permanent snapshot. Reference exact data states in experiments.',
-  },
-  {
-    title: 'Label management',
-    description: 'Create, rename, and merge labels across your dataset. Keep your taxonomy clean and consistent.',
-  },
-  {
-    title: 'Fork for experiments',
-    description: 'Fork dataset versions to test hypotheses without affecting production data.',
-  },
-  {
-    title: 'Audit-ready history',
-    description: 'Complete changelog with who changed what, when, and why. Perfect for compliance.',
-  },
-];
-
 export default function VersionControlSection() {
+  const t = useTranslations('datasetManagement.versionControl');
+
+  const features = [
+    { title: t('immutableTitle'), description: t('immutableDesc') },
+    { title: t('labelTitle'), description: t('labelDesc') },
+    { title: t('forkTitle'), description: t('forkDesc') },
+    { title: t('auditTitle'), description: t('auditDesc') },
+  ];
+
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -32,13 +23,13 @@ export default function VersionControlSection() {
           {/* Left - Content */}
           <div>
             <span className="text-[var(--picsellia-blue)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Version Control
+              {t('badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-              Track every change, reproduce any result
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] mb-8">
-              Your datasets evolve constantly—new images, corrected labels, filtered samples. Without version control, you're flying blind.
+              {t('subtitle')}
             </p>
 
             <div className="space-y-6">
@@ -61,8 +52,8 @@ export default function VersionControlSection() {
           {/* Right - Interactive Timeline */}
           <div className="card p-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-semibold text-[var(--label)]">Version Timeline</h3>
-              <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">Interactive</span>
+              <h3 className="text-lg font-semibold text-[var(--label)]">{t('versionTimeline')}</h3>
+              <span className="px-2 py-1 rounded text-xs bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">{t('interactive')}</span>
             </div>
             <VersionTimeline />
           </div>

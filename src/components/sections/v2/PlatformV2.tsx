@@ -3,81 +3,80 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const stages = [
-  {
-    id: "data",
-    number: "01",
-    label: "Data",
-    tagline: "Collect & organize",
-    headline: "Stop drowning in unorganized data",
-    description:
-      "One source of truth for all your visual data. Connect any storage, auto-organize with AI, and find exactly what you need in seconds.",
-    pain: "Images scattered across cloud buckets, hard drives, and legacy systems.",
-    color: "#43a3ff",
-    video: "/videos/datalake-home.webm",
-    features: [
-      { name: "Datalake", href: "/datalake" },
-      { name: "Dataset Management", href: "/dataset-management" },
-    ],
-    stat: { value: "10B+", label: "images managed" },
-  },
-  {
-    id: "annotate",
-    number: "02",
-    label: "Annotate",
-    tagline: "Label & review",
-    headline: "Labeling shouldn't be your bottleneck",
-    description:
-      "AI-assisted labeling cuts annotation time by 10x. Built-in quality control ensures consistent, high-quality training data.",
-    pain: "Manual annotation is slow, expensive, and error-prone.",
-    color: "#ff9f0a",
-    video: "/videos/labeling-home.webm",
-    features: [
-      { name: "Labeling Tool", href: "/labeling-tool" },
-      { name: "Annotation Campaigns", href: "/annotation-campaigns" },
-    ],
-    stat: { value: "10x", label: "faster labeling" },
-  },
-  {
-    id: "train",
-    number: "03",
-    label: "Train",
-    tagline: "Build & experiment",
-    headline: "Experiments shouldn't disappear",
-    description:
-      "Every experiment tracked, every model versioned, every result reproducible. Compare runs side-by-side and never lose work again.",
-    pain: "Hundreds of experiments but you can't reproduce your best results.",
-    color: "#33ab68",
-    video: "/videos/experiment-home.webm",
-    features: [
-      { name: "AI Laboratory", href: "/ai-laboratory" },
-      { name: "Experiment Tracking", href: "/experiment-tracking" },
-      { name: "Automated Pipelines", href: "/automated-pipelines" },
-    ],
-    stat: { value: "100%", label: "reproducibility" },
-  },
-  {
-    id: "deploy",
-    number: "04",
-    label: "Deploy",
-    tagline: "Ship & monitor",
-    headline: "Production shouldn't be a black box",
-    description:
-      "Deploy with confidence. Real-time monitoring catches drift before it impacts users. One click from lab to production.",
-    pain: "Your model works in the lab but fails in production.",
-    color: "#ff453a",
-    video: "/videos/deployment-home.webm",
-    features: [
-      { name: "Model Deployment", href: "/model-deployment" },
-      { name: "Model Monitoring", href: "/model-monitoring" },
-    ],
-    stat: { value: "99.9%", label: "uptime SLA" },
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function PlatformV2() {
+  const t = useTranslations("home.platform");
   const [active, setActive] = useState(0);
+
+  const stages = [
+    {
+      id: "data",
+      number: "01",
+      label: t("stageDataLabel"),
+      tagline: t("stageDataTagline"),
+      headline: t("stageDataHeadline"),
+      description: t("stageDataDescription"),
+      pain: t("stageDataPain"),
+      color: "#43a3ff",
+      video: "/videos/datalake-home.webm",
+      features: [
+        { name: t("stageDataFeatureDatalake"), href: "/datalake" },
+        { name: t("stageDataFeatureDatasetManagement"), href: "/dataset-management" },
+      ],
+      stat: { value: t("stageDataStatValue"), label: t("stageDataStatLabel") },
+    },
+    {
+      id: "annotate",
+      number: "02",
+      label: t("stageAnnotateLabel"),
+      tagline: t("stageAnnotateTagline"),
+      headline: t("stageAnnotateHeadline"),
+      description: t("stageAnnotateDescription"),
+      pain: t("stageAnnotatePain"),
+      color: "#ff9f0a",
+      video: "/videos/labeling-home.webm",
+      features: [
+        { name: t("stageAnnotateFeatureLabelingTool"), href: "/labeling-tool" },
+        { name: t("stageAnnotateFeatureAnnotationCampaigns"), href: "/annotation-campaigns" },
+      ],
+      stat: { value: t("stageAnnotateStatValue"), label: t("stageAnnotateStatLabel") },
+    },
+    {
+      id: "train",
+      number: "03",
+      label: t("stageTrainLabel"),
+      tagline: t("stageTrainTagline"),
+      headline: t("stageTrainHeadline"),
+      description: t("stageTrainDescription"),
+      pain: t("stageTrainPain"),
+      color: "#33ab68",
+      video: "/videos/experiment-home.webm",
+      features: [
+        { name: t("stageTrainFeatureAILaboratory"), href: "/ai-laboratory" },
+        { name: t("stageTrainFeatureExperimentTracking"), href: "/experiment-tracking" },
+        { name: t("stageTrainFeatureAutomatedPipelines"), href: "/automated-pipelines" },
+      ],
+      stat: { value: t("stageTrainStatValue"), label: t("stageTrainStatLabel") },
+    },
+    {
+      id: "deploy",
+      number: "04",
+      label: t("stageDeployLabel"),
+      tagline: t("stageDeployTagline"),
+      headline: t("stageDeployHeadline"),
+      description: t("stageDeployDescription"),
+      pain: t("stageDeployPain"),
+      color: "#ff453a",
+      video: "/videos/deployment-home.webm",
+      features: [
+        { name: t("stageDeployFeatureModelDeployment"), href: "/model-deployment" },
+        { name: t("stageDeployFeatureModelMonitoring"), href: "/model-monitoring" },
+      ],
+      stat: { value: t("stageDeployStatValue"), label: t("stageDeployStatLabel") },
+    },
+  ];
+
   const stage = stages[active];
 
   return (
@@ -86,23 +85,23 @@ export default function PlatformV2() {
         {/* Header */}
         <div className="flex items-center gap-8 mb-4">
           <span className="text-[10px] font-mono text-[var(--picsellia-green)] uppercase tracking-wider">
-            Platform
+            {t("sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
-            One platform.
+            {t("headlinePart1")}
             <br />
             <span className="text-[var(--secondary-label)]">
-              Zero friction.
+              {t("headlinePart2")}
             </span>
           </h2>
           <Link
             href="/product-overview"
             className="btn-secondary text-sm group"
           >
-            Explore platform
+            {t("explorePlatform")}
             <svg
               className="w-4 h-4 group-hover:translate-x-1 transition-transform"
               fill="none"
@@ -204,7 +203,7 @@ export default function PlatformV2() {
                 {/* Pain — monospace label style */}
                 <div className="mb-4 p-3 rounded-lg border border-[var(--border)] bg-[var(--secondary-system-background)]">
                   <span className="text-[10px] font-mono uppercase tracking-wider text-[var(--system-red)] block mb-1">
-                    Problem
+                    {t("problemLabel")}
                   </span>
                   <p className="text-sm text-[var(--secondary-label)] leading-relaxed">
                     {stage.pain}
@@ -216,7 +215,7 @@ export default function PlatformV2() {
                     className="text-[10px] font-mono uppercase tracking-wider block mb-1"
                     style={{ color: stage.color }}
                   >
-                    Solution
+                    {t("solutionLabel")}
                   </span>
                   <p className="text-sm text-[var(--secondary-label)] leading-relaxed">
                     {stage.description}

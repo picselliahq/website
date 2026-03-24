@@ -6,52 +6,21 @@ import { FrontmatterSchema, type BlogPost, type BlogPostMeta, type TableOfConten
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog');
 
-function ensureContentDir() {
-  if (!fs.existsSync(CONTENT_DIR)) {
-    fs.mkdirSync(CONTENT_DIR, { recursive: true });
+function getContentDir(locale?: string): string {
+  if (locale && locale !== 'en') {
+    return path.join(CONTENT_DIR, locale);
+  }
+  return CONTENT_DIR;
+}
+
+function ensureContentDir(locale?: string) {
+  const dir = getContentDir(locale);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
   }
 }
 
-export function getAllPosts(): BlogPostMeta[] {
-  ensureContentDir();
-
-  const files = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'));
-
-  const posts = files
-    .map((filename) => {
-      const slug = filename.replace(/\.mdx$/, '');
-      const filePath = path.join(CONTENT_DIR, filename);
-      const fileContent = fs.readFileSync(filePath, 'utf-8');
-      const { data, content } = matter(fileContent);
-
-      const parsed = FrontmatterSchema.safeParse(data);
-      if (!parsed.success) {
-        console.warn(`Invalid frontmatter in ${filename}:`, parsed.error.format());
-        return null;
-      }
-
-      if (!parsed.data.published) return null;
-
-      return {
-        slug,
-        frontmatter: parsed.data,
-        readingTime: readingTime(content).text,
-      };
-    })
-    .filter((post): post is BlogPostMeta => post !== null);
-
-  return posts.sort(
-    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
-  );
-}
-
-export function getPostBySlug(slug: string): BlogPost | null {
-  ensureContentDir();
-
-  // Validate slug to prevent path traversal
-  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) return null;
-
-  const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
+function readPost(filePath: string, slug: string): BlogPostMeta | null {
   if (!fs.existsSync(filePath)) return null;
 
   const fileContent = fs.readFileSync(filePath, 'utf-8');
@@ -59,7 +28,28 @@ export function getPostBySlug(slug: string): BlogPost | null {
 
   const parsed = FrontmatterSchema.safeParse(data);
   if (!parsed.success) {
-    console.warn(`Invalid frontmatter in ${slug}.mdx:`, parsed.error.format());
+    console.warn(`Invalid frontmatter in ${filePath}:`, parsed.error.format());
+    return null;
+  }
+
+  if (!parsed.data.published) return null;
+
+  return {
+    slug,
+    frontmatter: parsed.data,
+    readingTime: readingTime(content).text,
+  };
+}
+
+function readFullPost(filePath: string, slug: string): BlogPost | null {
+  if (!fs.existsSync(filePath)) return null;
+
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data, content } = matter(fileContent);
+
+  const parsed = FrontmatterSchema.safeParse(data);
+  if (!parsed.success) {
+    console.warn(`Invalid frontmatter in ${filePath}:`, parsed.error.format());
     return null;
   }
 
@@ -71,17 +61,88 @@ export function getPostBySlug(slug: string): BlogPost | null {
   };
 }
 
-export function getAllSlugs(): string[] {
+export function getAllPosts(locale?: string): BlogPostMeta[] {
+  ensureContentDir();
+  const localeDir = getContentDir(locale);
+  const hasLocaleDir = locale && locale !== 'en' && fs.existsSync(localeDir);
+
+  // Read default (English) posts
+  const defaultFiles = fs.readdirSync(CONTENT_DIR).filter((f) => f.endsWith('.mdx'));
+  const postsBySlug = new Map<string, BlogPostMeta>();
+
+  for (const filename of defaultFiles) {
+    const slug = filename.replace(/\.mdx$/, '');
+    const filePath = path.join(CONTENT_DIR, filename);
+    const post = readPost(filePath, slug);
+    if (post) {
+      postsBySlug.set(slug, post);
+    }
+  }
+
+  // Overlay locale-specific posts (they take priority)
+  if (hasLocaleDir) {
+    const localeFiles = fs.readdirSync(localeDir).filter((f) => f.endsWith('.mdx'));
+    for (const filename of localeFiles) {
+      const slug = filename.replace(/\.mdx$/, '');
+      const filePath = path.join(localeDir, filename);
+      const post = readPost(filePath, slug);
+      if (post) {
+        postsBySlug.set(slug, post);
+      }
+    }
+  }
+
+  const posts = Array.from(postsBySlug.values());
+  return posts.sort(
+    (a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+  );
+}
+
+export function getPostBySlug(slug: string, locale?: string): BlogPost | null {
   ensureContentDir();
 
-  return fs
+  // Validate slug to prevent path traversal
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) return null;
+
+  // Check locale-specific file first
+  if (locale && locale !== 'en') {
+    const localeDir = getContentDir(locale);
+    if (fs.existsSync(localeDir)) {
+      const localePath = path.join(localeDir, `${slug}.mdx`);
+      const post = readFullPost(localePath, slug);
+      if (post) return post;
+    }
+  }
+
+  // Fall back to default (English)
+  const filePath = path.join(CONTENT_DIR, `${slug}.mdx`);
+  return readFullPost(filePath, slug);
+}
+
+export function getAllSlugs(locale?: string): string[] {
+  ensureContentDir();
+
+  const defaultSlugs = fs
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith('.mdx'))
     .map((f) => f.replace(/\.mdx$/, ''));
+
+  if (locale && locale !== 'en') {
+    const localeDir = getContentDir(locale);
+    if (fs.existsSync(localeDir)) {
+      const localeSlugs = fs
+        .readdirSync(localeDir)
+        .filter((f) => f.endsWith('.mdx'))
+        .map((f) => f.replace(/\.mdx$/, ''));
+      return Array.from(new Set([...defaultSlugs, ...localeSlugs]));
+    }
+  }
+
+  return defaultSlugs;
 }
 
-export function getCategories(): string[] {
-  const posts = getAllPosts();
+export function getCategories(locale?: string): string[] {
+  const posts = getAllPosts(locale);
   const categories = new Set(posts.map((p) => p.frontmatter.category));
   return Array.from(categories).sort();
 }

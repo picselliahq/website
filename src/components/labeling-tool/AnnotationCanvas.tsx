@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const shapes: Array<
   | { id: number; type: 'box'; x: number; y: number; w: number; h: number; label: string; color: string }
@@ -13,6 +14,7 @@ const shapes: Array<
 
 export default function AnnotationCanvas() {
   const [activeShape, setActiveShape] = useState<number | null>(1);
+  const t = useTranslations('labelingTool.canvas');
 
   return (
     <div className="relative w-full h-full bg-[var(--black)] rounded-lg overflow-hidden">
@@ -53,7 +55,7 @@ export default function AnnotationCanvas() {
       <div className="absolute top-3 right-3 flex items-center gap-2 z-10">
         <span className="text-[10px] text-[var(--tertiary-label)] font-mono">125%</span>
         <div className="flex items-center gap-1">
-          <button className="w-6 h-6 rounded bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] flex items-center justify-center text-xs">−</button>
+          <button className="w-6 h-6 rounded bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] flex items-center justify-center text-xs">&minus;</button>
           <button className="w-6 h-6 rounded bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] flex items-center justify-center text-xs">+</button>
         </div>
       </div>
@@ -121,7 +123,7 @@ export default function AnnotationCanvas() {
       {/* Shape list panel */}
       <div className="absolute bottom-3 right-3 w-32 bg-[var(--card)] border border-[var(--border)] rounded-lg overflow-hidden">
         <div className="px-2 py-1.5 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
-          <span className="text-[9px] text-[var(--tertiary-label)] uppercase tracking-wider">Shapes</span>
+          <span className="text-[9px] text-[var(--tertiary-label)] uppercase tracking-wider">{t('shapes')}</span>
         </div>
         <div className="p-1.5 space-y-1">
           {shapes.map((shape) => (
@@ -142,7 +144,7 @@ export default function AnnotationCanvas() {
       {/* Status indicator */}
       <div className="absolute bottom-3 left-3 flex items-center gap-2">
         <span className="px-2 py-0.5 rounded text-[9px] font-medium bg-[var(--system-yellow)]/10 text-[var(--system-yellow)]">
-          To Review
+          {t('toReview')}
         </span>
       </div>
     </div>

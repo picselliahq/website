@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider } from "posthog-js/react";
 
@@ -14,6 +15,22 @@ if (
   });
 }
 
+function LocaleTracker() {
+  useEffect(() => {
+    if (typeof window === "undefined" || !posthog.__loaded) return;
+
+    const locale = document.documentElement.lang || "en";
+
+    // Register locale as a super property (sent with every event)
+    posthog.register({ locale });
+
+    // Set as a person property for segmentation
+    posthog.setPersonPropertiesForFlags({ locale });
+  }, []);
+
+  return null;
+}
+
 export default function PostHogProvider({
   children,
 }: {
@@ -23,5 +40,10 @@ export default function PostHogProvider({
     return <>{children}</>;
   }
 
-  return <PHProvider client={posthog}>{children}</PHProvider>;
+  return (
+    <PHProvider client={posthog}>
+      <LocaleTracker />
+      {children}
+    </PHProvider>
+  );
 }

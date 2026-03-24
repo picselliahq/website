@@ -1,0 +1,45 @@
+---
+
+title: "La route vers le MLOps -- Niveau 1 : Partie 2"
+description: "Qu'est-ce que le niveau 1 et le niveau 2 en MLOps, et en quoi sont-ils differents du niveau 0 MLOps ?"
+date: "2021-10-18"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/road-to-mlops-part-2-hero.png"
+imageAlt: "Road to MLOps — Level 1: Part 2"
+published: true
+tags: ["api", "deployment", "docker", "experiment-tracking", "mlops", "model-training", "pipelines"]
+---
+
+Bienvenue dans la deuxieme partie de notre serie d'articles sur le MLOps. Pour ceux qui n'ont pas eu la chance de consulter le premier article, [le voici !](/post/what-is-mlops-and-why-its-important)
+
+Dans cette deuxieme partie, nous allons parcourir les niveaux 1 et 2 du MLOps, ce que cela signifie et ce que vous devez faire pour y parvenir.
+
+## **Flux MLOps**
+
+![Road to mlops part 2 66ed3f7e8e22efeae245793b 616ea7466857947b62acf6b3 untitled](/images/blog/road-to-mlops-part-2-66ed3f7e8e22efeae245793b_616ea7466857947b62acf6b3_Untitled.png)
+
+## **MLOps Niveau 1**
+
+Maintenant que nous avons un peu evolue et atteint le niveau 1 du MLOps, voyons ce qui caracterise notre architecture et la differencie du niveau 0.
+
+Premierement, une amelioration significative est que l'ensemble de notre pipeline d'experimentation a ete automatise. Plus aucune ressource n'est geree manuellement, les experiences peuvent etre lancees via un appel API, tout est standardise, et tous les artefacts crees par les executions sont stockes automatiquement. Si vous poussez cela plus loin, vous pouvez meme reussir a automatiser le reglage des hyperparametres, ce qui peut faire une enorme difference dans l'exhaustivite de vos etudes scientifiques.
+
+La deuxieme amelioration substantielle est que les modeles sont automatiquement entraines avec de nouvelles donnees a mesure qu'elles arrivent du monde reel (extraites de capteurs, de vos clients, d'API ou de toute methode de collecte que vous avez mise en place). Cela signifie que vous pouvez toujours etre sur que vos modeles sont a jour.
+
+Mais cela signifie egalement que les data scientists et les ingenieurs doivent surveiller de pres les modeles deployes et les donnees sur lesquelles ils sont entraines, afin que les modeles ne derivent pas de maniere indesirable. Pour ce faire, et pour pouvoir debugger rapidement, vous devez avoir des similitudes entre votre environnement d'experimentation et votre environnement de production, ce qui nous amene au point suivant : vous devez utiliser ou creer des composants standardises et reutilisables (souvent des conteneurs Docker).
+
+Vos modeles sont maintenant livres en continu (Continuously Delivered), ils doivent etre valides, mais il n'y a plus de copier-coller manuel ni de telechargement pour deployer de nouveaux modeles. Donc maintenant, au lieu de seulement maintenir le modele, vous devez egalement maintenir l'ensemble du pipeline, ecrire des tests et surveiller, ce qui est un processus complexe et explique pourquoi peu de personnes reussissent a maitriser toutes ces etapes.
+
+La bonne nouvelle, c'est que maintenant, notre systeme peut s'adapter aux donnees continues du monde reel, nous permettant de maintenir correctement un pipeline a un seul modele. Cependant, travailler avec de nombreux pipelines pour differents clients, par exemple, demanderait beaucoup d'efforts puisque les pipelines sont operes manuellement.
+
+## **MLOps Niveau 2**
+
+Le niveau 2 va encore plus loin en termes de ce que nous pouvons faire et du type de systeme que nous sommes maintenant capables d'operer. Par la, j'entends des systemes a grande echelle et a haute frequence.
+
+Les data scientists peuvent maintenant se concentrer sur l'analyse des donnees et [devenir data-centric](/post/data-centric-ai-vs-model). Ils peuvent egalement passer plus de temps a tester de nouvelles techniques, algorithmes et analyses. Vous avez developpe des outils pour empaqueter et conteneuriser leur code, donc quand ils ont termine, l'ensemble du pipeline est automatiquement teste et deploye. Cela signifie que nous avons atteint une Integration Continue et une Livraison Continue entierement automatisees.
+
+Les declencheurs du renouvellement du pipeline sont multiples, car nous surveillons tout de plusieurs facons a differentes etapes. Chaque metrique surveillee peut declencher le pipeline. Ou bien, tout peut etre programme, c'est a vous de decider. Les quelques etapes manuelles qui restent obligatoires sont l'analyse des donnees et des erreurs pour s'assurer que les donnees d'entrainement et les modeles repondent a nos standards eleves.
+
+Maintenant que vous comprenez mieux chaque niveau de maturite MLOps, nous pouvons passer a l'action ! Ce sera le sujet du dernier (mais non le moindre) article de notre serie. Vous pouvez le lire [juste ici.](/post/road-to-mlops-part-3)

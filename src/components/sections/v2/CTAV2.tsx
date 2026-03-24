@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const detections = [
   { id: 1, label: "model", confidence: 98.5, x: 8, y: 15, w: 25, h: 30 },
@@ -11,6 +12,7 @@ const detections = [
 ];
 
 export default function CTAV2() {
+  const t = useTranslations("home.cta");
   const [activeDetection, setActiveDetection] = useState(0);
 
   useEffect(() => {
@@ -19,6 +21,15 @@ export default function CTAV2() {
     }, 2000);
     return () => clearInterval(interval);
   }, []);
+
+  const badges = [t("noCreditCard"), t("trialDuration"), t("isoCertified")];
+
+  const stats = [
+    { value: t("statLatencyValue"), label: t("statLatencyLabel") },
+    { value: t("statUptimeValue"), label: t("statUptimeLabel") },
+    { value: t("statIntegrationsValue"), label: t("statIntegrationsLabel") },
+    { value: t("statSupportValue"), label: t("statSupportLabel") },
+  ];
 
   return (
     <section className="py-28 border-t border-[var(--border)]">
@@ -93,19 +104,18 @@ export default function CTAV2() {
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[var(--picsellia-green)]" />
               </span>
               <span className="text-[10px] font-mono text-[var(--picsellia-green)] uppercase tracking-wider">
-                System ready
+                {t("statusReady")}
               </span>
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold mb-5 tracking-tight">
-              Start detecting
+              {t("headlinePart1")}
               <br />
-              in minutes
+              {t("headlinePart2")}
             </h2>
 
             <p className="text-[var(--secondary-label)] max-w-md mx-auto mb-10 text-lg leading-relaxed">
-              Go from raw images to a model running in production. Free trial,
-              no credit card.
+              {t("description")}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
@@ -113,7 +123,7 @@ export default function CTAV2() {
                 href="/trial"
                 className="btn-primary px-10 py-3.5 text-[15px] group"
               >
-                Start Free Trial
+                {t("startTrial")}
                 <svg
                   className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="none"
@@ -132,43 +142,36 @@ export default function CTAV2() {
                 href="/demo"
                 className="btn-secondary px-10 py-3.5 text-[15px]"
               >
-                Request Demo
+                {t("requestDemo")}
               </Link>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-[var(--tertiary-label)] font-mono">
-              {["No credit card", "14-day trial", "ISO 27001:2022"].map(
-                (item) => (
-                  <span key={item} className="flex items-center gap-1.5">
-                    <svg
-                      className="w-3 h-3 text-[var(--picsellia-green)]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    {item}
-                  </span>
-                ),
-              )}
+              {badges.map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <svg
+                    className="w-3 h-3 text-[var(--picsellia-green)]"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
 
           {/* Bottom stats */}
           <div className="relative z-10 border-t border-[var(--border)]">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-[var(--border)]">
-              {[
-                { value: "<100ms", label: "Latency" },
-                { value: "99.9%", label: "Uptime" },
-                { value: "50+", label: "Integrations" },
-                { value: "24/7", label: "Support" },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label} className="p-5 text-center">
                   <div className="text-lg font-bold text-[var(--label)] font-mono tracking-tight">
                     {stat.value}

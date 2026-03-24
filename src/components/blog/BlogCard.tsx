@@ -2,17 +2,21 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import type { BlogPostMeta } from '@/types/blog';
 
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
-
 export default function BlogCard({ post, featured = false }: { post: BlogPostMeta; featured?: boolean }) {
+  const locale = useLocale();
+  const dateLocale = locale === 'fr' ? 'fr-FR' : 'en-US';
+
+  function formatDate(dateStr: string): string {
+    return new Date(dateStr).toLocaleDateString(dateLocale, {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
+  }
+
   return (
     <Link href={`/post/${post.slug}`} className={`card group block overflow-hidden ${featured ? 'md:col-span-2' : ''}`}>
       {post.frontmatter.image && (
@@ -40,7 +44,7 @@ export default function BlogCard({ post, featured = false }: { post: BlogPostMet
         </p>
         <div className="flex items-center gap-2 text-xs text-tertiary">
           <span>{post.frontmatter.author.name}</span>
-          <span>·</span>
+          <span>&middot;</span>
           <time dateTime={post.frontmatter.date}>{formatDate(post.frontmatter.date)}</time>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { annotationTypes } from './data';
+import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
+  const t = useTranslations('labelingTool');
   return (
     <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
       {/* Background gradient */}
@@ -18,17 +20,16 @@ export default function HeroSection() {
               <svg className="w-4 h-4 text-[var(--picsellia-blue)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
               </svg>
-              <span className="text-sm font-medium text-[var(--picsellia-blue)]">Annotation</span>
+              <span className="text-sm font-medium text-[var(--picsellia-blue)]">{t('hero.badge')}</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold mb-6 tracking-tight">
-              Precision Labeling<br />
-              <span className="text-[var(--picsellia-blue)]">AI-Assisted</span>
+              {t('hero.titleLine1')}<br />
+              <span className="text-[var(--picsellia-blue)]">{t('hero.titleHighlight')}</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--secondary-label)] mb-10 max-w-lg">
-              Turn your data into annotated datasets with precision and speed.
-              Support for bounding boxes, polygons, segmentation, keypoints, and more.
+              {t('hero.subtitle')}
             </p>
 
             {/* Annotation types mini preview */}
@@ -43,20 +44,20 @@ export default function HeroSection() {
                   {type.icon}
                 </div>
               ))}
-              <div className="text-xs text-[var(--tertiary-label)]">+{annotationTypes.length - 4} more</div>
+              <div className="text-xs text-[var(--tertiary-label)]">{t('hero.moreTypes', { count: annotationTypes.length - 4 })}</div>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/demo" className="btn-primary px-8 py-4 text-base">
-                See It In Action
+                {t('hero.cta')}
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </Link>
               <Link href="https://documentation.picsellia.com/docs/dataset-annotation-tool" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
-                Documentation
+                {t('hero.docs')}
               </Link>
             </div>
           </div>

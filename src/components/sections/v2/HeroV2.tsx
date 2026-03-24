@@ -6,6 +6,7 @@ import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { captureEvent } from "@/lib/posthog";
 import { track } from "@vercel/analytics";
+import { useTranslations } from "next-intl";
 
 const customerLogos: { name: string; src: string }[] = [
   { name: "SGS", src: "/images/customers/sgs.svg" },
@@ -22,14 +23,8 @@ const customerLogos: { name: string; src: string }[] = [
   { name: "SupAirVision", src: "/images/customers/supairvision.png" },
 ];
 
-const metrics = [
-  { value: "2.4B+", label: "Images indexed", mono: true },
-  { value: "48,000+", label: "Models trained", mono: true },
-  { value: "12B+", label: "Predictions monitored", mono: true },
-  { value: "150+", label: "Vision AI teams", mono: true },
-];
-
 export default function HeroV2() {
+  const t = useTranslations("home.hero");
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -37,6 +32,13 @@ export default function HeroV2() {
       videoRef.current.play().catch(() => {});
     }
   }, []);
+
+  const metrics = [
+    { value: t("metricImagesValue"), label: t("metricImagesLabel"), mono: true },
+    { value: t("metricModelsValue"), label: t("metricModelsLabel"), mono: true },
+    { value: t("metricPredictionsValue"), label: t("metricPredictionsLabel"), mono: true },
+    { value: t("metricTeamsValue"), label: t("metricTeamsLabel"), mono: true },
+  ];
 
   return (
     <section className="relative pt-32 pb-0 overflow-hidden">
@@ -79,13 +81,13 @@ export default function HeroV2() {
           className="mb-6"
         >
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08]">
-            Everything you need to
+            {t("headlinePart1")}
             <br />
-            build{" "}
+            {t("headlinePart2")}{" "}
             <span className="text-[var(--picsellia-green)]">
-              Vision AI
+              {t("headlineHighlight")}
             </span>{" "}
-            apps
+            {t("headlinePart3")}
           </h1>
         </motion.div>
 
@@ -97,8 +99,7 @@ export default function HeroV2() {
           className="grid md:grid-cols-2 gap-8 mb-16"
         >
           <p className="text-lg text-[var(--secondary-label)] leading-relaxed max-w-lg">
-            The MLOps platform built for computer vision. Manage data, annotate
-            at scale, train models, and deploy them — all in one place.
+            {t("subheadline")}
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-3">
             <Link
@@ -114,7 +115,7 @@ export default function HeroV2() {
                 });
               }}
             >
-              Start Free Trial
+              {t("startTrial")}
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"
@@ -142,7 +143,7 @@ export default function HeroV2() {
                 });
               }}
             >
-              Request Demo
+              {t("requestDemo")}
             </Link>
           </div>
         </motion.div>
@@ -179,7 +180,7 @@ export default function HeroV2() {
           {/* Reference frame label */}
           <div className="flex items-center justify-between mb-3">
             <span className="text-[10px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider">
-              fig.01 — Platform Overview
+              {t("figLabel")}
             </span>
             <span className="text-[10px] font-mono text-[var(--tertiary-label)]">
               1920 &times; 1080
@@ -206,7 +207,7 @@ export default function HeroV2() {
         <div className="max-w-6xl mx-auto px-6 py-10">
           <div className="flex items-center gap-8 mb-0">
             <span className="text-[10px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider whitespace-nowrap">
-              Deployed at
+              {t("deployedAt")}
             </span>
             <div className="h-px flex-1 bg-[var(--border)]" />
           </div>

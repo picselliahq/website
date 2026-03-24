@@ -1,0 +1,87 @@
+---
+
+title: "Optimisez l'exploration des données avec la recherche visuelle améliorée"
+description: "Découvrez comment la recherche visuelle transforme l'exploration des données d'images, permettant un nettoyage efficace, la détection d'objets et les recherches par image et par texte."
+date: "2024-09-15"
+author:
+  name: "Picsellia Team"
+category: "Product"
+image: "/images/blog/picsellia-visual-search-explore-image-data-hero.png"
+imageAlt: "Optimise Data Exploration with Enhanced Visual Search"
+published: true
+tags: ["annotation", "data-management", "dataset-management", "energy", "foundation-models", "model-training"]
+---
+
+La capacité à explorer et gérer efficacement de vastes datasets est cruciale. La technologie de recherche visuelle rend cela plus rapide et plus facile que jamais. En son coeur, la recherche visuelle permet aux utilisateurs d'explorer d'immenses bibliothèques d'images, de trouver des images similaires et même d'identifier des caractéristiques spécifiques au sein d'un dataset. Dans cet article, nous allons plonger dans les capacités de la recherche visuelle, pourquoi elle est importante et comment elle transforme l'exploration des données d'images.
+
+## Qu'est-ce que la recherche visuelle ?
+
+La recherche visuelle est un outil dans Picsellia qui permet aux utilisateurs d'interroger leur datalake ou un dataset d'images basé soit sur la *similarité visuelle* avec la fonction image-vers-image, soit sur des *entrées textuelles spécifiques* avec la fonction texte-vers-image.
+
+La recherche image-vers-image vous permet de trouver toutes les images similaires à une image échantillon. Disons que vous avez des images d'une ville et que vous voulez trouver et supprimer toutes les images de terrains de football. Vous prenez une image d'un terrain de football et vous l'utilisez dans la recherche image-vers-image pour trouver et supprimer toutes les images similaires.
+
+![Picsellia visual search explore image data 66e84c47f34194ac85ef27a9 66e84c1c8b5dd2d26eeb2319 ezgif com optimize](/images/blog/picsellia-visual-search-explore-image-data-66e84c47f34194ac85ef27a9_66e84c1c8b5dd2d26eeb2319_ezgif-com-optimize.gif)
+
+‍
+
+L'autre façon d'utiliser la recherche visuelle est en utilisant une entrée textuelle spécifique dans la fonction texte-vers-image. Peut-être voulez-vous trouver des images qui correspondent à une description textuelle spécifique comme "scènes de nuit", "images floues" ou "images corrompues" afin de nettoyer votre dataset.
+
+![Picsellia visual search explore image data](/images/blog/picsellia-visual-search-explore-image-data-img-1.gif)
+
+‍
+
+Contrairement aux méthodes traditionnelles qui reposent sur des tags ou des métadonnées, notre recherche texte-vers-image fonctionne sans aucun label prédéfini. Comme elle est basée sur une implémentation open source de CLIP (Contrastive Language-Image Pre-training) d'OpenAI, elle connecte les concepts visuels au langage naturel. Cela permet aux utilisateurs de trouver des images basées uniquement sur des descriptions textuelles, comme "flou" ou "nuit". C'est une façon plus flexible et efficace qui amène l'exploration des données au niveau supérieur.
+
+## Pourquoi avons-nous créé la recherche visuelle ?
+
+L'objectif principal derrière la recherche visuelle est l'exploration des données de niveau supérieur. De nombreuses organisations traitent aujourd'hui d'immenses datasets contenant des millions d'images. Chercher un ensemble spécifique d'images dans un dataset couvrant plusieurs cas d'usage peut être fastidieux au mieux, et un cauchemar au pire. Effectuer une simple requête sur un tel dataset sans les bons outils produirait des résultats non pertinents. Mais la recherche visuelle, avec sa capacité à inclure les métadonnées de contexte, rend la recherche plus précise.
+
+### Le contexte est important
+
+Une avancée majeure de la fonctionnalité de recherche visuelle est sa capacité à exploiter les métadonnées de contexte. En restreignant les recherches à des datasets spécifiques, les utilisateurs peuvent éliminer les résultats non pertinents. Par exemple, si votre dataset couvre plusieurs cas d'usage (comme la photographie nocturne pour l'analyse d'oiseaux ou les inspections d'éoliennes), la recherche visuelle peut affiner la requête au seul sous-ensemble pertinent. Les images retournées correspondront à l'objectif de recherche prévu, grâce aux métadonnées de contexte qui attachent des informations supplémentaires, telles que le dataset ou le cas d'usage, à chaque image.
+
+Ce processus de recherche affiné permet aux utilisateurs de récupérer des résultats précis et d'éviter la frustration de parcourir des images de projets non liés.
+
+## Cas d'usage clés
+
+### Nettoyage des données
+
+L'une des utilisations les plus puissantes de la recherche visuelle est sa capacité à nettoyer les datasets. Disons que vous travaillez sur un dataset d'images d'éoliennes capturées par des drones. Occasionnellement, ces drones peuvent capturer des images ne montrant que le ciel, qui sont non pertinentes pour les objectifs du dataset. La recherche visuelle peut trouver toutes les images qui ressemblent au ciel, vous permettant de les supprimer en quelques clics.
+
+### Trouver des objets dans les images
+
+Un autre cas d'usage passionnant est la détection d'objets. Par exemple, si vous voulez isoler toutes les images contenant des oiseaux à partir d'un grand dataset, la recherche visuelle peut identifier les images contenant des oiseaux, même si elles ont été téléchargées pour des cas d'usage non liés (comme l'inspection d'éoliennes). Cette fonctionnalité change la donne pour les chercheurs travaillant dans plusieurs domaines mais ayant besoin de réutiliser des images pour de nouvelles tâches.
+
+![Picsellia visual search explore image data](/images/blog/picsellia-visual-search-explore-image-data-img-2.png)
+
+### Exploration basée sur le texte
+
+Comme mentionné précédemment, la recherche visuelle peut être pilotée par une entrée textuelle. Vous pourriez taper "images floues" et le système récupérera les images correspondant à cette description. Cette fonctionnalité est particulièrement utile pour localiser et supprimer les images de mauvaise qualité ou corrompues de votre dataset.
+
+## Comment fonctionne la recherche visuelle ?
+
+La puissance de la recherche visuelle provient de l'utilisation des embeddings. Les embeddings sont comme des empreintes numériques pour les images : ils encapsulent les caractéristiques visuelles en vecteurs qui peuvent être comparés entre eux pour déterminer à quel point les images sont similaires ou différentes. L'outil de recherche visuelle compare ensuite ces embeddings, les regroupe et permet aux utilisateurs d'interroger leurs datasets.
+
+C'est ainsi que, par exemple, dans un dataset d'images d'éoliennes, un utilisateur peut rechercher des images où le ciel domine la trame, aidant à nettoyer le dataset en supprimant le contenu non pertinent. Ou, vous pourriez rechercher des images floues qui doivent être exclues d'un dataset. La recherche visuelle fait cela en reconnaissant ces motifs dans les embeddings.
+
+![Picsellia visual search explore image data 66e97e0c4c25dd897d140be3 66e97b21720d3916dda09d40 frame 2520427321480](/images/blog/picsellia-visual-search-explore-image-data-66e97e0c4c25dd897d140be3_66e97b21720d3916dda09d40_Frame-2520427321480.png)
+
+### Comment la recherche visuelle est-elle alimentée ?
+
+Le modèle de recherche visuelle actuellement utilisé est OpenClip, un modèle de machine learning développé par OpenAI. OpenClip est entraîné sur des paires image-texte, ce qui le rend particulièrement efficace pour identifier les corrélations entre les données visuelles et les descriptions textuelles. Cependant, il est important de noter qu'OpenClip est entraîné sur des données du domaine public, ce qui signifie qu'il peut manquer de connaissances spécialisées pour certains secteurs ou cas d'usage.
+
+Par exemple, bien qu'OpenClip puisse facilement identifier des objets courants comme un oiseau ou une banane, il pourrait avoir des difficultés avec des termes plus spécifiques — comme un certain type de plante agricole qui ne fait pas partie de ses données d'entraînement.
+
+## Développements futurs : modèles spécialisés
+
+Aussi puissant que soit OpenClip, il y a une limitation lorsqu'il s'agit de cas d'usage de niche ou spécifiques à un secteur. Cependant, l'équipe a une solution passionnante en cours de développement. Les itérations futures de l'outil de recherche visuelle incluront la possibilité de réentraîner le modèle d'embeddings sur le propre dataset d'un client. Cela permettra aux entreprises d'effectuer des recherches plus précises et spécifiques à leur domaine en utilisant des requêtes en langage naturel. Imaginez une entreprise agricole qui pourrait rechercher des cultures ou des ravageurs spécifiques dans l'ensemble de son dataset avec une précision quasi parfaite !
+
+Cet ajout à la fonction de recherche est encore en cours de développement, mais c'est une prochaine étape prometteuse qui rendra la recherche visuelle encore plus puissante pour les applications spécifiques aux secteurs.
+
+## Conclusion
+
+La recherche visuelle représente un bond en avant massif dans l'exploration des données d'images. En facilitant la recherche, le nettoyage et la récupération de données pertinentes, cette fonctionnalité peut économiser d'innombrables heures et aider les utilisateurs à extraire des insights plus profonds de leurs datasets d'images. Avec des mises à jour futures à l'horizon, incluant l'entraînement de modèles personnalisés pour des domaines spécifiques, les possibilités pour la recherche visuelle sont infinies.
+
+Cet outil puissant témoigne de la façon dont le machine learning et la gestion intelligente des données peuvent travailler ensemble pour transformer notre interaction avec nos données. Restez à l'écoute pour plus de mises à jour alors que nous continuons à repousser les limites du possible dans le monde de la recherche visuelle.
+
+‍

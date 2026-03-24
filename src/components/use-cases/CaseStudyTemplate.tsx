@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 // Types for case study data
 export interface CaseStudyMetric {
@@ -97,6 +98,7 @@ interface CaseStudyTemplateProps {
 }
 
 export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
+  const t = useTranslations('useCases.template');
   return (
     <>
       {/* Hero Section */}
@@ -110,7 +112,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm text-[var(--tertiary-label)] mb-12">
             <Link href="/use-cases" className="hover:text-[var(--label)] transition-colors">
-              Case Studies
+              {t('caseStudies')}
             </Link>
             <span>/</span>
             <span className="text-[var(--label)]">{data.company.name}</span>
@@ -135,7 +137,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
 
               {/* CTA */}
               <Link href="/demo" className="btn-primary px-6 py-3">
-                Get Similar Results
+                {t('getSimilarResults')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -173,7 +175,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
           <div className="grid md:grid-cols-12 gap-12">
             <div className="md:col-span-4">
               <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-                Company
+                {t('company')}
               </div>
               <div className="text-lg font-medium mb-1">{data.company.name}</div>
               <div className="text-sm text-[var(--secondary-label)] mb-3">{data.company.industry}</div>
@@ -190,7 +192,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
             </div>
             <div className="md:col-span-8">
               <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-                Overview
+                {t('overview')}
               </div>
               <p className="text-base text-[var(--secondary-label)] leading-relaxed">
                 {data.company.description}
@@ -205,7 +207,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-              01 — The Challenge
+              {t('theChallenge')}
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold max-w-3xl">
               {data.challengeIntro}
@@ -230,10 +232,10 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-              02 — The Transformation
+              {t('theTransformation')}
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold">
-              From challenges to solutions
+              {t('transformationTitle')}
             </h2>
           </div>
 
@@ -241,7 +243,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
             {/* Before */}
             <div className="p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)]">
               <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-6">
-                Before Picsellia
+                {t('beforePicsellia')}
               </div>
               <ul className="space-y-4">
                 {data.transformation.before.items.map((item, i) => (
@@ -256,7 +258,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
             {/* After */}
             <div className="p-8 rounded-2xl border border-[var(--picsellia-green)]/30 bg-[var(--picsellia-green)]/5">
               <div className="text-xs uppercase tracking-wider text-[var(--picsellia-green)] mb-6">
-                After Picsellia
+                {t('afterPicsellia')}
               </div>
               <ul className="space-y-4">
                 {data.transformation.after.items.map((item, i) => (
@@ -298,10 +300,10 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-              03 — The Workflow
+              {t('theWorkflow')}
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold">
-              How {data.company.name} uses Picsellia
+              {t('howCompanyUsesPicsellia', { company: data.company.name })}
             </h2>
           </div>
 
@@ -348,10 +350,10 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-              04 — The Solution
+              {t('theSolution')}
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              How Picsellia delivered
+              {t('howPicselliaDelivered')}
             </h2>
             <p className="text-base text-[var(--secondary-label)] max-w-2xl">
               {data.solutionIntro}
@@ -392,10 +394,10 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="mb-12">
             <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-3">
-              05 — The Results
+              {t('theResults')}
             </div>
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Business impact
+              {t('businessImpact')}
             </h2>
             <p className="text-base text-[var(--secondary-label)] max-w-2xl">
               {data.resultsIntro}
@@ -426,7 +428,7 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
       <section className="py-20 border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)] mb-8">
-            Picsellia Features Used
+            {t('featuresUsed')}
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -453,13 +455,13 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex items-center justify-between mb-8">
               <div className="text-xs uppercase tracking-wider text-[var(--tertiary-label)]">
-                More Case Studies
+                {t('moreCaseStudies')}
               </div>
               <Link
                 href="/use-cases"
                 className="text-sm text-[var(--picsellia-green)] hover:underline"
               >
-                View All →
+                {t('viewAll')}
               </Link>
             </div>
 
@@ -498,18 +500,18 @@ export default function CaseStudyTemplate({ data }: CaseStudyTemplateProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="card p-12 md:p-16 text-center">
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Ready to achieve similar results?
+              {t('ctaTitle')}
             </h2>
             <p className="text-base text-[var(--secondary-label)] mb-8 max-w-xl mx-auto">
-              See how Picsellia can help your team build and deploy computer vision models faster.
+              {t('ctaDescription')}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/demo" className="btn-primary px-8 py-3">
-                Request Demo
+                {t('requestDemo')}
               </Link>
               <Link href="/trial" className="btn-secondary px-8 py-3">
-                Start Free Trial
+                {t('startFreeTrial')}
               </Link>
             </div>
           </div>

@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function DeploymentCTA() {
+  const t = useTranslations('modelDeployment');
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0">
@@ -20,21 +22,20 @@ export default function DeploymentCTA() {
 
           <div className="relative">
             <h2 className="text-3xl md:text-5xl font-semibold mb-6">
-              Ready to deploy your models?
+              {t('cta.title')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-lg mx-auto mb-10 text-lg">
-              Go from trained model to production endpoint in minutes.
-              Serverless, scalable, and fully managed.
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/trial" className="btn-primary px-10 py-4 text-base">
-                Start Free Trial
+                {t('cta.startTrial')}
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link href="/demo" className="btn-secondary px-10 py-4 text-base">
-                Request Demo
+                {t('cta.requestDemo')}
               </Link>
             </div>
           </div>

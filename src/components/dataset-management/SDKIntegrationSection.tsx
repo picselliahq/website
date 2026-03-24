@@ -1,11 +1,15 @@
-const exportFormats = [
-  { name: 'COCO', description: 'Object detection & segmentation' },
-  { name: 'YOLO', description: 'YOLOv5/v8 format' },
-  { name: 'Pascal VOC', description: 'XML annotations' },
-  { name: 'Custom', description: 'JSON/CSV exports' },
-];
+import { useTranslations } from 'next-intl';
 
 export default function SDKIntegrationSection() {
+  const t = useTranslations('datasetManagement.sdk');
+
+  const exportFormats = [
+    { name: 'COCO', description: t('cocoDesc') },
+    { name: 'YOLO', description: t('yoloDesc') },
+    { name: 'Pascal VOC', description: t('vocDesc') },
+    { name: 'Custom', description: t('customDesc') },
+  ];
+
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -16,13 +20,13 @@ export default function SDKIntegrationSection() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Developer Experience
+            {t('badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Programmatic dataset management
+            {t('title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Full Python SDK with type hints, auto-completion, and comprehensive documentation. Integrate datasets directly into your ML pipelines.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -93,7 +97,7 @@ export default function SDKIntegrationSection() {
             </pre>
             <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] text-[var(--tertiary-label)]">Supports COCO, YOLO, Pascal VOC</span>
+                <span className="text-[10px] text-[var(--tertiary-label)]">{t('supportsCoco')}</span>
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded text-[10px] bg-[var(--picsellia-blue)]/10 text-[var(--picsellia-blue)]">label.update()</span>
                 </div>

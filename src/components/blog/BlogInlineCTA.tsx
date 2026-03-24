@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { captureEvent } from "@/lib/posthog";
 import { track } from "@vercel/analytics";
 
@@ -20,14 +21,17 @@ interface BlogInlineCTAProps {
 export default function BlogInlineCTA({
   headline,
   description,
-  socialProof = "Join hundreds of CV engineers who ship models faster with Picsellia",
+  socialProof,
   primaryButtonText,
   primaryButtonUrl,
-  secondaryLinkText = "or book a 15-min demo",
+  secondaryLinkText,
   secondaryLinkUrl = "/demo",
   blogSlug,
   ctaPosition,
 }: BlogInlineCTAProps) {
+  const t = useTranslations("blogCta");
+  const resolvedSocialProof = socialProof ?? t("inlineCTA.socialProof");
+  const resolvedSecondaryLinkText = secondaryLinkText ?? t("inlineCTA.secondaryLinkText");
   const ref = useRef<HTMLDivElement>(null);
   const hasFiredImpression = useRef(false);
 
@@ -101,12 +105,12 @@ export default function BlogInlineCTA({
       <p className="text-sm sm:text-base text-secondary mb-3 leading-relaxed">
         {description}
       </p>
-      {socialProof && (
+      {resolvedSocialProof && (
         <p
           className="text-xs font-medium mb-5 tracking-wide"
           style={{ color: "var(--system-gray)" }}
         >
-          {socialProof}
+          {resolvedSocialProof}
         </p>
       )}
 
@@ -146,7 +150,7 @@ export default function BlogInlineCTA({
           className="text-sm underline underline-offset-2 transition-opacity hover:opacity-80 w-fit"
           style={{ color: "var(--system-gray)" }}
         >
-          {secondaryLinkText}
+          {resolvedSecondaryLinkText}
         </Link>
       </div>
     </div>

@@ -1,0 +1,79 @@
+---
+
+title: "SAHI revisite"
+description: "Le nouveau modele de tiling de Picsellia ameliore la detection d'objets en preservant la resolution, en particulier pour les objets plus petits, tout en offrant des modes de tiling flexibles."
+date: "2024-09-26"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/sahi-computer-vision-tiling-hero.png"
+imageAlt: "SAHI Revisioned"
+published: true
+tags: ["api", "computer-vision", "deep-learning", "experiment-tracking", "model-training", "object-detection"]
+---
+
+Comme la plupart d'entre vous le savent en lisant ce blog, SAHI signifie [Slicing Aided Hyper Inference](https://github.com/obss/sahi). Il a facilite la detection de petits objets a l'ecran pour les developpeurs sans avoir a re-entrainer leurs modeles.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-0.gif)
+
+[*Source*](https://github.com/obss/sahi?tab=readme-ov-file)
+
+## SAHI chez Picsellia
+
+Au debut, SAHI etait utilise a partir d'un depot public disponible sur GitHub. Le code n'appartenait pas a Picsellia. Mais notre equipe voulait faire plus et malheureusement, SAHI n'etait pas assez flexible pour nous. C'est pourquoi nous avons redeveloppe les fonctionnalites principales de SAHI et sommes maintenant prets a lancer notre propre modele de tiling. Pour Alexis, ingenieur logiciel chez Picsellia, "tiling" est un terme plus adapte pour leur modele par rapport a SAHI. Voyons pourquoi.
+
+## Tiling - Quoi, pourquoi et quand ?
+
+Avant qu'une image n'arrive dans le reseau de neurones pour la prediction et le traitement ulterieur, elle est redimensionnee en format carre. Redimensionner une image implique de la reformater et de la reduire dimensionnellement en un carre de 640x640. Ainsi, apres le redimensionnement, la resolution de l'image concernee diminue et des informations precieuses peuvent etre perdues. Le tiling est utile pour contourner l'impact de la perte d'informations lors du redimensionnement.
+
+En termes simples, le tiling ajuste le contenu de l'image en fonction de la taille des objets. Les objets plus grands ne necessitent generalement pas de tiling, tandis que les objets plus petits necessitent une attention accrue pour garantir une detection precise, rendant le processus d'entrainement du modele plus efficace.
+
+![Sahi computer vision tiling 66f6a684cfaf64373c73fd23 66f6a677ce0d587b4bdca0dc presentation1 25203](/images/blog/sahi-computer-vision-tiling-66f6a684cfaf64373c73fd23_66f6a677ce0d587b4bdca0dc_Presentation1-25203.gif)
+
+[Le tiling est une technique cruciale en analyse d'images pour la vision par ordinateur, permettant un examen approfondi de regions specifiques de l'image tout en maintenant une haute resolution. Cette methode est souvent appliquee pour detecter de petits objets dans de grandes images haute resolution.](https://plainsight.ai/blog/tiling-and-small-object-detection/) En termes simples, le tiling consiste a ajuster le contenu de l'image aux tailles des objets. Plus l'objet que vous devez annoter est grand, moins vous aurez besoin de tiler. Plus l'objet est petit, plus il faut recentrer autour de lui pour faciliter le processus d'entrainement du modele.
+
+## Tiling - Un hyperparametre
+
+Selon Alexis, la taille des tuiles peut etre traitee comme un hyperparametre supplementaire lors de l'entrainement d'un modele, car lorsque vous entrainez un modele avec un processus de tiling, theoriquement il existe une taille de tuile optimale pour votre probleme et vous devez la trouver. Les performances du modele dependent de la precision de la taille de vos tuiles et pour trouver la taille adequate, vous devez continuer a experimenter. [La taille de la tuile influence grandement les performances d'un modele, la plage ideale se situant entre 500 et 1000 pixels.](https://pdf.sciencedirectassets.com/312075/1-s2.0-S2352914821X0007X/1-s2.0-S2352914822000053/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjECAaCXVzLWVhc3QtMSJHMEUCIEbWVtCwuM0oH5tOI2e8DVgG%2Ffno5bpiCzN%2BAZ2d%2ByDDAiEAyW7cex6nNIdorZAd4QuRdqnewP0bC4uZpSb%2BqJtazOAqsgUIWRAFGgwwNTkwMDM1NDY4NjUiDK%2BWgsYCJEDyKTTkuCqPBRBkCq6%2BhKJYlzCvOwP9%2FiFBkwQsdyM3nxYp5N5O49dy79GT3saYIyKOUGO%2F7oLRSyeRm42Ajy4McHR9mq%2F3%2BkDK1gAh9ieFAT75s5URkXnql9eXvKd%2F9Irf3j0kH51fOQJCU05tQ9ZjQ7mrHyrXmfZO9mtuhsok8MTMChkqmEAbRczXsHBdpTWFrVW%2B9YVS60n%2Bwl8ylSYv1bPb1vhu7b64nqSPURSYQmFDom2Wx1Kz%2BryGDMT%2BHGdcbhTi3x13MNly4LVc6cSQPLMzdVq4RO2z8wuqvRIDs4Srr2nIV6mZcQ%2Bj5yBTPODrEqNEBHMRk%2FWRBRqqKDpdr9YWxL%2B7xokkd1BTDPaxWngEM%2B8D5%2B5tp0sN4lVvRzXIHEYnD4SiG9wj2EiXS2mw2gStMSPUKzvunhnVbOb9NmfUtIb0Z06ZGLI7EhcBsRaY4WMaSSAzKhTyJZGu%2F2qIKuc9Jf2URIQAbT5I7c0pk%2FGDQeJoBi35yBukqHO%2BeogK4ELMLZ7DLLJNntDA%2BxP8Go61vzHAFQSwWGFC3HcN0cn8rNR1iKHYIqtv1xg1symk%2FYcRyC18IXINSFWhs%2BSGBNEOilcTCmp6A%2F5dws%2FJtPbndZjBvj%2B%2F1qMORin0kKEavn9WHzXUPMnPdyGCqM0KHI8%2B2YKnIMcY78ahJymm3W7o%2FUePPKyi7efpLKcg466cm7bN9H%2B3yZ938b3KVcUNEQm4VDaZ3mr7J0CRTrAiMIaTMPaT9hPUsBxX1n%2BGQBfL6lP4q%2B6aD1ZlPawL%2B1Q4Aliqjd8OLSqdh194HjJaEw8tqcG2r5u1IASFG85nHe5p%2FvI3BYNuFWj6q7vdzabGy562wauhiD%2BZ9ehrb5KCvknnfACTMNYw1a%2BvtwY6sQEVOcJ4NSAr1kW36jRPVokAQFYR8lto1c0lV5OD4ZXKQEWRRgcsGTgR4Dy5Mi1VGrfmlqZZya3YTmVrkehgdmTrSX3VD%2FtJjjPLXc3KMpwS2Eq3u0cRmHItrPboQxT9SDuV0fh891i7IvVe7NsIBwTpMkmZfzYEhFyBRb%2FF8wgB%2BjL2bHoQGeId5K5rK6yDBelHv%2BWNldWxkYSCHqw0OUP%2F2bmU4XoBsF7Sk6M6HFCgNlU%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20240919T083448Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYUCVSM5FG%2F20240919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=be1bb31fbe92a737c6f8d9b6016fd2a8291a109f685548a772cb919bbf040282&hash=33902de1923dbc8c78d44fe95e95f864cefe6fefdfef40805f504e1d4450fcfa&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S2352914822000053&tid=spdf-666dba7c-cdc7-4376-83d7-5ca6ae7c87f4&sid=b76030b82d7be4400e999f17260e2d3178e8gxrqb&type=client&tsoh=d3d3LnNjaWVuY2VkaXJlY3QuY29t&ua=1c175f02535a5000510b0b&rr=8c583d1edc496f93&cc=fr)
+
+Cependant, appliquer des processus de tiling a un dataset n'est PAS toujours la meilleure option selon le cas d'usage. Le tiling ne donnera pas toujours les meilleurs resultats, ni les plus precis. Il existe plusieurs strategies de tiling disponibles sur Internet. Des depots publics fournissent des [codes publics](https://the-lay.github.io/tiler/) pour toutes ces differentes strategies.
+
+## Modes de tiling
+
+Disons que vous avez une image de 100 pixels de largeur et que vous utilisez deux tuiles pour la decouper. La premiere tuile couvre 80 pixels sur les 100, mais la deuxieme tuile n'aura que 20 pixels restants a couvrir. Comment allez-vous tiler 20 pixels pour une boite englobante de 80 pixels ? Il existe [plusieurs "modes" de tiling disponibles](https://the-lay.github.io/tiler/) pour resoudre ce probleme. Dans ce cas, SAHI suit le mode "drop" ou, comme son nom l'indique, SAHI supprime la deuxieme tuile avec les 20 pixels. Et avec ces pixels, SAHI supprime egalement les informations qu'ils contiennent.
+
+Mais il existe au moins 6 a 7 modes de tiling pour ajuster les tuiles "de bordure" (comme la tuile de 20 pixels dans l'exemple precedent) et chez Picsellia, l'equipe implemente la plupart d'entre eux pour eviter la perte d'informations pendant le processus d'entrainement. Avoir plusieurs modes de tiling offre egalement de la flexibilite aux utilisateurs pour decider quel mode de tiling ils souhaitent implementer pour leurs cas d'usage specifiques, leur donnant le controle de leurs donnees et de l'entrainement de leurs modeles.
+
+Voici quelques-uns des modes de tiling :
+
+### Constant : c'est un cas d'usage classique, active par defaut.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-2.png)
+
+### Drop : c'est ce que faisait SAHI.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-3.png)
+
+### Reflect : appliquer un reflet de la tuile jusqu'a ce que la tuile soit complete. Similaire a un miroir.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-4.png)
+
+### Edge : Prend la derniere ligne ou colonne du pixel et la repete jusqu'a ce que la tuile soit complete.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-5.png)
+
+### Wrap : Repeter la tuile jusqu'a ce que la tuile soit complete.
+
+![Sahi computer vision tiling](/images/blog/sahi-computer-vision-tiling-img-6.png)
+
+## NMS ou NMM
+
+Les modeles de detection d'objets generent souvent des detections en double pour le meme objet en raison du chevauchement des boites englobantes. Le Non-max Merging (NMM) fusionne les boites qui se chevauchent en une seule detection. Il construit des groupes de detections qui se chevauchent et combine leurs proprietes pour creer un resultat plus consolide. D'autre part, le NMS ou Non-max Suppression est un algorithme qui traite la double detection en conservant la boite englobante la plus confiante et en eliminant les autres. Il fonctionne en comparant les chevauchements entre les boites en fonction de la valeur d'Intersection-Over-Union (IOU), eliminant les detections moins confiantes. Entre les deux, le NMS est plus rapide et devrait etre le choix par defaut dans la plupart des cas. Le NMS est presque toujours utilise lorsqu'une prediction est faite avec un modele d'IA. Le NMM est une etape supplementaire necessaire lors de la fusion des annotations des tuiles. Cependant, le NMM est utile lorsqu'une fusion plus precise des detections qui se chevauchent est necessaire, surtout lorsque les objets sont sous-detectes. Les deux methodes peuvent etre testees et ajustees en fonction des exigences specifiques de la tache.
+
+## Conclusion
+
+SAHI a ete un outil precieux pour ameliorer la detection d'objets, en particulier pour les objets plus petits, sans necessite de re-entrainement extensif. Cependant, l'equipe Picsellia a reconnu ses limites et a pris l'initiative de developper un modele de tiling plus flexible et complet. Elle a introduit une approche plus raffinee du traitement d'images, permettant une analyse haute resolution sans perdre de details importants.
+
+La flexibilite des differents modes de tiling et la capacite de traiter la taille des tuiles comme un hyperparametre donne aux developpeurs un plus grand controle sur le processus d'entrainement, facilitant l'adaptation des solutions a des cas d'usage specifiques.
+
+L'approche de Picsellia en matiere de tiling permet aux developpeurs d'obtenir de meilleures performances dans leurs modeles de vision par ordinateur, conduisant a un entrainement de modeles plus precis et plus efficace. [Reservez votre demo](/demo) maintenant !

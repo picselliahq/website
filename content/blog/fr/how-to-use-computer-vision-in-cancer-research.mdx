@@ -1,0 +1,324 @@
+---
+
+title: "Comment utiliser la vision par ordinateur dans la recherche sur le cancer avec le MLOps"
+description: "Nous avons présenté les nouvelles fonctionnalités de Picsellia à travers un cas d'usage réel de recherche sur les cellules cancéreuses. Découvrez comment nous avons appliqué la vision par ordinateur à la recherche médicale."
+date: "2022-03-28"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/how-to-use-computer-vision-in-cancer-research-hero.png"
+imageAlt: "How to Use Computer Vision in Cancer Research With MLOps"
+published: true
+tags: ["computer-vision", "dataset-management", "deployment", "experiment-tracking", "mlops", "model-training", "object-detection", "pipelines"]
+---
+
+Nous avons organisé un webinaire pour présenter la nouvelle version de notre plateforme, désormais centrée sur le MLOps, et plus précisément, sur le [CVOps](/post/how-to-apply-mlops-to-computer-vision-cvops?utm_source=webinar&utm_medium=medium&utm_campaign=webinar+post) — le MLOps appliqué à la vision par ordinateur. Chez [Picsellia](/), nous proposons une plateforme de vision par ordinateur (CV) de bout en bout qui vous permet de gérer les données IA, d'exécuter des expériences, de déployer des modèles en production et de les surveiller avec des pipelines automatisés.
+
+Pour vous présenter les nouvelles fonctionnalités de Picsellia, nous avons préparé un cas d'usage en collaboration avec le [Centre de Recherches en Cancérologie de Toulouse](https://www.crct-inserm.fr/en/). Si vous souhaitez regarder le replay de notre webinaire, il est disponible sur YouTube, juste [ici](https://youtu.be/UpwzH8bRRXQ) !
+
+## Sommaire
+
+- À propos du cas d'usage
+- Annoter votre dataset
+- Entraîner votre modèle
+- Lancer l'expérience
+- Exporter le modèle
+- Déployer le modèle
+- Faire des prédictions/inférences
+- Entraîner un modèle sur un dataset personnalisé de noyaux de fibroblastes
+- Entraînement continu et système d'alertes
+- Comparer les modèles shadow
+
+## **À propos du cas d'usage**
+
+Le cas d'usage a été rendu possible grâce au Centre de Recherches en Cancérologie de Toulouse, dont les collaborateurs ont partagé avec nous certains de leurs obstacles en matière de tests et de recherche.
+
+Le centre étudie la propagation des cellules cancéreuses sous microscope, et recherche comment certaines autres cellules nativement présentes dans notre corps, appelées fibroblastes, aident le cancer à se propager.
+
+Aujourd'hui, ce que les scientifiques mesurent concernant la propagation est la fluorescence globale. En activant certaines enzymes sur les cellules, ils peuvent surveiller la fluorescence globale d'une image. Mais cette fluorescence doit être rapportée au nombre de cellules dans la photo pour avoir des résultats significatifs.
+
+Le simple comptage des cellules d'une image peut prendre de 2 à 3 heures, jusqu'à 10 à 12 heures par semaine, ralentissant leur processus de recherche.
+
+Chez Picsellia, nous avons pensé que l'IA et la vision par ordinateur pourraient les aider à détecter les noyaux de ces cellules et à automatiser le processus de comptage cellulaire, faisant passer le processus de comptage de 10 heures à quelque chose comme 2 à 3 minutes pour un millier d'images.
+
+## Méthodologie
+
+En résumé, nous allons essayer d'entraîner un nouveau modèle qui servira de modèle de base sur notre dataset, et nous le fine-tunerons et l'utiliserons pour pré-annoter nos images et voir comment il performe. Notre dataset était adapté à la segmentation mais nous l'utiliserons pour la détection d'objets juste pour simplifier le cas d'usage, et parce que la détection d'objets est adaptée au comptage cellulaire.
+
+## **Annoter votre dataset**
+
+Nous commencerons dans le data lake. C'est là que tous les assets stockés peuvent être visualisés et recherchés, par exemple par tag ou autres attributs.
+
+Ici, nous avons beaucoup plus d'images que nécessaire pour notre cas d'usage, donc nous allons filtrer uniquement les images du dataset Nature, par le tag "nature".
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4bb 623c46bc0f775651c366e8b3 ex1](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4bb_623c46bc0f775651c366e8b3_Ex1.gif)
+
+Nous voyons que nous ne listons que 79 images, ce qui est la taille du dataset original. Nous pouvons également passer en vue liste et voir le nom de fichier et les attributs des images.
+
+![How to use computer vision in cancer research 6242b9cdee28fe449701f700 0 gxash6zam3vqz1df](/images/blog/how-to-use-computer-vision-in-cancer-research-6242b9cdee28fe449701f700_0-gXasH6zam3vqZ1Df.png)
+
+Maintenant, nous devons les sélectionner toutes et créer un dataset Picsellia que nous appellerons "empty_images".
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4be 6242b9ee0bf24e89a32ce8df exhibit 25202](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4be_6242b9ee0bf24e89a32ce8df_Exhibit-25202.gif)
+
+Comme il devrait être maintenant créé, nous pouvons aller vers le dataset. Sélectionnons le dataset que nous voulons et la version "empty_images" que nous venons de créer.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4c1 6242ba0db21bef701f8a0cac exhibit 3](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4c1_6242ba0db21bef701f8a0cac_Exhibit-3.gif)
+
+Dans un dataset, vous pouvez importer des annotations. Comme le dataset Nature était déjà étiqueté, nous avons importé les annotations dans une nouvelle version de notre dataset.
+
+![How to use computer vision in cancer research 6242ba2073d2736e28eff82b 0 943k9zfwxmtxj4cp](/images/blog/how-to-use-computer-vision-in-cancer-research-6242ba2073d2736e28eff82b_0-943k9ZFWxMTxj4cp.png)
+
+Nous retournons à nos datasets, et choisissons celui qui est déjà annoté.
+
+![How to use computer vision in cancer research 6242ba312b2dda8c6d29aee6 0 ouovd8  lplh6edu](/images/blog/how-to-use-computer-vision-in-cancer-research-6242ba312b2dda8c6d29aee6_0-OUOvD8_-LplH6eDu.png)
+
+Une fois là, nous pouvons visualiser toutes les annotations qui ont été faites. La cohérence semble plutôt bonne et toutes les cellules sont étiquetées.
+
+![How to use computer vision in cancer research 6242ba40618a91fce0dfa6b4 0 n3hxszbpnjo8ui8y](/images/blog/how-to-use-computer-vision-in-cancer-research-6242ba40618a91fce0dfa6b4_0-n3HxszbpnJo8Ui8Y.png)
+
+Si nous sélectionnons une image et allons dans notre outil d'annotation, si nécessaire, nous pouvons éditer les annotations une par une, ou créer une nouvelle annotation avec notre interface d'annotation collaborative.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4c8 6242ba67ee28fe792e01f8d0 exhibit 4](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4c8_6242ba67ee28fe792e01f8d0_Exhibit-4.gif)
+
+Comme montré ci-après, dans le data lake vous pouvez filtrer vos images par attribut, y compris les objets dans les annotations. Par exemple, nous pouvons choisir de visualiser toutes les images qui contiennent plus de 20 cellules annotées, et voir que cela réduit le nombre d'images à 56.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be559 6242bace771207efd643d5cf exhibit 5](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be559_6242bace771207efd643d5cf_Exhibit-5.gif)
+
+## Entraîner votre modèle
+
+Maintenant que nous sommes satisfaits de notre dataset entièrement annoté, nous pouvons passer à l'entraînement du modèle.
+
+Créons un nouveau projet. Nous l'appellerons base-nature-cells, invitons notre équipe, et validons.
+
+![How to use computer vision in cancer research 66ed39463bd1d937d97be3b8 6242bb53734c0a71e5ae31f5 exhibibt 6 1](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39463bd1d937d97be3b8_6242bb53734c0a71e5ae31f5_Exhibibt-6_1.gif)
+
+Ensuite, nous attacherons le dataset que nous venons de créer (avec les annotations) à notre projet, et ce sera la source de l'expérience que nous allons créer maintenant.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4cb 6242bb956cd7610415121296 exhibit 7](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4cb_6242bb956cd7610415121296_Exhibit-7.gif)
+
+Appelons-la v0 et choisissons dans notre HUB de modèles un modèle **efficientDet-d2** adapté à la détection d'objets.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be55c 6242bbc7ee28febdfe02169f ex 8](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be55c_6242bbc7ee28febdfe02169f_Ex-8.gif)
+
+Nous garderons les paramètres de base pour l'instant, sélectionnons notre dataset et créons notre expérience.
+
+![How to use computer vision in cancer research 6242bbe6fb906566886b3bef 0 pffx5la zndgwpgo](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bbe6fb906566886b3bef_0-PFFx5LA-ZndgwpGo.png)
+
+Voici notre tableau de bord d'expérience. Il est vide pour le moment mais nous pouvons déjà vérifier qu'il a attaché toutes les ressources dont nous avons besoin, comme le modèle de base, le dataset et les paramètres.
+
+![How to use computer vision in cancer research 6242bbff2db2f8542906cb21 0 64rsz4wgoi3ccbul](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bbff2db2f8542906cb21_0-64RsZ4wGOI3ccBuL.png)
+*Tableau de bord d'expérience*
+
+## Lancer l'expérience
+
+Maintenant, nous voulons lancer notre expérience à distance en allant simplement dans l'onglet "launch", et en cliquant sur le bouton "launch". Picsellia propose déjà du code empaqueté pour les modèles de notre hub, nous permettant de lancer l'entraînement de manière transparente.
+
+![How to use computer vision in cancer research 6242bc0bcd3b422d653772ec 0 drsujzqd0q5mm82g](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bc0bcd3b422d653772ec_0-dRsuJZQd0q5mm82g.png)
+*Tableau de bord de lancement*
+
+Nous pouvons maintenant aller dans l'onglet "telemetry" où nous pouvons voir les logs du serveur GPU en temps réel et nous assurer que notre modèle s'entraîne correctement.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be3f4 6242bc35162e5545ff7ee0f9 ex9](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be3f4_6242bc35162e5545ff7ee0f9_ex9.gif)
+
+Si nous retournons à l'onglet "logs", nous pouvons voir que nous avons déjà quelques métriques comme le train-split et la loss qui est journalisée en temps réel pendant l'entraînement, avec l'historique d'activité, qui est le split entraînement/test du dataset et quelques epochs pour lesquelles nous pouvons vérifier la loss en temps réel.
+
+![How to use computer vision in cancer research 6242bc47ca8eec8316929e31 0  fsyiibwfxuqdpft](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bc47ca8eec8316929e31_0-_FSYiiBwFXUqDpft.png)
+
+Quelques heures plus tard, nous voulons vérifier l'onglet "telemetry". L'expérience a pris trois heures pour se terminer.
+
+Maintenant nous pouvons voir que notre entraînement est terminé et que tout a été journalisé correctement. Nous pouvons même vérifier en détail. Dans ce cas, nous pouvons observer que l'évaluation et le téléchargement des artefacts se sont bien passés.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4fb 6242bc95e99900143051b48d ex11](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4fb_6242bc95e99900143051b48d_ex11.gif)
+
+Revenons à notre tableau de bord pour voir toutes nos métriques d'entraînement. Nous avons maintenant beaucoup plus d'informations. Nous avons tous les graphiques des différentes courbes de loss, nos métriques d'évaluation, et plus. Nous pouvons observer que notre loss semble avoir atteint un minimum, et dire que c'est suffisant pour les besoins de cette démo.
+
+![How to use computer vision in cancer research 6242bcb9b21bef11738a1b67 0 jdst3sp50zag7aec](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bcb9b21bef11738a1b67_0-JDsT3SP50ZaG7aeC.png)
+
+## Exporter le modèle
+
+Ensuite, nous voulons exporter l'expérience (cliquez sur le bouton "export" en haut à droite). En d'autres termes, nous allons convertir l'expérience en un modèle et le sauvegarder dans notre registre, que nous pourrons déployer.
+
+![How to use computer vision in cancer research 6242bcd94337266344f03853 0  t8ialwfydnwq 7y](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bcd94337266344f03853_0--t8IalwFYDNWq-7y.png)
+
+Cela nous amène à notre registre dans la page "model", où nous pouvons accéder aux fichiers nécessaires pour ré-entraîner ou déployer, la carte d'étiquettes, les données d'entraînement et l'expérience originale.
+
+## Déployer le modèle
+
+![How to use computer vision in cancer research 6242bcf5c64a9716b4e72cca 0 jh rs22w9ts wnoa](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bcf5c64a9716b4e72cca_0-jh-rs22W9Ts-wnoA.png)
+*Page du modèle*
+
+Ensuite, cliquez sur "deploy" et définissez un seuil de confiance minimum pour limiter le bruit dans nos prédictions.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be407 6242bd76faee5ce9cdb7f670 ex 12](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be407_6242bd76faee5ce9cdb7f670_ex-12.gif)
+
+**Et nous venons de créer un modèle déployé !**
+
+![How to use computer vision in cancer research 6242bd86955ccb4da3301780 0 eiy3ev xlulm tyv](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bd86955ccb4da3301780_0-eIY3EV-xLUlM_tyv.png)
+
+## Faire des prédictions/inférences
+
+Maintenant nous voulons faire quelques prédictions avec notre modèle, pour quoi nous n'avons qu'à copier le nom du déploiement et aller dans un notebook ou n'importe où vous pouvez faire un appel API.
+
+Nous utiliserons notre SDK Python pour appeler notre déploiement. Avec une méthode simple, nous nous authentifierons et récupérerons les informations du déploiement. Ensuite, nous devrons sélectionner un dossier avec les images sur lesquelles nous voulons effectuer des prédictions, et les envoyer au modèle avec la méthode predict.
+
+![How to use computer vision in cancer research 6242bd9c55504a89cfae2ee9 0 nc6fiyrpltvw7hg3](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bd9c55504a89cfae2ee9_0-Nc6fiyRpLtvW7hg3.png)
+
+L'avantage de Picsellia est que nous pouvons voir les prédictions en direct dans le tableau de bord. Nous avons des informations simples mais critiques comme la latence du modèle.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be4fe 6242bdbab21bef63618a23a8 ex 13](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be4fe_6242bdbab21bef63618a23a8_ex-13.gif)
+
+Envoyons-en quelques-unes de plus pour tracer un meilleur graphique. Nous pouvons voir que notre modèle a une latence moyenne de 210ms, ce qui est plutôt bon pour une première étape.
+
+![How to use computer vision in cancer research 6242bdd929dea30ee0578d05 0 bkpvtmovigqnddf4](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bdd929dea30ee0578d05_0-BKpVTMOviGQNdDf4.png)
+
+Si nous allons dans l'onglet "predictions", nous pouvons maintenant voir toutes les prédictions faites par notre modèle (cela devrait vous rappeler l'onglet Dataset).
+
+![How to use computer vision in cancer research 6242bde955504a59e3ae3030 0 41wtc9thnu6lr2rs](/images/blog/how-to-use-computer-vision-in-cancer-research-6242bde955504a59e3ae3030_0-41wtc9tHNU6lr2RS.png)
+
+Comme nous pouvons le voir, notre modèle détecte nos cellules mais il y a encore beaucoup de bruit dans les prédictions, nous devrons donc nettoyer cela pour ré-entraîner un autre modèle.
+
+Avant de passer en revue, nous allons configurer ce que nous appelons la "boucle de feedback" dans les paramètres de notre déploiement, qui définit un dataset cible où nos prédictions validées atterriront.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be42f 6242be46c53294db5e623449 ex 14](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be42f_6242be46c53294db5e623449_ex-14.gif)
+
+Maintenant nous pouvons passer en revue nos prédictions. C'est fondamentalement le même processus que l'étiquetage de vos données la première fois, sauf que vous pouvez filtrer les prédictions par seuil de confiance et ensuite éditer les objets pour rendre les annotations aussi propres et rapides que possible.
+
+Si nous retournons à notre tableau de bord, nous aurons maintenant accès à des métriques plus intéressantes pour garantir la qualité des prédictions du modèle. Vous trouverez des métriques pures de détection d'objets comme le rappel moyen, la précision moyenne, la distribution globale et par prédiction des étiquettes, des informations sur la distribution des images et aussi la détection automatique de dérive des données.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be55f 6242c2daadd27388c0b27ab7 ex 16 light](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be55f_6242c2daadd27388c0b27ab7_ex-16-light.gif)
+
+‍
+
+Maintenant, nous avons un modèle de base qui fait des prédictions à peu près correctes, mais notre objectif final est d'entraîner un modèle qui performera bien sur notre dataset personnalisé.
+
+## Entraîner un modèle sur un dataset personnalisé de noyaux de fibroblastes
+
+Le processus consistera à envoyer toutes les images à travers notre modèle, qui effectuera des pré-annotations, puis à les affiner pour créer un dataset propre pour ré-entraîner un nouveau modèle adapté à notre cas d'usage.
+
+Prédi-sons nos images. Nous pouvons voir qu'il a détecté certains de nos noyaux. Allons vérifier ces prédictions de plus près.
+
+Encore une fois, nous passons en revue et éditons les nouvelles prédictions du mieux possible — c'est souvent assez facile grâce au curseur de seuil.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be501 6242c436a1c397f127d247cd exhibit 17](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be501_6242c436a1c397f127d247cd_exhibit-17.gif)
+
+Comme vous vous en souvenez peut-être, plus tôt, nous avons configuré dans les paramètres de notre déploiement ce que nous appelons une boucle de feedback. Cela signifie que maintenant que nous avons envoyé toutes nos images à travers le modèle et les avons passées en revue, elles apparaîtront toutes ici et serviront de données d'entraînement.
+
+Nous pouvons voir que le dataset est composé de 30 images et a 712 objets annotés, ce qui n'est pas suffisant pour entraîner un modèle de détection d'objets.
+
+![How to use computer vision in cancer research 6242c4736c3ffd3bc4cc805e 0 fqcracqppwj epfy](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c4736c3ffd3bc4cc805e_0-FqcraCqPpwJ_EPFY.png)
+
+Pour l'enrichir, nous ferons de l'augmentation de données avec un script que nous avons préparé en parallèle, utilisant quelques manipulations d'images classiques, ce qui nous amène à cette version du dataset. Les images ont été recadrées, zoomées et pivotées aléatoirement afin de créer de nouveaux échantillons facilement. Les dimensions sont meilleures maintenant car nous avons presque 700 images et 18 000 objets.
+
+![How to use computer vision in cancer research 6242c52c7794bd183907d8b6 1 f3yxfnpz3i ootrzw wdla](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c52c7794bd183907d8b6_1-f3YXFnpz3I_OOtrzW_WdLA.png)
+
+Maintenant que nous avons notre dataset, nous suivrons le même processus que notre premier entraînement. Nous créerons un projet et attacherons notre dataset augmenté.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be508 6242c53f80c1733d65201725 ex 18](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be508_6242c53f80c1733d65201725_ex-18.gif)
+
+Et encore, créer une expérience qui gérera la partie entraînement. Pour cela, nous choisirons le même modèle de base qu'auparavant et créerons notre expérience. Pour être clair, nous ne voulions pas utiliser notre modèle pré-entraîné des cellules de base pour entraîner celui-ci. L'objectif ici était d'utiliser le premier modèle entraîné pour pré-annoter les données afin de nous aider à aller plus vite vers la deuxième itération. Ce n'est pas ce que nous avons fait ici — et c'est pourquoi nous utilisons toujours une architecture **efficientdet_d2** pour l'entraînement. Mais, une autre stratégie aurait été d'utiliser ce modèle comme architecture de base pour notre expérience.
+
+![How to use computer vision in cancer research 6242c55b6c3ffd53f6cc8720 0 usianv5woptf75pg](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c55b6c3ffd53f6cc8720_0-UsIAnv5WOpTf75Pg.png)
+
+Encore une fois, nous le lancerons à distance.
+
+**Vérifions que notre entraînement se déroule correctement !**
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be436 6242c577ad0946ee7fa2f6ab ex 19](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be436_6242c577ad0946ee7fa2f6ab_ex-19.gif)
+
+Nous revenons à notre tableau de bord de projet quelques heures plus tard, et nous pouvons voir des expériences réussies. Nous en avons deux car nous n'étions pas satisfaits de la performance de la première.
+
+![How to use computer vision in cancer research 6242c5950bf24ea1a22d5ced 0 2xnaiyhpnpqffuqi](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c5950bf24ea1a22d5ced_0-2xNaiYhpnPQffUQI.png)
+
+Jetons un coup d'oeil aux logs du serveur pour vérifier que rien ne s'est mal passé.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be562 6242c5b7ad09466472a2f9fd ex 20](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be562_6242c5b7ad09466472a2f9fd_ex-20.gif)
+
+Encore une fois, nous allons aussi convertir cette expérience en un modèle dans notre registre.
+
+![How to use computer vision in cancer research 6242c5c5a1c3972d3dd256c5 0 lru5iezcdb xhqkp](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c5c5a1c3972d3dd256c5_0-LrU5IEZcDB_xHQkp.png)
+
+**Créons un nouveau déploiement !**
+
+![How to use computer vision in cancer research 6242c5dbb539303f5c2ffd50 0 5crinlum37rvb0q7](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c5dbb539303f5c2ffd50_0-5cRiNluM37rvB0Q7.png)
+*Étape 1*
+
+![How to use computer vision in cancer research 6242c5e07db7b3778fc24a87 0 trsst4fulkrkbfhl](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c5e07db7b3778fc24a87_0-TrsST4FULKrKbFhL.png)
+*Étape 2*
+
+Nous définirons le même seuil de confiance qu'auparavant.
+
+![How to use computer vision in cancer research 6242c60a115237083d2d2f26 0 qe63xh03xmschrgy](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c60a115237083d2d2f26_0-qE63xH03xMscHRgy.png)
+*Étape 3*
+
+## Entraînement continu et système d'alertes
+
+Ensuite, nous irons à notre nouveau déploiement. Avant de lancer des prédictions, nous allons d'abord configurer nos déploiements avec de nouvelles fonctionnalités différentes de la précédente : l'**entraînement continu** et le **système d'alertes**.
+
+Juste pour donner un peu de contexte, l'entraînement continu est la capacité de surveiller un déclencheur qui lancera une expérience simple ; dans notre cas, avec des paramètres prédéfinis, un modèle de base et un dataset. Comme tous nos assets sont centralisés dans Picsellia, c'est vraiment facile à faire.
+
+Dans notre cas, pour les besoins du webinaire, nous voulons que la boucle d'entraînement continu se lance après que 3 nouveaux échantillons des prédictions soient passés en revue. Nous avons également une alerte par défaut sur la latence du modèle qui nous enverra des notifications si la latence dépasse 100ms.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be50b 6242c62cb21befeb7d8a6118 ex 21](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be50b_6242c62cb21befeb7d8a6118_ex-21.gif)
+
+Maintenant nous allons configurer les alertes par défaut qui seront déclenchées sur la latence du modèle. Si le modèle dépasse 100 ms, nous devrions voir des alertes sur le tableau de bord.
+
+![How to use computer vision in cancer research 6242c63d6381b5ebd8925634 0 tqem7ogh0t55s d](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c63d6381b5ebd8925634_0-tQeM7oGh0t55S_d_.png)
+
+Maintenant nous faisons des prédictions avec des images originales que nous avons gardées de côté et voyons comment notre modèle performe. Nous pouvons déjà voir que notre modèle a déclenché nos alertes — sa latence est 2 à 3 fois supérieure au seuil de 100 ms que nous avions défini plus tôt.
+
+‍
+
+![How to use computer vision in cancer research 6242c64dd109f42497dc324c 0 i hppzbhyqsoihv7](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c64dd109f42497dc324c_0-i-hPpzbHyQsoihv7.png)
+
+Ensuite, nous passerons en revue 3 images, afin de lancer notre boucle d'entraînement continu.
+
+Une fois cela fait, un entraînement sera automatiquement lancé dans le projet utilisé pour entraîner le premier modèle.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be49f 6242c672162e557a2b7f3d98 ex 23](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be49f_6242c672162e557a2b7f3d98_ex-23.gif)
+
+> Et, quelques minutes plus tard nous pouvons voir que **le statut de notre expérience est un succès !**
+
+‍
+
+![How to use computer vision in cancer research 6242c68a3e41a830b443a9ff 0 fy9bpob9zfdt4r g](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c68a3e41a830b443a9ff_0-fy9BPob9ZfDt4r_G.png)
+
+Cela signifie que si nous retournons à notre déploiement, nous devrions voir quelque chose de nouveau.
+
+![How to use computer vision in cancer research 6242c6cf2db2f82ee4073a58 0 rfdigri5fu5phlf9](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c6cf2db2f82ee4073a58_0-rFDigRI5Fu5pHlF9.png)
+
+## **Comparer les modèles shadow**
+
+L'onglet en haut de l'écran nous indique que nous avons un nouveau modèle prêt depuis la boucle d'entraînement continu, qui peut être déployé.
+
+![How to use computer vision in cancer research 6242c702162e55f0f87f40e2 0 hgboik3cs2bizpmd](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c702162e55f0f87f40e2_0-hgBOIk3cS2BIzpMd.png)
+
+Nous allons le déployer en tant que **modèle shadow** pour voir comment il performe par rapport à notre premier modèle de production actuel. En résumé, le modèle shadow sera là uniquement pour comprendre s'il performe mieux que l'autre.
+
+![How to use computer vision in cancer research 6242c7186cd76195bf126dc3 0 i7wci ipkkxfl7xf](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c7186cd76195bf126dc3_0-i7wCi_IpKkXfl7xf.png)
+
+**Le modèle a été déployé avec succès.** Maintenant nous allons faire quelques prédictions à nouveau, et nous pouvons voir que nous pouvons directement comparer notre modèle de production avec le modèle shadow sans effort.
+
+Il semblait que le modèle shadow avait des problèmes de latence au début mais maintenant il a la même latence que notre premier modèle. Et, si nous regardons de plus près, nous pouvons voir que la latence moyenne du modèle shadow est même meilleure que celle de l'original de quelques dizaines de millisecondes.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be517 6242c764955ccb6a0d306f3c ex 24](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be517_6242c764955ccb6a0d306f3c_ex-24.gif)
+
+Si nous le souhaitons, nous pouvons investiguer une prédiction particulière en cliquant simplement sur n'importe quel point du graphique. Cela nous aide à identifier et à mieux comprendre les valeurs aberrantes provenant de la prédiction.
+
+Nous pouvons voir que notre modèle shadow semble performer un peu mieux que le précédent, juste en jugeant par sa latence.
+
+![How to use computer vision in cancer research 6242c788162e5556a47f4421 0 f6ijyeo1vsq1vl7v](/images/blog/how-to-use-computer-vision-in-cancer-research-6242c788162e5556a47f4421_0-f6IjyEO1VSq1Vl7v.png)
+
+Nous pouvons retourner à notre onglet de prédictions une dernière fois et commencer à passer en revue quelques images pour garantir la qualité des prédictions du modèle shadow — la même vérité terrain sera comparée entre la prédiction du modèle original et du modèle shadow.
+
+Nous pouvons voir que nous avons de nouvelles métriques dans notre tableau de bord, avec des informations sur le modèle shadow. Cela nous aidera à prendre la meilleure décision sur quand déployer le nouveau modèle en production.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be517 6242c764955ccb6a0d306f3c ex 24](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be517_6242c764955ccb6a0d306f3c_ex-24.gif)
+
+Ici, si nous basons notre décision uniquement sur la latence, nous choisissons de promouvoir le modèle shadow en champion, et ainsi, notre ancien modèle n'est plus le modèle de production et a été remplacé par notre modèle shadow.
+
+![How to use computer vision in cancer research 66ed39473bd1d937d97be565 6242c7fcaabf8f194a1f2d8f ex 25](/images/blog/how-to-use-computer-vision-in-cancer-research-66ed39473bd1d937d97be565_6242c7fcaabf8f194a1f2d8f_ex-25.gif)
+
+Enfin, cela boucle la boucle des données d'entraînement au déploiement et au monitoring pour la vision par ordinateur, ce que nous appelons le [CVOps](/post/how-to-apply-mlops-to-computer-vision-cvops).
+
+Si vous souhaitez essayer Picsellia gratuitement, vous pouvez directement réserver un appel rapide [ici](/trial) pour que nous puissions vous configurer !

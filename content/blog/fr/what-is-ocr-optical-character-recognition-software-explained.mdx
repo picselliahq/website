@@ -1,0 +1,129 @@
+---
+
+title: "Qu'est-ce que l'OCR ? Logiciel de reconnaissance optique de caracteres explique"
+description: "Plongee approfondie dans l'OCR, de sa definition et son histoire aux technologies sous-jacentes et aux applications les plus courantes (et les plus precieuses)."
+date: "2023-10-31"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/what-is-ocr-optical-character-recognition-software-explained-hero.png"
+imageAlt: "What is OCR? Optical Character Recognition Software Explained"
+published: true
+tags: ["computer-vision", "document-processing", "ocr"]
+---
+
+## Qu'est-ce que l'OCR ? Logiciel de reconnaissance optique de caracteres (OCR) explique
+
+L'omnipresence et la croissance exponentielle des technologies de l'information (donnees) et de la communication (TIC) font de la numerisation un pilier essentiel de notre epoque. Au fil du temps, diverses techniques d'interaction, de stockage et de recuperation des donnees ont evolue. Les methodes anterieures, comme la saisie manuelle de donnees ou le microfilm, etaient chronophages, gourmandes en main-d'oeuvre ou moins precises.
+
+Doter les ordinateurs et les machines de prouesses optiques, connue sous le nom de reconnaissance optique de caracteres (OCR), a revolutionne la numerisation. Cette technologie leur a confere des capacites visuelles semblables a celles des humains. Cette capacite leur a permis de saisir, acceder, transferer, consommer ou traiter les donnees plus rapidement et plus efficacement, rendant la numerisation des donnees transparente. L'OCR a depasse l'idee banale de la numerisation et de la conversion d'un document physique en format texte.
+
+Cet article fournira une plongee approfondie dans l'OCR, de sa definition et son histoire aux technologies sous-jacentes et aux applications les plus courantes (et les plus precieuses).
+
+## Qu'est-ce que l'OCR et pourquoi est-ce important ?
+
+La reconnaissance optique de caracteres (OCR), comme son nom l'indique, reconnait les caracteres de maniere optique. La technologie permet aux ordinateurs de lire du texte a partir de formats de fichiers d'images numeriques comme les fichiers d'images de camera, les fichiers PDF contenant uniquement des images, les documents papier numerises, les documents imprimes, les captures d'ecran, le texte manuscrit, etc., en identifiant et reconnaissant chaque caractere dans le fichier d'image numerique. Elle numerise, extrait et convertit les caracteres des fichiers d'images numeriques en code lisible par machine.
+
+Les systemes OCR rationalisent les flux de travail et augmentent la productivite en creant une interface reliant les mondes physique et numerique. Cela elimine le besoin pour les humains d'interagir manuellement avec les donnees a chaque fois. Cette interface automatique permet aux ordinateurs d'automatiser la saisie, l'extraction, le stockage, l'analyse ou le traitement des donnees. Les avantages de l'automatisation OCR pour les operations et les processus impliquant l'utilisation de texte provenant de fichiers d'images numeriques incluent :
+
+- Diminution des erreurs operationnelles
+- Reduction des couts d'exploitation
+- Augmentation de l'efficacite
+- Minimisation de l'effort humain
+- Acceleration du temps d'execution
+
+## Comment ca fonctionne ?
+
+Les systemes OCR comprennent l'information visuelle en reproduisant les principes de fonctionnement des yeux et du cerveau humains. Les systemes optiques ont une conception fondamentale de manipulation de la lumiere par reflexion ou refraction. Comme l'oeil, les systemes OCR adoptent le concept de reflexion de la lumiere pour former une image. Imaginez comment une ombre se forme lorsque vous projetez de la lumiere sur un objet. Une ombre est techniquement un reflet d'image de l'objet original en 2D (dimension inferieure).
+
+L'oeil encode cette image 2D sous forme de signaux electriques et les envoie au cerveau pour interpretation. Le cerveau decode les signaux pour determiner l'objet a partir de la forme de son ombre.
+
+### La technologie derriere l'OCR
+
+La technologie pour traduire le texte dans les images en signaux electroniques que les machines peuvent comprendre et utiliser est vaste. Il y a donc eu de nombreuses implementations differentes de l'OCR au fil des ans. Cependant, les logiciels OCR comprennent generalement un processus en trois etapes : le pretraitement de l'image, la classification (detection et reconnaissance de texte) et le post-traitement. Ils utilisent des algorithmes allant du traitement d'image traditionnel aux techniques de machine learning ou de deep learning.
+
+#### Couche de pretraitement
+
+En resume, cette etape implemente une technique de compression sur l'image qui ameliore la qualite de l'image pour que la machine puisse comprendre et reconnaitre le texte (caracteres). Le logiciel OCR prend des fichiers d'images 2D en entree. Quel que soit l'ensemble de techniques de [pretraitement](/dataset-management) utilisees, cela commence par la numerisation et la copie du contenu de l'image. Le composant de traitement d'image reajuste l'orientation et l'alignement de l'image numerisee pour adapter les dimensions et la resolution de la numerisation avec une methode de redressement.
+
+Puisque les valeurs de pixels (densite d'image) vont generalement de 0 a 255 et definissent la resolution de l'image, les binariser en valeurs de pixels de 0 et 1 rend l'image numerisee en contraste eleve pour former un bitmap. Un bitmap est generalement une representation de dimension inferieure de l'image 2D originale. A ce stade, la profondeur (couleur) de l'image a disparu, ne vous laissant que des pixels noirs et blancs. C'est comme une ombre de l'image originale. Les zones blanches denotees par des 1 representent l'arriere-plan, tandis que les regions noires denotees par des 0 representent les caracteres.
+
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-0.png)
+*source : How does OCR work? par Aryaman Sharda*
+
+La binarisation nettoie et filtre egalement les zones de l'image presentant un bruit notable, laissant les regions complexes intactes. Coupler une technique de reduction de bruit avec la binarisation donne de meilleurs resultats.
+
+La derniere etape consiste a segmenter les pixels noirs du bitmap qui forment des composantes connexes uniques pour etre analyses et traites separement. Ces pixels tendent a etre les caracteres.
+
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-1.png)
+*source : optical character recognition par computerphile*
+
+#### Classification
+
+Cette etape passe les pixels a composante connexe unique dans un classifieur qui utilise soit un algorithme de reconnaissance de motifs, soit un algorithme d'extraction de caracteristiques pour l'identification des caracteres. Le niveau d'efficacite dans la reconnaissance de caracteres vient comme un compromis selon l'algorithme que le systeme emploie.
+
+La reconnaissance de motifs identifie les caracteres en analysant un pixel noir a composante connexe unique a la fois. Elle s'appuie sur de nombreux exemples d'un caractere dans differentes polices et formats pour identifier les caracteres avec precision. Elle est plus susceptible de manquer des caracteres qui n'ont pas d'exemple exact correspondant dans sa base de donnees.
+
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-2.png)
+
+‍
+
+L'extraction de caracteristiques identifie les caracteres en analysant les lignes, bords, courbes, boucles et traits formes par un pixel noir a composante connexe unique. Cet algorithme developpe une comprehension plus profonde des caracteres, lui permettant de gerer de nouveaux exemples d'un caractere sans avoir besoin d'un exemple exact.
+
+![What is ocr optical character recognition software explained](/images/blog/what-is-ocr-optical-character-recognition-software-explained-img-3.png)
+
+#### Post-traitement
+
+En aval, l'ordinateur fait correspondre le caractere identifie a son code ASCII respectif (American Standard Code for Information Interchange). Ce code produit un texte numerique du caractere en sortie, qu'une personne ou un autre ordinateur peut modifier ou rechercher numeriquement.
+
+Les premiers systemes OCR utilisaient des algorithmes heuristiques pour la reconnaissance de motifs et l'extraction de caracteristiques, qui necessitaient un guidage et une correction manuels. Parfois, ils ne pouvaient fonctionner que marginalement plus vite que la saisie humaine. La reconnaissance avancee, comme la reconnaissance multilingue ou de styles d'ecriture manuscrite, est desormais possible grace a des algorithmes sophistiques qui exploitent la vision par ordinateur (CV) et le traitement automatique du langage naturel (NLP). Ils peuvent utiliser des standards grammaticaux pour affiner la reconnaissance en analysant des motifs verbaux plus larges et des indices contextuels. Ce type d'OCR alimente par l'intelligence artificielle (IA) est appele reconnaissance intelligente de caracteres (ICR).
+
+## L'histoire de l'OCR
+
+Edmund Fournier d'Albe a cree l'optophone, l'un des premiers dispositifs OCR electriques, en 1914. Lorsqu'il scannait les mots sur une page, l'optophone distinguait l'encre sombre du texte des espaces vierges plus clairs, generant des tonalites correspondant a differentes lettres, permettant aux personnes aveugles de lire avec un peu de pratique.
+
+Quelques annees plus tard, vers la fin des annees 1920 et le debut des annees 1930, Goldberg a developpe une machine capable de convertir du texte imprime en code telegraphique. C'etait l'une des premieres technologies a convertir des caracteres imprimes en impulsions electriques plutot qu'en sons. Il l'a brevete en 1931.
+
+Cependant, ce n'est qu'en 1974 que l'OCR a commence a prendre une forme plus moderne, a commencer par Ray Kurzweil, qui a fonde Kurzweil Computer Products, Inc. Il a cree un OCR omni-polices capable de lire du texte dans pratiquement n'importe quelle police.
+
+Kurzweil a ensuite decide que la meilleure utilisation de sa technologie etait de permettre aux ordinateurs de lire du texte a haute voix pour les malvoyants. Le produit utilisait un synthetiseur texte-parole et un scanner a plat CCD. Kurzweil a presente le produit fini lors d'une conference de presse le 13 janvier 1976. Kurzweil Computer Products a cree le premier logiciel OCR commercialement disponible, lance au public en 1978. Kurzweil a ensuite vendu son entreprise a Xerox en 1980.
+
+Cependant, la technologie OCR a gagne en popularite generalise au debut des annees 1990. Dans les annees 2000, l'OCR etait devenu accessible via le web, le cloud et les appareils mobiles. Aujourd'hui, l'OCR possede des capacites plus polyvalentes, allant de la saisie automatisee de donnees a partir d'images de texte a la traduction linguistique.
+
+## Cas d'usage de l'OCR dans differents secteurs
+
+L'OCR [alimente divers domaines](/use-cases) de technologies bien connues avec lesquelles vous etes en contact quotidiennement. Voici quelques cas d'usage de secteurs appliquant l'OCR :
+
+#### Sciences forensiques
+
+L'analyse forensique de l'ecriture manuscrite est un domaine des sciences forensiques qui examine l'ecriture pour determiner son authenticite ou retracer son auteur. Les analystes d'ecriture beneficient de la reconnaissance optique de caracteres (OCR) puisqu'elle convertit le texte manuscrit en texte lisible par machine que la machine peut examiner automatiquement. Les analystes d'ecriture peuvent utiliser l'OCR pour comparer des echantillons d'ecriture et reperer des motifs d'ecriture rapidement et de maniere fiable. L'analyse de lettres de rancon, de signatures, de documents falsifies, l'identification d'ecritures, l'authentification de documents et l'etude de dossiers medicaux sont parmi les nombreuses utilisations de la reconnaissance optique de caracteres (OCR) dans les sciences forensiques de l'ecriture.
+
+#### Sante et biotechnologie
+
+La precision et les soins aux patients sont delicats et fondamentaux dans le secteur de la sante. L'OCR permet une gestion et une analyse efficaces des informations patient pour fournir les meilleurs soins possibles. Avec l'OCR, la numerisation des dossiers patients tels que les dossiers medicaux, les rapports de laboratoire et les resultats d'imagerie est precise, efficace et securisee. L'OCR aide egalement a accelerer la recherche et le developpement dans le secteur de la sante. Pour mieux comprendre les maladies et les pathologies, et pour produire des medicaments, vaccins et traitements nouveaux ou ameliores, les chercheurs peuvent facilement recuperer des donnees de qualite a partir d'un ensemble specifique de patients ou de revues scientifiques et techniques.
+
+#### Logistique
+
+L'OCR est utilise dans le secteur de la logistique pour automatiser le traitement de documents tels que les lettres de transport, les etiquettes d'expedition et les declarations douanieres. Cela permet le traitement de documents en un temps reduit, augmentant ainsi la precision et la productivite et reduisant les couts pour les entreprises. D'autres applications etendues de l'OCR dans la logistique incluent la gestion d'entrepot, la gestion du transport et le service client.
+
+#### Services publics et infrastructures
+
+L'OCR lit les donnees des compteurs dans le secteur des services publics pour automatiser la facturation et suivre la consommation d'energie et d'eau. Il peut egalement dechiffrer des plans de construction comme les plans techniques. D'autres applications de l'OCR dans les secteurs des infrastructures et des services publics sont l'automatisation du service client et la collecte de donnees pour l'analyse.
+
+#### Industrie manufacturiere
+
+L'automatisation de taches monotones critiques avec l'OCR rend les entreprises manufacturieres plus efficaces, rentables et durables. Le controle qualite est une tache manufacturiere vitale pour inspecter la conformite des produits et les standards de qualite. L'OCR effectue des inspections automatisees sur les produits manufactures pour des informations telles que les numeros de serie, les etiquettes, les codes-barres, les numeros VIN, etc. D'autres taches que l'OCR gere dans la fabrication incluent la gestion des stocks, la maintenance predictive, l'expedition et la reception.
+
+#### Defense et aerospatiale
+
+De nombreuses operations dans les secteurs de la defense et de l'aerospatiale reposent sur la securite/cybersecurite. Pour la protection des donnees et la securite, l'OCR permet le traitement automatique des visas, passeports et demandes de voyage. Cela elimine les erreurs d'authentification manuelle, ameliore le traitement de l'information et reduit la fraude aux frontieres et sur les sites militaires. Le secteur de la defense peut egalement extraire du texte de sources de renseignement, telles que les photos satellites et la photographie aerienne, pour suivre les mouvements ennemis, identifier les dangers potentiels et organiser les operations militaires. D'autres applications aerospatiales incluent l'automatisation du traitement de documents logistiques tels que les manifestes d'expedition et les donnees d'inventaire.
+
+#### Automobile
+
+L'OCR est crucial pour les vehicules autonomes car il ameliore leur capacite a percevoir et comprendre leur environnement comme le font les humains. Il est essentiel pour leur navigation optimale. L'une des principales applications de l'OCR dans les voitures autonomes est la reconnaissance des panneaux de signalisation tels que les panneaux stop, les panneaux de cedez-le-passage, les panneaux de limitation de vitesse, etc. L'identification des differents types de panneaux de signalisation inclut la lecture des informations affichees sur ceux-ci, comme la limite de vitesse ou la direction a prendre. L'OCR peut egalement reconnaitre les marquages de voies et d'autres elements routiers.
+
+## Conclusion
+
+L'OCR a progresse depuis ses humbles debuts pour devenir un outil essentiel dans le paysage numerique. Il a revolutionne la facon dont nous interagissons avec les donnees, nous permettant d'exploiter efficacement l'immense valeur des donnees physiques et numeriques.
+
+Les systemes OCR deviennent de plus en plus precis et adaptables a mesure que les algorithmes d'IA et de machine learning s'ameliorent et que les donnees de qualite deviennent plus largement disponibles. Nous nous attendons a davantage de progres dans de nombreux domaines a mesure que la technologie OCR evolue.

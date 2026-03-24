@@ -1,12 +1,14 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useTranslations } from 'next-intl';
 import type { BlogPostMeta } from '@/types/blog';
 import BlogCard from './BlogCard';
 import BlogSearch from './BlogSearch';
 import CategoryFilter from './CategoryFilter';
 
 export default function BlogListClient({ posts, categories }: { posts: BlogPostMeta[]; categories: string[] }) {
+  const t = useTranslations('blog');
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<string | null>(null);
 
@@ -47,8 +49,8 @@ export default function BlogListClient({ posts, categories }: { posts: BlogPostM
 
       {filtered.length === 0 ? (
         <div className="text-center py-20">
-          <p className="text-secondary text-lg">No articles found.</p>
-          <p className="text-tertiary text-sm mt-2">Try adjusting your search or filters.</p>
+          <p className="text-secondary text-lg">{t('noResults')}</p>
+          <p className="text-tertiary text-sm mt-2">{t('noResultsHint')}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -1,6 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 export default function DeploymentArchitecture() {
+  const t = useTranslations('modelDeployment.architecture');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]" style={{
@@ -12,14 +15,13 @@ export default function DeploymentArchitecture() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-[var(--system-red)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Infrastructure
+              {t('badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-              Serverless model serving
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] mb-8">
-              Deploy models without managing servers. Picsellia handles container orchestration,
-              GPU allocation, load balancing, and auto-scaling automatically.
+              {t('subtitle')}
             </p>
 
             <div className="space-y-4">
@@ -30,8 +32,8 @@ export default function DeploymentArchitecture() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">GPU & CPU Inference</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">Choose the right compute for your model — from T4 GPUs to cost-efficient CPU instances</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('gpuCpu')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('gpuCpuDesc')}</p>
                 </div>
               </div>
 
@@ -42,8 +44,8 @@ export default function DeploymentArchitecture() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">Container Orchestration</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">Automatic containerization with optimized runtimes for ONNX, TensorRT, and PyTorch</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('containerOrchestration')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('containerOrchestrationDesc')}</p>
                 </div>
               </div>
 
@@ -54,8 +56,8 @@ export default function DeploymentArchitecture() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">Secure Endpoints</h4>
-                  <p className="text-xs text-[var(--tertiary-label)]">API key authentication, rate limiting, and encrypted traffic by default</p>
+                  <h4 className="text-sm font-semibold text-[var(--label)] mb-1">{t('secureEndpointsTitle')}</h4>
+                  <p className="text-xs text-[var(--tertiary-label)]">{t('secureEndpointsDesc')}</p>
                 </div>
               </div>
             </div>
@@ -64,8 +66,8 @@ export default function DeploymentArchitecture() {
           {/* Architecture diagram */}
           <div className="card p-6">
             <div className="flex items-center justify-between mb-6">
-              <span className="text-xs font-medium text-[var(--system-red)]">DEPLOYMENT ARCHITECTURE</span>
-              <span className="text-xs text-[var(--tertiary-label)]">Managed infrastructure</span>
+              <span className="text-xs font-medium text-[var(--system-red)]">{t('deploymentArchitecture')}</span>
+              <span className="text-xs text-[var(--tertiary-label)]">{t('managedInfrastructure')}</span>
             </div>
 
             <div className="space-y-4">
@@ -78,8 +80,8 @@ export default function DeploymentArchitecture() {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-[var(--label)]">API Gateway</span>
-                    <span className="text-xs text-[var(--tertiary-label)] ml-2">Load balancer + Auth</span>
+                    <span className="text-sm font-medium text-[var(--label)]">{t('apiGateway')}</span>
+                    <span className="text-xs text-[var(--tertiary-label)] ml-2">{t('loadBalancerAuth')}</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] text-[var(--tertiary-label)]">
@@ -105,8 +107,8 @@ export default function DeploymentArchitecture() {
                     </svg>
                   </div>
                   <div>
-                    <span className="text-sm font-medium text-[var(--label)]">Inference Servers</span>
-                    <span className="text-xs text-[var(--tertiary-label)] ml-2">Auto-scaled replicas</span>
+                    <span className="text-sm font-medium text-[var(--label)]">{t('inferenceServers')}</span>
+                    <span className="text-xs text-[var(--tertiary-label)] ml-2">{t('autoScaledReplicas')}</span>
                   </div>
                 </div>
                 <div className="grid grid-cols-3 gap-2">
@@ -136,16 +138,16 @@ export default function DeploymentArchitecture() {
                 <div className="p-3 rounded-lg border border-[var(--picsellia-green)]/30 bg-[var(--picsellia-green)]/5">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2 h-2 rounded-full bg-[var(--picsellia-green)]" />
-                    <span className="text-xs font-medium text-[var(--label)]">Model Registry</span>
+                    <span className="text-xs font-medium text-[var(--label)]">{t('modelRegistry')}</span>
                   </div>
-                  <span className="text-[10px] text-[var(--tertiary-label)]">Versioned artifacts</span>
+                  <span className="text-[10px] text-[var(--tertiary-label)]">{t('versionedArtifacts')}</span>
                 </div>
                 <div className="p-3 rounded-lg border border-[var(--system-orange)]/30 bg-[var(--system-orange)]/5">
                   <div className="flex items-center gap-2 mb-1">
                     <div className="w-2 h-2 rounded-full bg-[var(--system-orange)]" />
-                    <span className="text-xs font-medium text-[var(--label)]">Monitoring</span>
+                    <span className="text-xs font-medium text-[var(--label)]">{t('monitoring')}</span>
                   </div>
-                  <span className="text-[10px] text-[var(--tertiary-label)]">Predictions logged</span>
+                  <span className="text-[10px] text-[var(--tertiary-label)]">{t('predictionsLogged')}</span>
                 </div>
               </div>
             </div>

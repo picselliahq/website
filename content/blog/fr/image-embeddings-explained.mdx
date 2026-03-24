@@ -1,0 +1,184 @@
+---
+
+title: "Les image embeddings expliqués"
+description: "En bref, l'embedding est une technique de réduction de dimensionnalité. C'est une représentation vectorielle de dimension inférieure de vecteurs de caractéristiques de haute dimension (c.-à-d."
+date: "2023-05-29"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/image-embeddings-explained-hero.png"
+imageAlt: "Image Embeddings explained"
+published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deep-learning", "edge-deployment", "object-detection"]
+---
+
+## **Introduction**
+
+‍
+
+Aujourd'hui, les données sont omniprésentes et croissent de manière exponentielle. Il reste difficile pour les ordinateurs de comprendre et de traiter les données liées à la vision par ordinateur comme le font les humains. Par le passé, les techniques de vision par ordinateur utilisaient des méthodes fragiles de détection de contours, des profils de couleurs et une multitude de processus codés manuellement qui nécessitaient également des annotations d'images de haute qualité. Elles ne fournissaient toujours pas le moyen le plus efficace pour les ordinateurs de comprendre la sémantique des données. Les avancées des techniques de machine learning ont offert aux ordinateurs l'opportunité d'exploiter le big data et d'exécuter efficacement des tâches de vision par ordinateur.
+
+‍
+
+L'embedding en machine learning (ML) est devenu une technique essentielle pour gérer divers formats et types de données de manière efficace pour des tâches de ML comme la vision par ordinateur, le traitement du langage naturel (NLP), la reconnaissance vocale, les systèmes de recommandation, la détection de fraude, etc. Cet article présente les fondamentaux de l'application de la technique d'embedding à la vision par ordinateur en décomposant le concept d'image embedding à l'aide de réseaux de neurones convolutifs (CNN).
+
+‍
+
+## **Qu'est-ce que l'image embedding**
+
+‍
+
+En bref, l'embedding est une technique de réduction de dimensionnalité. C'est une représentation vectorielle de dimension inférieure de vecteurs de caractéristiques de haute dimension (c.-à-d. des données brutes d'entrée) comme des mots ou des images. Techniquement, le concept implique la création de clusters denses de similarités ou de relations au sein des données, qui servent de caractéristiques sémantiques encodées dans un espace vectoriel. Ces caractéristiques encodées sont des vecteurs d'identification uniques pour une classe de données particulière. Les vecteurs dimensionnels permettent de gérer efficacement les caractéristiques saillantes des données, permettant au modèle de machine learning de mieux comprendre une classe de données.
+
+‍
+
+De manière générale, les algorithmes d'image embedding extraient les caractéristiques distinctives d'une image et les représentent par des vecteurs denses (c.-à-d. des identifiants numériques uniques) dans un espace dimensionnel différent. Les vecteurs denses générés sont ensuite comparés au vecteur de l'image pour mesurer les similarités. Imaginez que vous représentez uniquement les caractéristiques les plus distinctives d'une image 3D en 2D et que vous comparez la qualité de leur apparence en 2D.
+
+‍
+
+Les méthodes de génération d'image embedding ont évolué et sont devenues plus avancées avec l'essor du deep learning (DL). Depuis l'ère du DL, des techniques comme le Bag of Visual Words (BOVW), les réseaux de neurones convolutifs (CNN) et les Visual Transformers (VIT) ont été développées. Les techniques de deep learning utilisent des modèles de ML qui apprennent à générer des embeddings à partir d'images au sein des modèles et apprennent directement à partir des poids d'embedding plutôt que d'extraire manuellement les embeddings (caractéristiques) des images comme étape de prétraitement séparée. Elles ont permis le développement de solutions de vision par ordinateur pour de nombreux datasets et cas d'usage.
+
+‍
+
+## **Les image embeddings par CNN**
+
+‍
+
+Au moment de la rédaction de cet article, les CNN sont le standard de facto dans le domaine de la vision par ordinateur, avec de nombreux cas d'usage pratiques et en production. Cependant, ils sont coûteux en calcul et nécessitent beaucoup de données.
+
+‍
+
+Un CNN est une architecture de modèle de réseau de neurones profond contenant deux ensembles de blocs : les blocs convolutifs et les blocs de classification. Ces blocs sont les éléments impliqués dans la génération d'image embedding avec un CNN. Chaque bloc d'un CNN joue un rôle spécifique dans l'extraction des embeddings pour que l'ordinateur comprenne les images, comme nous allons le détailler ci-dessous. Bien qu'il existe différentes architectures de CNN comme LeNet-5, AlexNet, VGGNet, ResNet, etc., le processus fondamental d'extraction d'embedding est le même.
+
+‍
+
+![Image embeddings explained 6475bbefc0be9d26f9af7863 759558c3](/images/blog/image-embeddings-explained-6475bbefc0be9d26f9af7863_759558c3.png)
+*Architecture typique d'un CNN*
+
+‍
+
+## **Bloc convolutif**
+
+‍
+
+Ce bloc est responsable de l'extraction des caractéristiques des images et de la mise en correspondance des caractéristiques extraites avec les image embeddings. Comme son nom l'indique, ce bloc est constitué de couches convolutives. Chaque couche contient un filtre et une fonction d'activation ; entre les deux, elles utilisent également d'autres couches optionnelles, qui comprennent couramment des couches de pooling et de normalisation. Ces couches apportent des avantages supplémentaires, tels que la régularisation et l'amélioration de la dynamique d'entraînement.
+
+‍
+
+Les couches convolutives peuvent extraire des caractéristiques abstraites et des concepts au sein d'une image et les encoder sous forme d'embeddings. Elles consistent en plusieurs couches convolutives empilées les unes sur les autres pour leur permettre de reconnaître des caractéristiques simples, comme les contours, les formes, les textures, etc. À mesure que le réseau devient plus profond, il peut capturer des traits plus abstraits et distinctifs, que les modèles utilisent finalement pour identifier le concept d'un objet particulier dans une image.
+
+‍
+
+[Les pixels avec un canal de couleur](https://medium.com/analytics-vidhya/getting-started-with-image-data-deep-learning-328faad6d929) composent une image. L'ordinateur perçoit les pixels et les canaux de couleur comme un tableau de vecteurs (matrice) avec une plage de valeurs allant de 0 (pas de couleur) à 255 (couleur maximale). Ces valeurs représentent les contours, les formes et les textures des différentes caractéristiques d'une image.
+
+‍
+
+‍
+
+![Image embeddings explained 6475bbef63db6e5b5f396503 b871ba67](/images/blog/image-embeddings-explained-6475bbef63db6e5b5f396503_b871ba67.png)
+
+‍
+
+Le filtre de la couche convolutive réduit la matrice de l'image à une représentation de dimension inférieure par compression d'image. Les filtres sont des valeurs initialisées aléatoirement avec une forme de matrice plus petite (taille de fenêtre). La matrice du filtre est multipliée à travers les valeurs des pixels et renvoie une valeur unique (produit scalaire) pour représenter cette portion de fenêtre de l'image. À mesure que la matrice du filtre glisse sur chaque fenêtre de l'image, elle génère une carte de caractéristiques complète (c.-à-d. un embedding matriciel de dimension inférieure) de l'image.
+
+‍
+
+‍
+
+![Image embeddings explained 6475bbf0591b8cffd5733af7 8d7292fa](/images/blog/image-embeddings-explained-6475bbf0591b8cffd5733af7_8d7292fa.gif)
+
+‍
+
+Ce processus supprime le bruit dans l'image pour produire une copie plus petite et plus lisse des fragments qui cartographient la caractéristique d'image la plus saillante, détectée dans la couche convolutive. Ces cartographies sont des embeddings extraits qui contiennent des qualités abstraites de l'image. Générer un embedding se fait en compressant l'image avec un CNN. Considérez cela comme la conversion d'une vidéo de 1080p à 360p ; bien que la résolution soit floue, vous pouvez toujours identifier les objets dans une image grâce à leurs formes distinctives, couleurs, etc.
+
+‍
+
+Puisque les image embeddings extraits dans la dimension inférieure sont des copies plus lisses de l'image d'entrée, il est essentiel d'être attentif à une compression d'image excessive pour éviter de perdre des informations de caractéristiques vitales dans l'embedding. Il existe plusieurs façons de contrôler le degré de compression d'image.
+
+‍
+
+Modifier la taille du filtre et le pas (c.-à-d. le nombre de pixels qu'un filtre déplace par fenêtre) est un moyen de contrôler la compression. Augmenter le pas fait que le filtre parcourt l'image entière en moins d'étapes, produisant moins de valeurs et une carte de caractéristiques plus compressée, et vice versa.
+
+‍
+
+![Image embeddings explained 6475bbf03afdd871f2679a11 a50ab3f7](/images/blog/image-embeddings-explained-6475bbf03afdd871f2679a11_a50ab3f7.png)
+
+‍
+
+‍
+
+![Image embeddings explained 6475bbf2a6288220f6a1a4e1 19c3a4f2](/images/blog/image-embeddings-explained-6475bbf2a6288220f6a1a4e1_19c3a4f2.png)
+
+‍
+
+L'utilisation de couches de padding peut également limiter la compression. La couche ajoute des pixels de valeur zéro au bord du vecteur de l'image ; par conséquent, le filtre dispose de plus de vecteurs de pixels et de fenêtres d'image à agréger. Le padding est un remède plus efficace pour les images plus petites, généralement placé avant la couche convolutive.
+
+‍
+
+![Image embeddings explained 6475bbf0fd0a85c9a831d4a0 0c71a021](/images/blog/image-embeddings-explained-6475bbf0fd0a85c9a831d4a0_0c71a021.png)
+
+‍
+
+La couche de pooling assure une extraction d'embedding robuste, permettant la stabilité lors de l'identification des informations compressées dans un embedding extrait. Elle sous-échantillonne les embeddings pour réduire la taille des cartes de caractéristiques en prenant la valeur maximale ou moyenne d'un groupe de pixels voisins. C'est utile dans les cas où les pixels des caractéristiques de l'embedding se déplacent légèrement hors de leur position en raison de la compression, et l'identification de l'objet devient difficile en raison de la légère déviation des formes, contours, etc.
+
+‍
+
+‍
+
+![Image embeddings explained 6475bbf157682c73f77f1e7d 0a8ca290](/images/blog/image-embeddings-explained-6475bbf157682c73f77f1e7d_0a8ca290.png)
+
+‍
+
+![Image embeddings explained 6475bbf2c0be9d26f9af7c29 764190b7](/images/blog/image-embeddings-explained-6475bbf2c0be9d26f9af7c29_764190b7.png)
+
+‍
+
+Avant de transmettre l'embedding à la couche suivante au sein du bloc convolutif, la fonction d'activation de chaque couche convolutive applique une non-linéarité au modèle, ce qui permet à la couche d'apprendre les relations complexes entre l'image et les embeddings extraits. L'unité linéaire rectifiée (ReLU), l'unité linéaire exponentielle (ELU), la fonction sigmoïde et la fonction Tanh sont parmi les fonctions d'activation les plus couramment utilisées dans un bloc convolutif.
+
+‍
+
+La profondeur des couches convolutives est un composant critique qui contribue à la haute performance de l'extraction d'embeddings utiles. À chaque couche successive au sein de ce bloc, l'embedding acquiert une compréhension plus abstraite des caractéristiques particulières des objets dans les images initiales. Par exemple, prenons une image d'un iPhone 14 Pro Max. Avec les embeddings extraits dans les premières couches convolutives, le réseau reconnaît qu'il y a un téléphone portable dans l'image ; aux couches intermédiaires, il extrait plus d'embeddings et peut déterminer que c'est un iPhone ; et avec plus d'embeddings à la dernière couche, il est capable de l'identifier comme un iPhone 14 Pro Max.
+
+‍
+
+![Image embeddings explained 6475be0710544b746a2882f4 capture 20d e2 80 99e cc 81cran 202023 05 30 20a cc 80 2011 12 24](/images/blog/image-embeddings-explained-6475be0710544b746a2882f4_Capture-20d-E2-80-99e-CC-81cran-202023-05-30-20a-CC-80-2011-12-24.png)
+
+<BlogInlineCTA
+  headline="Use embeddings to curate smarter datasets"
+  description="Picsellia uses CLIP embeddings and visual similarity search to help you find duplicates, outliers, and gaps in your dataset — automatically. Used by 100+ CV teams."
+  primaryButtonText="Try Free — Explore Your Data Visually →"
+  primaryButtonUrl="/trial"
+  blogSlug="image-embeddings-explained"
+  ctaPosition="mid"
+/>
+
+## **Bloc de classification**
+
+Cette partie du CNN est la couche linéaire entièrement connectée. Elle est généralement située après le bloc convolutif. Elle prend les embeddings des couches convolutives et calcule la probabilité que l'embedding de caractéristique appartienne à une classe d'objet.
+
+‍
+
+Cette couche transforme les embeddings vectoriels d'un vecteur en un point de données scalaire. Le point de données d'embedding montre une représentation numérique plus précise des caractéristiques abstraites sous forme de cluster, facilitant l'identification de la classe d'un objet. Les clusters représentent différentes caractéristiques d'une classe d'objet.
+
+‍
+
+![Image embeddings explained 6475bbf210acd004ecd53080 e61e89e6](/images/blog/image-embeddings-explained-6475bbf210acd004ecd53080_e61e89e6.png)
+
+## **Conclusion**
+
+Les image embeddings ont révolutionné le domaine de la vision par ordinateur en fournissant une représentation compacte et significative des images. Grâce à leur capacité à capturer une information visuelle riche, les image embeddings ont ouvert la voie à de nombreuses applications et ont pavé le chemin vers des avancées dans l'analyse, l'interprétation et la génération d'images.
+
+‍
+
+Cependant, les techniques de génération d'image embeddings sont associées à des défis typiques de sensibilité aux variations d'image, de complexité computationnelle et de besoin de grands datasets pour l'entraînement. Néanmoins, la recherche et l'innovation en cours continuent de répondre à ces limitations et d'améliorer l'efficacité des techniques d'image embedding. À mesure que la recherche et le développement dans ce domaine progressent, les image embeddings continueront sans aucun doute à façonner l'avenir de la vision par ordinateur.
+
+<BlogInlineCTA
+  headline="Put image embeddings to work on your data"
+  description="Picsellia leverages embeddings to power visual search, smart curation, and dataset quality analysis — so you can build better models with better data."
+  primaryButtonText="Try Free — See Embeddings in Action →"
+  primaryButtonUrl="/trial"
+  blogSlug="image-embeddings-explained"
+  ctaPosition="end"
+/>
+
+‍

@@ -1,0 +1,80 @@
+---
+
+title: "L'optimisation des hyperparamètres en vision par ordinateur"
+description: "Dans cet article, vous apprendrez l'importance des hyperparamètres, où, quand et comment les optimiser."
+date: "2024-10-07"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/hyperparameters-in-computer-vision-hero.png"
+imageAlt: "Hyperparameter Tuning in Computer Vision"
+published: true
+tags: ["api", "cloud", "computer-vision", "dataset-management", "deep-learning", "model-training", "pytorch"]
+---
+
+Au coeur de la dynamique du machine learning et de la vision par ordinateur, atteindre la performance maximale d'un modèle est une quête permanente. Une technique qui est au premier plan de cette quête est l'**optimisation des hyperparamètres**. Dans cet article, nous présenterons le concept d'optimisation des hyperparamètres, expliquerons pourquoi et comment elle est réalisée, et enfin, vous aiderons à comprendre les avantages de son implémentation en vision par ordinateur.
+
+## Comprendre les hyperparamètres
+
+Avant de plonger dans les subtilités de l'optimisation des hyperparamètres, il est important de comprendre le concept d'hyperparamètres. Contrairement aux paramètres du modèle qui sont appris pendant l'entraînement, les hyperparamètres sont des paramètres de configuration externes qui guident le processus d'apprentissage. Ces paramètres sont définis manuellement par les data scientists avant le début de l'entraînement et jouent un rôle essentiel dans la définition du comportement et de la performance du modèle.
+
+Les hyperparamètres varient selon les algorithmes qu'ils utilisent ainsi que la tâche (comme la vision par ordinateur ou le NLP), cependant voici certains des hyperparamètres courants que vous trouverez dans toutes les situations :
+
+- **Taux d'apprentissage** - Le taux d'apprentissage est un hyperparamètre crucial qui contrôle dans quelle mesure les poids du modèle sont ajustés en réponse à l'erreur estimée à chaque mise à jour des poids du modèle. Il détermine essentiellement la taille du pas à chaque itération lors du déplacement vers un minimum de la fonction de perte. Un taux d'apprentissage trop élevé peut amener le modèle à dépasser la solution optimale, et un taux trop bas peut rendre l'entraînement lent ou le faire rester bloqué dans des minima locaux.
+- **Nombre de couches dans un réseau de neurones** - Cet hyperparamètre définit la profondeur de l'architecture du réseau de neurones. Dans les tâches de vision par ordinateur, des réseaux plus profonds peuvent apprendre des caractéristiques plus complexes mais nécessitent également plus de ressources de calcul et de données pour être entraînés efficacement.
+- **Taille du batch** - La taille du batch fait référence au nombre d'exemples d'entraînement utilisés dans une itération du processus d'entraînement du modèle. Elle a un impact significatif à la fois sur la dynamique d'apprentissage du modèle et sur l'efficacité computationnelle du processus d'entraînement.
+- **Nombre d'epochs** - [Une epoch représente un passage complet à travers l'ensemble du dataset d'entraînement.](https://dev.to/edtbl76/understanding-gpt-how-to-implement-a-simple-gpt-model-with-pytorch-4jji) Le nombre d'epochs est un hyperparamètre qui définit combien de fois l'algorithme d'apprentissage parcourra l'ensemble du dataset d'entraînement.
+- **Force de régularisation** - [La régularisation est une technique utilisée pour prévenir le surapprentissage en ajoutant un terme de pénalité à la fonction de perte.](https://eitca.org/artificial-intelligence/eitc-ai-gcml-google-cloud-machine-learning/introduction/what-is-machine-learning/what-are-some-examples-of-algorithms-hyperparameters/#:~:text=Regularization%20Strength%3A%20Regularization%20is%20a,term%20on%20the%20overall%20loss.) La force de régularisation (souvent notée lambda ou alpha) contrôle l'impact de cette pénalité. Lambda est typiquement utilisé dans la régularisation L2 (Ridge), tandis qu'alpha est utilisé dans la régularisation L1 (Lasso).
+
+## L'art de l'optimisation des hyperparamètres
+
+L'optimisation des hyperparamètres est le processus de recherche de la combinaison optimale de ces paramètres pour maximiser la performance du modèle. C'est comparable à l'accordage d'un instrument de musique pour produire un son harmonieux. Dans le contexte de la vision par ordinateur, ce processus peut améliorer significativement la précision et l'efficacité des modèles de reconnaissance d'images, de détection d'objets et de segmentation.
+
+‍
+
+![Hyperparameters in computer vision](/images/blog/hyperparameters-in-computer-vision-img-0.png)
+
+[Source](https://www.datasciencecentral.com/hyperparameter-tuning-techniques-in-machine-learning-engineering/)
+
+## Importance de l'optimisation des hyperparamètres
+
+- **Optimisation de la performance** : Le bon ensemble d'hyperparamètres peut améliorer considérablement la précision et les capacités de généralisation d'un modèle.
+- **Efficacité** : Un réglage approprié peut conduire à une convergence plus rapide pendant l'entraînement, économisant du temps précieux et des ressources de calcul.
+- **Adaptabilité** : Différents datasets et problèmes nécessitent différentes configurations d'hyperparamètres. L'optimisation permet aux modèles de s'adapter efficacement à des tâches spécifiques.
+
+## Approches de l'optimisation des hyperparamètres
+
+Il existe plusieurs stratégies pour l'optimisation des hyperparamètres, allant des méthodes manuelles aux techniques automatisées sophistiquées :
+
+- **Réglage manuel** : Cela implique d'ajuster les hyperparamètres en se basant sur l'intuition et l'expérience. Bien que chronophage, cela peut être efficace pour des modèles simples.
+- **Grid Search** : Une approche systématique qui recherche de manière exhaustive à travers un ensemble prédéfini de combinaisons d'hyperparamètres.
+- **Random Search** : Cette méthode échantillonne aléatoirement dans l'espace des hyperparamètres, se révélant souvent plus efficace que le grid search pour les espaces de haute dimension. Le random search explore l'espace plus largement plutôt qu'exhaustivement comme le grid search, trouvant potentiellement de meilleures configurations d'hyperparamètres plus rapidement.
+- **Optimisation bayésienne** : Une technique avancée qui utilise des modèles probabilistes pour guider la recherche des hyperparamètres optimaux. Cette méthode est plus efficace en termes d'échantillons que le grid search ou le random search car elle construit un modèle probabiliste pour prédire les hyperparamètres les plus prometteurs à évaluer ensuite, plutôt que d'évaluer chaque configuration indépendamment.
+
+![Hyperparameters in computer vision](/images/blog/hyperparameters-in-computer-vision-img-1.png)
+
+[Source](https://towardsdatascience.com/shallow-understanding-on-bayesian-optimization-324b6c1f7083?gi=19e75fdfeb0c)
+
+## L'optimisation des hyperparamètres en vision par ordinateur
+
+Dans les applications de vision par ordinateur, l'optimisation des hyperparamètres peut faire la différence entre un modèle qui reconnaît à peine des formes basiques et un qui peut détecter et classifier avec précision des objets complexes en temps réel. Par exemple, optimiser le taux d'apprentissage et la taille du batch dans un réseau de neurones convolutif (CNN) peut avoir un impact significatif sur sa capacité à apprendre des caractéristiques complexes à partir d'images.
+
+### Bonnes pratiques pour un réglage efficace
+
+- **Commencer large, puis affiner** : Commencez avec une large plage de valeurs d'hyperparamètres et réduisez progressivement en fonction des résultats.
+- **Utiliser la validation croisée** : Cela aide à s'assurer que les hyperparamètres optimisés se généralisent bien aux données non vues.
+- **Surveiller plusieurs métriques** : Ne vous concentrez pas uniquement sur la précision ; considérez des métriques comme la précision, le rappel et le F1-score.
+- **Exploiter l'automatisation** : Envisagez d'utiliser des outils d'optimisation automatisée des hyperparamètres pour les modèles complexes afin de gagner du temps et d'améliorer les résultats.
+
+## L'optimisation des hyperparamètres chez Picsellia
+
+L'optimisation des hyperparamètres est une étape cruciale dans le développement de modèles de machine learning efficaces, surtout dans les tâches de vision par ordinateur. Bien que les méthodes traditionnelles comme le grid search et le random search fournissent une base pour automatiser ce processus, des techniques plus avancées comme l'optimisation bayésienne offrent des approches sophistiquées pour explorer efficacement l'espace des hyperparamètres.
+
+Avec **Picsellia Scans**, vous pouvez exploiter des outils puissants comme le SDK Python et la CLI pour créer et gérer des scans, en définissant des métriques d'optimisation et des stratégies adaptées à vos besoins spécifiques. La capacité de la plateforme à distribuer les recherches d'hyperparamètres à travers les ressources de votre organisation, des laptops aux serveurs, assure une efficacité maximale et une convergence plus rapide vers les résultats optimaux. Elle s'intègre parfaitement à votre workflow existant, vous permettant de vous concentrer sur le code tandis qu'elle gère les subtilités de l'optimisation des hyperparamètres.
+
+Notre stratégie préférée à choisir lors de la création d'un Scan est Optuna. C'est un puissant framework ML que nous avons intégré et qui calculera automatiquement les hyperparamètres des expériences en temps réel en se basant sur les résultats des expériences précédentes avec leurs paramètres. Cette méthode fait partie des techniques bayésiennes mentionnées précédemment.
+De cette façon, vous êtes sûr de ne gaspiller aucune session d'entraînement car vous n'utilisez aucune combinaison de paramètres inutile.
+
+De plus, nous vous offrons la possibilité d'activer l'early-stopping, ce qui signifie que nous serons en mesure de déterminer en temps réel pour une expérience en cours si elle a des chances de produire de bons résultats, et de l'arrêter dans le cas contraire.
+
+Que vous travailliez sur des machines locales ou que vous exploitiez des GPU cloud avec un compte premium, Picsellia fournit la flexibilité et la puissance pour aborder même les projets de vision par ordinateur les plus exigeants. [Réservez votre démo](/demo) dès maintenant !

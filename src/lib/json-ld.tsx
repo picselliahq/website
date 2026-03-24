@@ -2,7 +2,11 @@ import type { BlogPost } from "@/types/blog";
 
 const BASE_URL = "https://www.picsellia.com";
 
-export function organizationJsonLd() {
+function toInLanguage(locale?: string): string {
+  return locale === "fr" ? "fr-FR" : "en-US";
+}
+
+export function organizationJsonLd(locale?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -16,10 +20,11 @@ export function organizationJsonLd() {
     ],
     description:
       "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
+    inLanguage: toInLanguage(locale),
   };
 }
 
-export function articleJsonLd(post: BlogPost, slug: string) {
+export function articleJsonLd(post: BlogPost, slug: string, locale?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -45,11 +50,13 @@ export function articleJsonLd(post: BlogPost, slug: string) {
       "@type": "WebPage",
       "@id": `${BASE_URL}/post/${slug}`,
     },
+    inLanguage: toInLanguage(locale),
   };
 }
 
 export function breadcrumbJsonLd(
   items: { name: string; url: string }[],
+  locale?: string,
 ) {
   return {
     "@context": "https://schema.org",
@@ -60,11 +67,13 @@ export function breadcrumbJsonLd(
       name: item.name,
       item: `${BASE_URL}${item.url}`,
     })),
+    inLanguage: toInLanguage(locale),
   };
 }
 
 export function faqJsonLd(
   questions: { question: string; answer: string }[],
+  locale?: string,
 ) {
   return {
     "@context": "https://schema.org",
@@ -77,10 +86,11 @@ export function faqJsonLd(
         text: q.answer,
       },
     })),
+    inLanguage: toInLanguage(locale),
   };
 }
 
-export function softwareApplicationJsonLd() {
+export function softwareApplicationJsonLd(locale?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -108,6 +118,7 @@ export function softwareApplicationJsonLd() {
       "Production Monitoring & Drift Detection",
       "Automated ML Pipelines",
     ],
+    inLanguage: toInLanguage(locale),
   };
 }
 

@@ -1,0 +1,96 @@
+---
+
+title: "Comment reduire les donnees d'entrainement avec le Self-Supervised Learning"
+description: "Le Self-Supervised Learning (SSL) vise a exploiter de grands datasets non etiquetes pour entrainer des extracteurs de caracteristiques performants comme les encodeurs CNN ou ViT. Mais qu'est-ce que le SSL ?"
+date: "2022-07-25"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/reduce-training-data-with-self-supervised-learning-hero.jpeg"
+imageAlt: "How to Reduce Training Data with Self-Supervised Learning"
+published: true
+tags: ["annotation", "dataset-management", "deep-learning", "edge-deployment", "healthcare", "model-training", "video-analysis"]
+---
+
+## **Introduction et motivation**
+
+Les reseaux de neurones profonds tels que les Deep CNN sont d'excellents extracteurs de caracteristiques. C'est pourquoi ils ont acquis une place de choix dans de nombreuses taches visuelles. Les Visual Transformers (ViT) repoussent les limites encore plus loin. Cependant, leur succes est largement attribue au Supervised Learning et a l'immense quantite de donnees d'entrainement provenant de datasets comme ImageNet, Places, Kinetics, etc.
+
+Toutefois, la collecte et l'annotation de datasets d'images/videos a grande echelle sont tres chronophages et assez couteuses, sans compter qu'il n'y a pas toujours suffisamment de materiel non etiquete a annoter (par exemple, l'imagerie medicale). A titre de reference, le dataset Places comprend 2,5 millions d'images etiquetees, ImageNet 1,3 million. Dans le meme temps, Kinetics est un dataset video etiquete comprenant environ 500 000 videos, chacune d'une duree d'environ 10 secondes.
+
+Avec cette motivation, le Self-Supervised Learning (SSL) vise a exploiter de grands **datasets non etiquetes** pour entrainer des extracteurs de caracteristiques performants tels que des encodeurs CNN ou ViT. Ceux-ci sont ensuite utilises avec de plus petits datasets etiquetes pour entrainer des reseaux sur une tache de choix, en utilisant moins de donnees. Le self-supervised learning derive de l'apprentissage non supervise. Il vise a apprendre des representations riches et des caracteristiques semantiquement significatives a partir de donnees non etiquetees. En d'autres termes, le SSL est une methode d'apprentissage dans laquelle vous pouvez entrainer des reseaux avec des **labels generes automatiquement** produits a partir de datasets non etiquetes.
+
+## **Qu'est-ce que le Self-Supervised Learning ?**
+
+En termes simples, le Self-Supervised Learning fait reference aux methodes d'apprentissage en machine learning qui utilisent des labels generes automatiquement provenant de grands datasets non etiquetes. Il offre de tres bonnes performances sans avoir besoin de grands datasets etiquetes.
+
+## **Concepts cles du Self-Supervised Learning**
+
+Avant d'expliquer comment fonctionne le Self-Supervised Learning (SSL) et comment vous pouvez l'exploiter pour reduire les donnees d'entrainement, il est preferable d'expliquer quelques concepts cles.
+
+- Les **labels annotes par des humains** sont des labels de donnees que des annotateurs humains creent manuellement. Ce sont les labels typiques utilises dans le Supervised Learning classique.
+
+- Les **pseudo-labels** font reference aux labels generes automatiquement que les data scientists utilisent pour entrainer le reseau d'extraction de caracteristiques, communement appele "Encodeur", sur une tache pretexte. Par exemple, nous pourrions faire pivoter aleatoirement des images de 0°, 90°, 180° ou 270° et attribuer les labels 0, 1, 2, 3, respectivement, en fonction de la rotation. Il est possible de creer ces labels sans aucune assistance humaine !
+
+- Les **taches pretextes** sont des taches pre-concues qui agissent comme une strategie essentielle pour apprendre des representations de donnees en utilisant des pseudo-labels. Leur objectif est d'aider le modele a decouvrir les caracteristiques visuelles essentielles des donnees. Les taches pretextes courantes incluent les transformations geometriques/de couleur et les taches basees sur le contexte comme la resolution de puzzles. Par exemple, une tache pretexte pourrait etre de classifier une image augmentee comme pivotee de 0°, 90°, 180° ou 270°.
+
+- Les **taches en aval** (downstream tasks) sont des taches specifiques a l'application qui utilisent les connaissances acquises pendant la tache pretexte. Elles sont choisies par le developpeur en fonction de l'objectif final de l'application. Les exemples incluent la classification, la detection d'objets, la segmentation semantique et la reconnaissance d'actions.
+
+## **Le framework Self-Supervised**
+
+Maintenant que nous avons presente les concepts fondamentaux, combinons-les pour comprendre le workflow du Self-Supervised Learning. La figure 1 offre une illustration visuelle. Tres brievement, le SSL vise a transformer une tache non supervisee en une tache supervisee (tache pretexte) grace a des labels generes automatiquement (pseudo-labels). Puis il transfere les connaissances acquises de la tache pretexte pour resoudre la tache finale (tache en aval).
+
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-0.png)
+*Fig. 1 : Workflow du Self-Supervised Learning. Source [[3]](https://arxiv.org/pdf/2011.00362.pdf)*
+
+Supposons qu'un modele Encodeur (CNN, ViT) a deja ete concu. Supposons egalement que nous disposons d'un grand dataset d'images, dont seul un faible pourcentage est annote. Nous commencons par choisir une tache pretexte, comme la recreation de parties occultees, la resolution d'un puzzle Jigsaw et la classification de rotation. Une fois la tache pretexte choisie, l'augmentation de donnees a lieu. Cette augmentation de donnees sert un objectif different de celui des taches de supervised learning. Ici, l'augmentation vise a mapper une image en differentes vues via des transformations stochastiques pour creer la tache pretexte. Par exemple, pour la tache pretexte de recreation d'image (inpainting), l'augmentation masquera aleatoirement d'autres parties de l'image, et l'Encodeur vise a recreer ces parties occultees. Les pseudo-labels sont crees automatiquement par cette augmentation.
+
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-1.png)
+*Fig. 2 : Taches pretextes courantes. Source [[4]](https://www.mdpi.com/1099-4300/24/4/551/htm)*
+
+Ce processus d'augmentation de donnees encourage le reseau a apprendre des representations cachees en resolvant la tache pretexte. Les augmentations du meme input ont des representations latentes plus similaires par rapport aux autres inputs, aidant l'Encodeur a decouvrir les caracteristiques dominantes.
+
+Ensuite, l'Encodeur est entraine sur la tache pretexte, qui est generalement assez differente de la tache en aval. Si l'Encodeur resout avec succes la tache pretexte, il doit avoir appris a extraire les caracteristiques essentielles des images et a ne pas accorder trop d'attention au bruit. Sinon, il n'aurait pas pu resoudre ces taches compliquees. Cependant, la complexite de l'augmentation de donnees, ou de la tache pretexte, doit mettre le modele au defi. Sinon, si le modele resout la tache tres rapidement, il pourrait ne pas avoir appris, et la complexite peut etre faible.
+
+Une fois que l'Encodeur resout avec succes la tache pretexte avec une precision suffisante, ses parametres sont utilises comme initialisation pour le reseau qui vise a resoudre la tache en aval. Il n'est pas inhabituel d'ajouter des couches supplementaires par-dessus la partie encodeur, qui sont entrainees uniquement en supervised learning. Pendant l'entrainement de la tache en aval, la portion etiquetee du dataset est utilisee. Ainsi, le reseau repose maintenant sur un entrainement supervise traditionnel pour resoudre la tache finale.
+
+Essentiellement, nous transferons les connaissances acquises pendant l'entrainement de la tache pretexte vers la tache en aval, de maniere similaire a la technique bien connue de Transfer Learning, mais avec quelques differences importantes.
+
+## **Comment reduire les donnees d'entrainement via le Self-Supervised Learning**
+
+Dans la figure 3, source [5], nous observons un graphique illustrant la precision sur l'ensemble de test du dataset CIFAR-10 en fonction du nombre d'exemples d'entrainement utilises. Le graphique compare une methode d'entrainement supervisee traditionnelle a une methode self-supervised qui utilise la classification de rotation comme tache pretexte. La comparaison commence a partir de seulement 20 exemples d'entrainement et va jusqu'a 5 000 exemples d'entrainement. Il est clair que pour un faible nombre d'exemples d'entrainement, par exemple moins de 1 000, le Self-Supervised Learning surpasse significativement le Supervised Learning. Plus le nombre de donnees d'entrainement est faible, plus le gain est important. Cependant, autour de 2 000 exemples d'entrainement, nous observons un croisement ; apres quoi le supervised learning atteint des performances superieures. Ces chiffres sont une indication approximative et varieront selon l'application. Neanmoins, la regle generale est que le SSL surpassera le Supervised Learning par une large marge lorsque les donnees d'entrainement sont rares.
+
+![Reduce training data with self supervised learning](/images/blog/reduce-training-data-with-self-supervised-learning-img-2.jpeg)
+*Fig. 3 : L'impact des exemples d'entrainement sur la precision pour le Supervised et le Self-Supervised Learning. L'axe X est en echelle logarithmique. Graphique inspire de la Source [[5]](https://arxiv.org/pdf/1803.07728.pdf)*
+
+Recreons une etude de cas similaire dans le monde reel. Vous, en tant qu'ingenieur ML, avez ete charge de creer un modele de segmentation semantique de vision par ordinateur pour identifier certains micro-organismes dans des images de microscopie. Les scientifiques vous ont fourni 3 000 images de donnees non etiquetees. Vous expliquez que pour resoudre le probleme efficacement, vous avez besoin de donnees annotees. Ils argumentent que c'est une activite assez chronophage et couteuse, puisque des experts du domaine doivent y consacrer du temps. Ils suggerent que l'annotation de 500 images necessiterait environ un mois.
+
+Donc, pour accelerer le deploiement du modele, vous acceptez de commencer avec 500 images. Vous soupconnez que 500 images ne suffiront pas pour un entrainement supervise. Vous essayez, et en effet, le modele a atteint de faibles performances avec des signes visibles d'overfitting qui ne sont pas resolus par les methodes de regularisation. Ensuite, vous cherchez des modeles pre-entraines sur un dataset similaire mais ne trouvez rien de comparable aux architectures que vous prevoyez de tester, donc le Transfer Learning n'est pas une bonne option. Ainsi, tout mene naturellement au Self-Supervised Learning. Maintenant, vous pouvez exploiter les 500 images annotees (sauf l'ensemble de test, bien sur) **et les 2 500 images non etiquetees restantes.**
+
+Non seulement vous pouvez concevoir un modele plus precis avec beaucoup moins de donnees d'entrainement, mais vous pouvez ensuite deployer ce modele comme assistant d'annotation pour les scientifiques afin d'accelerer le processus d'etiquetage des images restantes. Si votre dataset annote devient suffisamment grand, a un moment donne, vous pouvez re-entrainer le modele avec le Supervised Learning pour augmenter encore la precision. Les [boucles de retour](/post/feedback-loops-and-versioning-in-computer-vision) fourniront egalement un autre moyen d'augmenter encore davantage la precision.
+
+## **Self-Supervised Learning (SSL) vs. Transfer Learning (TL)**
+
+Les deux techniques reposent sur le transfert de connaissances par l'initialisation des parametres et sont d'excellents moyens de reduire la quantite de donnees d'entrainement necessaires. Cependant, elles partagent egalement des differences significatives.
+
+- Le Transfer Learning repose sur un cadre de supervised learning pendant les phases de pre-entrainement et d'entrainement, tandis que le SSL n'utilise pas de supervised learning pendant le pre-entrainement.
+- Vous ne pouvez pas utiliser le TL sur le meme dataset car cela n'aurait pas de sens. En revanche, utiliser le SSL sur le meme dataset peut ameliorer significativement les performances (l'ensemble de test doit etre mis a part !).
+
+Selon le cas d'usage, vous pourriez vouloir choisir l'un plutot que l'autre. Pour vous aider a decider lequel est le meilleur, voici quelques resultats de recherche :
+
+- Lorsque la difference de domaine entre les taches source et cible est grande, le SSL surpasse le TL. Par exemple, utiliser une initialisation ImageNet TL pour l'imagerie medicale n'est pas une bonne option.
+- Le SSL est moins sensible aux differences de domaine entre la tache source et la tache cible que le TL.
+- Etant donne une tache source, le SSL surpasse generalement le TL lorsque les donnees de pre-entrainement sont trop rares.
+- Si le desequilibre de classes est prevalent dans un dataset, nous recommandons le SSL car il est plus robuste contre les desequilibres que le TL.
+
+## **References**
+
+[1] Yahui Liu, Enver Sangineto, Wei Bi, Nicu Sebe, Bruno Lepri, Marco De Nadai. [Efficient Training of Visual Transformers with Small Datasets](https://openreview.net/pdf?id=AJofO-OFT40)
+
+[2] Longlong Jing and Yingli Tian, [Self-supervised Visual Feature Learning with Deep Neural Networks: A Survey](https://arxiv.org/pdf/1902.06162.pdf).
+
+[3] Ashish Jaiswal, Ashwin Ramesh Babu, Mohammad Zaki Zadeh, Debapriya Banerjee, Fillia Makedon. [A SURVEY ON CONTRASTIVE SELF-SUPERVISED LEARNING](https://arxiv.org/pdf/2011.00362.pdf).
+
+[4] Saleh Albewi, [ Survey on Self-Supervised Learning: Auxiliary Pretext Tasks and Contrastive Learning Methods in Imaging](https://www.mdpi.com/1099-4300/24/4/551/htm).
+
+[5] Spyros Gidaris, Praveer Singh, Nikos Komodakis, [UNSUPERVISED REPRESENTATION LEARNING BY PREDICTING IMAGE ROTATIONS.](https://arxiv.org/pdf/1803.07728.pdf)

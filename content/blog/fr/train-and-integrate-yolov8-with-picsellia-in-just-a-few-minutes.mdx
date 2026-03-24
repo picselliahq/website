@@ -1,0 +1,182 @@
+---
+
+title: "Entrainez et integrez YOLOv8 avec Picsellia en quelques minutes"
+description: "Dans ce tutoriel, nous vous fournirons un guide detaille sur la facon d'entrainer le modele de detection d'objets YOLOv8 en utilisant Picsellia."
+date: "2023-02-09"
+author:
+  name: "Picsellia Team"
+category: "Tutorial"
+image: "/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-hero.png"
+imageAlt: "Train and integrate YOLOv8 with Picsellia in just a few minutes"
+published: true
+tags: ["annotation", "api", "classification", "dataset-management", "document-processing", "infrastructure", "model-training", "monitoring"]
+---
+
+YOLOv8 est la plus recente edition de la celebre collection de modeles implementant l'architecture YOLO (You Only Look Once). Ce developpement a ete realise par Ultralytics, une equipe reconnue pour son travail sur YOLOv3 (fork PyTorch) et YOLOv5.
+
+Poursuivant le schema etabli par YOLOv5, YOLOv6 et YOLOv7, nous avons desormais acces non seulement a la detection d'objets, mais aussi a la **segmentation d'instances** et a la **classification d'images**. Le modele lui-meme a ete construit en PyTorch et est **capable de fonctionner sur CPU et GPU**. De maniere similaire a YOLOv5, nous disposons egalement de plusieurs exports comme ONNX et TensorFlow SavedModel (qui ne sont pas encore implementes).
+
+Le fait que nous attendions toujours le benchmark Papers with Code pour distinguer YOLOv8 des autres modeles temps reel de l'etat de l'art est un probleme pour evaluer le "veritable SOTA revendique". Donc, la seule facon de savoir si YOLOv8 peut etre adapte a votre cas d'usage est de l'essayer !
+
+**Dans ce tutoriel, nous vous fournirons un guide detaille sur la facon d'entrainer le modele de detection d'objets YOLOv8 sur un dataset personnalise.** Vous apprendrez a utiliser la nouvelle API, a preparer le dataset et, surtout, **comment entrainer et valider le modele**.
+
+C'est parti !
+
+Dans cet article, nous allons essayer d'expliquer comment integrer rapidement cette nouvelle architecture dans votre workflow Picsellia.
+
+Les principaux elements que nous allons explorer seront :
+
+- Comment convertir un dataset COCO au format YOLO.
+- Comment enregistrer les metriques d'entrainement sur la plateforme Picsellia.
+- Sauvegarder les poids entraines afin de reprendre l'entrainement.
+- Surveiller vos modeles YOLO avec le service de monitoring de Picsellia.
+
+Evidemment, **nous avons cree un repo GitHub pour vous aider avec le code**, vous pouvez le trouver ici :
+
+https://github.com/picselliahq/yolo-notebooks
+
+Vous pouvez egalement trouver des **extraits de code pertinents** dans notre documentation : [https://documentation.picsellia.com/recipes](https://documentation.picsellia.com/recipes)
+
+## Convertir un dataset COCO Picsellia au format YOLO
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-0.png)
+
+Pour cet article, nous utiliserons un dataset retail, aimablement partage par nos amis chez [Neurolabs](https://www.neurolabs.ai/) (vous cherchez une solution de surveillance de rayonnages ? Allez les decouvrir !)
+
+La premiere etape pour utiliser un dataset au format COCO de Picsellia est de passer du format COCO au format YOLO :)
+
+### Le format COCO
+
+Ce format est l'un des plus courants ( ;) ). **COCO signifie Common Object in Common Situations** ! C'est un fichier JSON contenant 5 cles :
+
+- **info** : cette partie de la structure donne des informations sur le dataset, la version, l'heure, la date de creation, l'auteur, etc.
+- **licenses** : cette partie donne des informations sur les licences dont nous disposons pour notre dataset
+- **category** : elle donne l'identifiant pour les annotations et les objets detectes ainsi que le nom, et on peut egalement determiner des sous-categories
+- **images** : elle stocke les images, les noms de fichiers, la hauteur, la largeur, l'heure de prise, etc.
+- **annotations** : pour les identifiants que nous avons pour les images, elle contient le cadre englobant, les coordonnees de segmentation, l'aire. Le cadre englobant correspond aux coordonnees x1,y1,x2,y2 de l'objet detecte tandis que la segmentation est le contour de l'objet. Le parametre iscrowd est un parametre binaire qui indique s'il y a plusieurs objets a une echelle ou on ne peut pas vraiment segmenter chacun d'entre eux, on peut les convertir en un grand cadre et l'indiquer avec le parametre iscrowd.
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-1.png)
+
+### Le format YOLO
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-2.png)
+
+Malheureusement, les algorithmes YOLOvX ne lisent pas le format COCO. Pourquoi ? Je ne sais pas.
+
+Ils veulent une facon differente de lire les labels... basee sur des fichiers .txt
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-3.png)
+
+**Chaque image de votre dataset doit avoir un fichier .txt correspondant avec tous les objets de l'image avec un [*class_id x0 y0 x1 y1*] normalise.**
+
+### Conversion COCO vers YOLO
+
+Vous trouverez dans le repository une classe appelee YOLOFormatter() qui fera le travail pour vous :)
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-4.png)
+
+Nous ne presenterons pas le code reel car il est assez simple, mais vous pourrez le trouver ici :
+
+[https://github.com/picselliahq/yolo-notebooks/blob/main/utils/yolo.py](https://github.com/picselliahq/yolo-notebooks/blob/main/utils/yolo.py)
+
+Veuillez noter que dans le repo, vous pourrez convertir vos annotations BBOX, polygones et classification au format YOLO.
+
+## Comment entrainer sur un dataset personnalise et tout enregistrer sur Picsellia
+
+Picsellia vous permet de garder une trace de vos experiences (entrainements) sur des datasets donnes afin d'assurer la reproductibilite de votre travail. Pour ce faire, vous avez besoin d'un projet sur [Picsellia](/).
+
+### Creer un projet sur la plateforme Picsellia
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-5.png)
+
+Vous pouvez soit le faire avec l'interface dans la section projets, soit utiliser notre SDK Python !
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-6.png)
+
+Ne passons pas trop de temps sur cette partie car elle n'est pas cle pour cet article, et plongeons directement dans **comment entrainer YOLOv8 sur votre dataset personnalise.**
+
+### Le package Python YOLOv8
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-7.png)
+
+Pour YOLOv8, les developpeurs se sont eloignes du design traditionnel avec des scripts distincts train.py, detect.py, val.py et export.py.
+
+Fournissant une API unifiee pour tout faire :)
+
+**Avantages :** Plus facile de passer de 0 a un modele entraine et valide !
+
+**Inconvenients :** Beaucoup plus difficile de modifier le code pour ajouter des integrations, par exemple des Custom Trainer Callbacks ou un algorithme NMS modifie.
+
+Vous pourrez trouver plus d'informations sur l'API directement sur la [documentation Ultralytics](https://docs.ultralytics.com/).
+
+Maintenant, voyons combien il est facile de **lancer un entrainement** :)
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-8.png)
+
+### Interpreter les resultats
+
+Lancer un entrainement est assez simple avec les modeles YOLO, du moins pour les versions v5, v7 et v8. La seule chose qui peut preter a confusion est la quantite de logs et de metriques generees.
+
+Les principales metriques calculees et stockees sont :
+
+#### F1-Score
+
+Le F1-score est une metrique couramment utilisee pour evaluer la performance d'un modele de classification binaire. C'est **la moyenne harmonique de la precision et du rappel**, ou la precision est le nombre de predictions vrais positifs divise par le nombre total de predictions vrais positifs et faux positifs, et le rappel est le nombre de predictions vrais positifs divise par le nombre total de vrais positifs et faux negatifs. Le F1-score varie de 0 a 1, 1 etant le meilleur score possible. Il est particulierement utile lorsque la distribution des classes est desequilibree, car il prend en compte a la fois la precision et le rappel du modele.
+
+#### Rappel
+
+Le rappel fait reference a la capacite d'un modele a **identifier correctement toutes les instances pertinentes au sein d'un dataset**. Il est souvent utilise comme metrique pour evaluer la performance d'un modele dans les taches de classification, en particulier dans les cas ou le dataset est desequilibre ou le cout des faux negatifs est eleve. Le rappel est calcule comme le nombre de predictions vrais positifs divise par la somme des predictions vrais positifs et des predictions faux negatifs. Une valeur de rappel elevee indique que le modele a un faible taux de faux negatifs, ce qui signifie qu'il est capable d'identifier correctement la plupart des instances pertinentes dans le dataset.
+
+#### Precision-rappel
+
+La precision est la proportion de predictions vrais positifs parmi toutes les predictions positives faites par le modele, tandis que le rappel est la proportion de predictions vrais positifs parmi toutes les instances positives reelles dans le dataset.
+
+Une courbe precision-rappel est un **graphique** qui montre le compromis entre la precision et le rappel pour differents reglages de seuil. Dans une courbe precision-rappel, la precision est tracee sur l'axe des ordonnees et le rappel est trace sur l'axe des abscisses. En changeant le reglage du seuil, un point different sur la courbe precision-rappel peut etre obtenu.
+
+### Stocker toutes les metriques de performance dans l'experience Picsellia
+
+Le package Python YOLOv8 genere des courbes pour les metriques ci-dessus dans un format... .jpg. C'est pratique dans certains cas, mais pas dans la majorite des cas, surtout si vous souhaitez comparer plusieurs entrainements.
+
+Heureusement, il genere egalement un fichier **results.csv** ou toutes les valeurs tabulaires sont stockees. C'est la que nous recupererons les metriques reelles a enregistrer dans Picsellia.
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-9.png)
+
+Cet extrait de code parcourt essentiellement toutes les colonnes du fichier de resultats et envoie les resultats a Picsellia. A la fin, vous obtiendrez les memes graphiques que l'image generee par le package YOLOv8, mais **avec des legendes et la possibilite de comparer plusieurs executions** :)
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-10.png)
+
+## Exporter le modele YOLO pour l'inference et le transfer learning
+
+### Creer un modele Picsellia
+
+Maintenant que vous avez entraine la premiere version de votre modele, vous voudrez peut-etre le deployer en edge ou dans le cloud. Pour ce faire, vous pouvez tirer parti de notre [solution de deploiement serverless Picsellia](/model-deployment). La seule chose a faire est de **creer un modele** sur Picsellia, qui sera exporte depuis l'experience (c'est-a-dire l'entrainement que vous venez d'effectuer ;)).
+
+Vous pouvez choisir d'encapsuler autant d'artefacts que vous le souhaitez, mais **2 d'entre eux sont importants** : le modele ONNX exporte et le fichier de poids entraines (.pt).
+
+Le modele ONNX sera utilise pour deployer le modele, et les poids entraines seront utilises pour effectuer du transfer learning.
+
+Voici le code correspondant (disponible dans le repository GitHub)
+
+‍
+
+### Creer une image Docker pour l'entrainement continu
+
+Afin d'integrer un modele personnalise (c'est-a-dire YOLOv8) et de tirer parti des fonctionnalites d'entrainement sans code de Picsellia ou meme de l'entrainement continu une fois que votre modele est mis en production et dans une boucle de retour - **vous voulez en savoir plus sur les boucles de retour ? Inscrivez-vous a notre prochain webinaire !** ([cliquez ici](https://www.crowdcast.io/c/rkbw3f295y3x))
+
+Pour ce faire, vous pouvez suivre notre tutoriel ici :
+
+[https://documentation.picsellia.com/docs/package-your-models](https://documentation.picsellia.com/docs/package-your-models)
+
+En resume, vous avez 2 facons de packager vos modeles dans une image Docker, une facon simple qui ne vous donnera pas de logs en temps reel et une autre version qui vous permettra d'acceder aux logs en temps reel.
+
+Si vous rencontrez des difficultes avec cette partie, n'hesitez pas a [nous contacter](/contact).
+
+## Executer votre modele entraine
+
+Il est vraiment facile d'executer vos modeles une fois qu'ils sont entraines, Ultralytics a cree un CLI simple pour le faire.
+
+![Train and integrate yolov8 with picsellia in just a few minutes](/images/blog/train-and-integrate-yolov8-with-picsellia-in-just-a-few-minutes-img-11.png)
+
+La seule chose que vous devez specifier est le chemin vers votre fichier de poids. Vous pouvez utiliser soit **.pt** soit **.onnx.**
+
+VOILA !

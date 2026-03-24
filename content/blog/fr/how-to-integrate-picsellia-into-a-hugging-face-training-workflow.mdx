@@ -1,0 +1,239 @@
+---
+
+title: "Comment intégrer Picsellia dans un workflow d'entraînement Hugging Face"
+description: "Passez facilement à l'échelle l'entraînement de modèles de vision par ordinateur avec la plateforme CVOps de Picsellia et HuggingFace."
+date: "2023-10-24"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-hero.webp"
+imageAlt: "How to Integrate Picsellia into a Hugging Face Training Workflow"
+published: true
+tags: ["computer-vision", "dataset-management", "deep-learning", "docker", "document-processing", "experiment-tracking", "mlops", "model-training"]
+---
+
+Implémenter l'entraînement de modèles de vision par ordinateur à grande échelle nécessite un workflow robuste d'[opérations de vision par ordinateur](/post/how-to-apply-mlops-to-computer-vision-cvops). Passer à l'échelle l'entraînement avec un workflow personnalisé peut créer un goulot d'étranglement au niveau de la traçabilité et de la reproductibilité. Adapter cela à votre workflow d'entraînement personnalisé peut être coûteux en termes de temps et de ressources.
+
+Une plateforme CVOps comme Picsellia dispose de workflows architecturaux robustes qui fournissent suffisamment de fonctionnalités pour gérer le développement (entraînement) de modèles basés sur la vision par ordinateur à grande échelle. Elle possède les outils nécessaires pour gérer l'ensemble du cycle de vie du développement CV. Vous avez deux options lorsque vous utilisez Picsellia pour l'entraînement. Vous pouvez redévelopper entièrement votre workflow d'entraînement pour utiliser les workflows et l'infrastructure de Picsellia. Ou intégrer Picsellia dans votre workflow d'entraînement existant tout en continuant à utiliser votre infrastructure. L'option d'intégration vous offre le meilleur des deux mondes sans verrouillage de plateforme ni obligation de migrer vos workflows d'entraînement existants vers la plateforme. Elle crée également deux points de défaillance pour les workflows d'entraînement et de multiples emplacements de données puisque les informations d'entraînement générées dans votre environnement d'entraînement local (sur l'infrastructure) existent également sur la plateforme Picsellia.
+
+Généralement, intégrer un programme avec une plateforme nécessite un pipeline de précision pour gérer l'ensemble du workflow en raison des exigences spécifiques dont le programme dépend. Dans ce cas, vous devrez considérer la journalisation des métriques, les artefacts d'entraînement associés, les paramètres du modèle, le framework d'entraînement, etc.
+
+## **Prérequis**
+
+Pour suivre confortablement la démo de cet article, vous devez disposer des éléments suivants :
+
+- Un compte Picsellia actif.
+- Le SDK Picsellia installé sur votre machine ; voir comment l'installer [ici](https://documentation.picsellia.com/docs/installation).
+- HuggingFace installé sur votre machine ; voir comment l'installer [ici](https://huggingface.co/docs/transformers/installation).
+- Les prérequis de Picsellia pour une intégration ; voir les prérequis [ici](https://documentation.picsellia.com/docs/part-1-overview-1).
+- Une compréhension basique à intermédiaire du suivi d'expériences.
+
+**Ce tutoriel expliquera l'intégration de Picsellia dans un script d'entraînement de transformeur DETR utilisant le framework HuggingFace.**
+
+Dans ce tutoriel, vous allez :
+
+- Initier une expérience dans Picsellia.
+- Récupérer les datasets associés à l'expérience depuis Picsellia.
+- Entraîner le modèle et journaliser les résultats dans Picsellia.
+- Envoyer les évaluations vers la plateforme d'évaluation de Picsellia.
+- Stocker les artefacts dans le magasin d'artefacts de Picsellia.
+- Stocker le modèle ré-entraîné dans le registre de modèles de Picsellia.
+- Dockeriser le code.
+
+Vous pouvez trouver tous les codes associés à ce tutoriel [ici](https://github.com/Tob-iee/picsellia_HF_transformers_od/tree/main).
+
+Avant d'entrer dans les détails de l'intégration, voyons rapidement un bref aperçu du modèle et du framework pour la tâche.
+
+Le [modèle DETR](https://arxiv.org/abs/2005.12872v3), aussi appelé *DEtection TRansformer*, est un modèle de détection d'objets qui utilise une architecture basée sur les transformeurs, développé avec PyTorch. Il comprend un processeur d'images et un modèle de détection d'objets. Le processeur d'images encode les données en convertissant les annotations au format DETR, puis redimensionne et normalise à la fois les images et les annotations. La partie détection d'objets effectue ensuite la détection en décodant les données encodées. Il peut être entraîné (fine-tuné) en utilisant PyTorch natif, l'API HuggingFace
+
+ [Trainer](https://huggingface.co/docs/transformers/main_classes/trainer) 🤗, HuggingFace [Accelerate](https://huggingface.co/docs/accelerate/index), ou tout autre framework de votre choix. Pour ce tutoriel, vous utiliserez le modèle DETR directement depuis la bibliothèque HuggingFace Transformers, puis le ré-entraînerez en utilisant l'API HuggingFace Trainer.
+
+Il est temps de ré-entraîner le modèle DETR et d'intégrer Picsellia dans votre workflow d'entraînement.
+
+## **Initier une expérience d'entraînement dans Picsellia**
+
+Pour commencer, vous allez créer une expérience sur Picsellia pour gérer votre session d'entraînement. Une expérience peut être créée directement sur la plateforme Picsellia via l'interface utilisateur ou avec le SDK. Pour le faire via l'interface utilisateur, allez dans Projects et sélectionnez un projet. Au sein de ce projet, rendez-vous dans l'onglet Experiment et cliquez sur le bouton *New Experiment* en haut à droite pour ajouter une nouvelle expérience. Une nouvelle fenêtre contenant quatre sections d'information apparaîtra. Dans la section *General Information*, donnez un nom (train_dataV_experiment) et une description à l'expérience. Les trois autres sections sont optionnelles. Ajoutez uniquement les datasets que vous souhaitez utiliser dans la section *Datasets Versions* et attribuez-leur des alias. Il n'est pas nécessaire de remplir les sections *Base Architecture* et *Hyper-parameters* puisque le modèle que vous allez entraîner n'est pas disponible sur Picsellia. Cliquez simplement sur le bouton *Create* pour créer l'expérience.
+
+‍
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-0.png)
+
+## **Récupérer les datasets associés à l'expérience depuis Picsellia**
+
+Dans votre environnement local, initialisez une connexion à Picsellia depuis le script d'entraînement en utilisant le SDK Picsellia et récupérez l'expérience Picsellia que vous avez créée.
+
+Les versions de datasets (datasets d'entraînement et d'évaluation) que vous avez attachées précédemment à l'expérience font partie des datasets d'exemple sur Picsellia. Comme ce sont des datasets de détection d'objets, ils sont bien adaptés à la tâche. Téléchargez les versions de datasets d'entraînement attachées à votre expérience.
+
+‍
+
+‍
+
+Obtenez les noms des étiquettes pour la version du dataset d'entraînement à partir de ses objets d'étiquettes.
+
+‍
+
+‍
+
+[
+](https://gist.github.com/Tob-iee/0a3e8ed8b41ea53d9fa5591f389b415f)
+
+Ensuite, vous devrez également obtenir les annotations pour la version du dataset d'entraînement (images) depuis Picsellia. Pour les datasets de détection d'objets, Picsellia offre la possibilité de télécharger les annotations du dataset dans les trois formats d'annotation les plus couramment utilisés : [COCO](https://cocodataset.org/#home), [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/), et [YOLO](https://medium.com/nerd-for-tech/yolo-you-only-look-once-65ea86104c51)
+
+Avec la fonction ci-dessous, construisez les annotations pour les images d'entraînement au format COCO en utilisant l'objet de version du dataset d'entraînement et les noms d'étiquettes extraits. Écrivez les annotations construites dans un fichier json dans votre répertoire local, et lisez le fichier json comme un fichier COCO en utilisant la bibliothèque COCO.
+
+[
+](https://gist.github.com/Tob-iee/2a31b6e6d0ab243ac55e2b8359dc37f1)
+
+Créez une carte d'étiquettes des labels et de leurs "*ids*" respectifs à partir des catégories d'annotations COCO.
+
+‍
+
+Journalisez les cartes d'étiquettes dans votre expérience Picsellia.
+
+[
+](https://gist.github.com/Tob-iee/6c441fcd0269b838b5c8d54c3b097f21)
+
+‍
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-1.png)
+
+## **Entraîner le modèle et journaliser les résultats dans Picsellia.**
+
+Puisque vous disposez maintenant de toutes les images, étiquettes et annotations nécessaires pour l'entraînement dans votre environnement local, vous pouvez entraîner le modèle sur votre infrastructure et journaliser les résultats d'entraînement dans Picsellia pour la traçabilité.
+
+Le processeur d'images de DETR attend les annotations du dataset dans ce format : `{'image_id': int, 'annotations': List[Dict]}`, où chaque dictionnaire est une annotation d'objet COCO. Par conséquent, reformatez les annotations pour chaque image avant de les passer au processeur d'images pour permettre un entraînement réussi.
+
+Chargez le processeur d'images de DETR, puis encodez les images et reformatez les annotations avec le processeur d'images.
+
+[
+](https://gist.github.com/Tob-iee/b003c9ba26046e0c4bdbdb7ebdde64de)
+
+Chargez le modèle de détection d'objets DETR et spécifiez vos hyperparamètres pour l'entraînement du modèle.
+
+[
+](https://gist.github.com/Tob-iee/6ade51ce140f743a14ebc110ffc358d2)
+
+Journalisez les hyperparamètres d'entraînement dans votre expérience Picsellia.
+
+[
+](https://gist.github.com/Tob-iee/03038720f7295a24598242bba781f005)
+
+‍
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-2.png)
+
+Créez un callback d'entraînement personnalisé pour journaliser les activités d'entraînement dans votre expérience Picsellia depuis la classe de l'API Trainer. La classe API donne accès à toutes les activités se déroulant pendant l'entraînement. Au sein du callback, les logs de perte et de décroissance du taux d'apprentissage survenant pendant l'entraînement sont journalisés directement dans votre expérience Picsellia à la fin de l'entraînement.
+
+[
+](https://gist.github.com/Tob-iee/20755d6693a0ee6a067b6cf40d8f1e8b)
+
+Initialisez le callback d'entraînement et entraînez le modèle.
+
+[
+](https://gist.github.com/Tob-iee/fdd542546ad6b4307960ddc3d5cd302c)
+
+Après l'entraînement, sauvegardez le modèle dans votre répertoire local.
+
+[
+](https://gist.github.com/Tob-iee/c801788ac08a0c4eb3c0c09d67409361)
+
+Stockez tous les fichiers du modèle dans l'artefact de votre expérience Picsellia.
+
+[
+](https://gist.github.com/Tob-iee/7cb0f1a9355647c1c7e629cb3b653a74)
+
+‍
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-3.png)
+
+
+
+## **Envoyer les évaluations vers la plateforme d'évaluation de Picsellia.**
+
+Avant de faire des prédictions avec le modèle fine-tuné, vous devez charger son processeur d'images (encodeur) et son détecteur d'objets (décodeur).
+
+[
+](https://gist.github.com/Tob-iee/8c5fe643d5b2d8bce8cfb8802e559acc)
+
+Ensuite, récupérez les images et les étiquettes pour la version du dataset d'évaluation depuis votre expérience Picsellia.
+
+[
+](https://gist.github.com/Tob-iee/1cd8933b98ccef042d2f7dc67305c408)
+
+*Note : La récupération de la version du dataset d'évaluation ne re-télécharge pas les images ; c'est uniquement un objet Picsellia qui agit comme un espace réservé pour vous permettre de faire correspondre les images exactes que vous avez localement à celles de Picsellia.*
+
+
+
+Pour évaluer le modèle, faites des prédictions sur toutes les images d'évaluation que vous avez téléchargées dans votre répertoire local depuis votre expérience Picsellia lorsque vous avez récupéré les versions de datasets initialement. Faites correspondre la copie locale des images à celles de Picsellia et envoyez les prédictions des images correspondantes vers le tableau de bord d'évaluation de votre expérience.
+
+[
+](https://gist.github.com/Tob-iee/5a12b6783d3043924b78880585c41bfa)
+
+Pouvoir voir la performance progressive de votre modèle fine-tuné au fil du temps est essentiel. Ainsi, chaque fois que vous faites des prédictions après l'entraînement et envoyez les évaluations à Picsellia, vous obtenez une évaluation visuelle et empirique de votre modèle.
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-4.png)
+
+Les annotations en rouge sont les prédictions, et celles en vert sont les vérités terrain. Enfin, lancez un job sur Picsellia pour calculer les métriques d'évaluation pour toutes les prédictions que vous venez d'ajouter.
+
+[
+](https://gist.github.com/Tob-iee/750ea26835e39091993a3068b07d1287)
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-5.png)
+
+## **Stocker le modèle ré-entraîné dans le registre de modèles de Picsellia.**
+
+Pour compléter le pipeline d'intégration pour la traçabilité, vous devez stocker toutes les versions du modèle fine-tuné de votre expérience dans le registre de modèles de Picsellia et empaqueter votre code dans un conteneur Docker.
+
+
+
+Créez un dossier de modèle personnalisé pour les différentes versions de votre modèle dans le registre de modèles de Picsellia. Cela vous permettra de stocker la version du modèle fine-tuné issue de l'exécution de notre expérience.
+
+‍
+
+[
+](https://gist.github.com/Tob-iee/ce42a655887afea8b8fed62364454e16)
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-6.png)
+
+Créez une version de modèle dans le dossier de modèle personnalisé pour stocker le modèle fine-tuné de vos expériences d'entraînement dans le registre de modèles.
+
+[
+](https://gist.github.com/Tob-iee/1c091485a2b64e9d3e415b9fa4938d63)
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-7.png)
+
+![How to integrate picsellia into a hugging face training workflow](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-img-8.png)
+
+## **Dockeriser le code**
+
+Empaquetez le workflow pour vous permettre de passer l'entraînement à l'échelle avec une reproductibilité sans faille lors de l'exécution de vos expériences avec le modèle. Créez une structure d'image Docker personnalisée avec un Dockerfile.
+
+[
+](https://gist.github.com/Tob-iee/3504b19daaa70430145384e82db7f275)
+
+Construisez l'image, et votre mission est accomplie.
+
+‍
+
+> docker build . -f Dockerfile -t picsellia-hf-train_image:1.0
+
+Vous pouvez déployer cette image de conteneur Docker sur votre infrastructure et disposer d'un pipeline d'entraînement intégré CVOps avec Picsellia. Considérez chaque conteneur Docker que vous exécutez comme un pipeline d'entraînement pour lancer une expérience avec le modèle DETR.
+
+
+
+Pour lancer une exécution d'expérience, spécifiez vos variables d'environnement pour le conteneur Docker avec le nom de l'expérience de chaque exécution et le répertoire de sortie du modèle ré-entraîné.
+
+![How to integrate picsellia into a hugging face training workflow 65392518c6fd8914267eb7be carbon](/images/blog/how-to-integrate-picsellia-into-a-hugging-face-training-workflow-65392518c6fd8914267eb7be_carbon.png)
+
+---------------------------------------------------------------------------------------------------------------------
+
+## **Conclusion**
+
+Dans cet article, vous avez appris l'entraînement avec un workflow CVOps à grande échelle et comment intégrer Picsellia dans l'entraînement d'un transformeur de détection d'objets HuggingFace pour implémenter un workflow d'entraînement CVOps robuste. Il y a encore beaucoup à apprendre sur Picsellia, HuggingFace et le passage à l'échelle de l'entraînement ; consultez les ressources suivantes :
+
+- [Documentation Picsellia](https://documentation.picsellia.com/docs/integrate-picsellia-into-your-training-scripts)
+- [Détection d'objets avec les transformeurs HuggingFace](https://huggingface.co/docs/transformers/tasks/object_detection)
+- [Comment appliquer le MLOps à la vision par ordinateur ? Présentation du CVOps](https://huggingface.co/docs/transformers/tasks/object_detection)
+- [Comment créer des workflows de vision par ordinateur ?](https://www.linkedin.com/advice/1/how-do-you-create-computer-vision-workflows)
+
+‍

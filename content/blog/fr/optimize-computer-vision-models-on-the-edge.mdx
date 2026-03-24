@@ -1,0 +1,133 @@
+---
+
+title: "Comment optimiser les modèles de vision par ordinateur pour les appareils edge"
+description: "Découvrez les meilleures techniques d'optimisation pour réduire la taille des modèles et augmenter la vitesse d'inférence en vision par ordinateur."
+date: "2022-06-29"
+author:
+  name: "Picsellia Team"
+category: "Edge AI"
+image: "/images/blog/optimize-computer-vision-models-on-the-edge-hero.jpg"
+imageAlt: "How To Optimize Computer Vision Models For Edge Devices"
+published: true
+tags: ["autonomous-vehicles", "cloud", "computer-vision", "deep-learning", "deployment", "edge-deployment", "model-training", "real-time"]
+---
+
+Cet article vous présentera ***"l'inférence en périphérie"*** et les ***"techniques d'optimisation de l'inférence"*** en machine learning. À la fin de cet article, vous connaîtrez les techniques d'optimisation les plus pertinentes pour réduire la taille d'un modèle et augmenter sa vitesse d'inférence en vision par ordinateur. Vous découvrirez également les outils open source que vous pouvez utiliser pour réaliser ces optimisations. Enfin, nous vous conseillerons sur les techniques d'optimisation de déploiement à utiliser dans vos projets de vision par ordinateur, en fonction de votre matériel de déploiement.
+
+## **Qu'est-ce que l'inférence en périphérie et quand en avez-vous besoin ?**
+
+Vous avez peut-être entendu les expressions "IA en périphérie", "Edge ML" ou "Inférence en périphérie". Ces termes désignent des modèles de machine learning entraînés exécutant des tâches d'inférence à proximité du point de collecte des données de production, généralement en temps réel. L'inférence est exécutée sur des appareils edge (par ex. micro-ordinateurs, accélérateurs, mobiles, IoT). Un exemple typique est celui des voitures autonomes. Elles recueillent des informations sur l'environnement à travers de multiples capteurs et les traitent sur du matériel local en temps réel. Le temps réel fait référence au délai maximal de prédiction acceptable, qui va de quelques millisecondes à quelques secondes selon l'application.
+
+L'inférence en périphérie offre de nombreux avantages et constitue parfois la seule façon viable de concevoir votre système de vision par ordinateur. En résumé, l'inférence en périphérie offre :
+
+- Des capacités d'inférence à distance (les données de production se trouvent sur le terrain, loin d'un serveur)
+- Des prédictions en temps réel
+- Une indépendance vis-à-vis de la connexion réseau
+- Une réduction du stockage des données (vous ne conservez que les prédictions et éliminez les données de production)
+- La sécurité des données, car il y a un besoin limité de transférer des données (sensibles) à travers un réseau
+
+Cependant, elle est soumise à de nombreuses contraintes comme la puissance de traitement limitée du matériel, les limitations de mémoire, la durée de vie limitée de la batterie sauf si l'appareil est branché, des coûts potentiellement plus élevés et une phase de déploiement de modèle légèrement plus complexe. Vous devez donc soigneusement décider si l'inférence en périphérie est nécessaire pour votre projet. En bref, si aucun des points ci-dessus n'est une exigence stricte, vous pouvez probablement vous contenter de transférer les données collectées vers un serveur cloud pour l'inférence et le retour si nécessaire.
+
+Si vous avez décidé que l'inférence en périphérie est la meilleure conception pour votre application, vous devrez respecter les contraintes de traitement. Lorsque vous exécutez l'inférence sur du matériel local à faible puissance, vous n'avez pas le luxe de traiter les données avec de très grands modèles de deep learning, car la latence pourrait dépasser les contraintes de temps réel. Heureusement, il existe des techniques d'optimisation pour aider à réduire la taille d'un réseau et son délai d'inférence.
+
+## **Techniques d'optimisation de la vitesse et de la mémoire**
+
+Les appareils edge ont souvent une mémoire ou une puissance de calcul limitée. Vous pouvez appliquer diverses optimisations à vos modèles pour les exécuter dans ces contraintes. L'optimisation des modèles est particulièrement utile pour :
+
+- Réduire la latence d'inférence pour les appareils cloud et edge.
+- Déployer des modèles sur des appareils edge avec des restrictions de traitement, de mémoire et/ou de consommation d'énergie.
+- Permettre l'exécution sur du matériel restreint ou optimisé pour les opérations en virgule fixe (nombres entiers).
+- Optimiser les modèles pour des accélérateurs matériels spécialisés.
+- Réduire les coûts de stockage des modèles et la taille des mises à jour (pour les mises à jour OTA).
+
+Nous allons parcourir certaines des techniques les plus cruciales d'optimisation de taille et de vitesse.
+
+## **1. Choisir le meilleur modèle pour l'application**
+
+L'étape suivante n'est pas une technique d'optimisation, mais c'est l'étape la plus pertinente pour commencer. Avant d'entraîner votre modèle, tenez compte de la précision et de la vitesse d'inférence que vous devez atteindre. Vous devez faire un compromis entre la complexité et la taille du modèle. Les modèles plus petits sont souvent suffisants pour la plupart des tâches, nécessitent moins d'espace disque et de mémoire, et sont beaucoup plus rapides et économes en énergie. Les graphiques ci-dessous aident à mieux comprendre ce compromis. En regardant le graphique précision vs. latence, vous devez décider si un Mobilenet v2 a une précision suffisante pour vos besoins ou si vous devez passer à un modèle plus complexe comme le NASNet mobile ou Inception v3 (quantifié). Dans tous les cas, Inception v4 n'est probablement pas une option pour l'inférence en temps réel.
+
+‍
+
+![Source : www.tensorflow.org/lite](/images/blog/optimize-computer-vision-models-on-the-edge-img-0.png)
+*Compromis Taille du modèle - Précision - Latence Source - www.tensorflow.org/lite*
+
+## **2. Quantification post-entraînement des poids**
+
+La quantification est la technique consistant à contraindre un large ensemble de valeurs (continues) à un ensemble plus petit de valeurs (discrètes). Dans les réseaux neuronaux, la quantification post-entraînement est une technique qui réduit le nombre de bits nécessaires pour représenter les poids, les biais et les fonctions d'activation d'un réseau [1]. La quantification post-entraînement consiste à prendre un modèle entraîné, quantifier ses poids, puis optionnellement ré-optimiser le modèle.
+
+Le processus standard consiste à représenter les paramètres d'un réseau sous forme de valeurs à virgule flottante 32 bits, ce qui permet une haute précision numérique et, en fin de compte, une bonne précision pour le réseau neuronal. En convertissant les représentations à virgule flottante 32 bits en types numériques à précision réduite, nous pouvons efficacement réduire la taille d'un paramètre de 2x à 4x, selon le type de quantification. Cela se traduirait par un modèle d'une taille initiale de 128 Mo réduit à environ 64 Mo, voire 32 Mo !
+
+Les techniques de quantification les plus courantes convertissent le type numérique en virgule flottante 16 bits (demi-quantification) ou en nombres entiers 8 bits (quantification complète). La quantification en entiers 8 bits comporte deux options : la *quantification entière complète* et la *quantification à plage dynamique*. La première quantifie les poids, les biais, les activations, les entrées et les sorties (à partir d'un dataset représentatif), tandis que la seconde ne quantifie que les poids. Selon votre matériel, certaines techniques fonctionnent mieux que d'autres, mais nous approfondirons cela dans la section suivante.
+
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-1.png)
+
+Cependant, en informatique, un repas gratuit existe rarement. En réduisant la précision numérique, vous pouvez dégrader la précision globale de votre modèle. Selon la sévérité de la quantification, nous observons généralement une baisse de précision d'environ 0 à 2 %. Cependant, pour une baisse de précision de 2 %, nous pouvons atteindre jusqu'à 84 % d'économie d'énergie [2] et une accélération de 3x ou plus. Dans la plupart des cas, la dégradation de la précision reste inférieure à 1 %, tandis que dans certains cas rares, nous pourrions même observer une légère augmentation de la précision, généralement un modèle surajusté et complexe régularisé par la quantification.
+
+## **3. Élagage de modèle**
+
+L'élagage supprime les paramètres redondants ou les neurones entiers qui ne contribuent pas significativement à la précision des résultats. Cette condition peut survenir lorsque les coefficients de poids sont nuls, proches de zéro ou dupliqués. En conséquence, vous pouvez réduire la complexité computationnelle tout en maintenant des augmentations de la vitesse d'inférence et une précision à des niveaux stables. Les réseaux élagués peuvent également être réentraînés par la suite, offrant la possibilité d'échapper à des minima locaux précédents et d'améliorer davantage la précision [3].
+
+## **4. Regroupement des poids**
+
+Le regroupement, ou partage des poids, réduit le nombre de valeurs de poids uniques dans un modèle, apportant des avantages pour le déploiement. Il regroupe d'abord les poids de chaque couche en *N* clusters, puis partage la valeur du centroïde du cluster pour tous les poids appartenant à ce cluster. Vous pouvez regrouper les couches de manière sélective. Plus le nombre de clusters est petit, plus le niveau de compression est élevé, et vice-versa.
+
+Dans le tableau 1, nous voyons qu'une compression de près de 3,5x peut être atteinte avec une perte minimale de 1,6 % de précision en regroupant toutes les couches convolutionnelles avec 32 clusters. Une compression de 2x peut être obtenue en regroupant seulement 3 couches Conv avec une réduction de précision inférieure à 0,3 %.
+
+‍
+
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-2.png)
+*Tableau 1. Effets du regroupement des poids sur les modèles entraînés pour la classification d'images sur ImageNet. Source [4] https://www.tensorflow.org/model_optimization/guide/clustering*
+
+## **Outils open source pour l'optimisation de l'inférence**
+
+Nous avons discuté des techniques, passons maintenant aux outils qui les appliquent. Dans le tableau 2, vous pouvez voir une liste complète mais non exhaustive d'outils open source pour l'optimisation de l'inférence des réseaux neuronaux.
+
+Parmi eux, [TensorFlow Lite](https://www.tensorflow.org/lite) est probablement le plus complet et flexible. Il offre de nombreuses techniques de quantification différentes, l'élagage, le regroupement des poids et une fonctionnalité expérimentale de Quantization Aware Training. Il prend en charge une large gamme d'appareils matériels lors de l'inférence et est facile à utiliser. Cependant, il ne supporte directement que les modèles TensorFlow. Mais vous pouvez optimiser des modèles écrits dans d'autres frameworks en utilisant un format de réseau neuronal global appelé [ONNX](https://onnx.ai/).
+
+Un autre SDK important, lié aux GPU NVidia, est la bibliothèque [TensorRT](https://developer.nvidia.com/tensorrt). C'est une bibliothèque créée par NVidia spécifiquement pour leur matériel. Elle offre des optimisations spécifiques au système qui résultent en une inférence à très haute performance. De plus, elle supporte les modèles TensorFlow et PyTorch. Si une très faible latence et un haut débit sont l'objectif, TensorRT est l'outil optimal. Cependant, il est limité au matériel NVidia et il peut être un peu frustrant de travailler avec sur leurs appareils embarqués ([série Jetson](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)).
+
+‍
+
+![Optimize computer vision models on the edge](/images/blog/optimize-computer-vision-models-on-the-edge-img-3.png)
+*Tableau 2. Source : [1] [https://arxiv.org/pdf/2101.09671.pdf](https://arxiv.org/pdf/2101.09671.pdf)*
+
+
+
+## **Comment trouver la bonne technique d'optimisation pour votre matériel**
+
+Maintenant que nous avons expliqué les principales techniques et outils d'optimisation, nous allons entrer dans les détails du choix de l'optimisation la plus adaptée à votre matériel. Parfois, les choix sont limités en raison de l'architecture matérielle, mais parfois vous avez le choix.
+
+**Déploiement sur des CPU basse consommation** : Il peut s'agir du CPU d'un micro-ordinateur (par ex. Raspberry Pi), du CPU d'un téléphone mobile ou même d'un CPU d'ordinateur portable commercial. La quantification en float 16 bits est possible, mais dans ce scénario, vous devriez préférer la quantification en int 8 bits. Les raisons sont :
+
+- Les CPU sont très rapides avec les nombres entiers
+- Par défaut, un modèle quantifié en float16 va "déquantifier" les valeurs des poids en float32 lors de l'exécution sur le CPU [[4]](https://www.tensorflow.org/lite/performance/post_training_quantization#float16_quantization).
+
+Avec TF-Lite, vous pouvez opter pour une quantification à plage dynamique ou une quantification entière complète. Vous pouvez efficacement réduire la taille d'un modèle de 4x et obtenir une accélération de 2-3x, généralement avec une faible perte de précision. Mais assurez-vous de vérifier que la précision du modèle optimisé se situe toujours dans la plage souhaitée.
+
+**Déploiement sur un GPU Android :** Pour les GPU Android, TF-Lite supporte les mêmes techniques de quantification que celles listées ci-dessus. Nous suggérons de suivre les mêmes recommandations.
+
+**Déploiement sur du matériel uniquement entier :** De nombreux microcontrôleurs et TPU edge ne supportent que les opérations sur des entiers. Si votre matériel entre dans cette catégorie, votre seule option est d'utiliser la quantification [entière complète](https://www.tensorflow.org/lite/performance/post_training_quantization#full_integer_quantization). L'accélération sera énorme, surtout pour les TPU, mais assurez-vous d'évaluer le modèle quantifié pour vérifier que la précision se situe toujours dans la plage souhaitée.
+
+**Déploiement sur des GPU NVidia :** Cette catégorie inclut les GPU de calcul haut de gamme commerciaux et les GPU embarqués comme la série NVidia Jetson. Dans ce scénario, vous avez la possibilité de travailler avec TensorRT. TensorRT gère les détails d'optimisation et peut vous aider à atteindre des FPS en temps réel (20-60 fps).
+
+L'architecture d'un GPU est optimisée pour les opérations avec des nombres à virgule flottante. La quantification en nombres à virgule flottante 16 bits est généralement un excellent point de départ. Si la réduction de taille de 2x n'est toujours pas suffisante pour atteindre la vitesse d'inférence optimale, alors un élagage conservateur ou un regroupement des poids peut également être appliqué. TF-Lite ne supporte que la quantification en float 16 bits pour ces GPU. Cependant, TensorRT fournit également une quantification complète en 8 bits.
+
+## **Puis-je utiliser des modèles optimisés dans le cloud pour atteindre le temps réel ?**
+
+**Déploiement dans le cloud :** Lorsque vous [déployez](/model-deployment) votre solution dans le cloud, vous avez accès à du matériel puissant, ce qui vous permet d'opter pour un modèle plus grand et plus complexe dès le départ. Cependant, vous pourriez encore trouver nécessaire de diminuer le délai entre l'entrée et la prédiction, pour atteindre le temps réel.
+
+Dans ce cas, votre plus grand ennemi est la vitesse et la bande passante du réseau. Puisque vous devez transférer des données dans les deux sens, une grande partie du délai global est constituée des coûts de transfert de données. Si votre délai de transfert de données dépasse les contraintes de temps réel de l'application, alors vous ne devriez pas vous soucier d'optimiser la vitesse d'inférence en premier lieu. Optez plutôt pour un appareil edge.
+
+D'un autre côté, si les délais de transfert de données ne sont pas un goulot d'étranglement, nous vous conseillons d'optimiser votre modèle pour la vitesse d'inférence. En supposant que l'inférence est exécutée sur un GPU haut de gamme, alors une compression légère en float 16 bits, un regroupement des poids de couches cachées spécifiques, ou une combinaison de ce type devrait vous fournir une accélération suffisante pour respecter vos restrictions de temps réel sans sacrifier beaucoup de précision.
+
+## **Références**
+
+[1] [Pruning and Quantization for Deep Neural Network Acceleration: A Survey](https://arxiv.org/pdf/2101.09671.pdf). Tailin Liang, John Glossner, Lei Wang, Shaobo Shi, and Xiaotong Zhang
+
+[2] [Understanding the Impact of Precision Quantization on the Accuracy and Energy of Neural Networks.](https://arxiv.org/pdf/1612.03940.pdf) Soheil Hashemi, Nicholas Anthony, Hokchhay Tann, R. Iris Bahar, Sherief Reda
+
+[3] [What is the state of Neural Network pruning?](https://arxiv.org/pdf/2003.03033.pdf). Davis Blalock, Jose Javier Gonzalez Ortiz, Jonathan Frankle, John Guttag
+
+[4] [https://www.tensorflow.org/lite/performance/model_optimization](https://www.tensorflow.org/lite/performance/model_optimization)
+
+[5] [https://developer.nvidia.com/tensorrt](https://developer.nvidia.com/tensorrt)

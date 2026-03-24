@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { captureEvent } from "@/lib/posthog";
 import { track } from "@vercel/analytics";
 
 export default function BlogStickyBanner({ blogSlug }: { blogSlug: string }) {
+  const t = useTranslations('blog');
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -59,20 +61,19 @@ export default function BlogStickyBanner({ blogSlug }: { blogSlug: string }) {
       }}
     >
       <span className="text-secondary hidden sm:inline">
-        <strong className="text-label font-semibold">Picsellia</strong> — The
-        MLOps platform for computer vision
+        <strong className="text-label font-semibold">Picsellia</strong> — {t('bannerTagline')}
       </span>
       <Link
         href="/demo"
         onClick={handleClick}
         className="btn-primary px-4 py-1.5 text-xs whitespace-nowrap"
       >
-        Book a Demo
+        {t('bookDemo')}
       </Link>
       <button
         onClick={handleDismiss}
         className="text-tertiary hover:text-secondary transition-colors p-1"
-        aria-label="Dismiss banner"
+        aria-label={t('dismissBanner')}
       >
         <svg
           width="16"

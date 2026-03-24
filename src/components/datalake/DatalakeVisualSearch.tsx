@@ -1,29 +1,30 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 export default function DatalakeVisualSearch() {
+  const t = useTranslations('datalake');
   return (
     <section className="py-24 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-[var(--system-indigo)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Visual Search
+            {t('visualSearch.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Find similar images instantly
+            {t('visualSearch.title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            OpenCLIP embeddings turn your images into vectors. Search by similarity,
-            cluster by content, and spot outliers without writing a single query.
+            {t('visualSearch.subtitle')}
           </p>
         </div>
 
         {/* Technical Specs */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
           {[
-            { value: 'ViT-B/16', label: 'Default Model' },
-            { value: '512-dim', label: 'Vector Size' },
-            { value: 'QDrant', label: 'Vector DB' },
-            { value: '<10ms', label: 'Search Latency' },
+            { value: 'ViT-B/16', label: t('visualSearch.defaultModel') },
+            { value: '512-dim', label: t('visualSearch.vectorSize') },
+            { value: 'QDrant', label: t('visualSearch.vectorDb') },
+            { value: '<10ms', label: t('visualSearch.searchLatency') },
           ].map((spec) => (
             <div key={spec.label} className="p-4 border border-[var(--border)] rounded-xl text-center">
               <div className="text-xl font-bold font-mono text-[var(--label)]">{spec.value}</div>
@@ -37,7 +38,7 @@ export default function DatalakeVisualSearch() {
           {/* Embeddings Viewer Video */}
           <div className="border border-[var(--border)] rounded-xl overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)]">
-              <span className="text-sm font-medium text-[var(--label)]">Embeddings Viewer</span>
+              <span className="text-sm font-medium text-[var(--label)]">{t('visualSearch.embeddingsViewer')}</span>
               <div className="flex items-center gap-2 text-xs text-[var(--tertiary-label)]">
                 <span>UMAP</span>
                 <span>•</span>
@@ -59,7 +60,7 @@ export default function DatalakeVisualSearch() {
             {/* Similarity Search */}
             <div className="p-5 border border-[var(--border)] rounded-xl">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-medium text-[var(--label)]">Similarity Search</h3>
+                <h3 className="text-sm font-medium text-[var(--label)]">{t('visualSearch.similaritySearch')}</h3>
                 <span className="text-xs text-[var(--system-indigo)]">Image → Images</span>
               </div>
               <div className="flex items-center gap-4">
@@ -74,7 +75,7 @@ export default function DatalakeVisualSearch() {
                 </div>
                 <div className="text-right">
                   <div className="text-2xl font-bold font-mono text-[var(--system-indigo)]">847</div>
-                  <div className="text-xs text-[var(--tertiary-label)]">matches</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">{t('visualSearch.matches')}</div>
                 </div>
               </div>
             </div>
@@ -82,7 +83,7 @@ export default function DatalakeVisualSearch() {
             {/* Text-to-Image */}
             <div className="p-5 border border-[var(--border)] rounded-xl">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-medium text-[var(--label)]">Text-to-Image Search</h3>
+                <h3 className="text-sm font-medium text-[var(--label)]">{t('visualSearch.textToImage')}</h3>
                 <span className="text-xs text-[var(--system-indigo)]">Text → Images</span>
               </div>
               <div className="flex items-center gap-3 px-3 py-2.5 rounded-lg border border-[var(--border)] mb-3">
@@ -100,7 +101,7 @@ export default function DatalakeVisualSearch() {
             {/* Anomaly Detection */}
             <div className="p-5 border border-[var(--border)] rounded-xl">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-sm font-medium text-[var(--label)]">Anomaly Detection</h3>
+                <h3 className="text-sm font-medium text-[var(--label)]">{t('visualSearch.anomalyDetection')}</h3>
                 <span className="text-xs text-[var(--system-indigo)]">Isolation Forest</span>
               </div>
               <div className="flex items-center justify-between">
@@ -108,11 +109,11 @@ export default function DatalakeVisualSearch() {
                 <div className="flex items-center gap-6">
                   <div className="text-center">
                     <div className="text-xl font-bold font-mono text-[var(--label)]">23</div>
-                    <div className="text-xs text-[var(--tertiary-label)]">corrupted</div>
+                    <div className="text-xs text-[var(--tertiary-label)]">{t('visualSearch.corrupted')}</div>
                   </div>
                   <div className="text-center">
                     <div className="text-xl font-bold font-mono text-[var(--label)]">89</div>
-                    <div className="text-xs text-[var(--tertiary-label)]">outliers</div>
+                    <div className="text-xs text-[var(--tertiary-label)]">{t('visualSearch.outliers')}</div>
                   </div>
                 </div>
               </div>
@@ -128,20 +129,19 @@ export default function DatalakeVisualSearch() {
                 <svg className="w-5 h-5 text-[var(--system-indigo)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-                <h3 className="text-lg font-semibold text-[var(--label)]">Fine-tune Your Own CLIP Model</h3>
+                <h3 className="text-lg font-semibold text-[var(--label)]">{t('visualSearch.fineTuneTitle')}</h3>
               </div>
               <p className="text-sm text-[var(--secondary-label)]">
-                Generic embeddings not cutting it? Fine-tune a CLIP model on your own data.
-                Search and clustering get much better when the model knows your domain.
+                {t('visualSearch.fineTuneDesc')}
               </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-center px-4">
                 <div className="text-2xl font-bold font-mono text-[var(--system-indigo)]">+40%</div>
-                <div className="text-xs text-[var(--tertiary-label)]">Better accuracy</div>
+                <div className="text-xs text-[var(--tertiary-label)]">{t('visualSearch.betterAccuracy')}</div>
               </div>
               <Link href="/demo" className="btn-secondary whitespace-nowrap">
-                Learn more
+                {t('visualSearch.learnMore')}
               </Link>
             </div>
           </div>

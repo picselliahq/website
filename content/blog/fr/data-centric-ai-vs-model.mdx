@@ -1,0 +1,65 @@
+---
+
+title: "Data-Centric AI vs. Model-Centric AI : qui va l'emporter ?"
+description: "Aujourd'hui, nous sommes passés du Model-Centric au Data-Centric AI. Nous vous guiderons à travers l'histoire du Data-Centric AI et sa direction pour les prochaines années !"
+date: "2021-10-03"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/data-centric-ai-vs-model-hero.png"
+imageAlt: "Data-Centric AI vs. Model-Centric AI? Which one will win?"
+published: true
+tags: ["cloud", "dataset-management", "deep-learning", "deployment", "edge-deployment", "experiment-tracking", "model-training", "monitoring"]
+---
+
+## **Cycle de vie de l'intelligence artificielle : une brève introduction**
+
+Comme vous le savez tous, les projets d'IA se composent de 3 parties principales. La première est les données d'entraînement, qui doivent être stockées, gérées, nettoyées, etc. Ensuite, les données sont utilisées pour entraîner des modèles de deep learning, pour lesquels nous exécuterons itérativement des expériences afin d'optimiser les métriques de performance. Enfin, lorsque les résultats sont suffisamment bons, nous déploierons le modèle en production pour que l'application métier puisse l'utiliser, que ce soit en edge ou dans le cloud.
+
+Mais, ce n'est pas fini...
+
+Les modèles de deep learning sont créés en apprenant à partir de données du monde réel. Cependant, comme le monde change, les données changent pendant la durée de vie du modèle. C'est pourquoi les modèles doivent être réentraînés.
+
+Comme vous le comprenez sans doute maintenant, les performances du modèle d'IA dépendent entièrement des données. C'est pourquoi tout le monde a parlé de "Data-Centric AI" en 2021.
+
+Dans cet article, nous vous guiderons à travers l'histoire du Data-Centric AI et sa direction pour les prochains mois/années !
+
+‍
+
+## **Model-Centric AI -- cette époque est révolue**
+
+La focalisation sur le modèle dont nous venons de parler a conduit à cet état que l'IA a suivi pendant de nombreuses années.
+
+Selon les mots du célèbre Andrew Ng, les systèmes d'IA sont composés de Code + Données, le Code étant le modèle qui est programmé en utilisant certains frameworks en Python, C++, R, etc. Et le défi pour tous les laboratoires de recherche à travers le monde était, pour un dataset benchmark donné comme le dataset COCO, de créer une architecture de modèle qui performerait mieux et deviendrait l'état de l'art.
+
+C'est ce qu'on appelle une approche centrée sur le modèle -- garder les données fixes et itérer sur le modèle et ses paramètres pour améliorer les performances.
+
+Bien sûr, c'était formidable pour nous, ingénieurs ML, d'avoir facilement accès à des modèles nouveaux et meilleurs sur GitHub et de pouvoir créer le meilleur modèle pour notre projet. Pour beaucoup d'ingénieurs en machine learning, cela nous donnait le sentiment qu'après avoir étudié si durement la théorie du ML, nous appliquions enfin ce bagage scientifique et essayions de créer quelque chose de puissant.
+
+La particularité de cette période est qu'à l'époque, la collecte de données était une tâche ponctuelle, effectuée au début du projet, peut-être avec l'objectif de faire grossir le dataset au fil du temps, mais sans beaucoup de réflexion sur sa qualité intrinsèque.
+
+Les déploiements des modèles créés étaient généralement à petite échelle ; un seul serveur ou appareil pouvait gérer toute la charge et le monitoring n'était pas vraiment un sujet.
+
+**Mais le plus grand obstacle était que tout se faisait manuellement : nettoyage des données (assez normal), entraînement des modèles, validation, déploiement, stockage, partage, et plus encore.**
+
+Il était évident qu'il y avait un problème à résoudre. Cependant, à cette époque, les solutions, comme les grandes [plateformes ML](/), étaient soit inexistantes, soit trop compliquées à appliquer pour la majorité des organisations.
+
+‍
+
+![Data centric ai vs model 66ed3bcc2b609286b640535d 615c099dd9d3ed35c4fe5ae9 capture 2520d 25e2 2580 2599 25c3 25a9cran 2520du 25202021 10 04 252019 06 34](/images/blog/data-centric-ai-vs-model-66ed3bcc2b609286b640535d_615c099dd9d3ed35c4fe5ae9_Capture-2520d-25E2-2580-2599-25C3-25A9cran-2520du-25202021-10-04-252019-06-34.png)
+
+‍
+
+## **Du Model-Centric au Data-Centric AI**
+
+Les temps ont changé, et certaines personnalités influentes du domaine, comme le Dr. Andrew Ng, ont commencé à proposer de nouveaux paradigmes pour traiter l'optimisation des modèles, cette fois en se concentrant sur les données.
+
+Cette approche s'appelle désormais Data-Centric -- vous avez peut-être vu ces mots sur beaucoup de sites web de startups, et ils peuvent avoir des significations et des applications différentes, mais je vais commencer par présenter le concept.
+
+Une approche centrée sur les données, c'est quand vous changez ou améliorez systématiquement vos datasets pour améliorer les performances du modèle. Cela signifie que contrairement à l'approche centrée sur le modèle, cette fois le modèle est fixe, et vous n'améliorez que les données. Améliorer le dataset peut avoir différentes significations. Cela peut inclure s'occuper de la cohérence des labels, échantillonner finement les données d'entraînement et choisir les lots judicieusement ; pas toujours avec l'objectif d'augmenter la taille du dataset.
+
+En exemple de la façon dont les modèles entraînés sur des datasets benchmark peuvent être améliorés, une étude a montré qu'en moyenne, 3,4 % des données de ces datasets étaient mal labellisées (ce qui peut prendre de nombreuses formes différentes). Imaginez l'augmentation de performance possible en réduisant ce nombre à 0 !
+
+Mais se concentrer autant sur les données, car elles doivent circuler en continu puisque nous avons déployé des modèles qui peuvent collecter les données sur lesquelles ils font des prédictions, signifie que vous avez automatisé tous les processus derrière le cycle de vie du modèle, de l'entraînement à la validation, jusqu'au déploiement.
+
+Cette discipline s'appelle MLOps (pour Machine Learning Operations). Si vous souhaitez en savoir plus sur le MLOps et ses concepts les plus importants, vous pouvez consulter notre premier article de notre série [ici](/post/what-is-mlops-and-why-its-important).

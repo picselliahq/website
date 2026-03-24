@@ -1,0 +1,71 @@
+---
+
+title: "Qu'est-ce que le MLOps ? Et pourquoi est-ce important ? Partie 1"
+description: "Le MLOps, abreviation de Machine Learning Operations, est une discipline qui vise a unifier le developpement et le deploiement des systemes de machine learning pour optimiser les modeles performants."
+date: "2021-10-11"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/what-is-mlops-and-why-its-important-hero.png"
+imageAlt: "What is MLOps? And Why is it Important? Part 1"
+published: true
+tags: ["deployment", "mlops", "model-training", "monitoring", "pipelines"]
+---
+
+Le MLOps est l'abreviation de Machine Learning Operations. C'est une discipline d'ingenierie qui vise a unifier le developpement et le deploiement des systemes de machine learning pour fluidifier la mise en production de modeles performants.
+
+L'objectif est de deployer un modele qui apporte de la valeur au final ! Mais nous verrons qu'aujourd'hui, avec l'etablissement du DevOps, faire cela de maniere coherente, avec autant de precision et de coordination que dans le monde du logiciel, est un sujet vraiment complexe.
+
+Mais ne vous inquietez pas ! Aujourd'hui, de nombreuses entreprises investissent beaucoup d'efforts pour simplifier ces processus afin de vous aider a faire murir durablement votre travail en machine learning.
+
+En termes de maturite, il a ete etabli qu'il existe 3 niveaux de maturite MLOps :
+
+- **Niveau 0** consiste a construire et deployer des modeles manuellement pour chaque etape et iteration
+
+- **Niveau 1** est plus interessant et concerne principalement l'entrainement continu en automatisant le pipeline de machine learning
+
+- **Niveau 2** est atteint lorsque vos pipelines de machine learning ressemblent a vos pipelines de code avec les pratiques DevOps, comme l'integration continue et la livraison continue.
+
+## **Ce que le MLOps n'est PAS**
+
+Maintenant que nous avons presente ce qu'est le MLOps, j'aimerais preciser ce que le MLOps n'est PAS.
+
+Juste deux exemples pour illustrer cela :
+
+Le MLOps ne consiste pas a adapter des outils existants non adaptes a la production pour les rendre prets pour la production, comme essayer des moyens obscurs de mettre des Jupyter Notebooks en production afin que les data scientists puissent conserver leur facon de travailler habituelle.
+
+Les notebooks sont un outil vraiment important et incontournable lorsque vous commencez a travailler en data science en general, mais meme si certaines entreprises comme Netflix racontent des histoires incroyables sur la facon dont leurs processus sont centres sur les notebooks et comment ils gerent leurs pipelines avec des notebooks, ce n'est pas pour tout le monde. Ils ont consacre beaucoup de travail pour maitriser leurs outils et leur plateforme a cet effet.
+
+‍
+
+> Gardez donc a l'esprit qu'essayer de "productioniser" des notebooks est globalement une mauvaise idee.
+
+‍
+
+Le deuxieme point concerne le monitoring. Si vous surveillez beaucoup de choses concernant vos modeles, dont certaines que vous ne regardez jamais et dont la plupart ne sont pas liees a vos indicateurs cles de performance metier, mais que vous verifiez simplement pour vous assurer que votre modele est en fonctionnement, vous passez a cote de nombreuses informations importantes. C'est la mentalite "agir maintenant, reflechir jamais" et cela vous empeche d'aller plus loin dans votre parcours MLOps.
+
+## **MLOps Niveau 0**
+
+Commencons par le premier niveau de maturite MLOps. Ne vous inquietez pas si vous vous identifiez a certains de ces elements, c'est normal et il n'y a pas beaucoup de personnes et d'entreprises dans le monde qui ont atteint les autres niveaux. Cet article peut vous aider a reflechir sur ces points et voir comment vous pouvez faire passer votre pratique du machine learning au niveau superieur.
+
+Il y a un schema que nous avons reconnu dans de nombreuses entreprises, meme celles ou nous avons commence en tant que ML Engineers : les equipes metier arrivaient avec un "probleme client" ou un "tout nouveau projet" qui necessitait de l'IA. Ils transmettaient les exigences a l'equipe de data science, qui devait aller au-dela, travaillant pendant longtemps pour trouver et nettoyer les donnees, puis passer des semaines a essayer d'optimiser un modele qui atteignait un certain pourcentage de precision.
+
+Ce qui definit le plus ce niveau 0, c'est la maniere manuelle de tout faire dans le "pipeline".
+
+‍
+
+> Mais ensuite, que se passe-t-il ?
+
+‍
+
+Habituellement, ce qui se passe, c'est que les clients ou les projets presentent des besoins plus compliques que ceux anticipes au depart, et en raison de la nature iterative, de test et d'apprentissage de l'IA, tout doit etre refait depuis zero. Cela ne suit effectivement pas les pratiques Agile qui regissent generalement la gestion de projets et de logiciels.
+
+Une autre caracteristique de ce niveau est que les modeles d'IA sont generalement deployes quand ils **peuvent** l'etre, pas quand ils **devraient** l'etre, ce qui fait une enorme difference dans la facon dont ils resolvent les problemes metier reels.
+
+Bien sur, les tests de scripts de machine learning ont toujours ete en retard par rapport a ceux du logiciel, et sont generalement contenus dans le script lui-meme, s'il y en a.
+
+Le deploiement continu est rarement envisage, ou est tout simplement considere comme inatteignable, ce qui repond principalement aux etapes manuelles que j'ai mentionnees precedemment, et parce qu'il n'y a pas de besoins de deploiement a grande echelle et haute frequence. Enfin, le systeme global de machine learning est rarement surveille, ou est surveille en utilisant des anti-patterns.
+
+Pour resumer ce niveau, lorsque vous deployez des modeles de machine learning, l'ensemble du systeme ne peut pas et ne s'adapte pas aux changements du monde reel au fur et a mesure qu'ils surviennent, et malheureusement les modeles sont souvent non pertinents.
+
+Si vous voulez en savoir plus sur le niveau 1 du MLOps, vous pouvez consulter la deuxieme partie de cette serie. Nous y approfondissons egalement les fonctionnalites integrees de Picsellia qui pourraient vous aider a faire progresser votre pratique du MLOps.

@@ -1,0 +1,109 @@
+---
+
+title: "Pourquoi les outils MLOps classiques ne conviennent-ils pas a la vision par ordinateur ?"
+description: "Les pipelines de vision par ordinateur necessitent un ensemble de processus exclusifs a la vision par ordinateur. C'est la que le CVOps entre en jeu."
+date: "2022-06-30"
+author:
+  name: "Picsellia Team"
+category: "MLOps"
+image: "/images/blog/why-do-classical-mlops-tools-not-fit-computer-vision-hero.png"
+imageAlt: "Why Do Classical MLOps Tools Not Fit Computer Vision?"
+published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deployment", "edge-deployment", "mlops", "model-training", "monitoring"]
+---
+
+La vision par ordinateur (CV) est l'un des domaines les plus matures de l'intelligence artificielle (IA). Cependant, construire et operationnaliser des pipelines de vision par ordinateur robustes et de bout en bout reste un defi dans l'ecosysteme moderne de l'IA.
+
+Pourquoi ? Parce que les modeles de vision par ordinateur deployes en production montrent un comportement arbitraire en raison de plusieurs facteurs lies aux donnees, a la conception du modele, a l'architecture et au deploiement.
+
+Dans l'ecosysteme du machine learning, le MLOps (Machine Learning Operations) est un ensemble de pratiques pour suivre et surveiller les performances de l'ensemble du pipeline de machine learning en utilisant des processus tels que le CI/CD (Integration Continue/Livraison Continue) et le CT (Entrainement Continu).
+
+Principalement, le MLOps automatise la validation des donnees, la validation du modele et le cycle de re-entrainement du modele dans un environnement de production. De plus, il offre un mecanisme de monitoring qui alerte l'equipe de developpement si les performances du modele se deteriorent.
+
+Cependant, dans l'ecosysteme de la vision par ordinateur, les pratiques MLOps classiques ne sont pas optimales pour les raisons suivantes :
+
+- Les donnees sont non structurees et la manipulation des donnees se fait differemment.
+- Les cas limites ou les classes sous-representees peuvent impacter davantage les performances du modele.
+- La vision par ordinateur est plus gourmande en donnees et en materiel que les autres domaines du machine learning.
+
+Les pipelines de vision par ordinateur necessitent un ensemble de processus exclusifs a la vision par ordinateur. C'est la que le CVOps, une fusion du MLOps et de la vision par ordinateur, est plus adapte.
+
+Dans cet article, nous aurons une discussion detaillee sur les raisons pour lesquelles les outils MLOps classiques ne conviennent pas aux taches de vision par ordinateur. Nous discuterons egalement de la facon dont un [pipeline CVOps](/post/how-to-apply-mlops-to-computer-vision-cvops) est mieux equipe pour rationaliser l'ensemble de votre stack CV.
+
+## Comment la manipulation des donnees est-elle differente en vision par ordinateur ?
+
+Les donnees se presentent sous toutes les formes et tailles, y compris structurees, non structurees et semi-structurees. Cependant, la majorite des donnees d'entreprise sont non structurees.
+
+En fait, un rapport suggere que plus de [80 %](https://mitsloan.mit.edu/ideas-made-to-matter/tapping-power-unstructured-data) des donnees sont non structurees, ce qui inclut les images, les videos, les emails, les journaux de serveurs web, et plus encore. Mais seulement 18 % des organisations exploitent ces donnees, selon un [rapport de Deloitte](https://www2.deloitte.com/us/en/insights/topics/analytics/insight-driven-organization.html).
+
+En vision par ordinateur, la majorite des donnees sont non structurees sous forme d'images et de videos. Par consequent, explorer et visualiser les donnees est plus difficile par rapport aux donnees structurees. Imaginez parcourir un million d'images non structurees par rapport a un million de lignes de donnees textuelles structurees stockees dans un fichier .csv ou une base de donnees relationnelle. De plus, les images et les videos necessitent plus de capacite de stockage et de puissance de traitement que les donnees structurees.
+
+En outre, la collecte et la preparation de datasets d'images et de videos etiquetes necessitent souvent une intervention manuelle chronophage. Il n'y a souvent pas assez de donnees visuelles pour soutenir l'entrainement du modele de vision par ordinateur. D'autres fois, les donnees necessitent une annotation manuelle, ce qui est couteux et gourmand en main-d'oeuvre.
+
+De meme, filtrer les images et les videos est un defi. Imaginez simplement creer un dataset de fleurs saisonnieres a partir d'une grande collection d'images de plantes et de fleurs sans aucune etiquette ni tag. Les entreprises utilisent des outils de gestion de metadonnees pour etiqueter et categoriser les images afin de les rendre consultables et accessibles. Cela necessite, la encore, une intervention humaine couteuse.
+
+Plutot qu'un outil MLOps, un outil CVOps robuste resout tous ces problemes en fournissant une solution centralisee et integree qui couvre la collecte, le stockage, la manipulation, le filtrage des donnees et bien plus encore.
+
+## La validation du modele doit etre axee sur la visualisation des cas limites
+
+La validation du modele determine si le modele est suffisamment generalise pour repondre a tous les scenarios d'entree. Cependant, dans le monde reel, des situations improbables se produisent souvent. Par exemple, une voiture autonome est entrainee pour des scenarios routiers classiques. Comment le vehicule reagirait-il en cas d'evenement inattendu ? Comme une course-poursuite a grande vitesse par cinq voitures de police, une pluie soudaine et un orage qui modifient les conditions de conduite. Ou que se passe-t-il si une personne se retrouve devant la voiture par accident ? Ce sont des cas limites qui sont improbables et inhabituels mais qui ont une probabilite non nulle de se produire.
+
+Outre l'imprevisibilite des scenarios d'entree, les cas limites surviennent en raison du biais et de la variance du modele. Le modele est soit trop simple, soit trop inexperimente pour gerer les donnees du monde reel entrantes.
+
+En vision par ordinateur, les cas limites ont un impact significatif sur les performances du modele. Les cas limites en vision par ordinateur sont plus subtils car ils sont souvent lies a des aspects visuels ambigus. Les annotateurs humains peuvent parfois echouer a identifier les cas limites, entrainant un mauvais etiquetage. Dans les images, des cas limites peuvent egalement survenir si deux objets sont entierement differents par nature et proprietes mais se ressemblent visuellement. Regardez l'image ci-dessous.
+
+![Why do classical mlops tools not fit computer vision](/images/blog/why-do-classical-mlops-tools-not-fit-computer-vision-img-0.png)
+** Source : *[*Live With AI*](https://medium.com/@livewithai/the-significance-of-edge-cases-and-the-cost-of-imperfection-as-it-pertains-to-ai-adoption-dc1cebeef72c)*
+
+La seule similarite entre un chien et du poulet frit est que les humains les adorent, l'un comme animal de compagnie et l'autre comme nourriture. Ce type d'images visuellement similaires compromet les performances des modeles de vision par ordinateur. Dans les applications critiques, de telles similarites peuvent s'averer fatales. Meme une prediction erronee sur dix pourrait entrainer une perte de revenus ou un echec de mission.
+
+Les taches complexes de vision par ordinateur necessitent des outils pour visualiser les donnees d'images afin d'identifier efficacement les cas limites et eviter tout dommage reel. Une plateforme CVOps robuste peut fournir les outils necessaires pour gerer de tels cas limites.
+
+## Le monitoring doit etre axe sur les donnees et le materiel
+
+Les taches de vision par ordinateur sont gourmandes en donnees et en materiel. La strategie MLOps classique n'offre pas un monitoring detaille des modeles de vision par ordinateur deployes en production car elle n'est pas equipee pour les surveiller.
+
+En particulier, le monitoring en vision par ordinateur inclut le suivi des dispositifs materiels tels que les cameras CCTV, les instruments d'imagerie et de scanning medical et d'autres dispositifs edge. Chaque dispositif peut avoir des configurations specifiques qui pourraient affecter les performances du modele de vision par ordinateur. Par exemple, l'orientation des cameras installees en bord de route pour l'analyse du trafic pourrait changer en raison du vent ou d'autres facteurs environnementaux, amenant le modele a capturer des images d'entree inexactes pour lesquelles le modele n'a pas ete entraine.
+
+Pour surveiller de tels changements, vous pourriez avoir besoin de metriques pretes a l'emploi ou specifiques a la vision qui different des metriques de performance classiques du machine learning. Certaines de ces [metriques de monitoring CV](/post/key-metrics-to-monitor-computer-vision-solutions) incluent :
+
+- Largeur et hauteur de l'image d'entree
+- Distribution du ratio d'image
+- Temps d'inference
+- Score outlier AE
+- KS drift
+
+En dehors de cela, l'equipe de developpement devrait etre en mesure de surveiller divers drifts de distribution tels que le data drift, le concept drift, le domain drift, le prediction drift et l'upstream drift. Un modele CVOps robuste offre des capacites de monitoring souvent absentes dans les outils MLOps classiques.
+
+Nous avons discute de diverses raisons pour lesquelles les pipelines MLOps classiques ne conviennent pas aux applications de vision par ordinateur. Enfin, nous avons introduit le CVOps comme une solution appropriee. Maintenant, demystifions le CVOps en detail.
+
+## Le CVOps entre en scene : un MLOps specialise pour la vision par ordinateur
+
+Si vous vous demandez ce qu'est exactement le CVOps, c'est simplement une combinaison du MLOps et de la vision par ordinateur, similaire a la facon dont le MLOps est une combinaison de pratiques DevOps adaptees aux taches de machine learning.
+
+Le CVOps rassemble les meilleures pratiques d'entreprise, les processus metier et les outils, et emploie des experts specialises en vision par ordinateur pour construire des produits de vision par ordinateur prets pour la production. L'environnement produit comprend generalement une camera ou un dispositif edge installe dans un contexte reel, par exemple des cameras installees en bord de route pour les systemes de securite routiere et de surveillance du trafic.
+
+De plus, les outils CVOps se specialisent dans le suivi du comportement des donnees et des modeles au fil du temps. Ils peuvent suivre les metriques et les KPI pour identifier les drifts de distribution et les problemes de calibration des dispositifs. Un outil CVOps peut notifier votre equipe de developpement si les valeurs seuils de ces metriques sont atteintes, leur permettant de fournir des mises a jour de donnees et de modeles en temps opportun.
+
+De plus, une strategie CVOps robuste inclut des facteurs tels que la scalabilite des donnees et des modeles et les couts associes. Elle comprend la gestion de multiples dispositifs edge et l'implementation de solutions pour chaque dispositif simultanement.
+
+Une strategie CVOps d'entreprise se preoccupe egalement du suivi et du maintien de la satisfaction client dans le temps. Si les performances du modele se deteriorent, la strategie CVOps doit fournir une resolution rapide de tout probleme connexe pour assurer le succes client.
+
+## Construisez des pipelines CVOps robustes avec Picsellia
+
+Les outils MLOps generaux conviennent a la plupart des taches de machine learning et de deep learning. Cependant, les outils CVOps sont plus capables de resoudre les defis uniques des systemes alimentes par la vision. Ils peuvent gerer, manipuler, analyser, annoter et valider les donnees d'images et de videos. Ils peuvent entrainer, valider, re-entrainer, surveiller et publier des pipelines de vision par ordinateur dans un environnement de production.
+
+Selon les exigences metier, les equipes de vision par ordinateur peuvent utiliser des outils CVOps d'entreprise preconfigures ou construire leur propre strategie CVOps personnalisee. Si vous optez pour une plateforme preconstruite, ne cherchez pas plus loin que Picsellia.
+
+[Picsellia](/) est une plateforme [CVOps de bout en bout](/post/creating-a-cvops-platform) robuste qui offre les fonctionnalites suivantes pour assister les data scientists et les equipes de vision d'entreprise :
+
+- Gestion centralisee des datasets pour les donnees non structurees comme les images et les videos
+- Outils integres d'etiquetage d'images et d'entrainement de modeles
+- Suivi des experimentations, fine-tuning et obtention du modele le plus performant
+- Deploiement de modeles serverless pret pour la production
+- Monitoring en temps reel des modeles de vision par ordinateur avec identification des cas limites
+- Workflows automatises de machine learning couvrant chaque composant du pipeline de vision par ordinateur.
+
+De plus, Picsellia offre des [metriques supervisees et non supervisees](/post/key-metrics-to-monitor-computer-vision-solutions) pour identifier tout drift et surveiller l'ensemble des workflows de vision par ordinateur.
+
+Commencez a utiliser la plateforme CVOps de Picsellia. [Reservez votre essai](/trial) des aujourd'hui !

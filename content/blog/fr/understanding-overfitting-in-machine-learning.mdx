@@ -1,0 +1,78 @@
+---
+
+title: "Comprendre le surapprentissage en machine learning"
+description: "Apprenez a lutter contre le surapprentissage en machine learning avec des strategies efficaces et la plateforme MLOps de Picsellia. Evitez la memorisation du modele."
+date: "2023-07-25"
+author:
+  name: "Picsellia Team"
+category: "Data Science"
+image: "/images/blog/understanding-overfitting-in-machine-learning-hero.png"
+imageAlt: "Understanding Overfitting in Machine Learning"
+published: true
+tags: ["dataset-management", "edge-deployment", "experiment-tracking", "model-training"]
+---
+
+Le surapprentissage (overfitting) est un phenomene courant en machine learning ou un modele performe exceptionnellement bien sur les donnees d'entrainement mais echoue a generaliser efficacement sur de nouvelles donnees non vues. En substance, le modele devient trop specialise dans la capture des particularites et du bruit presents dans l'ensemble d'entrainement, perdant sa capacite a discerner les patterns sous-jacents qui devraient bien se generaliser.
+
+## Illustration du surapprentissage
+
+Considerons un scenario ou trois chefs cuisiniers, A, B et C, apprennent a preparer un plat specifique. Chaque chef a une approche differente de l'apprentissage et de la preparation de la recette.
+
+Le chef A se concentre uniquement sur quelques ingredients et techniques cles et ignore le reste. Il devient alors exceptionnellement competent dans ces aspects limites de la preparation du plat. Cependant, si la recette necessite des ingredients ou des techniques supplementaires, le chef A aurait du mal a s'adapter et pourrait produire un plat de qualite inferieure.
+
+Le chef B, en revanche, memorise meticulement chaque detail de la recette, y compris les mesures et les etapes precises. Il a une memoire fantastique et peut reproduire le plat exactement tel qu'il est ecrit. Cependant, si une legere variation ou un ingredient inattendu est introduit, le chef B pourrait avoir du mal a s'ajuster et pourrait peiner a creer un resultat satisfaisant.
+
+Le chef C adopte une approche equilibree. Il ne se contente pas d'etudier la recette, mais experimente egalement differentes variations, techniques et ingredients. Le chef C pratique abondamment et comprend les principes et les saveurs sous-jacents. En consequence, il peut preparer le plat de maniere consistante, meme face a de legeres modifications ou des ingredients inconnus.
+
+Dans cet exemple, le chef A represente le sous-apprentissage. Il a des connaissances limitees et ne peut bien performer que dans des circonstances specifiques. Le chef B represente le surapprentissage, car il a memorise la recette mais a du mal avec les variations et les entrees inattendues. Le chef C represente un modele bien ajuste qui generalise bien et performe de maniere consistante, s'adaptant aux differentes situations.
+
+De maniere similaire, en machine learning, un modele sous-ajuste ne peut pas capturer la complexite des donnees et performe mal. Un modele surajuste memorise les donnees d'entrainement trop precisement, echouant a generaliser sur de nouvelles donnees non vues. Un modele bien ajuste, comme le chef C, trouve un equilibre, capturant les patterns et caracteristiques essentiels tout en s'adaptant aux variations des donnees et en performant bien a la fois sur les ensembles d'entrainement et les donnees non vues.
+
+## Comment le surapprentissage se produit-il ?
+
+Le surapprentissage se produit generalement lorsque le modele devient excessivement complexe, ayant trop de parametres par rapport aux donnees d'entrainement disponibles. Avec une complexite excessive, le modele peut essentiellement memoriser les exemples d'entrainement, y compris les fluctuations aleatoires et le bruit, plutot que d'apprendre les caracteristiques sous-jacentes essentielles.
+
+De plus, le surapprentissage peut se produire lorsque les donnees d'entrainement ne sont pas representatives de la population cible ou manquent de diversite. Si l'ensemble d'entrainement est biaise ou ne couvre pas adequatement la gamme des scenarios potentiels, le modele peut developper des biais ou des angles morts qui entravent sa capacite de generalisation.
+
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-0.png)
+*https://medium.com*
+
+## Comment detecter le surapprentissage ?
+
+Il y a toujours du bruit et de l'imprecision dans les donnees. Le surapprentissage se produit lorsque le modele commence a apprendre ces bruits et imprecisions, ce qui conduit a des modeles incorrects.
+
+C'est pourquoi, pour detecter le surapprentissage, vous devez comparer la perte entre les donnees d'entrainement et les donnees de validation. Quand le surapprentissage se produit, la perte augmente, et la perte des donnees de validation est bien plus importante que la perte des donnees d'entrainement.
+
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-1.png)
+*[https://larevueia.fr](https://larevueia.fr/)*
+
+## Comment prevenir le surapprentissage ?
+
+- **Validation croisee et decoupage des donnees** : Diviser les donnees disponibles en ensembles d'entrainement et de validation separes est crucial. L'ensemble d'entrainement est utilise pour entrainer le modele, tandis que l'ensemble de validation aide a evaluer ses performances sur des donnees non vues. En evaluant la performance du modele sur l'ensemble de validation, il est possible de detecter le surapprentissage et de faire des ajustements en consequence.
+- **Techniques de regularisation :** Les methodes de regularisation, telles que la regularisation L1 et L2, ajoutent des termes de penalite a la fonction objectif du modele, decourageant les valeurs de parametres excessives. Cela aide a empecher le modele de devenir trop sensible aux points de donnees individuels et l'encourage a se concentrer sur les caracteristiques les plus pertinentes.
+
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-2.png)
+
+- **Selection de caracteristiques et reduction de dimensionnalite** : Une selection soigneuse des caracteristiques ou des techniques de reduction de dimensionnalite, telles que l'analyse en composantes principales (ACP) ou le classement d'importance des caracteristiques, peuvent aider a reduire la complexite du modele et a se concentrer sur les caracteristiques les plus informatives. En supprimant les caracteristiques non pertinentes ou redondantes, le risque de surapprentissage diminue. Cependant, cette methode n'a pas vraiment de sens en deep learning en raison de l'utilisation des reseaux de neurones convolutifs (CNN).
+- **Augmentation de donnees :** L'augmentation de donnees consiste a augmenter artificiellement la taille de l'ensemble d'entrainement en appliquant des transformations, telles que des rotations, des translations et des mises a l'echelle, aux donnees existantes. Cette technique introduit des variations supplementaires, rendant le modele plus robuste et moins sujet au surapprentissage.
+- **Arret premature** : Surveiller la performance du modele sur l'ensemble de validation pendant l'entrainement permet un arret premature lorsque le surapprentissage est detecte. L'entrainement peut etre arrete lorsque la performance du modele sur l'ensemble de validation commence a se deteriorer, l'empechant de memoriser excessivement les donnees d'entrainement.
+
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-3.png)
+*[https://paperswithcode.com](https://paperswithcode.com)*
+
+- **Methodes d'ensemble** : Les methodes d'ensemble combinent plusieurs modeles simples pour faire des predictions. En entrainant plusieurs modeles moins complexes avec differentes conditions initiales ou algorithmes et en combinant leurs predictions, l'ensemble peut mieux generaliser que n'importe quel modele individuel, et les modeles sont moins sujets au surapprentissage.
+
+- **Validation croisee et ajustement des hyperparametres** : Les techniques de validation croisee, telles que la validation croisee k-fold, aident a evaluer la performance d'un modele sur differents sous-ensembles des donnees. L'ajustement des hyperparametres, en utilisant des techniques comme la recherche par grille ou l'optimisation bayesienne, permet de trouver les valeurs optimales des hyperparametres qui produisent une meilleure generalisation et minimisent le surapprentissage.
+
+### *Zoom sur la technique de validation croisee k-fold :*
+
+Cette technique consiste a diviser le dataset en k sous-ensembles de taille egale, ou "plis". Le modele est entraine et evalue k fois, chaque fois en utilisant un pli different comme ensemble de validation et les plis restants pour l'entrainement. Les metriques de performance obtenues a chaque iteration sont moyennees pour estimer la performance globale du modele.
+
+![Understanding overfitting in machine learning](/images/blog/understanding-overfitting-in-machine-learning-img-4.png)
+*Exemple de validation croisee a 5 plis, [https://towardsdatascience.com](https://towardsdatascience.com)*
+
+Pour vous aider a lutter contre le surapprentissage, Picsellia fournit des traitements d'augmentation de donnees prets a l'emploi et personnalisables. Mais il y a plus : la plateforme dispose d'un [systeme de suivi d'experiences](/experiment-tracking) qui indique a l'utilisateur quand s'arreter pour obtenir le meilleur equilibre entre complexite et generalisation, economisant ainsi du temps et des ressources.
+
+## Conclusion
+
+Le surapprentissage est un defi habituel en machine learning, ou les modeles deviennent trop specialises sur les donnees d'entrainement et echouent a generaliser efficacement. Heureusement, des strategies existent pour eviter le surapprentissage. Et la plateforme MLOps de bout en bout de Picsellia aide a mettre en place ces strategies car elle offre une solution complete pour attenuer les defis du surapprentissage, permettant aux organisations de surmonter les limitations posees par une mauvaise generalisation.

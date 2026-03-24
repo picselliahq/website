@@ -1,0 +1,110 @@
+---
+
+title: "6 tendances en vision par ordinateur en 2022"
+description: "Découvrez les tendances IA à venir pour 2022."
+date: "2022-09-27"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/6-computer-vision-trends-in-2022-hero.jpeg"
+imageAlt: "6 Computer Vision Trends in 2022"
+published: true
+tags: ["annotation", "computer-vision", "foundation-models", "model-training"]
+---
+
+L'IA a immensément contribué aux avancées de la vision par ordinateur ces dernières années. C'est le domaine où la majeure partie de la recherche en IA est menée. Mais que se passe-t-il en 2022, quelles sont les tendances de recherche les plus importantes du moment ?
+
+Pour cet article, nous avons étudié et analysé les tendances de recherche les plus importantes afin que vous n'ayez pas à le faire. Nous les avons condensées dans un seul article pour que vous n'ayez pas à chercher plus loin !
+
+## Apprentissage multimodal
+
+L'objectif ultime de l'intelligence artificielle est d'atteindre l'Intelligence Artificielle Générale (AGI). L'AGI est une IA capable de comprendre et d'accomplir n'importe quelle tâche intellectuelle, à l'instar des êtres humains. Cela contraste avec les modèles d'IA actuels qui sont "étroits", dans le sens où ils sont entraînés pour n'accomplir qu'une seule tâche ou des tâches très similaires.
+
+L'apprentissage multimodal est considéré par beaucoup comme un pas vers l'AGI. Les modèles multimodaux sont capables de traiter plusieurs types de données. Le traitement et la capture d'informations provenant de multiples sources différentes (images, texte, audio, données de capteurs) permettent à un agent IA de créer une compréhension conceptuelle plus riche et de percevoir son environnement de manière plus holistique.
+
+Imaginez la tâche d'analyse de sentiments. Vous pouvez entraîner un modèle à détecter les émotions à partir d'images de visages. Inversement, vous pourriez entraîner un modèle à l'analyse de sentiments de phrases textuelles ou capturer le ton de la voix de phrases audio. Cependant, l'entraînement simultané sur ces trois modalités permet au modèle de capturer les indices émotionnels de toutes les sources : expression faciale, ton de la voix ainsi que le sentiment de la phrase prononcée.
+
+Beaucoup de recherches se sont concentrées sur l'apprentissage multimodal au cours des dernières années et certains modèles exceptionnels, capables d'atteindre des performances état de l'art sur de multiples tâches sans fine-tuning (zero-shot learning), ont été développés. Parmi les exemples notables, on trouve le modèle [CLIP](https://openai.com/blog/clip/) d'OpenAI, entraîné à modéliser la similarité entre les images et leurs légendes associées, ainsi que [FLAVA](https://arxiv.org/abs/2112.04482?fbclid=IwAR2qXIHcV35jMCwPdBth3b7cS3VmuXIXz6WmUSa-Zd809T9CtdJRW3FjjQ8) et [data2vec](https://ai.facebook.com/blog/the-first-high-performance-self-supervised-algorithm-that-works-for-speech-vision-and-text/) de Meta. Une autre approche commune de ces modèles est qu'ils utilisent l'apprentissage auto-supervisé, ce qui nous amène à notre prochaine tendance de recherche.
+
+## Apprentissage auto-supervisé
+
+*Yann LeCun, VP et responsable scientifique de l'IA chez MetaAI, a qualifié l'apprentissage auto-supervisé de "matière noire de l'intelligence". Meta, mais aussi d'autres institutions leaders en IA, travaillent activement dans la direction de l'auto-supervision en tant que nouveau paradigme d'apprentissage visant à remplacer l'apprentissage supervisé classique devenu difficilement scalable.*
+
+L'apprentissage auto-supervisé (SSL) est un paradigme d'apprentissage où des pseudo-labels sont générés automatiquement à partir de données non étiquetées. Ces labels ne sont pas assignés en fonction de la tâche cible mais plutôt d'une tâche de pré-entraînement générale qui vise à enseigner au modèle "une intuition générale du monde". En s'entraînant sur cette tâche avec des ordres de grandeur de données supérieurs à l'apprentissage supervisé, les modèles sont capables de capturer des caractéristiques autrement difficiles à découvrir. Cela offre une manière intelligente d'exploiter les quantités sans précédent de données non étiquetées disponibles aujourd'hui.
+
+Tous les grands modèles NLP contemporains comme GPT-3, BERT et le plus récent [BLOOM](https://huggingface.co/blog/bloom) utilisent l'auto-supervision pour être entraînés avec succès. Le SSL a révolutionné le NLP et révolutionne maintenant la façon dont nous entraînons les modèles de vision. Mais ce ne sont pas seulement les grands modèles qui en bénéficient, lisez notre article pour apprendre [comment réduire vos besoins en données d'entraînement en exploitant l'apprentissage auto-supervisé.](/post/reduce-training-data-with-self-supervised-learning)
+
+## Génération d'images à partir de texte avec les modèles de diffusion
+
+Probablement la tendance la plus populaire de 2022 : les modèles de diffusion texte-vers-image. Des modèles comme [DALL-E 2](https://openai.com/dall-e-2/) et [Imagen](https://imagen.research.google/) ont fait les gros titres de l'actualité. Au cas où vous ne l'auriez pas encore entendu, ces modèles sont capables de générer des images originales à partir de simples phrases en langage naturel !
+
+
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-0.png)
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-1.png)
+
+Images générées par l'IA à partir de descriptions textuelles.
+
+À un niveau général, ces modèles comportent 2 éléments clés.
+
+- Un puissant encodeur sémantique de texte. Il peut s'agir soit d'un encodeur texte multimodal entraîné sur des paires image-texte, comme CLIP, soit d'un grand modèle de langage comme BERT. L'encodeur texte est responsable de capturer la complexité et le sens sémantique d'une phrase d'entrée arbitraire. Il capture ces caractéristiques en projetant la séquence de texte dans un espace d'embeddings de haute dimension.
+
+- Un modèle de diffusion qui génère des images à partir de bruit gaussien. Grâce à une procédure de débruitage, les modèles de diffusion sont capables de générer de nouvelles images à partir de bruit pur ! La procédure de débruitage est modélisée comme une chaîne de Markov dont les paramètres peuvent être manipulés via un prior.
+
+Puisque nous voulons que le modèle de diffusion crée des images inspirées par une phrase descriptive, la sortie de l'encodeur texte est fournie en entrée, conjointement avec du bruit gaussien, au modèle de diffusion afin de guider le processus de débruitage. Les résultats parlent d'eux-mêmes !
+
+Ces modèles représentent la plus grande incursion de l'IA dans l'art à ce jour. Beaucoup craignent que ces modèles remplacent les illustrateurs numériques, les peintres et éventuellement d'autres artistes également. Cependant, ils serviront probablement d'excellents outils de support pour ces professionnels et démocratiseront davantage le domaine, plutôt que de les remplacer complètement.*‍*
+
+## *‍*
+Perception de scènes 3D
+
+La perception dans l'espace 3D est un prérequis pour créer des systèmes robotiques autonomes opérant dans des conditions réelles, comme la conduite autonome, mais aussi pour les applications de réalité augmentée. Les méthodes pertinentes incluent la détection d'objets 3D, la segmentation panoptique 3D, l'estimation de profondeur 3D et [bien d'autres](https://paperswithcode.com/area/computer-vision/3d).
+
+L'objectif de la détection d'objets 3D est de reconnaître les objets en traçant une boîte englobante 3D orientée (cube) autour d'eux et en leur assignant une étiquette de classification. En détectant les objets en 3D, on obtient des informations sur leur taille, leur distance et leur orientation. Ces informations peuvent ensuite être exploitées par un modèle de navigation pour prédire le mouvement des objets dans la scène, faciliter la planification de trajectoire et, ultimement, éviter les collisions.
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-2.png)
+
+Un exemple étiqueté de détection d'objets 3D issu du [dataset objectron](https://google.github.io/mediapipe/solutions/objectron). [Source](https://github.com/google-research-datasets/Objectron/blob/master/docs/images/objectron_samples.gif)
+
+Les méthodes de deep learning, [comme les réseaux CNN et dans certains cas les ViT](/post/are-transformers-replacing-cnns-in-object-detection), sont largement utilisées pour résoudre cette tâche. Actuellement, les méthodes d'entraînement les plus populaires incluent l'utilisation d'images uniquement, l'utilisation de données de capteurs LiDAR ou la fusion des deux sources pour créer des datasets multimodaux.
+
+Bien que beaucoup de recherches soient consacrées aux systèmes de perception 3D fiables et que l'industrie automobile porte un grand intérêt à cette technologie, la détection d'objets 3D en est encore à un stade précoce. Cependant, les résultats sur les datasets de référence (ex. [Kitti cars](https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d), [sun-rgbd](https://rgbd.cs.princeton.edu/challenge.html), [objectron dataset](https://github.com/google-research-datasets/Objectron)) sont très prometteurs.
+
+## Représentations de scènes 3D avec les Neural Radiance Fields (NeRF)
+
+En 2020, un article intitulé "NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis" a été publié. Depuis, il a inspiré un grand nombre d'articles de recherche dans la même direction pour la synthèse de vues de scènes 3D et la recherche se poursuit encore. C'est une technologie avec des applications très prometteuses en infographie, en réalité augmentée et potentiellement en applications médicales.
+
+L'objectif de cette tâche est de synthétiser de nouvelles vues d'un objet à partir d'une entrée 5D. Les entrées fournies sont les coordonnées spatiales *x=(x, y, z)* de l'observateur (caméra) et l'angle de vue *(θ,φ)*. NeRF associe cet espace 5D à une densité volumique unique *σ* et une couleur RGB dépendante de la vue *c*. Il y parvient en utilisant un réseau de neurones profond entièrement connecté et optimisé. L'entraînement suit un paradigme supervisé, d'où la nécessité de multiples vues de l'objet à des fins d'entraînement.
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-3.png)
+
+ [Source						](https://arxiv.org/pdf/2003.08934v2.pdf)
+
+NeRF a réussi à obtenir d'excellents résultats par rapport aux techniques précédentes, déclenchant une petite révolution dans son domaine.
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-4.png)
+
+
+
+Synthèse d'une nouvelle vue à partir d'une image 2D d'entrée avec NeRF et d'autres méthodes antérieures. [Source](https://arxiv.org/pdf/2003.08934v2.pdf)
+
+## IA explicable et quantification de l'incertitude en vision par ordinateur
+
+Enfin, une tendance qui devient prépondérante non seulement en vision par ordinateur mais dans tout le domaine de l'IA.
+
+Toutes ces techniques extraordinaires de deep learning que nous utilisons aujourd'hui ont réussi à faire considérablement avancer l'état de l'art en vision par ordinateur. Cependant, à mesure que les modèles deviennent de plus en plus complexes et volumineux, il devient progressivement plus difficile d'interpréter pourquoi et comment ils font leurs prédictions.
+
+Le deep learning a toujours été considéré comme une technologie de type "boîte noire". Cependant, à mesure que les modèles de deep learning s'intègrent dans notre vie quotidienne, gouvernant souvent des décisions importantes comme le diagnostic médical, il est primordial de savoir POURQUOI ces modèles ont pris une décision. Il est également extrêmement important de savoir à quel point un modèle est confiant dans sa prédiction et quelle confiance nous pouvons lui accorder. Ces motivations ont donné naissance au domaine de l'Intelligence Artificielle Explicable (XAI).
+
+Beaucoup de financements sont alloués à l'IA explicable et la vision par ordinateur en réclame une part importante. Parmi les méthodes populaires pour créer des modèles plus transparents, on trouve CAM, Grad CAM ++[5], RISE [6], SHAP Gradient Explainer. Les outils logiciels et bibliothèques associés incluent [ELI5](https://eli5.readthedocs.io/en/latest/overview.html), [interpretML](https://interpret.ml/), [tootorch](https://pypi.org/project/tootorch/#description), [tfexplain](https://github.com/sicara/tf-explain)**, **[shap](https://shap-lrjball.readthedocs.io/en/latest/generated/shap.GradientExplainer.html)**.**
+
+![6 tendances en vision par ordinateur en 2022](/images/blog/6-computer-vision-trends-in-2022-img-5.png)
+
+Algorithme Grad CAM++ appliqué à un CNN. Les couleurs représentent les activations des filtres. Une couleur plus chaude signifie que le modèle a accordé plus d'importance à ces pixels.
+
+Les techniques d'IA explicable permettront de confirmer les connaissances existantes, de remettre en question les connaissances existantes mais aussi de générer de nouvelles hypothèses.
+
+## **Réflexions finales**
+
+Il se passe beaucoup de choses en vision par ordinateur et il est facile de perdre le fil de chaque tendance de recherche. En 2022, nous avons vu que les très **grands modèles de vision**, en particulier ceux basés sur les vision transformers, dominent. Ces modèles reposent sur l'apprentissage auto-supervisé pour leur entraînement, on peut donc supposer que **l'auto-supervision** est là pour rester. De plus, on peut observer que les dernières recherches se situent à l'intersection de la vision par ordinateur et du NLP. La **multimodalité** en est encore à ses débuts, pourtant elle a déjà produit des résultats extraordinaires. Il est difficile de douter qu'elle ne prévaudra pas et que nous ne verrons pas les différents domaines du deep learning s'unifier. Tout ce qui précède souligne le besoin de modèles plus transparents. Puisque l'IA a déjà profondément pénétré la société, l'**IA explicable** est plus importante que jamais.

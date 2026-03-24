@@ -1,0 +1,94 @@
+---
+
+title: "Le découpage de datasets en vision par ordinateur"
+description: "Découvrez le découpage de datasets, une technique utilisée pour diviser de grands ensembles de données en parties plus petites afin d'entraîner et de tester des modèles et d'améliorer leur précision."
+date: "2023-12-12"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/computer-vision-dataset-slicing-hero.jpeg"
+imageAlt: "Computer Vision Dataset Slicing"
+published: true
+tags: ["autonomous-vehicles", "classification", "computer-vision", "dataset-management", "deep-learning", "model-training", "monitoring", "object-detection"]
+---
+
+La vision par ordinateur (CV) traite de modèles intelligents qui comprennent et interprètent des datasets d'images à des fins diverses. Parmi les tâches courantes de CV, on trouve la classification d'images, la détection d'objets et la segmentation d'images. Nous utilisons ces modèles quotidiennement : par exemple, déverrouiller votre iPhone via Face ID implique de multiples traitements liés à la vision par ordinateur.
+
+La vision par ordinateur inclut également des applications plus complexes, comme les voitures autonomes, qui sont entraînées sur des datasets massifs. La gestion de données à grande échelle est un problème significatif pour les ingénieurs en vision par ordinateur. Les images occupent considérablement plus de mémoire que d'autres formes de données, et même un dataset basique représente quelques gigaoctets. Une manière courante de gérer de tels fichiers volumineux est le découpage de datasets. Parlons-en plus en détail.
+
+## Qu'est-ce que le découpage de datasets ?
+
+Le découpage fait référence à la division d'un [dataset](/dataset-management) en plusieurs parties. La division peut être effectuée aléatoirement ou selon une clé prédéfinie et peut être réalisée sur les lignes, les colonnes ou toute autre dimension.
+
+Par exemple, si nous avons une table de 1000 lignes et 5 colonnes (1000 x 5), nous pouvons découper cette table sur les colonnes et créer des divisions de 1000x3 et 1000x2. Ou nous pouvons placer des coupes le long des lignes en formant deux tables plus petites de dimension 500x5 chacune.
+
+Le nombre de coupes et la dimension selon laquelle découper dépendent uniquement de votre cas d'usage.
+
+## Pourquoi découper les datasets ?
+
+Le découpage de données est couramment effectué pour les tâches de data science et de machine learning. Voici pourquoi les praticiens en data science ont besoin du découpage de datasets.
+
+### 1. Division entraînement-test
+
+Lors de l'entraînement en machine learning, les données sont entraînées en utilisant une portion des données puis testées sur un sous-ensemble non vu. Ce dataset non vu, appelé le dataset de `test`, est généré en découpant les données principales en deux parties. L'ensemble le plus grand (généralement 80 % des données globales) est appelé l'`ensemble d'entraînement`, et le plus petit (généralement 20 % des informations globales) est appelé l'ensemble de test. L'ensemble d'entraînement entraîne le modèle, et l'ensemble de test l'évalue.
+
+![Computer vision dataset slicing](/images/blog/computer-vision-dataset-slicing-img-0.jpeg)
+**Source : *[*Michael Galarnyk*](https://builtin.com/data-science/train-test-split)*
+
+### 2. Exploration et analyse
+
+L'une des techniques les plus courantes pour l'analyse exploratoire est le masquage et le découpage de données. Elle est utilisée pour analyser des parties spécifiques d'un dataset. Les analystes peuvent découper les données selon les colonnes pour ne voir que les champs pertinents ou selon les lignes lorsque des points spécifiques doivent être ciblés. Les datasets incluant des séries temporelles sont découpés à différents intervalles pour une analyse temporelle.
+
+### 3. Traitement par lots
+
+Lors de l'entraînement de réseaux de neurones, les données sont souvent divisées en morceaux (tranches) avant d'être injectées dans le réseau. Cela est utile dans les scénarios à mémoire limitée où un petit morceau est chargé, traité puis déchargé pour faire place au suivant. Le chargement incrémental des données permet aux réseaux de neurones de s'entraîner sur de grands datasets sans rencontrer de problèmes de type `Out Of Memory`.
+
+### 4. Détection de la dérive des modèles
+
+La dérive des modèles est un résultat direct de la dérive des données, qui correspond à des changements graduels dans le dataset au fil du temps. [Ackerman et al.](https://arxiv.org/pdf/2108.05319.pdf) démontre une technique pour détecter la dérive dans les modèles en utilisant des tranches de données faibles. Leur approche analyse les tranches de données largement mal classifiées et détecte les déviations dans les informations.
+
+### 5. Amélioration de la précision des modèles avec l'apprentissage par tranches
+
+Les modèles de machine learning performent rarement de manière égale sur l'ensemble du dataset. La performance du modèle souffre sur certains sous-ensembles de données. Les approches modernes utilisent l'[apprentissage par tranches](https://proceedings.neurips.cc/paper_files/paper/2019/file/351869bde8b9d6ad1e3090bd173f600d-Paper.pdf) pour entraîner les modèles à mieux performer sur les tranches faibles. L'approche crée une fonction de découpage qui identifie les sous-ensembles de données critiques et entraîne le modèle à leur accorder un poids plus élevé. Le modèle est ensuite utilisé en conjonction avec des blocs d'attention conscients de ces tranches critiques.
+
+### 6. Validation et équité des modèles
+
+Pour évaluer l'uniformité d'un modèle, les praticiens ML utilisent une technique appelée validation croisée à k plis. Le dataset est divisé en k tranches, l'une utilisée pour la validation et les autres pour l'entraînement. Après l'entraînement, une tranche différente est choisie pour la validation et l'entraînement, et cela continue jusqu'à ce que toutes les tranches soient validées. Cette approche confirme si le modèle entraîné performe de manière égale sur toutes les tranches de données.
+
+De plus, l'équité d'un modèle est évaluée en le testant sur différentes tranches de données. Les données sont découpées selon des informations critiques telles que l'origine ethnique. Les différentes tranches contiennent des données pour une origine ethnique particulière uniquement. Tester de cette manière assure au praticien que le modèle n'affiche aucun biais.
+
+## Découpage des datasets de vision par ordinateur
+
+Les datasets de vision par ordinateur sont constitués d'images ; bien que le concept global reste le même, ils sont traités légèrement différemment. Contrairement aux données traditionnelles, chaque image est chargée sous forme de matrice 2D ou 3D (RGB).
+
+La nature multidimensionnelle des datasets CV apporte de nouveaux défis de manipulation et de découpage. Ces datasets sont découpés selon leur première dimension, c'est-à-dire que si nous avons des images en niveaux de gris (2D), la forme du dataset ressemblera à ***200x380x380***. Avec ces dimensions, nous avons 200 images de forme 380x380. L'opération de découpage fonctionne généralement sur la première dimension (200) puisque nous voulons garder les images individuelles intactes et en séparer une portion.
+
+Pour le RGB (3D), une nouvelle dimension est ajoutée (***200x3x380x380***) représentant les canaux de couleur, mais le découpage se fait toujours sur la première dimension.
+
+![Computer vision dataset slicing](/images/blog/computer-vision-dataset-slicing-img-1.jpeg)
+**Source : *[*Pytorch Community*](https://discuss.pytorch.org/t/pytorch-rgb-to-gray/50321)*
+
+‍
+
+Cependant, pour des techniques comme la [Slicing Aided Hyper Inference](https://ieeexplore.ieee.org/document/9897990), le découpage est également effectué sur des images individuelles à des fins d'augmentation.
+
+### SAHI : Découpage d'images pour la détection de petits objets
+
+Les modèles de détection d'objets conventionnels comme YOLO ont souvent du mal à performer sur de petits objets comme des personnes dans un espace bondé. La technique Slice Aided Hyper Inference utilise des images découpées (augmentées) pour affiner les modèles existants afin d'améliorer leurs performances sur les petits objets dans les images haute résolution. Les images découpées sont également utilisées lors de l'inférence car la détection d'objets est effectuée sur chaque tranche.
+
+![Computer vision dataset slicing](/images/blog/computer-vision-dataset-slicing-img-2.jpeg)
+**Source : *[*Slice-Aided Hyper Inference*](https://ieeexplore.ieee.org/document/9897990)*
+
+‍
+
+## Découpage automatisé des données
+
+Déterminer manuellement les tranches de données peut être difficile, surtout si le dataset est volumineux. Des outils comme [Slice Finder](https://mlsys.org/Conferences/doc/2018/8.pdf) utilisent des techniques statistiques pour identifier les sous-ensembles de données qui pourraient être intéressants. Le système prend les données d'entraînement, un modèle et un seuil de taille d'effet en entrée et utilise des techniques statistiques pour trouver les K plus grandes tranches problématiques. Le seuil de taille d'effet (K) peut être modifié pour changer le nombre de tranches de données pour une expérimentation détaillée.
+
+## Tirez parti de la plateforme de vision par ordinateur Picsellia pour rationaliser vos opérations de données
+
+Le découpage de datasets divise les données en plusieurs parties et est essentiel à la routine d'exploration des données et à l'entraînement des modèles. Il offre plusieurs avantages aux praticiens ML, notamment l'évaluation des modèles, la détection de la dérive des données et des modèles, et l'analyse des données.
+
+Les datasets de vision par ordinateur sont légèrement plus complexes en raison de leur taille et de leur nature multidimensionnelle. Ils peuvent être découpés sur la dernière dimension pour créer des partitions entre les images, ou les images elles-mêmes peuvent être recadrées pour l'augmentation. La première technique aide à la gestion des datasets et à l'évaluation des modèles, tandis que la seconde aide à améliorer les performances.
+
+Picsellia fournit une plateforme pratique de [gestion des données](/dataset-management) pour gérer les fichiers non structurés comme les images et les vidéos. Elle offre un outil d'annotation intégré et un contrôle de version des données pour tous vos besoins en machine learning. Pour en savoir plus, [réservez votre démo](/contact) dès aujourd'hui.

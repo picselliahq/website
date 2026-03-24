@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { track } from "@vercel/analytics";
 import { captureEvent } from "@/lib/posthog";
 import type { ConversionCopy } from "@/lib/blog-cta";
 
 export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
+  const t = useTranslations('blog');
+
   return (
     <div
       className="rounded-2xl p-8 mb-12"
@@ -29,7 +32,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
           }}
           className="btn-primary px-5 py-2.5 text-sm"
         >
-          Start Free Trial
+          {t('startFreeTrial')}
         </Link>
         <Link
           href="/demo"
@@ -39,7 +42,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
           }}
           className="btn-secondary px-5 py-2.5 text-sm"
         >
-          Schedule Demo
+          {t('scheduleDemo')}
         </Link>
       </div>
 
@@ -60,7 +63,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
               d="M5 13l4 4L19 7"
             />
           </svg>
-          No credit card required
+          {t('noCreditCard')}
         </span>
         <span className="flex items-center gap-1.5">
           <svg
@@ -78,7 +81,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
               d="M5 13l4 4L19 7"
             />
           </svg>
-          14-day free trial
+          {t('freeTrial14Days')}
         </span>
       </div>
     </div>

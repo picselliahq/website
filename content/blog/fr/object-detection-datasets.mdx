@@ -1,0 +1,145 @@
+---
+
+title: "Les meilleurs datasets de détection d'objets en 2024"
+description: "Vous cherchez à entraîner vos modèles de détection d'objets ? Découvrez une grande variété de datasets de détection d'objets de haute qualité pour alimenter vos projets d'IA."
+date: "2023-12-10"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/object-detection-datasets-hero.png"
+imageAlt: "Best object detection datasets in 2024"
+published: true
+tags: ["agriculture", "annotation", "autonomous-vehicles", "computer-vision", "dataset-management", "model-training", "object-detection", "sports"]
+---
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-0.png)
+
+Les [datasets](/dataset-management) sont les composants logiques fondamentaux qui définissent le type de tâche que les modèles de machine learning (ML) exécutent. Ils se distinguent par leurs composants et structures, car ils diffèrent selon les tâches ML. Les datasets de détection d'objets sont des datasets basés sur la vision par ordinateur utilisés pour les tâches de détection d'objets. En tant que tels, ils sont essentiels pour l'entraînement et le test des algorithmes de détection d'objets. Ils ont un large éventail d'applications dans plusieurs secteurs. Parmi les principaux domaines d'application, on trouve la conduite autonome, la surveillance et la sécurité, l'automatisation industrielle, la robotique et la manipulation d'objets, la gestion du trafic et des transports, l'agriculture, la construction et les infrastructures, la gestion des déchets et l'analyse sportive.
+
+Les composants fondamentaux d'un dataset de détection d'objets contiennent une image et des annotations. Typiquement, ces annotations prennent la forme de boîtes englobantes avec des labels. Ce sont des boîtes rectangulaires qui délimitent les objets dans une image ou une trame vidéo. Les contours d'annotation dans les datasets de détection d'objets identifient et indiquent l'emplacement précis des objets dans les images ou les trames vidéo. Grâce aux caractéristiques visuelles contenues dans ces annotations, les modèles de détection d'objets peuvent apprendre à prédire ces objets avec précision dans des scénarios réels. Par conséquent, des datasets de détection d'objets de haute qualité et correctement préparés sont essentiels pour permettre aux modèles de détection d'objets de produire des résultats fiables.
+
+Le choix du format de données détermine la structure d'un dataset de détection d'objets. Le format de données définit comment stocker ou sérialiser le contenu des données de détection d'objets. Les formats se présentent généralement sous la forme d'une image ou de l'encodage de l'image, associé à un fichier contenant toutes les informations sur les [annotations des objets dans l'image dans un format sérialisé](https://www.aitude.com/annotation-converters-for-object-detection/) tel que JSON, XML et TFRecords. Il existe divers formats de données. Cependant, les formats de données utilisés par les datasets les plus populaires ont établi la norme générale pour la préparation des formats de datasets de détection d'objets. En conséquence, la plupart des frameworks ML intègrent déjà par défaut le support de ces formats de données courants dans leur bibliothèque d'outils. Ce support intégré les rend plus accessibles et faciles à utiliser. Les avantages des formats de données pour les datasets de détection d'objets incluent l'efficacité, la facilité d'utilisation, la flexibilité, la scalabilité, la compatibilité, l'optimisation spécifique aux tâches, etc.
+
+Cet article contient un résumé détaillé des meilleurs datasets de détection d'objets en 2024.
+
+## Les meilleurs datasets de détection d'objets
+
+Les datasets de détection d'objets diffèrent par leurs images, la qualité des images, la méthode de curation, le style d'annotation, les labels et les formats de données. Ces facteurs contribuent à la qualité du dataset et au meilleur choix pour différents cas d'usage.
+
+De nombreux datasets de détection d'objets sont généralement open source et disponibles pour que chacun puisse les utiliser ou les mettre à jour. Les datasets de détection d'objets les plus courants ont été utilisés pour développer des modèles de détection d'objets à la pointe de la technologie. Ils sont assez populaires car ils sont diversifiés, bien préparés et bien maintenus, ce qui en fait une référence idéale pour construire des modèles de détection d'objets polyvalents ou dynamiques. Ils sont souvent préparés avec des formats de dataset généralement acceptés.
+
+La grande question devient : "Qu'est-ce qui rend un dataset de détection d'objets meilleur qu'un autre puisqu'ils présentent des compromis ?"
+
+Déterminer les "meilleurs" datasets de détection d'objets en fonction de leurs composants et de leur structure est un processus subjectif qui dépend des exigences de détection. Voici quelques datasets qui se distinguent par leurs attributs exceptionnels, chacun avec des forces uniques.
+
+### COCO (Common Objects in Context) :
+
+Microsoft a créé le [dataset COCO](https://cocodataset.org/#home), publié pour la première fois en 2015. C'est un dataset massif de plus de 330 000 images avec plus de 80 catégories d'objets variées représentant des objets courants dans des arrière-plans naturels ou complexes. Le dataset de détection d'objets comprend 200 000 images entièrement annotées avec un total de 1,5 million d'objets.
+
+Le dataset COCO possède plusieurs forces, telles qu'une gamme diversifiée de catégories d'objets, des annotations détaillées et une collection d'images à grande échelle. Cependant, il manque de points clés d'objets et d'informations 3D. Il contient des annotations de plusieurs types, comme les points clés humains, la segmentation panoptique et les boîtes englobantes. Sa grande taille et ses annotations riches en font un dataset de référence pour les challenges et les benchmarks.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-1.png)
+
+### Pascal VOC (Visual Object Classes) :
+
+Le prestigieux projet [Pascal VOC](http://host.robots.ox.ac.uk/pascal/VOC/voc2005/index.html) de la renommée Université d'Oxford a créé le dataset Pascal VOC. Au fil du temps, il s'est imposé comme un dataset de référence pour évaluer les performances des algorithmes de détection d'objets. Le dataset englobe de nombreux objets capturés dans des poses et des arrière-plans variés, présentant un défi de taille pour les algorithmes de détection d'objets avec plus de 14 000 images et 20 catégories d'objets. Il dispose de boîtes englobantes de haute qualité et de catégories d'objets bien définies.
+
+![Source](/images/blog/object-detection-datasets-img-2.png)
+*[Source : Pascal VOC 2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/examples/images/sheep_06.jpg)*
+
+‍
+
+### LVIS (Long-tailed Visual Instance Segmentation) :
+
+L'équipe Facebook AI Research (FAIR) a créé le [dataset LVIS](https://www.lvisdataset.org/). Il contient plus de 2,2 millions de masques de segmentation d'instances de haute qualité pour plus de 1 000 catégories d'objets de niveau basique dans 164 000 images. Grâce à la conception de LVIS, les modèles de détection d'objets peuvent apprendre à détecter et localiser efficacement les objets dans les images, même pour les catégories d'objets rares et difficiles. Les annotations de LVIS sont plus détaillées que celles d'autres datasets de détection d'objets, incluant des attributs, des relations et des points clés au niveau des instances.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-3.png)
+*[Source : LVIS Paperswithcode](https://paperswithcode.com/dataset/lvis)*
+
+‍
+
+<BlogInlineCTA
+  headline="Import, annotate, and version detection datasets — all in one place"
+  description="COCO, YOLO, Pascal VOC — Picsellia imports them all. Built-in labeling tools, dataset versioning, and team collaboration. Free to start."
+  primaryButtonText="Try Free — Import Your First Dataset →"
+  primaryButtonUrl="/datalake"
+  blogSlug="object-detection-datasets"
+  ctaPosition="mid"
+/>
+
+### KITTI (Karlsruhe Institute of Technology and Toyota Technological Institute) :
+
+Le [dataset KITTI](https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=2d) a été créé en 2012 par le Karlsruhe Institute of Technology et le Toyota Technological Institute. C'est aujourd'hui l'un des datasets les plus connus dans les domaines des robots mobiles, de la conduite autonome et de la vision par ordinateur. Il est également correctement annoté pour le benchmarking. Il comprend des heures de situations de circulation collectées avec plusieurs modalités de capteurs, telles que des caméras stéréo RGB haute résolution et en niveaux de gris, ainsi qu'un scanner laser 3D, dans divers contextes tels que des environnements urbains et ruraux, des autoroutes et des carrefours.
+
+Le dataset contient :
+
+- Deux flux de caméras (stéréo RGB haute résolution et niveaux de gris).
+- Un lidar avec 100 000 points par trame.
+- Des lectures GPS / IMU.
+- Des tracklets d'objets.
+- Des données de calibration.
+
+Bien qu'il ait un nombre limité de catégories d'objets (8) et une qualité d'image inconsistante, le dataset KITTI fournit une plateforme polyvalente pour évaluer les algorithmes de détection d'objets 3D dans des scénarios de conduite autonome avec des types d'objets diversifiés et des boîtes englobantes de haute qualité.
+
+‍
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-4.jpeg)
+*[Source : KITTI 3D Object Detection Evaluation 2017](https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3d)*
+
+### DOTA V2.0 (Dataset for Object Detection in Aerial Images) :
+
+Des chercheurs de l'Université de Wuhan ont créé [DOTA V2.0](https://captain-whu.github.io/DOTA/dataset.html). C'est un dataset de détection d'objets à grande échelle conçu exclusivement pour les photos aériennes. Il comprend près de 1,7 million d'instances d'objets réparties dans 18 catégories d'objets, à travers 11 268 images aériennes haute résolution. Les annotations de DOTA V2.0 utilisent des boîtes englobantes orientées (OBB) pour décrire précisément l'orientation des objets dans les photographies aériennes, ce qui est essentiel pour des activités telles que la télédétection, la classification de l'utilisation des sols et l'inspection des infrastructures.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-5.jpeg)
+*[Source : Exemples annotés DOTA](https://captain-whu.github.io/DOTA/)*
+
+### BDD100K (Berkeley DeepDrive 100k) :
+
+En 2017, UC Berkeley et Baidu Research ont créé et rendu disponible [BDD100K](https://bdd-data.berkeley.edu/), un important dataset de vidéos et d'images. Le dataset BDD100K est une collection à grande échelle de données vidéo de trafic capturées dans divers environnements de conduite aux États-Unis. Il contient plus de 100 000 clips vidéo de 40 secondes enregistrés à 30 images par seconde, totalisant plus de 100 millions de trames. Il se concentre sur les scénarios de conduite urbaine, offrant des annotations au niveau du pixel pour les objets, les voies et les zones praticables. Ses types d'objets diversifiés (véhicules, piétons, cyclistes) et ses attributs conviennent bien aux tâches de perception pour les voitures autonomes.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-6.png)
+*[Source : BDD100k Paperswithcode](https://paperswithcode.com/dataset/bdd100k)*
+
+### ObjectNet3D :
+
+Une équipe de chercheurs du Computational Vision and Geometry Lab de l'Université Stanford a créé le [dataset ObjectNet3D](https://cvgl.stanford.edu/projects/objectnet3d/). Ce dataset de référence est spécifiquement destiné à la détection et à la reconnaissance d'objets 3D. La collection comprend des photos d'objets 3D vus de dessus, dessous, devant et derrière, avec plus de 100 000 images et 200 classes d'objets courants.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-7.png)
+*[Source : ObjectNet3D](https://cvgl.stanford.edu/projects/objectnet3d/)*
+
+### Open Images V7 :
+
+Le [dataset Open Images V7](https://storage.googleapis.com/openimages/web/visualizer/index.html), fruit d'une collaboration entre Google AI, Carnegie Mellon University (CMU) et Cornell University, a été rendu public en octobre 2022. Le dataset comprend de nombreuses images provenant de nombreuses sources, englobant des plateformes de premier plan telles que Flickr, Wikipedia et le site Open Images. Le dataset contient plus de 9 millions d'images d'entraînement avec 16 millions de boîtes englobantes pour 600 classes d'objets sur 1,9 million d'images. Le dataset dispose de diverses annotations pour différentes tâches, comprenant des labels au niveau de l'image, des boîtes englobantes d'objets, des relations visuelles, des masques de segmentation d'instances et des récits localisés.
+
+La grande variété de catégories dans Open Images V7 reflète véritablement la diversité des objets du monde réel. Cette diversité permet aux modèles entraînés sur ce dataset de se généraliser efficacement à divers scénarios réels. Les annotations du dataset sont structurées au format COCO JSON, ce qui assure la compatibilité avec un large éventail de bibliothèques et de frameworks de détection d'objets. La compatibilité du dataset permet son adoption par un groupe diversifié de chercheurs et de praticiens.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-8.png)
+*[Source : Open Images V7](https://storage.googleapis.com/openimages/web/factsfigures_v7.html)*
+
+### Visual Genome Dataset :
+
+L'Université Stanford a produit le [dataset Visual Genome](https://homes.cs.washington.edu/~ranjay/visualgenome/index.html). Il fournit une source riche d'annotations d'images, incluant des détections d'objets, des attributs, des relations, des descriptions de régions et des paires question-réponse. Il comprend plus de 108 000 images du dataset MSCOCO, chacune accompagnée de multiples descriptions et de questions ouvertes sur le contenu de l'image.
+
+Chaque région est décrite en langage naturel, fournissant une compréhension détaillée du contenu de l'image. De plus, le dataset inclut des annotations pour les attributs des objets, tels que la couleur, la texture et le matériau, ainsi que les relations entre les objets. Cet ensemble complet d'annotations fait du dataset Visual Genome une ressource précieuse pour diverses tâches de vision par ordinateur.
+
+![Object detection datasets](/images/blog/object-detection-datasets-img-9.jpeg)
+*[Source : Visual Genome Paperswithcode](https://paperswithcode.com/dataset/visual-genome)*
+
+‍
+
+En dehors de ces datasets fascinants avec un large éventail d'applications potentielles, d'autres tâches spécialisées, notamment dans des secteurs spécifiques comme la santé, la fabrication et le commerce de détail, nécessitent des datasets sur mesure. [AgriVision](https://github.com/SHI-Labs/Agriculture-Vision), [Cityscapes](https://www.cityscapes-dataset.com/) et [LISA Traffic Sign Dataset](https://git-disl.github.io/GTDLBench/datasets/lisa_traffic_sign_dataset/) sont quelques exemples de datasets de détection d'objets spécifiques à un domaine. Dans certains cas, ils ne sont pas open source pour diverses raisons, notamment la confidentialité des données, l'avantage concurrentiel, le contrôle qualité, les ressources limitées pour la maintenance et le support, les restrictions légales, etc. Certains de ces datasets peuvent utiliser l'un des formats de données standards ou même développer leur propre format propriétaire.
+
+<BlogInlineCTA
+  headline="Import, annotate, and version detection datasets — all in one place"
+  description="COCO, YOLO, Pascal VOC — Picsellia imports them all. Built-in labeling tools, dataset versioning, and team collaboration. Free to start."
+  primaryButtonText="Try Free — Import Your First Dataset →"
+  primaryButtonUrl="/datalake"
+  blogSlug="object-detection-datasets"
+  ctaPosition="end"
+/>
+
+## Impact et orientations futures
+
+Les datasets de détection d'objets ont indéniablement joué un rôle crucial dans l'avancement des algorithmes et technologies de vision par ordinateur. Ils ont joué un rôle déterminant dans le développement de modèles à la pointe de la technologie, l'établissement de normes de benchmarking et l'ouverture de nouvelles pistes de recherche. Grâce à des métriques d'évaluation et des challenges standardisés, les datasets ont joué un rôle essentiel dans la création d'un environnement compétitif dynamique et l'accélération des avancées dans le domaine.
+
+Alors que nous assistons à l'évolution de la vision par ordinateur, il est prévu que les futurs datasets de détection d'objets abordent de nouveaux défis tels que la détection d'objets à grain fin, la détection d'objets 3D et la détection d'objets multimodale, entre autres domaines passionnants. L'exploitation de ces datasets peut permettre aux chercheurs d'explorer des scénarios réels complexes et de repousser les limites des algorithmes de détection d'objets.

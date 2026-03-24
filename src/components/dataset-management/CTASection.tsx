@@ -1,19 +1,22 @@
 import Link from 'next/link';
-
-const ctaStats = [
-  { value: '50M+', label: 'Images versioned' },
-  { value: '∞', label: 'Version history' },
-  { value: '100%', label: 'Reproducibility' },
-  { value: '0', label: 'Data loss' },
-];
-
-const trustIndicators = [
-  'No credit card required',
-  '14-day free trial',
-  'Unlimited versions',
-];
+import { useTranslations } from 'next-intl';
 
 export default function CTASection() {
+  const t = useTranslations('datasetManagement.cta');
+
+  const ctaStats = [
+    { value: '50M+', label: t('imagesVersioned') },
+    { value: '∞', label: t('versionHistory') },
+    { value: '100%', label: t('reproducibility') },
+    { value: '0', label: t('dataLoss') },
+  ];
+
+  const trustIndicators = [
+    t('noCreditCard'),
+    t('freeTrial'),
+    t('unlimitedVersions'),
+  ];
+
   return (
     <section className="py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -37,21 +40,21 @@ export default function CTASection() {
             </div>
 
             <h2 className="text-3xl md:text-5xl font-semibold mb-4 tracking-tight">
-              Ready to version your datasets?
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl mx-auto mb-10 text-lg">
-              Free trial, no credit card. Start versioning your datasets today.
+              {t('subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
               <Link href="/trial" className="btn-primary px-8 py-3 text-base">
-                Start Free Trial
+                {t('startTrial')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
               <Link href="/demo" className="btn-secondary px-8 py-3 text-base">
-                Schedule Demo
+                {t('scheduleDemo')}
               </Link>
             </div>
 

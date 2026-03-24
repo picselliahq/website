@@ -1,0 +1,165 @@
+---
+
+title: "Fonctions d'activation et réseaux de neurones"
+description: "Découvrez le rôle clé des fonctions d'activation dans les réseaux de neurones pour les tâches de vision par ordinateur. Apprenez-en plus sur Sigmoid, ReLU et d'autres pour un meilleur deep learning."
+date: "2023-08-31"
+author:
+  name: "Picsellia Team"
+category: "Data Science"
+image: "/images/blog/activation-functions-and-neural-networks-hero.png"
+imageAlt: "Activation Functions and Neural Networks"
+published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deep-learning", "model-training"]
+---
+
+## Introduction
+
+Imaginons que nous voulions prédire les finalistes de la Coupe du Monde de Rugby. Au lieu de nous fier uniquement à une analyse humaine, nous pouvons utiliser un modèle de deep learning.
+
+Le modèle serait entraîné sur des données historiques des matchs de la Coupe du Monde de Rugby, incluant les performances des équipes et les résultats. En appliquant des transformations successives aux données d'entrée à l'aide de fonctions d'activation, le modèle apprend des motifs et des relations complexes.
+
+Une fois entraîné, le modèle prend en entrée les performances récentes des équipes participantes. Il utilise les fonctions d'activation pour traiter les données et faire des prédictions sur les deux équipes les plus susceptibles d'atteindre la finale.
+
+Cet article a pour objectif d'explorer les différentes fonctions d'activation couramment utilisées dans les tâches de vision par ordinateur. Nous examinerons leurs propriétés, discuterons de leurs avantages et limitations, et fournirons des exemples concrets pour illustrer leurs applications dans différents scénarios.
+
+## Comprendre les réseaux de neurones
+
+Avant de plonger dans les subtilités des fonctions d'activation, récapitulons brièvement le concept de réseaux de neurones en vision par ordinateur. Les réseaux de neurones, inspirés par la complexité du cerveau humain, sont constitués de couches interconnectées de neurones artificiels. Il y a une couche d'entrée et une couche de sortie, reliées par des couches cachées comme illustré sur la figure. Chaque couche cachée est composée de neurones connectés à un ou plusieurs neurones de la couche précédente et suivante. Les neurones sont en réalité des fonctions.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-0.png)
+*[https://www.tibco.com/](https://www.tibco.com/)*
+
+Pour simplifier : si nous considérons les données d'entrée comme un point de départ et les données de sortie comme un point d'arrivée, nous pouvons voir le réseau de neurones comme une combinaison des chemins que les données d'entrée empruntent pour arriver au résultat.
+
+Grâce au processus d'entraînement, ces réseaux apprennent à reconnaître des motifs et à faire des prédictions en ajustant les poids et les biais de ces neurones.
+
+### Les poids
+
+Les poids représentent les coefficients dans l'équation d'un réseau de neurones. Lors de l'entraînement d'un réseau de neurones avec un dataset d'entraînement, celui-ci commence avec un ensemble prédéterminé de poids. Ces poids sont ensuite ajustés et optimisés pendant le processus d'entraînement pour atteindre les meilleures valeurs possibles.
+
+Cela se produit pendant le processus d'entraînement grâce à une technique appelée rétropropagation combinée à la descente de gradient.
+
+- **Initialisation :** La première étape consiste à initialiser aléatoirement les poids, chaque poids représentant un paramètre qui détermine l'influence d'une caractéristique ou d'un filtre particulier dans le réseau.
+- **Propagation avant :** Pendant la propagation avant, les données d'entrée sont introduites dans le réseau, et les poids sont utilisés pour calculer les prédictions de sortie. Les prédictions sont ensuite comparées aux étiquettes réelles pour calculer la perte, qui représente l'écart entre les valeurs prédites et réelles.
+- **Rétropropagation :** Dans cette étape, les gradients de la perte par rapport aux poids sont calculés en utilisant la règle de la chaîne du calcul différentiel. Les gradients indiquent la direction et l'amplitude des ajustements de poids nécessaires pour réduire la perte.
+- **Descente de gradient :** Les gradients calculés sont utilisés pour mettre à jour les poids du réseau. La descente de gradient est employée, ce qui implique de faire de petits pas dans la direction opposée aux gradients, dans le but de minimiser la perte. Le taux d'apprentissage détermine la taille de ces pas.
+- **Optimisation itérative :** Les étapes 2 à 4 sont répétées de manière itérative sur le dataset d'entraînement. Chaque itération est appelée une epoch. Au fur et à mesure que l'entraînement progresse, le réseau apprend progressivement à ajuster ses poids pour réduire la perte et améliorer la précision de ses prédictions.
+- **Convergence :** Le processus d'entraînement se poursuit jusqu'à ce qu'un critère d'arrêt soit atteint, comme atteindre un nombre maximum d'epochs ou observer une amélioration négligeable des performances.
+
+En ajustant de manière répétée les poids en fonction des gradients calculés, le CNN apprend à reconnaître des motifs et des caractéristiques significatifs dans les données d'entrée, optimisant les poids pour atteindre les meilleures valeurs possibles pour des prédictions précises.
+
+### Le biais
+
+Le biais, quant à lui, est une valeur fixe ajoutée au produit des entrées et des poids. Il sert d'opposé au seuil, déterminant quand activer la fonction d'activation. En essence, la valeur du biais gouverne le processus de prise de décision de la fonction d'activation.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-1.png)
+
+Les fonctions d'activation jouent un rôle central dans ce processus, agissant comme des transformations non linéaires appliquées aux sorties de ces neurones, leur permettant de modéliser des relations complexes entre les entrées et les sorties.
+
+## Importance des fonctions d'activation dans les réseaux de neurones
+
+Les réseaux de neurones sans fonctions d'activation seraient limités à représenter des transformations linéaires, les rendant inadéquats pour résoudre des problèmes complexes. Les fonctions d'activation introduisent la non-linéarité, permettant aux réseaux de neurones de capturer des motifs complexes et de faire des prédictions plus précises. En appliquant une fonction d'activation appropriée, la puissance expressive du réseau augmente de manière exponentielle, lui permettant d'apprendre et de généraliser à partir de datasets complexes.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-2.png)
+*[https://studymachinelearning.com](https://studymachinelearning.com)*
+
+## Fonctions d'activation populaires
+
+Dans cette section, nous explorerons plusieurs fonctions d'activation populaires largement utilisées dans les tâches de vision par ordinateur et analyserons leurs caractéristiques, avantages et limitations.
+
+- Fonction d'activation Sigmoïde
+
+La fonction d'activation sigmoïde, également connue sous le nom de fonction logistique, est un choix classique dans les réseaux de neurones.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-3.png)
+*[https://insideaiml.com](https://insideaiml.com)*
+
+- Définition et propriétés :
+
+La fonction sigmoïde projette l'entrée dans un intervalle entre 0 et 1.
+
+- Adaptée aux tâches de classification binaire. Elle possède une courbe en S lisse, facilitant une optimisation fluide basée sur le gradient.
+- Cas d'utilisation et limitations en vision par ordinateur : Bien que la sigmoïde ait été largement utilisée par le passé, elle présente des limitations, comme le problème du gradient évanescent. Lorsque l'entrée devient extrêmement grande ou petite, le gradient tend vers zéro, entraînant une convergence plus lente et des difficultés dans l'entraînement des réseaux de neurones profonds.
+
+- Unité Linéaire Rectifiée (ReLU)
+
+ReLU a gagné une popularité significative ces dernières années, notamment pour sa simplicité et son efficacité dans les réseaux de neurones profonds.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-4.png)
+*[https://www.nomidl.com](https://www.nomidl.com)*
+
+- Définition et propriétés :
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-5.png)
+
+La fonction d'activation ReLU retourne l'entrée telle quelle si elle est positive, et zéro sinon. Elle introduit la parcimonie et l'efficacité computationnelle en mettant à zéro les valeurs négatives.
+
+- Avantages par rapport à la fonction d'activation sigmoïde : ReLU surmonte le problème du gradient évanescent associé à la fonction sigmoïde, permettant une convergence plus rapide et un entraînement plus efficace des réseaux de neurones profonds.
+- Exemples d'application : Dans les tâches de vision par ordinateur comme la détection d'objets et la segmentation, les fonctions d'activation ReLU se sont avérées très performantes grâce à leur capacité à gérer des datasets à grande échelle et à capturer des caractéristiques complexes.
+
+- Leaky ReLU
+
+Leaky ReLU résout le problème du "ReLU mourant" rencontré avec le ReLU classique, où certains neurones deviennent inactifs.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-6.png)
+*[https://www.i2tutorials.com](https://www.nomidl.com)*
+
+- Définition et propriétés : Leaky ReLU introduit une petite pente pour les entrées négatives, permettant à un petit gradient de circuler même pour les valeurs négatives, empêchant ainsi les neurones de mourir.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-7.png)
+
+- Résolution du problème du "ReLU mourant" : En atténuant le problème des neurones morts, Leaky ReLU garantit que le réseau conserve sa capacité à apprendre et à généraliser efficacement.
+- Cas d'utilisation et avantages en vision par ordinateur : Leaky ReLU trouve des applications dans diverses tâches de vision par ordinateur, comme la classification d'images, où la prévention des neurones morts contribue aux performances globales du réseau.
+
+- Tangente hyperbolique (tanh)
+
+La fonction tangente hyperbolique partage des similitudes avec la fonction sigmoïde mais offre une plage de valeurs de sortie légèrement différente.
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-8.png)
+*[https://www.ml-science.com](https://www.ml-science.com)*
+
+- Définition et propriétés :
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-9.png)
+
+Tanh projette l'entrée dans un intervalle entre -1 et 1, présentant des propriétés similaires à la fonction sigmoïde mais avec un gradient plus prononcé autour de zéro.
+
+- Comparaisons avec les fonctions d'activation sigmoïde et ReLU : tanh évite le problème de saturation associé à la sigmoïde en offrant une symétrie autour de zéro. Cependant, de manière similaire à la sigmoïde, tanh peut souffrir du problème du gradient évanescent.
+- Exemples d'application : tanh trouve des applications dans les tâches de vision par ordinateur nécessitant des sorties dans une plage spécifique, comme la reconnaissance d'expressions faciales ou la reconnaissance de gestes.
+
+- Softmax
+
+Softmax est particulièrement utile dans les problèmes de classification multi-classes, fournissant une distribution de probabilité sur plusieurs classes de sortie.
+
+- Définition et propriétés :
+
+![Fonctions d'activation et réseaux de neurones](/images/blog/activation-functions-and-neural-networks-img-10.png)
+
+Softmax normalise les sorties d'une couche de réseau de neurones, garantissant que leur somme est égale à un, permettant leur interprétation comme des probabilités de classe.
+
+- Rôle dans les problèmes de classification multi-classes : Softmax est couramment utilisée dans les tâches de vision par ordinateur comme la catégorisation d'images, où le réseau doit attribuer une seule étiquette à l'image d'entrée parmi plusieurs classes possibles.
+- Utilisation et avantages en vision par ordinateur : Softmax permet des prédictions confiantes en produisant des probabilités de classe, aidant à la prise de décision pour diverses applications de vision par ordinateur.
+
+## Choisir la bonne fonction d'activation
+
+Sélectionner la fonction d'activation appropriée pour une tâche de vision par ordinateur donnée est crucial pour obtenir des résultats optimaux. Plusieurs facteurs doivent être pris en compte lors de ce processus de sélection.
+
+**1. Exigences de la tâche et caractéristiques des données :** Les différentes tâches de vision par ordinateur nécessitent des fonctions d'activation spécifiques. Comprendre les exigences de la tâche, comme la classification binaire ou multi-classes, la détection d'objets ou la segmentation, aide à orienter le choix de la fonction d'activation.
+
+**2. Performance et vitesse de convergence :** Les fonctions d'activation peuvent significativement impacter la vitesse de convergence et les performances globales du réseau de neurones. Certaines fonctions facilitent une convergence plus rapide, tandis que d'autres peuvent la ralentir. Il est important d'évaluer les compromis et de sélectionner en conséquence.
+
+**3. Éviter les gradients évanescents et explosifs :** Les gradients évanescents et explosifs peuvent entraver le processus d'entraînement. Un choix judicieux de fonctions d'activation peut aider à atténuer ces problèmes et favoriser un entraînement stable et efficace.
+
+## Sélection de la fonction d'activation pour des tâches spécifiques de vision par ordinateur
+
+Les différentes tâches de vision par ordinateur ont des exigences variables, et choisir la bonne fonction d'activation est essentiel pour atteindre des performances optimales. Explorons les choix recommandés pour quelques tâches courantes de vision par ordinateur :
+
+**1. Classification d'images :** ReLU et ses variantes, comme Leaky ReLU, sont couramment utilisées en classification d'images en raison de leur capacité à capturer efficacement des caractéristiques complexes. De plus, softmax est appliquée dans la dernière couche pour obtenir les probabilités de classe.
+
+**2. Détection d'objets :** Les tâches de détection d'objets bénéficient souvent de l'utilisation de fonctions d'activation comme ReLU, qui gèrent les datasets à grande échelle et l'extraction de caractéristiques complexes. Softmax peut également être utilisée pour classifier les objets détectés.
+
+**3. Segmentation sémantique :** La segmentation sémantique nécessite une détection précise des contours, faisant des fonctions d'activation comme ReLU et Leaky ReLU des choix populaires. Ces fonctions facilitent la capacité du réseau à capturer les contours complexes des objets et à générer des cartes de segmentation précises.
+
+# Conclusion
+
+Les fonctions d'activation sont des composants fondamentaux des réseaux de neurones, en particulier dans les tâches de vision par ordinateur. Nous avons exploré diverses fonctions d'activation populaires, leurs propriétés, avantages et limitations. Le choix approprié de la fonction d'activation peut significativement impacter les [performances](/experiment-tracking), la vitesse de convergence et les capacités de généralisation du réseau. De plus, les fonctions d'activation avancées et les techniques modernes offrent des possibilités passionnantes pour améliorer encore l'efficacité des réseaux de neurones en vision par ordinateur.

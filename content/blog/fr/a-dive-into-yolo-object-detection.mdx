@@ -1,0 +1,202 @@
+---
+
+title: "Plongée dans la détection d'objets avec YOLO"
+description: "Nous explorerons la famille des modèles de détection d'objets YOLO, du réseau YOLO original jusqu'aux derniers réseaux YOLOv8 et NAS."
+date: "2022-11-29"
+author:
+  name: "Picsellia Team"
+category: "YOLO"
+image: "/images/blog/a-dive-into-yolo-object-detection-hero.png"
+imageAlt: "A dive into YOLO object detection"
+published: true
+tags: ["classification", "computer-vision", "deep-learning", "model-training", "object-detection", "pipelines", "real-time", "versioning"]
+---
+
+## **Qu'est-ce que YOLO ?**
+
+Les réseaux YOLO (You Only Look Once) constituent une famille très populaire de réseaux convolutifs profonds pour la détection d'objets en temps réel. Les modèles de détection d'objets en temps réel doivent produire des prédictions très rapidement, généralement en moins de 200 ms ou traiter des flux vidéo à 30 FPS ou plus. Pour satisfaire ces exigences de vitesse, ils sont souvent plus petits que les modèles non temps réel, ce qui réduit parfois la précision.
+
+La première version de YOLO a été proposée en mai 2016 par Joseph Redmon. Il a expliqué son idée novatrice dans l'article "[You Only Look Once : Unified Real-Time Object Detection](https://arxiv.org/pdf/1506.02640.pdf)". Comme le nom le suggère, la principale nouveauté de YOLO est qu'il suffit de traiter une image une seule fois, une caractéristique qui offre une accélération considérable lors de la détection d'objets.
+
+L'architecture YOLO a connu un grand succès en vision par ordinateur et 8 versions supplémentaires ont suivi ! La dernière, YOLO-NAS, a été publiée en mai 2023, peu après YOLOv8. De nombreux praticiens du deep learning utilisent la détection d'objets YOLO dans leurs applications, YOLOv8 étant probablement la version la plus populaire et la plus utilisée grâce à son excellent dépôt open source offrant une implémentation simple et abstraite.
+
+## **Qu'est-ce qui rend YOLO différent ?**
+
+Le principal avantage de YOLO est sa vitesse d'inférence inégalée. Les architectures précédentes de détection d'objets utilisaient un classifieur d'images. En revanche, la nouveauté de YOLO est d'avoir changé le paradigme de la classification vers la régression. Les anciennes architectures réutilisaient des classifieurs d'images pour la détection d'objets. Des architectures comme les modèles de parties déformables (DPM) utilisent la technique de la fenêtre glissante, balayant les sous-régions d'une image avec une fenêtre mobile et appliquant un classifieur sur chaque sous-région à la recherche de l'objet d'intérêt. D'un autre côté, R-CNN utilisait la méthode de proposition de régions qui générait d'abord des boîtes englobantes candidates sur lesquelles le classifieur effectuait la classification. La méthode de proposition de régions offrait une approche plus élégante que la technique "force brute" de la fenêtre glissante, mais plusieurs classifications devaient encore être exécutées et un post-traitement était nécessaire pour éliminer les détections dupliquées. De tels pipelines sont lents et difficiles à optimiser.
+
+YOLO a changé le paradigme en transformant le problème de détection d'objets de la classification vers la régression. Les coordonnées des boîtes englobantes et les probabilités de classe sont directement régressées à partir des pixels de l'image. Il suffit de regarder et de classifier une image une seule fois. Un seul réseau de neurones convolutif prédit plusieurs boîtes englobantes. Avantages :
+
+- Rapide : Il est capable d'atteindre la détection d'objets en temps réel, >40 FPS.
+- Simple : Il repose uniquement sur un seul réseau de neurones convolutif qui produit à la fois les coordonnées des boîtes englobantes et les probabilités de classe. R-CNN, en comparaison, est composé de 3 modules différents[3].
+- Entraîné sur des images entières : Puisqu'il s'entraîne sur des images entières, il apprend des caractéristiques plus généralisées. Il voit à la fois l'objet et le contexte (arrière-plan). Par conséquent, il est moins sujet aux faux positifs dus aux pixels d'arrière-plan.
+
+## **Comment fonctionne le détecteur d'objets YOLO original**
+
+Avant de décrire les différentes versions de YOLO jusqu'à YOLO-NAS, il est judicieux d'expliquer le fonctionnement d'inférence du modèle YOLO original. Les étapes ci-dessous sont également présentées visuellement dans la figure 1.
+
+- L'image d'entrée est divisée en une grille SxS, où S est un hyperparamètre ajustable. Chaque cellule de la grille est responsable de la détection des objets dont le centre se trouve dans cette cellule.
+
+- Chaque cellule de la grille prédit B boîtes englobantes, où B est également un hyperparamètre ajustable. Pour chaque boîte, le modèle produit également un score de confiance (0.0 à 1.0) qui représente la confiance du modèle quant à la présence d'un objet dans la boîte et la précision de cette boîte. Essentiellement, la confiance est simplement l'IOU(vérité terrain, prédiction), mais formellement elle est calculée comme
+
+                   P(objet) * IOU(vérité terrain, prédiction)
+
+pour prendre en compte les cas où aucun objet n'existe dans la boîte, puisque la probabilité sera nulle.
+
+- Pour chaque boîte Bi, le modèle produit 5 prédictions de régression (x, y, w, h, confiance). Les variables x, y déterminent le centre de la boîte englobante de l'objet tandis que w, h sont la largeur et la hauteur de la boîte.
+
+- Le modèle produit également une prédiction de "classification" pour chaque cellule de la grille, qui représente la probabilité que la classe Classi soit présente dans une cellule de la grille.
+
+- Le score final est calculé comme indiqué ci-dessous et encode à la fois la précision de la boîte englobante et la confiance de classification spécifique à la classe ******.
+
+      Score = P(Classi| obj)* P(obj) *IOU = P(Classi)*IOU
+
+Au total, le modèle produira un tenseur S S (B*5 + len(Class)), ce qui signifie que pour chaque cellule nous avons 5 sorties par boîte englobante (liées à sa position et son adéquation) et len(Class) sorties, une pour chaque classe du dataset.
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-0.png)
+* Fig 1 : Flux de travail de l'architecture YOLO. Une image de test est divisée en une grille. Plusieurs boîtes englobantes sont prédites avec un score de confiance. Pour chaque cellule de la grille, une probabilité spécifique à la classe est calculée. En calculant les valeurs de confiance, le modèle sélectionne quelques détections uniques. Source de l'image [[1](https://arxiv.org/pdf/1506.02640.pdf)].*
+
+- **Remarque : Une limitation de YOLO est qu'il ne peut prédire qu'une seule classe par cellule de grille.
+
+L'image ci-dessous présente l'architecture YOLO originale, qui se compose d'un seul CNN !
+
+L'architecture suit le paradigme classique de réduction des dimensions de l'image et des noyaux tout en augmentant le nombre de filtres dans chaque couche convolutive. Une couche entièrement connectée est également utilisée à la fin.
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-1.png)
+*Fig 2 : Architecture YOLO originale. Source de l'image [[1](https://arxiv.org/pdf/1506.02640.pdf)].*
+
+## **L'histoire des YOLO (YOLO9000, YOLOv3, YOLOv4, YOLOv5, YOLOv6, YOLOv7, YOLOv8, YOLO-NAS)**
+
+Maintenant que nous comprenons le modèle de détection d'objets YOLO original, examinons les versions suivantes.
+
+### YOLO 9000 (YOLOv2)
+
+Le nom de YOLO 9000 vient de la capacité du modèle à prédire 9000 classes différentes. Il s'appuie sur l'architecture originale en ajoutant certaines fonctionnalités et en en supprimant d'autres pour améliorer les performances. Joseph Redmon est à nouveau l'auteur principal et contributeur de ce modèle.
+
+Les améliorations les plus notables sont :
+
+- Inclusion de la Batch Normalization. Les effets de régularisation ont amélioré le mAP de 2%.
+- Le classifieur pré-entraîné sur ImageNet utilisé dans YOLO accepte des images de 224x224 mais augmente la résolution à 448x448 pendant la détection. Pour aider le réseau à s'adapter à différentes tailles, le réseau de classification est d'abord entraîné pendant 10 epochs sur des images de 448x448. Cela a fourni une augmentation de 4% du mAP !
+- Les couches entièrement connectées, au niveau de la couche de prédiction, sont remplacées par une couche convolutive avec des Anchor boxes. *Les anchor boxes sont des boîtes englobantes prédéfinies qui servent de suggestions au réseau lorsqu'il fait des prédictions.* *Essentiellement, en utilisant des anchors, le réseau n'a qu'à corriger les suggestions plutôt que de tout découvrir par lui-même.* Avec les anchors, le mAP a baissé d'un léger 0,3%, mais le recall a augmenté de manière surprenante de 7% !
+- De bons priors d'anchor boxes ont été découverts en effectuant un clustering des coordonnées des boîtes englobantes de l'ensemble d'entraînement, plutôt que de les choisir manuellement.
+- Application d'une technique d'entraînement multi-échelle, où le réseau est entraîné à diverses résolutions pour créer des représentations plus générales.
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-2.png)
+
+**                 **Fig 3 : YOLO 9000 est devenu l'état de l'art. Il était plus rapide et plus précis que ses concurrents. Source de l'image [2]
+
+### YOLOv3 :
+
+YOLOv3, le dernier modèle de Joseph Redmon, a été présenté dans un [article](https://pjreddie.com/media/files/papers/YOLOv3.pdf) au ton très humoristique et sarcastique ! Il mérite d'être lu rien que pour cela. Le modèle lui-même est légèrement meilleur et même s'il ne se classait pas aussi bien que YOLOv2 par rapport à ses concurrents en termes de mAP, sa vitesse d'inférence est **3 fois plus rapide** que son concurrent le plus rapide, une variante de SSD. **Atteint AP=33,0%**
+
+Différents backbones CNN ont été choisis, DarkNet-19 étant extrêmement rapide atteignant jusqu'à 171 FPS ! Les connexions résiduelles, un standard aujourd'hui, ont également été introduites dans cette version.
+
+### YOLOv4 :
+
+Le premier modèle de la famille YOLO qui ne provient pas de l'Université de Washington et de Joseph Redmon, mais qui est toujours construit sur le [framework DarkNet](https://pjreddie.com/darknet/). Le modèle a été évalué sur le dataset COCO et a fourni des améliorations surprenantes en termes d'AP tout en restant significativement plus rapide que ses concurrents. **Atteint AP=43,0%**
+
+YOLOv4 s'est principalement concentré sur l'amélioration de ses méthodes d'entraînement. Ils ont utilisé ce qu'ils appellent "Bag of Freebies", c'est-à-dire des méthodes qui n'affectent que l'entraînement et améliorent les performances. Les exemples incluent :
+
+- Des méthodes d'augmentation avancées (CutMix, augmentation Mosaïque, Self-Adversarial Training)
+- Le remplacement de la perte MSE par une variante de la perte IoU
+- L'utilisation de la [régularisation DropBlock](https://arxiv.org/abs/1810.12890) et
+- La recherche des hyperparamètres les plus optimaux via des algorithmes génétiques.
+
+Cependant, ils ont également utilisé "Bag of Specials", c'est-à-dire des blocs plug-in ou des méthodes de post-traitement qui augmentent légèrement le coût d'inférence mais améliorent significativement la précision des détections d'objets. Les exemples incluent :
+
+- L'utilisation de la fonction d'activation Mish [[6](https://arxiv.org/abs/1908.08681)]
+- L'utilisation des connexions résiduelles pondérées multi-entrées (MiWRC)
+- Le Spatial Pyramid Pooling [7]
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-3.png)
+
+           Fig 4 : Comparaison des performances de YOLOv4, YOLOv3 et des réseaux concurrents sur le dataset COCO de détection d'objets. Source de l'image [[5]](https://arxiv.org/pdf/2004.10934.pdf)
+
+### YOLOv5 :
+
+Peu après la sortie de YOLOv4, Glenn Jocher d'Ultralytics a introduit YOLOv5 utilisant le framework PyTorch, en mai 2020. Grâce à ce [dépôt open source YOLOv5](https://github.com/ultralytics/yolov5) [8], YOLOv5 est probablement la version la plus populaire de toutes, mais aussi la plus controversée.
+
+Aucun article n'a accompagné cette version. La différence majeure avec YOLOv4 est que YOLOv5 est construit de zéro avec la bibliothèque PyTorch au lieu d'être dérivé du YOLO DarkNet original.
+
+Beaucoup de controverse entoure le versionnage à partir de YOLOv5 et au-delà (v6, v7), certains affirmant qu'ils sont non officiels. Ce qui compte vraiment, c'est que les gens trouvent ces dépôts utiles et peuvent construire des applications utiles sur la base de leur code open source.
+
+### YOLOv6 :
+
+YOLOv6 a été publié presque en parallèle avec YOLOv7 (été 2022), par l'entreprise chinoise Meituan. L'objectif était de tester les méthodes d'entraînement et les blocs plug-in les plus récents en vision par ordinateur. Expliquer toutes ces techniques complexes n'est pas l'objectif de cet article, mais nous mentionnons brièvement les principales contributions de YOLOv6.
+
+- Nouveau modèle backbone RepVGG
+- [TAL](https://arxiv.org/abs/2108.07755) : Task Alignment Learning
+- Perte de classification VariFocal et perte de régression SIoU/GIoU.
+- [Auto-distillation](https://arxiv.org/pdf/1905.08094.pdf)
+- Entraînement conscient de la quantification, pour [des performances améliorées via la quantification des poids.](/post/optimize-computer-vision-models-on-the-edge)
+
+Selon les benchmarks publiés dans leur article, YOLOv6 **atteint jusqu'à AP=52,5%** à 98 FPS avec leur plus grand modèle.
+
+### YOLOv7 :
+
+YOLOv7, dont l'article a été publié avant celui de YOLOv6 (le versionnage devient confus...), a réussi à repousser encore plus les limites de la détection d'objets en temps réel. Selon leur article publié, *"YOLOv7 surpasse tous les détecteurs d'objets connus tant en vitesse qu'en précision dans la plage de 5 FPS à 160 FPS et possède la plus haute précision ****56,8% AP**** parmi tous les détecteurs d'objets temps réel connus à 30 FPS ou plus sur GPU V100".*
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-4.png)
+
+*  	    *Fig. 5 : Comparaison de YOLOv7 avec d'autres concurrents. YOLOv7 est actuellement l'état de l'art en détection d'objets temps réel. Source de l'image [[10](https://arxiv.org/abs/2207.02696)]
+
+**Ainsi, YOLOv7 est effectivement le détecteur d'objets temps réel état de l'art pour 2022.** L'article est intitulé "*YOLOv7: Trainable bag-of-freebies sets new state-of-the-art for real-time object detectors*". De la même manière que YOLOv4 (même auteur principal), ils emploient un certain nombre de méthodes d'entraînement état de l'art pour la vision par ordinateur pendant l'entraînement. Cela leur permet d'améliorer les performances sur le dataset COCO sans affecter la vitesse d'inférence. Tout ce qu'ils ont fait n'affecte que les coûts computationnels d'entraînement sans compromettre la vitesse d'inférence.
+
+### YOLOv8 :
+
+YOLOv8, ou "Real-Time Flying Object Detection", a été publié en 2023. Cette nouvelle version est construite comme un framework unifié pour l'entraînement de modèles sur différentes tâches comme la *détection, la segmentation, l'estimation de pose, le suivi et la classification.*
+
+Il utilise un réseau backbone plus avancé, qui est une variante de l'architecture CPSDarkNetBackbone. Il utilise à la fois le Feature Pyramid Network (FPN) et le Path Aggregation Network (PAN), et a introduit des améliorations et de nouvelles fonctionnalités pour améliorer les performances comme on peut le voir sur les figures suivantes.
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-5.png)
+
+Plus rapide et plus précis que YOLOv7 et tous ses prédécesseurs grâce à sa prédiction multi-échelle, YOLOv8 constitue un puissant outil de deep learning pour la détection d'objets en temps réel. Son architecture sans anchor le rend également plus facile à utiliser.
+
+YOLOv8 fonctionne également sur CPU et GPU, et est très efficace et flexible, prenant en charge un large éventail de formats d'export.
+
+### YOLO-NAS
+
+Selon DeciAI, YOLO-NAS est environ 0,5 point mAP plus précis et 10% à 20% plus rapide que les variantes équivalentes de YOLOv8 et YOLOv7.
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-6.png)
+
+Cette version, développée par DeciAI, vise à résoudre les limitations des versions précédentes des modèles de détection d'objets. NAS, signifiant Neural Architecture Search, est une technique d'automatisation de la conception de réseaux de neurones artificiels.
+
+Les trois caractéristiques clés de YOLO-NAS mises en avant par Deci.ai sont :
+
+- Bloc de base compatible avec la quantification
+- Entraînement et quantification avancés : schémas d'entraînement avancés et quantification post-entraînement
+- Optimisation AutoNAC et pré-entraînement : le rendent parfaitement adapté à la détection d'objets dans le monde réel
+
+Le modèle, lorsqu'il est converti en sa version quantifiée INT8, subit une perte de précision minimale, une amélioration significative par rapport aux autres modèles. Ces avancées culminent en une architecture supérieure avec des capacités de détection d'objets sans précédent et des performances exceptionnelles.
+
+## **Code open source pour YOLO**
+
+Les détecteurs d'objets YOLO sont un excellent choix pour les applications en temps réel. Si des prédictions rapides sont une exigence, YOLOv8 est probablement le meilleur choix actuellement. Toutes les versions de YOLO disposent de bases de code open source.
+
+Travailler avec eux devrait être facile, mais vous devez vous assurer que les annotations de vos datasets sont au format YOLO.
+
+### Annotations de boîtes englobantes YOLO :
+
+elles sont au format .txt et chaque image doit être accompagnée d'un fichier d'annotation .txt. Chaque ligne du fichier .txt représente 1 objet. Dans chaque ligne, 5 identifiants sont inclus qui se réfèrent à [id de classe, centre x de la bbox, centre y de la bbox, largeur de la bbox, hauteur de la bbox] comme présenté dans la figure 6 ci-dessous. Il est important de noter que l'ID de classe commence au numéro 0 et que les coordonnées sont normalisées dans l'intervalle [0,1]. Si vos boîtes sont en pixels, divisez centre_x et largeur_bbox par la largeur de l'image, et centre_y et hauteur_bbox par la hauteur de l'image.
+
+Vous pouvez annoter vos datasets et les exporter dans différents formats en utilisant des outils simples comme [LabelMe](https://github.com/wkentaro/labelme) ou utiliser les [outils d'annotation assistés par IA de Picsellia](/dataset-management) et réduire significativement les coûts d'annotation.
+
+‍
+
+
+
+![Plongée dans la détection d'objets YOLO](/images/blog/a-dive-into-yolo-object-detection-img-7.png)
+
+  				                Fig 6 : Exemple de fichier d'annotation YOLO
+
+### Dépôts GitHub :
+
+- [YOLOv5](https://github.com/ultralytics/yolov5) est le projet le plus populaire et le mieux documenté avec de nombreux tutoriels officiels. Travailler avec est relativement facile et les performances sont généralement bonnes. Cependant, ce n'est plus l'état de l'art.
+- [YOLOv6](https://github.com/meituan/YOLOv6) est également bien documenté et devrait offrir de meilleures performances et une meilleure vitesse par rapport à YOLOv5. Si vous souhaitez entraîner un modèle YOLOv6 avec des données personnalisées, ce [tutoriel](https://github.com/meituan/YOLOv6/blob/main/docs/Train_custom_data.md) devrait être utile. Pour une application simple, quelques lignes de commande dans le terminal suffisent après avoir cloné leur dépôt.
+- [YOLOv7](https://github.com/WongKinYiu/yolov7) offre plus que la simple détection d'objets. Il est facile d'utiliser leur modèle pré-entraîné pour l'estimation de pose et la segmentation d'instances. Cependant, ils ne fournissent pas une documentation aussi bonne que YOLOv6/YOLOv5 et l'entraînement sur vos données personnalisées peut nécessiter un peu plus d'effort de votre part. Si vous voulez tester le modèle, ils [servent également leur modèle](https://huggingface.co/spaces/akhaliq/yolov7) sur Hugging Face Spaces.
+- [yolov8 · GitHub Topics](https://github.com/topics/yolov8)
+- [YOLONAS.md - Deci-AI/super-gradients](https://github.com/Deci-AI/super-gradients/blob/master/YOLONAS.md)
+
+## **Conclusions**
+
+La famille de modèles YOLO a été un grand succès, ce qui se reflète dans le nombre de versions différentes qui ont suivi la publication originale. Les praticiens du deep learning utilisent les modèles YOLO pour la détection d'objets car ils offrent un excellent compromis entre vitesse et précision. Travailler avec les modèles YOLO est facile grâce aux dépôts open source publiés par les créateurs. La détection d'objets est la tâche principale dans laquelle les YOLO excellent, mais le dépôt YOLOv8 propose également des modèles pour la classification, la segmentation d'images et l'estimation de pose.

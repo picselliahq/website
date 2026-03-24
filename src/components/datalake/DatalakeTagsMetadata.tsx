@@ -1,4 +1,7 @@
+import { useTranslations } from 'next-intl';
+
 export default function DatalakeTagsMetadata() {
+  const t = useTranslations('datalake');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.02]">
@@ -14,15 +17,13 @@ export default function DatalakeTagsMetadata() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Organization
+            {t('tagsMetadata.badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            DataTags & Metadata Schema
+            {t('tagsMetadata.title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Multi-dimensional organization with flexible tagging and
-            comprehensive metadata support. Structure your data without moving
-            files.
+            {t('tagsMetadata.subtitle')}
           </p>
         </div>
 
@@ -31,17 +32,17 @@ export default function DatalakeTagsMetadata() {
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--picsellia-green)]">
-                DATATAGS SYSTEM
+                {t('tagsMetadata.datatagsSystem')}
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
-                organization tags
+                {t('tagsMetadata.organizationTags')}
               </span>
             </div>
             <div className="p-6">
               {/* Tag list visualization */}
               <div className="mb-6">
                 <div className="text-xs text-[var(--tertiary-label)] mb-3">
-                  AVAILABLE TAGS
+                  {t('tagsMetadata.availableTags')}
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[var(--black)] border border-[var(--border)]">
@@ -144,7 +145,7 @@ export default function DatalakeTagsMetadata() {
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--system-teal)]">
-                METADATA FIELDS
+                {t('tagsMetadata.metadataFields')}
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
                 SDK v6.9.0+ auto-EXIF
@@ -286,7 +287,7 @@ export default function DatalakeTagsMetadata() {
             <div className="px-4 py-3 border-t border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <div className="flex items-center justify-between text-xs">
                 <span className="text-[var(--tertiary-label)]">
-                  Auto-extracted from EXIF with fill_metadata=True
+                  {t('tagsMetadata.autoExtracted')}
                 </span>
                 <div className="flex gap-2">
                   <span className="px-2 py-0.5 rounded bg-[var(--picsellia-green)]/10 text-[var(--picsellia-green)]">

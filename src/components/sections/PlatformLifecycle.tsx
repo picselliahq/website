@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useTranslations } from 'next-intl';
 
 const platformStages = [
   {
@@ -75,6 +76,23 @@ const platformStages = [
 ];
 
 export default function PlatformLifecycle() {
+  const t = useTranslations('productOverview');
+  const stages = t.raw('stages') as Array<{
+    category: string; tagline: string; headline: string; problem: string;
+    solution: string; features: string[]; statsValue: string; statsLabel: string;
+  }>;
+
+  const platformStagesTranslated = platformStages.map((stage, i) => ({
+    ...stage,
+    category: stages[i].category,
+    tagline: stages[i].tagline,
+    headline: stages[i].headline,
+    problem: stages[i].problem,
+    solution: stages[i].solution,
+    features: stage.features.map((f, fi) => ({ ...f, name: stages[i].features[fi] })),
+    stats: { value: stages[i].statsValue, label: stages[i].statsLabel },
+  }));
+
   return (
     <section className="py-24 border-t border-[var(--border)] relative overflow-hidden">
       {/* Ambient glow */}
@@ -97,25 +115,24 @@ export default function PlatformLifecycle() {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-16">
           <div>
             <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Platform
+              {t('platformLabel')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-              One platform. Zero friction.
+              {t('platformTitle')}
             </h2>
             <p className="text-[var(--secondary-label)] max-w-xl">
-              One platform instead of five tools duct-taped together. Built for
-              computer vision from day one.
+              {t('platformDescription')}
             </p>
           </div>
           <Link href="/product-overview" className="btn-secondary">
-            Explore platform
+            {t('explorePlatform')}
           </Link>
         </div>
 
         {/* Lifecycle Visual */}
         <div className="mb-12 p-6 rounded-2xl border border-[var(--border)] bg-[var(--secondary-system-background)]">
           <div className="flex flex-wrap items-center justify-center gap-4 md:gap-0">
-            {platformStages.map((stage, index) => (
+            {platformStagesTranslated.map((stage, index) => (
               <div key={stage.id} className="flex items-center">
                 <div className="flex items-center gap-3 px-4 py-2">
                   <div
@@ -155,7 +172,7 @@ export default function PlatformLifecycle() {
 
         {/* Bento Grid */}
         <div className="grid md:grid-cols-2 gap-4">
-          {platformStages.map((stage, index) => (
+          {platformStagesTranslated.map((stage, index) => (
             <Link
               key={stage.id}
               href={stage.features[0].href}
@@ -206,7 +223,7 @@ export default function PlatformLifecycle() {
                             className="font-medium"
                             style={{ color: stage.color }}
                           >
-                            With Picsellia:
+                            {t('withPicsellia')}
                           </span>{" "}
                           {stage.solution}
                         </p>

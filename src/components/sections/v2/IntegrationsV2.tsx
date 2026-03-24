@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
-const integrations = [
+const integrationItems = [
   {
-    category: "Train with",
+    categoryKey: "categoryTrain" as const,
     tag: "ML_FRAMEWORKS",
     color: "#ff9f0a",
     items: [
@@ -16,7 +17,7 @@ const integrations = [
     ],
   },
   {
-    category: "Deploy to",
+    categoryKey: "categoryDeploy" as const,
     tag: "INFRASTRUCTURE",
     color: "#33ab68",
     items: [
@@ -28,7 +29,7 @@ const integrations = [
     ],
   },
   {
-    category: "Connect from",
+    categoryKey: "categoryConnect" as const,
     tag: "ECOSYSTEM",
     color: "#7775ef",
     items: [
@@ -42,38 +43,40 @@ const integrations = [
 ];
 
 export default function IntegrationsV2() {
+  const t = useTranslations("home.integrations");
+
   return (
     <section className="py-28 border-t border-[var(--border)] relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex items-center gap-8 mb-4">
           <span className="text-[10px] font-mono text-[var(--picsellia-green)] uppercase tracking-wider">
-            Integrations
+            {t("sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-[var(--border)]" />
         </div>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
           <h2 className="text-3xl md:text-5xl font-semibold tracking-tight leading-[1.08]">
-            Works with
+            {t("headlinePart1")}
             <br />
-            <span className="text-[var(--secondary-label)]">your stack</span>
+            <span className="text-[var(--secondary-label)]">{t("headlinePart2")}</span>
           </h2>
           <div className="flex items-center gap-6 text-sm">
             <div>
               <span className="text-2xl font-bold font-mono text-[var(--label)]">
-                50+
+                {t("integrationsCount")}
               </span>
               <span className="text-xs text-[var(--tertiary-label)] font-mono uppercase tracking-wider ml-2">
-                Integrations
+                {t("integrationsLabel")}
               </span>
             </div>
             <div className="w-px h-8 bg-[var(--border)]" />
             <div>
               <span className="text-2xl font-bold font-mono text-[var(--label)]">
-                API
+                {t("apiFirst")}
               </span>
               <span className="text-xs text-[var(--tertiary-label)] font-mono uppercase tracking-wider ml-2">
-                First
+                {t("apiFirstLabel")}
               </span>
             </div>
           </div>
@@ -81,9 +84,9 @@ export default function IntegrationsV2() {
 
         {/* Integration groups — table-like rows */}
         <div className="space-y-6 mb-16">
-          {integrations.map((group) => (
+          {integrationItems.map((group) => (
             <div
-              key={group.category}
+              key={group.categoryKey}
               className="border border-[var(--border)] rounded-xl overflow-hidden"
             >
               {/* Group header */}
@@ -97,7 +100,7 @@ export default function IntegrationsV2() {
                     className="text-xs font-mono font-bold uppercase tracking-wider"
                     style={{ color: group.color }}
                   >
-                    {group.category}
+                    {t(group.categoryKey)}
                   </h3>
                 </div>
                 <span className="text-[9px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider">
@@ -145,19 +148,18 @@ export default function IntegrationsV2() {
               </div>
 
               <h3 className="text-xl font-semibold text-[var(--label)] mb-4">
-                Python SDK
+                {t("sdkTitle")}
               </h3>
 
               <p className="text-sm text-[var(--secondary-label)] mb-6 leading-relaxed">
-                Programmatic access to everything. Type-safe, async-ready,
-                designed for ML workflows.
+                {t("sdkDescription")}
               </p>
 
               <div className="space-y-3">
                 {[
-                  { label: "Type safety", detail: "Full IDE support" },
-                  { label: "Async", detail: "High throughput" },
-                  { label: "Jupyter", detail: "Native support" },
+                  { label: t("sdkTypeSafety"), detail: t("sdkTypeSafetyDetail") },
+                  { label: t("sdkAsync"), detail: t("sdkAsyncDetail") },
+                  { label: t("sdkJupyter"), detail: t("sdkJupyterDetail") },
                 ].map((item) => (
                   <div
                     key={item.label}

@@ -1,0 +1,123 @@
+---
+
+title: "Comment gérer les datasets déséquilibrés en vision par ordinateur"
+description: "Les datasets déséquilibrés entraînent des problèmes de précision, de surapprentissage et de biais. L'augmentation de données, la pondération des classes et la classification hiérarchique peuvent aider."
+date: "2022-12-14"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/improve-imbalanced-datasets-in-computer-vision-hero.png"
+imageAlt: "How to Deal with Imbalanced Datasets in Computer Vision"
+published: true
+tags: ["classification", "computer-vision", "dataset-management", "deep-learning", "experiment-tracking", "model-training"]
+---
+
+## **Qu'est-ce qu'un dataset déséquilibré ?**
+
+**‍**
+
+![Improve imbalanced datasets in computer vision](/images/blog/improve-imbalanced-datasets-in-computer-vision-img-0.png)
+
+**‍**
+
+Un dataset déséquilibré désigne une situation où il y a un nombre disproportionné de cas d'une classe par rapport à une autre.
+
+
+
+Par exemple ici, dans un dataset de 2 000 images, il y a environ 20 fois plus de voitures que de bus dans l'ensemble d'entraînement (voir ci-dessous). C'est ce qu'on appelle un dataset déséquilibré, **quand toutes les classes ne sont pas représentées de manière égale.**
+
+
+
+![Improve imbalanced datasets in computer vision](/images/blog/improve-imbalanced-datasets-in-computer-vision-img-1.png)
+
+Les chercheurs utilisent souvent des datasets déséquilibrés lors de la conception d'expériences, car ils leur permettent de contrôler plus facilement les biais expérimentaux. Cela dit, il existe des situations où **un dataset déséquilibré peut poser un problème sérieux pour les modèles de machine learning**. Dans de telles situations, les modèles seront sujets au surapprentissage et à une faible précision. En d'autres termes, les datasets déséquilibrés sont problématiques car ils peuvent conduire à des résultats biaisés et inexacts.
+
+
+
+
+
+## **Pourquoi les datasets déséquilibrés posent-ils problème ?**
+
+**‍**
+
+Les modèles de vision par ordinateur reposent sur une grande quantité de données pour l'entraînement, mais pour certains types d'images, il n'y a pas suffisamment d'exemples pour fournir une représentation robuste des données.
+
+
+
+Par exemple, si nous entraînons un modèle pour identifier des images de panneaux de signalisation, il existe de nombreuses images de panneaux stop mais relativement peu d'images d'autres types de panneaux. Disons que la répartition est de 80 % de panneaux stop et 20 % d'autres panneaux de signalisation.
+
+
+
+*Les modèles de deep learning ne sont que des idiots très sophistiqués.*
+
+
+
+Ainsi, pendant le processus d'entraînement, le modèle en déduira que s'il prédit des panneaux stop tout le temps, il aura raison 80 % du temps. Plutôt cool, non ? **En fait, pas du tout !**
+
+
+
+Cela signifie que le processus d'entraînement peut conduire à une représentation inefficace des données, aboutissant à des modèles très spécifiques et moins robustes. Dans notre cas, les modèles seront très précis pour le panneau stop, mais moins précis pour tous les autres panneaux de signalisation.
+
+
+
+‍
+
+## **3 stratégies pour surmonter les datasets déséquilibrés**
+
+**‍**
+
+Nous pouvons aborder le problème de 3 manières.
+
+
+
+La première stratégie est **l'augmentation de données**. Cela consiste à créer des exemples supplémentaires à partir du dataset original, mais avec de légères modifications comme le retournement vertical des images ou la création d'images miroir. Cela augmentera le nombre d'images dans les classes sous-représentées et produira un dataset plus équilibré.
+
+
+
+Cependant, l'augmentation de données ne suffit pas toujours. C'est là que la **pondération des classes** entre en jeu. Ajouter des poids à chaque classe peut être une stratégie utile. Je vais approfondir ce sujet avec quelques exemples :)
+
+
+
+La troisième option consiste à effectuer une **classification hiérarchique**. L'idée principale est de construire plusieurs datasets binaires pour **s'assurer que nos datasets sont toujours équilibrés**. L'inconvénient est que vous accumulerez des erreurs en cours de route.
+
+
+
+### **Augmentation de données**
+
+**‍**
+
+![Improve imbalanced datasets in computer vision](/images/blog/improve-imbalanced-datasets-in-computer-vision-img-2.png)
+
+**‍**
+
+L'augmentation de données est une technique qui peut être utilisée pour améliorer la robustesse et la précision d'un modèle de machine learning en créant des exemples supplémentaires à partir du dataset original. L'augmentation de données est utile dans les situations où le dataset original est déséquilibré. Il existe un certain nombre de techniques qui peuvent être utilisées pour l'augmentation de données, notamment le retournement d'exemples, la création d'exemples miroir, la rotation d'exemples, la coloration d'images de différentes manières et l'ajout de bruit. L'objectif de l'augmentation de données est d'augmenter le nombre d'exemples pour chaque classe, ce qui peut être utile dans les situations où le dataset original a un nombre disproportionné de points de données pour une classe par rapport à une autre. Cela peut créer des problèmes pendant le processus d'entraînement et rendre le modèle moins précis et plus sujet au surapprentissage.
+
+Si vous souhaitez expérimenter avec l'augmentation de données, voici une démo intéressante des développeurs d'Albumentations : https://demo.albumentations.ai/
+
+
+
+### **Pondération des classes**
+
+**‍**
+
+La pondération des classes consiste à attribuer des poids plus élevés aux exemples d'une classe particulière. Cela peut aider à équilibrer les données et à réduire le biais associé à un dataset déséquilibré. La pondération des classes peut être utile dans les situations où il y a significativement moins d'exemples d'une classe par rapport à une autre. Cela peut être problématique dans les modèles de machine learning qui dépendent fortement des exemples pour l'entraînement. La pondération des classes est utile dans les situations où un modèle est utilisé pour identifier une classe particulière, comme le type de fleur dans une image. Il peut y avoir significativement moins d'images d'un type spécifique de fleur, comme les orchidées, par rapport à d'autres types de fleurs. Lors de l'entraînement d'un modèle pour ce type de classification, il peut être utile d'augmenter le poids des exemples associés à la classe orchidée. Cela peut aider à équilibrer les données et à réduire le biais associé à un dataset déséquilibré.
+
+‍
+
+### **Classification hiérarchique**
+
+**‍**
+
+![Improve imbalanced datasets in computer vision](/images/blog/improve-imbalanced-datasets-in-computer-vision-img-3.png)
+
+**‍**
+
+La classification hiérarchique est une technique de machine learning qui utilise une hiérarchie de catégories pour classer les données. Elle est particulièrement utile pour les applications de vision par ordinateur, ainsi que pour la classification de datasets déséquilibrés. Ce type de classification implique l'entraînement de plusieurs modèles, chacun sur un niveau différent de la hiérarchie. Par exemple, si vous avez un dataset d'animaux, le niveau le plus élevé de la hiérarchie pourrait être « animal », suivi de « mammifère », puis « chien ». Chaque modèle est entraîné sur les données de ce niveau, les résultats étant ensuite combinés pour former la prédiction globale. La classification hiérarchique peut être utilisée pour classer avec précision les données même lorsqu'il y a une **grande variabilité** ou lorsque le dataset est déséquilibré. C'est un outil puissant qui peut être utilisé pour améliorer la précision des modèles de machine learning.
+
+
+
+‍
+
+## **Conclusion**
+
+La vision par ordinateur peut être difficile à mettre en oeuvre, surtout lorsqu'on travaille avec des datasets déséquilibrés. Un dataset déséquilibré est un dataset dans lequel le nombre de points de données pour une classe est significativement inférieur au nombre de points de données pour les autres classes. Cela peut entraîner des problèmes de précision, de surapprentissage et de biais. Heureusement, il existe des stratégies qui peuvent aider à surmonter ces problèmes. Il est crucial de comprendre comment utiliser correctement des techniques telles que l'augmentation de données, la pondération des classes et le suréchantillonnage. Un modèle de vision par ordinateur entraîné sur des datasets équilibrés vous permettra d'améliorer la précision et de réduire les biais.

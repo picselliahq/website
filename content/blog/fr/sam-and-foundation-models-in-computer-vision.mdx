@@ -1,0 +1,113 @@
+---
+
+title: "SAM et les modeles de fondation en vision par ordinateur"
+description: "Nous avons explore comment SAM a ete cree pour devenir un outil si puissant. Un modele revolutionnaire non seulement pour Meta, mais pour l'ensemble du paysage de la vision par ordinateur !"
+date: "2023-04-24"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/sam-and-foundation-models-in-computer-vision-hero.jpeg"
+imageAlt: "SAM and Foundation Models in Computer Vision"
+published: true
+tags: ["annotation", "computer-vision", "dataset-management", "deep-learning", "foundation-models", "model-training", "pipelines", "segmentation"]
+---
+
+**SAM et les modeles de fondation en vision par ordinateur**
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894af 6447edce68ca198d6cc6de69 people recognition](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894af_6447edce68ca198d6cc6de69_people-recognition.jpeg)
+
+Si vous vous interessez a la vision par ordinateur et au deep learning, vous avez certainement remarque que l'espace de recherche est en pleine effervescence en ce moment. Le modele GPT-4 d'OpenAI a ouvert la voie a de nombreuses grandes entreprises pour publier leurs dernieres recherches. Apres la publication de GPT-4 en mars, nous avons rapidement vu le laboratoire d'IA de META publier son premier modele de fondation en vision par ordinateur appele [SAM (Segment Anything Model)](https://github.com/facebookresearch/segment-anything). C'est considere comme l'un des plus grands bonds des modeles de fondation dans l'espace de la vision par ordinateur.
+
+Aujourd'hui, nous allons parler des implications de telles avancees pour l'industrie. Chez Picsellia, nous visons a aider les entreprises a construire des pipelines de vision par ordinateur robustes. Il est donc crucial pour nous de prendre le temps d'examiner cela.
+
+## Que sont les modeles de fondation :
+
+Un modele de fondation est un grand modele pre-entraine concu pour apprendre des motifs generaux et des caracteristiques a partir de vastes quantites de donnees. Ces modeles sont generalement entraines sur des quantites massives de donnees en utilisant des methodes d'apprentissage non supervise. Ils peuvent ensuite etre ajustes (fine-tuned) sur des taches specifiques avec des quantites de donnees beaucoup plus petites.
+
+Parmi les exemples de modeles de fondation en IA, on trouve BERT, GPT-3 et T5 dans le domaine du traitement du langage naturel, et CLIP ou DALL-E en vision par ordinateur. Ces modeles ont montre des ameliorations significatives de performance sur un large eventail de taches et sont devenus des elements de base importants pour de nombreuses applications d'IA a la pointe de la technologie.
+
+Les modeles de fondation ont fait des progres significatifs dans le traitement du langage naturel, en particulier depuis la sortie de BERT en 2018, et la publication plus recente de GPT-4. En vision par ordinateur, cependant, il y a eu un manque de taches de pre-entrainement non supervisees semantiquement riches comparables au masquage du prochain token en texte. Bien que les pixels masques aient ete utilises, ils n'ont pas ete aussi efficaces. Les routines de pre-entrainement multi-modales, comme CLIP, ont ete les plus efficaces en vision par ordinateur.
+
+Pour relever ce defi, l'equipe de recherche Segment Anything a vise a creer un modele de fondation pour la vision par ordinateur en developpant une tache, un modele et un dataset. Cela a conduit a la creation du Segment Anything Model (SAM), un modele de segmentation d'instances developpe par Meta Research et publie en avril 2023. SAM a ete entraine sur 11 millions d'images et 1,1 milliard de masques de segmentation.
+
+## Comment META a-t-il construit SAM ?
+
+Pour construire le Segment Anything Model (SAM), l'equipe de META a du trouver une methode assez innovante pour constituer un dataset, car il n'existe pas tant d'annotations de masques disponibles. A mon avis, ce processus est de loin l'etape la plus importante qu'ils ont reussie.
+
+La partie modelisation est un peu moins innovante car elle transpose des approches utilisees dans les modeles de fondation textuels vers l'espace de la vision par ordinateur.
+
+### **Dataset**
+
+Ils ont entraine le modele en utilisant un dataset de plus d'un milliard de masques de segmentation, collectes a l'aide d'un moteur de donnees a trois vitesses. Il en a resulte un dataset 400 fois plus grand que tout dataset de segmentation precedent, provenant de multiples pays a travers diverses regions geographiques et niveaux de revenus. C'est une avancee majeure en termes de taille de dataset de segmentation et de strategie de construction. Examinons ces 3 etapes.
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894a8 6447eef6678c32214e6f2705 400 chart](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894a8_6447eef6678c32214e6f2705_400-chart.jpeg)
+
+#### Etape 1 : Segmentation avec humain dans la boucle
+
+Une premiere version de SAM a ete entrainnee sur des datasets de segmentation publics pour fournir une base que les annotateurs professionnels peuvent utiliser comme outil de segmentation interactif pour etiqueter des masques en identifiant les points d'objet de premier plan et d'arriere-plan.
+
+Les annotations ont ete faites sans contraintes semantiques et ont priorise les objets proeminents. SAM a ete initialement entraine sur des datasets de segmentation publics et a subi six iterations de re-entrainement en utilisant les masques nouvellement annotes.
+
+L'annotation assistee par le modele fonctionnait en temps reel, resultant en une diminution du temps moyen d'annotation par masque de 34 a 14 secondes, et une augmentation du nombre moyen de masques par image de 20 a 44. Cette etape a produit 4,3 millions de masques a partir de 120 000 images.
+
+#### Etape 2 : Edition et correction de pre-annotations
+
+Dans la phase semi-automatique, les masques confiants etaient automatiquement detectes et presentes aux annotateurs avec des images pre-remplies. Les annotateurs ajoutaient ensuite des annotations pour les objets non annotes. Un detecteur de boites englobantes a ete entraine sur les masques de la premiere phase en utilisant une categorie generique "objet". Cette phase a collecte 5,9 millions de masques supplementaires a partir de 180 000 images, portant le total a 10,2 millions de masques. Le modele a ete re-entraine cinq fois sur les donnees nouvellement collectees. Le temps d'annotation a augmente a 34 secondes pour les objets plus difficiles, et le nombre moyen de masques par image a augmente de 44 a 72, masques automatiques inclus.
+
+#### Etape 3 : Annotation entierement non supervisee
+
+Dans la phase entierement automatique, l'annotation est devenue entierement automatique grace au developpement du modele conscient de l'ambiguite et a un plus grand nombre de masques collectes. Le modele predisait un ensemble de masques pour les objets valides en utilisant une grille de 32x32 points. Le module de prediction d'IoU etait utilise pour selectionner les masques confiants, et seuls les masques stables etaient choisis. La Non-maximal suppression (NMS) etait appliquee pour filtrer les doublons, et des recadrages zoomes avec chevauchement de l'image etaient traites pour ameliorer la qualite des masques plus petits. Cette phase a resulte en 1,1 milliard de masques de haute qualite generes pour les 11 millions d'images.
+
+### **Architecture du modele**
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894ac 6447ef29e9b33d81125a2d7b universal segmentation model](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894ac_6447ef29e9b33d81125a2d7b_universal-segmentation-model.jpeg)
+**Structure du modele SAM**
+
+En considerant l'article de recherche publie par META,
+
+> SAM comporte trois composants :
+     - un encodeur d'image (ViT pre-entraine avec MAE)
+     - un encodeur de prompts flexible
+     - un decodeur de masques rapide.
+
+Les auteurs considerent deux types de prompts pour la segmentation : les prompts epars (points, boites, texte) et les prompts denses (masques). Les points et les boites sont representes par des encodages positionnels combines avec des embeddings appris pour chaque type de prompt, tandis que le texte libre utilise un encodeur de texte de CLIP. Les prompts denses, comme les masques, sont integres par des convolutions et sommes element par element avec l'embedding de l'image.
+
+On pourrait argumenter qu'il est assez difficile de comprendre ce que cela signifie, alors essayons de le decortiquer.
+
+Dans le contexte de ce texte, les "prompts" font reference aux indices ou guidances donnes au modele pendant le processus de segmentation. Ici, ils ont considere deux types de prompts : les prompts "epars" et les prompts "denses".
+
+#### Encodeur de prompts
+
+Les **prompts epars** incluent les points, les boites et le texte, qui servent de guidage approximatif pour indiquer ou les objets sont situes dans l'image. Par exemple, les annotateurs pourraient marquer le coin superieur gauche d'un objet avec un point ou dessiner une boite autour de l'objet entier. Les points et les boites sont representes par des "encodages positionnels", qui encodent l'information de localisation du prompt, combines avec des embeddings appris qui representent le type de prompt.
+
+Le texte libre est un autre type de prompt epars, et il est traite differemment des points et des boites. Les auteurs utilisent un encodeur de texte de CLIP, qui est un reseau de neurones pre-entraine capable de comprendre le langage naturel. L'encodeur de texte est utilise pour encoder les prompts textuels libres en un vecteur de caracteristiques utilisable par le modele.
+
+D'autre part, les **prompts denses** s'appuient sur un guidage plus detaille pour la segmentation, comme les masques. Les masques sont des annotations au niveau du pixel indiquant quelles parties de l'image appartiennent au premier plan et lesquelles a l'arriere-plan. Les auteurs utilisent des convolutions pour integrer les prompts denses (par exemple, les masques) et les ajoutent element par element a l'embedding de l'image (par exemple, une representation de haut niveau de l'image apprise par le modele). Cela permet au modele de mieux comprendre la relation entre les prompts denses et l'image, ce qui ameliore la precision de la segmentation.
+
+#### Decodeur de masques
+
+Le decodeur de masques prend les embeddings de l'image et du prompt ainsi qu'un token de sortie en entree et les mappe efficacement vers un masque. Le bloc decodeur est base sur une architecture Transformer modifiee, un type de reseau de neurones utilise dans les taches de traitement du langage naturel. Le bloc decodeur dispose a la fois d'auto-attention sur les prompts et d'attention croisee dans les deux directions. Cela lui permet de mettre a jour tous les embeddings.
+
+Apres deux blocs, l'embedding de l'image est surechantillonne, et un perceptron multicouche (MLP) mappe le token de sortie vers un classificateur lineaire dynamique. Ce classificateur calcule la probabilite de premier plan du masque a chaque emplacement de l'image. Le modele est concu pour predire plusieurs masques de sortie pour un seul prompt ambigu, trois masques etant suffisants pour la plupart des cas. Pendant l'entrainement, le modele utilise la perte minimale parmi les masques, et un score de confiance est predit pour chaque masque.
+
+La prediction de masque est supervisee en utilisant une combinaison lineaire de focal loss et de dice loss, qui sont des fonctions de perte couramment utilisees dans les taches de vision par ordinateur. Enfin, la tache de segmentation promptable est entrainnee en utilisant un melange de prompts geometriques et une configuration interactive avec 11 tours par masque. Cela permet une integration transparente dans le moteur de donnees.
+
+## Limites et conclusion
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894b3 6447ef022f20209f26e03be0 textures 1](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894b3_6447ef022f20209f26e03be0_textures-1.jpeg)
+
+Bien que l'approche decrite dans l'article ait montre des resultats impressionnants pour un large eventail de taches de segmentation d'images, il existe encore certaines limites a cette approche.
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894bb 6447ef0c805f6a52096cca92 textures 2](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894bb_6447ef0c805f6a52096cca92_textures-2.jpeg)
+
+Une limite est qu'il peut ne pas bien fonctionner sur les images avec des **textures ou des motifs complexes.**
+
+C'est parce que le modele s'appuie sur l'identification et la distinction des objets en fonction des motifs et des couleurs dans l'image, plutot que sur des informations de texture plus detaillees.
+
+De plus, le modele peut ne pas etre en mesure de segmenter avec precision des objets tres petits ou ayant un faible contraste avec l'arriere-plan.
+
+![Sam and foundation models in computer vision 66ed389f112913f53a7894b7 6447ef4591185c36a0c6d763 textures 3](/images/blog/sam-and-foundation-models-in-computer-vision-66ed389f112913f53a7894b7_6447ef4591185c36a0c6d763_textures-3.jpeg)
+
+Une approche classique de segmentation supervisee, en revanche, peut etre plus efficace pour certains cas d'usage specifiques. Par exemple, si la tache en question implique la segmentation d'un type specifique d'objet qui n'est pas present dans un modele pre-entraine, il peut etre plus efficace d'utiliser une segmentation supervisee classique avec un plus petit dataset d'images annotees specifiques a l'objet cible. De plus, si le dataset contient un grand nombre d'images avec des textures ou des motifs complexes, une approche de segmentation supervisee classique peut etre plus efficace pour identifier et segmenter ces objets.
+
+**En resume,** bien que SAM soit un outil puissant pour un large eventail de taches de segmentation d'images, il n'est peut-etre pas le meilleur choix pour des cas d'usage tres specifiques ou des images avec des textures ou des motifs complexes. Dans certains cas, une approche de segmentation supervisee classique peut etre plus efficace.

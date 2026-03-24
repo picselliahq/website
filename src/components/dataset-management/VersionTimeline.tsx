@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 const versions = [
   { id: 0, name: 'v1.0', images: 1200, annotations: 4800, date: 'Jan 15', status: 'archived' },
@@ -11,6 +12,7 @@ const versions = [
 
 export default function VersionTimeline() {
   const [activeVersion, setActiveVersion] = useState(2);
+  const t = useTranslations('datasetManagement.versionTimeline');
 
   return (
     <div className="relative">
@@ -65,30 +67,30 @@ export default function VersionTimeline() {
               <span className="text-xs font-mono text-[var(--picsellia-blue)] font-bold">{versions[activeVersion].name}</span>
             </div>
             <div>
-              <div className="text-sm font-medium text-[var(--label)]">Dataset: defect-detection</div>
-              <div className="text-xs text-[var(--tertiary-label)]">Last modified {versions[activeVersion].date}</div>
+              <div className="text-sm font-medium text-[var(--label)]">{t('dataset')}: defect-detection</div>
+              <div className="text-xs text-[var(--tertiary-label)]">{t('lastModified')} {versions[activeVersion].date}</div>
             </div>
           </div>
           <div className="flex gap-2">
             <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--tertiary-system-background)] text-[var(--secondary-label)] hover:bg-[var(--picsellia-blue)]/10 hover:text-[var(--picsellia-blue)] transition-colors">
-              Compare
+              {t('compare')}
             </button>
             <button className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[var(--picsellia-blue)] text-white">
-              Checkout
+              {t('checkout')}
             </button>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)]">
-            <div className="text-xs text-[var(--tertiary-label)] mb-1">Images</div>
+            <div className="text-xs text-[var(--tertiary-label)] mb-1">{t('images')}</div>
             <div className="text-xl font-bold font-mono text-[var(--label)]">{versions[activeVersion].images.toLocaleString()}</div>
           </div>
           <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)]">
-            <div className="text-xs text-[var(--tertiary-label)] mb-1">Annotations</div>
+            <div className="text-xs text-[var(--tertiary-label)] mb-1">{t('annotations')}</div>
             <div className="text-xl font-bold font-mono text-[var(--label)]">{versions[activeVersion].annotations.toLocaleString()}</div>
           </div>
           <div className="p-3 rounded-lg bg-[var(--tertiary-system-background)]">
-            <div className="text-xs text-[var(--tertiary-label)] mb-1">Change</div>
+            <div className="text-xs text-[var(--tertiary-label)] mb-1">{t('change')}</div>
             <div className="text-xl font-bold font-mono text-[var(--picsellia-green)]">
               +{activeVersion > 0 ? versions[activeVersion].images - versions[activeVersion - 1].images : versions[activeVersion].images}
             </div>

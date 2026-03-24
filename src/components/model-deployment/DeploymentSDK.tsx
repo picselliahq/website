@@ -1,6 +1,9 @@
 "use client";
 
+import { useTranslations } from 'next-intl';
+
 export default function DeploymentSDK() {
+  const t = useTranslations('modelDeployment.sdk');
   return (
     <section className="py-24 border-b border-[var(--border)] relative overflow-hidden">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[var(--system-orange)]/5 rounded-full blur-[100px]" />
@@ -8,14 +11,13 @@ export default function DeploymentSDK() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <span className="text-[var(--system-orange)] text-sm font-medium uppercase tracking-wider mb-3 block">
-            Developer Experience
+            {t('badge')}
           </span>
           <h2 className="text-3xl md:text-4xl font-semibold mb-4">
-            Deploy in a few lines of code
+            {t('title')}
           </h2>
           <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
-            Use the Python SDK to deploy, update, and manage models
-            programmatically. Full API access for CI/CD integration.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -24,10 +26,10 @@ export default function DeploymentSDK() {
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--system-red)]">
-                DEPLOY A MODEL
+                {t('deployModel')}
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
-                Python SDK
+                {t('pythonSdk')}
               </span>
             </div>
             <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
@@ -74,10 +76,10 @@ export default function DeploymentSDK() {
           <div className="card p-0 overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
               <span className="text-xs font-medium text-[var(--system-red)]">
-                RUN INFERENCE
+                {t('runInference')}
               </span>
               <span className="text-xs text-[var(--tertiary-label)]">
-                Python SDK
+                {t('pythonSdk')}
               </span>
             </div>
             <pre className="p-5 text-xs font-mono leading-relaxed overflow-x-auto bg-[var(--black)]">
@@ -136,7 +138,7 @@ export default function DeploymentSDK() {
         <div className="card p-0 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 border-b border-[var(--border)] bg-[var(--tertiary-system-background)]">
             <span className="text-xs font-medium text-[var(--picsellia-green)]">
-              REST API
+              {t('restApi')}
             </span>
             <span className="text-xs text-[var(--tertiary-label)]">cURL</span>
           </div>

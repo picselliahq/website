@@ -1,0 +1,218 @@
+---
+
+title: "L'AutoML remplace-t-il les data scientists ?"
+description: "Le machine learning a révolutionné la vision par ordinateur et le traitement du langage et transforme désormais la biologie et l'ingénierie."
+date: "2023-01-18"
+author:
+  name: "Picsellia Team"
+category: "News"
+image: "/images/blog/is-automl-replacing-data-scientists-hero.webp"
+imageAlt: "Is AutoML Replacing Data Scientists?"
+published: true
+tags: ["computer-vision", "dataset-management", "deep-learning", "document-processing", "experiment-tracking", "model-training", "pipelines"]
+---
+
+## Introduction
+
+![Is automl replacing data scientists](/images/blog/is-automl-replacing-data-scientists-img-0.jpeg)
+
+Le machine learning a révolutionné la vision par ordinateur et le traitement du langage et transforme désormais la biologie et l'ingénierie. Cependant, la plupart des méthodes de machine learning sont sensibles à de nombreuses décisions de conception, ce qui constitue un obstacle considérable pour les nouveaux utilisateurs.
+
+‍
+
+En deep learning, les praticiens doivent choisir parmi une multitude d'architectures neuronales, d'optimiseurs d'entraînement et d'hyperparamètres pour que les réseaux atteignent des performances suffisantes. Même les experts se retrouvent souvent à procéder par essais et erreurs fastidieux jusqu'à identifier un bon ensemble de choix pour un dataset particulier.
+
+‍
+
+Dans cet article, nous allons **explorer le domaine du machine learning automatique (AutoML)**. Nous visons à démystifier l'AutoML et à mener une discussion éclairée sur la façon dont il affecte le domaine de la data science. L'objectif ultime de l'AutoML est d'automatiser tous les processus du machine learning, en éliminant l'humain de la boucle. Mais ne vous enthousiasmez pas trop (ou ne stressez pas) car les data scientists et les ingénieurs ML ne sont pas encore au chômage.
+
+‍
+
+## Démystifier l'AutoML
+
+L'AutoML est un **terme générique** qui peut inclure tout effort visant à automatiser une partie ou des parties d'un projet de data science. Il vise à prendre des décisions basées sur les données de manière objective et automatisée. L'objectif ultime est de remplacer le data scientist humain. L'utilisateur fournirait des données d'entrée, et le système AutoML déterminerait l'approche la plus performante pour une application particulière avec une supervision humaine minimale.
+
+‍
+
+**L'AutoML peut être décomposé en quatre piliers principaux**, chacun ciblant une tâche différente, souvent avec une approche similaire. Ces quatre piliers sont les plus recherchés et implémentés à ce jour.
+
+‍
+
+***TLDR*** *:* Découvrir la meilleure combinaison d'hyperparamètres pour un modèle donné (HPO). Découvrir de nouvelles architectures de réseaux de neurones (NAS). Utiliser les expériences passées pour améliorer les nouvelles (Meta-Learning). Gérer certaines parties de la phase de prétraitement d'un pipeline ML. Si vous souhaitez plus de détails, lisez les sections ci-dessous.
+
+‍
+
+### Optimisation des hyperparamètres (HPO)
+
+![Is automl replacing data scientists](/images/blog/is-automl-replacing-data-scientists-img-1.png)
+
+‍
+
+Chaque modèle de machine learning possède des hyperparamètres. La tâche la plus basique du machine learning automatisé est de découvrir les combinaisons d'hyperparamètres qui optimisent les performances. Cependant, l'espace de recherche est toujours (pré)défini par un expert humain.
+
+Quelques méthodes de HPO sont :
+
+- Grid Search et Random Search [[1](https://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf)] : Ce sont les méthodes HPO essentielles ; elles automatisent le réglage manuel. Le Grid Search essaie chaque option demandée par l'utilisateur, tandis que le Random Search l'améliore en échantillonnant aléatoirement des configurations jusqu'à épuisement d'un budget de calcul.
+- L'optimisation bayésienne [[2]](https://ieeexplore.ieee.org/document/7352306) et ses variantes pratiques comme l'optimisation bayésienne sous contraintes. Elles peuvent obtenir d'excellents résultats, surpassant souvent les performances d'experts humains.
+- Méthodes basées sur les populations : Quelques exemples sont les *algorithmes génétiques ou évolutionnaires.* Elles maintiennent un ensemble de configurations et appliquent des perturbations (mutations) et des combinaisons de différents membres pour obtenir une nouvelle génération améliorée de configurations. L'algorithme le plus populaire est [CMA-ES](https://en.wikipedia.org/wiki/CMA-ES).
+- Méthodes basées sur le bandit : Elles déterminent le meilleur algorithme parmi un ensemble fini donné d'algorithmes basé sur des approximations de basse fidélité de leurs performances. Par exemple, elles n'exécuteront un modèle que pendant quelques itérations, élimineront les pires candidats puis continueront pour quelques itérations supplémentaires avant de les éliminer à nouveau. Les méthodes réussies incluent *Successive Halving* [*[3]*](https://www.academia.edu/49095673/Almost_optimal_exploration_in_multi_armed_bandits) et l'optimisation *Hyperband* [[4]](https://jmlr.org/papers/volume18/16-558/16-558.pdf).
+
+‍
+
+### Recherche d'architecture neuronale (NAS)
+
+![Is automl replacing data scientists](/images/blog/is-automl-replacing-data-scientists-img-2.png)
+
+‍
+
+Les architectures de réseaux de neurones profonds, quel que soit leur domaine d'application, deviennent de plus en plus complexes. La plupart de ces architectures sont conçues manuellement par des experts, une tâche assez chronophage et coûteuse. Concevoir une architecture optimale est très complexe mais aussi un facteur critique dans le succès du deep learning. Ainsi, l'étape logique suivante de l'AutoML est d'automatiser la recherche de nouvelles architectures de réseaux de neurones.
+
+‍
+
+La NAS en tant que tâche se compose de 3 étapes. *Premièrement,* un espace de recherche est défini. Cet espace de recherche définit quelles architectures peuvent potentiellement être découvertes par la NAS. Par exemple, un espace de recherche relativement simple est l'espace des architectures neuronales à structure chaînée où le flux d'information est séquentiel de la couche Li à la couche Li+1. Un exemple d'espace de recherche plus complexe serait l'[architecture résiduelle](https://en.wikipedia.org/wiki/Residual_neural_network).
+
+![Is automl replacing data scientists](/images/blog/is-automl-replacing-data-scientists-img-3.png)
+
+‍
+
+Fig.1 : Le framework de recherche d'architecture neuronale. Un espace de recherche A est défini, puis une stratégie de recherche est appliquée sur l'espace de recherche A. Les architectures qui dérivent de la recherche sont évaluées en utilisant une stratégie d'estimation de performance et le cycle se répète jusqu'à convergence. Workflow inspiré de : [[5]](https://arxiv.org/pdf/1808.05377.pdf)
+
+‍
+
+*Deuxièmement,* une stratégie de recherche est utilisée pour explorer l'espace de recherche souvent immense. De telles stratégies incluent l'optimisation bayésienne, le Reinforcement Learning et les méthodes basées sur le gradient.
+
+‍
+
+*Enfin,* chaque architecture découverte par la stratégie de recherche doit être évaluée. Entraîner le réseau et évaluer le dataset de validation est généralement prohibitif en temps. Par conséquent, une approximation est utilisée comme heuristique pour « ajuster » la stratégie de recherche. Certaines méthodes sont les estimations de basse fidélité, l'extrapolation de courbes d'apprentissage et les modèles one-shot [5].
+
+‍
+
+### Meta-Learning
+
+![Is automl replacing data scientists](/images/blog/is-automl-replacing-data-scientists-img-4.png)
+
+C'est un sujet à part entière que nous ne pouvons pas couvrir de manière exhaustive dans cet article. Cependant, puisqu'il est intégré à l'AutoML pour trouver les pipelines et modèles de machine learning les plus optimaux, nous allons brièvement expliquer le concept central.
+
+‍
+
+Le Meta-Learning signifie *apprendre à apprendre* en observant systématiquement comment différentes approches de ML performent dans une grande variété de tâches. Les hyperparamètres de modèles, les architectures de réseaux, les configurations de pipelines, les performances d'évaluation et le temps d'entraînement peuvent être considérés comme des *métadonnées d'entraînement*. En collectant des métadonnées, nous pouvons faire des estimations éclairées basées sur les données sur ce qui fonctionnera le mieux dans les scénarios futurs. Tout comme les humains tirent des connaissances de compétences antérieures pour en apprendre de nouvelles, le Meta-Learning fait de même pour la découverte et l'entraînement de nouveaux modèles. Son utilisation dans l'AutoML est un facteur significatif de son succès et de son efficacité en termes de coûts de calcul.
+
+‍
+
+### Prétraitement des données et feature engineering
+
+Cette partie du pipeline ML est probablement la plus difficile à automatiser entièrement. Certaines parties de ce processus comme la normalisation, la mise à l'échelle, la sélection de caractéristiques et parfois l'encodage de caractéristiques peuvent être automatisées relativement facilement. Vous pouvez trouver les meilleures techniques de normalisation (par ex. z-score/minimax) via une procédure d'optimisation des hyperparamètres. La sélection de caractéristiques peut être implémentée par des algorithmes itératifs comme la *sélection forward, l'élimination backward,* ou par des méthodes de filtrage comme les *filtres de corrélation.* Comme discuté dans les sections suivantes, d'autres parties du processus comme le nettoyage des données et le feature engineering sont beaucoup plus difficiles à automatiser.
+
+‍
+
+## Avantages de l'AutoML
+
+Vous devriez maintenant avoir une meilleure compréhension de ce que signifie l'AutoML. Ce n'est pas une baguette magique mais une combinaison de techniques d'optimisation, tout comme le machine learning. Cependant, il fait parfois des merveilles et offre plusieurs avantages :
+
+- Il aide à découvrir l'algorithme d'apprentissage le plus adapté à la tâche en question.
+- Il réduit considérablement le temps et les efforts nécessaires pour trouver les hyperparamètres optimaux d'un modèle.
+- Il peut produire des modèles plus performants en évaluation que ceux conçus par des humains.
+- Il automatise les processus itératifs et chronophages comme le réglage des hyperparamètres, permettant au data scientist de se concentrer sur des tâches plus critiques/difficiles comme la conception de solutions et la recherche.
+- Il aide à découvrir de nouvelles architectures de réseaux de neurones (NAS) ou des ensembles de modèles (via le Meta-Learning) que les experts humains ne pourraient pas découvrir.
+
+‍
+
+Globalement, l'AutoML nous aide à concevoir et entraîner plus de modèles de manière plus efficace. En conséquence, il peut nous aider à créer de meilleurs modèles que sans lui. Cette efficacité permet une conception de produits plus rapide, des découvertes dans les données et des livraisons sur le marché dans les délais.
+
+‍
+
+## Limitations de l'AutoML
+
+Ces avantages signifient-ils que les data scientists seront au chômage dans les prochaines années ? Pas si vite ; il y a des processus que l'AutoML ne peut pas ou ne gère pas encore de manière fiable.
+
+‍
+
+- **Évaluer les performances** : La précision et le score F1 sont souvent les métriques de base utilisées dans la littérature pour comparer différents modèles. Néanmoins, ces métriques reflètent rarement la valeur qu'un modèle doit apporter dans le monde réel. Choisir ou même concevoir de nouvelles métriques spécifiques au projet fait partie du travail d'un data scientist. La performance est subjective et se mesure de différentes manières, d'un projet à l'autre et d'une entreprise à l'autre. Choisir et concevoir la bonne métrique à optimiser est une tâche qu'aucun outil AutoML ne pourra jamais accomplir.
+
+‍
+
+- **Le nettoyage des données** est un processus complexe et adapté à chaque tâche du pipeline ML. Appliquer certaines règles pour accélérer le processus est possible, mais la supervision humaine est essentielle. Le data scientist doit d'abord très bien connaître ses données. Prenons un exemple de travail avec des données tabulaires. Une caractéristique peut manquer 90 % de ses entrées. Devrait-elle être automatiquement écartée par l'AutoML ? Ou cette caractéristique est-elle essentielle car elle encode une propriété fondamentale (par ex., un indice d'une maladie rare qui n'est pas présente chez les patients autrement sains) ? Comment l'imputation des données (remplissage des valeurs manquantes) sera-t-elle gérée dans ce scénario ? Cela peut être automatisé, mais la supervision humaine est essentielle car toutes les techniques n'ont pas de sens pour chaque dataset. De plus, les datasets très bruités (comme la plupart des datasets réels) peuvent avoir des types de données mixtes comme 'string' et 'float' dans une colonne, quelque chose qu'un outil automatisé ne saura pas gérer.
+
+‍
+
+- **Le feature engineering guidé par l'expertise métier** : Cela s'applique principalement au ML traditionnel et moins au deep learning. Néanmoins, le feature engineering est un art en soi, et couplé à l'expertise métier, il peut « faire la différence ». Avoir l'intuition humaine guidée par la connaissance du domaine pour piloter le processus de feature engineering peut fournir d'excellents résultats qu'aucun outil ne peut égaler.
+
+‍
+
+- **Types de données inhabituels : les données de réseaux, souvent représentées par des graphes, sont quelque chose que les outils AutoML sont loin de savoir gérer. Tout type de données qui ne tombe pas dans les catégories habituelles (tabulaire, image, texte) ne sera pas facilement digéré par des outils automatisés, du moins pas encore.**
+
+‍
+
+- **Au-delà de l'apprentissage supervisé : La plupart des outils AutoML sont efficaces pour résoudre des problèmes d'apprentissage supervisé. Gérer les problèmes non supervisés est plus difficile car il n'y a pas de métriques strictes pour mesurer les performances. L'AutoRL (Automatic Reinforcement Learning) n'est pas aussi bien étudié, sans parler de paradigmes d'apprentissage plus « exotiques » comme le** [**Self-Supervised Learning**](/post/reduce-training-data-with-self-supervised-learning) **ou le Few-shot Learning. L'AutoML peut toujours aider à choisir les bons paramètres mais ne gère pas les pipelines complets dans les paradigmes d'apprentissage plus avancés.**
+
+‍
+
+## Outils AutoML que vous pouvez utiliser
+
+Quelques outils AutoML bien connus peuvent être brièvement catégorisés comme suit :
+
+Outils pour le machine learning « traditionnel » automatique :
+
+- Auto-Sklearn
+- Auto-Weka
+- TPOT
+
+Outils pour le deep learning automatique :
+
+- Auto-Keras
+- Auto-Net
+
+Outils pour les séries temporelles :
+
+- PyCaret
+
+Outils offrant des capacités multiples :
+
+- AutoGluon
+- H2O
+
+‍
+
+La liste précédente est une liste non exhaustive d'outils et bibliothèques AutoML disponibles en open source. De nombreuses autres bibliothèques et outils existent, et de nouveaux apparaissent au moment où j'écris cet article. [Picsellia](/product-overview), bien que n'étant pas une plateforme AutoML en son coeur, peut apporter de nombreux avantages, en vous aidant à [entraîner les modèles les plus performants](/product-overview#experiment-tracking) et en [automatisant le déploiement](/product-overview#model-deployment) pour vous !
+
+‍
+
+## **L'AutoML remplace-t-il les data scientists à l'avenir ?**
+
+Le machine learning a sans aucun doute transformé de nombreuses industries et domaines. Malheureusement, de nombreuses personnes ont déjà perdu ou perdront leur emploi à l'avenir à cause du ML. Maintenant, le machine learning transforme son propre domaine !
+
+‍
+
+Sans aucun doute, l'AutoML pose un nouveau paradigme dans le domaine, et inévitablement, les data scientists et les ingénieurs machine learning devront s'adapter.
+
+L'expertise métier et les compétences en data science sont plus précieuses que jamais puisque la data science est introduite dans de nombreuses industries différentes, et l'AutoML permet aux non-experts d'appliquer le machine learning dans leur domaine.
+
+‍
+
+Cependant, le travail d'un data scientist a toujours reposé sur des connaissances théoriques et des compétences pratiques. D'une part, avoir une solide expertise théorique en statistiques, machine learning et deep learning est crucial. D'autre part, **les data scientists s'appuient sur des outils** pour développer des modèles et traiter les données. L'expertise dans les outils est une partie intégrante du succès de chaque data scientist.
+
+L'AutoML n'est qu'un outil de plus que les data scientists doivent apprendre à utiliser efficacement quand c'est à leur avantage, tout en respectant ses limitations. Puisque l'AutoML ne pourra pas résoudre tous les problèmes, vous devez savoir comment les gérer avec succès en utilisant d'autres outils couplés à l'intuition humaine.
+
+‍
+
+Concevoir des modèles avec sklearn et entraîner quelques réseaux de neurones simples sont des compétences qui peuvent être facilement automatisées. Un data scientist entièrement automatisé est cependant loin de la réalité. En fin de compte, quelqu'un doit opérer l'AutoML ; les managers et les dirigeants ne le feront pas eux-mêmes. Une chose est sûre ; moins de compétences techniques sont nécessaires pour appliquer le ML dans un domaine en utilisant de tels outils automatisés.
+
+‍
+
+## Conclusion
+
+L'adaptation est la clé. Le monde du ML a certainement changé. L'AutoML fait partie d'un mouvement visant à rendre le machine learning plus systématique (puisqu'il est encore ad hoc de nos jours) et plus efficace. Entraîner et livrer des modèles à la « vitesse de la lumière » est plus proche de ce que les entreprises et les marchés attendent. Les outils AutoML et les plateformes MLOps complètes comme Picsellia peuvent vous aider à itérer sur vos solutions et **livrer de la valeur beaucoup plus rapidement.** [**Demandez votre essai dès aujourd'hui !**](/trial)
+
+‍
+
+## Références
+
+[1] [Random Search for Hyper-Parameter Optimization](https://www.jmlr.org/papers/volume13/bergstra12a/bergstra12a.pdf)
+
+[2] [Taking the Human Out of the Loop: A Review of Bayesian Optimization.](https://ieeexplore.ieee.org/document/7352306)
+
+[3] [Almost optimal exploration in multi-armed bandits](https://www.semanticscholar.org/paper/Almost-Optimal-Exploration-in-Multi-Armed-Bandits-Karnin-Koren/43e0414b3cb52369c0ffece6eb043d0717776e92)
+
+[4] [Hyperband: A Novel Bandit-Based Approach to Hyperparameter Optimization](https://jmlr.org/papers/volume18/16-558/16-558.pdf)
+
+[5] [Neural Architecture Search: A Survey](https://arxiv.org/abs/1808.05377)

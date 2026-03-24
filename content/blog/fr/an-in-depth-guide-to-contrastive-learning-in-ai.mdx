@@ -1,0 +1,113 @@
+---
+
+title: "Guide approfondi de l'apprentissage contrastif en IA"
+description: "L'apprentissage contrastif est une technique de machine learning qui apprend aux modèles à distinguer les échantillons similaires des échantillons dissemblables."
+date: "2023-06-25"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-hero.webp"
+imageAlt: "An In-Depth Guide to Contrastive Learning in AI"
+published: true
+tags: ["annotation", "classification", "computer-vision", "dataset-management", "model-training", "object-detection", "segmentation"]
+---
+
+# **Guide approfondi de l'apprentissage contrastif en IA**
+
+Lorsqu'un enfant apprend à reconnaître les animaux, il peut avoir du mal au début à différencier les différentes espèces. Cependant, en comparant des animaux similaires et dissemblables, il apprend progressivement à identifier les caractéristiques communes au sein d'une espèce et entre les espèces.
+
+Cela illustre parfaitement le concept derrière l'apprentissage contrastif, qui vise à apprendre les caractéristiques générales d'un dataset en enseignant au modèle quels points de données sont similaires ou différents.
+
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-0.png)
+*Illustration du concept de l'apprentissage contrastif
+https://towardsdatascience.com/understanding-contrastive-learning-d5b19fd96607*
+
+‍
+
+## Introduction à l'apprentissage contrastif
+
+L'apprentissage contrastif est une technique de machine learning qui apprend aux modèles à distinguer les échantillons similaires des échantillons dissemblables. En contrastant différents échantillons, les modèles peuvent apprendre à identifier des attributs communs et à distinguer les classes.
+
+En apprentissage supervisé, les modèles sont entraînés sur des données étiquetées, mais l'apprentissage contrastif n'a pas besoin de données étiquetées, car il exploite les similarités et les différences entre les points de données pour apprendre des représentations. Cela le rend hautement évolutif et utile pour le pré-entraînement de modèles dans des scénarios où les données étiquetées sont limitées ou indisponibles.
+
+Cela permet aux modèles d'apprendre des caractéristiques de haut niveau sur les données avant d'effectuer des tâches spécifiques de vision par ordinateur telles que la classification d'images, la détection d'objets et la segmentation d'images. Pour en savoir plus sur ces tâches, lisez cet article : [Segmentation vs Détection vs Classification en vision par ordinateur : une analyse comparative](/post/segmentation-vs-detection-vs-classification-in-computer-vision-a-comparative-analysis)
+
+## Terminologie de l'apprentissage contrastif
+
+Pour comprendre l'apprentissage contrastif, il est important de se familiariser avec certains termes clés. L'apprentissage contrastif vise à apprendre des **représentations de données en basse dimension** en maximisant la similarité entre les **échantillons similaires** et en la minimisant entre les **échantillons dissemblables**. Cela se fait généralement en utilisant la **distance euclidienne** comme mesure de dissemblance dans l'espace de représentation.
+
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-1.png)
+
+L'objectif est de rapprocher les échantillons similaires dans l'espace de représentation, les rendant plus faciles à distinguer, tout en éloignant les échantillons dissemblables. En apprenant de telles représentations, les modèles peuvent capturer efficacement la structure sous-jacente des données et bien généraliser sur des échantillons jamais vus.
+
+## L'apprentissage contrastif en pratique
+
+En pratique, l'apprentissage contrastif implique la sélection de :
+
+- un échantillon ancre
+- un échantillon positif
+- plusieurs échantillons négatifs.
+
+L'échantillon ancre sert de point de référence. L'objectif est de rapprocher l'échantillon positif de l'ancre tout en éloignant les échantillons négatifs. En vision par ordinateur, cela est généralement réalisé en apprenant un encodeur, qui projette les images en embeddings dans un espace de basse dimension.
+
+![An in depth guide to contrastive learning in ai](/images/blog/an-in-depth-guide-to-contrastive-learning-in-ai-img-2.png)
+**Illustration du fonctionnement de l'apprentissage contrastif en pratique
+(Source de l'image : *[*Schroff et al. 2015*](https://arxiv.org/abs/1503.03832)*)**
+
+‍
+
+L'échantillon positif peut être une image de la même classe que l'ancre ou une version augmentée de l'image ancre. Dans le cas où cette méthodologie est choisie, Picsellia fournit des traitements d'augmentation de données prêts à l'emploi et personnalisables qui simplifient ce processus de préparation des données ancre-positif.
+
+Les échantillons négatifs sont généralement sélectionnés aléatoirement à partir d'une classe différente ou d'un ensemble d'images non liées. En optimisant le modèle pour minimiser la distance entre les paires positives et maximiser la distance entre les paires négatives, l'apprentissage contrastif permet au modèle d'apprendre des représentations discriminatives.
+
+## Apprentissage contrastif auto-supervisé
+
+La capacité d'apprendre à partir de données non étiquetées, appelée apprentissage auto-supervisé, est l'un des principaux avantages de l'apprentissage contrastif.
+
+L'apprentissage contrastif est un type d'apprentissage auto-supervisé, qui est lui-même un type d'apprentissage non supervisé, reposant sur la manière dont les données sont définies, sans s'appuyer sur un étiquetage explicite. Cela diffère de l'apprentissage supervisé, où le modèle est entraîné à partir d'un ensemble connu de paires entrée-sortie. D'autre part, l'apprentissage non supervisé implique l'entraînement du modèle sans aucune étiquette.
+
+Dans l'apprentissage contrastif auto-supervisé, l'échantillon positif est généré en augmentant l'image ancre, tandis que les échantillons négatifs sont sélectionnés aléatoirement à partir du mini-batch d'entraînement. Cela le rend hautement évolutif et utile pour le pré-entraînement, permettant aux modèles d'apprendre à partir de grandes quantités de données non étiquetées.
+
+Cependant, l'apprentissage contrastif auto-supervisé présente des défis en termes de faux négatifs et de dégradation de la qualité des représentations. Les faux négatifs désignent des négatifs générés à partir d'échantillons de la même classe que l'ancre, entraînant une dégradation de la qualité des représentations apprises. Résoudre ces défis et améliorer la qualité des négatifs est un domaine de recherche actif en apprentissage contrastif.
+
+## Apprentissage contrastif supervisé
+
+Bien que l'apprentissage contrastif auto-supervisé soit efficace pour apprendre à partir de données non étiquetées, l'application de l'apprentissage contrastif dans un cadre entièrement supervisé est relativement peu explorée. En apprentissage contrastif supervisé, les données étiquetées génèrent des échantillons positifs à partir d'exemples existants de la même classe, offrant plus de variabilité lors du pré-entraînement que de simples augmentations de l'ancre.
+
+Une approche récente appelée "Supervised Contrastive Learning" comble le fossé entre l'apprentissage auto-supervisé et l'apprentissage entièrement supervisé. Elle introduit une nouvelle fonction de perte, appelée SupCon, qui encourage les embeddings normalisés de la même classe à se rapprocher, tandis que les embeddings de classes différentes sont éloignés. Cette approche permet d'appliquer l'apprentissage contrastif dans un cadre supervisé, améliorant l'apprentissage de représentations pour des tâches telles que la classification d'images.
+
+## Défis et considérations de l'apprentissage contrastif
+
+La mise en œuvre de l'apprentissage contrastif s'accompagne de plusieurs défis et considérations tels que :
+
+- **La taille du batch** : une taille de batch plus grande permet d'avoir des échantillons négatifs plus diversifiés et difficiles, qui sont cruciaux pour apprendre de bonnes représentations.
+- **La qualité des échantillons négatifs** : le modèle doit être entraîné sur des négatifs difficiles qui améliorent la qualité des représentations sans inclure de faux négatifs.
+- **Les méthodes choisies pour générer les échantillons positifs** : déterminer la plus optimale est un domaine de recherche en cours en apprentissage contrastif.
+- **Le choix des augmentations** utilisées en apprentissage auto-supervisé joue un rôle crucial dans la qualité des représentations apprises.
+- **Le réglage des hyperparamètres**, tels que le taux d'apprentissage, la température et l'architecture de l'encodeur, est nécessaire pour améliorer la qualité des représentations et obtenir de meilleures performances en apprentissage contrastif.
+
+## Applications concrètes de l'apprentissage contrastif
+
+L'apprentissage contrastif a un large éventail d'applications dans les **tâches de vision par ordinateur** :
+
+- **Classification d'images** : les modèles apprennent des caractéristiques discriminatives capables de classifier avec précision les images en différentes classes.
+- **Détection d'objets** : amélioration de la représentation des objets.
+- **Segmentation d'images :** apprentissage de représentations de segments plus robustes et précises.
+
+L'apprentissage contrastif a également été appliqué à des **tâches d'analyse vidéo** telles que la reconnaissance d'actions, où les modèles apprennent à détecter et classifier les actions dans des séquences vidéo.
+
+## Limites de l'apprentissage non supervisé
+
+L'une des limites est le besoin d'une grande quantité de données non étiquetées. Les algorithmes d'apprentissage non supervisé et l'apprentissage contrastif s'appuient sur les patterns et les structures au sein des données pour apprendre des représentations significatives. Cependant, sans données étiquetées pour guider le processus d'apprentissage, les algorithmes nécessitent une quantité substantielle de données non étiquetées pour capturer efficacement les patterns sous-jacents.
+
+Une autre limite est le manque d'interprétabilité. Les modèles d'apprentissage non supervisé produisent souvent des représentations complexes difficiles à interpréter et à comprendre. Cela peut rendre difficile l'obtention d'informations sur les caractéristiques apprises et la compréhension du raisonnement derrière les prédictions du modèle.
+
+De plus, bien qu'il puisse apprendre des caractéristiques et des patterns de bas niveau, l'apprentissage non supervisé peut avoir du mal à capturer des relations plus complexes et des significations sémantiques de haut niveau présentes dans les données.
+
+## Conclusion
+
+L'apprentissage contrastif est une technique puissante en vision par ordinateur qui permet aux modèles d'apprendre les caractéristiques générales d'un dataset sans avoir besoin de données étiquetées. En contrastant des échantillons similaires et dissemblables, l'apprentissage contrastif permet aux modèles d'apprendre des représentations discriminatives et de capturer la structure sous-jacente des données.
+
+La plateforme Picsellia peut être un atout précieux pour cette technique, car elle implique de nombreuses itérations avec des configurations variées pour obtenir de meilleures performances. La plateforme offre la possibilité de mener un large éventail d'expériences, comme l'utilisation de différentes versions de datasets, d'ensembles d'hyperparamètres et de techniques d'évaluation. De plus, elle inclut une fonctionnalité de suivi des expériences qui conserve un historique de toutes les expériences, guidant les utilisateurs vers la version optimale de leurs modèles tout en gardant la trace des datasets utilisés.
+
+‍

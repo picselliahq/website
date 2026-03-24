@@ -1,17 +1,21 @@
+import { useTranslations } from 'next-intl';
+
 const splits = [
   { name: 'train', count: 8400, percent: 70, color: 'var(--picsellia-blue)' },
   { name: 'validation', count: 1800, percent: 15, color: 'var(--system-orange)' },
   { name: 'test', count: 1800, percent: 15, color: 'var(--picsellia-green)' },
 ];
 
-const features = [
-  'Automatic stratified splits by class distribution',
-  'Custom split ratios with reproducible seeds',
-  'No overlap guarantee between splits',
-  'Re-split without losing annotations',
-];
-
 export default function DataOrganizationSection() {
+  const t = useTranslations('datasetManagement.organization');
+
+  const features = [
+    t('feature1'),
+    t('feature2'),
+    t('feature3'),
+    t('feature4'),
+  ];
+
   return (
     <section className="py-24 border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto px-6">
@@ -20,13 +24,13 @@ export default function DataOrganizationSection() {
           <div className="order-2 lg:order-1">
             <div className="card p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-semibold text-[var(--label)]">Dataset Browser</h3>
+                <h3 className="text-lg font-semibold text-[var(--label)]">{t('datasetBrowser')}</h3>
                 <div className="flex items-center gap-2">
                   <button className="px-3 py-1.5 rounded-lg text-xs bg-[var(--tertiary-system-background)] text-[var(--secondary-label)]">
-                    Grid
+                    {t('grid')}
                   </button>
                   <button className="px-3 py-1.5 rounded-lg text-xs bg-[var(--system-orange)]/10 text-[var(--system-orange)]">
-                    Split
+                    {t('split')}
                   </button>
                 </div>
               </div>
@@ -59,15 +63,15 @@ export default function DataOrganizationSection() {
               <div className="mt-6 pt-6 border-t border-[var(--border)] grid grid-cols-3 gap-4 text-center">
                 <div>
                   <div className="text-xl font-bold font-mono text-[var(--label)]">12K</div>
-                  <div className="text-xs text-[var(--tertiary-label)]">Total images</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">{t('totalImages')}</div>
                 </div>
                 <div>
                   <div className="text-xl font-bold font-mono text-[var(--label)]">48K</div>
-                  <div className="text-xs text-[var(--tertiary-label)]">Annotations</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">{t('annotations')}</div>
                 </div>
                 <div>
-                  <div className="text-xl font-bold font-mono text-[var(--picsellia-green)]">Balanced</div>
-                  <div className="text-xs text-[var(--tertiary-label)]">Class dist.</div>
+                  <div className="text-xl font-bold font-mono text-[var(--picsellia-green)]">{t('balanced')}</div>
+                  <div className="text-xs text-[var(--tertiary-label)]">{t('classDist')}</div>
                 </div>
               </div>
             </div>
@@ -76,13 +80,13 @@ export default function DataOrganizationSection() {
           {/* Right - Content */}
           <div className="order-1 lg:order-2">
             <span className="text-[var(--system-orange)] text-sm font-medium uppercase tracking-wider mb-3 block">
-              Data Organization
+              {t('badge')}
             </span>
             <h2 className="text-3xl md:text-4xl font-semibold mb-6">
-              Structure your data the right way
+              {t('title')}
             </h2>
             <p className="text-[var(--secondary-label)] mb-8">
-              Proper data splits are crucial for model performance. Create reproducible train/val/test splits, stratify by class, and ensure no data leakage.
+              {t('subtitle')}
             </p>
 
             <div className="space-y-4">

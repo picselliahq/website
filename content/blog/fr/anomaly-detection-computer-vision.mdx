@@ -1,0 +1,105 @@
+---
+
+title: "Au-delà des bases de la détection d'anomalies en vision par ordinateur"
+description: "Découvrez comment les anomalies dans les données visuelles peuvent être détectées à l'aide d'outils de vision par ordinateur."
+date: "2023-12-13"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/anomaly-detection-computer-vision-hero.jpg"
+imageAlt: "Going beyond the Basics of Anomaly Detection in Computer Vision"
+published: true
+tags: ["annotation", "autonomous-vehicles", "computer-vision", "dataset-management", "deep-learning", "experiment-tracking", "healthcare", "manufacturing"]
+---
+
+![Anomaly detection computer vision](/images/blog/anomaly-detection-computer-vision-img-0.jpeg)
+*Source : [Pexels](https://www.pexels.com/)*
+
+Une anomalie est une valeur aberrante ou tout élément qui dévie du contenu habituel des données d'images. L'objectif de la [détection d'anomalies en vision par ordinateur est de détecter quand une image ou une trame vidéo](https://arxiv.org/abs/2109.13157) contient une valeur aberrante ou dévie de la normale. Elle s'appuie sur des techniques avancées de deep learning pour obtenir ces résultats.
+
+La détection d'anomalies en vision par ordinateur peut être réalisée en utilisant un apprentissage supervisé ou non supervisé. Bien que vous puissiez utiliser des techniques d'apprentissage supervisé pour effectuer la détection d'anomalies, elles constituent une solution intrinsèquement limitée pour cette tâche, étant donné que les datasets d'entraînement pour les cas d'usage de détection d'anomalies tendent à avoir des [classes d'étiquettes déséquilibrées](/post/improve-imbalanced-datasets-in-computer-vision).
+
+Heureusement, la vision par ordinateur est plus efficace avec les techniques de deep learning. Combiner l'apprentissage non supervisé et les techniques de deep learning comme les réseaux de neurones convolutifs (CNN), les auto-encodeurs, etc., est une bonne option. Le type d'approche que vous choisissez dépend principalement du dataset donné et de l'objectif de la détection d'anomalies.
+
+La détection d'anomalies utilisant la vision par ordinateur a de nombreuses applications :
+
+- Sécurité et surveillance
+- Programmation de véhicules autonomes
+- Détection d'anomalies en imagerie médicale
+- Maintenance des bâtiments et surveillance des stocks
+- Surveillance des rayonnages en commerce de détail
+- Surveillance des lignes de production
+
+## Approcher la détection d'anomalies en vision par ordinateur
+
+Détecter des anomalies dans les images ne devrait pas être considéré comme une tâche herculéenne. Cela nécessite généralement seulement une compréhension de la vision par ordinateur et de la tâche en question. La détection d'anomalies en vision par ordinateur a de nombreux cas d'usage et des applications infinies dans notre vie quotidienne, dont certaines sont encore en cours de découverte.
+
+Par exemple, une entreprise pharmaceutique peut introduire un modèle de détection d'anomalies dans son [pipeline de vision par ordinateur pour automatiser](/automated-pipelines) l'identification de médicaments défectueux ou inéligibles à la consommation. Vous suivriez généralement les étapes suivantes pour chaque cas d'usage ou scénario de détection d'anomalies :
+
+- **Compréhension du problème :** différents problèmes ont différentes stratégies de mise en œuvre, et comprendre quelle stratégie fonctionnerait le mieux pour une tâche donnée est vital pour réussir en détection d'anomalies. Un algorithme qui fonctionnerait parfaitement sur un dataset tabulaire pourrait avoir de mauvaises performances sur un dataset d'images.
+
+- **Prétraitement des données :** le dataset doit être traité pour tout projet de données afin de préparer l'entraînement du modèle. Le prétraitement gère les données manquantes, les incohérences, les déséquilibres, la mise à l'échelle, etc.
+
+- **Feature engineering :** le dataset prétraité doit subir un feature engineering et être divisé en un dataset d'images de test et d'entraînement.
+
+- **Sélection et entraînement du modèle :** la sélection du modèle est une autre partie importante du développement d'un modèle de détection d'anomalies. Vous devrez souvent expérimenter avec plusieurs techniques de deep learning pour trouver le meilleur modèle pour votre dataset.
+
+- **Évaluation du modèle :** l'évaluation du modèle fournit des informations sur les performances du modèle. Le modèle de deep learning appris doit être évalué en utilisant les images de test du feature engineering.
+
+- **Sélection du seuil :** un seuil peut être considéré comme le facteur décisif. Si le seuil est trop élevé, le modèle peut catégoriser certaines photos normales comme anomalies et vice versa. Les seuils sont fréquemment sélectionnés en fonction de recherches statistiques, de connaissances du domaine ou de tests.
+
+- **Déploiement du modèle :** c'est l'étape finale du processus de détection d'anomalies. À cette étape, le modèle final est déployé en production, où vous pouvez faire des inférences. Vous aurez besoin d'une surveillance supplémentaire et d'une maintenance périodique du modèle.
+
+## Détecter des anomalies dans une montagne de données
+
+Bien que détecter des anomalies dans de grandes quantités de données puisse sembler écrasant, de nombreux algorithmes et techniques ont été développés pour aider les ingénieurs ML et IA à mettre en œuvre la détection d'anomalies en vision par ordinateur.
+
+‍
+
+- **Estimation de densité :** l'estimation de densité utilise le contexte des échantillons et les densités des voisins pour estimer les anomalies. Un modèle de distribution de probabilité des images est appliqué dans ce cas. Ce modèle projette la distribution de chaque image normale dans un seul compartiment. Tout ce qui se trouve en dehors de la plage est considéré comme une valeur aberrante. Cette stratégie nécessite une quantité énorme d'images d'entraînement. Les modèles génératifs profonds peuvent aider à surmonter cette limitation de données.
+
+- **Classification à une classe :** comme son nom l'indique, les classificateurs à une classe sont des modèles de classification entraînés pour identifier une seule classe. Tout ce qui tombe en dehors du seuil de décision pour cette classe unique est étiqueté comme anomalie. Cette méthode surmonte la limitation de données de l'estimation de densité car elle ne nécessite que peu de données pour l'entraînement. Un bon exemple est la machine à vecteurs de support à une classe (SVM).
+
+- **Reconstruction d'images :** cette approche attribue une faible erreur aux images normales et une erreur élevée aux images anormales. Ce faisant, elle reconstruit les anomalies pour générer des images plus normales. Un algorithme courant utilisé pour la reconstruction d'images est l'auto-encodeur. Un auto-encodeur est un réseau de neurones artificiel largement utilisé dans la détection d'anomalies en raison de sa capacité à apprendre des représentations de données et à reconstruire les données avec précision. En détection d'anomalies par vision par ordinateur, les auto-encodeurs sont entraînés sur un dataset d'images normales. Pendant l'entraînement, le modèle apprend à encoder et décoder les instances normales. Vous pouvez ensuite identifier les anomalies en observant les erreurs de reconstruction du modèle.
+
+- **Classification auto-supervisée :** cela fonctionne sur le principe des modèles auto-apprenants. Les modèles extraient les caractéristiques essentielles des données d'images sans supervision. Ces modèles peuvent ensuite distinguer les images normales des images anormales en apprenant la position, la direction et la forme de diverses caractéristiques ou objets dans l'image.
+
+## Techniques pour gérer les données déséquilibrées en détection d'anomalies
+
+- **Augmentation de données :** l'augmentation de données utilise des techniques de manipulation de données telles que le cisaillement, la rotation, la coloration et le bruit pour augmenter la taille d'un petit dataset. L'augmentation de données est bénéfique pour gérer les données déséquilibrées. Avec l'augmentation de données, un seul exemple d'image peut devenir dix exemples en transformant certaines caractéristiques clés.
+
+Supposons qu'un ingénieur en machine learning essaie de construire un modèle capable de détecter des mains en temps réel. L'ingénieur devrait se procurer des images de mains dans différentes positions, teintes, cisaillements et couleurs pour construire un modèle robuste qui ne surapprendrait pas. Une façon d'obtenir un vaste ensemble d'images est de les augmenter. Ainsi, chaque image peut être cisaillée et transformée pour correspondre à chaque cas d'usage.
+
+![Anomaly detection computer vision](/images/blog/anomaly-detection-computer-vision-img-1.png)
+
+![Anomaly detection computer vision](/images/blog/anomaly-detection-computer-vision-img-2.png)
+
+L'image ci-dessus compare l'image originale avec quatre (4) autres variations augmentées de la même vérité terrain.
+
+‍
+
+- **Pondération des classes :** différents poids sont attribués aux différentes classes dans la pondération des classes. Lorsqu'un dataset a plus de caractéristiques concentrées dans une seule classe, vous pouvez remédier au déséquilibre des données en augmentant les poids de la classe minoritaire et en réduisant les poids de la classe la plus peuplée. La pondération des classes est optimale lorsqu'un modèle est entraîné pour identifier une seule classe (détection d'anomalies).
+
+![Anomaly detection computer vision](/images/blog/anomaly-detection-computer-vision-img-3.png)
+
+- **Classification hiérarchique :** cette méthode de classification utilise un système hiérarchique prédéterminé pour classifier les données. Par exemple, si vous avez un dataset de vêtements, la première hiérarchie pourrait être « vêtement », suivie du type de vêtement, qui pourrait être « chemise » ou « robe ». Ici, plusieurs modèles sont entraînés à différentes hiérarchies et combinés pour donner la prédiction finale. La classification hiérarchique est utilisée pour classifier les données déséquilibrées car elle améliore la précision globale des modèles de machine learning.
+
+![Anomaly detection computer vision](/images/blog/anomaly-detection-computer-vision-img-4.png)
+
+## Avantages de la vision par ordinateur pour la détection d'anomalies
+
+- **Détection de défauts en temps réel :** en utilisant la vision par ordinateur pour la surveillance des installations, les travailleurs n'ont pas besoin d'être sur place pour surveiller les défauts ; les modèles de détection d'anomalies peuvent détecter et signaler les défauts en temps réel.
+
+- **Maintenance prédictive :** la détection d'anomalies peut aider les entreprises à maintenir proactivement leurs installations. À long terme, les petits défauts qui pourraient causer des problèmes plus importants sont détectés comme anomalies et traités de manière proactive.
+
+- **Scalabilité et efficacité :** les modèles de détection d'anomalies sont faciles à mettre à l'échelle et assez efficaces pour de nombreux scénarios d'utilisation. Les systèmes de vision par ordinateur peuvent être facilement mis à l'échelle pour analyser simultanément de nombreuses images ou flux vidéo.
+
+- **Réduction des faux positifs :** les modèles de détection d'anomalies réduisent les faux positifs dans les modèles car ils ne contiennent qu'une seule classe.
+
+- **Sécurité renforcée :** les modèles de détection d'anomalies peuvent améliorer la sécurité en appliquant des techniques avancées de surveillance par vision par ordinateur pour détecter les valeurs aberrantes.
+
+## Les avancées futures du deep learning pour la détection d'anomalies
+
+Le deep learning est au cœur de la détection d'anomalies avec la vision par ordinateur. Des avancées technologiques sont en cours pour construire un modèle hybride qui combine différents modèles pour augmenter la précision du modèle de détection d'anomalies. Ce modèle proposé est encore en développement mais a le potentiel de changer le domaine de la détection d'anomalies utilisant la vision par ordinateur.
+
+De nos jours, les modèles de détection d'anomalies sont proactifs car ils signalent les anomalies avant que des défauts plus importants ne surviennent. À l'avenir, les modèles de détection d'anomalies seront moins passifs et plus réactifs. Ils pourront répondre aux défauts et les éliminer au fur et à mesure qu'ils surviennent.

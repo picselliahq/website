@@ -1,0 +1,116 @@
+---
+
+title: "Introduction au suivi d'objets en vision par ordinateur"
+description: "Découvrez comment le suivi d'objets s'appuie sur la détection d'objets en suivant les objets dans le temps. Explorez les différences clés, les défis et les techniques efficaces."
+date: "2024-07-23"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-hero.png"
+imageAlt: "An Introduction to Object Tracking in Computer Vision"
+published: true
+tags: ["annotation", "computer-vision", "deep-learning", "object-detection", "video-analysis", "yolo"]
+---
+
+***Les images sont à la détection d'objets ce que les vidéos sont à...***
+
+Si vous avez pensé au suivi d'objets, vous avez deviné juste. Fondamentalement, une image est un instantané visuel et une vidéo est une séquence d'images. Alors qu'est-ce qui différencie le suivi d'objets de la détection d'objets ?
+
+Cet article aborde le concept sous-jacent du suivi d'objets et ce qui le différencie de la détection d'objets. Il met ensuite en lumière les défis associés à la mise en œuvre du suivi d'objets et comment les surmonter.
+
+## Comment fonctionne le suivi d'objets ?
+
+Le suivi d'objets consiste à utiliser des algorithmes de vision par ordinateur pour surveiller le mouvement ou la position d'objets dans des images en mouvement. L'étiquetage des objets et le suivi du mouvement sont les deux concepts majeurs du suivi d'objets, absents de la détection d'objets.
+
+- **Étiquetage des objets** : dans le suivi d'objets, chaque objet détecté dans l'image reçoit une étiquette unique et ses coordonnées de position sont stockées.
+- **Suivi du mouvement** : les coordonnées de position stockées sont ensuite utilisées pour estimer la position future de l'objet et ainsi le suivre.
+
+‍
+
+[
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-0.png)
+](https://www.researchgate.net/figure/Overview-of-the-Kalman-Filter-based-object-tracking-algorithms-used-in-this-work_fig1_358134782)
+
+Se familiariser avec le workflow de suivi d'objets est essentiel pour comprendre le suivi d'objets et comment il peut être utilisé pour résoudre des problèmes courants. Bien que les workflows puissent varier entre les modèles et les situations d'utilisation, le workflow technique d'un modèle de suivi d'objets est le suivant :
+
+### 1. Détection d'objets
+
+C'est l'algorithme fondamental derrière le suivi d'objets. Ici, les objets d'intérêt sont identifiés dans une image donnée. La détection d'objets est réalisée à l'aide de méthodes traditionnelles telles que la soustraction d'arrière-plan, la différenciation d'images, etc., ou de méthodes basées sur le deep learning telles que les CNN, YOLO ou même R-CNN.
+
+### 2. Extraction de caractéristiques
+
+Une fois les objets détectés, l'étape suivante consiste à extraire des caractéristiques des objets qui peuvent aider au suivi. Les caractéristiques peuvent inclure :
+
+- **Caractéristiques d'apparence** : couleur, texture, forme, etc.
+- **Caractéristiques de mouvement** : vélocité, direction, etc.
+- **Caractéristiques profondes** : caractéristiques extraites des couches intermédiaires des réseaux de neurones profonds.
+
+### 3. Association d'objets
+
+Cette étape consiste à relier les objets détectés à travers les images. Les techniques utilisées pour l'association d'objets comprennent :
+
+- **Algorithmes d'association de données** : les algorithmes d'association de données relient les objets détectés à travers les images en faisant correspondre les objets dans des images successives en fonction de leurs positions prédites et de leurs caractéristiques d'apparence, assurant la continuité du suivi. Cela garantit la continuité et la précision du suivi des objets dans le temps. Parmi les exemples, on trouve l'[algorithme hongrois](https://arshren.medium.com/hungarian-algorithm-6cde8c4065a3#:~:text=This%20association%20problem%20can%20be,is%20either%20minimized%20or%20maximized.), les [Global Nearest Neighbors](https://www.cse.psu.edu/~rtc12/CSE598C/datassocPart1.pdf), et le [Joint Probabilistic Data Association](https://stonesoup.readthedocs.io/en/latest/auto_tutorials/08_JPDATutorial.html).
+- **Filtres de Kalman :** ils sont utilisés pour prédire la position future d'un objet en fonction de ses états et mesures précédents.
+- **Filtres à particules** : ils fournissent un cadre probabiliste pour le suivi de multiples objets.
+- **Approches de deep learning** : les réseaux de neurones récurrents (RNN), les réseaux LSTM (Long Short-Term Memory) ou les réseaux de neurones à graphes (GNN) sont utilisés pour l'association temporelle des objets.
+
+### 4. Algorithmes de suivi
+
+Ce sont les principaux algorithmes derrière le suivi d'objets. Ils sont utilisés pour suivre le mouvement d'un objet identifié à travers différentes images. Voici quelques-uns des algorithmes de suivi populaires :
+
+- **Suivi d'objet unique (SOT)** : il se concentre sur le suivi d'un seul objet. Parmi les exemples : CSRT (Discriminative Correlation Filter with Channel and Spatial Reliability), KCF (Kernelized Correlation Filter) et MOSSE (Minimum Output Sum of Squared Error).
+- **Suivi d'objets multiples (MOT)** : il se concentre sur le suivi simultané de plusieurs objets. Les techniques comprennent :
+**SORT (Simple Online and Real-Time Tracking)** : il combine la détection d'objets et le filtrage de Kalman.
+- **DeepSORT :** il étend SORT avec des descripteurs d'apparence.
+- **Tracktor** : il utilise des détecteurs d'objets pour la détection et le suivi.
+
+### 5. Gestion des occlusions et ré-identification
+
+Lors de la détection du mouvement d'un objet dans une séquence d'images, l'objet peut être bloqué, masqué ou apparaître partiellement dans une image. Ces situations, où les objets se chevauchent ou quittent et réintègrent l'image, sont des points critiques que les modèles de suivi d'objets peuvent avoir du mal à gérer. Ainsi, les algorithmes de gestion des occlusions et de ré-identification sont essentiels pour suivre les objets avec succès.
+
+Les techniques de gestion des occlusions impliquent l'utilisation de plusieurs caméras, l'exploitation des informations de profondeur et l'emploi de descripteurs de caractéristiques robustes. Les algorithmes de ré-identification incluent la correspondance d'objets qui sortent et réintègrent l'image en utilisant des caractéristiques d'apparence, des modèles de deep learning et des techniques d'apprentissage métrique.
+
+### 6. Post-traitement
+
+Après le suivi, les résultats peuvent être affinés à l'aide de techniques de post-traitement telles que :
+
+- **Lissage de trajectoire** : supprime les tremblements et le bruit des trajectoires suivies.
+- **Analyse comportementale** : analyse les patterns de mouvement et le comportement des objets suivis et aide à prédire leur prochain mouvement.
+
+## **Défis du suivi d'objets**
+
+Le suivi d'objets montre un grand potentiel pour automatiser de nombreuses tâches manuelles dans divers secteurs, tels que le militaire, la santé, l'industrie manufacturière, etc. Cependant, certains facteurs importants doivent être pris en compte lors de la mise en œuvre d'une solution de suivi d'objets. Ces défis entravent la précision et l'efficacité de la solution, et certains concepts peuvent être mis en œuvre pour les surmonter.
+
+**Variation des tailles d'objets** : l'un des défis majeurs du suivi d'objets est la gestion des variations de taille. Les objets peuvent apparaître plus grands ou plus petits selon leur distance par rapport à la caméra, les changements de perspective ou les niveaux de zoom. Cette variabilité peut compliquer le processus de suivi, car le tracker doit s'adapter continuellement à ces changements pour maintenir la précision. Les algorithmes traditionnels ont souvent des difficultés avec cet aspect, entraînant une perte de suivi ou une dérive dans le temps.
+
+Pour surmonter ce défi, les algorithmes de suivi modernes intègrent des mécanismes adaptatifs à l'échelle. Par exemple, l'algorithme CAMShift ajuste la taille de la fenêtre de recherche en fonction de la taille de l'objet dans chaque image. De même, les approches basées sur le deep learning comme SiamRPN (Siamese Region Proposal Network) intègrent des réseaux de proposition de régions qui s'adaptent dynamiquement à l'échelle de l'objet. Ces méthodes utilisent l'extraction de caractéristiques multi-échelles et l'apprentissage de paramètres d'échelle adaptatifs pour améliorer le suivi en cas de variations de taille.
+
+[
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-1.png)
+](https://augmentedstartups.medium.com/object-size-unveiling-its-impact-on-image-recognition-accuracy-cf0cb0c8681c)
+
+‍**Occlusion d'objets** : lorsque l'objet suivi est partiellement ou totalement masqué par d'autres objets ou entités, le processus de suivi est interrompu. C'est ce qu'on appelle l'occlusion. C'est particulièrement difficile dans les scènes encombrées ou les environnements dynamiques où plusieurs objets interagissent. Pendant l'occlusion, le tracker peut perdre de vue l'objet, entraînant des échanges d'identité ou la perte totale de l'objet.
+
+Pour résoudre l'occlusion, vous pouvez utiliser des techniques avancées de suivi comme la prédiction de mouvement et la ré-identification. Les filtres de Kalman et les filtres à particules peuvent prédire la position de l'objet pendant les occlusions temporaires, permettant au tracker de récupérer l'objet une fois qu'il réapparaît. Les approches basées sur le deep learning, telles que DeepSORT, intègrent des modèles d'apparence qui utilisent des caractéristiques visuelles pour ré-identifier les objets après une occlusion. De plus, l'intégration d'informations contextuelles provenant des objets environnants et l'exploitation de la cohérence temporelle peuvent améliorer la capacité du tracker à gérer efficacement les occlusions.
+
+[
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-2.png)
+](https://www.researchgate.net/figure/Object-Tracking-during-and-after-Occlusion_fig5_220166473)
+
+‍**Déséquilibre des classes d'objets** : le déséquilibre des classes d'objets survient lorsque la fréquence des différentes classes d'objets varie significativement dans les données d'entraînement. Ce déséquilibre peut conduire à des modèles biaisés qui fonctionnent bien sur les classes fréquentes mais mal sur les classes rares. Dans le suivi d'objets, ce défi se manifeste lorsque certains objets sont suivis avec précision tandis que d'autres sont systématiquement mal identifiés ou perdus.
+
+Résoudre le déséquilibre des classes d'objets implique des stratégies telles que l'augmentation de données et le rééchantillonnage. Augmenter le dataset avec des exemples synthétiques des classes sous-représentées peut aider à équilibrer les données d'entraînement. Vous pouvez également appliquer des techniques comme le suréchantillonnage de la classe minoritaire ou le sous-échantillonnage de la classe majoritaire. De plus, l'utilisation de fonctions de perte qui pénalisent davantage les erreurs de classification des classes rares, ou l'emploi de méthodes d'ensemble combinant plusieurs modèles, peut améliorer les performances sur toutes les classes d'objets.
+
+[
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-3.png)
+](https://medium.com/analytics-vidhya/how-focal-loss-fixes-the-class-imbalance-problem-in-object-detection-3d2e1c4da8d7)
+
+‍**Faible résolution d'image** : la faible résolution d'image présente un défi en réduisant la granularité temporelle de la vidéo, rendant plus difficile le suivi des objets en mouvement rapide. Avec moins d'images par seconde, moins d'informations sont disponibles pour estimer avec précision la trajectoire de l'objet, entraînant des lacunes potentielles dans la séquence de suivi et des risques accrus de perte de l'objet.
+
+Les techniques d'interpolation peuvent générer des images intermédiaires, fournissant une résolution temporelle plus élevée pour le suivi. Les modèles prédictifs, comme ceux utilisant les filtres de Kalman ou les réseaux de neurones récurrents (RNN), peuvent estimer la position de l'objet entre les images, maintenant la continuité du processus de suivi. La combinaison d'informations spatiales et temporelles provenant de caractéristiques de plus haut niveau peut également renforcer la robustesse des trackers, même dans les scénarios à faible fréquence d'images.
+
+[
+![An introduction to object tracking in computer vision picsellia](/images/blog/an-introduction-to-object-tracking-in-computer-vision-picsellia-img-4.png)
+](https://www.mdpi.com/2072-4292/13/13/2620)
+
+Le suivi d'objets en vision par ordinateur est une technologie transformatrice qui va au-delà de la détection d'objets en surveillant et prédisant continuellement le mouvement des objets à travers les images vidéo. Malgré les défis tels que l'occlusion d'objets et les variations de résolution, les avancées en algorithmes adaptatifs et en techniques d'extraction de caractéristiques assurent un suivi robuste et précis. Cette technologie améliore significativement l'efficacité, la sécurité et l'efficacité opérationnelle dans de multiples domaines, soulignant son rôle critique dans les applications modernes.

@@ -5,125 +5,61 @@ export interface FeatureCTA {
   label: string;
 }
 
-// ── CTA definitions ──────────────────────────────────────────────────
+export interface ConversionCopy {
+  headline: string;
+  subtext: string;
+}
 
-const CTA = {
-  labelingTool: {
-    title: "Annotate faster with AI assistance",
-    description:
-      "Picsellia's labeling tool supports bounding boxes, polygons, and segmentation masks with built-in AI assistance to speed up annotation.",
-    href: "/labeling-tool",
-    label: "Explore the Labeling Tool",
-  },
-  annotationCampaigns: {
-    title: "Orchestrate annotation at scale",
-    description:
-      "Run multi-step annotation campaigns with built-in quality control, team management, and progress tracking.",
-    href: "/annotation-campaigns",
-    label: "Discover Annotation Campaigns",
-  },
-  aiLab: {
-    title: "Train models your way",
-    description:
-      "Use pre-built pipelines for YOLO, SAM2, and more — or bring your own code with PyTorch, TensorFlow, or Hugging Face.",
-    href: "/ai-laboratory",
-    label: "Explore the AI Laboratory",
-  },
-  experimentTracking: {
-    title: "Track every experiment",
-    description:
-      "Log metrics, parameters, and artifacts automatically. Compare runs side by side and ship better models faster.",
-    href: "/experiment-tracking",
-    label: "See Experiment Tracking",
-  },
-  datasetManagement: {
-    title: "Organize and version your datasets",
-    description:
-      "Version, slice, and manage datasets with full traceability — from raw images to production-ready splits.",
-    href: "/dataset-management",
-    label: "Explore Dataset Management",
-  },
-  datalake: {
-    title: "Centralize your visual data",
-    description:
-      "Store, search, and organize millions of images in a single place with tags, metadata, and visual similarity search.",
-    href: "/datalake",
-    label: "Explore the Datalake",
-  },
-  modelDeployment: {
-    title: "Deploy models to cloud or edge",
-    description:
-      "Ship computer vision models with auto-scaling serverless infrastructure and 99.9% uptime.",
-    href: "/model-deployment",
-    label: "Explore Model Deployment",
-  },
-  modelMonitoring: {
-    title: "Monitor models in production",
-    description:
-      "Detect data drift and anomalies in real time. Close the feedback loop and keep your models accurate.",
-    href: "/model-monitoring",
-    label: "Explore Model Monitoring",
-  },
-  automatedPipelines: {
-    title: "Automate your ML pipelines",
-    description:
-      "Set up continuous training and deployment with automated triggers, shadow deployments, and feedback loops.",
-    href: "/automated-pipelines",
-    label: "Explore Automated Pipelines",
-  },
-  productOverview: {
-    title: "Ship vision AI 10x faster",
-    description:
-      "Picsellia is the end-to-end MLOps platform for computer vision — from data management to production deployment.",
-    href: "/product-overview",
-    label: "See the Platform",
-  },
-  manufacturing: {
-    title: "Computer vision for manufacturing",
-    description:
-      "See how Picsellia powers defect detection and quality control on production lines.",
-    href: "/industry/manufacturing",
-    label: "See Manufacturing Solutions",
-  },
-  agriculture: {
-    title: "Computer vision for agriculture",
-    description:
-      "Monitor crop health, optimize yields, and improve animal welfare with AI-powered visual analysis.",
-    href: "/industry/agriculture",
-    label: "See Agriculture Solutions",
-  },
-  energy: {
-    title: "Computer vision for energy",
-    description:
-      "Automate infrastructure inspection and predictive maintenance across your energy assets.",
-    href: "/industry/energy",
-    label: "See Energy Solutions",
-  },
-  wasteManagement: {
-    title: "Computer vision for waste management",
-    description:
-      "Automate waste sorting and boost recycling rates with real-time visual recognition.",
-    href: "/industry/waste-management",
-    label: "See Waste Management Solutions",
-  },
-} as const satisfies Record<string, FeatureCTA>;
+// Translation function type — matches next-intl's getTranslations / useTranslations
+type TranslationFn = (key: string) => string;
 
-// ── Category → primary CTA ──────────────────────────────────────────
+// ── CTA keys and their hrefs ────────────────────────────────────────
+
+const CTA_KEYS = {
+  labelingTool: "/labeling-tool",
+  annotationCampaigns: "/annotation-campaigns",
+  aiLab: "/ai-laboratory",
+  experimentTracking: "/experiment-tracking",
+  datasetManagement: "/dataset-management",
+  datalake: "/datalake",
+  modelDeployment: "/model-deployment",
+  modelMonitoring: "/model-monitoring",
+  automatedPipelines: "/automated-pipelines",
+  productOverview: "/product-overview",
+  manufacturing: "/industry/manufacturing",
+  agriculture: "/industry/agriculture",
+  energy: "/industry/energy",
+  wasteManagement: "/industry/waste-management",
+} as const;
+
+type CTAKey = keyof typeof CTA_KEYS;
+
+/** Build a FeatureCTA from a translation key and the `blogCta` namespace translator. */
+function buildCTA(key: CTAKey, t: TranslationFn): FeatureCTA {
+  return {
+    title: t(`featureCTAs.${key}.title`),
+    description: t(`featureCTAs.${key}.description`),
+    href: CTA_KEYS[key],
+    label: t(`featureCTAs.${key}.label`),
+  };
+}
+
+// ── Category → primary CTA key ─────────────────────────────────────
 // Strong signal: the blog category directly indicates the best feature CTA.
 
-const CATEGORY_PRIMARY: Record<string, FeatureCTA> = {
-  YOLO: CTA.aiLab,
-  Tutorial: CTA.aiLab,
-  "Data Management": CTA.datasetManagement,
-  "Data Science": CTA.experimentTracking,
-  MLOps: CTA.automatedPipelines,
-  Manufacturing: CTA.manufacturing,
-  "Model Monitoring": CTA.modelMonitoring,
-  "Edge AI": CTA.modelDeployment,
-  Onboarding: CTA.productOverview,
-  Product: CTA.productOverview,
-  News: CTA.productOverview,
-  "Customer Story": CTA.productOverview,
+const CATEGORY_PRIMARY: Record<string, CTAKey> = {
+  YOLO: "aiLab",
+  Tutorial: "aiLab",
+  "Data Management": "datasetManagement",
+  "Data Science": "experimentTracking",
+  MLOps: "automatedPipelines",
+  Manufacturing: "manufacturing",
+  "Model Monitoring": "modelMonitoring",
+  "Edge AI": "modelDeployment",
+  Onboarding: "productOverview",
+  Product: "productOverview",
+  News: "productOverview",
+  "Customer Story": "productOverview",
 };
 
 // ── Keyword rules for secondary CTA ─────────────────────────────────
@@ -131,161 +67,123 @@ const CATEGORY_PRIMARY: Record<string, FeatureCTA> = {
 
 // Industry vertical rules — only matched against title + description since
 // many CV posts mention industries in passing.
-const INDUSTRY_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
+const INDUSTRY_RULES: { keywords: RegExp; ctaKey: CTAKey }[] = [
   {
     keywords:
       /manufactur|defect.detect|quality.control|visual.inspect|production.line|\bPCB\b/i,
-    cta: CTA.manufacturing,
+    ctaKey: "manufacturing",
   },
   {
     keywords: /agricultur|crop.health|crop.monitor|livestock|precision.farm/i,
-    cta: CTA.agriculture,
+    ctaKey: "agriculture",
   },
   {
     keywords:
       /energy.sector|pipeline.inspect|infrastructure.inspect|power.grid|solar.panel/i,
-    cta: CTA.energy,
+    ctaKey: "energy",
   },
   {
     keywords: /waste.manag|recycl|sorting.automat|waste.sort/i,
-    cta: CTA.wasteManagement,
+    ctaKey: "wasteManagement",
   },
 ];
 
 // Feature/product rules — matched against full content.
-const KEYWORD_RULES: { keywords: RegExp; cta: FeatureCTA }[] = [
+const KEYWORD_RULES: { keywords: RegExp; ctaKey: CTAKey }[] = [
   // Annotation (specific phrases, not bare "label")
   {
     keywords:
       /\b(annotation.campaign|annotation.workflow|human.in.the.loop|HITL|review.pipeline)\b/i,
-    cta: CTA.annotationCampaigns,
+    ctaKey: "annotationCampaigns",
   },
   {
     keywords:
       /\b(data.annotation|annotation.tool|labeling.tool|bounding.box.annotation|polygon.annotation|segmentation.mask)\b/i,
-    cta: CTA.labelingTool,
+    ctaKey: "labelingTool",
   },
 
   // Training & models
   {
     keywords:
       /\b(yolo|train.model|model.training|fine.tun|custom.dataset.train|training.pipeline|transfer.learn|self.supervised)\b/i,
-    cta: CTA.aiLab,
+    ctaKey: "aiLab",
   },
   {
     keywords:
       /\b(experiment.track|hyperparameter|coco.metric|mAP.score|compare.model|model.comparison|precision.recall)\b/i,
-    cta: CTA.experimentTracking,
+    ctaKey: "experimentTracking",
   },
 
   // Data
   {
     keywords:
       /\b(dataset.version|data.curation|dataset.slic|dataset.split|dataset.organiz)\b/i,
-    cta: CTA.datasetManagement,
+    ctaKey: "datasetManagement",
   },
   {
     keywords:
       /\b(datalake|data.lake|visual.search|image.embedding|image.search|data.repository)\b/i,
-    cta: CTA.datalake,
+    ctaKey: "datalake",
   },
   {
     keywords:
       /\b(data.quality|data.drift|imbalanced.dataset|data.augment|data.centric)\b/i,
-    cta: CTA.datasetManagement,
+    ctaKey: "datasetManagement",
   },
 
   // Deployment & edge
   {
     keywords:
       /\b(model.deploy|edge.device|edge.comput|model.optimi|inference.speed|real.time.detect|model.serving)\b/i,
-    cta: CTA.modelDeployment,
+    ctaKey: "modelDeployment",
   },
 
   // Monitoring
   {
     keywords:
       /\b(model.monitor|drift.detect|anomaly.detect.production|production.monitor|feedback.loop|continuous.improv)\b/i,
-    cta: CTA.modelMonitoring,
+    ctaKey: "modelMonitoring",
   },
 
   // MLOps / pipelines
   {
     keywords:
       /\b(mlops|cvops|CI.CD|automat.pipeline|continuous.training|continuous.deploy)\b/i,
-    cta: CTA.automatedPipelines,
+    ctaKey: "automatedPipelines",
   },
 
   // Broad CV topics → product overview
   {
     keywords:
       /\b(computer.vision|object.detect|image.classif|semantic.segment|instance.segment)\b/i,
-    cta: CTA.productOverview,
+    ctaKey: "productOverview",
   },
 ];
 
 // ── Conversion copy (category → headline + subtext) ─────────────────
 
-export interface ConversionCopy {
-  headline: string;
-  subtext: string;
-}
-
-const CATEGORY_CONVERSION: Record<string, ConversionCopy> = {
-  Tutorial: {
-    headline: "Ready to try this yourself?",
-    subtext:
-      "Get hands-on with Picsellia. Train, deploy, and monitor CV models from one platform.",
-  },
-  YOLO: {
-    headline: "Train YOLO models in minutes",
-    subtext:
-      "Picsellia comes with built-in Ultralytics pipelines. Upload your data and start training.",
-  },
-  MLOps: {
-    headline: "Put your MLOps into practice",
-    subtext:
-      "Stop stitching tools together. Get an end-to-end CV platform with built-in automation.",
-  },
-  "Data Management": {
-    headline: "Organize your visual data today",
-    subtext:
-      "Version datasets, manage annotations, and track lineage from one place.",
-  },
-  "Data Science": {
-    headline: "Ship models faster",
-    subtext:
-      "Track experiments, compare runs, and iterate faster with built-in tooling.",
-  },
-  Manufacturing: {
-    headline: "Automate visual inspection",
-    subtext:
-      "See how teams deploy defect detection models to production lines with Picsellia.",
-  },
-  "Model Monitoring": {
-    headline: "Keep your models accurate",
-    subtext: "Detect drift, close feedback loops, and retrain automatically.",
-  },
-  "Edge AI": {
-    headline: "Deploy to edge in minutes",
-    subtext:
-      "Optimize and ship models to edge devices with auto-scaling infrastructure.",
-  },
-  "Customer Story": {
-    headline: "Join teams already shipping CV",
-    subtext:
-      "See how companies like yours accelerate computer vision with Picsellia.",
-  },
+/** Map category names to translation-safe keys (no spaces/special chars). */
+const CATEGORY_CONVERSION_KEY: Record<string, string> = {
+  Tutorial: "Tutorial",
+  YOLO: "YOLO",
+  MLOps: "MLOps",
+  "Data Management": "DataManagement",
+  "Data Science": "DataScience",
+  Manufacturing: "Manufacturing",
+  "Model Monitoring": "ModelMonitoring",
+  "Edge AI": "EdgeAI",
+  "Customer Story": "CustomerStory",
 };
 
-const DEFAULT_CONVERSION: ConversionCopy = {
-  headline: "Ready to build computer vision?",
-  subtext:
-    "Go from raw images to production models. Free trial, no credit card, cancel anytime.",
-};
-
-export function getConversionCopy(category: string): ConversionCopy {
-  return CATEGORY_CONVERSION[category] ?? DEFAULT_CONVERSION;
+export function getConversionCopy(
+  category: string,
+  t: TranslationFn,
+): ConversionCopy {
+  const key = CATEGORY_CONVERSION_KEY[category] ?? "default";
+  return {
+    headline: t(`conversionCopy.${key}.headline`),
+    subtext: t(`conversionCopy.${key}.subtext`),
+  };
 }
 
 /**
@@ -305,25 +203,28 @@ export function getFeatureCTAs(
     category: string;
     content: string;
   },
+  t: TranslationFn,
   limit = 2,
 ): FeatureCTA[] {
   const results: FeatureCTA[] = [];
   const seen = new Set<string>();
 
   // 1. Category-based primary
-  const primary = CATEGORY_PRIMARY[post.category];
-  if (primary) {
-    results.push(primary);
-    seen.add(primary.href);
+  const primaryKey = CATEGORY_PRIMARY[post.category];
+  if (primaryKey) {
+    const cta = buildCTA(primaryKey, t);
+    results.push(cta);
+    seen.add(cta.href);
   }
 
   // 2. Industry rules — matched only against title + description
   const titleDesc = `${post.title} ${post.description}`;
   for (const rule of INDUSTRY_RULES) {
     if (results.length >= limit) break;
-    if (!seen.has(rule.cta.href) && rule.keywords.test(titleDesc)) {
-      seen.add(rule.cta.href);
-      results.push(rule.cta);
+    const href = CTA_KEYS[rule.ctaKey];
+    if (!seen.has(href) && rule.keywords.test(titleDesc)) {
+      seen.add(href);
+      results.push(buildCTA(rule.ctaKey, t));
     }
   }
 
@@ -331,15 +232,16 @@ export function getFeatureCTAs(
   const haystack = `${post.title} ${post.description} ${post.content}`;
   for (const rule of KEYWORD_RULES) {
     if (results.length >= limit) break;
-    if (!seen.has(rule.cta.href) && rule.keywords.test(haystack)) {
-      seen.add(rule.cta.href);
-      results.push(rule.cta);
+    const href = CTA_KEYS[rule.ctaKey];
+    if (!seen.has(href) && rule.keywords.test(haystack)) {
+      seen.add(href);
+      results.push(buildCTA(rule.ctaKey, t));
     }
   }
 
   // 4. Fallback
   if (results.length === 0) {
-    results.push(CTA.productOverview);
+    results.push(buildCTA("productOverview", t));
   }
 
   return results;

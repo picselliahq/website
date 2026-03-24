@@ -1,0 +1,91 @@
+---
+
+title: "MLOps de bout en bout et reproductible pour la vision par ordinateur"
+description: "Tout pipeline ML d'entreprise devrait automatiser les différentes étapes du cycle de vie ML. Cette automatisation est généralement obtenue en compartimentant chaque étape en tant que service autonome."
+date: "2023-02-15"
+author:
+  name: "Picsellia Team"
+category: "Computer Vision"
+image: "/images/blog/end-to-end-repeatable-mlops-for-computer-vision-hero.jpeg"
+imageAlt: "End-to-End Repeatable MLOps for Computer Vision"
+published: true
+tags: ["api", "computer-vision", "deployment", "edge-deployment", "mlops", "model-training", "pipelines"]
+---
+
+## Pipeline automatisé et compartimentalisation
+
+![End to end repeatable mlops for computer vision](/images/blog/end-to-end-repeatable-mlops-for-computer-vision-img-0.jpeg)
+
+Tout d'abord, tout pipeline ML d'entreprise devrait automatiser les différentes étapes du cycle de vie ML. Cette automatisation est généralement obtenue en compartimentant chaque étape en tant que service autonome, plutôt que de construire un notebook Jupyter monolithique ou un script avec toutes les étapes implémentées dans un seul module de programmation.
+
+Par exemple, dans une application de vision par ordinateur en entreprise, l'ingestion des données peut être gérée par un service indépendant supervisé par une équipe distincte d'annotateurs de données et d'experts ETL. Ce service peut ensuite communiquer avec le service de nettoyage, de transformation et de validation des données via une API maintenue par une équipe data séparée. L'équipe hautement qualifiée d'experts en vision par ordinateur peut utiliser le pipeline de données traitées pour construire, entraîner et évaluer les modèles CV. Enfin, des experts CVOps spécialisés avec des compétences en CI/CD peuvent construire un service pour livrer le modèle en production et le surveiller en permanence. Le pipeline est donc un ensemble de services qui fonctionnent indépendamment mais opèrent de manière coordonnée pour garantir qu'un modèle d'IA fonctionne de façon transparente. Ce processus est analogue au travail avec des conteneurs dans le développement logiciel. Appliquer cette approche au machine learning permet à une organisation d'économiser un temps et un argent considérables tout en minimisant les incohérences et en évitant les duplications.
+
+La vraie question est maintenant de savoir si une organisation devrait construire un tel pipeline complexe à partir de zéro, opter pour des outils MLOps gérés par un fournisseur, ou exploiter des frameworks open source. Chaque option doit être évaluée par rapport aux caractéristiques mentionnées ci-dessus pour éviter les pièges courants du MLOps et prendre une décision éclairée.
+
+- **Flexibilité** : Construire ou acheter — la plateforme doit être suffisamment flexible pour répondre à différentes situations et cas particuliers. Chaque cas peut nécessiter différentes techniques de modélisation ou bibliothèques, ainsi que des exigences de données variées. Une plateforme construite sur mesure offre la flexibilité d'ajouter plus de fonctionnalités et de modules aux outils CVOps en interne. Mais une plateforme CVOps gérée est plus rigide face aux changements et ne peut être modifiée que par le fournisseur.
+
+- **Interopérabilité** : Le marché des outils MLOps est encore en évolution. Un outil open source qui automatise l'ingestion et le nettoyage des données peut ne pas prendre en charge l'entraînement ou le déploiement. Cependant, l'outil open source devrait pouvoir fonctionner harmonieusement avec les modules d'entraînement et de déploiement construits sur mesure. En revanche, un outil MLOps géré n'est généralement pas interopérable.
+
+- **Compatibilité** : Un outil CVOps efficace doit s'intégrer avec l'ensemble d'outils métier existants de l'organisation. Un pipeline construit sur mesure peut assurer la compatibilité à travers toute la pile technologique, mais cela coûte cher. De plus, les talents nécessaires peuvent ne pas être à disposition de l'entreprise. Elle devrait lancer un cycle de recrutement coûteux pour intégrer des ressources de haute qualité capables d'exécuter l'implémentation du pipeline. D'un autre côté, un outil CVOps géré peut ne pas offrir les connecteurs pertinents pour la pile existante d'une entreprise par défaut.
+
+- **Facilité d'utilisation** : L'expérience utilisateur et le design de l'outil doivent être fluides pour permettre une utilisation facile par les différents membres de l'équipe. Dans un pipeline CVOps construit sur mesure, l'équipe a un contrôle total sur les éléments UX. Elle peut les adapter selon les directives et préférences internes de l'entreprise. Cependant, les outils gérés sont conçus par les fournisseurs pour offrir une UI et une UX génériques, qui peuvent ne pas convenir à des besoins métier spécifiques.
+
+- **Support communautaire ou fournisseur** : L'un des avantages des outils open source est leur vaste support communautaire. Cependant, le support communautaire n'est pas toujours utile lorsqu'il s'agit d'implémenter des cas d'usage métier complexes. Une plateforme MLOps gérée par un fournisseur offrant une consultation experte peut être plus adaptée dans ce cas. Mais, selon la qualité de leur support client, cela peut prendre du temps pour les joindre.
+
+## Un mot sur les outils CVOps open source — quelques problèmes courants
+
+Un pipeline CVOps open source est comme un puzzle. Si une entreprise parvient à assembler les bonnes pièces, elle peut obtenir une expérience fluide de développement, déploiement et monitoring ML. Pour de nombreuses entreprises, en particulier les petites et moyennes, opter pour des outils open source semble viable en raison de coûts négligeables. Cependant, les entreprises à l'échelle de l'entreprise peuvent trouver difficile d'assembler un framework de bout en bout qui peut évoluer selon les besoins métier sans causer de problèmes significatifs.
+
+Indépendamment de la taille de l'entreprise et des besoins métier, les outils MLOps et CVOps open source présentent les problèmes suivants :
+
+- En général, les outils MLOps open source, et particulièrement pour le CVOps, n'offrent pas de solution de bout en bout. Certains outils peuvent offrir l'automatisation du traitement des données, tandis que d'autres ne peuvent être utilisés que pour les déploiements automatisés.
+
+- Il peut devenir extrêmement difficile de faire fonctionner ensemble plusieurs outils open source. Par conséquent, la compatibilité et l'interopérabilité peuvent représenter de véritables défis. Différents outils utilisent différents types et versions de bibliothèques de données et de modélisation qui peuvent être incompatibles entre eux. De plus, les outils open source utilisent parfois des packages obsolètes qui, une fois découverts, causent plus de tort que de bien.
+
+- Sur le plan de la flexibilité, un outil open source conçu pour gérer, disons, des données tabulaires ne peut pas être facilement modifié pour gérer des données d'images. Même un outil open source spécialisé en CV peut manquer de fonctionnalités comme l'analyse de vidéos et leur conversion en images. L'entreprise utilisant de tels outils devrait consacrer des ressources significatives pour implémenter les fonctionnalités souhaitées.
+
+- Tous les data scientists et ingénieurs ML ne maîtrisent pas le code d'implémentation des différents outils open source.
+
+## Quel outil CVOps choisir ? — Sur mesure, open source ou conçu par un fournisseur
+
+L'architecte CV ou les dirigeants de l'entreprise doivent prendre une décision réfléchie basée sur leurs besoins métier et les ressources à leur disposition. Bien que les outils open source soient économiques, ils présentent de nombreux problèmes que nous avons abordés ci-dessus. Particulièrement à l'échelle de l'entreprise, les outils open source ne sont pas une option viable.
+
+Une entreprise avec suffisamment de ressources et une livraison produit flexible peut choisir de construire son propre outil CVOps. Cependant, elle doit s'assurer que l'outil est flexible, compatible, interopérable, évolutif et facile à utiliser. Elle doit documenter tous ses processus d'implémentation pour faciliter l'utilisation entre les équipes. Souvent, les entreprises pourraient employer une équipe de support pour maintenir l'outil.
+
+Bien qu'un outil construit sur mesure soit une option, les plateformes CVOps gérées peuvent offrir des avantages plus favorables que les plateformes sur mesure et open source. Les solutions gérées par un fournisseur sont entièrement de bout en bout avec un pipeline intégré qui offre toutes les opérations ML, de l'ingestion des données au déploiement et au monitoring du modèle. De plus, les fournisseurs disposent de personnel spécialisé travaillant sur le volet opérationnel, ce qui conduit à un minimum de problèmes de configuration d'infrastructure, d'installation et de support.
+
+Une organisation n'a qu'à communiquer ses exigences au fournisseur, et tout le reste sera pris en charge. De plus, en optant pour une solution gérée, ce n'est pas seulement la plateforme qui est achetée. C'est plutôt un partenariat stratégique avec un fournisseur qui est important pour le succès du pipeline CV.
+
+Cependant, avec les solutions gérées, l'inconvénient est que le code source est presque inaccessible et que les extensions peuvent être difficiles. Si l'entreprise veut ajouter une fonctionnalité supplémentaire, le chemin habituel serait de faire une demande au fournisseur. Cela peut prendre du temps, et si les exigences fondamentales du système ML changent complètement, cela signifierait qu'une organisation pourrait se retrouver verrouillée, et le changement pourrait ne pas être une option.
+
+Pour éviter de tels problèmes, il faut s'assurer que les fournisseurs proposent des solutions extensibles avec des composants faiblement couplés. Cela permet à l'organisation de fusionner la plateforme avec sa propre pile technologique pour garantir des opérations de machine learning fluides.
+
+## Pourquoi Picsellia ? — Une pile CVOps entièrement automatisée
+
+![End to end repeatable mlops for computer vision](/images/blog/end-to-end-repeatable-mlops-for-computer-vision-img-1.jpeg)
+
+Picsellia offre une plateforme CVOps entièrement gérée et à la pointe de la technologie qui inclut les opérations CV suivantes :
+
+- **Gestion des datasets**
+
+Centralisez les images et vidéos non structurées pour permettre une meilleure collaboration et minimiser les incohérences.
+
+- **Suivi des expérimentations**
+
+Une boîte à outils complète de suivi des expérimentations pour faciliter le réglage des hyperparamètres et obtenir le meilleur modèle d'IA.
+
+- **Déploiement de modèles**
+
+Mettez immédiatement les modèles en production dans un environnement serverless avec une disponibilité 24h/24 et 7j/7.
+
+- **Monitoring des modèles**
+
+Monitoring des modèles en temps réel pour identifier les cas limites et détecter précocement la dégradation du modèle.
+
+- **Pipelines automatisés**
+
+Automatisez et orchestrez l'ensemble du cycle de vie d'un projet de vision par ordinateur.
+
+Avec la solution économique de Picsellia, les petites, moyennes et grandes entreprises peuvent réduire significativement les taux d'échec des pipelines ML et faire évoluer leur application selon les besoins métier.
+
+Curieux d'en savoir plus sur le MLOps pour la vision par ordinateur ? [Téléchargez notre livre blanc](/introduction-to-mlops-for-computer-vision) et apprenez-en davantage !

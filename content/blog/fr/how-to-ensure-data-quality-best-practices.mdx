@@ -1,0 +1,195 @@
+---
+
+title: "Comment garantir la qualité des données – Bonnes pratiques"
+description: "La curation de données est la gestion des données au sein d'une organisation afin qu'elles soient facilement disponibles dans le présent et préservées pour une utilisation future."
+date: "2022-09-18"
+author:
+  name: "Picsellia Team"
+category: "Data Management"
+image: "/images/blog/how-to-ensure-data-quality-best-practices-hero.png"
+imageAlt: "How To Ensure Data Quality – Best Practices"
+published: true
+tags: ["annotation", "computer-vision", "data-quality", "dataset-management", "model-training", "pipelines"]
+---
+
+L'intelligence artificielle (IA) a connu une croissance substantielle au cours de la dernière décennie. Aujourd'hui, les modèles d'IA sont meilleurs que jamais et ont remplacé le travail humain dans des tâches quotidiennes. Cependant, les scientifiques et les ingénieurs ont récemment commencé à souligner l'importance de la qualité des données dans la construction de modèles d'IA performants et robustes. Le pionnier de l'IA [Andrew NG](https://en.wikipedia.org/wiki/Andrew_Ng) déclare :
+
+‍
+
+*"Au lieu de se concentrer sur le code, les entreprises devraient se concentrer sur le développement de pratiques d'ingénierie systématiques pour améliorer les données de manière fiable, efficace et systématique. En d'autres termes, les entreprises doivent passer d'une approche centrée sur le modèle à une approche centrée sur les données."*
+
+‍
+
+La notion d'IA [centrée sur les données](/post/data-centric-ai-vs-model) nous amène à l'importance de la curation de données. **La curation de données est la gestion des données au sein d'une organisation afin qu'elles soient facilement disponibles dans le présent et préservées pour une utilisation future**. Les modèles de machine learning (ML) bénéficient de données organisées pendant l'entraînement et le ré-entraînement. Les techniques de curation de données impliquent également une analyse pour extraire des caractéristiques utiles pour l'entraînement ML.
+
+‍
+
+En vision par ordinateur (CV), les données d'images sont généralement disponibles avec de nombreux points de données puisque, dans la plupart des cas, il est relativement facile de les générer et de les synthétiser. Avec des datasets d'images massifs, la curation devient une partie intégrante du pipeline [CVOps](/post/creating-a-cvops-platform). Voyons comment la curation de données aide les tâches de vision par ordinateur.
+
+‍
+
+## La curation de données pour la vision par ordinateur
+
+‍
+
+Les ingénieurs en vision par ordinateur passent environ 80 % de leur temps à curer des données. Ces datasets doivent être constamment mis à jour pour suivre les exigences commerciales modernes. Les entreprises doivent mettre en place des pipelines de [gestion de données](/automated-pipelines) appropriés permettant l'acquisition et l'annotation efficaces des données.
+
+Un bon dataset contient deux aspects principaux : la **qualité** et la **diversité.** Certains des datasets d'images de haute qualité les plus connus possèdent des millions d'images diversifiées. Par exemple :
+
+‍
+
+- [MS-COCO](https://cocodataset.org/#home) (328 000 images)
+- [Image-Net](https://www.image-net.org/download.php) (1,3 million d'images)
+- [Open-Images dataset](https://github.com/openimages/dataset) (~10 millions d'images)
+
+‍
+
+Bien que ceux-ci soient utilisés pour évaluer de nombreux modèles de pointe, les datasets, dans leur forme brute, contiennent de nombreux échantillons bruités et nécessitent beaucoup de prétraitement et de nettoyage avant d'effectuer des tests. Cela montre à quel point il est difficile de maintenir un dataset véritablement parfait.
+
+Créer des datasets de valeur est toujours un défi. C'est un processus récurrent qui nécessite des compétences et de la patience. Examinons certains défis rencontrés lors de la curation d'un dataset et comprenons pourquoi de nombreux datasets publics ne sont pas adaptés aux outils d'IA modernes.
+
+‍
+
+## Les défis de la qualité des données
+
+‍
+
+Si vous cherchez sur [Kaggle](https://www.kaggle.com) ou d'autres dépôts de données ouvertes, vous trouverez une pléthore de datasets. Ces datasets sont gratuits à utiliser, mais leur nature open source soulève des questions sur leur crédibilité. Beaucoup d'entre eux sont téléchargés par des passionnés indépendants ou des chercheurs qui mettent peu d'efforts à vérifier leur exactitude et à traiter les valeurs manquantes. S'ils sont utilisés pour l'évaluation par des professionnels, ils produiront des résultats incorrects, et les modèles testés ne seront pas fiables.
+
+Créer et maintenir un dataset de qualité apporte beaucoup de défis car cela nécessite une surveillance constante tout au long de son cycle de vie. Discutons de ces défis en détail ci-dessous :
+
+‍
+
+### 1. Assurer la diversité des données
+
+Les ingénieurs en données doivent collecter des données provenant de sources multiples dans des conditions variées, assurant ainsi une collecte de données diversifiée. Cependant, c'est une tâche fastidieuse et peu stimulante, et une collecte de données appropriée peut prendre des semaines, voire des mois. De nombreuses organisations modernes passent même des années à collecter des données pertinentes avant de les utiliser pour des applications pratiques.
+
+‍
+
+![How to ensure data quality best practices 63287777fcaad2e4cbbcc493 data 20diversity](/images/blog/how-to-ensure-data-quality-best-practices-63287777fcaad2e4cbbcc493_data-20diversity.png)
+
+‍
+
+Pour les applications de vision par ordinateur, cela signifie collecter des images pour un sujet donné. Supposons que vous vouliez créer un dataset de photos d'oiseaux. Vous devrez capturer des images de toutes sortes d'oiseaux. Chaque catégorie (ou espèce d'oiseau) nécessitera des photos prises sous plusieurs angles, dans différentes conditions d'éclairage et à différentes altitudes. Ce ne sont là que quelques-unes des variations. En réalité, vous devrez prendre en compte bien d'autres scénarios.
+
+‍
+
+### 2. Précision de la source de données
+
+‍
+
+Les données brutes sont le fondement de toutes les pratiques de data science et de machine learning, donc toute inexactitude coûte cher à une organisation. Lorsque vous collectez des données provenant de diverses sources, garantir la précision des mesures devient un défi. Si des informations inexactes passent aux étapes de traitement suivantes, il devient encore plus difficile de retracer la source de l'erreur.
+
+‍
+
+### 3. Annotation des données
+
+‍
+
+Une fois que vous avez collecté les données, la création de vérités terrain est l'étape suivante nécessaire. L'étiquetage des données est tout aussi fastidieux que la collecte de données puisque vous avez des milliers ou des millions d'images. Les datasets d'images sont étiquetés de différentes manières selon le problème. Quelques exemples :
+
+‍
+
+- Association de classes pour les tâches de classification.
+- Création de boîtes englobantes/masques pour la détection d'objets.
+- Descriptions d'images pour le sous-titrage d'images.
+
+‍
+
+### 4. Sécurité des données
+
+‍
+
+La sécurité et la confidentialité des données sont toujours une priorité absolue pour les organisations car les pirates cherchent constamment des opportunités d'intrusion. Les entreprises dépensent beaucoup de ressources, d'argent et de temps pour la collecte et le raffinement des données, et toute sorte de violation entraîne d'énormes pertes.
+
+‍
+
+### 5. Architecture de stockage complexe
+
+‍
+
+Les données doivent être accessibles à tous les ingénieurs en données concernés et aux membres de l'équipe non-data. Les bases de données SQL traditionnelles sont plus que suffisantes pour le stockage et l'accès faciles aux données structurées ou tabulaires, mais elles ne peuvent pas être utilisées pour stocker des données d'images. Le stockage de données non structurées nécessite des bases de données NoSQL telles que [MongoDB](https://www.mongodb.com) ou un stockage cloud comme les buckets [Amazon S3](https://aws.amazon.com/s3/). De plus, un dépôt de données centralisé comme un data warehouse ou un data lake peut être une option plus flexible.
+
+Ces lacunes sont une raison majeure pour laquelle de nombreux projets ML intensifs en données échouent. Sans suivre les bonnes pratiques, les organisations finissent par perdre beaucoup de temps à corriger les erreurs.
+
+‍
+
+*Mais quelles sont les bonnes pratiques pour curer les données ?*
+
+Discutons-en ci-dessous.
+
+‍
+
+## Bonnes pratiques pour la curation de données d'images
+
+‍
+
+Construire un dataset adapté peut être accablant, mais ce n'est pas une fatalité. Avec une planification et des conseils appropriés, les ingénieurs peuvent tirer le meilleur parti des données et minimiser leur charge de travail. Approfondissons ce qu'il faut pour créer un dataset sain.
+
+‍
+
+### 1. Comprendre votre problème
+
+‍
+
+La collecte de données est difficile et encore plus si vous prenez la mauvaise direction. Sans comprendre le problème, vous risquez de perdre du temps à rassembler des images inutiles pour votre modèle ML. Il est toujours utile de prendre du recul et de réitérer vos exigences pour savoir ce dont vous avez besoin.
+
+La plupart des tâches de vision par ordinateur nécessitent des images claires avec le sujet entièrement visible. En utilisant de telles images, les ingénieurs CV peuvent augmenter la taille du dataset en créant des variations via des [techniques d'augmentation](/post/image-data-augmentation).
+
+Savoir ce dont vous avez besoin fait gagner du temps et des efforts et empêche les inexactitudes de contaminer le dataset.
+
+‍
+
+### 2. Guides d'annotation des données
+
+‍
+
+Confier les tâches d'étiquetage de données à des ressources inexpérimentées et non techniques est une pratique courante dans l'industrie pour réduire les coûts d'annotation. Bien que cela allège la charge des ingénieurs en données, cela soulève des questions sur la qualité de l'annotation des données.
+
+‍
+
+![How to ensure data quality best practices 632877951ded79ab120a978a data 20annotation 20guide](/images/blog/how-to-ensure-data-quality-best-practices-632877951ded79ab120a978a_data-20annotation-20guide.png)
+
+‍
+
+Les modèles de machine learning utilisent les étiquettes de vérité terrain pour s'entraîner. Toute erreur dans ces étiquettes entraîne une perte de performance du modèle, les annotateurs doivent donc prendre un soin particulier pour s'assurer que toutes les données sont correctement étiquetées. Les guides d'annotation peuvent aider les ressources à comprendre comment étiqueter les données selon la classe donnée.
+
+‍
+
+### 3. Embeddings et annotation de données auto-supervisée
+
+‍
+
+L'annotation de données auto-supervisée est un concept relativement nouveau, mais les organisations ont déjà commencé à l'utiliser pour accélérer l'étiquetage des données. Divers modèles de vision par ordinateur open source sont disponibles en ligne, spécialisés dans la classification d'images ou la détection d'objets. L'annotation de données auto-supervisée utilise ces modèles pour générer des étiquettes et trier les images en catégories. Les annotateurs peuvent vérifier manuellement ces images pour supprimer toute incohérence, un processus beaucoup plus rapide avec une faible marge d'erreur.
+
+‍
+
+![How to ensure data quality best practices 632877a27f32ef6bc5985fa1 self supervised 201](/images/blog/how-to-ensure-data-quality-best-practices-632877a27f32ef6bc5985fa1_self-supervised-201.png)
+
+‍
+
+De plus, des embeddings ou des cartes de caractéristiques peuvent être générés à partir d'images en utilisant des réseaux de neurones convolutifs (CNN). En utilisant des algorithmes de clustering, les ingénieurs en vision par ordinateur peuvent utiliser ces embeddings pour regrouper des images similaires.
+
+### 4. Élimination des silos de données
+
+‍
+
+Les silos de données surviennent lorsque les départements de l'organisation (comme les ventes, le marketing et les opérations) gèrent uniquement leurs propres données. Les organisations d'entreprise ne peuvent pas se permettre ces silos de données car cela empêche l'organisation d'observer une vue à 360° de leurs clients ou données commerciales, ce qui entraîne des analyses incomplètes et une prise de décision commerciale inefficace. De plus, les silos de données minimisent la collaboration inter-équipes, ce qui est contre-productif pour les organisations modernes.
+
+Pour éliminer ces silos de données, les entreprises peuvent mettre en place un pipeline de stockage centralisé comme un data warehouse ou un data lake pour curer les données provenant de sources disparates. Éliminant ainsi tout silo de données et favorisant la démocratisation des données à travers l'organisation.
+
+‍
+
+## Garantir la qualité des données avec Picsellia
+
+‍
+
+Picsellia offre une grande variété d'outils qui [automatisent le processus de curation des données](/dataset-management). Notre solution de gestion de données de bout en bout permet un stockage et un accès faciles aux données.
+
+La plateforme CVOps de Picsellia offre des fonctionnalités de contrôle de version pour les datasets, vous n'aurez donc jamais à vous soucier de perdre des données pertinentes. En plus du stockage de données, les outils d'étiquetage assistés par IA de Picsellia améliorent la vitesse et la précision des annotations en offrant une fonctionnalité de pré-annotation pour automatiser l'étiquetage.
+
+De plus, notre fonctionnalité de [suivi d'expériences](/experiment-tracking) vous permet de garder une trace des multiples expériences exécutées sur vos différents datasets. Vous pouvez utiliser ces historiques pour affiner votre dataset et tirer le meilleur de votre modèle.
+
+Pour découvrir nos solutions exceptionnelles de gestion de données, [réservez votre démo](/experiment-tracking) dès aujourd'hui.
+
+‍

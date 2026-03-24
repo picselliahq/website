@@ -1,0 +1,112 @@
+---
+
+title: "Métriques clés pour le monitoring des solutions de vision par ordinateur"
+description: "En vision par ordinateur, des données d'entraînement de haute qualité ne garantissent pas des modèles performants en production. Le travail commence après le déploiement, et le monitoring est indispensable."
+date: "2022-04-26"
+author:
+  name: "Picsellia Team"
+category: "Model Monitoring"
+image: "/images/blog/key-metrics-to-monitor-computer-vision-solutions-hero.png"
+imageAlt: "Key Metrics To Monitor Computer Vision Solutions"
+published: true
+tags: ["computer-vision", "deployment", "document-processing", "manufacturing", "mlops", "model-training", "monitoring", "pipelines"]
+---
+
+En vision par ordinateur (CV), des données d'entraînement de haute qualité ne garantissent pas des modèles performants en production. Le véritable travail commence après le déploiement en production, lorsque les performances du modèle commencent à se dégrader en raison de multiples facteurs que nous aborderons dans cet article.
+
+Plus important encore, une perturbation des performances d'un modèle de vision par ordinateur déployé en production peut entraîner une perte commerciale directe. Une solution de monitoring de vision par ordinateur robuste vise à construire un système fiable capable de détecter tout problème sous-jacent et précédemment non remarqué afin de prévenir ou d'atténuer les problèmes en production.
+
+Le monitoring de la vision par ordinateur est un composant crucial du [pipeline CVOps](/post/how-to-apply-mlops-to-computer-vision-cvops) qui peut suivre les métriques clés, permettant aux fournisseurs de vision par ordinateur de prendre des décisions éclairées. Dans cet article, nous couvrirons certaines des métriques clés à surveiller lors de la construction de solutions de monitoring de vision par ordinateur.
+
+## Qu'est-ce qui pourrait casser votre modèle de vision par ordinateur ?
+
+Les équipes CVOps peuvent surveiller et maintenir efficacement les modèles CV en production. Cependant, les performances du modèle commencent à se dégrader juste après le déploiement, tout comme d'autres produits du marché se dévaluent après leur fabrication.
+
+Les modèles de vision par ordinateur sont dynamiques et sensibles aux changements dans la distribution des données. Le modèle sort de son contexte si une caractéristique de données de production devient indisponible ou si l'environnement réel pour lequel il a été conçu change.
+
+Surveiller les différences dans les caractéristiques et le comportement d'un modèle avec les données les plus récentes est essentiel pour construire des pipelines CV robustes. Par conséquent, suivre les modèles CV avec plusieurs métriques et générer des alertes ou des notifications aide à maintenir la pertinence et la fiabilité du modèle.
+
+## Métriques clés pour le monitoring des solutions de vision par ordinateur
+
+Les métriques mesurent et enregistrent les performances de divers processus métier. Les métriques de monitoring de vision par ordinateur peuvent être divisées en catégories non supervisées et supervisées. Discutons-en ci-dessous.
+
+### Métriques de monitoring non supervisées
+
+Les métriques de monitoring de vision par ordinateur non supervisées ne nécessitent pas d'intervention utilisateur pour évaluer les performances du modèle. Chez Picsellia, nous calculons diverses métriques de monitoring non supervisées de vision par ordinateur en utilisant notre plateforme CVOps robuste pour aider les équipes IA à décortiquer les modèles CV et à identifier la dégradation des performances en temps réel.
+
+Voici quelques-unes de ces métriques non supervisées à surveiller lors de la construction de solutions de monitoring de vision par ordinateur :
+
+- Largeur et hauteur de l'image d'entrée
+- Distribution du ratio d'image
+- Distribution de la surface d'image
+- Temps d'inférence
+- [Score de valeur aberrante AE](https://documentation.picsellia.com/docs/ae-outlier)
+- [Drift KS](https://documentation.picsellia.com/docs/ks-drift)
+
+Détaillons !
+
+**1. Largeur et hauteur de l'image d'entrée** Les images d'entrée envoyées pour faire des prédictions peuvent avoir des orientations variables (largeur et hauteur) au fil du temps. Par exemple, les utilisateurs peuvent ajouter des photos en mode portrait le jour et des images horizontales la nuit.
+
+Picsellia construit un graphique visualisant les largeurs et hauteurs des images envoyées par les utilisateurs. L'analyse de la différence dans les dimensions des images peut révéler des faits intéressants sur le comportement des utilisateurs et des données.
+
+**2. Distribution du ratio d'image** Le ratio d'image est la distribution de la largeur de l'image sur la hauteur. Picsellia sépare les ratios d'image en six intervalles. Ces six intervalles sont carré, portrait, très portrait, paysage, très paysage et extrêmement paysage. En fonction de la valeur du ratio d'image, les six intervalles sont seuillés à différentes valeurs pour les séparer sur un histogramme.
+
+**3. Distribution de la surface d'image** La distribution de la surface d'image est une métrique importante pour définir la surface couverte par plusieurs images d'entrée, ce qui aide à la validation rapide des images. Elle est suivie à l'aide d'un histogramme de distribution de surface pour plusieurs images.
+
+**4. Temps d'inférence** Le temps d'inférence du modèle calcule le temps nécessaire pour traiter de nouvelles données et faire des prédictions. Le temps d'inférence est calculé dans l'étape de post-traitement du développement du modèle et donne un aperçu de la latence globale du modèle CV pendant l'inférence.
+
+**5. Score de valeur aberrante AE** Une [valeur aberrante](https://documentation.picsellia.com/docs/ae-outlier) est une valeur de données différente du reste des points de données. Les modèles ne peuvent pas faire de prédictions précises en présence de valeurs aberrantes, rendant nécessaire le suivi des valeurs aberrantes, surtout en production.
+
+Picsellia utilise un algorithme d'auto-encodeur pour déterminer les images aberrantes du dataset de production en reconstruisant les images à l'aide d'un réseau de neurones convolutif (CNN) et attribue un score de valeur aberrante à chaque image basé sur l'erreur de reconstruction de l'image. Une valeur plus élevée du score de valeur aberrante représente une image aberrante.
+
+**6. Drift KS** Supposons qu'au moins une caractéristique importante des données ne soit plus disponible dans la même mesure dans le dataset de production. Dans ce cas, l'ensemble de production est considéré comme ayant dérivé par rapport au dataset d'entraînement.
+
+Le [drift de Kolmogorov Smirnov (KS)](https://documentation.picsellia.com/docs/ks-drift) suppose que les fonctions de distribution des caractéristiques pour les datasets de production et d'entraînement sont égales. Cependant, si le drift KS calcule une distance de distribution plus grande entre deux caractéristiques, le dataset concerné est considéré comme ayant dérivé.
+
+Picsellia suit le drift sur une longue période pour catégoriser les drifts comme soudains, incrémentaux ou récurrents. Après avoir classifié le type de drift, le dataset concerné peut être modifié.
+
+### Métriques de monitoring supervisées
+
+Les métriques de monitoring de vision par ordinateur supervisées nécessitent une intervention utilisateur pour mesurer les performances du modèle. Cela nécessite généralement de vérifier manuellement les données de production du monde réel pour observer tout changement drastique pouvant entraîner une dégradation des performances des modèles CV. Voici quelques-unes des métriques de monitoring supervisées :
+
+- Data Drift
+- Concept Drift
+- Domain Shift
+- Prediction Drift
+- Upstream Drift
+
+Discutons-en en détail.
+
+**Data Drift** Le [Data Drift](/post/what-is-data-drift-and-how-to-detect-it-with-mlops) se produit lorsque le modèle de vision par ordinateur est entraîné sur des images différentes des données réelles fournies en production. Il indique le changement dans la distribution de l'ensemble de production et la distribution des données d'entraînement, résultant en un modèle sous-performant. Quelques méthodes courantes pour mesurer la distance entre ces distributions sont :
+
+- Distance de Wasserstein
+- Divergence de Kullback-Leibler (divergence KL)
+- Indice de stabilité de population (PSI)
+
+Les variations temporelles ou les changements saisonniers peuvent également conduire au Data Drift. Par exemple, un dataset sur les routes construites en Asie variera considérablement par rapport aux routes en Europe. De même, les lectures de capteurs IoT peuvent varier en été et en hiver, entraînant un Data Drift.
+
+**Concept Drift** Le Concept Drift se produit lorsque les patterns sur lesquels le modèle a été entraîné ne sont plus valables et que la relation entre les paramètres d'entrée et de sortie change. Le modèle devient moins précis ou obsolète.
+
+Le Concept Drift peut être incrémental, où le modèle vieillit sans s'adapter aux exigences changeantes. Il peut y avoir un drift soudain où les patterns se tordent, comme des changements soudains de la demande des consommateurs pendant les confinements pandémiques, ou un drift récurrent influencé par les changements saisonniers pendant les vacances ou les événements festifs.
+
+Surveiller les solutions de vision par ordinateur pour le Concept Drift peut aider à mieux comprendre le modèle pour sa mise à jour afin d'assurer sa précision et sa pertinence dans le monde réel.
+
+**Domain Shift** Le Domain Shift, également connu sous le nom de décalage distributionnel, se produit lorsque les données d'entraînement, de validation et de test sont sélectionnées à partir d'une distribution de probabilité différente de la distribution des données de production.
+
+Le Domain Shift est difficile à détecter et peut entraîner une détérioration des performances des modèles en production. Son impact peut être observé sur les prédictions hors échantillon, qui peuvent être minimisées en sélectionnant soigneusement les échantillons de test.
+
+**Prediction Drift** Le Prediction Drift, également connu sous le nom de model drift, surveille la différence dans les prédictions du modèle sur une période de temps. Il reflète le changement de prédiction entre le dataset de production et l'ensemble d'entraînement.
+
+Idéalement, si le modèle de production est inchangé, il devrait produire des inférences similaires en recevant les mêmes entrées. Cependant, les modèles se dégradent avec le temps et font des prédictions inexactes. Il est essentiel de diagnostiquer le Prediction Drift avant qu'il n'impacte négativement les clients ou les objectifs commerciaux.
+
+**Upstream Drift** L'Upstream Drift, également connu sous le nom de drift des données opérationnelles, indique des changements dans le pipeline de données du modèle. Un ensemble de production peut avoir des images d'entrée mal classées ou mal labellisées avec des différences significatives par rapport à l'ensemble d'entraînement.
+
+Les problèmes de drift des données opérationnelles ne sont pas très évidents. Ils peuvent survenir en raison de changements dans les caractéristiques des données ou de l'apparition de valeurs manquantes, affectant négativement les performances du modèle de production.
+
+## Rationaliser le monitoring des modèles de vision par ordinateur en production
+
+Les modèles de vision par ordinateur se dégradent avec le temps et nécessitent des mises à jour continues en temps réel. Les problèmes courants sous-jacents de données peuvent affaiblir et même casser les pipelines de modèles CV entraînés. Il est donc important de construire des solutions de monitoring de vision par ordinateur et de suivre en continu les métriques clés de monitoring.
+
+Picsellia offre la détection et l'atténuation de tous ces problèmes au sein d'une seule [plateforme CVOps de bout en bout](/post/creating-a-cvops-platform). Elle fournit des métriques supervisées et non supervisées pour aider au monitoring et automatise la boucle de rétroaction afin qu'aucun Data Drift ne passe inaperçu.
+
+Si vous souhaitez profiter gratuitement de la plateforme CVOps de Picsellia, [réservez votre essai](/trial) dès aujourd'hui !
