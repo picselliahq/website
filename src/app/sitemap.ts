@@ -1,20 +1,41 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts } from "@/lib/blog";
+import fs from "fs";
+import path from "path";
 import { locales, defaultLocale, type Locale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 
-function getLocalizedPath(path: string, locale: Locale): string {
+function getLocalizedPath(pathname: string, locale: Locale): string {
   const pathnames = routing.pathnames as Record<string, string | Record<string, string>>;
-  const entry = pathnames[path];
-  if (!entry) return path;
+  const entry = pathnames[pathname];
+  if (!entry) return pathname;
   if (typeof entry === "string") return entry;
-  return entry[locale] || path;
+  return entry[locale] || pathname;
+}
+
+/** Lightweight blog slug + date reader — avoids importing heavy MDX deps */
+function getBlogSlugsAndDates(): { slug: string; date: string }[] {
+  const dir = path.join(process.cwd(), "content", "blog");
+  if (!fs.existsSync(dir)) return [];
+
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".mdx"))
+    .map((f) => {
+      const content = fs.readFileSync(path.join(dir, f), "utf-8");
+      const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
+      const publishedMatch = content.match(/^published:\s*(false)/m);
+      if (publishedMatch) return null;
+      return {
+        slug: f.replace(/\.mdx$/, ""),
+        date: dateMatch?.[1] || "2026-01-01",
+      };
+    })
+    .filter((p): p is { slug: string; date: string } => p !== null);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://www.picsellia.com";
 
-  // Static pages with their approximate priority
   const staticPages: {
     path: string;
     priority: number;
@@ -100,11 +121,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  // Blog posts (English only for now — French blog posts added later)
-  const posts = getAllPosts();
+  // Blog posts — lightweight reader to avoid bundling heavy MDX deps
+  const posts = getBlogSlugsAndDates();
   const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/post/${post.slug}`,
-    lastModified: new Date(post.frontmatter.date),
+    lastModified: new Date(post.date),
     changeFrequency: "yearly" as const,
     priority: 0.6,
   }));
