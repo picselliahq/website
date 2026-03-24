@@ -1,12 +1,18 @@
 import { permanentRedirect } from 'next/navigation';
-import { getAllSlugs } from '@/lib/blog';
+import fs from 'fs';
+import path from 'path';
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  const dir = path.join(process.cwd(), 'content', 'blog');
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith('.mdx'))
+    .map((f) => ({ slug: f.replace(/\.mdx$/, '') }));
 }
 
 export default async function BlogPostRedirect({ params }: Props) {
