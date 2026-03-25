@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
-import { getAllPosts, getCategories } from '@/lib/blog';
+import { getAllPosts, getCategories } from '@/lib/blog-meta';
 import BlogListClient from '@/components/blog/BlogListClient';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
 import { JsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
