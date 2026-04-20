@@ -3782,7 +3782,21 @@
     },
     "inlineCTA": {
       "socialProof": "Join hundreds of CV engineers who ship models faster with Picsellia",
-      "secondaryLinkText": "or book a 15-min demo"
+      "secondaryLinkText": "or book a 15-min demo",
+      "variants": {
+        "demo": {
+          "headline": "Take it to the next level",
+          "description": "Picsellia brings your data, models, and deployments into one platform. See how in 30 minutes.",
+          "primaryButtonText": "Book a demo →",
+          "primaryButtonUrl": "/demo"
+        },
+        "trial": {
+          "headline": "Try Picsellia for free",
+          "description": "Get started with your own data. No credit card required.",
+          "primaryButtonText": "Start your free trial →",
+          "primaryButtonUrl": "/trial"
+        }
+      }
     }
   },
   "contact": {

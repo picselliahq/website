@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { captureEvent } from "@/lib/posthog";
 import { track } from "@vercel/analytics";
 
@@ -25,13 +25,37 @@ export default function BlogInlineCTA({
   primaryButtonText,
   primaryButtonUrl,
   secondaryLinkText,
-  secondaryLinkUrl = "/demo",
+  secondaryLinkUrl,
   blogSlug,
   ctaPosition,
 }: BlogInlineCTAProps) {
   const t = useTranslations("blogCta");
+  const locale = useLocale();
+
+  // On FR articles, override the MDX-supplied English copy with a French
+  // variant chosen by position: mid = demo, end = trial.
+  const variant: "demo" | "trial" =
+    locale === "fr" && ctaPosition === "end" ? "trial" : "demo";
+  const useLocalizedVariant = locale === "fr";
+
+  const resolvedHeadline = useLocalizedVariant
+    ? t(`inlineCTA.variants.${variant}.headline`)
+    : headline;
+  const resolvedDescription = useLocalizedVariant
+    ? t(`inlineCTA.variants.${variant}.description`)
+    : description;
+  const resolvedPrimaryButtonText = useLocalizedVariant
+    ? t(`inlineCTA.variants.${variant}.primaryButtonText`)
+    : primaryButtonText;
+  const resolvedPrimaryButtonUrl = useLocalizedVariant
+    ? t(`inlineCTA.variants.${variant}.primaryButtonUrl`)
+    : primaryButtonUrl;
+  const resolvedSecondaryLinkUrl =
+    secondaryLinkUrl ?? (locale === "fr" ? "/fr/demo" : "/demo");
   const resolvedSocialProof = socialProof ?? t("inlineCTA.socialProof");
-  const resolvedSecondaryLinkText = secondaryLinkText ?? t("inlineCTA.secondaryLinkText");
+  const resolvedSecondaryLinkText =
+    secondaryLinkText ?? t("inlineCTA.secondaryLinkText");
+
   const ref = useRef<HTMLDivElement>(null);
   const hasFiredImpression = useRef(false);
 
@@ -46,7 +70,7 @@ export default function BlogInlineCTA({
           captureEvent("blog_cta_viewed", {
             blog_slug: blogSlug,
             cta_position: ctaPosition,
-            cta_variant: headline,
+            cta_variant: resolvedHeadline,
             cta_version: "v2",
             page_url: window.location.href,
           });
@@ -58,28 +82,33 @@ export default function BlogInlineCTA({
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [blogSlug, ctaPosition, headline]);
+  }, [blogSlug, ctaPosition, resolvedHeadline]);
+
+  const primaryEvent =
+    useLocalizedVariant && variant === "trial"
+      ? "blog_cta_trial_clicked"
+      : "blog_cta_demo_clicked";
 
   const handlePrimaryClick = () => {
     const props = {
       blog_slug: blogSlug,
       cta_position: ctaPosition,
-      cta_variant: headline,
-      destination_url: primaryButtonUrl,
+      cta_variant: resolvedHeadline,
+      destination_url: resolvedPrimaryButtonUrl,
       cta_version: "v2",
       page_url: window.location.href,
     };
-    captureEvent("blog_cta_demo_clicked", props);
-    track("blog_cta_demo_clicked", props);
+    captureEvent(primaryEvent, props);
+    track(primaryEvent, props);
   };
 
   const handleSecondaryClick = () => {
     const props = {
       blog_slug: blogSlug,
       cta_position: ctaPosition,
-      cta_variant: headline,
+      cta_variant: resolvedHeadline,
       cta_type: "secondary",
-      destination_url: secondaryLinkUrl,
+      destination_url: resolvedSecondaryLinkUrl,
       cta_version: "v2",
       page_url: window.location.href,
     };
@@ -100,10 +129,10 @@ export default function BlogInlineCTA({
       }}
     >
       <h4 className="text-xl sm:text-2xl font-bold text-label mb-2 leading-tight">
-        {headline}
+        {resolvedHeadline}
       </h4>
       <p className="text-sm sm:text-base text-secondary mb-3 leading-relaxed">
-        {description}
+        {resolvedDescription}
       </p>
       {resolvedSocialProof && (
         <p
@@ -116,7 +145,7 @@ export default function BlogInlineCTA({
 
       <div className="flex flex-col gap-3">
         <Link
-          href={primaryButtonUrl}
+          href={resolvedPrimaryButtonUrl}
           onClick={handlePrimaryClick}
           className="btn-primary w-full sm:w-auto sm:inline-flex px-8 text-center"
           style={{
@@ -126,7 +155,7 @@ export default function BlogInlineCTA({
             fontWeight: 600,
           }}
         >
-          {primaryButtonText}
+          {resolvedPrimaryButtonText}
           <svg
             width="18"
             height="18"
@@ -145,7 +174,7 @@ export default function BlogInlineCTA({
           </svg>
         </Link>
         <Link
-          href={secondaryLinkUrl}
+          href={resolvedSecondaryLinkUrl}
           onClick={handleSecondaryClick}
           className="text-sm underline underline-offset-2 transition-opacity hover:opacity-80 w-fit"
           style={{ color: "var(--system-gray)" }}

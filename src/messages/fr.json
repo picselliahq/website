@@ -3215,7 +3215,21 @@
     },
     "inlineCTA": {
       "socialProof": "Rejoignez des centaines d'ingenieurs CV qui livrent des modeles plus vite avec Picsellia",
-      "secondaryLinkText": "ou reservez une demo de 15 min"
+      "secondaryLinkText": "ou reservez une demo de 15 min",
+      "variants": {
+        "demo": {
+          "headline": "Passez à la vitesse supérieure",
+          "description": "Picsellia centralise vos données, vos modèles et vos déploiements dans une seule plateforme. Voyez comment en 30 minutes.",
+          "primaryButtonText": "Demander une démo →",
+          "primaryButtonUrl": "/fr/demo"
+        },
+        "trial": {
+          "headline": "Essayez Picsellia gratuitement",
+          "description": "Lancez-vous avec vos propres données. Aucune carte de crédit requise.",
+          "primaryButtonText": "Commencer l'essai gratuit →",
+          "primaryButtonUrl": "/fr/essai"
+        }
+      }
     }
   },
   "contact": {
