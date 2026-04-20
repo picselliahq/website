@@ -28,6 +28,15 @@ DINOv2 can learn adaptable, high-quality, all-purpose visual features, enabling 
 ![Dinov2 steps by steps explanations picsellia](/images/blog/dinov2-steps-by-steps-explanations-picsellia-img-1.png)
 *[Source](https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/)*
 
+<BlogInlineCTA
+  headline="Go from DINOv2 fine-tuning to production in one place"
+  description="Version your datasets, launch training experiments, compare results, and deploy — all tracked and reproducible. No MLOps glue code needed."
+  primaryButtonText="Try Free — Launch Your First Experiment →"
+  primaryButtonUrl="/ai-laboratory"
+  blogSlug="dinov2-steps-by-steps-explanations-picsellia"
+  ctaPosition="mid"
+/>
+
 ## Explanation of DINOv2 
 
 DINOv2 implements a self-supervised learning approach contrary to previous intuitive training methods on text and image modalities for richer features. The rationale for this is that the text is a distraction because not all complex instances of image features are defined in training image examples.
@@ -58,15 +67,6 @@ The pipeline creates a final, curated dataset for pre-training at the retrieval 
 For the sample-based search, they sample a number (K) of uncurated images nearest to a given curated image, including those above a similarity threshold, and then discard the rest. They use 4 and 32 for the value of k. In cluster-based retrieval, It clusters the uncurated data into different clusters and, from each cluster, samples 10,000 images and discards the rest
 
 After doing these steps, by the end of the retrieval process, the resulting dataset had 142 million curated images that the researchers named LVD-142M.
-
-<BlogInlineCTA
-  headline="Go from DINOv2 fine-tuning to production in one place"
-  description="Version your datasets, launch training experiments, compare results, and deploy — all tracked and reproducible. No MLOps glue code needed."
-  primaryButtonText="Try Free — Launch Your First Experiment →"
-  primaryButtonUrl="/ai-laboratory"
-  blogSlug="dinov2-steps-by-steps-explanations-picsellia"
-  ctaPosition="mid"
-/>
 
 ## DINOv2 Network Architecture
 
@@ -101,10 +101,10 @@ When presented with data that deviates significantly from its training distribut
 As a result, DINOv2 will occasionally still require performance enhancements to take on unfamiliar tasks successfully. It must be retrained using high-quality and diverse training data rather than fine-tuned with just a small amount of data to increase its vision intelligence and operate better across various scenarios. This process is time-consuming, computationally expensive, and may also require additional data or expertise.
 
 <BlogInlineCTA
-  headline="Go from DINOv2 fine-tuning to production in one place"
-  description="Version your datasets, launch training experiments, compare results, and deploy — all tracked and reproducible. No MLOps glue code needed."
-  primaryButtonText="Try Free — Launch Your First Experiment →"
-  primaryButtonUrl="/ai-laboratory"
+  headline="Your DINOv2 features are only as good as your data pipeline"
+  description="Picsellia gives you dataset versioning, annotation, experiment tracking, and deployment — everything you need to put DINOv2 into production. No glue code. No MLOps overhead."
+  primaryButtonText="Build Your Pipeline for Free →"
+  primaryButtonUrl="/trial"
   blogSlug="dinov2-steps-by-steps-explanations-picsellia"
   ctaPosition="end"
 />
