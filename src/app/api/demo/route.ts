@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
             { name: 'company', value: data.company },
             { name: 'jobtitle', value: data.jobTitle },
             { name: 'phone', value: data.phone },
-            { name: 'message', value: data.message },
+            { name: 'form_message', value: data.message },
           ].filter((f) => f.value),
           context: {
             pageUri: data.pageUri || 'https://picsellia.com/demo',
