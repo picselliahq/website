@@ -73,13 +73,8 @@ export default function HeroV2() {
           </span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-6"
-        >
+        {/* Headline — LCP element, rendered visible immediately (no fade-in) */}
+        <div className="mb-6">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08]">
             {t("headlinePart1")}
             <br />
@@ -89,7 +84,7 @@ export default function HeroV2() {
             </span>{" "}
             {t("headlinePart3")}
           </h1>
-        </motion.div>
+        </div>
 
         {/* Subheadline + CTAs — two column */}
         <motion.div
@@ -190,10 +185,12 @@ export default function HeroV2() {
             <video
               ref={videoRef}
               src="/videos/homepage.webm"
+              poster="/images/posters/homepage.jpg"
               autoPlay
               loop
               muted
               playsInline
+              preload="metadata"
               className="w-full h-auto block"
             />
           </div>
