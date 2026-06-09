@@ -1,13 +1,34 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 export default function PlatformV2() {
   const t = useTranslations("home.platform");
   const [active, setActive] = useState(0);
+
+  // Defer the (below-the-fold, multi-MB) video download until the section
+  // is near the viewport, so it doesn't compete with the initial page load.
+  const sectionRef = useRef<HTMLElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || videoReady) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setVideoReady(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [videoReady]);
 
   const stages = [
     {
@@ -80,7 +101,7 @@ export default function PlatformV2() {
   const stage = stages[active];
 
   return (
-    <section className="py-28 relative overflow-hidden">
+    <section ref={sectionRef} className="py-28 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 relative">
         {/* Header */}
         <div className="flex items-center gap-8 mb-4">
@@ -263,8 +284,12 @@ export default function PlatformV2() {
                   muted
                   loop
                   playsInline
+                  preload="none"
+                  poster={stage.video
+                    .replace("/videos/", "/images/posters/")
+                    .replace(".webm", ".jpg")}
                   className="w-full h-auto block"
-                  src={stage.video}
+                  src={videoReady ? stage.video : undefined}
                 />
               </div>
             </div>
