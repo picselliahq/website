@@ -1,31 +1,49 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import posthog from "posthog-js";
 import { PostHogProvider as PHProvider } from "posthog-js/react";
+import { flushQueuedEvents } from "@/lib/posthog";
 
-if (
-  typeof window !== "undefined" &&
-  process.env.NEXT_PUBLIC_POSTHOG_KEY
-) {
+let initialized = false;
+
+/**
+ * Deferred until after page load: PostHog's recorder/surveys/dead-clicks/
+ * web-vitals scripts were measured 47-81% unused on initial load, competing
+ * with real page content for bandwidth during first paint. Session
+ * recording still starts within a moment of load — just not during it.
+ */
+function initPostHog() {
+  if (initialized || typeof window === "undefined" || !process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+    return;
+  }
+  initialized = true;
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com",
     defaults: "2026-01-30",
     person_profiles: "identified_only",
+    loaded: () => {
+      const locale = document.documentElement.lang || "en";
+      posthog.register({ locale });
+      posthog.setPersonPropertiesForFlags({ locale });
+      flushQueuedEvents();
+    },
   });
 }
 
-function LocaleTracker() {
+function PostHogInit() {
+  const started = useRef(false);
+
   useEffect(() => {
-    if (typeof window === "undefined" || !posthog.__loaded) return;
+    if (started.current) return;
+    started.current = true;
 
-    const locale = document.documentElement.lang || "en";
-
-    // Register locale as a super property (sent with every event)
-    posthog.register({ locale });
-
-    // Set as a person property for segmentation
-    posthog.setPersonPropertiesForFlags({ locale });
+    if (document.readyState === "complete") {
+      initPostHog();
+      return;
+    }
+    window.addEventListener("load", initPostHog, { once: true });
+    return () => window.removeEventListener("load", initPostHog);
   }, []);
 
   return null;
@@ -42,7 +60,7 @@ export default function PostHogProvider({
 
   return (
     <PHProvider client={posthog}>
-      <LocaleTracker />
+      <PostHogInit />
       {children}
     </PHProvider>
   );
