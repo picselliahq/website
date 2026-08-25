@@ -1437,6 +1437,36 @@
         "retraining": "Retraining",
         "scaling": "Scaling",
         "data": "Data"
+      },
+      "industries": {
+        "label": "By Industry",
+        "title": "Computer vision use cases, by industry",
+        "subtitle": "Every industry above has its own failure modes and data types. Here's where Picsellia fits in each.",
+        "manufacturing": {
+          "name": "Manufacturing",
+          "description": "Automated visual inspection and defect detection on production lines — catch quality issues before they ship."
+        },
+        "agriculture": {
+          "name": "Agriculture",
+          "description": "Crop health monitoring and precision agriculture at scale, from drone imagery to livestock welfare."
+        },
+        "energy": {
+          "name": "Energy",
+          "description": "Pipeline and infrastructure inspection that catches anomalies before they become incidents."
+        },
+        "wasteManagement": {
+          "name": "Waste Management",
+          "description": "Automated sorting and material classification that keep recycling lines accurate and running."
+        },
+        "aerospace": {
+          "name": "Aerospace",
+          "description": "Visual inspection built for the precision and traceability aerospace manufacturing demands."
+        },
+        "defense": {
+          "name": "Defense",
+          "description": "Secure, on-premise-capable computer vision for surveillance and situational awareness."
+        },
+        "learnMore": "Learn more"
       }
     },
     "abelio": {
@@ -3708,7 +3738,8 @@
     "trialCta": "14-day free trial. No credit card.",
     "startFreeTrial": "Start Free Trial",
     "relatedArticles": "Related articles",
-    "dateLocale": "en-US"
+    "dateLocale": "en-US",
+    "updated": "Updated"
   },
   "blogCta": {
     "featureCTAs": {

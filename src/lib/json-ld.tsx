@@ -17,6 +17,7 @@ export function organizationJsonLd(locale?: string) {
       "https://github.com/picselliahq",
       "https://linkedin.com/company/picsellia",
       "https://x.com/picsellia",
+      "https://www.youtube.com/@picselliahq",
     ],
     description:
       "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale.",
@@ -34,6 +35,7 @@ export function articleJsonLd(post: BlogPost, slug: string, locale?: string) {
       ? `${BASE_URL}${post.frontmatter.image}`
       : undefined,
     datePublished: post.frontmatter.date,
+    dateModified: post.frontmatter.updated || post.frontmatter.date,
     author: {
       "@type": "Person",
       name: post.frontmatter.author.name,

@@ -28,6 +28,8 @@ export const FrontmatterSchema = z.object({
   title: z.string(),
   description: z.string(),
   date: z.string(),
+  /** Set only when a post is substantively revised — never bulk-bumped for freshness alone. */
+  updated: z.string().optional(),
   author: AuthorSchema,
   category: z.string(),
   tags: z.array(z.string()).default([]),

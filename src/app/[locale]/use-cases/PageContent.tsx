@@ -77,6 +77,39 @@ const caseStudies = [
   },
 ];
 
+const industries = [
+  {
+    key: 'manufacturing' as const,
+    href: '/industry/manufacturing',
+    icon: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  },
+  {
+    key: 'agriculture' as const,
+    href: '/industry/agriculture',
+    icon: 'M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  },
+  {
+    key: 'energy' as const,
+    href: '/industry/energy',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    key: 'wasteManagement' as const,
+    href: '/industry/waste-management',
+    icon: 'M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15',
+  },
+  {
+    key: 'aerospace' as const,
+    href: '/industry/aerospace',
+    icon: 'M12 19l9 2-9-18-9 18 9-2zm0 0v-8',
+  },
+  {
+    key: 'defense' as const,
+    href: '/industry/defense',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+];
+
 export default function UseCasesPage() {
   const t = useTranslations('useCases.index');
   return (
@@ -112,6 +145,51 @@ export default function UseCasesPage() {
                 <div className="text-2xl md:text-3xl font-semibold text-[var(--picsellia-green)] mb-1">{stat.value}</div>
                 <div className="text-sm text-[var(--tertiary-label)]">{stat.label}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries we serve */}
+      <section className="py-24 border-b border-[var(--border)]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <span className="text-[var(--picsellia-green)] text-sm font-medium uppercase tracking-wider mb-3 block">
+              {t('industries.label')}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+              {t('industries.title')}
+            </h2>
+            <p className="text-[var(--secondary-label)] max-w-2xl mx-auto">
+              {t('industries.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {industries.map((industry) => (
+              <Link
+                key={industry.key}
+                href={industry.href}
+                className="card p-6 group hover:border-[var(--picsellia-green)]/30 transition-all flex flex-col"
+              >
+                <div className="w-10 h-10 rounded-xl bg-[var(--picsellia-green)]/10 flex items-center justify-center mb-4">
+                  <svg className="w-5 h-5 text-[var(--picsellia-green)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={industry.icon} />
+                  </svg>
+                </div>
+                <h3 className="text-base font-semibold text-[var(--label)] mb-2">
+                  {t(`industries.${industry.key}.name`)}
+                </h3>
+                <p className="text-sm text-[var(--secondary-label)] mb-4 flex-1">
+                  {t(`industries.${industry.key}.description`)}
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--picsellia-green)]">
+                  {t('industries.learnMore')}
+                  <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </Link>
             ))}
           </div>
         </div>

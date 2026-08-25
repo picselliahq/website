@@ -3141,7 +3141,8 @@
     "trialCta": "Essai gratuit de 14 jours. Sans carte bancaire.",
     "startFreeTrial": "Demarrer l'essai gratuit",
     "relatedArticles": "Articles associes",
-    "dateLocale": "fr-FR"
+    "dateLocale": "fr-FR",
+    "updated": "Mis a jour le"
   },
   "blogCta": {
     "featureCTAs": {
@@ -3569,6 +3570,36 @@
         "retraining": "Re-entrainement",
         "scaling": "Mise a l'echelle",
         "data": "Donnees"
+      },
+      "industries": {
+        "label": "Par Secteur",
+        "title": "Cas d'usage de la vision par ordinateur, par secteur",
+        "subtitle": "Chaque secteur ci-dessus a ses propres modes de defaillance et types de donnees. Voici ou Picsellia s'inscrit dans chacun.",
+        "manufacturing": {
+          "name": "Fabrication",
+          "description": "Inspection visuelle automatisee et detection de defauts sur les lignes de production — detectez les problemes de qualite avant l'expedition."
+        },
+        "agriculture": {
+          "name": "Agriculture",
+          "description": "Suivi de la sante des cultures et agriculture de precision a grande echelle, de l'imagerie drone au bien-etre animal."
+        },
+        "energy": {
+          "name": "Energie",
+          "description": "Inspection des pipelines et infrastructures qui detecte les anomalies avant qu'elles ne deviennent des incidents."
+        },
+        "wasteManagement": {
+          "name": "Gestion des dechets",
+          "description": "Tri automatise et classification des materiaux qui maintiennent la precision des lignes de recyclage."
+        },
+        "aerospace": {
+          "name": "Aerospatial",
+          "description": "Inspection visuelle concue pour la precision et la tracabilite qu'exige la fabrication aerospatiale."
+        },
+        "defense": {
+          "name": "Defense",
+          "description": "Vision par ordinateur securisee, compatible on-premise, pour la surveillance et la conscience situationnelle."
+        },
+        "learnMore": "En savoir plus"
       }
     },
     "abelio": {

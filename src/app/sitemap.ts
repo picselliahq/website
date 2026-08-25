@@ -19,7 +19,8 @@ function readPostMeta(filePath: string): { date: string } | null {
   const publishedMatch = content.match(/^published:\s*(false)/m);
   if (publishedMatch) return null;
   const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
-  return { date: dateMatch?.[1] || "2026-01-01" };
+  const updatedMatch = content.match(/^updated:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
+  return { date: updatedMatch?.[1] || dateMatch?.[1] || "2026-01-01" };
 }
 
 /** Per-post publish dates, keyed by every locale that has a published translation */

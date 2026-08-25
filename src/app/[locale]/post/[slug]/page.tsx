@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.frontmatter.description,
       type: "article",
       publishedTime: post.frontmatter.date,
+      modifiedTime: post.frontmatter.updated,
       authors: [post.frontmatter.author.name],
       images: post.frontmatter.image ? [post.frontmatter.image] : [],
     },
@@ -146,6 +147,15 @@ export default async function BlogPostPage({ params }: Props) {
                 <time dateTime={post.frontmatter.date}>
                   {formatDate(post.frontmatter.date, locale)}
                 </time>
+                {post.frontmatter.updated && (
+                  <>
+                    <span className="mx-1">&middot;</span>
+                    {t('updated')}{" "}
+                    <time dateTime={post.frontmatter.updated}>
+                      {formatDate(post.frontmatter.updated, locale)}
+                    </time>
+                  </>
+                )}
                 <span className="mx-1">&middot;</span>
                 {post.readingTime}
               </p>
