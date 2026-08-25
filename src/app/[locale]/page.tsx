@@ -46,11 +46,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <JsonLd data={faqJsonLd(aboutFaqs, locale)} />
       <BackgroundV2 />
       <HeroV2 />
-      <AboutV2 />
       <PlatformV2 />
       <UseCasesV2 />
       <EnterpriseV2 />
       <IntegrationsV2 />
+      <AboutV2 />
       <CTAV2 />
     </>
   );
