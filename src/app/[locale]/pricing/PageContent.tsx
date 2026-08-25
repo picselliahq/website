@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useState } from "react";
 import { useTranslations } from 'next-intl';
 import { captureEvent } from "@/lib/posthog";
@@ -206,7 +207,7 @@ export default function PricingPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <Link
+              <LocaleLink
                 href="/trial"
                 className="btn-primary px-7 py-3.5 text-[15px] group"
                 onClick={() => {
@@ -233,8 +234,8 @@ export default function PricingPage() {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/demo"
                 className="btn-secondary px-7 py-3.5 text-[15px]"
                 onClick={() => {
@@ -248,7 +249,7 @@ export default function PricingPage() {
                 }}
               >
                 {tNav('contactSales')}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -868,7 +869,7 @@ export default function PricingPage() {
                 </Link>
 
                 <div>
-                  <Link href="/demo" className="btn-primary px-8 py-3">
+                  <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                     {t('contactSales')}
                     <svg
                       className="w-4 h-4 ml-2"
@@ -883,7 +884,7 @@ export default function PricingPage() {
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
-                  </Link>
+                  </LocaleLink>
                 </div>
               </div>
 
@@ -1051,7 +1052,7 @@ export default function PricingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/trial" className="btn-primary px-8 py-3">
+                <LocaleLink href="/trial" className="btn-primary px-8 py-3">
                   {t('startFreeTrial')}
                   <svg
                     className="w-4 h-4 ml-2"
@@ -1066,10 +1067,10 @@ export default function PricingPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link href="/demo" className="btn-secondary px-8 py-3">
+                </LocaleLink>
+                <LocaleLink href="/demo" className="btn-secondary px-8 py-3">
                   {t('talkToSales')}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { captureEvent } from "@/lib/posthog";
@@ -112,7 +112,7 @@ export default function HeroV2() {
             {t("subheadline")}
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-3">
-            <Link
+            <LocaleLink
               href="/trial"
               className="btn-primary px-7 py-3.5 text-[15px] group"
               onClick={() => {
@@ -139,8 +139,8 @@ export default function HeroV2() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
-            <Link
+            </LocaleLink>
+            <LocaleLink
               href="/demo"
               className="btn-secondary px-7 py-3.5 text-[15px]"
               onClick={() => {
@@ -154,7 +154,7 @@ export default function HeroV2() {
               }}
             >
               {t("requestDemo")}
-            </Link>
+            </LocaleLink>
           </div>
         </motion.div>
 

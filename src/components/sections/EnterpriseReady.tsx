@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 
 const enterpriseFeatures = [
   {
@@ -41,9 +41,9 @@ export default function EnterpriseReady() {
               demand.
             </p>
           </div>
-          <Link href="/demo" className="btn-secondary">
+          <LocaleLink href="/demo" className="btn-secondary">
             Talk to Sales
-          </Link>
+          </LocaleLink>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">

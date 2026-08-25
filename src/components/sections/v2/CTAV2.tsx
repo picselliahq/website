@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
@@ -119,7 +119,7 @@ export default function CTAV2() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-              <Link
+              <LocaleLink
                 href="/trial"
                 className="btn-primary px-10 py-3.5 text-[15px] group"
               >
@@ -137,13 +137,13 @@ export default function CTAV2() {
                     d="M13 7l5 5m0 0l-5 5m5-5H6"
                   />
                 </svg>
-              </Link>
-              <Link
+              </LocaleLink>
+              <LocaleLink
                 href="/demo"
                 className="btn-secondary px-10 py-3.5 text-[15px]"
               >
                 {t("requestDemo")}
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-5 text-xs text-[var(--tertiary-label)] font-mono">

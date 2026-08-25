@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import Image from "next/image";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
@@ -885,12 +886,12 @@ export default function Navigation() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
-            <Link
+            <LocaleLink
               href="/demo"
               className="text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors px-3 py-2"
             >
               {t("contactSales")}
-            </Link>
+            </LocaleLink>
             <Link
               href="https://app.picsellia.com/signup"
               className="btn-primary text-sm py-2.5 px-5"
@@ -1050,13 +1051,13 @@ export default function Navigation() {
 
             {/* CTA */}
             <div className="pt-4 px-2">
-              <Link
+              <LocaleLink
                 href="/trial"
                 className="btn-primary text-center block"
                 onClick={() => setMobileOpen(false)}
               >
                 {t("startFreeTrial")}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         )}

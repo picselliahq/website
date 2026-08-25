@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useEffect, useState } from 'react';
 
 // Simulated detection boxes that animate
@@ -121,17 +121,17 @@ export default function CTA() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <Link href="/trial" className="btn-primary px-8 py-3 text-base relative group overflow-hidden">
+              <LocaleLink href="/trial" className="btn-primary px-8 py-3 text-base relative group overflow-hidden">
                 <span className="relative z-10 flex items-center gap-2">
                   Start Free Trial
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
-              </Link>
-              <Link href="/demo" className="btn-secondary px-8 py-3 text-base">
+              </LocaleLink>
+              <LocaleLink href="/demo" className="btn-secondary px-8 py-3 text-base">
                 Schedule Demo
-              </Link>
+              </LocaleLink>
             </div>
 
             {/* Trust Indicators */}

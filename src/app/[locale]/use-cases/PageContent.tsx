@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 const caseStudies = [
@@ -287,15 +288,15 @@ export default function UseCasesPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/demo" className="btn-primary px-8 py-3">
+                <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                   {t('cta.requestDemo')}
                   <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
-                <Link href="/trial" className="btn-secondary px-8 py-3">
+                </LocaleLink>
+                <LocaleLink href="/trial" className="btn-secondary px-8 py-3">
                   {t('cta.startTrial')}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

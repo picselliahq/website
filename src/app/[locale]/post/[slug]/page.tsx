@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import BlogHeroImage from "@/components/blog/BlogHeroImage";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import {
@@ -230,12 +231,12 @@ export default async function BlogPostPage({ params }: Props) {
                 <p className="text-xs text-tertiary mb-4">
                   {t('trialCta')}
                 </p>
-                <Link
+                <LocaleLink
                   href="/trial"
                   className="btn-primary w-full px-4 py-2 text-xs"
                 >
                   {t('startFreeTrial')}
-                </Link>
+                </LocaleLink>
               </div>
               <TableOfContents items={toc} />
             </aside>

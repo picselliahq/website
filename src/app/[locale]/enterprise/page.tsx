@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
@@ -216,12 +217,12 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+              <LocaleLink href="/demo" className="btn-primary px-8 py-4 text-base">
                 {t('talkToEnterprise')}
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </LocaleLink>
               <Link href="https://documentation.picsellia.com" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
                 {t('documentation')}
               </Link>
@@ -400,12 +401,12 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
                   </span>
                 ))}
               </div>
-              <Link href="/demo" className="btn-primary px-8 py-3">
+              <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                 {t('requestOnPremDemoBtn')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </LocaleLink>
             </div>
           </div>
 
@@ -600,9 +601,9 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
                   {t('customRolesDesc')}
                 </p>
               </div>
-              <Link href="/demo" className="btn-secondary whitespace-nowrap">
+              <LocaleLink href="/demo" className="btn-secondary whitespace-nowrap">
                 {t('requestEarlyAccessBtn')}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -628,12 +629,12 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/demo" className="btn-primary px-8 py-3">
+                <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                   {t('talkToEnterpriseTeam')}
                   <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </Link>
+                </LocaleLink>
                 <Link href="/pricing" className="btn-secondary px-8 py-3">
                   {t('viewPricing')}
                 </Link>

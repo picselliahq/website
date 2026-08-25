@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useRef, useEffect } from "react";
 
 /**
@@ -65,7 +65,7 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Link href="/trial" className="btn-primary px-6 py-3">
+          <LocaleLink href="/trial" className="btn-primary px-6 py-3">
             Start Free Trial
             <svg
               className="w-4 h-4"
@@ -80,10 +80,10 @@ export default function Hero() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </Link>
-          <Link href="/demo" className="btn-secondary px-6 py-3">
+          </LocaleLink>
+          <LocaleLink href="/demo" className="btn-secondary px-6 py-3">
             Request Demo
-          </Link>
+          </LocaleLink>
         </div>
 
         {/* Hero Video */}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 
 export default function EnterpriseV2() {
@@ -108,7 +108,7 @@ export default function EnterpriseV2() {
               {t("description")}
             </p>
           </div>
-          <Link href="/demo" className="btn-primary group self-start md:self-auto">
+          <LocaleLink href="/demo" className="btn-primary group self-start md:self-auto">
             {t("talkToSales")}
             <svg
               className="w-4 h-4 group-hover:translate-x-1 transition-transform"
@@ -123,7 +123,7 @@ export default function EnterpriseV2() {
                 d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
-          </Link>
+          </LocaleLink>
         </div>
 
         {/* Feature grid — structured, labeled */}

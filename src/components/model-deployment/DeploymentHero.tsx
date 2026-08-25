@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function DeploymentHero() {
@@ -53,12 +54,12 @@ export default function DeploymentHero() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+              <LocaleLink href="/demo" className="btn-primary px-8 py-4 text-base">
                 {t('hero.cta')}
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
+              </LocaleLink>
               <Link href="https://documentation.picsellia.com/reference/deployment" target="_blank" rel="noopener noreferrer" className="btn-secondary px-8 py-4 text-base">
                 {t('hero.docs')}
               </Link>
