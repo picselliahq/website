@@ -12,6 +12,7 @@ import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "optimize-computer-vision-models-on-the-edge",
   "integrating-picsellia-in-your-databricks-mlflow-environment",
   "how-to-integrate-picsellia-into-a-hugging-face-training-workflow",

@@ -109,6 +109,10 @@
         "label": "Blog",
         "description": "Latest news & insights"
       },
+      "mlopsGuide": {
+        "label": "MLOps Guide",
+        "description": "The complete guide to CVOps"
+      },
       "community": {
         "label": "Community",
         "description": "Join our Slack & GitHub"
@@ -162,6 +166,7 @@
       "aerospace": "Aerospace",
       "defense": "Defense",
       "blog": "Blog",
+      "mlopsGuide": "MLOps Guide",
       "useCases": "Use Cases",
       "documentation": "Documentation",
       "faq": "FAQ",

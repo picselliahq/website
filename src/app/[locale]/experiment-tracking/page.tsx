@@ -5,6 +5,7 @@ import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "top-5-experiment-tracking-tools-for-computer-vision",
   "road-to-mlops-part-2",
   "road-to-mlops-part-3",

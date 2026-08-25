@@ -11,6 +11,7 @@ import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "choosing-an-image-dataset-management-platform",
   "data-management-in-ai-key-success-factor",
   "computer-vision-dataset-slicing",

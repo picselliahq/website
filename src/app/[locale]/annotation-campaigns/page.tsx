@@ -5,6 +5,7 @@ import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "picsellia-annotation-campaign",
   "mastering-data-annotation-for-ai-projects-in-2025",
   "build-high-performing-teams-for-computer-vision-projects",

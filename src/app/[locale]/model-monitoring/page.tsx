@@ -5,6 +5,7 @@ import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "key-metrics-to-monitor-computer-vision-solutions",
   "what-is-data-drift-and-how-to-detect-it-with-mlops",
   "the-fastest-way-to-analyze-models-for-object-detection",
