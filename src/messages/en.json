@@ -1403,7 +1403,9 @@
           "timeReduction": "Average time reduction",
           "industries": "Industries served",
           "models": "Models in production"
-        }
+        },
+        "researchingLead": "Researching use cases by industry rather than looking for a specific customer story?",
+        "researchingLink": "Read the complete guide"
       },
       "readCaseStudy": "Read case study",
       "cta": {

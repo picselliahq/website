@@ -3536,7 +3536,9 @@
           "timeReduction": "Réduction moyenne du temps",
           "industries": "Industries servies",
           "models": "Modèles en production"
-        }
+        },
+        "researchingLead": "Vous recherchez des cas d'usage par secteur plutôt qu'un temoignage client specifique ?",
+        "researchingLink": "Lire le guide complet"
       },
       "readCaseStudy": "Lire le cas d'étude",
       "cta": {
