@@ -4,6 +4,9 @@
     "titleTemplate": "{title} | Picsellia",
     "description": "La plateforme MLOps complète pour la vision par ordinateur. Créez, déployez et supervisez vos applications d'IA visuelle à grande échelle avec Picsellia."
   },
+  "common": {
+    "lastUpdated": "Mis à jour le"
+  },
   "nav": {
     "platform": "Plateforme",
     "solutions": "Solutions",

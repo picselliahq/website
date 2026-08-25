@@ -4,6 +4,9 @@
     "titleTemplate": "{title} | Picsellia",
     "description": "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia."
   },
+  "common": {
+    "lastUpdated": "Last updated"
+  },
   "nav": {
     "platform": "Platform",
     "solutions": "Solutions",

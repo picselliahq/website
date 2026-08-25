@@ -1,5 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { JsonLd, breadcrumbJsonLd, softwareApplicationJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, softwareApplicationJsonLd, webPageJsonLd } from "@/lib/json-ld";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 import {
   DeploymentHero,
   DeploymentArchitecture,
@@ -45,6 +48,7 @@ export default async function ModelDeploymentPage({ params }: { params: Promise<
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Model Deployment', url: '/model-deployment' }], locale)} />
+      <JsonLd data={webPageJsonLd("/model-deployment", PAGE_LAST_UPDATED, locale)} />
       <JsonLd
         data={softwareApplicationJsonLd(locale, {
           name: "Picsellia Model Deployment",
@@ -68,6 +72,7 @@ export default async function ModelDeploymentPage({ params }: { params: Promise<
       <DeploymentFeatures />
       <DeploymentCTA />
       <RelatedReading slugs={relatedSlugs} locale={locale} />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }

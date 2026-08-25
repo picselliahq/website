@@ -6,9 +6,12 @@ import AIAssistedSection from '@/components/labeling-tool/AIAssistedSection';
 import QualityControlSection from '@/components/labeling-tool/QualityControlSection';
 import CTASection from '@/components/labeling-tool/CTASection';
 
-import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 
 const relatedSlugs = [
   "mlops-for-computer-vision-complete-guide",
@@ -44,6 +47,7 @@ export default async function LabelingToolPage({ params }: { params: Promise<{ l
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Labeling Tool', url: '/labeling-tool' }], locale)} />
+      <JsonLd data={webPageJsonLd("/labeling-tool", PAGE_LAST_UPDATED, locale)} />
       <HeroSection />
       <AnnotationTypesSection />
       <ToolsAndFeaturesSection />
@@ -51,6 +55,7 @@ export default async function LabelingToolPage({ params }: { params: Promise<{ l
       <QualityControlSection />
       <CTASection />
       <RelatedReading slugs={relatedSlugs} locale={locale} />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }
