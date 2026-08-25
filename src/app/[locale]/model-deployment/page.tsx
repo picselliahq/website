@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, softwareApplicationJsonLd } from "@/lib/json-ld";
 import {
   DeploymentHero,
   DeploymentArchitecture,
@@ -45,6 +45,22 @@ export default async function ModelDeploymentPage({ params }: { params: Promise<
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Model Deployment', url: '/model-deployment' }], locale)} />
+      <JsonLd
+        data={softwareApplicationJsonLd(locale, {
+          name: "Picsellia Model Deployment",
+          url: "/model-deployment",
+          description:
+            "Deploy computer vision models to production with autoscaling, ONNX Runtime and TensorRT acceleration, GPU or CPU inference, and built-in monitoring — cloud, edge, or on-premise.",
+          featureList: [
+            "Autoscaled inference serving (cloud, edge, on-premise)",
+            "ONNX Runtime & TensorRT acceleration",
+            "GPU and CPU inference targets",
+            "Python SDK and REST API deployment",
+            "Model registry with versioned artifacts",
+            "Production monitoring on every prediction",
+          ],
+        })}
+      />
       <DeploymentHero />
       <DeploymentArchitecture />
       <DeploymentSDK />
