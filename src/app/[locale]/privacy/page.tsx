@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -13,6 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/privacy"),
     },
     openGraph: {
       title: t('ogTitle'),

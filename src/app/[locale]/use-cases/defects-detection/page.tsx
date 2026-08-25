@@ -1,7 +1,7 @@
 import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -12,6 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/use-cases/defects-detection"),
     },
     openGraph: {
       title: t('ogTitle'),

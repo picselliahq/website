@@ -8,7 +8,7 @@ import WorkflowIntegrationSection from '@/components/dataset-management/Workflow
 import CTASection from '@/components/dataset-management/CTASection';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/dataset-management"),
     },
     openGraph: {
       title: t('ogTitle'),

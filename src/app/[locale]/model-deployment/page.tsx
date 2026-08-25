@@ -8,7 +8,7 @@ import {
   DeploymentFeatures,
   DeploymentCTA,
 } from "@/components/model-deployment";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/model-deployment"),
     },
     openGraph: {
       title: t('ogTitle'),
