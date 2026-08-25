@@ -217,6 +217,22 @@
       "figLabel": "fig.01 — Vue d'ensemble de la plateforme",
       "deployedAt": "Déployé chez"
     },
+    "about": {
+      "title": "Qu'est-ce que Picsellia ?",
+      "body": "Picsellia est une plateforme MLOps de bout en bout concue specifiquement pour les equipes de vision par ordinateur. Plutot que d'assembler des outils separes pour la gestion des donnees, l'annotation, l'entrainement des modeles, le deploiement et le monitoring en production, Picsellia regroupe chaque etape du pipeline dans un seul systeme avec une tracabilite partagee, de l'image brute jusqu'a la prediction en production. Les equipes l'utilisent pour gerer et versionner de grands volumes de donnees images et video, annoter avec des outils assistes par IA, entrainer et suivre leurs experimentations sur n'importe quel GPU, deployer leurs modeles sur le cloud, en edge ou sur site, et monitorer les performances en production avec une detection de derive integree. Picsellia est certifiee ISO 27001 et prend en charge le deploiement on-premise ou hybride pour les equipes ayant des exigences strictes de residence des donnees ou de conformite. Elle est utilisee dans l'industrie manufacturiere, l'agriculture, l'energie, la gestion des dechets, l'aerospatial et la defense, partout ou une equipe doit transformer des donnees images ou video en un systeme de vision par ordinateur en production sans assembler cinq outils differents.",
+      "q1": {
+        "question": "Que fait Picsellia ?",
+        "answer": "Picsellia couvre l'ensemble du pipeline de vision par ordinateur — gestion des donnees, annotation, entrainement, deploiement et monitoring en production — au sein d'une seule plateforme avec une tracabilite partagee, plutot que d'exiger des outils separes pour chaque etape."
+      },
+      "q2": {
+        "question": "A qui s'adresse Picsellia ?",
+        "answer": "Aux equipes qui construisent des systemes de vision par ordinateur en production, des startups qui lancent leur premier pilote aux equipes entreprise ayant des exigences on-premise ou de conformite, dans l'industrie manufacturiere, l'agriculture, l'energie, l'aerospatial et la defense."
+      },
+      "q3": {
+        "question": "En quoi Picsellia differe-t-elle d'une solution ponctuelle comme Roboflow ou Labelbox ?",
+        "answer": "Des outils comme Roboflow et Labelbox se concentrent principalement sur la preparation des donnees et l'annotation. Picsellia couvre ces memes etapes ainsi que l'entrainement, le deploiement et le monitoring en production de maniere native, evitant aux equipes d'integrer des outils separes une fois depassee la phase de prototypage."
+      }
+    },
     "platform": {
       "sectionLabel": "Plateforme",
       "headlinePart1": "Une plateforme,",
