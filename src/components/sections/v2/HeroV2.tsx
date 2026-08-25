@@ -28,9 +28,24 @@ export default function HeroV2() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Defer fetching/playing the hero video until after first paint so it
+    // never competes with the LCP text and metrics row for bandwidth.
+    // (Calling .load() here would race with .play() and can silently abort
+    // playback, so we rely on .play() alone to trigger the fetch.)
+    const startPlayback = () => {
+      video.play().catch(() => {});
+    };
+
+    if (document.readyState === "complete") {
+      startPlayback();
+      return;
     }
+
+    window.addEventListener("load", startPlayback, { once: true });
+    return () => window.removeEventListener("load", startPlayback);
   }, []);
 
   const metrics = [
@@ -186,11 +201,10 @@ export default function HeroV2() {
               ref={videoRef}
               src="/videos/homepage.webm"
               poster="/images/posters/homepage.jpg"
-              autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="w-full h-auto block"
             />
           </div>

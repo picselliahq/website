@@ -20,6 +20,7 @@ import { getFeatureCTAs, getConversionCopy } from "@/lib/blog-cta";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import rehypeShiki from "./rehype-shiki";
+import { localizedUrl } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;
@@ -34,11 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug, locale);
   if (!post) return {};
 
+  const canonical = localizedUrl({ pathname: "/post/[slug]", params: { slug } }, locale);
+
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     alternates: {
-      canonical: `/post/${slug}`,
+      canonical,
     },
     openGraph: {
       title: post.frontmatter.title,

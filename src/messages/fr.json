@@ -133,6 +133,10 @@
       }
     }
   },
+  "relatedReading": {
+    "label": "Depuis le Blog",
+    "title": "Lectures associees"
+  },
   "footer": {
     "tagline": "La plateforme MLOps pour la vision par ordinateur. Créez, déployez et supervisez l'IA à grande échelle.",
     "copyright": "Tous droits réservés.",
@@ -161,6 +165,7 @@
       "useCases": "Cas d'usage",
       "documentation": "Documentation",
       "faq": "FAQ",
+      "compareHub": "Comparer Picsellia",
       "vsRoboflow": "Picsellia vs Roboflow",
       "vsLabelbox": "Picsellia vs Labelbox",
       "vsEncord": "Picsellia vs Encord",
@@ -1153,6 +1158,46 @@
     }
   },
   "compare": {
+    "hub": {
+      "metadata": {
+        "title": "Comparez Picsellia a Roboflow, Labelbox et Encord (2026)",
+        "description": "Decouvrez comment Picsellia se compare a Roboflow, Labelbox et Encord en termes de couverture du pipeline, d'options de deploiement et de conformite entreprise — avec un lien vers une comparaison detaillee pour chacun.",
+        "ogTitle": "Comparez Picsellia a Roboflow, Labelbox et Encord",
+        "ogDescription": "Couverture complete du pipeline vs solutions ponctuelles : decouvrez comment Picsellia se positionne face aux principaux outils d'annotation et de MLOps pour la vision par ordinateur."
+      },
+      "badge": "Comparaison de plateformes",
+      "heroTitle": "Picsellia vs. ",
+      "heroHighlight": "le reste de la stack CV",
+      "heroDescription": "La plupart des outils de vision par ordinateur couvrent une partie du pipeline — l'annotation, ou l'entrainement, ou le deploiement. Picsellia couvre l'ensemble. Voici comment la plateforme se positionne face a celles avec lesquelles elle est le plus souvent comparee.",
+      "criteriaLabel": "En Bref",
+      "criteriaTitle": "Une seule plateforme, face a trois solutions ponctuelles",
+      "criteriaDescription": "Un resume rapide — chaque page de comparaison ci-dessous approfondit les fonctionnalites, les prix et la migration.",
+      "criteriaHeader": "Critere",
+      "platformTypeLabel": "Type de plateforme",
+      "pipelineCoverageLabel": "Etapes du pipeline couvertes",
+      "bestForLabel": "Comparaison",
+      "picselliaTagline": "Plateforme CVOps",
+      "picselliaStages": "6/6",
+      "competitors": {
+        "roboflow": {
+          "tagline": "Boite a outils developpeur",
+          "stages": "2/6"
+        },
+        "labelbox": {
+          "tagline": "Plateforme d'annotation",
+          "stages": "2/6"
+        },
+        "encord": {
+          "tagline": "Plateforme IA data-centric",
+          "stages": "2/6"
+        }
+      },
+      "readComparison": "Lire la comparaison complete",
+      "ctaTitle": "Vous ne savez pas laquelle choisir ?",
+      "ctaDescription": "Parlez-nous de votre stack actuelle — nous vous dirons honnetement si Picsellia est adaptee.",
+      "bookDemo": "Demander une demo",
+      "startFreeTrial": "Essai gratuit"
+    },
     "roboflow": {
       "metadata": {
         "title": "Picsellia vs Roboflow (2026) - Comparaison des plateformes CV entreprise",

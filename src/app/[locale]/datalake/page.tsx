@@ -7,20 +7,31 @@ import DatalakeTagsMetadata from '@/components/datalake/DatalakeTagsMetadata';
 import DatalakeCTA from '@/components/datalake/DatalakeCTA';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
+import RelatedReading from "@/components/blog/RelatedReading";
+
+const relatedSlugs = [
+  "choosing-an-image-dataset-management-platform",
+  "data-management-in-ai-key-success-factor",
+  "computer-vision-dataset-slicing",
+  "how-we-built-a-dataset-visual-similarity-search-feature",
+  "feedback-loops-and-versioning-in-computer-vision",
+];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'datalake.metadata' });
+  const canonical = localizedUrl("/datalake", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/datalake',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/datalake',
+      url: canonical,
     },
   };
 }
@@ -37,6 +48,7 @@ export default async function DatalakePage({ params }: { params: Promise<{ local
       <DatalakeVisualSearch />
       <DatalakeTagsMetadata />
       <DatalakeCTA />
+      <RelatedReading slugs={relatedSlugs} locale={locale} />
     </>
   );
 }

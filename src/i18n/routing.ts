@@ -135,6 +135,10 @@ export const routing = defineRouting({
     },
 
     // Compare
+    '/compare': {
+      en: '/compare',
+      fr: '/comparer',
+    },
     '/compare/roboflow': {
       en: '/compare/roboflow',
       fr: '/comparer/roboflow',

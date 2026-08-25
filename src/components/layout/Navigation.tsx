@@ -815,9 +815,15 @@ export default function Navigation() {
                     </div>
                     {/* Compare section */}
                     <div className="px-5 pb-5 pt-2 border-t border-[var(--border)]">
-                      <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-2 px-2.5">
+                      <Link
+                        href="/compare"
+                        className="flex items-center justify-between text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-2 px-2.5 hover:text-[var(--label)] transition-colors group"
+                      >
                         {t("compare")}
-                      </div>
+                        <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
                       {compareMenu.map((item) => (
                         <Link
                           key={item.label}
@@ -994,9 +1000,12 @@ export default function Navigation() {
 
             {/* Compare */}
             <div className="py-3 border-t border-[var(--border)]">
-              <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3 px-2">
+              <Link
+                href="/compare"
+                className="block text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3 px-2 hover:text-[var(--label)] transition-colors"
+              >
                 {t("compare")}
-              </div>
+              </Link>
               {compareMenu.map((item) => (
                 <Link
                   key={item.label}

@@ -7,20 +7,30 @@ import QualityControlSection from '@/components/labeling-tool/QualityControlSect
 import CTASection from '@/components/labeling-tool/CTASection';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
+import RelatedReading from "@/components/blog/RelatedReading";
+
+const relatedSlugs = [
+  "mastering-data-annotation-for-ai-projects-in-2025",
+  "video-annotation",
+  "picsellia-annotation-campaign",
+  "image-data-quality-for-image-classification",
+];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'labelingTool.metadata' });
+  const canonical = localizedUrl("/labeling-tool", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/labeling-tool',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/labeling-tool',
+      url: canonical,
     },
   };
 }
@@ -37,6 +47,7 @@ export default async function LabelingToolPage({ params }: { params: Promise<{ l
       <AIAssistedSection />
       <QualityControlSection />
       <CTASection />
+      <RelatedReading slugs={relatedSlugs} locale={locale} />
     </>
   );
 }

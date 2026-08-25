@@ -3,20 +3,22 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'compare.labelbox.metadata' });
+  const canonical = localizedUrl("/compare/labelbox", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/compare/labelbox",
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: "/compare/labelbox",
+      url: canonical,
     },
   };
 }
@@ -123,6 +125,7 @@ export default async function CompareLabelboxPage({ params }: { params: Promise<
     <>
       <JsonLd
         data={breadcrumbJsonLd([
+          { name: "Compare", url: "/compare" },
           { name: "Picsellia vs Labelbox", url: "/compare/labelbox" },
         ], locale)}
       />

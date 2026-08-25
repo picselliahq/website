@@ -3,20 +3,22 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'enterprise.metadata' });
+  const canonical = localizedUrl("/enterprise", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/enterprise',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/enterprise',
+      url: canonical,
     },
   };
 }

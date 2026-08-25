@@ -4,20 +4,22 @@ import { getAllPosts, getCategories } from '@/lib/blog-meta';
 import BlogListClient from '@/components/blog/BlogListClient';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
 import { JsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'blog.metadata' });
+  const canonical = localizedUrl("/blog", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/blog',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/blog',
+      url: canonical,
     },
   };
 }

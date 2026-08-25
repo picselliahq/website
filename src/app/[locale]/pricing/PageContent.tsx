@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useTranslations } from 'next-intl';
+import { captureEvent } from "@/lib/posthog";
+import { track } from "@vercel/analytics";
 import PricingCalculator from "./PricingCalculator";
 
 // Platform modules data
@@ -156,6 +158,7 @@ const faqs = [
 
 export default function PricingPage() {
   const t = useTranslations('pricing');
+  const tNav = useTranslations('nav');
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">(
     "annual",
   );
@@ -202,6 +205,51 @@ export default function PricingPage() {
               {t('heroDescription')}
             </p>
 
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link
+                href="/trial"
+                className="btn-primary px-7 py-3.5 text-[15px] group"
+                onClick={() => {
+                  captureEvent("pricing_cta_trial_clicked", {
+                    cta_position: "hero",
+                    destination_url: "/trial",
+                  });
+                  track("pricing_cta_trial_clicked", {
+                    cta_position: "hero",
+                  });
+                }}
+              >
+                {tNav('startFreeTrial')}
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </Link>
+              <Link
+                href="/demo"
+                className="btn-secondary px-7 py-3.5 text-[15px]"
+                onClick={() => {
+                  captureEvent("pricing_cta_contact_clicked", {
+                    cta_position: "hero",
+                    destination_url: "/demo",
+                  });
+                  track("pricing_cta_contact_clicked", {
+                    cta_position: "hero",
+                  });
+                }}
+              >
+                {tNav('contactSales')}
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -2,15 +2,17 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from "next";
 import { Suspense } from "react";
 import ThankYouTrialContent from "./PageContent";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'thankYouTrial.metadata' });
+  const canonical = localizedUrl("/thank-you-trial", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/thank-you-trial",
+      canonical,
     },
     robots: { index: false, follow: false },
   };

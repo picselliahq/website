@@ -90,6 +90,24 @@ export function faqJsonLd(
   };
 }
 
+export function itemListJsonLd(
+  items: { name: string; description?: string; url: string }[],
+  locale?: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      description: item.description,
+      url: `${BASE_URL}${item.url}`,
+    })),
+    inLanguage: toInLanguage(locale),
+  };
+}
+
 export function softwareApplicationJsonLd(locale?: string) {
   return {
     "@context": "https://schema.org",

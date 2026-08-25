@@ -1,20 +1,22 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PageContent from './PageContent';
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'useCases.index.metadata' });
+  const canonical = localizedUrl("/use-cases", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/use-cases',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/use-cases',
+      url: canonical,
     },
   };
 }

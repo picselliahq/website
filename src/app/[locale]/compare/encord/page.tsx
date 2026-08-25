@@ -3,20 +3,22 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'compare.encord.metadata' });
+  const canonical = localizedUrl("/compare/encord", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/compare/encord",
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: "/compare/encord",
+      url: canonical,
     },
   };
 }
@@ -123,6 +125,7 @@ export default async function CompareEncordPage({ params }: { params: Promise<{ 
     <>
       <JsonLd
         data={breadcrumbJsonLd([
+          { name: "Compare", url: "/compare" },
           { name: "Picsellia vs Encord", url: "/compare/encord" },
         ], locale)}
       />
