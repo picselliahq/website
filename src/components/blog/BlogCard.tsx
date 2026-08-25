@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useLocale } from 'next-intl';
 import type { BlogPostMeta } from '@/types/blog';
 
-export default function BlogCard({ post, featured = false }: { post: BlogPostMeta; featured?: boolean }) {
+export default function BlogCard({ post, featured = false, priority = false }: { post: BlogPostMeta; featured?: boolean; priority?: boolean }) {
   const locale = useLocale();
   const dateLocale = locale === 'fr' ? 'fr-FR' : 'en-US';
 
@@ -25,6 +25,8 @@ export default function BlogCard({ post, featured = false }: { post: BlogPostMet
             src={post.frontmatter.image}
             alt={post.frontmatter.imageAlt || post.frontmatter.title}
             fill
+            priority={priority}
+            fetchPriority={priority ? 'high' : 'auto'}
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes={featured ? '(max-width: 768px) 100vw, 66vw' : '(max-width: 768px) 100vw, 33vw'}
           />

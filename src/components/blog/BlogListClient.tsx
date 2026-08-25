@@ -54,7 +54,7 @@ export default function BlogListClient({ posts, categories }: { posts: BlogPostM
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured && <BlogCard post={featured} featured />}
+          {featured && <BlogCard post={featured} featured priority />}
           {rest.map((post) => (
             <BlogCard key={post.slug} post={post} />
           ))}
