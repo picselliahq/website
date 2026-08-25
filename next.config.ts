@@ -38,6 +38,33 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    const csp = [
+      "default-src 'self'",
+      "script-src 'self' 'unsafe-inline' https://static.hsappstatic.net https://eu.i.posthog.com https://eu-assets.i.posthog.com https://va.vercel-scripts.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://uploads-ssl.webflow.com https://cdn.prod.website-files.com",
+      "font-src 'self' data:",
+      "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
+      "frame-src 'self' https://meetings.hubspot.com https://meetings-eu1.hubspot.com",
+      "frame-ancestors 'self'",
+      "base-uri 'self'",
+      "form-action 'self' https://api.hsforms.com",
+    ].join('; ');
+
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          { key: 'Content-Security-Policy', value: csp },
+        ],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

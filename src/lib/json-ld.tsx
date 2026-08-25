@@ -58,15 +58,24 @@ export function breadcrumbJsonLd(
   items: { name: string; url: string }[],
   locale?: string,
 ) {
+  const homeItem = {
+    "@type": "ListItem",
+    position: 1,
+    name: locale === "fr" ? "Accueil" : "Home",
+    item: locale === "fr" ? `${BASE_URL}/fr` : BASE_URL,
+  };
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: item.name,
-      item: `${BASE_URL}${item.url}`,
-    })),
+    itemListElement: [
+      homeItem,
+      ...items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: item.name,
+        item: `${BASE_URL}${item.url}`,
+      })),
+    ],
     inLanguage: toInLanguage(locale),
   };
 }
@@ -104,6 +113,46 @@ export function itemListJsonLd(
       description: item.description,
       url: `${BASE_URL}${item.url}`,
     })),
+    inLanguage: toInLanguage(locale),
+  };
+}
+
+/**
+ * Service + OfferCatalog for the pricing page. Deliberately omits a fixed
+ * `price` on each Offer — Picsellia's modules are usage-based, so a single
+ * price would misrepresent the offer rather than satisfy the schema.
+ */
+export function pricingServiceJsonLd(
+  modules: { name: string; description: string }[],
+  locale?: string,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: "MLOps Platform",
+    provider: {
+      "@type": "Organization",
+      name: "Picsellia",
+      url: BASE_URL,
+    },
+    areaServed: "Worldwide",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Picsellia Platform Modules",
+      itemListElement: modules.map((module) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: module.name,
+          description: module.description,
+        },
+        priceSpecification: {
+          "@type": "UnitPriceSpecification",
+          priceCurrency: "EUR",
+          unitText: "usage-based",
+        },
+      })),
+    },
     inLanguage: toInLanguage(locale),
   };
 }
