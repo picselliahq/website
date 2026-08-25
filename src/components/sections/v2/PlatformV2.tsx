@@ -140,14 +140,16 @@ export default function PlatformV2() {
         </div>
 
         {/* Pipeline diagram — horizontal steps */}
-        <div className="flex items-stretch border border-[var(--border)] rounded-xl overflow-hidden mb-10">
+        <div className="grid grid-cols-2 md:flex md:items-stretch border border-[var(--border)] rounded-xl overflow-hidden mb-10">
           {stages.map((s, i) => (
             <button
               key={s.id}
               onClick={() => setActive(i)}
-              className={`flex-1 relative py-4 px-3 md:px-5 transition-all cursor-pointer group ${
-                i < stages.length - 1 ? "border-r border-[var(--border)]" : ""
-              } ${
+              className={`relative py-4 px-3 md:px-5 md:flex-1 transition-all cursor-pointer group ${
+                i % 2 === 0 ? "border-r" : ""
+              } ${i < 2 ? "border-b md:border-b-0" : ""} ${
+                i < stages.length - 1 ? "md:border-r" : ""
+              } border-[var(--border)] ${
                 active === i
                   ? "bg-[var(--secondary-system-background)]"
                   : "hover:bg-[var(--secondary-system-background)]/50"
