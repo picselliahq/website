@@ -8,18 +8,20 @@ import IntegrationsV2 from "@/components/sections/v2/IntegrationsV2";
 import CTAV2 from "@/components/sections/v2/CTAV2";
 import BackgroundV2 from "@/components/sections/v2/BackgroundV2";
 import { JsonLd, organizationJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home.metadata' });
+  const canonical = localizedUrl("/", locale);
   return {
     title: t('title'),
     description: t('description'),
-    alternates: { canonical: '/' },
+    alternates: { canonical },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/',
+      url: canonical,
     },
   };
 }

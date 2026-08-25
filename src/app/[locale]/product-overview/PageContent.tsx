@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
 import PlatformLifecycle from "@/components/sections/PlatformLifecycle";
 
@@ -61,7 +61,7 @@ export default function ProductOverviewPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link href="/trial" className="btn-primary px-6 py-3">
+            <LocaleLink href="/trial" className="btn-primary px-6 py-3">
               {t('hero.startTrial')}
               <svg
                 className="w-4 h-4"
@@ -76,10 +76,10 @@ export default function ProductOverviewPage() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
-            <Link href="/demo" className="btn-secondary px-6 py-3">
+            </LocaleLink>
+            <LocaleLink href="/demo" className="btn-secondary px-6 py-3">
               {t('hero.seeLiveDemo')}
-            </Link>
+            </LocaleLink>
           </div>
 
           {/* Video */}
@@ -151,9 +151,9 @@ export default function ProductOverviewPage() {
                 {t('enterprise.subtitle')}
               </p>
             </div>
-            <Link href="/demo" className="btn-secondary">
+            <LocaleLink href="/demo" className="btn-secondary">
               {t('enterprise.talkToSales')}
-            </Link>
+            </LocaleLink>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -221,7 +221,7 @@ export default function ProductOverviewPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-                <Link href="/trial" className="btn-primary px-8 py-3 text-base">
+                <LocaleLink href="/trial" className="btn-primary px-8 py-3 text-base">
                   {t('cta.startTrial')}
                   <svg
                     className="w-4 h-4 ml-2"
@@ -236,13 +236,13 @@ export default function ProductOverviewPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link
+                </LocaleLink>
+                <LocaleLink
                   href="/demo"
                   className="btn-secondary px-8 py-3 text-base"
                 >
                   {t('cta.scheduleDemo')}
-                </Link>
+                </LocaleLink>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--tertiary-label)]">

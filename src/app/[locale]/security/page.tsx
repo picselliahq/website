@@ -1,5 +1,6 @@
-import { permanentRedirect } from 'next/navigation';
+import { permanentRedirect } from "@/i18n/navigation";
 
-export default function SecurityRedirect() {
-  permanentRedirect('/enterprise');
+export default async function SecurityRedirect({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  permanentRedirect({ href: "/enterprise", locale });
 }

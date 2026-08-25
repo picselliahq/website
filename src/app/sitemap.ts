@@ -12,8 +12,19 @@ function getLocalizedPath(pathname: string, locale: Locale): string {
   return entry[locale] || pathname;
 }
 
-/** Lightweight blog slug + date reader — avoids importing heavy MDX deps */
-function getBlogSlugsAndDates(): { slug: string; date: string }[] {
+/** Lightweight frontmatter reader — avoids importing heavy MDX deps */
+function readPostMeta(filePath: string): { date: string } | null {
+  if (!fs.existsSync(filePath)) return null;
+  const content = fs.readFileSync(filePath, "utf-8");
+  const publishedMatch = content.match(/^published:\s*(false)/m);
+  if (publishedMatch) return null;
+  const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
+  const updatedMatch = content.match(/^updated:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
+  return { date: updatedMatch?.[1] || dateMatch?.[1] || "2026-01-01" };
+}
+
+/** Per-post publish dates, keyed by every locale that has a published translation */
+function getBlogPostsByLocale(): { slug: string; dates: Partial<Record<Locale, string>> }[] {
   const dir = path.join(process.cwd(), "content", "blog");
   if (!fs.existsSync(dir)) return [];
 
@@ -21,16 +32,26 @@ function getBlogSlugsAndDates(): { slug: string; date: string }[] {
     .readdirSync(dir)
     .filter((f) => f.endsWith(".mdx"))
     .map((f) => {
-      const content = fs.readFileSync(path.join(dir, f), "utf-8");
-      const dateMatch = content.match(/^date:\s*["']?(\d{4}-\d{2}-\d{2})["']?/m);
-      const publishedMatch = content.match(/^published:\s*(false)/m);
-      if (publishedMatch) return null;
-      return {
-        slug: f.replace(/\.mdx$/, ""),
-        date: dateMatch?.[1] || "2026-01-01",
-      };
+      const slug = f.replace(/\.mdx$/, "");
+      const enMeta = readPostMeta(path.join(dir, f));
+      if (!enMeta) return null;
+
+      const dates: Partial<Record<Locale, string>> = { [defaultLocale]: enMeta.date };
+      for (const locale of locales) {
+        if (locale === defaultLocale) continue;
+        const localeMeta = readPostMeta(path.join(dir, locale, f));
+        if (localeMeta) dates[locale] = localeMeta.date;
+      }
+
+      return { slug, dates };
     })
-    .filter((p): p is { slug: string; date: string } => p !== null);
+    .filter((p): p is { slug: string; dates: Partial<Record<Locale, string>> } => p !== null);
+}
+
+function getLocalizedPostPath(slug: string, locale: Locale): string {
+  const entry = routing.pathnames["/post/[slug]"] as Record<string, string>;
+  const template = entry[locale] || `/post/${slug}`;
+  return template.replace("[slug]", slug);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -81,6 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/use-cases/remote-visual-inspection", priority: 0.6, changeFrequency: "yearly" },
 
     // Compare
+    { path: "/compare", priority: 0.7, changeFrequency: "monthly" },
     { path: "/compare/roboflow", priority: 0.7, changeFrequency: "monthly" },
     { path: "/compare/labelbox", priority: 0.7, changeFrequency: "monthly" },
     { path: "/compare/encord", priority: 0.7, changeFrequency: "monthly" },
@@ -121,14 +143,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   );
 
-  // Blog posts — lightweight reader to avoid bundling heavy MDX deps
-  const posts = getBlogSlugsAndDates();
-  const blogEntries: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `${baseUrl}/post/${post.slug}`,
-    lastModified: new Date(post.date),
-    changeFrequency: "yearly" as const,
-    priority: 0.6,
-  }));
+  // Blog posts — lightweight reader to avoid bundling heavy MDX deps.
+  // Each translated post gets its own entry with hreflang alternates, same
+  // pattern as staticEntries above, so French articles are discoverable.
+  const posts = getBlogPostsByLocale();
+  const blogEntries: MetadataRoute.Sitemap = posts.flatMap((post) => {
+    const availableLocales = locales.filter((l) => post.dates[l]);
+
+    const alternates: Record<string, string> = {};
+    for (const l of availableLocales) {
+      const lPrefix = l === defaultLocale ? "" : `/${l}`;
+      alternates[l] = `${baseUrl}${lPrefix}${getLocalizedPostPath(post.slug, l)}`;
+    }
+
+    return availableLocales.map((locale) => {
+      const prefix = locale === defaultLocale ? "" : `/${locale}`;
+      return {
+        url: `${baseUrl}${prefix}${getLocalizedPostPath(post.slug, locale)}`,
+        lastModified: new Date(post.dates[locale]!),
+        changeFrequency: "yearly" as const,
+        priority: locale === defaultLocale ? 0.6 : 0.5,
+        alternates: {
+          languages: alternates,
+        },
+      };
+    });
+  });
 
   return [...staticEntries, ...blogEntries];
 }

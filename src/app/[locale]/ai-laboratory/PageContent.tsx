@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useEffect, useState } from "react";
 import { codeToHtml } from "shiki";
 import { useTranslations } from 'next-intl';
@@ -178,7 +179,7 @@ export default function AILaboratoryPage() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+              <LocaleLink href="/demo" className="btn-primary px-8 py-4 text-base">
                 See It In Action
                 <svg
                   className="w-5 h-5 ml-2"
@@ -199,7 +200,7 @@ export default function AILaboratoryPage() {
                     d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                   />
                 </svg>
-              </Link>
+              </LocaleLink>
               <Link
                 href="https://documentation.picsellia.com/docs/experiment"
                 target="_blank"
@@ -1060,7 +1061,7 @@ export default function AILaboratoryPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/trial" className="btn-primary px-8 py-3">
+                <LocaleLink href="/trial" className="btn-primary px-8 py-3">
                   Start Free Trial
                   <svg
                     className="w-4 h-4 ml-2"
@@ -1075,10 +1076,10 @@ export default function AILaboratoryPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link href="/demo" className="btn-secondary px-8 py-3">
+                </LocaleLink>
+                <LocaleLink href="/demo" className="btn-secondary px-8 py-3">
                   Request Demo
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

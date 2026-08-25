@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
 
 // Manufacturing-specific use cases
@@ -227,7 +228,7 @@ export default function ManufacturingPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link href="/demo" className="btn-primary px-6 py-3">
+            <LocaleLink href="/demo" className="btn-primary px-6 py-3">
               {t('hero.requestDemo')}
               <svg
                 className="w-4 h-4"
@@ -242,7 +243,7 @@ export default function ManufacturingPage() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
+            </LocaleLink>
             <Link href="/use-cases" className="btn-secondary px-6 py-3">
               {t('hero.seeUseCases')}
             </Link>
@@ -1091,7 +1092,7 @@ export default function ManufacturingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/demo" className="btn-primary px-8 py-3 text-base">
+                <LocaleLink href="/demo" className="btn-primary px-8 py-3 text-base">
                   Request Demo
                   <svg
                     className="w-4 h-4 ml-2"
@@ -1106,7 +1107,7 @@ export default function ManufacturingPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
+                </LocaleLink>
                 <Link
                   href="/contact"
                   className="btn-secondary px-8 py-3 text-base"

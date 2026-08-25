@@ -25,6 +25,7 @@ const footerLinkData = {
     { key: "useCases", href: "/use-cases" },
     { key: "documentation", href: "https://documentation.picsellia.com" },
     { key: "faq", href: "/faq" },
+    { key: "compareHub", href: "/compare" },
     { key: "vsRoboflow", href: "/compare/roboflow" },
     { key: "vsLabelbox", href: "/compare/labelbox" },
     { key: "vsEncord", href: "/compare/encord" },

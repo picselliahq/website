@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useState, useMemo } from "react";
 import { useTranslations } from 'next-intl';
 
@@ -556,7 +556,7 @@ export default function PricingCalculator({
               )}
 
               <div className="space-y-3">
-                <Link
+                <LocaleLink
                   href="/trial"
                   className="btn-primary w-full justify-center px-6 py-3 text-sm"
                 >
@@ -574,13 +574,13 @@ export default function PricingCalculator({
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link
+                </LocaleLink>
+                <LocaleLink
                   href="/demo"
                   className="btn-secondary w-full justify-center px-6 py-3 text-sm"
                 >
                   {t('contactSales')}
-                </Link>
+                </LocaleLink>
               </div>
 
               <p className="text-[10px] text-[var(--tertiary-label)] mt-4 text-center">

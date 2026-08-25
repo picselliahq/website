@@ -8,20 +8,31 @@ import WorkflowIntegrationSection from '@/components/dataset-management/Workflow
 import CTASection from '@/components/dataset-management/CTASection';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
+import RelatedReading from "@/components/blog/RelatedReading";
+
+const relatedSlugs = [
+  "image-data-quality-for-image-classification",
+  "how-to-ensure-data-quality-best-practices",
+  "improve-imbalanced-datasets-in-computer-vision",
+  "object-detection-datasets",
+  "image-data-augmentation",
+];
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'datasetManagement.metadata' });
+  const canonical = localizedUrl("/dataset-management", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/dataset-management',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/dataset-management',
+      url: canonical,
     },
   };
 }
@@ -39,6 +50,7 @@ export default async function DatasetManagementPage({ params }: { params: Promis
       <DataOrganizationSection />
       <WorkflowIntegrationSection />
       <CTASection />
+      <RelatedReading slugs={relatedSlugs} locale={locale} />
     </>
   );
 }

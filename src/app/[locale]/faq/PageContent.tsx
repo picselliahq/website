@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { faqCategories } from './faq-data';
@@ -172,7 +173,7 @@ export default function FAQPage() {
                       </svg>
                       {t('pricing')}
                     </Link>
-                    <Link
+                    <LocaleLink
                       href="/demo"
                       className="flex items-center gap-2 text-sm text-[var(--secondary-label)] hover:text-[var(--picsellia-green)] transition-colors"
                     >
@@ -180,7 +181,7 @@ export default function FAQPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                       </svg>
                       {t('requestDemo')}
-                    </Link>
+                    </LocaleLink>
                   </div>
                 </div>
               </div>

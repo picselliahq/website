@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useState } from "react";
 import { useTranslations } from 'next-intl';
+import { captureEvent } from "@/lib/posthog";
+import { track } from "@vercel/analytics";
 import PricingCalculator from "./PricingCalculator";
 
 // Platform modules data
@@ -156,6 +159,7 @@ const faqs = [
 
 export default function PricingPage() {
   const t = useTranslations('pricing');
+  const tNav = useTranslations('nav');
   const [billingCycle, setBillingCycle] = useState<"monthly" | "annual">(
     "annual",
   );
@@ -202,6 +206,51 @@ export default function PricingPage() {
               {t('heroDescription')}
             </p>
 
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <LocaleLink
+                href="/trial"
+                className="btn-primary px-7 py-3.5 text-[15px] group"
+                onClick={() => {
+                  captureEvent("pricing_cta_trial_clicked", {
+                    cta_position: "hero",
+                    destination_url: "/trial",
+                  });
+                  track("pricing_cta_trial_clicked", {
+                    cta_position: "hero",
+                  });
+                }}
+              >
+                {tNav('startFreeTrial')}
+                <svg
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </LocaleLink>
+              <LocaleLink
+                href="/demo"
+                className="btn-secondary px-7 py-3.5 text-[15px]"
+                onClick={() => {
+                  captureEvent("pricing_cta_contact_clicked", {
+                    cta_position: "hero",
+                    destination_url: "/demo",
+                  });
+                  track("pricing_cta_contact_clicked", {
+                    cta_position: "hero",
+                  });
+                }}
+              >
+                {tNav('contactSales')}
+              </LocaleLink>
+            </div>
           </div>
         </div>
       </section>
@@ -820,7 +869,7 @@ export default function PricingPage() {
                 </Link>
 
                 <div>
-                  <Link href="/demo" className="btn-primary px-8 py-3">
+                  <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                     {t('contactSales')}
                     <svg
                       className="w-4 h-4 ml-2"
@@ -835,7 +884,7 @@ export default function PricingPage() {
                         d="M13 7l5 5m0 0l-5 5m5-5H6"
                       />
                     </svg>
-                  </Link>
+                  </LocaleLink>
                 </div>
               </div>
 
@@ -1003,7 +1052,7 @@ export default function PricingPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/trial" className="btn-primary px-8 py-3">
+                <LocaleLink href="/trial" className="btn-primary px-8 py-3">
                   {t('startFreeTrial')}
                   <svg
                     className="w-4 h-4 ml-2"
@@ -1018,10 +1067,10 @@ export default function PricingPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link href="/demo" className="btn-secondary px-8 py-3">
+                </LocaleLink>
+                <LocaleLink href="/demo" className="btn-secondary px-8 py-3">
                   {t('talkToSales')}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

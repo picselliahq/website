@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
 
 // Supported frameworks
@@ -341,7 +342,7 @@ export default function ExperimentTrackingPage() {
 
               {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+                <LocaleLink href="/demo" className="btn-primary px-8 py-4 text-base">
                   See It In Action
                   <svg
                     className="w-5 h-5 ml-2"
@@ -362,7 +363,7 @@ export default function ExperimentTrackingPage() {
                       d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                     />
                   </svg>
-                </Link>
+                </LocaleLink>
                 <Link
                   href="https://documentation.picsellia.com/docs/experiment"
                   target="_blank"
@@ -1344,7 +1345,7 @@ export default function ExperimentTrackingPage() {
                 models with full reproducibility.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link
+                <LocaleLink
                   href="/trial"
                   className="btn-primary px-10 py-4 text-base"
                 >
@@ -1362,13 +1363,13 @@ export default function ExperimentTrackingPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link
+                </LocaleLink>
+                <LocaleLink
                   href="/demo"
                   className="btn-secondary px-10 py-4 text-base"
                 >
                   Request Demo
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

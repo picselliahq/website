@@ -1,15 +1,17 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { Metadata } from "next";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'thankYou.metadata' });
+  const canonical = localizedUrl("/thank-you", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/thank-you",
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { captureEvent } from "@/lib/posthog";
 import { track } from "@vercel/analytics";
@@ -63,13 +63,13 @@ export default function BlogStickyBanner({ blogSlug }: { blogSlug: string }) {
       <span className="text-secondary hidden sm:inline">
         <strong className="text-label font-semibold">Picsellia</strong> — {t('bannerTagline')}
       </span>
-      <Link
+      <LocaleLink
         href="/demo"
         onClick={handleClick}
         className="btn-primary px-4 py-1.5 text-xs whitespace-nowrap"
       >
         {t('bookDemo')}
-      </Link>
+      </LocaleLink>
       <button
         onClick={handleDismiss}
         className="text-tertiary hover:text-secondary transition-colors p-1"

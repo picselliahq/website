@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { track } from "@vercel/analytics";
 import { captureEvent } from "@/lib/posthog";
@@ -24,7 +24,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
       <p className="text-sm text-secondary mb-6">{copy.subtext}</p>
 
       <div className="flex flex-col sm:flex-row items-start gap-3 mb-4">
-        <Link
+        <LocaleLink
           href="/trial"
           onClick={() => {
             track("blog_cta_trial_clicked");
@@ -33,8 +33,8 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
           className="btn-primary px-5 py-2.5 text-sm"
         >
           {t('startFreeTrial')}
-        </Link>
-        <Link
+        </LocaleLink>
+        <LocaleLink
           href="/demo"
           onClick={() => {
             track("blog_cta_demo_clicked");
@@ -43,7 +43,7 @@ export default function BlogConversionCTA({ copy }: { copy: ConversionCopy }) {
           className="btn-secondary px-5 py-2.5 text-sm"
         >
           {t('scheduleDemo')}
-        </Link>
+        </LocaleLink>
       </div>
 
       <div className="flex flex-wrap items-center gap-4 text-xs text-tertiary">

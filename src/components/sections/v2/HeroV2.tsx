@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { captureEvent } from "@/lib/posthog";
@@ -28,9 +28,24 @@ export default function HeroV2() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Defer fetching/playing the hero video until after first paint so it
+    // never competes with the LCP text and metrics row for bandwidth.
+    // (Calling .load() here would race with .play() and can silently abort
+    // playback, so we rely on .play() alone to trigger the fetch.)
+    const startPlayback = () => {
+      video.play().catch(() => {});
+    };
+
+    if (document.readyState === "complete") {
+      startPlayback();
+      return;
     }
+
+    window.addEventListener("load", startPlayback, { once: true });
+    return () => window.removeEventListener("load", startPlayback);
   }, []);
 
   const metrics = [
@@ -97,7 +112,7 @@ export default function HeroV2() {
             {t("subheadline")}
           </p>
           <div className="flex flex-col sm:flex-row items-start gap-3">
-            <Link
+            <LocaleLink
               href="/trial"
               className="btn-primary px-7 py-3.5 text-[15px] group"
               onClick={() => {
@@ -124,8 +139,8 @@ export default function HeroV2() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
-            <Link
+            </LocaleLink>
+            <LocaleLink
               href="/demo"
               className="btn-secondary px-7 py-3.5 text-[15px]"
               onClick={() => {
@@ -139,7 +154,7 @@ export default function HeroV2() {
               }}
             >
               {t("requestDemo")}
-            </Link>
+            </LocaleLink>
           </div>
         </motion.div>
 
@@ -186,11 +201,10 @@ export default function HeroV2() {
               ref={videoRef}
               src="/videos/homepage.webm"
               poster="/images/posters/homepage.jpg"
-              autoPlay
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="w-full h-auto block"
             />
           </div>

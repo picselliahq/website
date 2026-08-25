@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import BlogHeroImage from "@/components/blog/BlogHeroImage";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import {
@@ -20,6 +21,7 @@ import { getFeatureCTAs, getConversionCopy } from "@/lib/blog-cta";
 import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import rehypeShiki from "./rehype-shiki";
+import { localizedUrl } from "@/lib/seo";
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;
@@ -34,17 +36,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug, locale);
   if (!post) return {};
 
+  const canonical = localizedUrl({ pathname: "/post/[slug]", params: { slug } }, locale);
+
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     alternates: {
-      canonical: `/post/${slug}`,
+      canonical,
     },
     openGraph: {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
       type: "article",
       publishedTime: post.frontmatter.date,
+      modifiedTime: post.frontmatter.updated,
       authors: [post.frontmatter.author.name],
       images: post.frontmatter.image ? [post.frontmatter.image] : [],
     },
@@ -143,6 +148,15 @@ export default async function BlogPostPage({ params }: Props) {
                 <time dateTime={post.frontmatter.date}>
                   {formatDate(post.frontmatter.date, locale)}
                 </time>
+                {post.frontmatter.updated && (
+                  <>
+                    <span className="mx-1">&middot;</span>
+                    {t('updated')}{" "}
+                    <time dateTime={post.frontmatter.updated}>
+                      {formatDate(post.frontmatter.updated, locale)}
+                    </time>
+                  </>
+                )}
                 <span className="mx-1">&middot;</span>
                 {post.readingTime}
               </p>
@@ -217,12 +231,12 @@ export default async function BlogPostPage({ params }: Props) {
                 <p className="text-xs text-tertiary mb-4">
                   {t('trialCta')}
                 </p>
-                <Link
+                <LocaleLink
                   href="/trial"
                   className="btn-primary w-full px-4 py-2 text-xs"
                 >
                   {t('startFreeTrial')}
-                </Link>
+                </LocaleLink>
               </div>
               <TableOfContents items={toc} />
             </aside>

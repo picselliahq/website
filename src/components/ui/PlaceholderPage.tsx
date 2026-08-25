@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 interface PlaceholderPageProps {
@@ -22,9 +23,9 @@ export default function PlaceholderPage({ title, description, badge }: Placehold
           {description}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/demo" className="btn-primary">
+          <LocaleLink href="/demo" className="btn-primary">
             {t('requestDemo')}
-          </Link>
+          </LocaleLink>
           <Link href="/" className="btn-secondary">
             {t('backToHome')}
           </Link>

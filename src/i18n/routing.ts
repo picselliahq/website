@@ -5,6 +5,11 @@ export const routing = defineRouting({
   locales,
   defaultLocale,
   localePrefix: 'as-needed',
+  // Disabled: with 'as-needed' prefixes, a bare URL like /trial is the
+  // canonical English page — auto-detection from Accept-Language/cookie was
+  // redirecting visitors away from the English page they were deliberately
+  // on (e.g. clicking a CTA) whenever their browser/cookie said French.
+  localeDetection: false,
   pathnames: {
     '/': '/',
     '/product-overview': {
@@ -135,6 +140,10 @@ export const routing = defineRouting({
     },
 
     // Compare
+    '/compare': {
+      en: '/compare',
+      fr: '/comparer',
+    },
     '/compare/roboflow': {
       en: '/compare/roboflow',
       fr: '/comparer/roboflow',

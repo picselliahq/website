@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 // Energy-specific use cases
@@ -136,12 +137,12 @@ export default function EnergyPage() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link href="/demo" className="btn-primary px-6 py-3">
+            <LocaleLink href="/demo" className="btn-primary px-6 py-3">
               Request Demo
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </Link>
+            </LocaleLink>
             <Link href="/use-cases/defects-detection" className="btn-secondary px-6 py-3">
               See Use Cases
             </Link>
@@ -778,12 +779,12 @@ export default function EnergyPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/demo" className="btn-primary px-8 py-3 text-base">
+                <LocaleLink href="/demo" className="btn-primary px-8 py-3 text-base">
                   Request Demo
                   <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
-                </Link>
+                </LocaleLink>
                 <Link href="/contact" className="btn-secondary px-8 py-3 text-base">
                   Contact Sales
                 </Link>

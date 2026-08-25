@@ -133,6 +133,10 @@
       }
     }
   },
+  "relatedReading": {
+    "label": "From the Blog",
+    "title": "Related reading"
+  },
   "footer": {
     "tagline": "The MLOps platform for computer vision. Build, deploy, and monitor AI at scale.",
     "copyright": "All rights reserved.",
@@ -161,6 +165,7 @@
       "useCases": "Use Cases",
       "documentation": "Documentation",
       "faq": "FAQ",
+      "compareHub": "Compare Picsellia",
       "vsRoboflow": "Picsellia vs Roboflow",
       "vsLabelbox": "Picsellia vs Labelbox",
       "vsEncord": "Picsellia vs Encord",
@@ -1432,6 +1437,36 @@
         "retraining": "Retraining",
         "scaling": "Scaling",
         "data": "Data"
+      },
+      "industries": {
+        "label": "By Industry",
+        "title": "Computer vision use cases, by industry",
+        "subtitle": "Every industry above has its own failure modes and data types. Here's where Picsellia fits in each.",
+        "manufacturing": {
+          "name": "Manufacturing",
+          "description": "Automated visual inspection and defect detection on production lines — catch quality issues before they ship."
+        },
+        "agriculture": {
+          "name": "Agriculture",
+          "description": "Crop health monitoring and precision agriculture at scale, from drone imagery to livestock welfare."
+        },
+        "energy": {
+          "name": "Energy",
+          "description": "Pipeline and infrastructure inspection that catches anomalies before they become incidents."
+        },
+        "wasteManagement": {
+          "name": "Waste Management",
+          "description": "Automated sorting and material classification that keep recycling lines accurate and running."
+        },
+        "aerospace": {
+          "name": "Aerospace",
+          "description": "Visual inspection built for the precision and traceability aerospace manufacturing demands."
+        },
+        "defense": {
+          "name": "Defense",
+          "description": "Secure, on-premise-capable computer vision for surveillance and situational awareness."
+        },
+        "learnMore": "Learn more"
       }
     },
     "abelio": {
@@ -1720,6 +1755,46 @@
     }
   },
   "compare": {
+    "hub": {
+      "metadata": {
+        "title": "Compare Picsellia to Roboflow, Labelbox & Encord (2026)",
+        "description": "See how Picsellia compares to Roboflow, Labelbox, and Encord across pipeline coverage, deployment options, and enterprise compliance — plus links to a full breakdown against each.",
+        "ogTitle": "Compare Picsellia to Roboflow, Labelbox & Encord",
+        "ogDescription": "Full pipeline coverage vs point solutions: see how Picsellia stacks up against the leading computer vision annotation and MLOps tools."
+      },
+      "badge": "Platform Comparison",
+      "heroTitle": "Picsellia vs. ",
+      "heroHighlight": "the rest of the CV stack",
+      "heroDescription": "Most computer vision tools cover a slice of the pipeline — annotation, or training, or deployment. Picsellia covers all of it. Here's how it stacks up against the platforms teams compare it to most.",
+      "criteriaLabel": "At a Glance",
+      "criteriaTitle": "One platform, compared to three point solutions",
+      "criteriaDescription": "A quick summary — each comparison page below goes deeper on features, pricing, and migration.",
+      "criteriaHeader": "Criteria",
+      "platformTypeLabel": "Platform type",
+      "pipelineCoverageLabel": "Pipeline stages covered",
+      "bestForLabel": "How it compares",
+      "picselliaTagline": "CVOps Platform",
+      "picselliaStages": "6/6",
+      "competitors": {
+        "roboflow": {
+          "tagline": "Developer Toolkit",
+          "stages": "2/6"
+        },
+        "labelbox": {
+          "tagline": "Annotation Platform",
+          "stages": "2/6"
+        },
+        "encord": {
+          "tagline": "Data-Centric AI Platform",
+          "stages": "2/6"
+        }
+      },
+      "readComparison": "Read full comparison",
+      "ctaTitle": "Not sure which fits your team?",
+      "ctaDescription": "Talk to us about your current stack — we'll tell you honestly whether Picsellia is a fit.",
+      "bookDemo": "Book a Demo",
+      "startFreeTrial": "Start Free Trial"
+    },
     "roboflow": {
       "metadata": {
         "title": "Picsellia vs Roboflow (2026) - Best Enterprise CV Platform Comparison",
@@ -3663,7 +3738,8 @@
     "trialCta": "14-day free trial. No credit card.",
     "startFreeTrial": "Start Free Trial",
     "relatedArticles": "Related articles",
-    "dateLocale": "en-US"
+    "dateLocale": "en-US",
+    "updated": "Updated"
   },
   "blogCta": {
     "featureCTAs": {

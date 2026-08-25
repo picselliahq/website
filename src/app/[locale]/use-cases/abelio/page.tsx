@@ -3,20 +3,22 @@ import CaseStudyTemplate, {
 } from "@/components/use-cases/CaseStudyTemplate";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'useCases.abelio.metadata' });
+  const canonical = localizedUrl("/use-cases/abelio", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/use-cases/abelio",
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: "/use-cases/abelio",
+      url: canonical,
     },
   };
 }

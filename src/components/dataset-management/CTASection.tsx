@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function CTASection() {
@@ -47,15 +47,15 @@ export default function CTASection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-              <Link href="/trial" className="btn-primary px-8 py-3 text-base">
+              <LocaleLink href="/trial" className="btn-primary px-8 py-3 text-base">
                 {t('startTrial')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
-              <Link href="/demo" className="btn-secondary px-8 py-3 text-base">
+              </LocaleLink>
+              <LocaleLink href="/demo" className="btn-secondary px-8 py-3 text-base">
                 {t('scheduleDemo')}
-              </Link>
+              </LocaleLink>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-[var(--tertiary-label)]">

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { Link as LocaleLink } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function DatalakeVisualSearch() {
@@ -140,9 +140,9 @@ export default function DatalakeVisualSearch() {
                 <div className="text-2xl font-bold font-mono text-[var(--system-indigo)]">+40%</div>
                 <div className="text-xs text-[var(--tertiary-label)]">{t('visualSearch.betterAccuracy')}</div>
               </div>
-              <Link href="/demo" className="btn-secondary whitespace-nowrap">
+              <LocaleLink href="/demo" className="btn-secondary whitespace-nowrap">
                 {t('visualSearch.learnMore')}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>

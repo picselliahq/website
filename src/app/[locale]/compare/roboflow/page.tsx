@@ -1,22 +1,24 @@
-import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'compare.roboflow.metadata' });
+  const canonical = localizedUrl("/compare/roboflow", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: "/compare/roboflow",
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: "/compare/roboflow",
+      url: canonical,
     },
   };
 }
@@ -123,6 +125,7 @@ export default async function CompareRoboflowPage({ params }: { params: Promise<
     <>
       <JsonLd
         data={breadcrumbJsonLd([
+          { name: "Compare", url: "/compare" },
           { name: "Picsellia vs Roboflow", url: "/compare/roboflow" },
         ], locale)}
       />
@@ -186,15 +189,15 @@ export default async function CompareRoboflowPage({ params }: { params: Promise<
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/demo" className="btn-primary px-8 py-3">
+              <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                 {t('bookDemo')}
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </Link>
-              <Link href="/trial" className="btn-secondary px-8 py-3">
+              </LocaleLink>
+              <LocaleLink href="/trial" className="btn-secondary px-8 py-3">
                 {t('startFreeTrial')}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
@@ -474,15 +477,15 @@ export default async function CompareRoboflowPage({ params }: { params: Promise<
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                  <Link href="/demo" className="btn-primary px-8 py-3">
+                  <LocaleLink href="/demo" className="btn-primary px-8 py-3">
                     {t('bookDemo')}
                     <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                     </svg>
-                  </Link>
-                  <Link href="/trial" className="btn-secondary px-8 py-3">
+                  </LocaleLink>
+                  <LocaleLink href="/trial" className="btn-secondary px-8 py-3">
                     {t('startFreeTrial')}
-                  </Link>
+                  </LocaleLink>
                 </div>
               </div>
             </div>

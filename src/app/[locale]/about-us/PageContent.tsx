@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
 
 // SVG icons for values
@@ -474,7 +475,7 @@ export default function AboutPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/trial" className="btn-primary px-8 py-3">
+                <LocaleLink href="/trial" className="btn-primary px-8 py-3">
                   {t('cta.startTrial')}
                   <svg
                     className="w-4 h-4 ml-2"
@@ -489,10 +490,10 @@ export default function AboutPage() {
                       d="M13 7l5 5m0 0l-5 5m5-5H6"
                     />
                   </svg>
-                </Link>
-                <Link href="/demo" className="btn-secondary px-8 py-3">
+                </LocaleLink>
+                <LocaleLink href="/demo" className="btn-secondary px-8 py-3">
                   {t('cta.bookDemo')}
-                </Link>
+                </LocaleLink>
               </div>
             </div>
           </div>

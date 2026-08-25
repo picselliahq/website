@@ -1,20 +1,22 @@
 import PlaceholderPage from "@/components/ui/PlaceholderPage";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { localizedUrl } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'useCases.liveSportAnalysis.metadata' });
+  const canonical = localizedUrl("/use-cases/live-sport-analysis", locale);
   return {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: '/use-cases/live-sport-analysis',
+      canonical,
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
-      url: '/use-cases/live-sport-analysis',
+      url: canonical,
     },
   };
 }

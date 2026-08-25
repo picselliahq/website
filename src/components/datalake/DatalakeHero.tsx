@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import { useTranslations } from 'next-intl';
 
 const cloudProviders = [
@@ -104,7 +105,7 @@ export default function DatalakeHero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link href="/demo" className="btn-primary px-8 py-4 text-base">
+            <LocaleLink href="/demo" className="btn-primary px-8 py-4 text-base">
               {t('hero.cta')}
               <svg
                 className="w-5 h-5 ml-2"
@@ -125,7 +126,7 @@ export default function DatalakeHero() {
                   d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-            </Link>
+            </LocaleLink>
             <Link
               href="https://documentation.picsellia.com/docs/datalake-3"
               target="_blank"

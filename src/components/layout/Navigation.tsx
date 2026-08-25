@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Link as LocaleLink } from "@/i18n/navigation";
 import Image from "next/image";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslations } from "next-intl";
@@ -815,9 +816,15 @@ export default function Navigation() {
                     </div>
                     {/* Compare section */}
                     <div className="px-5 pb-5 pt-2 border-t border-[var(--border)]">
-                      <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-2 px-2.5">
+                      <Link
+                        href="/compare"
+                        className="flex items-center justify-between text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-2 px-2.5 hover:text-[var(--label)] transition-colors group"
+                      >
                         {t("compare")}
-                      </div>
+                        <svg className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
                       {compareMenu.map((item) => (
                         <Link
                           key={item.label}
@@ -879,12 +886,12 @@ export default function Navigation() {
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-3">
             <LanguageSwitcher />
-            <Link
+            <LocaleLink
               href="/demo"
               className="text-sm text-[var(--secondary-label)] hover:text-[var(--label)] transition-colors px-3 py-2"
             >
               {t("contactSales")}
-            </Link>
+            </LocaleLink>
             <Link
               href="https://app.picsellia.com/signup"
               className="btn-primary text-sm py-2.5 px-5"
@@ -994,9 +1001,12 @@ export default function Navigation() {
 
             {/* Compare */}
             <div className="py-3 border-t border-[var(--border)]">
-              <div className="text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3 px-2">
+              <Link
+                href="/compare"
+                className="block text-xs font-semibold text-[var(--tertiary-label)] uppercase tracking-wider mb-3 px-2 hover:text-[var(--label)] transition-colors"
+              >
                 {t("compare")}
-              </div>
+              </Link>
               {compareMenu.map((item) => (
                 <Link
                   key={item.label}
@@ -1041,13 +1051,13 @@ export default function Navigation() {
 
             {/* CTA */}
             <div className="pt-4 px-2">
-              <Link
+              <LocaleLink
                 href="/trial"
                 className="btn-primary text-center block"
                 onClick={() => setMobileOpen(false)}
               >
                 {t("startFreeTrial")}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         )}
