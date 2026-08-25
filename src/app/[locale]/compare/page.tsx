@@ -214,6 +214,13 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
               </Link>
             ))}
           </div>
+
+          <p className="text-center mt-10 text-sm text-[var(--tertiary-label)]">
+            {t('alternativesLead')}{" "}
+            <Link href="/post/roboflow-alternatives-for-enterprise-computer-vision-teams" className="text-[var(--picsellia-green)] hover:underline font-medium">
+              {t('alternativesLink')}
+            </Link>
+          </p>
         </div>
       </section>
 

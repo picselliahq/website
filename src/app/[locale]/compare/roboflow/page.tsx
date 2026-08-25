@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Link as LocaleLink } from "@/i18n/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -445,6 +446,13 @@ export default async function CompareRoboflowPage({ params }: { params: Promise<
               </div>
             ))}
           </div>
+
+          <p className="text-center mt-8 text-sm text-[var(--tertiary-label)]">
+            {t('exploreOtherAlternativesLead')}{" "}
+            <Link href="/post/roboflow-alternatives-for-enterprise-computer-vision-teams" className="text-[var(--picsellia-green)] hover:underline font-medium">
+              {t('exploreOtherAlternativesLink')}
+            </Link>
+          </p>
         </div>
       </section>
 
