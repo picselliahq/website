@@ -7,9 +7,12 @@ import DataOrganizationSection from '@/components/dataset-management/DataOrganiz
 import WorkflowIntegrationSection from '@/components/dataset-management/WorkflowIntegrationSection';
 import CTASection from '@/components/dataset-management/CTASection';
 
-import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 
 const relatedSlugs = [
   "mlops-for-computer-vision-complete-guide",
@@ -45,6 +48,7 @@ export default async function DatasetManagementPage({ params }: { params: Promis
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Dataset Management', url: '/dataset-management' }], locale)} />
+      <JsonLd data={webPageJsonLd("/dataset-management", PAGE_LAST_UPDATED, locale)} />
       <HeroSection />
       <VersionControlSection />
       <CapabilitiesGrid />
@@ -53,6 +57,7 @@ export default async function DatasetManagementPage({ params }: { params: Promis
       <WorkflowIntegrationSection />
       <CTASection />
       <RelatedReading slugs={relatedSlugs} locale={locale} />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }

@@ -6,9 +6,12 @@ import DatalakeVisualSearch from '@/components/datalake/DatalakeVisualSearch';
 import DatalakeTagsMetadata from '@/components/datalake/DatalakeTagsMetadata';
 import DatalakeCTA from '@/components/datalake/DatalakeCTA';
 
-import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 
 const relatedSlugs = [
   "mlops-for-computer-vision-complete-guide",
@@ -44,6 +47,7 @@ export default async function DatalakePage({ params }: { params: Promise<{ local
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Platform', url: '/product-overview' }, { name: 'Datalake', url: '/datalake' }], locale)} />
+      <JsonLd data={webPageJsonLd("/datalake", PAGE_LAST_UPDATED, locale)} />
       <DatalakeHero />
       <DatalakeCapabilities />
       <DatalakeQueryLanguage />
@@ -51,6 +55,7 @@ export default async function DatalakePage({ params }: { params: Promise<{ local
       <DatalakeTagsMetadata />
       <DatalakeCTA />
       <RelatedReading slugs={relatedSlugs} locale={locale} />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }

@@ -101,6 +101,23 @@ export function faqJsonLd(
   };
 }
 
+/**
+ * Minimal WebPage schema carrying a real dateModified — pass the actual
+ * date the page's content was last substantively edited, not today's date
+ * on every build. Static marketing pages have no CMS-tracked edit date, so
+ * this has to be maintained by hand as pages change.
+ */
+export function webPageJsonLd(url: string, dateModified: string, locale?: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${BASE_URL}${url}`,
+    url: `${BASE_URL}${url}`,
+    dateModified,
+    inLanguage: toInLanguage(locale),
+  };
+}
+
 export function itemListJsonLd(
   items: { name: string; description?: string; url: string }[],
   locale?: string,

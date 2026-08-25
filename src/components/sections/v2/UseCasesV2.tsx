@@ -102,10 +102,10 @@ export default function UseCasesV2() {
           </Link>
         </div>
 
-        {/* Table-like case selector */}
+        {/* Table-like case selector (stacked cards below md, table at md+) */}
         <div className="border border-[var(--border)] rounded-xl overflow-hidden mb-8">
-          {/* Header row */}
-          <div className="grid grid-cols-12 px-5 py-2.5 border-b border-[var(--border)] bg-[var(--secondary-system-background)] text-[10px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider">
+          {/* Header row — md+ only, the mobile card layout below has its own inline labels */}
+          <div className="hidden md:grid grid-cols-12 px-5 py-2.5 border-b border-[var(--border)] bg-[var(--secondary-system-background)] text-[10px] font-mono text-[var(--tertiary-label)] uppercase tracking-wider">
             <div className="col-span-1">{t("tableHeaderNumber")}</div>
             <div className="col-span-3">{t("tableHeaderIndustry")}</div>
             <div className="col-span-4">{t("tableHeaderApplication")}</div>
@@ -117,7 +117,7 @@ export default function UseCasesV2() {
             <button
               key={uc.id}
               onClick={() => setActive(i)}
-              className={`grid grid-cols-12 items-center px-5 py-3.5 w-full text-left transition-colors cursor-pointer ${
+              className={`flex flex-col gap-2 px-5 py-4 md:grid md:grid-cols-12 md:items-center md:gap-0 md:py-3.5 w-full text-left transition-colors cursor-pointer ${
                 i < useCases.length - 1 ? "border-b border-[var(--border)]" : ""
               } ${
                 active === i
@@ -125,33 +125,65 @@ export default function UseCasesV2() {
                   : "hover:bg-[var(--secondary-system-background)]/50"
               }`}
             >
-              <div className="col-span-1 min-w-0">
+              {/* Mobile: industry + number on one line */}
+              <div className="flex items-center justify-between md:hidden">
+                <span
+                  className={`text-sm font-medium ${active === i ? "text-[var(--label)]" : "text-[var(--secondary-label)]"}`}
+                >
+                  {uc.industry}
+                </span>
                 <span
                   className={`text-xs font-mono ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--tertiary-label)]"}`}
                 >
                   0{i + 1}
                 </span>
               </div>
-              <div className="col-span-3 min-w-0 pr-2">
+              {/* Mobile: application title */}
+              <span
+                className={`md:hidden text-sm ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
+              >
+                {uc.title}
+              </span>
+              {/* Mobile: metric + value */}
+              <div className="flex items-center justify-between md:hidden">
+                <span className="text-xs font-mono text-[var(--tertiary-label)]">
+                  {uc.statLabel}
+                </span>
+                <span
+                  className={`text-sm font-mono font-bold ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--label)]"}`}
+                >
+                  {uc.stat}
+                </span>
+              </div>
+
+              {/* Desktop table row */}
+              <div className="hidden md:block md:col-span-1 min-w-0">
+                <span
+                  className={`text-xs font-mono ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--tertiary-label)]"}`}
+                >
+                  0{i + 1}
+                </span>
+              </div>
+              <div className="hidden md:block md:col-span-3 min-w-0 pr-2">
                 <span
                   className={`text-sm break-words ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
                 >
                   {uc.industry}
                 </span>
               </div>
-              <div className="col-span-4 min-w-0 pr-2">
+              <div className="hidden md:block md:col-span-4 min-w-0 pr-2">
                 <span
                   className={`text-sm break-words ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
                 >
                   {uc.title}
                 </span>
               </div>
-              <div className="col-span-2 min-w-0 text-right pr-2">
+              <div className="hidden md:block md:col-span-2 min-w-0 text-right pr-2">
                 <span className="text-xs font-mono text-[var(--tertiary-label)] break-words">
                   {uc.statLabel}
                 </span>
               </div>
-              <div className="col-span-2 min-w-0 text-right">
+              <div className="hidden md:block md:col-span-2 min-w-0 text-right">
                 <span
                   className={`text-sm font-mono font-bold ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--label)]"}`}
                 >

@@ -4,6 +4,9 @@
     "titleTemplate": "{title} | Picsellia",
     "description": "The complete MLOps platform for computer vision. Build, deploy, and monitor vision AI applications at scale with Picsellia."
   },
+  "common": {
+    "lastUpdated": "Last updated"
+  },
   "nav": {
     "platform": "Platform",
     "solutions": "Solutions",
@@ -216,6 +219,22 @@
       "metricTeamsLabel": "Teams worldwide",
       "figLabel": "fig.01 — Platform overview",
       "deployedAt": "Deployed at"
+    },
+    "about": {
+      "title": "What is Picsellia?",
+      "body": "Picsellia is an end-to-end MLOps platform built specifically for computer vision teams. Instead of stitching together separate tools for data management, annotation, model training, deployment, and production monitoring, Picsellia keeps every stage of the pipeline in one system with shared lineage from raw image to production prediction. Teams use it to manage and version large image and video datasets, annotate with AI-assisted labeling tools, train and track experiments on any GPU, deploy models to the cloud, edge, or on-premise infrastructure, and monitor performance in production with built-in drift detection. Picsellia is ISO 27001 certified and supports on-premise or hybrid deployment for teams with strict data residency or compliance requirements. It's used across manufacturing, agriculture, energy, waste management, aerospace, and defense, wherever a team needs to turn image or video data into a production computer vision system without assembling five different tools to get there.",
+      "q1": {
+        "question": "What does Picsellia do?",
+        "answer": "Picsellia covers the full computer vision pipeline — data management, annotation, training, deployment, and production monitoring — in one platform with shared data lineage, instead of requiring separate tools for each stage."
+      },
+      "q2": {
+        "question": "Who is Picsellia for?",
+        "answer": "Teams building production computer vision systems, from startups running their first pilot to enterprise teams with on-premise or compliance requirements across manufacturing, agriculture, energy, aerospace, and defense."
+      },
+      "q3": {
+        "question": "How is Picsellia different from a point solution like Roboflow or Labelbox?",
+        "answer": "Tools like Roboflow and Labelbox focus primarily on data preparation and annotation. Picsellia covers the same stages plus training, deployment, and production monitoring natively, so teams don't need to integrate separate tools once they move past prototyping."
+      }
     },
     "platform": {
       "sectionLabel": "Platform",
