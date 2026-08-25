@@ -1,0 +1,80 @@
+---
+
+title: "Model Monitoring for Machine Learning in Production"
+description: "A practical look at the tools available for monitoring machine learning models in production — drift detection, performance tracking, and what to actually watch for."
+date: "2026-08-25"
+author:
+  name: "Picsellia Team"
+category: "Model Monitoring"
+image: "/images/blog/key-metrics-to-monitor-computer-vision-solutions-hero.png"
+imageAlt: "Model Monitoring for Machine Learning in Production"
+published: true
+tags: ["model-monitoring", "mlops", "drift-detection", "computer-vision", "production"]
+---
+
+A model that performed well in validation can quietly degrade in production for reasons that have nothing to do with the model itself: a camera got repositioned, a product's packaging changed, a new category showed up that training data never covered. Without monitoring, the first sign of this is usually a business metric moving in the wrong direction weeks after the actual cause — which is far too late to do anything but a postmortem.
+
+Model monitoring is what closes that gap. Here's a look at the tools teams actually use to do it, and what each is built for.
+
+## Picsellia
+
+Picsellia's [model monitoring](/model-monitoring) is built directly into the same platform used for training and deployment, so every prediction in production is logged against the exact model version and dataset lineage that produced it — there's no separate system to reconcile after the fact. It includes drift detection, anomaly detection on incoming data, and automated feedback loops that can trigger retraining when performance degrades past a threshold.
+
+**Advantages:**
+
+- Every production prediction is logged and tied to its model version and training data lineage automatically.
+- Built-in drift and anomaly detection, tuned for image and video data specifically rather than generic tabular monitoring.
+- Feedback loops that can trigger continuous training when monitored metrics degrade.
+- One platform for training and monitoring — no export/import step between the two.
+
+## Azure Machine Learning
+
+Microsoft's Azure ML includes model monitoring as part of its broader MLOps tooling, with built-in data drift detection that compares production input distributions against a training baseline. It's a natural fit for teams already standardized on Azure infrastructure, since monitoring, training, and deployment all live inside the same cloud ecosystem with shared identity and access management.
+
+**Advantages:**
+
+- Deep integration with the rest of the Azure ecosystem — identity, storage, compute all shared.
+- Built-in data drift detection comparing production inputs against a training baseline.
+- Enterprise-grade access control and compliance tooling inherited from Azure itself.
+- Works well for teams already running training and deployment on Azure.
+
+## Evidently AI
+
+Evidently is an open-source ML monitoring and observability library focused on generating detailed reports on data drift, data quality, and model performance degradation. It's popular specifically because it's usable standalone — you can generate a drift report against two datasets without committing to a full monitoring platform — which makes it a common first step for teams that want visibility before they invest in bigger tooling.
+
+**Advantages:**
+
+- Open source and free, usable as a standalone library without a platform commitment.
+- Detailed, pre-built reports for data drift, data quality, and performance metrics.
+- Low barrier to entry — useful even for a single ad-hoc drift check.
+- Active development and strong documentation.
+
+## Valohai
+
+Valohai is an MLOps orchestration platform where monitoring is one part of a broader pipeline-automation offering — versioned pipelines, automated retraining triggers, and infrastructure orchestration across cloud providers. It's a fit for teams that want monitoring folded into a wider orchestration layer rather than as a separate concern from training and deployment.
+
+**Advantages:**
+
+- Monitoring integrated into a broader pipeline orchestration and automation platform.
+- Multi-cloud support, useful for teams not locked into a single provider.
+- Automated retraining triggers based on pipeline and performance events.
+- Strong versioning across the full pipeline, not just the model.
+
+## SigNoz
+
+SigNoz is an open-source observability platform — logs, metrics, and traces — that isn't ML-specific but is increasingly used to monitor the infrastructure and services that serve ML models in production, alongside the rest of an application stack. For teams that already use SigNoz (or a similar observability stack) for general infrastructure monitoring, extending it to cover model-serving endpoints keeps monitoring in one place rather than adding an ML-specific tool on top.
+
+**Advantages:**
+
+- Open source and self-hostable, with no per-seat licensing cost.
+- Unifies ML-serving infrastructure monitoring with the rest of an application's observability stack.
+- Strong for latency, uptime, and resource metrics on model-serving endpoints specifically.
+- Not ML-specific, so it won't cover data drift or prediction-quality monitoring on its own.
+
+## What to actually monitor
+
+Regardless of which tool you use, the metrics that matter fall into a few categories: **data drift** (is the input distribution shifting away from training data), **prediction drift** (is the model's output distribution shifting even if inputs look stable), **performance metrics** where ground truth is available (accuracy, precision, recall against labeled outcomes), and **operational metrics** (latency, throughput, error rates). Missing any one of these creates a blind spot — a model can have stable latency and throughput while its actual predictions have quietly become unreliable.
+
+## Where to start
+
+If you want monitoring built into the same platform as training and deployment with zero integration work, that's the case for Picsellia. If you're already standardized on a cloud provider, their native MLOps tooling (Azure ML, or the equivalent on other clouds) is a reasonable default. If you want to start free and standalone before committing to a platform, Evidently is the lowest-friction way to generate a first drift report. [See Picsellia's monitoring in action](/model-monitoring), or [book a demo](/demo) to talk through what you're currently missing.

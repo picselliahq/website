@@ -109,6 +109,10 @@
         "label": "Blog",
         "description": "Actualités & analyses"
       },
+      "mlopsGuide": {
+        "label": "Guide MLOps",
+        "description": "Le guide complet du CVOps"
+      },
       "community": {
         "label": "Communauté",
         "description": "Rejoignez notre Slack & GitHub"
@@ -162,6 +166,7 @@
       "aerospace": "Aérospatial",
       "defense": "Défense",
       "blog": "Blog",
+      "mlopsGuide": "Guide MLOps",
       "useCases": "Cas d'usage",
       "documentation": "Documentation",
       "faq": "FAQ",
@@ -1193,6 +1198,8 @@
         }
       },
       "readComparison": "Lire la comparaison complete",
+      "alternativesLead": "Vous comparez plusieurs options ?",
+      "alternativesLink": "Lisez notre panorama des alternatives a Roboflow",
       "ctaTitle": "Vous ne savez pas laquelle choisir ?",
       "ctaDescription": "Parlez-nous de votre stack actuelle — nous vous dirons honnetement si Picsellia est adaptee.",
       "bookDemo": "Demander une demo",
@@ -1289,6 +1296,8 @@
           "answer": "Oui. Picsellia inclut un monitoring en production integre avec detection de derive, detection d'anomalies et boucles de feedback automatisees — des capacites que Roboflow n'offre pas. Contrairement a MLflow ou W&B, Picsellia fournit une plateforme unifiee couvrant le cycle de vie complet."
         }
       ],
+      "exploreOtherAlternativesLead": "Vous evaluez plus que Roboflow ?",
+      "exploreOtherAlternativesLink": "Consultez notre panorama complet des alternatives a Roboflow",
       "ctaTitle": "Pret a voir la difference ?",
       "ctaDescription": "Decouvrez comment Picsellia se compare a Roboflow pour votre cas d'usage specifique. Obtenez une demo personnalisee de notre equipe.",
       "pipelineStages": {
@@ -3531,7 +3540,9 @@
           "timeReduction": "Réduction moyenne du temps",
           "industries": "Industries servies",
           "models": "Modèles en production"
-        }
+        },
+        "researchingLead": "Vous recherchez des cas d'usage par secteur plutôt qu'un temoignage client specifique ?",
+        "researchingLink": "Lire le guide complet"
       },
       "readCaseStudy": "Lire le cas d'étude",
       "cta": {

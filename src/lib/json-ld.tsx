@@ -159,15 +159,24 @@ export function pricingServiceJsonLd(
   };
 }
 
-export function softwareApplicationJsonLd(locale?: string) {
+export function softwareApplicationJsonLd(
+  locale?: string,
+  overrides?: {
+    name?: string;
+    url?: string;
+    description?: string;
+    featureList?: string[];
+  },
+) {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Picsellia",
+    name: overrides?.name ?? "Picsellia",
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
-    url: BASE_URL,
+    url: overrides?.url ? `${BASE_URL}${overrides.url}` : BASE_URL,
     description:
+      overrides?.description ??
       "The complete MLOps platform for computer vision. Manage data, train models, deploy to production, and monitor performance — all in one workspace.",
     author: {
       "@type": "Organization",
@@ -179,7 +188,7 @@ export function softwareApplicationJsonLd(locale?: string) {
       priceCurrency: "EUR",
       description: "14-day free trial, no credit card required",
     },
-    featureList: [
+    featureList: overrides?.featureList ?? [
       "Data Management & Versioning",
       "Image & Video Annotation",
       "Model Training & Experiment Tracking",

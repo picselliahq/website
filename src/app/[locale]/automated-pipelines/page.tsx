@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import AutomatedPipelinesPageContent from "./PageContent";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "how-to-apply-mlops-to-computer-vision-cvops",
   "creating-a-cvops-platform",
   "end-to-end-repeatable-mlops-for-computer-vision",
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/automated-pipelines"),
     },
     openGraph: {
       title: t('ogTitle'),

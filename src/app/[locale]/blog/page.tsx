@@ -4,7 +4,7 @@ import { getAllPosts, getCategories } from '@/lib/blog-meta';
 import BlogListClient from '@/components/blog/BlogListClient';
 import NewsletterSignup from '@/components/blog/NewsletterSignup';
 import { JsonLd, breadcrumbJsonLd } from '@/lib/json-ld';
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -15,6 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/blog"),
     },
     openGraph: {
       title: t('ogTitle'),

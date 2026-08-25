@@ -119,6 +119,13 @@ export function getPostBySlug(slug: string, locale?: string): BlogPost | null {
   return readFullPost(filePath, slug);
 }
 
+/** True only if this exact locale has its own translated file — no English fallback. */
+export function hasLocalePost(slug: string, locale: string): boolean {
+  if (!/^[a-zA-Z0-9_-]+$/.test(slug)) return false;
+  const filePath = path.join(getContentDir(locale), `${slug}.mdx`);
+  return readPost(filePath, slug) !== null;
+}
+
 export function getAllSlugs(locale?: string): string[] {
   ensureContentDir();
 

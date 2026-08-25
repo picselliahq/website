@@ -1,10 +1,12 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ModelMonitoringPageContent from "./PageContent";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
+  "model-monitoring-for-machine-learning-in-production",
   "key-metrics-to-monitor-computer-vision-solutions",
   "what-is-data-drift-and-how-to-detect-it-with-mlops",
   "the-fastest-way-to-analyze-models-for-object-detection",
@@ -21,6 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/model-monitoring"),
     },
     openGraph: {
       title: t('ogTitle'),

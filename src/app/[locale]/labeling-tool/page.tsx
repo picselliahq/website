@@ -7,10 +7,12 @@ import QualityControlSection from '@/components/labeling-tool/QualityControlSect
 import CTASection from '@/components/labeling-tool/CTASection';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
+  "best-image-annotation-tools-for-machine-learning",
   "mastering-data-annotation-for-ai-projects-in-2025",
   "video-annotation",
   "picsellia-annotation-campaign",
@@ -26,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/labeling-tool"),
     },
     openGraph: {
       title: t('ogTitle'),

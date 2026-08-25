@@ -148,6 +148,13 @@ export default function UseCasesPage() {
               </div>
             ))}
           </div>
+
+          <p className="text-center mt-10 text-sm text-[var(--tertiary-label)]">
+            {t('hero.researchingLead')}{" "}
+            <Link href="/post/computer-vision-use-cases-by-industry" className="text-[var(--picsellia-green)] hover:underline font-medium">
+              {t('hero.researchingLink')}
+            </Link>
+          </p>
         </div>
       </section>
 

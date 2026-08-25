@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import ExperimentTrackingPageContent from "./PageContent";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "top-5-experiment-tracking-tools-for-computer-vision",
   "road-to-mlops-part-2",
   "road-to-mlops-part-3",
@@ -21,6 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/experiment-tracking"),
     },
     openGraph: {
       title: t('ogTitle'),

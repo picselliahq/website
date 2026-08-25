@@ -7,10 +7,11 @@ import DatalakeTagsMetadata from '@/components/datalake/DatalakeTagsMetadata';
 import DatalakeCTA from '@/components/datalake/DatalakeCTA';
 
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "choosing-an-image-dataset-management-platform",
   "data-management-in-ai-key-success-factor",
   "computer-vision-dataset-slicing",
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/datalake"),
     },
     openGraph: {
       title: t('ogTitle'),

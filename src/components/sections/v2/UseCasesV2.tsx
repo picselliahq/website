@@ -125,33 +125,33 @@ export default function UseCasesV2() {
                   : "hover:bg-[var(--secondary-system-background)]/50"
               }`}
             >
-              <div className="col-span-1">
+              <div className="col-span-1 min-w-0">
                 <span
                   className={`text-xs font-mono ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--tertiary-label)]"}`}
                 >
                   0{i + 1}
                 </span>
               </div>
-              <div className="col-span-3">
+              <div className="col-span-3 min-w-0 pr-2">
                 <span
-                  className={`text-sm ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
+                  className={`text-sm break-words ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
                 >
                   {uc.industry}
                 </span>
               </div>
-              <div className="col-span-4">
+              <div className="col-span-4 min-w-0 pr-2">
                 <span
-                  className={`text-sm ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
+                  className={`text-sm break-words ${active === i ? "text-[var(--label)] font-medium" : "text-[var(--secondary-label)]"}`}
                 >
                   {uc.title}
                 </span>
               </div>
-              <div className="col-span-2 text-right">
-                <span className="text-xs font-mono text-[var(--tertiary-label)]">
+              <div className="col-span-2 min-w-0 text-right pr-2">
+                <span className="text-xs font-mono text-[var(--tertiary-label)] break-words">
                   {uc.statLabel}
                 </span>
               </div>
-              <div className="col-span-2 text-right">
+              <div className="col-span-2 min-w-0 text-right">
                 <span
                   className={`text-sm font-mono font-bold ${active === i ? "text-[var(--picsellia-green)]" : "text-[var(--label)]"}`}
                 >

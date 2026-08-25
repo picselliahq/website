@@ -1,10 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import AnnotationCampaignsPageContent from "./PageContent";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
+  "mlops-for-computer-vision-complete-guide",
   "picsellia-annotation-campaign",
   "mastering-data-annotation-for-ai-projects-in-2025",
   "build-high-performing-teams-for-computer-vision-projects",
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/annotation-campaigns"),
     },
     openGraph: {
       title: t('ogTitle'),

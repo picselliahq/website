@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import FAQPageContent from "./PageContent";
 import { faqCategories } from "./faq-data";
 import { JsonLd, faqJsonLd } from "@/lib/json-ld";
-import { localizedUrl } from "@/lib/seo";
+import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: t('description'),
     alternates: {
       canonical,
+      languages: localizedAlternates("/faq"),
     },
     openGraph: {
       title: t('ogTitle'),

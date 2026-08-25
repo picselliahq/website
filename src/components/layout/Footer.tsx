@@ -22,6 +22,7 @@ const footerLinkData = {
   ],
   resources: [
     { key: "blog", href: "/blog" },
+    { key: "mlopsGuide", href: "/post/mlops-for-computer-vision-complete-guide" },
     { key: "useCases", href: "/use-cases" },
     { key: "documentation", href: "https://documentation.picsellia.com" },
     { key: "faq", href: "/faq" },

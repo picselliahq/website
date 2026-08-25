@@ -109,6 +109,10 @@
         "label": "Blog",
         "description": "Latest news & insights"
       },
+      "mlopsGuide": {
+        "label": "MLOps Guide",
+        "description": "The complete guide to CVOps"
+      },
       "community": {
         "label": "Community",
         "description": "Join our Slack & GitHub"
@@ -162,6 +166,7 @@
       "aerospace": "Aerospace",
       "defense": "Defense",
       "blog": "Blog",
+      "mlopsGuide": "MLOps Guide",
       "useCases": "Use Cases",
       "documentation": "Documentation",
       "faq": "FAQ",
@@ -1398,7 +1403,9 @@
           "timeReduction": "Average time reduction",
           "industries": "Industries served",
           "models": "Models in production"
-        }
+        },
+        "researchingLead": "Researching use cases by industry rather than looking for a specific customer story?",
+        "researchingLink": "Read the complete guide"
       },
       "readCaseStudy": "Read case study",
       "cta": {
@@ -1790,6 +1797,8 @@
         }
       },
       "readComparison": "Read full comparison",
+      "alternativesLead": "Comparing more than one option?",
+      "alternativesLink": "Read our Roboflow alternatives roundup",
       "ctaTitle": "Not sure which fits your team?",
       "ctaDescription": "Talk to us about your current stack — we'll tell you honestly whether Picsellia is a fit.",
       "bookDemo": "Book a Demo",
@@ -1886,6 +1895,8 @@
           "answer": "Yes. Picsellia includes built-in production monitoring with drift detection, anomaly detection, and automated feedback loops — capabilities that Roboflow does not offer. Unlike MLflow or W&B, which focus on experiment tracking, Picsellia provides a unified platform covering the full lifecycle from data curation to production monitoring, eliminating the need to stitch together multiple tools."
         }
       ],
+      "exploreOtherAlternativesLead": "Evaluating more than just Roboflow?",
+      "exploreOtherAlternativesLink": "See the full Roboflow alternatives roundup",
       "ctaTitle": "Ready to see the difference?",
       "ctaDescription": "See how Picsellia compares to Roboflow for your specific use case. Get a personalized demo from our team.",
       "pipelineStages": {

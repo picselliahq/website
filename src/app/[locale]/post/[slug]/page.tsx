@@ -9,6 +9,7 @@ import {
   getPostBySlug,
   getAllPosts,
   extractTableOfContents,
+  hasLocalePost,
 } from "@/lib/blog";
 import { mdxComponents } from "@/components/blog/MDXComponents";
 import TableOfContents from "@/components/blog/TableOfContents";
@@ -22,6 +23,7 @@ import { JsonLd, articleJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import rehypeShiki from "./rehype-shiki";
 import { localizedUrl } from "@/lib/seo";
+import { locales, defaultLocale } from "@/i18n/config";
 
 type Props = {
   params: Promise<{ slug: string; locale: string }>;
@@ -38,11 +40,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const canonical = localizedUrl({ pathname: "/post/[slug]", params: { slug } }, locale);
 
+  // Only list a locale in hreflang if that locale genuinely has its own
+  // translated file — an English fallback rendered under /fr/article/{slug}
+  // isn't a real alternate.
+  const translatedLocales = locales.filter((l) => hasLocalePost(slug, l));
+  const languages: Record<string, string> = {};
+  for (const l of translatedLocales) {
+    languages[l] = localizedUrl({ pathname: "/post/[slug]", params: { slug } }, l);
+  }
+  if (translatedLocales.includes(defaultLocale)) {
+    languages["x-default"] = localizedUrl({ pathname: "/post/[slug]", params: { slug } }, defaultLocale);
+  }
+
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
     alternates: {
       canonical,
+      languages,
     },
     openGraph: {
       title: post.frontmatter.title,
