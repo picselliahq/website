@@ -12,6 +12,7 @@ import RelatedReading from "@/components/blog/RelatedReading";
 
 const relatedSlugs = [
   "mlops-for-computer-vision-complete-guide",
+  "best-image-annotation-tools-for-machine-learning",
   "mastering-data-annotation-for-ai-projects-in-2025",
   "video-annotation",
   "picsellia-annotation-campaign",
