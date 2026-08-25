@@ -7,7 +7,7 @@ import EnterpriseV2 from "@/components/sections/v2/EnterpriseV2";
 import IntegrationsV2 from "@/components/sections/v2/IntegrationsV2";
 import CTAV2 from "@/components/sections/v2/CTAV2";
 import BackgroundV2 from "@/components/sections/v2/BackgroundV2";
-import { JsonLd, organizationJsonLd } from "@/lib/json-ld";
+import { JsonLd, organizationJsonLd, softwareApplicationJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -36,6 +36,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   return (
     <>
       <JsonLd data={organizationJsonLd(locale)} />
+      <JsonLd data={softwareApplicationJsonLd(locale)} />
       <BackgroundV2 />
       <HeroV2 />
       <PlatformV2 />
