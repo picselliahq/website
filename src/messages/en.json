@@ -3552,6 +3552,68 @@
       "inferenceLatency": "Inference latency",
       "uptimeSla": "Uptime SLA",
       "support": "Support"
+    },
+    "explainer": {
+      "title": "What is a computer vision platform?",
+      "intro": "A computer vision platform is the software layer that takes a team from raw images or video to a working model in production — and keeps it working. Rather than treating labeling, training, and deployment as separate jobs handled by separate tools, a platform connects them: the dataset a model was trained on stays linked to the labels that built it, the experiment that produced it, and the version currently running in production. That link — data lineage — is what lets a team trace a bad prediction back to the training data that caused it, instead of guessing.",
+      "whyBody": "Most computer vision teams don't start with a platform. They start with a labeling tool, a spreadsheet to track experiments, a cloud bucket for images, and a deployment script glued together by whoever wrote it last. That works for a first model. It breaks down once a team is running multiple models across multiple use cases: nobody can say which dataset version trained which model, retraining after a data update means redoing manual work, and finding out a model has drifted in production depends on a customer complaining first. A platform exists to remove that manual gluing — one system that data, labels, experiments, and deployed models flow through, so the team spends its time improving models instead of maintaining infrastructure between them.",
+      "includesBody": "In practice, a computer vision platform covers five stages: data management (storing and organizing images and video at scale), annotation (labeling that data, usually with AI assistance to speed it up), training (running and tracking experiments so results are reproducible), deployment (shipping a model to the cloud, an edge device, or on-premise infrastructure), and monitoring (watching a deployed model's real-world performance and catching drift before it causes failures). Some tools cover one or two of these well without covering the rest. Picsellia is built to cover all five natively, with shared lineage running through every stage below.",
+      "pitfallsTitle": "Signs you've outgrown a stitched-together workflow",
+      "pitfalls": [
+        {
+          "title": "No one can say which dataset trained a given model",
+          "desc": "Datasets, labels, and model versions live in different systems with nothing to link them."
+        },
+        {
+          "title": "Retraining means redoing work by hand",
+          "desc": "A data fix or new batch of images means manually re-running steps that should be automatic."
+        },
+        {
+          "title": "Drift surfaces only when a customer complains",
+          "desc": "There's no visibility into how a deployed model is actually performing on real-world data."
+        },
+        {
+          "title": "Onboarding means explaining five disconnected tools",
+          "desc": "New team members spend their first weeks learning the glue code instead of the models."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "How Picsellia compares",
+      "subtitle": "These tools are strong at what they specialize in. Here's where the coverage differs.",
+      "cards": {
+        "roboflow": {
+          "desc": "Roboflow is great for prototyping and developer communities. Picsellia is built for enterprise teams that need end-to-end MLOps — from data curation to production monitoring — with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Roboflow"
+        },
+        "labelbox": {
+          "desc": "Labelbox is a leading data labeling platform. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Labelbox"
+        },
+        "encord": {
+          "desc": "Encord excels at annotation and data curation for AI teams. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Encord"
+        }
+      }
+    },
+    "faq": {
+      "title": "Common questions",
+      "q1": {
+        "question": "Do I have to migrate all five stages at once, or can I start with just one?",
+        "answer": "You can start anywhere in the pipeline — most teams begin with data management or annotation, then add training, deployment, and monitoring as they need them. Each stage works standalone but shares data lineage automatically once you add the next one, so there's no re-import or re-labeling required to connect them later."
+      },
+      "q2": {
+        "question": "Does Picsellia replace tools I already use, like a labeling tool or an experiment tracker?",
+        "answer": "It can, but doesn't have to. Picsellia's API-first design means you can plug it into an existing pipeline — for example, keeping a training framework you already use while moving data management and annotation onto Picsellia — or run the full pipeline natively. Most teams consolidate over time as tool sprawl becomes the bigger cost."
+      },
+      "q3": {
+        "question": "What does \"on-premise or hybrid deployment\" actually mean here?",
+        "answer": "It means the platform itself — not just the trained model — can run inside your own infrastructure, cloud VPC, or air-gapped environment, not only Picsellia's cloud. That matters for teams in manufacturing, defense, energy, and other sectors where images or video can't leave a controlled environment for compliance or IP reasons."
+      },
+      "q4": {
+        "question": "How long does it take to go from raw images to a deployed model?",
+        "answer": "It depends on dataset size and model complexity, but the biggest bottleneck is usually annotation and experiment iteration, not infrastructure setup. Since data, labeling, training, and deployment run through the same system, there's no integration work needed between stages — which is what typically adds the most time in a stitched-together workflow."
+      }
     }
   },
   "demo": {

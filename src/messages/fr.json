@@ -2953,7 +2953,69 @@
         "statsValue": "99.9%",
         "statsLabel": "SLA de disponibilité"
       }
-    ]
+    ],
+    "explainer": {
+      "title": "Qu'est-ce qu'une plateforme de vision par ordinateur ?",
+      "intro": "Une plateforme de vision par ordinateur est la couche logicielle qui mène une équipe des images ou vidéos brutes à un modèle qui fonctionne en production — et qui continue de fonctionner. Plutôt que de traiter l'annotation, l'entraînement et le déploiement comme des tâches séparées gérées par des outils séparés, une plateforme les relie entre eux : le dataset ayant servi à entraîner un modèle reste lié aux labels qui l'ont constitué, à l'expérience qui l'a produit, et à la version actuellement en production. Ce lien — la traçabilité des données (data lineage) — permet à une équipe de remonter d'une mauvaise prédiction jusqu'aux données d'entraînement qui l'ont causée, plutôt que de deviner.",
+      "whyBody": "La plupart des équipes de vision par ordinateur ne démarrent pas avec une plateforme. Elles démarrent avec un outil d'annotation, un tableur pour suivre les expériences, un bucket cloud pour les images, et un script de déploiement assemblé par la dernière personne qui s'en est occupée. Cela fonctionne pour un premier modèle. Cela ne tient plus dès qu'une équipe gère plusieurs modèles sur plusieurs cas d'usage : personne ne peut dire quelle version de dataset a entraîné quel modèle, réentraîner après une mise à jour des données signifie refaire du travail manuel, et découvrir qu'un modèle a dérivé en production dépend d'abord d'une réclamation client. Une plateforme existe pour supprimer cet assemblage manuel — un seul système à travers lequel circulent les données, les labels, les expériences et les modèles déployés, afin que l'équipe passe son temps à améliorer les modèles plutôt qu'à maintenir l'infrastructure entre eux.",
+      "includesBody": "En pratique, une plateforme de vision par ordinateur couvre cinq étapes : la gestion des données (stocker et organiser images et vidéos à grande échelle), l'annotation (étiqueter ces données, généralement avec une assistance IA pour accélérer le processus), l'entraînement (lancer et suivre les expériences pour que les résultats soient reproductibles), le déploiement (livrer un modèle sur le cloud, un appareil edge, ou une infrastructure on-premise), et le monitoring (surveiller la performance réelle d'un modèle déployé et détecter le drift avant qu'il ne cause des échecs). Certains outils couvrent bien une ou deux de ces étapes sans couvrir les autres. Picsellia est conçu pour couvrir nativement les cinq, avec une traçabilité partagée à travers chaque étape ci-dessous.",
+      "pitfallsTitle": "Les signes que vous avez dépassé un workflow assemblé à la main",
+      "pitfalls": [
+        {
+          "title": "Personne ne peut dire quel dataset a entraîné un modèle donné",
+          "desc": "Datasets, labels et versions de modèles vivent dans des systèmes différents sans rien pour les relier."
+        },
+        {
+          "title": "Réentraîner signifie refaire le travail à la main",
+          "desc": "Une correction de données ou un nouveau lot d'images oblige à relancer manuellement des étapes qui devraient être automatiques."
+        },
+        {
+          "title": "Le drift n'apparaît que lorsqu'un client se plaint",
+          "desc": "Aucune visibilité sur la façon dont un modèle déployé se comporte réellement sur des données du monde réel."
+        },
+        {
+          "title": "Onboarder quelqu'un signifie expliquer cinq outils déconnectés",
+          "desc": "Les nouvelles recrues passent leurs premières semaines à apprendre la colle entre les outils plutôt que les modèles."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Comment Picsellia se compare",
+      "subtitle": "Ces outils excellent dans leur spécialité. Voici où la couverture diffère.",
+      "cards": {
+        "roboflow": {
+          "desc": "Roboflow est excellent pour le prototypage et les communautés de développeurs. Picsellia est conçu pour les équipes entreprise qui ont besoin de MLOps de bout en bout — de la curation des données au monitoring en production — avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Roboflow"
+        },
+        "labelbox": {
+          "desc": "Labelbox est une plateforme d'annotation de données de référence. Picsellia va plus loin — en couvrant l'annotation, l'entraînement, le déploiement et le monitoring en production sur une seule plateforme, avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Labelbox"
+        },
+        "encord": {
+          "desc": "Encord excelle dans l'annotation et la curation de données pour les équipes IA. Picsellia va plus loin — en couvrant l'annotation, l'entraînement, le déploiement et le monitoring en production sur une seule plateforme, avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Encord"
+        }
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": {
+        "question": "Dois-je migrer les cinq étapes d'un coup, ou puis-je commencer par une seule ?",
+        "answer": "Vous pouvez commencer n'importe où dans le pipeline — la plupart des équipes débutent par la gestion des données ou l'annotation, puis ajoutent l'entraînement, le déploiement et le monitoring selon leurs besoins. Chaque étape fonctionne de façon autonome mais partage automatiquement la traçabilité des données dès que vous ajoutez l'étape suivante, sans réimport ni ré-annotation nécessaire pour les relier ensuite."
+      },
+      "q2": {
+        "question": "Picsellia remplace-t-il les outils que j'utilise déjà, comme un outil d'annotation ou un tracker d'expériences ?",
+        "answer": "Cela peut être le cas, mais ce n'est pas obligatoire. La conception API-first de Picsellia permet de l'intégrer dans un pipeline existant — par exemple en conservant un framework d'entraînement déjà utilisé tout en déplaçant la gestion des données et l'annotation vers Picsellia — ou de faire tourner le pipeline complet nativement. La plupart des équipes consolident avec le temps, à mesure que la dispersion des outils devient le coût le plus important."
+      },
+      "q3": {
+        "question": "Que signifie concrètement le déploiement « on-premise ou hybride » ?",
+        "answer": "Cela signifie que la plateforme elle-même — pas seulement le modèle entraîné — peut fonctionner dans votre propre infrastructure, votre VPC cloud, ou un environnement air-gapped, et pas uniquement dans le cloud de Picsellia. C'est important pour les équipes de l'industrie, de la défense, de l'énergie et d'autres secteurs où les images ou vidéos ne peuvent pas quitter un environnement contrôlé pour des raisons de conformité ou de propriété intellectuelle."
+      },
+      "q4": {
+        "question": "Combien de temps faut-il pour passer des images brutes à un modèle déployé ?",
+        "answer": "Cela dépend de la taille du dataset et de la complexité du modèle, mais le principal goulot d'étranglement est généralement l'annotation et l'itération des expériences, pas la mise en place de l'infrastructure. Comme les données, l'annotation, l'entraînement et le déploiement passent par le même système, aucun travail d'intégration n'est nécessaire entre les étapes — ce qui est habituellement ce qui ajoute le plus de temps dans un workflow assemblé à la main."
+      }
+    }
   },
   "demo": {
     "metadata": {
