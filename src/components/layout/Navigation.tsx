@@ -923,8 +923,9 @@ export default function Navigation() {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2"
+            className="lg:hidden p-3 -m-1"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
           >
             <svg
               className="w-5 h-5"

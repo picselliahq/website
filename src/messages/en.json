@@ -8,6 +8,8 @@
     "lastUpdated": "Last updated"
   },
   "nav": {
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
     "platform": "Platform",
     "solutions": "Solutions",
     "resources": "Resources",

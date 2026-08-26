@@ -200,7 +200,7 @@ export default function HeroV2() {
             <video
               ref={videoRef}
               src="/videos/homepage.webm"
-              poster="/images/posters/homepage.jpg"
+              poster="/images/posters/homepage.webp"
               loop
               muted
               playsInline

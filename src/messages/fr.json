@@ -8,6 +8,8 @@
     "lastUpdated": "Mis à jour le"
   },
   "nav": {
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
     "platform": "Plateforme",
     "solutions": "Solutions",
     "resources": "Ressources",

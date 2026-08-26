@@ -1,0 +1,31 @@
+# Picsellia
+
+> Picsellia is an end-to-end MLOps platform built specifically for computer vision teams. Instead of stitching together separate tools for data management, annotation, model training, deployment, and production monitoring, Picsellia keeps every stage of the pipeline in one system with shared lineage from raw image to production prediction.
+
+Picsellia is ISO 27001 certified and supports on-premise or hybrid deployment for teams with strict data residency or compliance requirements. It's used across manufacturing, agriculture, energy, waste management, aerospace, and defense.
+
+## Platform
+
+- [Product Overview](https://www.picsellia.com/product-overview): What a computer vision platform is and how Picsellia's five stages fit together
+- [Datalake](https://www.picsellia.com/datalake): Centralized storage and organization for images and video at scale
+- [Dataset Management](https://www.picsellia.com/dataset-management): Versioning and organizing datasets used to train models
+- [Labeling Tool](https://www.picsellia.com/labeling-tool): AI-assisted annotation — bounding boxes, polygons, segmentation, keypoints
+- [Annotation Campaigns](https://www.picsellia.com/annotation-campaigns): Structured labeling workflows with review and quality control
+- [AI Laboratory](https://www.picsellia.com/ai-laboratory): Experimentation environment for training computer vision models
+- [Experiment Tracking](https://www.picsellia.com/experiment-tracking): Reproducible experiment and model versioning
+- [Automated Pipelines](https://www.picsellia.com/automated-pipelines): Automating retraining and data processing workflows
+- [Model Deployment](https://www.picsellia.com/model-deployment): Shipping models to cloud, edge, or on-premise infrastructure
+- [Model Monitoring](https://www.picsellia.com/model-monitoring): Production drift detection and performance monitoring
+
+## Comparisons
+
+- [Picsellia vs Roboflow](https://www.picsellia.com/compare/roboflow)
+- [Picsellia vs Labelbox](https://www.picsellia.com/compare/labelbox)
+- [Picsellia vs Encord](https://www.picsellia.com/compare/encord)
+
+## Resources
+
+- [Pricing](https://www.picsellia.com/pricing)
+- [FAQ](https://www.picsellia.com/faq)
+- [Blog](https://www.picsellia.com/blog): MLOps and computer vision guides
+- [Use Cases](https://www.picsellia.com/use-cases): Customer case studies by industry
