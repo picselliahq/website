@@ -738,6 +738,39 @@
     "canvas": {
       "shapes": "Formes",
       "toReview": "À revoir"
+    },
+    "comparison": {
+      "title": "Comment Picsellia se compare",
+      "subtitle": "Ces outils excellent dans leur spécialité. Voici où la couverture diffère.",
+      "cards": {
+        "roboflow": {
+          "desc": "Roboflow est excellent pour le prototypage et les communautés de développeurs. Picsellia est conçu pour les équipes entreprise qui ont besoin de MLOps de bout en bout — de la curation des données au monitoring en production — avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Roboflow"
+        },
+        "labelbox": {
+          "desc": "Labelbox est une plateforme d'annotation de données de référence. Picsellia va plus loin — en couvrant l'annotation, l'entraînement, le déploiement et le monitoring en production sur une seule plateforme, avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Labelbox"
+        },
+        "encord": {
+          "desc": "Encord excelle dans l'annotation et la curation de données pour les équipes IA. Picsellia va plus loin — en couvrant l'annotation, l'entraînement, le déploiement et le monitoring en production sur une seule plateforme, avec la conformité ISO 27001 et le déploiement on-premise.",
+          "cta": "Comparer avec Encord"
+        }
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "q1": {
+        "question": "Puis-je utiliser l'outil d'annotation seul, sans le reste de la plateforme ?",
+        "answer": "Oui. L'outil d'annotation fonctionne de façon autonome — connectez vos données, annotez, et exportez. Si vous ajoutez ensuite l'entraînement ou le déploiement, vos annotations et leur historique complet sont récupérés automatiquement, sans réimport nécessaire."
+      },
+      "q2": {
+        "question": "Quels types d'annotation sont pris en charge ?",
+        "answer": "Boîtes englobantes, polygones pour la segmentation, points-clés, polylignes et classification d'image entière, sur des images, vidéos, imagerie satellite, scans médicaux et données multispectrales — avec une annotation assistée par IA pour accélérer chaque type."
+      },
+      "q3": {
+        "question": "Comment fonctionne le contrôle qualité pour une équipe d'annotateurs ?",
+        "answer": "Chaque annotation passe par un statut de revue — à revoir, acceptée ou rejetée — avec une traçabilité complète de qui a annoté et qui a revu. Le travail rejeté retourne à l'annotateur d'origine pour correction, au lieu d'être écrasé silencieusement."
+      }
     }
   },
   "annotationCampaigns": {

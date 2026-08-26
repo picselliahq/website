@@ -738,6 +738,39 @@
     "canvas": {
       "shapes": "Shapes",
       "toReview": "To Review"
+    },
+    "comparison": {
+      "title": "How Picsellia compares",
+      "subtitle": "These tools are strong at what they specialize in. Here's where the coverage differs.",
+      "cards": {
+        "roboflow": {
+          "desc": "Roboflow is great for prototyping and developer communities. Picsellia is built for enterprise teams that need end-to-end MLOps — from data curation to production monitoring — with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Roboflow"
+        },
+        "labelbox": {
+          "desc": "Labelbox is a leading data labeling platform. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Labelbox"
+        },
+        "encord": {
+          "desc": "Encord excels at annotation and data curation for AI teams. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+          "cta": "Compare with Encord"
+        }
+      }
+    },
+    "faq": {
+      "title": "Common questions",
+      "q1": {
+        "question": "Can I use the labeling tool on its own, without the rest of the platform?",
+        "answer": "Yes. The labeling tool works standalone — connect your data, annotate, and export. If you later add training or deployment, your annotations and their full history carry over automatically instead of needing to be re-imported."
+      },
+      "q2": {
+        "question": "What annotation types does it support?",
+        "answer": "Bounding boxes, polygons for segmentation, keypoints, polylines, and whole-image classification, across images, video, satellite imagery, medical scans, and multispectral data — with AI-assisted labeling to speed up each type."
+      },
+      "q3": {
+        "question": "How does quality control work for a team of annotators?",
+        "answer": "Every annotation moves through a review status — to review, accepted, or rejected — with full traceability back to who annotated and who reviewed it. Rejected work returns to the original annotator for correction instead of being silently overwritten."
+      }
     }
   },
   "annotationCampaigns": {
