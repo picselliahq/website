@@ -87,6 +87,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
+      <head>
+        <link rel="preconnect" href="https://eu.i.posthog.com" />
+        <link rel="preconnect" href="https://eu-assets.i.posthog.com" />
+        <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
+        <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
+      </head>
       <body>
         <NextIntlClientProvider>
           <PostHogProvider>
