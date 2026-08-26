@@ -1,8 +1,11 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from "next";
 import PricingPageContent from "./PageContent";
-import { JsonLd, breadcrumbJsonLd, pricingServiceJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, pricingServiceJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -36,7 +39,9 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Pricing', url: '/pricing' }], locale)} />
       <JsonLd data={pricingServiceJsonLd(modules, locale)} />
+      <JsonLd data={webPageJsonLd("/pricing", PAGE_LAST_UPDATED, locale)} />
       <PricingPageContent />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }

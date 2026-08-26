@@ -8,8 +8,11 @@ import EnterpriseV2 from "@/components/sections/v2/EnterpriseV2";
 import IntegrationsV2 from "@/components/sections/v2/IntegrationsV2";
 import CTAV2 from "@/components/sections/v2/CTAV2";
 import BackgroundV2 from "@/components/sections/v2/BackgroundV2";
-import { JsonLd, organizationJsonLd, softwareApplicationJsonLd, faqJsonLd } from "@/lib/json-ld";
+import { JsonLd, organizationJsonLd, softwareApplicationJsonLd, faqJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-08-25";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -44,6 +47,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <JsonLd data={organizationJsonLd(locale)} />
       <JsonLd data={softwareApplicationJsonLd(locale)} />
       <JsonLd data={faqJsonLd(aboutFaqs, locale)} />
+      <JsonLd data={webPageJsonLd("/", PAGE_LAST_UPDATED, locale)} />
       <BackgroundV2 />
       <HeroV2 />
       <PlatformV2 />
@@ -52,6 +56,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <IntegrationsV2 />
       <AboutV2 />
       <CTAV2 />
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }
