@@ -196,16 +196,18 @@ export default function HeroV2() {
               1920 &times; 1080
             </span>
           </div>
-          <div className="rounded-xl overflow-hidden border border-[var(--border)]">
+          <div
+            className="rounded-xl overflow-hidden border border-[var(--border)] aspect-[1280/848]"
+          >
             <video
               ref={videoRef}
               src="/videos/homepage.webm"
-              poster="/images/posters/homepage.jpg"
+              poster="/images/posters/homepage.webp"
               loop
               muted
               playsInline
               preload="none"
-              className="w-full h-auto block"
+              className="w-full h-full object-cover block"
             />
           </div>
           {/* Bottom fade */}

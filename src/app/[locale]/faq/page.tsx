@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from "next";
 import FAQPageContent from "./PageContent";
 import { faqCategories } from "./faq-data";
-import { JsonLd, faqJsonLd } from "@/lib/json-ld";
+import { JsonLd, faqJsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -33,6 +33,7 @@ export default async function FAQPage({ params }: { params: Promise<{ locale: st
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: 'FAQ', url: '/faq' }], locale)} />
       <JsonLd data={faqJsonLd(allQuestions, locale)} />
       <FAQPageContent />
     </>

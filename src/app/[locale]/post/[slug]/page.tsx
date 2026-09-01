@@ -118,7 +118,6 @@ export default async function BlogPostPage({ params }: Props) {
       <JsonLd
         data={breadcrumbJsonLd([
           { name: "Blog", url: "/blog" },
-          { name: post.frontmatter.category, url: "/blog" },
           { name: post.frontmatter.title, url: `/post/${slug}` },
         ], locale)}
       />
