@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { track } from "@vercel/analytics";
 import { captureEvent } from "@/lib/posthog";
 import { useTranslations } from 'next-intl';
@@ -125,7 +125,7 @@ export default function DemoPage() {
           lastName: formData.lastName,
           email: formData.email,
         });
-        router.push(`/thank-you-demo?${params.toString()}`);
+        router.push({ pathname: "/thank-you-demo", query: Object.fromEntries(params) });
       } else {
         setSubmitError(true);
       }

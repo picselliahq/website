@@ -3,6 +3,9 @@ import Link from "next/link";
 import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
+import { groupLines, renderInline } from "@/lib/policy-markdown";
+
+const PRIVACY_LINK_CLASS = "text-[var(--system-blue)] hover:underline";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -22,215 +25,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
   };
 }
-
-const sections = [
-  {
-    id: "introduction",
-    title: "Introduction",
-    content: `Picsellia SAS ("Picsellia", "we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our MLOps platform for computer vision, visit our website, or interact with our services.
-
-We process personal data in compliance with the General Data Protection Regulation (GDPR), the French Data Protection Act (Loi Informatique et Libertés), and other applicable data protection laws.`,
-  },
-  {
-    id: "data-controller",
-    title: "Data Controller",
-    content: `Picsellia SAS is the data controller for the personal data collected through our services.
-
-**Contact Information:**
-Picsellia SAS
-Toulouse, France
-Email: privacy@picsellia.com
-
-For any privacy-related inquiries, please contact our Data Protection Officer at dpo@picsellia.com.`,
-  },
-  {
-    id: "data-collected",
-    title: "Information We Collect",
-    content: `**Account Information**
-When you create an account, we collect:
-- Name and email address
-- Organization name
-- Job title and role
-- Password (encrypted)
-- Profile preferences
-
-**Usage Data**
-We automatically collect:
-- Log data (IP address, browser type, device information)
-- Platform usage analytics (features used, session duration)
-- Performance metrics
-
-**Platform Data**
-When using our services, you may upload:
-- Images and datasets for computer vision tasks
-- Model configurations and training parameters
-- Annotations and labels
-- API tokens and integration credentials
-
-**Communication Data**
-When you contact us, we collect:
-- Email correspondence
-- Support tickets
-- Feedback and survey responses
-
-**Payment Information**
-For paid plans, we collect:
-- Billing address
-- Payment method (processed by our payment provider Stripe)
-- Invoice history`,
-  },
-  {
-    id: "legal-basis",
-    title: "Legal Basis for Processing",
-    content: `We process your personal data based on the following legal grounds:
-
-**Contract Performance**
-Processing necessary to provide our services, manage your account, and fulfill our contractual obligations.
-
-**Legitimate Interests**
-Processing for our legitimate business interests, such as improving our services, ensuring security, and conducting analytics—balanced against your rights and freedoms.
-
-**Consent**
-Where required, we obtain your explicit consent for specific processing activities, such as marketing communications.
-
-**Legal Obligations**
-Processing required to comply with applicable laws, regulations, and legal processes.`,
-  },
-  {
-    id: "how-we-use",
-    title: "How We Use Your Information",
-    content: `We use collected information to:
-
-- **Provide Services:** Operate and maintain the Picsellia platform
-- **Improve Products:** Analyze usage patterns to enhance features and user experience
-- **Customer Support:** Respond to inquiries and provide technical assistance
-- **Security:** Detect, prevent, and address technical issues and security threats
-- **Communications:** Send important updates, newsletters (with consent), and service notifications
-- **Billing:** Process payments and manage subscriptions
-- **Compliance:** Meet legal obligations and enforce our terms of service`,
-  },
-  {
-    id: "data-sharing",
-    title: "Data Sharing and Disclosure",
-    content: `We do not sell your personal data. We may share information with:
-
-**Service Providers**
-Trusted third parties who assist in operating our platform:
-- Cloud infrastructure (OVHcloud, AWS)
-- Payment processing (Stripe)
-- Email services (HubSpot)
-- Analytics (privacy-focused tools)
-
-**Legal Requirements**
-When required by law, court order, or governmental authority.
-
-**Business Transfers**
-In connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections.
-
-**With Your Consent**
-When you explicitly authorize sharing with specific third parties.
-
-All service providers are bound by data processing agreements ensuring GDPR compliance and adequate data protection.`,
-  },
-  {
-    id: "data-retention",
-    title: "Data Retention",
-    content: `We retain personal data only as long as necessary for the purposes described:
-
-| Data Type | Retention Period |
-|-----------|-----------------|
-| Account data | Duration of account + 3 years |
-| Usage logs | 12 months |
-| Platform data | Duration of account + 30 days |
-| Support tickets | 5 years |
-| Invoices | 10 years (legal requirement) |
-
-When data is no longer needed, we securely delete or anonymize it in accordance with our data retention policies.`,
-  },
-  {
-    id: "your-rights",
-    title: "Your Rights",
-    content: `Under GDPR and applicable laws, you have the right to:
-
-**Access**
-Request a copy of your personal data we hold.
-
-**Rectification**
-Request correction of inaccurate or incomplete data.
-
-**Erasure ("Right to be Forgotten")**
-Request deletion of your personal data under certain circumstances.
-
-**Restriction**
-Request limitation of processing in specific situations.
-
-**Data Portability**
-Receive your data in a structured, commonly used format.
-
-**Object**
-Object to processing based on legitimate interests or direct marketing.
-
-**Withdraw Consent**
-Withdraw consent at any time where processing is based on consent.
-
-**Lodge a Complaint**
-File a complaint with your local data protection authority (in France: CNIL).
-
-To exercise these rights, contact us at privacy@picsellia.com. We will respond within 30 days.`,
-  },
-  {
-    id: "security",
-    title: "Data Security",
-    content: `We implement robust technical and organizational measures to protect your data:
-
-- **Encryption:** AES-256 encryption at rest, TLS 1.3 in transit
-- **Access Controls:** Role-based access with multi-factor authentication
-- **Infrastructure:** ISO 27001 certified data centers in the EU
-- **Monitoring:** 24/7 security monitoring and intrusion detection
-- **Audits:** Regular security assessments and penetration testing
-- **Certifications:** ISO/IEC 27001:2022 certified
-
-For more details, see our [Security page](/security).`,
-  },
-  {
-    id: "international-transfers",
-    title: "International Data Transfers",
-    content: `Picsellia primarily stores data in European Union data centers. When we transfer data outside the EU/EEA, we ensure appropriate safeguards:
-
-- Standard Contractual Clauses (SCCs) approved by the European Commission
-- Adequacy decisions where applicable
-- Additional technical and organizational measures
-
-We do not transfer data to countries without adequate protection unless appropriate safeguards are in place.`,
-  },
-
-  {
-    id: "children",
-    title: "Children's Privacy",
-    content: `Picsellia services are not directed to individuals under 16 years of age. We do not knowingly collect personal data from children. If we become aware that we have collected data from a child without parental consent, we will take steps to delete that information.`,
-  },
-  {
-    id: "changes",
-    title: "Changes to This Policy",
-    content: `We may update this Privacy Policy periodically to reflect changes in our practices or legal requirements. We will notify you of significant changes via email or a prominent notice on our platform.
-
-The "Last Updated" date at the top of this policy indicates when it was last revised. Continued use of our services after changes constitutes acceptance of the updated policy.`,
-  },
-  {
-    id: "contact",
-    title: "Contact Us",
-    content: `For questions about this Privacy Policy or our data practices:
-
-**Email:** privacy@picsellia.com
-**Data Protection Officer:** dpo@picsellia.com
-
-**Postal Address:**
-Picsellia SAS
-Toulouse, France
-
-We aim to respond to all inquiries within 30 days.`,
-  },
-];
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -339,18 +133,6 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                 </div>
                 <div className="pl-12 prose prose-invert max-w-none">
                   {section.content.split("\n\n").map((paragraph, i) => {
-                    // Handle markdown-style bold text
-                    const formattedText = paragraph.replace(
-                      /\*\*(.*?)\*\*/g,
-                      '<strong class="text-[var(--label)] font-semibold">$1</strong>',
-                    );
-
-                    // Handle markdown-style links
-                    const withLinks = formattedText.replace(
-                      /\[(.*?)\]\((.*?)\)/g,
-                      '<a href="$2" class="text-[var(--system-blue)] hover:underline">$1</a>',
-                    );
-
                     // Handle tables
                     if (paragraph.includes("|--------")) {
                       const lines = paragraph.split("\n");
@@ -402,37 +184,32 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
                       );
                     }
 
-                    // Handle list items
-                    if (paragraph.startsWith("- ")) {
-                      const items = paragraph
-                        .split("\n")
-                        .map((line) => line.replace(/^- /, ""));
-                      return (
-                        <ul
-                          key={i}
-                          className="list-disc list-inside space-y-2 my-4 text-[var(--secondary-label)]"
-                        >
-                          {items.map((item, li) => (
-                            <li
-                              key={li}
+                    return (
+                      <div key={i}>
+                        {groupLines(paragraph).map((block, bi) =>
+                          block.list ? (
+                            <ul
+                              key={bi}
+                              className="list-disc list-inside space-y-2 my-4 text-[var(--secondary-label)]"
+                            >
+                              {block.lines.map((item, li) => (
+                                <li
+                                  key={li}
+                                  dangerouslySetInnerHTML={{ __html: renderInline(item, PRIVACY_LINK_CLASS) }}
+                                />
+                              ))}
+                            </ul>
+                          ) : (
+                            <p
+                              key={bi}
+                              className="text-[var(--secondary-label)] leading-relaxed my-4"
                               dangerouslySetInnerHTML={{
-                                __html: item.replace(
-                                  /\*\*(.*?)\*\*/g,
-                                  '<strong class="text-[var(--label)]">$1</strong>',
-                                ),
+                                __html: block.lines.map((line) => renderInline(line, PRIVACY_LINK_CLASS)).join("<br />"),
                               }}
                             />
-                          ))}
-                        </ul>
-                      );
-                    }
-
-                    return (
-                      <p
-                        key={i}
-                        className="text-[var(--secondary-label)] leading-relaxed my-4"
-                        dangerouslySetInnerHTML={{ __html: withLinks }}
-                      />
+                          ),
+                        )}
+                      </div>
                     );
                   })}
                 </div>
