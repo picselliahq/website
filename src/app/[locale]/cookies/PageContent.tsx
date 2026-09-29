@@ -4,235 +4,81 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
-// Cookie categories with details
+// Cookie categories. Names, descriptions, purposes, durations and the policy
+// text live in messages (cookies.categories / cookieInfo / policySections).
 const cookieCategories = [
   {
     id: 'essential',
-    name: 'Essential Cookies',
-    description: 'Required for the website to function properly. These cannot be disabled.',
     required: true,
     cookies: [
-      {
-        name: 'session_id',
-        purpose: 'Maintains your session state across page requests',
-        duration: 'Session',
-        provider: 'Picsellia',
-      },
-      {
-        name: 'csrf_token',
-        purpose: 'Protects against cross-site request forgery attacks',
-        duration: 'Session',
-        provider: 'Picsellia',
-      },
-      {
-        name: 'cookie_consent',
-        purpose: 'Stores your cookie consent preferences',
-        duration: '1 year',
-        provider: 'Picsellia',
-      },
-      {
-        name: '__cf_bm',
-        purpose: 'Cloudflare bot management - distinguishes humans from bots',
-        duration: '30 minutes',
-        provider: 'Cloudflare',
-      },
+      { name: 'session_id', provider: 'Picsellia' },
+      { name: 'csrf_token', provider: 'Picsellia' },
+      { name: 'cookie_consent', provider: 'Picsellia' },
+      { name: '__cf_bm', provider: 'Cloudflare' },
     ],
   },
   {
     id: 'functional',
-    name: 'Functional Cookies',
-    description: 'Enable personalized features and remember your preferences.',
     required: false,
     cookies: [
-      {
-        name: 'theme_preference',
-        purpose: 'Remembers your preferred color theme (light/dark)',
-        duration: '1 year',
-        provider: 'Picsellia',
-      },
-      {
-        name: 'language',
-        purpose: 'Stores your preferred language setting',
-        duration: '1 year',
-        provider: 'Picsellia',
-      },
-      {
-        name: 'sidebar_collapsed',
-        purpose: 'Remembers sidebar state in the platform',
-        duration: '1 year',
-        provider: 'Picsellia',
-      },
+      { name: 'theme_preference', provider: 'Picsellia' },
+      { name: 'language', provider: 'Picsellia' },
+      { name: 'sidebar_collapsed', provider: 'Picsellia' },
     ],
   },
   {
     id: 'analytics',
-    name: 'Analytics Cookies',
-    description: 'Help us understand how visitors interact with our website to improve user experience.',
     required: false,
     cookies: [
-      {
-        name: '_ga',
-        purpose: 'Google Analytics - distinguishes unique users',
-        duration: '2 years',
-        provider: 'Google',
-      },
-      {
-        name: '_ga_*',
-        purpose: 'Google Analytics 4 - maintains session state',
-        duration: '2 years',
-        provider: 'Google',
-      },
-      {
-        name: '_gid',
-        purpose: 'Google Analytics - distinguishes users',
-        duration: '24 hours',
-        provider: 'Google',
-      },
-      {
-        name: '_gat',
-        purpose: 'Google Analytics - throttles request rate',
-        duration: '1 minute',
-        provider: 'Google',
-      },
+      { name: '_ga', provider: 'Google' },
+      { name: '_ga_*', provider: 'Google' },
+      { name: '_gid', provider: 'Google' },
+      { name: '_gat', provider: 'Google' },
     ],
   },
   {
     id: 'marketing',
-    name: 'Marketing Cookies',
-    description: 'Used to track visitors across websites for advertising purposes.',
     required: false,
     cookies: [
-      {
-        name: '_fbp',
-        purpose: 'Facebook Pixel - tracks visits across websites',
-        duration: '3 months',
-        provider: 'Meta',
-      },
-      {
-        name: '_li_fat_id',
-        purpose: 'LinkedIn - member indirect identifier for conversion tracking',
-        duration: '30 days',
-        provider: 'LinkedIn',
-      },
+      { name: '_fbp', provider: 'Meta' },
+      { name: '_li_fat_id', provider: 'LinkedIn' },
     ],
   },
 ];
 
-// Policy sections
-const sections = [
-  {
-    id: 'what-are-cookies',
-    title: 'What Are Cookies?',
-    content: `Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently, provide a better user experience, and give website owners useful information about how their site is being used.
+type PolicySection = { id: string; title: string; content: string };
+type CookieInfo = Record<string, { purpose: string; duration: string }>;
 
-Cookies can be "first-party" (set by the website you're visiting) or "third-party" (set by other services used on the website, such as analytics or advertising platforms).`,
-  },
-  {
-    id: 'how-we-use',
-    title: 'How We Use Cookies',
-    content: `Picsellia uses cookies and similar technologies for several purposes:
+// Minimal markdown for the policy text: **bold** and [label](url).
+function renderInline(text: string): string {
+  // Links first: the Tailwind classes injected below contain "[...]", which
+  // the link pattern would otherwise match.
+  return text
+    .replace(
+      /\[([^\]]*)\]\(([^)]*)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[var(--system-orange)] hover:underline">$1</a>'
+    )
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--label)] font-semibold">$1</strong>');
+}
 
-- **Essential Functions:** To enable core website functionality, security, and accessibility
-- **Preferences:** To remember your settings and personalize your experience
-- **Analytics:** To understand how visitors use our website and improve our services
-- **Marketing:** To deliver relevant content and measure the effectiveness of our campaigns
-
-We are committed to transparency about the cookies we use and giving you control over your preferences.`,
-  },
-  {
-    id: 'legal-basis',
-    title: 'Legal Basis',
-    content: `Under the GDPR and ePrivacy Directive, we process cookie data based on:
-
-**Strictly Necessary Cookies**
-These cookies are essential for the website to function and do not require consent. They are placed automatically when you access our services.
-
-**Optional Cookies**
-For all non-essential cookies (functional, analytics, and marketing), we rely on your explicit consent. You can manage your preferences at any time using the cookie settings panel or by adjusting your browser settings.
-
-We only activate optional cookies after you have provided consent, and we respect your right to withdraw consent at any time.`,
-  },
-  {
-    id: 'your-choices',
-    title: 'Your Choices',
-    content: `You have several options to control cookies:
-
-**Cookie Consent Banner**
-When you first visit our website, you'll see a cookie banner allowing you to accept or decline optional cookies. You can change these preferences at any time.
-
-**Browser Settings**
-Most browsers allow you to:
-- View cookies stored on your device
-- Delete individual or all cookies
-- Block third-party cookies
-- Block all cookies from specific sites
-- Clear cookies when you close the browser
-
-**Do Not Track**
-We respect Do Not Track (DNT) browser signals. When enabled, we disable non-essential tracking.
-
-**Opt-Out Links**
-- Google Analytics: [tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout)
-- Facebook: [facebook.com/settings?tab=ads](https://www.facebook.com/settings?tab=ads)
-- LinkedIn: [linkedin.com/psettings/advertising](https://www.linkedin.com/psettings/advertising)
-
-Note: Blocking certain cookies may impact website functionality.`,
-  },
-  {
-    id: 'third-parties',
-    title: 'Third-Party Cookies',
-    content: `Some cookies on our website are placed by third-party services we use. These services have their own privacy policies:
-
-- **Google Analytics:** [privacy.google.com](https://privacy.google.com)
-- **Cal.com** (meeting scheduling on our demo and trial confirmation pages): [cal.com/privacy](https://cal.com/privacy)
-- **Cloudflare:** [cloudflare.com/privacypolicy](https://www.cloudflare.com/privacypolicy/)
-- **Meta (Facebook):** [facebook.com/privacy](https://www.facebook.com/privacy/policy)
-- **LinkedIn:** [linkedin.com/legal/privacy-policy](https://www.linkedin.com/legal/privacy-policy)
-
-We carefully select third-party services that comply with GDPR and maintain appropriate data protection standards.`,
-  },
-  {
-    id: 'retention',
-    title: 'Cookie Retention',
-    content: `Cookies have varying lifespans:
-
-**Session Cookies**
-Temporary cookies deleted when you close your browser. Used for essential functions like maintaining your session.
-
-**Persistent Cookies**
-Remain on your device for a set period or until manually deleted. Used for remembering preferences and analytics.
-
-We regularly review the cookies we use and remove any that are no longer necessary. See the detailed cookie table below for specific retention periods.`,
-  },
-  {
-    id: 'updates',
-    title: 'Updates to This Policy',
-    content: `We may update this Cookie Policy to reflect changes in our practices, the cookies we use, or legal requirements. When we make significant changes, we will:
-
-- Update the "Last Updated" date at the top of this page
-- Reset your cookie consent preferences if we add new cookie categories
-- Notify you via a banner on your next visit
-
-We recommend reviewing this policy periodically to stay informed about our cookie practices.`,
-  },
-  {
-    id: 'contact',
-    title: 'Contact Us',
-    content: `If you have questions about our use of cookies or this policy:
-
-**Email:** privacy@picsellia.com
-**Data Protection Officer:** dpo@picsellia.com
-
-**Postal Address:**
-Picsellia SAS
-Toulouse, France
-
-You can also manage your cookie preferences using the button below.`,
-  },
-];
+// Split a paragraph into runs of plain lines and "- " list lines, so a bold
+// heading followed by a list renders as a heading + <ul>.
+function groupLines(paragraph: string): { list: boolean; lines: string[] }[] {
+  const blocks: { list: boolean; lines: string[] }[] = [];
+  for (const line of paragraph.split('\n')) {
+    const list = line.startsWith('- ');
+    const last = blocks[blocks.length - 1];
+    const content = list ? line.slice(2) : line;
+    if (last && last.list === list) last.lines.push(content);
+    else blocks.push({ list, lines: [content] });
+  }
+  return blocks;
+}
 
 export default function CookiesPage() {
   const t = useTranslations('cookies');
+  const sections = t.raw('policySections') as PolicySection[];
+  const cookieInfo = t.raw('cookieInfo') as CookieInfo;
   const [expandedCategory, setExpandedCategory] = useState<string | null>('essential');
 
   return (
@@ -280,7 +126,7 @@ export default function CookiesPage() {
               <div key={category.id} className="card p-4">
                 <div className="flex items-center gap-2 mb-2">
                   <div className={`w-2 h-2 rounded-full ${category.required ? 'bg-[var(--system-green)]' : 'bg-[var(--system-blue)]'}`} />
-                  <span className="text-sm font-medium text-[var(--label)]">{category.name}</span>
+                  <span className="text-sm font-medium text-[var(--label)]">{t(`categories.${category.id}`)}</span>
                 </div>
                 <p className="text-xs text-[var(--tertiary-label)]">
                   {category.cookies.length} cookie{category.cookies.length !== 1 ? 's' : ''} · {category.required ? t('required') : t('optional')}
@@ -306,42 +152,25 @@ export default function CookiesPage() {
                   </h2>
                 </div>
                 <div className="pl-12">
-                  {section.content.split('\n\n').map((paragraph, i) => {
-                    // Handle markdown-style bold text
-                    const formattedText = paragraph.replace(
-                      /\*\*(.*?)\*\*/g,
-                      '<strong class="text-[var(--label)] font-semibold">$1</strong>'
-                    );
-
-                    // Handle markdown-style links
-                    const withLinks = formattedText.replace(
-                      /\[(.*?)\]\((.*?)\)/g,
-                      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[var(--system-orange)] hover:underline">$1</a>'
-                    );
-
-                    // Handle list items
-                    if (paragraph.startsWith('- ')) {
-                      const items = paragraph.split('\n').map(line => line.replace(/^- /, ''));
-                      return (
-                        <ul key={i} className="list-disc list-inside space-y-2 my-4 text-[var(--secondary-label)]">
-                          {items.map((item, li) => (
-                            <li key={li} dangerouslySetInnerHTML={{ __html: item.replace(
-                              /\*\*(.*?)\*\*/g,
-                              '<strong class="text-[var(--label)]">$1</strong>'
-                            )}} />
-                          ))}
-                        </ul>
-                      );
-                    }
-
-                    return (
-                      <p
-                        key={i}
-                        className="text-[var(--secondary-label)] leading-relaxed my-4"
-                        dangerouslySetInnerHTML={{ __html: withLinks }}
-                      />
-                    );
-                  })}
+                  {section.content.split('\n\n').map((paragraph, i) => (
+                    <div key={i}>
+                      {groupLines(paragraph).map((block, bi) =>
+                        block.list ? (
+                          <ul key={bi} className="list-disc list-inside space-y-2 my-4 text-[var(--secondary-label)]">
+                            {block.lines.map((item, li) => (
+                              <li key={li} dangerouslySetInnerHTML={{ __html: renderInline(item) }} />
+                            ))}
+                          </ul>
+                        ) : (
+                          <p
+                            key={bi}
+                            className="text-[var(--secondary-label)] leading-relaxed my-4"
+                            dangerouslySetInnerHTML={{ __html: block.lines.map(renderInline).join('<br />') }}
+                          />
+                        )
+                      )}
+                    </div>
+                  ))}
                 </div>
               </article>
             ))}
@@ -366,8 +195,8 @@ export default function CookiesPage() {
                   <div className="flex items-center gap-4">
                     <div className={`w-3 h-3 rounded-full ${category.required ? 'bg-[var(--system-green)]' : 'bg-[var(--system-blue)]'}`} />
                     <div>
-                      <h3 className="font-semibold text-[var(--label)]">{category.name}</h3>
-                      <p className="text-sm text-[var(--tertiary-label)]">{category.description}</p>
+                      <h3 className="font-semibold text-[var(--label)]">{t(`categories.${category.id}`)}</h3>
+                      <p className="text-sm text-[var(--tertiary-label)]">{t(`categories.${category.id}Desc`)}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -403,8 +232,8 @@ export default function CookiesPage() {
                           {category.cookies.map((cookie, index) => (
                             <tr key={cookie.name} className={index % 2 === 0 ? '' : 'bg-[var(--tertiary-system-background)]/50'}>
                               <td className="py-3 px-4 font-mono text-xs text-[var(--system-orange)]">{cookie.name}</td>
-                              <td className="py-3 px-4 text-[var(--secondary-label)]">{cookie.purpose}</td>
-                              <td className="py-3 px-4 text-[var(--tertiary-label)]">{cookie.duration}</td>
+                              <td className="py-3 px-4 text-[var(--secondary-label)]">{cookieInfo[cookie.name]?.purpose}</td>
+                              <td className="py-3 px-4 text-[var(--tertiary-label)]">{cookieInfo[cookie.name]?.duration}</td>
                               <td className="py-3 px-4 text-[var(--tertiary-label)]">{cookie.provider}</td>
                             </tr>
                           ))}

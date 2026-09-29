@@ -2535,56 +2535,142 @@
   "cookies": {
     "metadata": {
       "title": "Politique de cookies - Comment nous utilisons les cookies",
-      "description": "Decouvrez comment Picsellia utilise les cookies et technologies similaires sur notre site web.",
+      "description": "Découvrez comment Picsellia utilise les cookies et technologies similaires sur notre site web.",
       "ogTitle": "Politique de cookies - Comment nous utilisons les cookies",
-      "ogDescription": "Decouvrez comment Picsellia utilise les cookies et technologies similaires sur notre site web."
+      "ogDescription": "Découvrez comment Picsellia utilise les cookies et technologies similaires sur notre site web."
     },
     "hero": {
       "badge": "Juridique",
       "title": "Politique de cookies",
-      "subtitle": "Cette politique explique comment Picsellia utilise les cookies et technologies similaires, et comment vous pouvez les controler.",
-      "lastUpdated": "Derniere mise a jour : Septembre 2026",
+      "subtitle": "Cette politique explique comment Picsellia utilise les cookies et technologies similaires, et comment vous pouvez les contrôler.",
+      "lastUpdated": "Dernière mise à jour : septembre 2026",
       "gdprCompliant": "Conforme RGPD & ePrivacy"
     },
-    "quickSummary": "Resume rapide",
+    "quickSummary": "Résumé rapide",
     "required": "Requis",
     "optional": "Optionnel",
     "cookiesWeUse": "Cookies que nous utilisons",
     "managePreferences": {
-      "title": "Gerez vos preferences de cookies",
-      "subtitle": "Vous pouvez mettre a jour vos preferences a tout moment. Les changements prennent effet immediatement.",
-      "openSettings": "Ouvrir les parametres de cookies"
+      "title": "Gérez vos préférences de cookies",
+      "subtitle": "Vous pouvez mettre à jour vos préférences à tout moment. Les changements prennent effet immédiatement.",
+      "openSettings": "Ouvrir les paramètres de cookies"
     },
-    "relatedPolicies": "Politiques associees",
-    "privacyPolicy": "Politique de confidentialite",
-    "privacyPolicyDesc": "Comment nous collectons et utilisons vos donnees personnelles",
-    "securityTitle": "Securite",
-    "securityDesc": "Nos pratiques et certifications de securite",
+    "relatedPolicies": "Politiques associées",
+    "privacyPolicy": "Politique de confidentialité",
+    "privacyPolicyDesc": "Comment nous collectons et utilisons vos données personnelles",
+    "securityTitle": "Sécurité",
+    "securityDesc": "Nos pratiques et certifications de sécurité",
     "tableHeaders": {
       "cookieName": "Nom du cookie",
-      "purpose": "Finalite",
-      "duration": "Duree",
+      "purpose": "Finalité",
+      "duration": "Durée",
       "provider": "Fournisseur"
     },
     "categories": {
       "essential": "Cookies essentiels",
-      "essentialDesc": "Necessaires au fonctionnement du site. Ils ne peuvent pas etre desactives.",
+      "essentialDesc": "Nécessaires au fonctionnement du site. Ils ne peuvent pas être désactivés.",
       "functional": "Cookies fonctionnels",
-      "functionalDesc": "Permettent des fonctionnalites personnalisees et memorisent vos preferences.",
+      "functionalDesc": "Permettent des fonctionnalités personnalisées et mémorisent vos préférences.",
       "analytics": "Cookies analytiques",
-      "analyticsDesc": "Nous aident a comprendre comment les visiteurs interagissent avec notre site.",
+      "analyticsDesc": "Nous aident à comprendre comment les visiteurs interagissent avec notre site.",
       "marketing": "Cookies marketing",
-      "marketingDesc": "Utilises pour suivre les visiteurs a travers les sites a des fins publicitaires."
+      "marketingDesc": "Utilisés pour suivre les visiteurs sur différents sites à des fins publicitaires."
     },
-    "sections": {
-      "whatAreCookies": "Que sont les cookies ?",
-      "howWeUse": "Comment nous utilisons les cookies",
-      "legalBasis": "Base legale",
-      "yourChoices": "Vos choix",
-      "thirdParties": "Cookies tiers",
-      "retention": "Conservation des cookies",
-      "updates": "Mises a jour de cette politique",
-      "contact": "Nous contacter"
+    "policySections": [
+      {
+        "id": "what-are-cookies",
+        "title": "Que sont les cookies ?",
+        "content": "Les cookies sont de petits fichiers texte déposés sur votre appareil lorsque vous visitez un site web. Ils sont largement utilisés pour faire fonctionner les sites plus efficacement, offrir une meilleure expérience utilisateur et fournir aux propriétaires de sites des informations utiles sur l'utilisation de leur site.\n\nLes cookies peuvent être « internes » (déposés par le site que vous visitez) ou « tiers » (déposés par d'autres services utilisés sur le site, comme des outils d'analyse ou des plateformes publicitaires)."
+      },
+      {
+        "id": "how-we-use",
+        "title": "Comment nous utilisons les cookies",
+        "content": "Picsellia utilise des cookies et des technologies similaires à plusieurs fins :\n\n- **Fonctions essentielles :** assurer le fonctionnement de base du site, sa sécurité et son accessibilité\n- **Préférences :** mémoriser vos paramètres et personnaliser votre expérience\n- **Analyse :** comprendre comment les visiteurs utilisent notre site et améliorer nos services\n- **Marketing :** proposer des contenus pertinents et mesurer l'efficacité de nos campagnes\n\nNous nous engageons à être transparents sur les cookies que nous utilisons et à vous laisser le contrôle de vos préférences."
+      },
+      {
+        "id": "legal-basis",
+        "title": "Base légale",
+        "content": "Conformément au RGPD et à la directive ePrivacy, nous traitons les données liées aux cookies sur les bases suivantes :\n\n**Cookies strictement nécessaires**\nCes cookies sont indispensables au fonctionnement du site et ne nécessitent pas de consentement. Ils sont déposés automatiquement lorsque vous accédez à nos services.\n\n**Cookies optionnels**\nPour tous les cookies non essentiels (fonctionnels, analytiques et marketing), nous nous appuyons sur votre consentement explicite. Vous pouvez gérer vos préférences à tout moment depuis le panneau de paramètres des cookies ou via les réglages de votre navigateur.\n\nNous n'activons les cookies optionnels qu'après avoir obtenu votre consentement, et nous respectons votre droit de le retirer à tout moment."
+      },
+      {
+        "id": "your-choices",
+        "title": "Vos choix",
+        "content": "Vous disposez de plusieurs moyens pour contrôler les cookies :\n\n**Bandeau de consentement**\nLors de votre première visite, un bandeau vous permet d'accepter ou de refuser les cookies optionnels. Vous pouvez modifier ces préférences à tout moment.\n\n**Paramètres du navigateur**\nLa plupart des navigateurs vous permettent de :\n- Consulter les cookies stockés sur votre appareil\n- Supprimer certains cookies ou l'ensemble d'entre eux\n- Bloquer les cookies tiers\n- Bloquer tous les cookies de certains sites\n- Effacer les cookies à la fermeture du navigateur\n\n**Do Not Track**\nNous respectons le signal Do Not Track (DNT) des navigateurs. Lorsqu'il est activé, nous désactivons le suivi non essentiel.\n\n**Liens de désinscription**\n- Google Analytics : [tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout)\n- Facebook : [facebook.com/settings?tab=ads](https://www.facebook.com/settings?tab=ads)\n- LinkedIn : [linkedin.com/psettings/advertising](https://www.linkedin.com/psettings/advertising)\n\nRemarque : bloquer certains cookies peut affecter le fonctionnement du site."
+      },
+      {
+        "id": "third-parties",
+        "title": "Cookies tiers",
+        "content": "Certains cookies de notre site sont déposés par des services tiers que nous utilisons. Ces services disposent de leurs propres politiques de confidentialité :\n\n- **Google Analytics :** [privacy.google.com](https://privacy.google.com)\n- **Cal.com** (prise de rendez-vous sur nos pages de confirmation de démo et d'essai) : [cal.com/privacy](https://cal.com/privacy)\n- **Cloudflare :** [cloudflare.com/privacypolicy](https://www.cloudflare.com/privacypolicy/)\n- **Meta (Facebook) :** [facebook.com/privacy](https://www.facebook.com/privacy/policy)\n- **LinkedIn :** [linkedin.com/legal/privacy-policy](https://www.linkedin.com/legal/privacy-policy)\n\nNous sélectionnons avec soin des services tiers conformes au RGPD et qui maintiennent un niveau de protection des données approprié."
+      },
+      {
+        "id": "retention",
+        "title": "Durée de conservation des cookies",
+        "content": "La durée de vie des cookies varie :\n\n**Cookies de session**\nCookies temporaires supprimés à la fermeture de votre navigateur. Utilisés pour des fonctions essentielles comme le maintien de votre session.\n\n**Cookies persistants**\nIls restent sur votre appareil pendant une durée déterminée ou jusqu'à leur suppression manuelle. Utilisés pour mémoriser vos préférences et pour l'analyse d'audience.\n\nNous examinons régulièrement les cookies que nous utilisons et supprimons ceux qui ne sont plus nécessaires. Consultez le tableau détaillé ci-dessous pour connaître les durées de conservation de chaque cookie."
+      },
+      {
+        "id": "updates",
+        "title": "Mises à jour de cette politique",
+        "content": "Nous pouvons mettre à jour cette politique de cookies pour refléter l'évolution de nos pratiques, des cookies utilisés ou des exigences légales. En cas de modification importante, nous :\n\n- Mettrons à jour la date de « Dernière mise à jour » en haut de cette page\n- Réinitialiserons vos préférences de consentement si nous ajoutons de nouvelles catégories de cookies\n- Vous en informerons via un bandeau lors de votre prochaine visite\n\nNous vous recommandons de consulter régulièrement cette politique pour rester informé de nos pratiques en matière de cookies."
+      },
+      {
+        "id": "contact",
+        "title": "Nous contacter",
+        "content": "Pour toute question sur notre utilisation des cookies ou sur cette politique :\n\n**Email :** privacy@picsellia.com\n**Délégué à la protection des données :** dpo@picsellia.com\n\n**Adresse postale :**\nPicsellia SAS\nToulouse, France\n\nVous pouvez également gérer vos préférences de cookies à l'aide du bouton ci-dessous."
+      }
+    ],
+    "cookieInfo": {
+      "session_id": {
+        "purpose": "Maintient l'état de votre session d'une page à l'autre",
+        "duration": "Session"
+      },
+      "csrf_token": {
+        "purpose": "Protège contre les attaques par falsification de requête intersites (CSRF)",
+        "duration": "Session"
+      },
+      "cookie_consent": {
+        "purpose": "Enregistre vos préférences de consentement aux cookies",
+        "duration": "1 an"
+      },
+      "__cf_bm": {
+        "purpose": "Gestion des bots Cloudflare - distingue les humains des bots",
+        "duration": "30 minutes"
+      },
+      "theme_preference": {
+        "purpose": "Mémorise votre thème de couleur préféré (clair/sombre)",
+        "duration": "1 an"
+      },
+      "language": {
+        "purpose": "Enregistre votre langue préférée",
+        "duration": "1 an"
+      },
+      "sidebar_collapsed": {
+        "purpose": "Mémorise l'état de la barre latérale dans la plateforme",
+        "duration": "1 an"
+      },
+      "_ga": {
+        "purpose": "Google Analytics - distingue les utilisateurs uniques",
+        "duration": "2 ans"
+      },
+      "_ga_*": {
+        "purpose": "Google Analytics 4 - maintient l'état de la session",
+        "duration": "2 ans"
+      },
+      "_gid": {
+        "purpose": "Google Analytics - distingue les utilisateurs",
+        "duration": "24 heures"
+      },
+      "_gat": {
+        "purpose": "Google Analytics - limite le taux de requêtes",
+        "duration": "1 minute"
+      },
+      "_fbp": {
+        "purpose": "Pixel Facebook - suit les visites sur différents sites",
+        "duration": "3 mois"
+      },
+      "_li_fat_id": {
+        "purpose": "LinkedIn - identifiant indirect du membre pour le suivi des conversions",
+        "duration": "30 jours"
+      }
     }
   },
   "enterprise": {
