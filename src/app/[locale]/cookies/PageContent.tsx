@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { groupLines, renderInline } from '@/lib/policy-markdown';
 
 // Cookie categories. Names, descriptions, purposes, durations and the policy
 // text live in messages (cookies.categories / cookieInfo / policySections).
@@ -48,32 +49,6 @@ const cookieCategories = [
 
 type PolicySection = { id: string; title: string; content: string };
 type CookieInfo = Record<string, { purpose: string; duration: string }>;
-
-// Minimal markdown for the policy text: **bold** and [label](url).
-function renderInline(text: string): string {
-  // Links first: the Tailwind classes injected below contain "[...]", which
-  // the link pattern would otherwise match.
-  return text
-    .replace(
-      /\[([^\]]*)\]\(([^)]*)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-[var(--system-orange)] hover:underline">$1</a>'
-    )
-    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[var(--label)] font-semibold">$1</strong>');
-}
-
-// Split a paragraph into runs of plain lines and "- " list lines, so a bold
-// heading followed by a list renders as a heading + <ul>.
-function groupLines(paragraph: string): { list: boolean; lines: string[] }[] {
-  const blocks: { list: boolean; lines: string[] }[] = [];
-  for (const line of paragraph.split('\n')) {
-    const list = line.startsWith('- ');
-    const last = blocks[blocks.length - 1];
-    const content = list ? line.slice(2) : line;
-    if (last && last.list === list) last.lines.push(content);
-    else blocks.push({ list, lines: [content] });
-  }
-  return blocks;
-}
 
 export default function CookiesPage() {
   const t = useTranslations('cookies');
@@ -165,7 +140,7 @@ export default function CookiesPage() {
                           <p
                             key={bi}
                             className="text-[var(--secondary-label)] leading-relaxed my-4"
-                            dangerouslySetInnerHTML={{ __html: block.lines.map(renderInline).join('<br />') }}
+                            dangerouslySetInnerHTML={{ __html: block.lines.map((line) => renderInline(line)).join('<br />') }}
                           />
                         )
                       )}

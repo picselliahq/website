@@ -2446,24 +2446,24 @@
   },
   "privacy": {
     "metadata": {
-      "title": "Politique de confidentialite - Protection des donnees & Conformite RGPD",
-      "description": "Decouvrez comment Picsellia collecte, utilise et protege vos donnees personnelles. Notre engagement en matiere de confidentialite, securite et conformite RGPD.",
-      "ogTitle": "Politique de confidentialite - Protection des donnees & Conformite RGPD",
-      "ogDescription": "Decouvrez comment Picsellia collecte, utilise et protege vos donnees personnelles."
+      "title": "Politique de confidentialité - Protection des données & Conformité RGPD",
+      "description": "Découvrez comment Picsellia collecte, utilise et protège vos données personnelles. Notre engagement en matière de confidentialité, sécurité et conformité RGPD.",
+      "ogTitle": "Politique de confidentialité - Protection des données & Conformité RGPD",
+      "ogDescription": "Découvrez comment Picsellia collecte, utilise et protège vos données personnelles."
     },
     "legalLabel": "Juridique",
-    "title": "Politique de confidentialite",
-    "subtitle": "Votre vie privee est importante pour nous. Cette politique explique comment Picsellia collecte, utilise et protege vos informations personnelles.",
-    "lastUpdated": "Derniere mise a jour : Septembre 2026",
+    "title": "Politique de confidentialité",
+    "subtitle": "Votre vie privée est importante pour nous. Cette politique explique comment Picsellia collecte, utilise et protège vos informations personnelles.",
+    "lastUpdated": "Dernière mise à jour : septembre 2026",
     "gdprCompliant": "Conforme RGPD",
-    "tableOfContents": "Table des matieres",
-    "relatedPolicies": "Politiques associees",
+    "tableOfContents": "Table des matières",
+    "relatedPolicies": "Politiques associées",
     "cookiePolicy": "Politique de cookies",
-    "cookiePolicyDesc": "Decouvrez notre utilisation des cookies",
-    "securityLink": "Securite",
-    "securityLinkDesc": "Nos pratiques de securite",
+    "cookiePolicyDesc": "Découvrez notre utilisation des cookies",
+    "securityLink": "Sécurité",
+    "securityLinkDesc": "Nos pratiques de sécurité",
     "contactUs": "Nous contacter",
-    "contactUsDesc": "Questions sur la confidentialite ?",
+    "contactUsDesc": "Questions sur la confidentialité ?",
     "sections": [
       {
         "id": "introduction",
