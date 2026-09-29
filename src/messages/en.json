@@ -3053,7 +3053,7 @@
     "legalLabel": "Legal",
     "title": "Privacy Policy",
     "subtitle": "Your privacy matters to us. This policy explains how Picsellia collects, uses, and protects your personal information.",
-    "lastUpdated": "Last Updated: January 2025",
+    "lastUpdated": "Last Updated: September 2026",
     "gdprCompliant": "GDPR Compliant",
     "tableOfContents": "Table of Contents",
     "relatedPolicies": "Related Policies",
@@ -3092,7 +3092,7 @@
       {
         "id": "data-sharing",
         "title": "Data Sharing and Disclosure",
-        "content": "We do not sell your personal data. We may share information with:\n\n**Service Providers**\nTrusted third parties who assist in operating our platform:\n- Cloud infrastructure (OVHcloud, AWS)\n- Payment processing (Stripe)\n- Email services (HubSpot)\n- Analytics (privacy-focused tools)\n\n**Legal Requirements**\nWhen required by law, court order, or governmental authority.\n\n**Business Transfers**\nIn connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections.\n\n**With Your Consent**\nWhen you explicitly authorize sharing with specific third parties.\n\nAll service providers are bound by data processing agreements ensuring GDPR compliance and adequate data protection."
+        "content": "We do not sell your personal data. We may share information with:\n\n**Service Providers**\nTrusted third parties who assist in operating our platform:\n- Cloud infrastructure (OVHcloud, AWS)\n- Payment processing (Stripe)\n- CRM (Twenty)\n- Meeting scheduling (Cal.com)\n- Analytics (privacy-focused tools)\n\n**Legal Requirements**\nWhen required by law, court order, or governmental authority.\n\n**Business Transfers**\nIn connection with a merger, acquisition, or sale of assets, with appropriate confidentiality protections.\n\n**With Your Consent**\nWhen you explicitly authorize sharing with specific third parties.\n\nAll service providers are bound by data processing agreements ensuring GDPR compliance and adequate data protection."
       },
       {
         "id": "data-retention",
@@ -3142,7 +3142,7 @@
       "badge": "Legal",
       "title": "Cookie Policy",
       "subtitle": "This policy explains how Picsellia uses cookies and similar technologies, and how you can control them.",
-      "lastUpdated": "Last Updated: January 2025",
+      "lastUpdated": "Last Updated: September 2026",
       "gdprCompliant": "GDPR & ePrivacy Compliant"
     },
     "quickSummary": "Quick Summary",

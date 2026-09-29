@@ -2454,7 +2454,7 @@
     "legalLabel": "Juridique",
     "title": "Politique de confidentialite",
     "subtitle": "Votre vie privee est importante pour nous. Cette politique explique comment Picsellia collecte, utilise et protege vos informations personnelles.",
-    "lastUpdated": "Derniere mise a jour : Janvier 2025",
+    "lastUpdated": "Derniere mise a jour : Septembre 2026",
     "gdprCompliant": "Conforme RGPD",
     "tableOfContents": "Table des matieres",
     "relatedPolicies": "Politiques associees",
@@ -2493,7 +2493,7 @@
       {
         "id": "data-sharing",
         "title": "Partage et divulgation des données",
-        "content": "Nous ne vendons pas vos données personnelles. Nous pouvons partager des informations avec :\n\n**Prestataires de services**\nTiers de confiance qui nous aident à exploiter notre plateforme :\n- Infrastructure cloud (OVHcloud, AWS)\n- Traitement des paiements (Stripe)\n- Services email (HubSpot)\n- Analytiques (outils respectueux de la vie privée)\n\n**Exigences légales**\nLorsque requis par la loi, décision de justice ou autorité gouvernementale.\n\n**Transferts d'entreprise**\nEn cas de fusion, acquisition ou cession d'actifs, avec des protections de confidentialité appropriées.\n\n**Avec votre consentement**\nLorsque vous autorisez explicitement le partage avec des tiers spécifiques.\n\nTous les prestataires sont liés par des accords de traitement des données garantissant la conformité RGPD."
+        "content": "Nous ne vendons pas vos données personnelles. Nous pouvons partager des informations avec :\n\n**Prestataires de services**\nTiers de confiance qui nous aident à exploiter notre plateforme :\n- Infrastructure cloud (OVHcloud, AWS)\n- Traitement des paiements (Stripe)\n- CRM (Twenty)\n- Prise de rendez-vous (Cal.com)\n- Analytiques (outils respectueux de la vie privée)\n\n**Exigences légales**\nLorsque requis par la loi, décision de justice ou autorité gouvernementale.\n\n**Transferts d'entreprise**\nEn cas de fusion, acquisition ou cession d'actifs, avec des protections de confidentialité appropriées.\n\n**Avec votre consentement**\nLorsque vous autorisez explicitement le partage avec des tiers spécifiques.\n\nTous les prestataires sont liés par des accords de traitement des données garantissant la conformité RGPD."
       },
       {
         "id": "data-retention",
@@ -2543,7 +2543,7 @@
       "badge": "Juridique",
       "title": "Politique de cookies",
       "subtitle": "Cette politique explique comment Picsellia utilise les cookies et technologies similaires, et comment vous pouvez les controler.",
-      "lastUpdated": "Derniere mise a jour : Janvier 2025",
+      "lastUpdated": "Derniere mise a jour : Septembre 2026",
       "gdprCompliant": "Conforme RGPD & ePrivacy"
     },
     "quickSummary": "Resume rapide",

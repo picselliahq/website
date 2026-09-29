@@ -118,7 +118,8 @@ Processing required to comply with applicable laws, regulations, and legal proce
 Trusted third parties who assist in operating our platform:
 - Cloud infrastructure (OVHcloud, AWS)
 - Payment processing (Stripe)
-- Email services (HubSpot)
+- CRM (Twenty)
+- Meeting scheduling (Cal.com)
 - Analytics (privacy-focused tools)
 
 **Legal Requirements**

@@ -103,30 +103,6 @@ const cookieCategories = [
     required: false,
     cookies: [
       {
-        name: '__hssc',
-        purpose: 'HubSpot - tracks sessions for analytics',
-        duration: '30 minutes',
-        provider: 'HubSpot',
-      },
-      {
-        name: '__hssrc',
-        purpose: 'HubSpot - determines if user has restarted browser',
-        duration: 'Session',
-        provider: 'HubSpot',
-      },
-      {
-        name: '__hstc',
-        purpose: 'HubSpot - tracks visitors across visits',
-        duration: '6 months',
-        provider: 'HubSpot',
-      },
-      {
-        name: 'hubspotutk',
-        purpose: 'HubSpot - tracks visitor identity',
-        duration: '6 months',
-        provider: 'HubSpot',
-      },
-      {
         name: '_fbp',
         purpose: 'Facebook Pixel - tracks visits across websites',
         duration: '3 months',
@@ -197,7 +173,6 @@ We respect Do Not Track (DNT) browser signals. When enabled, we disable non-esse
 
 **Opt-Out Links**
 - Google Analytics: [tools.google.com/dlpage/gaoptout](https://tools.google.com/dlpage/gaoptout)
-- HubSpot: Manage via our cookie settings
 - Facebook: [facebook.com/settings?tab=ads](https://www.facebook.com/settings?tab=ads)
 - LinkedIn: [linkedin.com/psettings/advertising](https://www.linkedin.com/psettings/advertising)
 
@@ -209,7 +184,7 @@ Note: Blocking certain cookies may impact website functionality.`,
     content: `Some cookies on our website are placed by third-party services we use. These services have their own privacy policies:
 
 - **Google Analytics:** [privacy.google.com](https://privacy.google.com)
-- **HubSpot:** [legal.hubspot.com/privacy-policy](https://legal.hubspot.com/privacy-policy)
+- **Cal.com** (meeting scheduling on our demo and trial confirmation pages): [cal.com/privacy](https://cal.com/privacy)
 - **Cloudflare:** [cloudflare.com/privacypolicy](https://www.cloudflare.com/privacypolicy/)
 - **Meta (Facebook):** [facebook.com/privacy](https://www.facebook.com/privacy/policy)
 - **LinkedIn:** [linkedin.com/legal/privacy-policy](https://www.linkedin.com/legal/privacy-policy)
