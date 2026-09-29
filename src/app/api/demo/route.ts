@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { isTwentyConfigured, submitLead } from '@/lib/twenty';
 
 const DemoSchema = z.object({
   firstName: z.string().min(1).max(100),
@@ -38,40 +39,25 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    const portalId = process.env.HUBSPOT_PORTAL_ID;
-    const formId = process.env.HUBSPOT_DEMO_FORM_ID;
-
-    if (!portalId || !formId) {
-      console.log('Demo request (HubSpot not configured):', data.email, data.company);
+    if (!isTwentyConfigured()) {
+      console.log('Demo request (Twenty not configured):', data.email, data.company);
       return NextResponse.json({ success: true });
     }
 
-    const hubspotRes = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fields: [
-            { name: 'firstname', value: data.firstName },
-            { name: 'lastname', value: data.lastName },
-            { name: 'email', value: data.email },
-            { name: 'company', value: data.company },
-            { name: 'jobtitle', value: data.jobTitle },
-            { name: 'phone', value: data.phone },
-            { name: 'form_message', value: data.message },
-          ].filter((f) => f.value),
-          context: {
-            pageUri: data.pageUri || 'https://picsellia.com/demo',
-            pageName: 'Book a Demo',
-          },
-        }),
-      }
-    );
-
-    if (!hubspotRes.ok) {
-      const errorText = await hubspotRes.text();
-      console.error('HubSpot demo submission failed:', errorText);
+    try {
+      await submitLead({
+        source: 'Book a Demo',
+        pageUri: data.pageUri || 'https://picsellia.com/demo',
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        company: data.company,
+        jobTitle: data.jobTitle,
+        phone: data.phone,
+        message: data.message,
+      });
+    } catch (error) {
+      console.error('Twenty demo submission failed:', error);
       return NextResponse.json({ error: 'Submission failed' }, { status: 502 });
     }
 

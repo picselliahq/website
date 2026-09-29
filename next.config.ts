@@ -41,15 +41,15 @@ const nextConfig: NextConfig = {
   async headers() {
     const csp = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://static.hsappstatic.net https://eu.i.posthog.com https://eu-assets.i.posthog.com https://va.vercel-scripts.com",
+      "script-src 'self' 'unsafe-inline' https://app.cal.com https://eu.i.posthog.com https://eu-assets.i.posthog.com https://va.vercel-scripts.com",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://uploads-ssl.webflow.com https://cdn.prod.website-files.com",
       "font-src 'self' data:",
-      "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com",
-      "frame-src 'self' https://meetings.hubspot.com https://meetings-eu1.hubspot.com",
+      "connect-src 'self' https://eu.i.posthog.com https://eu-assets.i.posthog.com https://app.cal.com",
+      "frame-src 'self' https://app.cal.com https://cal.com",
       "frame-ancestors 'self'",
       "base-uri 'self'",
-      "form-action 'self' https://api.hsforms.com",
+      "form-action 'self'",
     ].join('; ');
 
     return [

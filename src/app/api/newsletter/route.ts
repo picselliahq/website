@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { isTwentyConfigured, submitLead } from '@/lib/twenty';
 
 const EmailSchema = z.string().email().max(320);
+const PageUriSchema = z.string().max(500).catch('');
 
 export async function POST(req: NextRequest) {
   try {
@@ -13,35 +15,22 @@ export async function POST(req: NextRequest) {
     }
 
     const email = result.data;
+    const pageUri = PageUriSchema.parse(body.pageUri ?? '');
 
-    // HubSpot Forms API integration
-    // Set HUBSPOT_PORTAL_ID and HUBSPOT_FORM_ID environment variables
-    const portalId = process.env.HUBSPOT_PORTAL_ID;
-    const formId = process.env.HUBSPOT_NEWSLETTER_FORM_ID || process.env.HUBSPOT_FORM_ID;
-
-    if (portalId && formId) {
-      const hubspotRes = await fetch(
-        `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: [{ name: 'email', value: email }],
-            context: {
-              pageUri: 'https://picsellia.com/blog',
-              pageName: 'Blog Newsletter',
-            },
-          }),
-        }
-      );
-
-      if (!hubspotRes.ok) {
-        console.error('HubSpot form submission failed:', await hubspotRes.text());
+    if (isTwentyConfigured()) {
+      try {
+        await submitLead({
+          source: 'Blog Newsletter',
+          pageUri: pageUri || 'https://picsellia.com/blog',
+          email,
+        });
+      } catch (error) {
+        console.error('Twenty newsletter submission failed:', error);
         return NextResponse.json({ error: 'Subscription failed' }, { status: 500 });
       }
     } else {
-      // Log subscription when HubSpot is not configured
-      console.log('Newsletter signup (HubSpot not configured):', email);
+      // Log subscription when Twenty is not configured
+      console.log('Newsletter signup (Twenty not configured):', email);
     }
 
     return NextResponse.json({ success: true });

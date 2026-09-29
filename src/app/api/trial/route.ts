@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { isTwentyConfigured, submitLead } from '@/lib/twenty';
 
 const TrialSchema = z.object({
   firstName: z.string().min(1).max(100),
@@ -35,37 +36,22 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    const portalId = process.env.HUBSPOT_PORTAL_ID;
-    const formId = process.env.HUBSPOT_TRIAL_FORM_ID;
-
-    if (!portalId || !formId) {
-      console.log('Trial signup (HubSpot not configured):', data.email, data.company);
+    if (!isTwentyConfigured()) {
+      console.log('Trial signup (Twenty not configured):', data.email, data.company);
       return NextResponse.json({ success: true });
     }
 
-    const hubspotRes = await fetch(
-      `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fields: [
-            { name: 'firstname', value: data.firstName },
-            { name: 'lastname', value: data.lastName },
-            { name: 'email', value: data.email },
-            { name: 'company', value: data.company },
-          ].filter((f) => f.value),
-          context: {
-            pageUri: data.pageUri || 'https://picsellia.com/trial',
-            pageName: 'Start Free Trial',
-          },
-        }),
-      }
-    );
-
-    if (!hubspotRes.ok) {
-      const errorText = await hubspotRes.text();
-      console.error('HubSpot trial submission failed:', errorText);
+    try {
+      await submitLead({
+        source: 'Start Free Trial',
+        pageUri: data.pageUri || 'https://picsellia.com/trial',
+        email: data.email,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        company: data.company,
+      });
+    } catch (error) {
+      console.error('Twenty trial submission failed:', error);
       return NextResponse.json({ error: 'Submission failed' }, { status: 502 });
     }
 

@@ -1,45 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import CalBooking from '@/components/CalBooking';
 
 interface ThankYouDemoContentProps {
-  meetingsUrl: string;
+  calLink: string;
 }
 
-export default function ThankYouDemoContent({ meetingsUrl }: ThankYouDemoContentProps) {
+export default function ThankYouDemoContent({ calLink }: ThankYouDemoContentProps) {
   const t = useTranslations('thankYouDemo');
-  const scriptLoaded = useRef(false);
   const searchParams = useSearchParams();
-
-  const embeddedUrl = useMemo(() => {
-    if (!meetingsUrl) return '';
-    const params = new URLSearchParams();
-    params.set('embed', 'true');
-    const firstName = searchParams.get('firstName');
-    const lastName = searchParams.get('lastName');
-    const email = searchParams.get('email');
-    if (firstName) params.set('firstName', firstName);
-    if (lastName) params.set('lastName', lastName);
-    if (email) params.set('email', email);
-    return `${meetingsUrl}?${params.toString()}`;
-  }, [meetingsUrl, searchParams]);
-
-  useEffect(() => {
-    if (!meetingsUrl || scriptLoaded.current) return;
-
-    const script = document.createElement('script');
-    script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-    script.async = true;
-    document.body.appendChild(script);
-    scriptLoaded.current = true;
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, [meetingsUrl]);
 
   return (
     <section className="pt-32 pb-24 relative overflow-hidden">
@@ -65,20 +37,15 @@ export default function ThankYouDemoContent({ meetingsUrl }: ThankYouDemoContent
           </p>
         </div>
 
-        {/* HubSpot Meetings embed */}
-        {meetingsUrl ? (
-          <div className="mb-12 -mx-6 sm:mx-0">
-            <div
-              className="meetings-iframe-container"
-              data-src={embeddedUrl}
-              style={{
-                transform: 'scale(0.75)',
-                transformOrigin: 'top center',
-                width: '133.3%',
-                marginLeft: '-16.65%',
-                height: 1100,
-                marginBottom: -275,
-              }}
+        {/* Cal.com booking embed */}
+        {calLink ? (
+          <div className="mb-12 max-w-5xl mx-auto min-h-[700px]">
+            <CalBooking
+              calLink={calLink}
+              source="demo"
+              firstName={searchParams.get('firstName') ?? undefined}
+              lastName={searchParams.get('lastName') ?? undefined}
+              email={searchParams.get('email') ?? undefined}
             />
           </div>
         ) : (

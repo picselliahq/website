@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import ThankYouTrialContent from "./PageContent";
 import { localizedUrl } from "@/lib/seo";
+import { getCalLink } from "@/lib/cal";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -21,10 +22,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function ThankYouTrialPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const meetingsUrl = process.env.HUBSPOT_MEETINGS_URL || "";
+  const calLink = getCalLink(locale);
   return (
     <Suspense>
-      <ThankYouTrialContent meetingsUrl={meetingsUrl} />
+      <ThankYouTrialContent calLink={calLink} />
     </Suspense>
   );
 }
