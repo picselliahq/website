@@ -22,6 +22,7 @@ Picsellia is ISO 27001 certified and supports on-premise or hybrid deployment fo
 - [Picsellia vs Roboflow](https://www.picsellia.com/compare/roboflow)
 - [Picsellia vs Labelbox](https://www.picsellia.com/compare/labelbox)
 - [Picsellia vs Encord](https://www.picsellia.com/compare/encord)
+- [Picsellia vs CVAT](https://www.picsellia.com/compare/cvat)
 
 ## Resources
 
@@ -29,3 +30,41 @@ Picsellia is ISO 27001 certified and supports on-premise or hybrid deployment fo
 - [FAQ](https://www.picsellia.com/faq)
 - [Blog](https://www.picsellia.com/blog): MLOps and computer vision guides
 - [Use Cases](https://www.picsellia.com/use-cases): Customer case studies by industry
+
+## Industries
+
+- [Manufacturing](https://www.picsellia.com/industry/manufacturing): Computer vision for quality control, defect detection and visual inspection on production lines
+- [Energy](https://www.picsellia.com/industry/energy): Computer vision for energy infrastructure inspection, predictive maintenance and asset monitoring
+- [Agriculture](https://www.picsellia.com/industry/agriculture): Computer vision for crop monitoring, disease detection and precision farming
+- [Waste Management](https://www.picsellia.com/industry/waste-management): Computer vision for automated waste sorting, recycling and material recognition
+- [Aerospace](https://www.picsellia.com/industry/aerospace): Computer vision for aircraft inspection, component wear analysis and FOD detection in MRO workflows
+- [Defense](https://www.picsellia.com/industry/defense): Secure, on-premise computer vision for surveillance, threat detection and situational awareness
+
+## Customer stories
+
+- [PellencST](https://www.picsellia.com/use-cases/pellencst): Cut time-to-model by 90%, from 6 to 9 months down to 1 month, for AI-powered waste sorting machines
+- [Altaroad](https://www.picsellia.com/use-cases/altaroad): Saved 50% of time operating models in production, cutting model maintenance from 50% to 10% of data scientist time
+- [SGS](https://www.picsellia.com/use-cases/sgs): Cut model development time by 66%, from 3 days to 1 day, for testing, inspection and certification workflows
+- [Ficha](https://www.picsellia.com/use-cases/ficha): 3x faster annotation and 20% weekly time savings for waste classification and recycling AI
+- [Abelio](https://www.picsellia.com/use-cases/abelio): 48-hour retraining cycles from image acquisition to farmer insights, on dozens of terabytes of drone imagery
+
+## Guides
+
+- [MLOps for Computer Vision: The Complete Guide](https://www.picsellia.com/post/mlops-for-computer-vision-complete-guide): What CVOps means and how the six stages of a computer vision pipeline fit together in production
+- [Roboflow Alternatives for Enterprise Computer Vision Teams](https://www.picsellia.com/post/roboflow-alternatives-for-enterprise-computer-vision-teams): The alternatives teams evaluate once they need enterprise deployment, on-premise infrastructure or a full MLOps pipeline
+- [Learn Computer Vision: Beginner's Guide](https://www.picsellia.com/post/resources-computer-vision-beginner-guide): Resources for learning computer vision, from OpenCV tutorials to online courses
+- [Top Datasets for Computer Vision](https://www.picsellia.com/post/public-datasets-computer-vision): A guide to the main public datasets used in computer vision
+- [Best Object Detection Datasets](https://www.picsellia.com/post/object-detection-datasets): Public datasets for training object detection models
+- [Top Computer Vision Datasets for Manufacturing](https://www.picsellia.com/post/manufacturing-datasets): Datasets for manufacturing AI and visual inspection projects
+- [COCO Evaluation Metrics Explained](https://www.picsellia.com/post/coco-evaluation-metrics-explained): Precision, recall, IoU and the COCO metrics used to evaluate object detection
+- [Image Embeddings Explained](https://www.picsellia.com/post/image-embeddings-explained): What image embeddings are and how they reduce high-dimensional image features to vectors
+- [DINOv2 Explained Step by Step](https://www.picsellia.com/post/dinov2-steps-by-steps-explanations-picsellia): How DINOv2 applies self-supervised learning to Vision Transformers for all-purpose visual features
+- [Best Practices for Fine-Tuning Computer Vision Models](https://www.picsellia.com/post/best-practices-for-fine-tuning-computer-vision-models): Hyperparameter tuning best practices, shown on a typical computer vision task
+
+## Key facts
+
+- ISO 27001:2022 certified
+- Deployment: SaaS, EU hosting, on-premise on Kubernetes or Docker, air-gapped
+- Imports CVAT XML, CVAT for video, COCO, YOLO and Pascal VOC
+- Python SDK and full API
+- [Enterprise](https://www.picsellia.com/enterprise) and [Security](https://www.picsellia.com/security) pages

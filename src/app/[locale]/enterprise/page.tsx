@@ -3,8 +3,12 @@ import { Link as LocaleLink } from '@/i18n/navigation';
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
-import { JsonLd, breadcrumbJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, faqJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
+import FaqSection from "@/components/ui/FaqSection";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-11-05";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -189,10 +193,13 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
   const tControlPlaneItems = t.raw('controlPlaneItems') as string[];
   const tOnPremFeatures = t.raw('onPremFeaturesList') as string[];
   const tOnPremTags = t.raw('onPremTags') as string[];
+  const faqs = t.raw('faq.items') as Array<{ question: string; answer: string }>;
 
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: 'Enterprise', url: '/enterprise' }], locale)} />
+      <JsonLd data={faqJsonLd(faqs, locale)} />
+      <JsonLd data={webPageJsonLd("/enterprise", PAGE_LAST_UPDATED, locale)} />
       {/* Hero Section */}
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -610,6 +617,8 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
         </div>
       </section>
 
+      <FaqSection title={t('faq.title')} faqs={faqs} />
+
       {/* CTA Section */}
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
@@ -644,6 +653,7 @@ export default async function EnterprisePage({ params }: { params: Promise<{ loc
           </div>
         </div>
       </section>
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }

@@ -25,17 +25,31 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-const competitorKeys = ["roboflow", "labelbox", "encord"] as const;
-const competitorLogos: Record<(typeof competitorKeys)[number], string> = {
+const competitorKeys = ["roboflow", "labelbox", "encord", "cvat"] as const;
+// null = no official logo asset available: render a text label instead.
+const competitorLogos: Record<(typeof competitorKeys)[number], string | null> = {
   roboflow: "/images/compare/roboflow.svg",
   labelbox: "/images/compare/labelbox.svg",
   encord: "/images/compare/encord.png",
+  cvat: null,
 };
 const competitorHrefs: Record<(typeof competitorKeys)[number], string> = {
   roboflow: "/compare/roboflow",
   labelbox: "/compare/labelbox",
   encord: "/compare/encord",
+  cvat: "/compare/cvat",
 };
+
+function CompetitorLogo({ logo, name, contain = false }: { logo: string | null; name: string; contain?: boolean }) {
+  if (!logo) {
+    return (
+      <span className="w-full h-full flex items-center justify-center text-[7px] font-bold tracking-tight text-[var(--label)] bg-[var(--tertiary-system-background)]">
+        {name}
+      </span>
+    );
+  }
+  return <Image src={logo} alt={name} width={24} height={24} className={`w-full h-full${contain ? " object-contain" : ""}`} />;
+}
 
 export default async function CompareHubPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -130,7 +144,7 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
                     <th key={c.key} className="text-left py-4 px-4">
                       <div className="flex items-center gap-2">
                         <div className="w-6 h-6 rounded overflow-hidden">
-                          <Image src={c.logo} alt={c.label.replace('Picsellia vs ', '')} width={24} height={24} className="w-full h-full" />
+                          <CompetitorLogo logo={c.logo} name={c.label.replace('Picsellia vs ', '')} />
                         </div>
                         <span className="text-sm font-semibold text-[var(--label)]">
                           {c.label.replace('Picsellia vs ', '')}
@@ -187,7 +201,7 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
       {/* Comparison cards */}
       <section className="py-20 border-b border-[var(--border)]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {competitors.map((c) => (
               <Link
                 key={c.key}
@@ -196,7 +210,7 @@ export default async function CompareHubPage({ params }: { params: Promise<{ loc
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl overflow-hidden bg-[var(--tertiary-system-background)] flex items-center justify-center p-2">
-                    <Image src={c.logo} alt={c.label.replace('Picsellia vs ', '')} width={24} height={24} className="w-full h-full object-contain" />
+                    <CompetitorLogo logo={c.logo} name={c.label.replace('Picsellia vs ', '')} contain />
                   </div>
                   <h3 className="text-base font-semibold text-[var(--label)]">
                     {c.label}

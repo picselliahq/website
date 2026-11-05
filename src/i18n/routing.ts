@@ -156,6 +156,10 @@ export const routing = defineRouting({
       en: '/compare/encord',
       fr: '/comparer/encord',
     },
+    '/compare/cvat': {
+      en: '/compare/cvat',
+      fr: '/comparer/cvat',
+    },
 
     // Blog & posts
     '/blog': {
