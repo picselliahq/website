@@ -1948,9 +1948,9 @@
   "compare": {
     "hub": {
       "metadata": {
-        "title": "Compare Picsellia to Roboflow, Labelbox & Encord (2026)",
-        "description": "See how Picsellia compares to Roboflow, Labelbox, and Encord across pipeline coverage, deployment options, and enterprise compliance — plus links to a full breakdown against each.",
-        "ogTitle": "Compare Picsellia to Roboflow, Labelbox & Encord",
+        "title": "Compare Picsellia to Roboflow, Labelbox, Encord & CVAT (2026)",
+        "description": "See how Picsellia compares to Roboflow, Labelbox, Encord and CVAT across pipeline coverage, deployment options and enterprise compliance, with a full breakdown against each.",
+        "ogTitle": "Compare Picsellia to Roboflow, Labelbox, Encord & CVAT",
         "ogDescription": "Full pipeline coverage vs point solutions: see how Picsellia stacks up against the leading computer vision annotation and MLOps tools."
       },
       "badge": "Platform Comparison",
@@ -1958,7 +1958,7 @@
       "heroHighlight": "the rest of the CV stack",
       "heroDescription": "Most computer vision tools cover a slice of the pipeline — annotation, or training, or deployment. Picsellia covers all of it. Here's how it stacks up against the platforms teams compare it to most.",
       "criteriaLabel": "At a Glance",
-      "criteriaTitle": "One platform, compared to three point solutions",
+      "criteriaTitle": "One platform, compared to four point solutions",
       "criteriaDescription": "A quick summary — each comparison page below goes deeper on features, pricing, and migration.",
       "criteriaHeader": "Criteria",
       "platformTypeLabel": "Platform type",
