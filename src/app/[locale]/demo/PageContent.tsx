@@ -480,6 +480,21 @@ export default function DemoPage() {
                     {t('form.privacyNoteSuffix')}
                   </p>
                 </form>
+
+                {/* What happens next (presentational only, outside the form) */}
+                <div className="mt-8 pt-6 border-t border-[var(--border)]">
+                  <h3 className="text-sm font-semibold text-[var(--label)] mb-4">{t('nextSteps.title')}</h3>
+                  <ol className="space-y-3">
+                    {(t.raw('nextSteps.steps') as string[]).map((step, i) => (
+                      <li key={step} className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-full bg-[var(--picsellia-green)]/15 text-[var(--picsellia-green)] text-xs font-semibold flex items-center justify-center flex-shrink-0">
+                          {i + 1}
+                        </span>
+                        <span className="text-sm text-[var(--secondary-label)]">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
               </div>
             </div>
           </div>

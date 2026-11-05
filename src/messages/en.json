@@ -139,6 +139,10 @@
       "encord": {
         "label": "Picsellia vs Encord",
         "description": "Full CVOps vs data-centric annotation"
+      },
+      "cvat": {
+        "label": "Picsellia vs CVAT",
+        "description": "Production CV platform vs open-source labeling"
       }
     }
   },
@@ -1283,6 +1287,27 @@
         "subtitle": "See how Picsellia can help your manufacturing team ship quality AI faster.",
         "requestDemo": "Request Demo",
         "startTrial": "Start Free Trial"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision in manufacturing?",
+            "answer": "Picsellia helps manufacturing teams build visual inspection and quality control models that are compared against their best human inspectors. The platform combines high-quality labels, rigorous model evaluation and secure on-premise deployment for production lines."
+          },
+          {
+            "question": "What can manufacturers inspect with Picsellia?",
+            "answer": "Picsellia supports four main manufacturing inspection use cases: surface defect detection (scratches, dents, discoloration), assembly verification (component presence, orientation and positioning), packaging inspection (labels, seals, barcodes, integrity) and safety compliance (PPE usage, restricted zones, safety protocols). Models are trained on each manufacturer's own defect taxonomy."
+          },
+          {
+            "question": "How does Picsellia ensure label and model quality for manufacturing inspection?",
+            "answer": "For manufacturing, Picsellia uses multi-reviewer workflows where each label is validated by several experts, and golden test datasets of hard edge cases that every model version runs against before promotion. Teams track precision, recall and F1 for each defect type and compare model performance to their human inspectors on the same test set."
+          },
+          {
+            "question": "Can Picsellia be deployed on-premise or at the edge in a factory?",
+            "answer": "Yes. Picsellia can run entirely on a manufacturer's own infrastructure via Kubernetes or Docker, including air-gapped environments, so training, labeling and versioning stay local. Models can run on industrial PCs at each inspection station or on edge hardware such as NVIDIA Jetson, with asynchronous monitoring that tracks drift without slowing the line."
+          }
+        ]
       }
     },
     "agriculture": {
@@ -1314,6 +1339,27 @@
         "subtitle": "See how Picsellia can help your team manage agricultural data and deploy models faster.",
         "requestDemo": "Request Demo",
         "startTrial": "Start Free Trial"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision in agriculture?",
+            "answer": "Picsellia helps agriculture teams build precision farming models on geo-referenced data: it manages large drone datasets with GPS metadata intact, supports training on multi-spectral imagery, and lets agronomists validate predictions. It applies across crop types, from high-value vineyards to large-scale row crops."
+          },
+          {
+            "question": "Which agricultural use cases can Picsellia handle?",
+            "answer": "Picsellia supports four main agriculture use cases: crop health monitoring, disease detection, yield estimation and soil analysis. Teams use drone and satellite imagery to detect crop stress early, receive geo-tagged disease alerts for precise treatment, count fruits to forecast harvests, and build soil prescription maps for variable-rate application."
+          },
+          {
+            "question": "Can Picsellia handle drone orthomosaics and multi-spectral imagery for agriculture?",
+            "answer": "Yes. For agriculture, Picsellia accepts multi-gigabyte stitched orthomosaics and tiles them automatically for viewing and annotation while preserving the original file. It parses EXIF coordinates, altitude and heading so every annotation is geo-referenced, and links RGB, NIR, thermal and NDVI layers to the same capture."
+          },
+          {
+            "question": "How do agronomists work with Picsellia on agricultural models?",
+            "answer": "Picsellia routes low-confidence detections and edge cases, such as unusual disease presentations or ambiguous growth stages, to agronomists who confirm or correct them, so expert time goes where it improves agricultural models most. Imagery is organized by farm, field, plot and season, so teams can compare the same plot over time and export detections with GPS for precision spraying."
+          }
+        ]
       }
     },
     "energy": {
@@ -1345,6 +1391,27 @@
         "subtitle": "See how Picsellia can help your energy team deploy inspection AI faster.",
         "requestDemo": "Request Demo",
         "startTrial": "Start Free Trial"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision for energy infrastructure inspection?",
+            "answer": "Picsellia lets energy and utilities teams build, deploy and monitor computer vision models that turn drone imagery into actionable inspection insights. It covers the full workflow, from centralizing inspection data and labeling defects to training detection models and deploying them in the field."
+          },
+          {
+            "question": "What energy use cases does Picsellia support?",
+            "answer": "In the energy sector, Picsellia supports infrastructure inspection (damaged insulators, corrosion, vegetation encroachment from drone imagery), predictive maintenance through thermal and visual analysis of transformers, turbines and grid components, security and surveillance of remote installations, and safety protocols such as PPE compliance. These workflows apply from transmission lines to solar farms."
+          },
+          {
+            "question": "What data sources can Picsellia handle for energy inspections?",
+            "answer": "Picsellia aggregates imagery from inspection drones, fixed substation cameras, thermal sensors and satellite imagery into a single searchable repository for energy teams. Assets are geo-tagged, metadata is extracted automatically, and AI-assisted annotation with expert review queues helps label damage types and severity levels at scale."
+          },
+          {
+            "question": "Can Picsellia run on-premise for energy companies, and who uses it?",
+            "answer": "Yes. For energy companies, Picsellia supports on-premise deployment that keeps sensitive infrastructure data within the network, air-gapped operation, role-based access and audit logging, and it can ship models to edge devices, drones or cloud endpoints with drift monitoring. The Picsellia energy page lists RTE among the teams using the platform."
+          }
+        ]
       }
     },
     "wasteManagement": {
@@ -1376,6 +1443,27 @@
         "subtitle": "See how Picsellia can help your team build and maintain waste classification AI.",
         "requestDemo": "Request Demo",
         "startTrial": "Start Free Trial"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision in waste management?",
+            "answer": "Picsellia helps waste management teams build waste sorting and classification models that keep learning as packaging and materials change. It runs a closed loop for sorting AI: monitor production, catch drift, route uncertain samples to human review, retrain and redeploy."
+          },
+          {
+            "question": "What waste management use cases does Picsellia support?",
+            "answer": "Picsellia supports automated waste sorting of materials such as PET, HDPE, cardboard and aluminum on conveyor belts in real time, contamination detection for food residue, mixed materials and non-recyclable items, container fill level monitoring to optimize collection routes, and material composition analysis for regulatory compliance and recycling optimization. It is used from MRFs to collection points."
+          },
+          {
+            "question": "How does Picsellia keep waste sorting models accurate as packaging changes?",
+            "answer": "In waste sorting, Picsellia logs every prediction with a confidence score and automatically flags drift when confidence drops or new item types appear. Low-confidence samples are queued for human review with AI pre-labels, and retraining pipelines can run on a schedule or when enough new samples accumulate, with updated models deployed without stopping the line."
+          },
+          {
+            "question": "How does Picsellia integrate with existing sorting infrastructure?",
+            "answer": "Picsellia integrates with industrial cameras, line-scan sensors and hyperspectral imaging, and can run inference on NVIDIA Jetson, industrial PCs or embedded systems, or in the cloud. For waste sorting lines, it can send classification signals to sorting actuators and robotics through PLC and SCADA, feed MES systems, and supports ONNX and TensorRT models."
+          }
+        ]
       }
     },
     "aerospace": {
@@ -1407,6 +1495,27 @@
         "subtitle": "See how Picsellia can help your aerospace team meet the most demanding inspection requirements.",
         "requestDemo": "Request Demo",
         "seeEnterprise": "See Enterprise Deployment"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision in aerospace?",
+            "answer": "Picsellia lets aerospace teams build, deploy and monitor vision AI models for aircraft inspection, from surface defect detection to assembly verification. It connects hangar cameras, drone feeds and borescope imagery with centralized data management, model training and deployment, across MRO hangars and production lines."
+          },
+          {
+            "question": "What aerospace inspection use cases does Picsellia support?",
+            "answer": "Picsellia supports four aerospace inspection use cases: aircraft surface inspection, component wear analysis, foreign object debris (FOD) detection and assembly verification. In practice this means detecting cracks, dents, corrosion and paint damage on fuselage and wings, monitoring turbine blades, landing gear and hydraulic systems for wear, spotting debris on runways, taxiways and in hangars, and verifying complex components, wiring harnesses and fastener patterns."
+          },
+          {
+            "question": "How does Picsellia provide traceability for aerospace inspection AI?",
+            "answer": "For aerospace, Picsellia versions inspection datasets and logs every dataset version, hyperparameter and result through experiment tracking, so models remain auditable. A full audit trail records every action for regulatory compliance, and MRO engineers review and correct AI pre-annotations using custom defect taxonomies."
+          },
+          {
+            "question": "Can Picsellia be deployed on-premise for aerospace environments?",
+            "answer": "Yes. Picsellia offers on-premise deployment that keeps sensitive aerospace inspection data within your network, air-gapped support for fully disconnected environments, and role-based access for teams and contractors. Models can be deployed to edge devices in hangars, on drones or via cloud APIs, with real-time monitoring and retraining when accuracy drifts."
+          }
+        ]
       }
     },
     "defense": {
@@ -1438,6 +1547,27 @@
         "subtitle": "See how Picsellia can help your defense team build and deploy computer vision in secure environments.",
         "requestDemo": "Request Demo",
         "seeEnterprise": "See Enterprise Deployment"
+      },
+      "faq": {
+        "title": "Common questions",
+        "items": [
+          {
+            "question": "How does Picsellia support computer vision for defense and security?",
+            "answer": "Picsellia lets defense and security teams build, deploy and monitor computer vision models in air-gapped, on-premise environments, from surveillance feeds to satellite imagery. It connects tactical sensors with centralized model management, training and deployment, across use cases from base security to battlefield intelligence."
+          },
+          {
+            "question": "What defense use cases does Picsellia support?",
+            "answer": "Picsellia supports four defense use cases: threat detection and surveillance, vehicle and asset recognition, terrain and damage assessment, and perimeter security. This covers detecting persons, vehicles and unusual activity across camera networks, classifying military and civilian vehicles, aircraft and naval vessels, analyzing satellite and drone imagery for terrain mapping and infrastructure change detection, and automated intrusion detection for military installations and critical infrastructure."
+          },
+          {
+            "question": "Can Picsellia run fully on-premise or air-gapped for defense organizations?",
+            "answer": "Yes. For defense, Picsellia runs entirely within your infrastructure, including fully disconnected and classified environments, so no data leaves your network. Data is stored on-premise only, models are trained on your own GPU clusters, and every action is logged for compliance and accountability, with clearance-level permissions for teams and operators."
+          },
+          {
+            "question": "What sensors and deployment targets does Picsellia support in defense?",
+            "answer": "Picsellia ingests data from surveillance cameras (fixed and PTZ), UAV reconnaissance streams, satellite imagery and ruggedized edge devices into a secure, versioned repository for defense teams. Analysts review and correct AI pre-labels with custom classification schemas, and models can be deployed to ruggedized edge hardware, drones or on-premise servers, then retrained when operational conditions change."
+          }
+        ]
       }
     }
   },
@@ -1848,6 +1978,10 @@
         "encord": {
           "tagline": "Data-Centric AI Platform",
           "stages": "2/6"
+        },
+        "cvat": {
+          "tagline": "Open-Source Annotation Tool",
+          "stages": "1/6"
         }
       },
       "readComparison": "Read full comparison",
@@ -2372,7 +2506,7 @@
       "competitorTagline": "Data-Centric AI Platform",
       "heroTitle": "Picsellia vs Encord: ",
       "heroHighlight": "full CVOps vs data-centric annotation",
-      "heroDescription": "Encord excels at annotation and data curation for AI teams. Picsellia goes further — covering annotation, training, deployment, and production monitoring in a single platform with ISO 27001 compliance and on-premise deployment.",
+      "heroDescription": "Encord excels at annotation and data curation for AI teams. Picsellia goes further, covering annotation, training, deployment and production monitoring in a single platform, with ISO 27001:2022 certification.",
       "bookDemo": "Book a Demo",
       "startFreeTrial": "Start Free Trial",
       "keyDifferenceLabel": "The Key Difference",
@@ -2406,7 +2540,7 @@
         "An end-to-end platform from curation to production",
         "Built-in training pipelines and experiment tracking",
         "Model deployment with monitoring and drift detection",
-        "ISO 27001 compliance and EU AI Act readiness",
+        "ISO 27001:2022 certified, European vendor",
         "On-premise or air-gapped deployment",
         "Full data lineage across the ML lifecycle",
         "A single vendor for your entire CV stack"
@@ -2444,7 +2578,7 @@
         },
         {
           "question": "Which platform is better for regulated industries like healthcare or defense?",
-          "answer": "Picsellia is purpose-built for regulated industries. With ISO 27001:2022 certification, built-in EU AI Act compliance features, full on-premise deployment (Kubernetes or Docker, including air-gapped environments), EU and US data residency options, and complete audit trails across the entire ML lifecycle, Picsellia is the preferred choice for healthcare, defense, energy, aerospace, and manufacturing teams. Encord offers SOC 2 Type II certification and VPC deployment options, but lacks AI Act tooling and full on-premise flexibility."
+          "answer": "Picsellia is built for regulated industries. It is ISO 27001:2022 certified and comes from a European vendor, with EU hosting for teams whose data must stay in Europe. Picsellia also supports on-premise deployment on Kubernetes or Docker, including air-gapped environments, and keeps full data lineage and audit trails across the entire ML lifecycle. That makes it a strong fit for healthcare, defense, energy, aerospace and manufacturing teams. Encord offers SOC 2 Type II certification, with cloud, VPC and on-premise deployment for enterprise customers."
         },
         {
           "question": "What is the hidden cost of using Encord for computer vision projects?",
@@ -2514,11 +2648,6 @@
               "feature": "Workforce management",
               "picselliaNote": "Labeler roles, review, QA metrics",
               "competitorNote": "Workflow stages & review routing"
-            },
-            {
-              "feature": "Annotation services",
-              "picselliaNote": "Professional labeling available",
-              "competitorNote": "Not available"
             },
             {
               "feature": "Smart annotation",
@@ -2593,14 +2722,9 @@
               "competitorNote": "SOC 2 Type II"
             },
             {
-              "feature": "EU AI Act readiness",
-              "picselliaNote": "Built-in compliance features",
-              "competitorNote": "No AI Act tooling"
-            },
-            {
               "feature": "On-premise deployment",
               "picselliaNote": "Kubernetes or Docker",
-              "competitorNote": "VPC deployment option"
+              "competitorNote": "Cloud, VPC and on-premise (Enterprise)"
             },
             {
               "feature": "RBAC",
@@ -2610,7 +2734,7 @@
             {
               "feature": "Data residency",
               "picselliaNote": "EU/US or your infrastructure",
-              "competitorNote": "US and EU regions"
+              "competitorNote": "Cloud and VPC options"
             }
           ]
         }
@@ -2618,6 +2742,229 @@
       "fullSupport": "Full support",
       "partial": "Partial",
       "notAvailable": "Not available"
+    },
+    "cvat": {
+      "metadata": {
+        "title": "Picsellia vs CVAT (2026): Open-Source Labeling vs Production Computer Vision",
+        "description": "Outgrowing CVAT? Compare Picsellia and CVAT on annotation, dataset management, training, deployment, monitoring, self-hosting and support. See when to switch and how to migrate your CVAT projects.",
+        "ogTitle": "Picsellia vs CVAT (2026): Open-Source Labeling vs Production Computer Vision",
+        "ogDescription": "Outgrowing CVAT? Compare Picsellia and CVAT on annotation, dataset management, training, deployment, monitoring, self-hosting and support. See when to switch and how to migrate your CVAT projects."
+      },
+      "badge": "Platform Comparison",
+      "picselliaTagline": "CVOps Platform",
+      "competitorTagline": "Open-Source Annotation Tool",
+      "heroTitle": "CVAT labels your data.",
+      "heroHighlight": "Picsellia takes it to production.",
+      "heroDescription": "CVAT is a solid open-source annotation tool. Picsellia covers the full computer vision lifecycle: dataset management, annotation, training, deployment and monitoring, in one platform built and supported in Europe.",
+      "bookDemo": "Book a Demo",
+      "startFreeTrial": "Start Free Trial",
+      "keyDifferenceLabel": "The Key Difference",
+      "keyDifferenceTitle": "An annotation tool vs a computer vision platform",
+      "keyDifferenceDescription": "CVAT covers one stage of the pipeline. Once your models leave the notebook, you need other tools for dataset versioning, training, experiment tracking, deployment and monitoring, plus someone to connect and maintain them. Picsellia runs every stage in one system, with lineage from raw image to production prediction.",
+      "picselliaStages": "6/6 stages covered",
+      "competitorStages": "1/6 stages covered (Annotation only)",
+      "fullSupport": "Full support",
+      "partial": "Partial",
+      "notAvailable": "Not available",
+      "featureHeader": "Feature",
+      "pipelineStages": {
+        "dataManagement": "Data\nManagement",
+        "annotation": "Annotation",
+        "training": "Training",
+        "deployment": "Deployment",
+        "monitoring": "Monitoring",
+        "compliance": "Compliance"
+      },
+      "whyMoveTitle": "Why teams move from CVAT to Picsellia",
+      "whyMoveItems": [
+        {
+          "title": "Structure that scales",
+          "text": "Datalake, versioned datasets and projects, instead of a pile of tasks and exports. You always know which data trained which model."
+        },
+        {
+          "title": "Team management built in",
+          "text": "Labeling campaigns, roles, review flows and quality metrics for internal teams and external labelers."
+        },
+        {
+          "title": "The full cycle in one place",
+          "text": "Data, annotation, training, deployment and monitoring share the same lineage. No scripts gluing five tools together."
+        },
+        {
+          "title": "Training without new infrastructure",
+          "text": "Run experiments on managed GPUs or your own, track metrics and artifacts, and register models with their versions."
+        },
+        {
+          "title": "Monitoring after deployment",
+          "text": "Drift and anomaly detection on production predictions, feeding back into your datasets for retraining."
+        },
+        {
+          "title": "European, and supported",
+          "text": "ISO 27001:2022 certified, EU hosting or full on-premise, and a team of solution engineers who know computer vision, not a community forum."
+        }
+      ],
+      "categories": {
+        "annotationLabeling": "Annotation and labeling",
+        "dataManagement": "Data management",
+        "trainingExperimentation": "Training and experimentation",
+        "deploymentMonitoring": "Deployment and monitoring",
+        "enterprise": "Enterprise"
+      },
+      "comparison": {
+        "annotationLabeling": {
+          "features": [
+            {
+              "feature": "Annotation types",
+              "picselliaNote": "Bbox, polygon, polyline, keypoint, mask, video",
+              "competitorNote": "Bbox, polygon, polyline, keypoint, mask, video"
+            },
+            {
+              "feature": "AI-assisted labeling",
+              "picselliaNote": "Pre-annotation with your own models",
+              "competitorNote": "SAM 2/3, Hugging Face and Roboflow models"
+            },
+            {
+              "feature": "Team workflows",
+              "picselliaNote": "Labeling campaigns, roles, review, QA metrics",
+              "competitorNote": "Assignments, reviews, roles (Team plan)"
+            }
+          ]
+        },
+        "dataManagement": {
+          "features": [
+            {
+              "feature": "Dataset versioning and lineage",
+              "picselliaNote": "Git-like versioning, lineage to production",
+              "competitorNote": "Handled through exports, outside CVAT"
+            },
+            {
+              "feature": "Curation and search",
+              "picselliaNote": "Visual similarity search, duplicate and outlier detection",
+              "competitorNote": "Limited"
+            },
+            {
+              "feature": "Storage",
+              "picselliaNote": "Bring your own (S3, GCS, Azure) or managed",
+              "competitorNote": "Cloud storage connectors"
+            }
+          ]
+        },
+        "trainingExperimentation": {
+          "features": [
+            {
+              "feature": "Experiment tracking",
+              "picselliaNote": "Metrics, artifacts, logs",
+              "competitorNote": "Not part of CVAT's offer"
+            },
+            {
+              "feature": "Training pipelines",
+              "picselliaNote": "Any framework, Docker pipelines, managed GPUs",
+              "competitorNote": "Not part of CVAT's offer"
+            },
+            {
+              "feature": "Model registry",
+              "picselliaNote": "Versioning and lineage",
+              "competitorNote": "Not part of CVAT's offer"
+            }
+          ]
+        },
+        "deploymentMonitoring": {
+          "features": [
+            {
+              "feature": "Deployment",
+              "picselliaNote": "Cloud, edge, on-premise, air-gapped",
+              "competitorNote": "Not part of CVAT's offer"
+            },
+            {
+              "feature": "Production monitoring",
+              "picselliaNote": "Drift and anomaly detection",
+              "competitorNote": "Not part of CVAT's offer"
+            },
+            {
+              "feature": "Continuous training",
+              "picselliaNote": "Retraining triggered from production data",
+              "competitorNote": "Not part of CVAT's offer"
+            }
+          ]
+        },
+        "enterprise": {
+          "features": [
+            {
+              "feature": "Self-hosting",
+              "picselliaNote": "On-premise (Kubernetes or Docker), deployed and supported by Picsellia",
+              "competitorNote": "Community edition run by your team, or Enterprise via sales"
+            },
+            {
+              "feature": "Security",
+              "picselliaNote": "ISO 27001:2022, RBAC, SSO",
+              "competitorNote": "RBAC, SSO and audit logs (Team plan)"
+            },
+            {
+              "feature": "Support",
+              "picselliaNote": "Dedicated solution engineers",
+              "competitorNote": "Community, or paid plans"
+            },
+            {
+              "feature": "Pricing",
+              "picselliaNote": "Modular: pay for the modules you use",
+              "competitorNote": "Free, then about $23 to $33 per user per month, Enterprise on quote"
+            }
+          ]
+        }
+      },
+      "stayTitle": "Stay on CVAT if…",
+      "stayItems": [
+        "You only need annotation, and training and deployment live elsewhere for good.",
+        "You're a small team still prototyping.",
+        "You have engineers available to host, upgrade and secure CVAT yourselves.",
+        "Budget comes before everything, and the community version covers your needs."
+      ],
+      "migrationTitle": "Migrating from CVAT",
+      "migrationText": "Picsellia imports CVAT XML and CVAT for video projects directly, as well as COCO, YOLO and Pascal VOC. Your images, labels and annotations come over as they are, and our team can run the migration with you.",
+      "proofTitle": "They run computer vision in production on Picsellia",
+      "proofItems": [
+        {
+          "name": "Pellenc ST",
+          "result": "90% faster time-to-model"
+        },
+        {
+          "name": "Altaroad",
+          "result": "50% less time spent operating models in production"
+        },
+        {
+          "name": "Ficha",
+          "result": "Faster iteration across their waste-tech models"
+        }
+      ],
+      "readCaseStudy": "Read the case study",
+      "faqTitle": "Common questions",
+      "faqs": [
+        {
+          "question": "What is the main difference between Picsellia and CVAT?",
+          "answer": "CVAT is an open-source annotation tool. Picsellia is a computer vision platform that covers annotation, plus dataset management, training, deployment and production monitoring, with lineage across every stage."
+        },
+        {
+          "question": "Is Picsellia a good CVAT alternative?",
+          "answer": "Yes, for teams taking computer vision to production. You keep everything you use CVAT for (annotation types, AI-assisted labeling, review) and add the stages CVAT doesn't cover, with no extra tools to connect."
+        },
+        {
+          "question": "Can I migrate my projects from CVAT to Picsellia?",
+          "answer": "Yes. Picsellia imports CVAT XML and CVAT for video exports directly, along with COCO, YOLO and Pascal VOC. Labels and annotations are preserved, and our team can support the migration."
+        },
+        {
+          "question": "Isn't CVAT cheaper because it's open source?",
+          "answer": "The license is free, but running it isn't. Self-hosting CVAT means engineering time for hosting, upgrades and security. You also pay separately for versioning, tracking, deployment and monitoring tools, and for the time spent connecting them."
+        },
+        {
+          "question": "Can Picsellia be self-hosted like CVAT?",
+          "answer": "Yes. Picsellia runs on-premise on Kubernetes or Docker, including air-gapped environments, or in EU-hosted cloud. Unlike a community install, it's deployed and supported by our team."
+        },
+        {
+          "question": "Is Picsellia suitable for regulated industries?",
+          "answer": "Yes. Picsellia is ISO 27001:2022 certified and offers EU hosting or full on-premise deployment, with full data lineage across the lifecycle."
+        }
+      ],
+      "ctaTitle": "Ready to go beyond labeling?",
+      "ctaDescription": "See how teams move from CVAT to a platform that takes their models to production."
     }
   },
   "pricing": {
@@ -3558,7 +3905,32 @@
     "levelSuffix": "Level",
     "customRolesLabel": "Custom roles coming soon",
     "customRolesDesc": "Create custom roles with granular permission sets tailored to your organization.",
-    "requestEarlyAccessBtn": "Request early access"
+    "requestEarlyAccessBtn": "Request early access",
+    "faq": {
+      "title": "Common questions",
+      "items": [
+        {
+          "question": "Which security certifications and controls does Picsellia offer for enterprise deployments?",
+          "answer": "Picsellia is ISO 27001:2022 certified and GDPR compliant, and encrypts data with AES-256 at rest and TLS 1.3 in transit. The platform also provides audit logs for compliance and forensics, multi-factor authentication for all users, IP allowlisting, scoped API keys with expiration and revocation, and tenant separation at storage and compute level."
+        },
+        {
+          "question": "What deployment options does Picsellia offer?",
+          "answer": "Picsellia offers three deployment models: SaaS, Hybrid and On-Premise. SaaS is a fully managed cloud platform with EU and US data centers, Hybrid connects your own storage, GPU compute and Docker registry to the Picsellia-managed control plane so your data never leaves your infrastructure, and On-Premise runs the entire Picsellia MLOps platform on your own infrastructure."
+        },
+        {
+          "question": "Can Picsellia be deployed on-premise or in an air-gapped environment?",
+          "answer": "Yes. Picsellia can be deployed in your own data center or private cloud, on AWS, GCP, Azure or bare metal, using Helm charts on any Kubernetes cluster or a simple Docker Compose setup. For air-gapped environments, Picsellia provides a full offline installation in which container images and charts are transferred via secure media."
+        },
+        {
+          "question": "Does Picsellia support SSO and role-based access control (RBAC)?",
+          "answer": "Picsellia supports SSO / SAML for enterprise identity provider integration, including integration with internal identity providers in on-premise deployments. Its role-based access control applies at three levels: Organization (Owner, Admin, Member), Workspace (Manager, Contributor, Viewer) and Project (Lead, Editor, Annotator, Reviewer)."
+        },
+        {
+          "question": "What support and SLAs does Picsellia provide to enterprise customers?",
+          "answer": "Picsellia enterprise customers get dedicated support with a named customer success manager, priority SLAs and direct engineering access. The on-premise offering includes enterprise-grade support and custom SLAs, along with white-glove onboarding, team training sessions and ongoing enablement."
+        }
+      ]
+    }
   },
   "productOverview": {
     "metadata": {
@@ -3793,6 +4165,14 @@
       "a3": "Yes! We tailor each demo to your industry and specific computer vision challenges. Feel free to mention your use case in the message field.",
       "q4": "Is the demo free?",
       "a4": "Absolutely. The demo is free with no obligation. We want to make sure Picsellia is the right fit for your needs."
+    },
+    "nextSteps": {
+      "title": "What happens next",
+      "steps": [
+        "We review your request within one business day.",
+        "A 30 to 45 minute call with a solution engineer.",
+        "A tailored walkthrough on your use case."
+      ]
     }
   },
   "trial": {

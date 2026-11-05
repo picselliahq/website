@@ -480,6 +480,11 @@ export default function Navigation() {
       href: "/compare/encord",
       description: t("compareItems.encord.description"),
     },
+    {
+      label: t("compareItems.cvat.label"),
+      href: "/compare/cvat",
+      description: t("compareItems.cvat.description"),
+    },
   ];
 
   // Resources menu

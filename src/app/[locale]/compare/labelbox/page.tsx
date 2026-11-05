@@ -1,9 +1,12 @@
 import { Link as LocaleLink } from "@/i18n/navigation";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { JsonLd, breadcrumbJsonLd, faqJsonLd } from "@/lib/json-ld";
+import { JsonLd, breadcrumbJsonLd, faqJsonLd, webPageJsonLd } from "@/lib/json-ld";
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { localizedUrl, localizedAlternates } from "@/lib/seo";
+import LastUpdated from "@/components/ui/LastUpdated";
+
+const PAGE_LAST_UPDATED = "2026-11-05";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -131,6 +134,7 @@ export default async function CompareLabelboxPage({ params }: { params: Promise<
         ], locale)}
       />
       <JsonLd data={faqJsonLd(faqs, locale)} />
+      <JsonLd data={webPageJsonLd("/compare/labelbox", PAGE_LAST_UPDATED, locale)} />
 
       {/* Hero */}
       <section className="pt-32 pb-24 border-b border-[var(--border)] relative overflow-hidden">
@@ -493,6 +497,7 @@ export default async function CompareLabelboxPage({ params }: { params: Promise<
           </div>
         </div>
       </section>
+      <LastUpdated date={PAGE_LAST_UPDATED} locale={locale} />
     </>
   );
 }
