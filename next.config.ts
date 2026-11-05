@@ -27,6 +27,22 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // PostHog reverse proxy: /ingest is served from our own origin so ad
+  // blockers don't drop analytics. Needs skipTrailingSlashRedirect because
+  // PostHog's API paths end with a slash.
+  skipTrailingSlashRedirect: true,
+  async rewrites() {
+    return [
+      {
+        source: '/ingest/static/:path*',
+        destination: 'https://eu-assets.i.posthog.com/static/:path*',
+      },
+      {
+        source: '/ingest/:path*',
+        destination: 'https://eu.i.posthog.com/:path*',
+      },
+    ];
+  },
   async redirects() {
     return [
       // Legacy Webflow blog URLs redirect to new blog paths

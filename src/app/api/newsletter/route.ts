@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { isTwentyConfigured, submitLead } from '@/lib/twenty';
+import { AttributionSchema } from '@/lib/attribution-schema';
 
 const EmailSchema = z.string().email().max(320);
 const PageUriSchema = z.string().max(500).catch('');
@@ -16,6 +17,8 @@ export async function POST(req: NextRequest) {
 
     const email = result.data;
     const pageUri = PageUriSchema.parse(body.pageUri ?? '');
+    // Never throws: a malformed payload parses to undefined.
+    const attribution = AttributionSchema.parse(body.attribution);
 
     if (isTwentyConfigured()) {
       try {
@@ -23,6 +26,7 @@ export async function POST(req: NextRequest) {
           source: 'Blog Newsletter',
           pageUri: pageUri || 'https://picsellia.com/blog',
           email,
+          attribution,
         });
       } catch (error) {
         console.error('Twenty newsletter submission failed:', error);

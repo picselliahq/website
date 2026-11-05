@@ -4,13 +4,16 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "@/i18n/navigation";
 import { track } from "@vercel/analytics";
-import { captureEvent } from "@/lib/posthog";
+import { captureEvent, identifyUser } from "@/lib/posthog";
+import { getAttribution } from "@/lib/attribution";
+import { saveLeadPrefill } from "@/lib/lead-prefill";
 import { useTranslations } from 'next-intl';
 
 // Benefits icon definitions (text comes from translations)
 const benefitIcons = [
   (
     <svg
+      key="benefit-1"
       className="w-5 h-5"
       fill="none"
       viewBox="0 0 24 24"
@@ -26,6 +29,7 @@ const benefitIcons = [
   ),
   (
     <svg
+      key="benefit-2"
       className="w-5 h-5"
       fill="none"
       viewBox="0 0 24 24"
@@ -41,6 +45,7 @@ const benefitIcons = [
   ),
   (
     <svg
+      key="benefit-3"
       className="w-5 h-5"
       fill="none"
       viewBox="0 0 24 24"
@@ -102,6 +107,7 @@ export default function DemoPage() {
     setSubmitError(false);
 
     try {
+      const attribution = getAttribution();
       const response = await fetch("/api/demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -110,6 +116,7 @@ export default function DemoPage() {
           pageUri: window.location.href,
           website: honeypot,
           formLoadedAt: formLoadedAt.current,
+          attribution,
         }),
       });
 
@@ -117,15 +124,21 @@ export default function DemoPage() {
         track("demo_form_submitted", {
           company: formData.company,
         });
+        identifyUser(formData.email, {
+          company: formData.company,
+          job_title: formData.jobTitle,
+        });
         captureEvent("demo_form_submitted", {
           company: formData.company,
+          form: "Book a Demo",
+          last_touch_channel: attribution.last?.channel,
         });
-        const params = new URLSearchParams({
+        saveLeadPrefill({
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
         });
-        router.push({ pathname: "/thank-you-demo", query: Object.fromEntries(params) });
+        router.push("/thank-you-demo");
       } else {
         setSubmitError(true);
       }

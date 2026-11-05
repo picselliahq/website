@@ -4,7 +4,9 @@ import { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "@/i18n/navigation";
 import { track } from "@vercel/analytics";
-import { captureEvent } from "@/lib/posthog";
+import { captureEvent, identifyUser } from "@/lib/posthog";
+import { getAttribution } from "@/lib/attribution";
+import { saveLeadPrefill } from "@/lib/lead-prefill";
 import { useTranslations } from 'next-intl';
 
 // Trial benefit keys for translation
@@ -54,6 +56,7 @@ export default function TrialPage() {
     setSubmitError(false);
 
     try {
+      const attribution = getAttribution();
       const response = await fetch("/api/trial", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -65,6 +68,7 @@ export default function TrialPage() {
           pageUri: window.location.href,
           website: honeypot,
           formLoadedAt: formLoadedAt.current,
+          attribution,
         }),
       });
 
@@ -72,15 +76,20 @@ export default function TrialPage() {
         track("trial_form_submitted", {
           company: formData.company || undefined,
         });
-        captureEvent("trial_form_submitted", {
+        identifyUser(formData.email, {
           company: formData.company || undefined,
         });
-        const params = new URLSearchParams({
+        captureEvent("trial_form_submitted", {
+          company: formData.company || undefined,
+          form: "Start Free Trial",
+          last_touch_channel: attribution.last?.channel,
+        });
+        saveLeadPrefill({
           firstName: formData.firstName,
           lastName: formData.lastName,
           email: formData.email,
         });
-        router.push({ pathname: "/thank-you-trial", query: Object.fromEntries(params) });
+        router.push("/thank-you-trial");
       } else {
         setSubmitError(true);
       }

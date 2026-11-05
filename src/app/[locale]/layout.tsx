@@ -7,6 +7,7 @@ import { routing } from "@/i18n/routing";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import PostHogProvider from "@/components/providers/PostHogProvider";
+import AttributionInit from "@/components/providers/AttributionInit";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -94,6 +95,7 @@ export default async function LocaleLayout({
         <link rel="dns-prefetch" href="https://eu-assets.i.posthog.com" />
       </head>
       <body>
+        <AttributionInit />
         <NextIntlClientProvider>
           <PostHogProvider>
             <Navigation />

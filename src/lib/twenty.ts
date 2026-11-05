@@ -3,10 +3,17 @@
 // object, so each website form first saves a Note carrying the full
 // submission, then (best-effort) upserts the Person / Company and links them.
 //
+// Attribution: the note also carries an "Attribution" block (first/last
+// touch, session landing page, PostHog ID). Separately, a best-effort PATCH
+// writes the same data to custom Person fields; those fields may not exist
+// yet, in which case the PATCH fails, is logged, and the lead is unaffected.
+//
 // Env:
 //   TWENTY_API_KEY  — API key from Settings → API & Webhooks (required)
 //   TWENTY_API_URL  — base URL, defaults to Twenty Cloud (https://api.twenty.com);
 //                     a trailing `/rest` is tolerated
+
+import type { AttributionInput, TouchInput } from './attribution-schema';
 
 type TwentyRecord = { id: string } & Record<string, unknown>;
 
@@ -169,7 +176,90 @@ export type LeadSubmission = {
   jobTitle?: string;
   phone?: string;
   message?: string;
+  attribution?: AttributionInput;
 };
+
+function formatTouch(touch: TouchInput | undefined): string {
+  if (!touch) return 'none';
+  return [
+    touch.channel,
+    touch.source && `source=${touch.source}`,
+    touch.medium && `medium=${touch.medium}`,
+    touch.campaign && `campaign=${touch.campaign}`,
+    touch.content && `content=${touch.content}`,
+    touch.term && `term=${touch.term}`,
+    touch.clickId && `clickId=${touch.clickId}`,
+    touch.referrer && `referrer=${touch.referrer}`,
+    touch.landingPage && `landing=${touch.landingPage}`,
+    touch.at && `at=${touch.at}`,
+  ]
+    .filter(Boolean)
+    .join(', ');
+}
+
+function attributionMarkdown(attribution: AttributionInput): string {
+  const channel = attribution?.last?.channel ?? attribution?.first?.channel;
+  return [
+    '**Attribution:**',
+    '',
+    `- **First touch:** ${formatTouch(attribution?.first)}`,
+    `- **Last touch:** ${formatTouch(attribution?.last)}`,
+    `- **Session landing page:** ${attribution?.landingPage || 'unknown'}`,
+    `- **Channel:** ${channel || 'unknown'}`,
+    `- **PostHog ID:** ${attribution?.posthogDistinctId || 'unknown'}`,
+  ].join('\n');
+}
+
+const isEmpty = (value: unknown) => value === undefined || value === null || value === '';
+
+const toIsoDate = (value: string | undefined): string | undefined => {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
+};
+
+/**
+ * Builds the attribution PATCH for a person. First-touch and first-conversion
+ * fields are only filled when empty (never overwrite what sales or an earlier
+ * touch wrote); last-touch and last-conversion fields always reflect this one.
+ */
+function attributionPatch(person: Person, lead: LeadSubmission, now: string): Record<string, unknown> {
+  const { first, last, posthogDistinctId } = lead.attribution ?? {};
+  const patch: Record<string, unknown> = {};
+  const fillIfEmpty = (field: string, value: unknown) => {
+    if (!isEmpty(value) && isEmpty(person[field])) patch[field] = value;
+  };
+
+  fillIfEmpty('leadSource', 'INBOUND_WEBSITE');
+
+  if (first) {
+    fillIfEmpty('firstTouchChannel', first.channel);
+    fillIfEmpty('firstTouchSource', first.source);
+    fillIfEmpty('firstTouchMedium', first.medium);
+    fillIfEmpty('firstTouchCampaign', first.campaign);
+    fillIfEmpty('firstTouchLandingPage', first.landingPage);
+    fillIfEmpty('firstTouchAt', toIsoDate(first.at));
+  }
+
+  const lastTouch = last ?? first;
+  if (lastTouch) {
+    // Written as a set: a referral with no campaign must clear the previous
+    // touch's campaign rather than leave a mismatched pair.
+    patch.lastTouchChannel = lastTouch.channel ?? '';
+    patch.lastTouchSource = lastTouch.source ?? '';
+    patch.lastTouchMedium = lastTouch.medium ?? '';
+    patch.lastTouchCampaign = lastTouch.campaign ?? '';
+  }
+
+  fillIfEmpty('firstConversionForm', lead.source);
+  fillIfEmpty('firstConversionAt', now);
+  patch.lastConversionForm = lead.source;
+  patch.lastConversionAt = now;
+
+  fillIfEmpty('posthogDistinctId', posthogDistinctId);
+
+  return patch;
+}
 
 export async function submitLead(lead: LeadSubmission): Promise<void> {
   const fullName = [lead.firstName, lead.lastName].filter(Boolean).join(' ');
@@ -186,7 +276,10 @@ export async function submitLead(lead: LeadSubmission): Promise<void> {
     .map(([label, value]) => `- **${label}:** ${value}`)
     .join('\n');
 
-  const markdown = lead.message ? `${details}\n\n**Message:**\n\n${lead.message}` : details;
+  const withMessage = lead.message ? `${details}\n\n**Message:**\n\n${lead.message}` : details;
+  // Always written, so attribution survives even if the Person fields below
+  // don't exist or the PATCH fails.
+  const markdown = `${withMessage}\n\n${attributionMarkdown(lead.attribution)}`;
 
   // The note is written first and holds the full submission, so once it
   // exists the lead can't be lost. Only this step fails the request.
@@ -213,6 +306,15 @@ export async function submitLead(lead: LeadSubmission): Promise<void> {
       createOne('noteTargets', { noteId: note.id, targetPersonId: person.id }),
       company && createOne('noteTargets', { noteId: note.id, targetCompanyId: company.id }),
     ]);
+
+    // Separate and best-effort: a 400 here (attribution fields not created in
+    // Twenty yet) must not affect the note or its links, which already exist.
+    try {
+      const patch = attributionPatch(person, lead, new Date().toISOString());
+      await updateOne('people', person.id, patch);
+    } catch (error) {
+      console.error(`Twenty attribution update failed for person ${person.id}:`, error);
+    }
   } catch (error) {
     console.error(`Twenty lead enrichment failed; note ${note.id} saved but not linked:`, error);
   }

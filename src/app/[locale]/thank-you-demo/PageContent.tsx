@@ -1,9 +1,9 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import CalBooking from '@/components/CalBooking';
+import { useLeadPrefill } from '@/lib/lead-prefill';
 
 interface ThankYouDemoContentProps {
   calLink: string;
@@ -11,7 +11,7 @@ interface ThankYouDemoContentProps {
 
 export default function ThankYouDemoContent({ calLink }: ThankYouDemoContentProps) {
   const t = useTranslations('thankYouDemo');
-  const searchParams = useSearchParams();
+  const { ready, prefill } = useLeadPrefill();
 
   return (
     <section className="pt-32 pb-24 relative overflow-hidden">
@@ -40,13 +40,13 @@ export default function ThankYouDemoContent({ calLink }: ThankYouDemoContentProp
         {/* Cal.com booking embed */}
         {calLink ? (
           <div className="mb-12 max-w-5xl mx-auto min-h-[700px]">
-            <CalBooking
+            {ready && <CalBooking
               calLink={calLink}
               source="demo"
-              firstName={searchParams.get('firstName') ?? undefined}
-              lastName={searchParams.get('lastName') ?? undefined}
-              email={searchParams.get('email') ?? undefined}
-            />
+              firstName={prefill.firstName}
+              lastName={prefill.lastName}
+              email={prefill.email}
+            />}
           </div>
         ) : (
           <div className="card p-8 mb-12 text-center">
