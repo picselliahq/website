@@ -23,8 +23,9 @@ export default function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Match all pathnames except API routes, static files, and Next.js internals
+  // Match all pathnames except API routes, the PostHog proxy (/ingest),
+  // static files, and Next.js internals
   matcher: [
-    '/((?!api|_next|_vercel|.*\\..*).*)',
+    '/((?!api|ingest|_next|_vercel|.*\\..*).*)',
   ],
 };

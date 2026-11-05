@@ -3,7 +3,8 @@
 import { useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import { track } from "@vercel/analytics";
-import { captureEvent } from "@/lib/posthog";
+import { captureEvent, identifyUser } from "@/lib/posthog";
+import { getAttribution } from "@/lib/attribution";
 
 export default function NewsletterSignup() {
   const t = useTranslations('blog.newsletter');
@@ -19,15 +20,20 @@ export default function NewsletterSignup() {
     setStatus("loading");
 
     try {
+      const attribution = getAttribution();
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, pageUri: window.location.href }),
+        body: JSON.stringify({ email, pageUri: window.location.href, attribution }),
       });
 
       if (res.ok) {
         track("newsletter_subscribed");
-        captureEvent("newsletter_subscribed");
+        identifyUser(email);
+        captureEvent("newsletter_subscribed", {
+          form: "Blog Newsletter",
+          last_touch_channel: attribution.last?.channel,
+        });
         setStatus("success");
         setEmail("");
       } else {

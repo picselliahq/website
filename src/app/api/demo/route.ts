@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { isTwentyConfigured, submitLead } from '@/lib/twenty';
+import { AttributionSchema } from '@/lib/attribution-schema';
 
 const DemoSchema = z.object({
   firstName: z.string().min(1).max(100),
@@ -13,6 +14,8 @@ const DemoSchema = z.object({
   pageUri: z.string().max(500).optional().default(''),
   website: z.string().optional().default(''),
   formLoadedAt: z.number().optional(),
+  // Never rejects: a malformed payload parses to undefined (see AttributionSchema).
+  attribution: AttributionSchema,
 });
 
 const MIN_SUBMIT_TIME_MS = 3000;
@@ -55,6 +58,7 @@ export async function POST(req: NextRequest) {
         jobTitle: data.jobTitle,
         phone: data.phone,
         message: data.message,
+        attribution: data.attribution,
       });
     } catch (error) {
       console.error('Twenty demo submission failed:', error);

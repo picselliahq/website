@@ -19,7 +19,10 @@ function initPostHog() {
   }
   initialized = true;
   posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://eu.i.posthog.com",
+    // Same-origin reverse proxy (next.config.ts rewrites) so ad blockers
+    // don't drop events. NEXT_PUBLIC_POSTHOG_HOST still overrides it.
+    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "/ingest",
+    ui_host: "https://eu.posthog.com",
     defaults: "2026-01-30",
     person_profiles: "identified_only",
     loaded: () => {
